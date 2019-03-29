@@ -166,7 +166,7 @@ begin
       'dirigente=:dirigente, cod_setor=:cod_setor, cod_igreja=:cod_igreja, cod_cc=:cod_cc, sigla=:sigla '
       + ' WHERE cod_congregacao=:cod_congregacao');
     Qry.ParamByName('cod_congregacao').AsInteger := F_cod_congregacao;
-    Qry.ParamByName('cod_central').AsString := F_cod_central;
+    Qry.ParamByName('cod_central').AsInteger := F_cod_central;
     Qry.ParamByName('congregacao').AsString := F_congregacao;
     Qry.ParamByName('setor').AsString := F_setor;
     Qry.ParamByName('polo').AsString := F_polo;

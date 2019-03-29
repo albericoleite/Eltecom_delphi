@@ -113,7 +113,7 @@ if oCongregacao.Selecionar(QryListagem.FieldByName('cod_congregacao').AsInteger)
     lbledtCodigo.Text    := IntToStr(oCongregacao.cod_congregacao);
     lbledtCongregacao.Text       := oCongregacao.congregacao;
     lbledtDirigente.Text        := oCongregacao.dirigente;
-    lbledtCodCentral.Text := oCongregacao.cod_central;
+    lbledtCodCentral.Text := IntToStr(oCongregacao.cod_central);
     lbledtEndereco.Text := oCongregacao.endereco;
     lbledtBairro.Text := oCongregacao.bairro;
     lbledtComplemento.Text := oCongregacao.complemento;
@@ -156,7 +156,7 @@ begin
        oCongregacao.cod_congregacao :=0;
        oCongregacao.congregacao:=lbledtCongregacao.Text;
        oCongregacao.dirigente := lbledtDirigente.Text;
-       oCongregacao.cod_central:=lbledtCodCentral.Text;
+       oCongregacao.cod_central:=StrToInt(lbledtCodCentral.Text);
        oCongregacao.endereco:=lbledtEndereco.Text;
        oCongregacao.bairro :=lbledtBairro.Text;
        oCongregacao.complemento:=lbledtComplemento.Text;
@@ -171,6 +171,7 @@ begin
        oCongregacao.data_cadastro:= Date;
        oCongregacao.usuario_cadastro:='Admin';
        oCongregacao.cod_setor:=dblkcbbSetor.KeyValue;
+       oCongregacao.setor:= dblkcbbSetor.Text;
 
 
     if (EstadodoCadastro=ecInserir) then
