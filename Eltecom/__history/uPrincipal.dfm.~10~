@@ -1,0 +1,85 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Eltecom - 2019.1'
+  ClientHeight = 311
+  ClientWidth = 482
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object statMenu: TStatusBar
+    Left = 0
+    Top = 294
+    Width = 482
+    Height = 17
+    Panels = <
+      item
+        Width = 400
+      end
+      item
+        Width = 350
+      end
+      item
+        Width = 150
+      end
+      item
+        Width = 50
+      end>
+    ExplicitTop = 445
+    ExplicitWidth = 691
+  end
+  object MainMenu1: TMainMenu
+    Left = 16
+    Top = 8
+    object Cadastro1: TMenuItem
+      Caption = 'Cadastro'
+      object Clientes1: TMenuItem
+        Caption = 'Membros / Congregados'
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Igreja1: TMenuItem
+        Caption = 'Igreja'
+      end
+      object Congregaes1: TMenuItem
+        Caption = 'Congrega'#231#245'es'
+      end
+      object Setores1: TMenuItem
+        Caption = 'Setores'
+        OnClick = Setores1Click
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object Sair1: TMenuItem
+        Caption = 'Sair'
+        OnClick = Sair1Click
+      end
+    end
+    object Movimentao1: TMenuItem
+      Caption = 'Financeiro'
+      object EntradasSadas1: TMenuItem
+        Caption = 'Entradas & Sa'#237'das'
+      end
+      object Dizimsita1: TMenuItem
+        Caption = 'Dizimsita'
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+    end
+    object Relatrios1: TMenuItem
+      Caption = 'Relat'#243'rios'
+    end
+  end
+end

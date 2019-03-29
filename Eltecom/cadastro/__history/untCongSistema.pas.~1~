@@ -1,0 +1,57 @@
+unit untCongSistema;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.DBCtrls, Data.DB,
+  Vcl.StdCtrls, Vcl.Mask;
+
+type
+  TfrmCongSistema = class(TForm)
+    lbl1: TLabel;
+    dbedtcod_congregacao: TDBEdit;
+    dsCongSistema: TDataSource;
+    dblkcbbCongregacao: TDBLookupComboBox;
+    lbl2: TLabel;
+    dbnvgr1: TDBNavigator;
+    dsCongregacao: TDataSource;
+    grp1: TGroupBox;
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure dsCongSistemaUpdateData(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCongSistema: TfrmCongSistema;
+
+implementation
+
+uses
+  untConexao, Eltecom;
+
+{$R *.dfm}
+
+procedure TfrmCongSistema.dsCongSistemaUpdateData(Sender: TObject);
+begin
+dtmConexao.fdqryCongregacaoAtivaSistema.Open;
+frmMenu.statMenu.Panels[3].Text := 'Logado com '+ dtmConexao.fdqryUsuariousuario.Text +' / Congregação: '+dtmConexao.strngfldCongregacaoAtivaSistemacongregacao.Text;
+end;
+
+procedure TfrmCongSistema.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+frmMenu.pnlBotoes.Visible := True;
+Action := cafree;
+frmCongSistema := nil;
+end;
+
+procedure TfrmCongSistema.FormCreate(Sender: TObject);
+begin
+dtmConexao.fdqryCongSistema.Open;
+end;
+
+end.

@@ -1,0 +1,9 @@
+unit uEnum;
+
+interface
+Type
+TestadoDoCadastro = (ecInserir, ecAlterar,ecEnum);
+
+implementation
+
+end.

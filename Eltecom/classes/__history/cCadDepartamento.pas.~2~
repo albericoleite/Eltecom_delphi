@@ -1,0 +1,163 @@
+unit cCadDepartamento;
+
+interface
+
+uses System.Classes, Vcl.Controls,
+  Vcl.ExtCtrls, Vcl.Dialogs, FireDAC.Comp.Client, System.SysUtils;
+// LISTA DE UNITS
+
+type
+  TDepartamento = class
+  private
+    // VARIAVEIS PRIVADA SOMENTE DENTRO DA CLASSE
+    ConexaoDB: TFDConnection;
+    F_cod_departamento: Integer;
+    F_nome_departamento: string;
+
+  public
+    constructor Create(aConexao: TFDConnection); // CONSTRUTOR DA CLASSE
+    destructor Destroy; override; // DESTROI A CLASSE USAR OVERRIDE POR CAUSA
+    function Inserir: Boolean;
+    function Atualizar: Boolean;
+    function Apagar: Boolean;
+    function Selecionar(id: Integer): Boolean;
+
+  published
+    // VARIAVEIS PUBLICAS UTILAIZADAS PARA PROPRIEDADES DA CLASSE
+    // PARA FORNECER INFORMAÇÕESD EM RUMTIME
+    property cod_departamento: Integer read F_cod_departamento
+      write F_cod_departamento;
+    property nome_departamento: string read F_nome_departamento
+      write F_nome_departamento;
+  end;
+
+implementation
+
+{$REGION 'Constructor and Destructor'}
+
+constructor TDepartamento.Create;
+begin
+  ConexaoDB := aConexao;
+end;
+
+destructor TDepartamento.Destroy;
+begin
+
+  inherited;
+end;
+{$ENDREGION}
+
+{$REGION 'CRUD'}
+
+function TDepartamento.Apagar: Boolean;
+var
+  Qry: TFDQuery;
+begin
+  if MessageDlg('Apagar o Registro: ' + #13 + #13 + 'Código: ' +
+    IntToStr(F_cod_departamento) + #13 + 'Descrição: ' + F_nome_departamento,
+    mtConfirmation, [mbYes, mbNo], 0) = mrNO then
+  begin
+    Result := false;
+    Abort;
+  end;
+
+  Try
+    Result := True;
+    Qry := TFDQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('DELETE FROM tb_departamento WHERE cod_departamento=:cod_departamento; ');
+    Qry.ParamByName('cod_departamento').AsInteger := F_cod_departamento;
+    try
+      Qry.ExecSQL;
+    except
+      Result := false;
+    end;
+
+  Finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry)
+  End;
+
+end;
+
+function TDepartamento.Atualizar: Boolean;
+var
+  Qry: TFDQuery;
+begin
+  try
+    Result := True;
+    Qry := TFDQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('UPDATE tb_departamento '+
+    ' SET nome_departamento=:nome_departamento WHERE cod_departamento=cod_departamento');
+    Qry.ParamByName('cod_departamento').AsInteger := F_cod_departamento;
+    Qry.ParamByName('nome_departamento').AsString := F_nome_departamento;
+    try
+      Qry.SQL.Text;
+      Qry.ExecSQL;
+    except
+      Result := false;
+    end;
+  finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry)
+  end;
+end;
+
+function TDepartamento.Inserir: Boolean;
+var
+  Qry: TFDQuery;
+begin
+  try
+    Result := True;
+    Qry := TFDQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('INSERT INTO tb_departamento '+
+    '(nome_departamento) VALUES(:nome_departamento)) ');
+    Qry.ParamByName('nome_departamento').AsString := Self.F_nome_departamento;
+
+    try
+      Qry.SQL.Text;
+      Qry.ExecSQL;
+    except
+      Result := false;
+    end;
+  finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry)
+  end;
+end;
+
+function TDepartamento.Selecionar(id: Integer): Boolean;
+var
+  Qry: TFDQuery;
+begin
+  try
+    Result := True;
+    Qry := TFDQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('SELECT cod_departamento, nome_departamento  '+
+    'FROM tb_departamento WHERE cod_departamento=:cod_departamento ');
+    Qry.ParamByName('cod_departamento').AsInteger := id;
+
+    try
+      Qry.Open;
+      Self.F_cod_departamento := Qry.FieldByName('cod_departamento').AsInteger;
+      Self.F_nome_departamento := Qry.FieldByName('nome_departamento').AsString;
+    Except
+      Result := false;
+    end;
+
+  finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry)
+  end;
+end;
+{$ENDREGION}
+
+
+end.

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/03/18 14:29:12.000.432,=C:\Users\usuario\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/03/18 14:29:44.000.380,C:\Eltecom\uPrincipal.pas=C:\Users\usuario\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/03/18 14:29:44.000.380,C:\Eltecom\uPrincipal.dfm=C:\Users\usuario\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2019/03/18 14:29:53.000.973,C:\Eltecom\Eltecom.dproj=C:\Users\usuario\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2019/03/18 14:40:02.000.452,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/18 14:40:41.000.593,C:\Eltecom\Unit1.pas=C:\Eltecom\datamodule\uDTMConexao.pas</Transaction>
+    <Transaction>2019/03/18 14:40:41.000.593,C:\Eltecom\Unit1.dfm=C:\Eltecom\datamodule\uDTMConexao.dfm</Transaction>
+    <Transaction>2019/03/18 16:20:25.000.092,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/18 16:21:39.000.792,C:\Eltecom\heranca\uTelaHeranca.dfm=C:\Eltecom\Unit1.dfm</Transaction>
+    <Transaction>2019/03/18 16:21:39.000.792,C:\Eltecom\heranca\uTelaHeranca.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/18 16:51:13.000.061,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/18 16:52:14.000.884,C:\Eltecom\cadastro\uCadSetores.dfm=C:\Eltecom\Unit1.dfm</Transaction>
+    <Transaction>2019/03/18 16:52:14.000.884,C:\Eltecom\cadastro\uCadSetores.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/18 18:01:19.000.496,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/18 18:01:44.000.789,C:\Eltecom\heranca\uEnum.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/19 16:12:00.000.729,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/19 16:12:23.000.801,C:\Eltecom\cCadSetores.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/22 16:31:32.000.805,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/22 16:32:01.000.098,C:\Eltecom\cadastro\uCadPessoa.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/22 16:32:01.000.098,C:\Eltecom\cadastro\uCadPessoa.dfm=C:\Eltecom\Unit1.dfm</Transaction>
+    <Transaction>2019/03/22 17:15:47.000.550,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/22 17:16:12.000.139,C:\Eltecom\classes\cCadPessoa.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/27 09:26:12.000.888,=C:\Eltecom\cadastro\untCongSistema.pas</Transaction>
+    <Transaction>2019/03/27 10:16:05.000.583,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/27 10:16:33.000.211,C:\Eltecom\Unit1.pas=C:\Eltecom\cadastro\uCadIgreja.pas</Transaction>
+    <Transaction>2019/03/27 10:16:33.000.211,C:\Eltecom\Unit1.dfm=C:\Eltecom\cadastro\uCadIgreja.dfm</Transaction>
+    <Transaction>2019/03/27 10:31:50.000.415,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/27 10:32:08.000.022,C:\Eltecom\Unit1.pas=C:\Eltecom\classes\cCadIgreja.pas</Transaction>
+    <Transaction>2019/03/27 16:44:46.000.905,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/27 16:45:05.000.197,C:\Eltecom\datamodule\uFrmAtualizaDB.dfm=C:\Eltecom\Unit1.dfm</Transaction>
+    <Transaction>2019/03/27 16:45:05.000.197,C:\Eltecom\datamodule\uFrmAtualizaDB.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/27 17:30:47.000.184,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/27 17:31:20.000.312,C:\Eltecom\datamodule\uDTMTesouraria.dfm=C:\Eltecom\Unit1.dfm</Transaction>
+    <Transaction>2019/03/27 17:31:20.000.312,C:\Eltecom\datamodule\uDTMTesouraria.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 09:19:55.000.455,=C:\Eltecom\Unit2.pas</Transaction>
+    <Transaction>2019/03/28 09:20:22.000.795,C:\Eltecom\Unit2.dfm=C:\Eltecom\datamodule\uDTMRelatorio.dfm</Transaction>
+    <Transaction>2019/03/28 09:20:22.000.795,C:\Eltecom\Unit2.pas=C:\Eltecom\datamodule\uDTMRelatorio.pas</Transaction>
+    <Transaction>2019/03/28 09:40:30.000.567,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 09:41:56.000.307,C:\Eltecom\Unit1.dfm=C:\Eltecom\Relatorios\uEmissaoDocumentos.dfm</Transaction>
+    <Transaction>2019/03/28 09:41:56.000.307,C:\Eltecom\Unit1.pas=C:\Eltecom\Relatorios\uEmissaoDocumentos.pas</Transaction>
+    <Transaction>2019/03/28 16:36:08.000.858,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 16:36:47.000.784,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 16:37:06.000.426,C:\Eltecom\cadastro\uCadDepartamento.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 16:37:06.000.426,C:\Eltecom\cadastro\uCadDepartamento.dfm=C:\Eltecom\Unit1.dfm</Transaction>
+    <Transaction>2019/03/28 16:46:01.000.182,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 16:46:14.000.276,C:\Eltecom\classes\cCadDepartamento.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 17:54:19.000.542,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 17:54:30.000.671,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 17:54:45.000.201,C:\Eltecom\cadastro\uCadCongregacao.dfm=C:\Eltecom\Unit1.dfm</Transaction>
+    <Transaction>2019/03/28 17:54:45.000.201,C:\Eltecom\cadastro\uCadCongregacao.pas=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 22:20:56.000.758,=C:\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/03/28 22:21:26.000.767,C:\Eltecom\Unit1.pas=C:\Eltecom\classes\cCadCongregacao.pas</Transaction>
+  </Transactions>
+</BorlandProject>

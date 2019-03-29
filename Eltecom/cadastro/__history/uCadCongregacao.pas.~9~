@@ -1,0 +1,134 @@
+unit uCadCongregacao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHeranca, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,uEnum;
+
+type
+  TfrmCadCongregacao = class(TfrmTelaheranca)
+    fdtncfldQryListagemcod_congregacao: TFDAutoIncField;
+    intgrfldQryListagemcod_central: TIntegerField;
+    strngfldQryListagemcongregacao: TStringField;
+    strngfldQryListagemsetor: TStringField;
+    strngfldQryListagempolo: TStringField;
+    intgrfldQryListagemsituacao: TIntegerField;
+    strngfldQryListagemtelefone: TStringField;
+    strngfldQryListagemcnpj: TStringField;
+    strngfldQryListagemsiteblog: TStringField;
+    strngfldQryListagemendereco: TStringField;
+    strngfldQryListagemcomplemento: TStringField;
+    strngfldQryListagembairro: TStringField;
+    strngfldQryListagemcep: TStringField;
+    strngfldQryListagemcidade: TStringField;
+    strngfldQryListagemdiasculto: TStringField;
+    strngfldQryListagemdiacoa: TStringField;
+    strngfldQryListagemdiacom: TStringField;
+    strngfldQryListagemdiacoi: TStringField;
+    strngfldQryListagemdiacv: TStringField;
+    dtfldQryListagemdata_aber_sub: TDateField;
+    dtfldQryListagemdata_aber_cong: TDateField;
+    dtfldQryListagemdata_fun_coa: TDateField;
+    dtfldQryListagemdata_fun_com: TDateField;
+    dtfldQryListagemdata_fun_coi: TDateField;
+    dtfldQryListagemdata_fun_cv: TDateField;
+    dtfldQryListagemdata_cadastro: TDateField;
+    strngfldQryListagemusuario_cadastro: TStringField;
+    strngfldQryListagemcong_principal: TStringField;
+    strngfldQryListagemdirigente: TStringField;
+    intgrfldQryListagemcod_setor: TIntegerField;
+    intgrfldQryListagemcod_igreja: TIntegerField;
+    intgrfldQryListagemcod_cc: TIntegerField;
+    strngfldQryListagemsigla: TStringField;
+    lbledtCodigo: TLabeledEdit;
+    lbledtCongregacao: TLabeledEdit;
+    lbledtDirigente: TLabeledEdit;
+    grpResidencia: TGroupBox;
+    lblCEP: TLabel;
+    lblTelefone: TLabel;
+    lbl12: TLabel;
+    lbl13: TLabel;
+    lbl1: TLabel;
+    lbledtEmail: TLabeledEdit;
+    lbledtBairro: TLabeledEdit;
+    lbledtEndereco: TLabeledEdit;
+    lbledtCidade: TLabeledEdit;
+    medtCEP: TMaskEdit;
+    medtTelefoneCel: TMaskEdit;
+    lbledtComplemento: TLabeledEdit;
+    cbbEstadoImovel: TComboBox;
+    cbbUfImovel: TComboBox;
+    medt1: TMaskEdit;
+    procedure btnAlterarClick(Sender: TObject);
+  private
+    { Private declarations }
+      //  oDepartamento: TDepartamento;
+    function Apagar:Boolean; override;
+    function Gravar(EstadodoCadastro:TEstadoDoCadastro):Boolean; override;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadCongregacao: TfrmCadCongregacao;
+
+implementation
+
+uses
+  cCadCongregacao;
+
+{$R *.dfm}
+
+{$REGION 'Override'}
+function TfrmCadCongregacao.Apagar: Boolean;
+begin
+if oDepartamento.Selecionar(QryListagem.FieldByName('cod_departamento').AsInteger) then
+      Result:=oDepartamento.Apagar;
+end;
+
+
+procedure TfrmCadCongregacao.btnAlterarClick(Sender: TObject);
+begin
+if oDepartamento.Selecionar(QryListagem.FieldByName('cod_departamento').AsInteger) then
+  begin
+    lbledtCodigo.Text    := IntToStr(oDepartamento.cod_departamento);
+    lbledtDepartamento.Text       := oDepartamento.nome_departamento;
+    end
+  else
+  begin
+    btnCancelar.Click;
+    Abort;
+  end;
+  inherited;
+
+end;
+
+function TfrmCadCongregacao.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
+begin
+    if lbledtCodigo.Text<>EmptyStr then
+       oDepartamento.cod_departamento:=StrToInt(lbledtCodigo.Text)
+       else
+       oDepartamento.cod_departamento :=0;
+       oDepartamento.nome_departamento:=lbledtDepartamento.Text;
+
+    if (EstadodoCadastro=ecInserir) then
+    Result:=oDepartamento.Inserir
+    else if (EstadodoCadastro=ecAlterar) then
+     Result:=oDepartamento.Atualizar;
+
+end;
+procedure TfrmCadCongregacao.grdListagemKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+BloqueiaCTRL_DEL_DBGRID(Key,Shift);
+end;
+
+{$endregion}
+
+end.

@@ -1,0 +1,81 @@
+unit uCadIgreja;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHeranca, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,uEnum,cCadIgreja;
+
+type
+  TfrmCadIgreja = class(TfrmTelaheranca)
+    fdtncfldQryListagemcod_igreja: TFDAutoIncField;
+    strngfldQryListagemnome_igreja: TStringField;
+    strngfldQryListagemcidade: TStringField;
+    strngfldQryListagemnome_presidente: TStringField;
+    intgrfldQryListagemsituacao: TIntegerField;
+    procedure btnAlterarClick(Sender: TObject);
+  private
+    { Private declarations }
+     oIgreja: TIgreja;
+    function Apagar:Boolean; override;
+    function Gravar(EstadodoCadastro:TEstadoDoCadastro):Boolean; override;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadIgreja: TfrmCadIgreja;
+
+implementation
+
+{$R *.dfm}
+
+
+function TfrmCadIgreja.Apagar: Boolean;
+begin
+if oIgreja.Selecionar(QryListagem.FieldByName('cod_igreja').AsInteger) then
+      Result:=oIgreja.Apagar;
+end;
+
+procedure TfrmCadIgreja.btnAlterarClick(Sender: TObject);
+begin
+  if oIgreja.Selecionar(QryListagem.FieldByName('cod_igreja').AsInteger) then
+  begin
+    lbledt_codigo.Text    := IntToStr(oIgreja.cod_pessoa);
+    lbledtNome.Text       := oIgreja.igre;
+    dtdtNascimento.Text   := DateToStr(oIgreja.dta_nascimento);
+    lbledtCidade.Text     := oIgreja.cidade;
+    lbledtEmail.Text      := oIgreja.email;
+    lbledtBairro.Text     := oIgreja.bairro;
+    lbledtEndereco.Text   := oIgreja.logradouro;
+    end
+  else
+  begin
+    btnCancelar.Click;
+    Abort;
+  end;
+  inherited;
+
+end;
+
+function TfrmCadIgreja.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
+begin
+    if edtcod_setor.Text<>EmptyStr then
+       oSetor.codigo:=StrToInt(edtcod_setor.Text)
+       else
+       oSetor.codigo:=0;
+       oSetor.descricao:=edtsetor.Text;
+
+    if (EstadodoCadastro=ecInserir) then
+    Result:=oSetor.Inserir
+    else if (EstadodoCadastro=ecAlterar) then
+     Result:=oSetor.Atualizar;
+
+end;
+{$endregion}
+
+end.
