@@ -20,7 +20,7 @@ type
     N2: TMenuItem;
     Sair1: TMenuItem;
     EntradasSadas1: TMenuItem;
-    Dizimsita1: TMenuItem;
+    mniDizimo: TMenuItem;
     N3: TMenuItem;
     statMenu: TStatusBar;
     Configurao1: TMenuItem;
@@ -35,6 +35,7 @@ type
     procedure CartaseDocumentos1Click(Sender: TObject);
     procedure Departamentos1Click(Sender: TObject);
     procedure Congregaes1Click(Sender: TObject);
+    procedure mniDizimoClick(Sender: TObject);
   private
     procedure AtualizaBandoDados(aForm:TfrmAtualizaDB);
     { Private declarations }
@@ -49,7 +50,8 @@ implementation
 
 {$R *.dfm}
 
-uses uCadSetores, uCadPessoa, untCongSistema,uCadIgreja, uEmissaoDocumentos, uCadDepartamento, uCadCongregacao;
+uses uCadSetores, uCadPessoa, untCongSistema,uCadIgreja, uEmissaoDocumentos,
+uCadDepartamento, uCadCongregacao, uCadDizimo;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -85,6 +87,8 @@ frmCadDepartamento:= TfrmCadDepartamento.Create(self);
 frmCadDepartamento.ShowModal;
 frmCadDepartamento.Release;
 end;
+
+
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
@@ -136,6 +140,13 @@ begin
 frmCadIgreja:= TfrmCadIgreja.Create(self);
 frmCadIgreja.ShowModal;
 frmCadIgreja.Release;
+end;
+
+procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
+begin
+frmCadDizimos:= TfrmCadDizimos.Create(self);
+frmCadDizimos.ShowModal;
+frmCadDizimos.Release;
 end;
 
 procedure TfrmPrincipal.Sair1Click(Sender: TObject);
@@ -213,6 +224,12 @@ dtmPrincipal.fdqryCriartb_congregacao.ExecSQL;
    //CRIAR TABELA DE USUÁRIO
  dtmPrincipal.fdqryCriartb_usuario.ExecSQL;
  aForm.chkUsuario.Checked:= true;
+ aForm.Refresh;
+ Sleep(100);
+
+    //CRIAR TABELA DE DIZIMO
+ dtmPrincipal.fdqryCriartb_dizimo.ExecSQL;
+ aForm.chkDizimo.Checked:= true;
  aForm.Refresh;
  Sleep(100);
 

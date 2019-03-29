@@ -170,4 +170,25 @@ object dtmPrincipal: TdtmPrincipal
     Left = 560
     Top = 240
   end
+  object fdqryCriartb_dizimo: TFDQuery
+    Connection = ConexaoDB
+    SQL.Strings = (
+      'CREATE TABLE IF NOT EXISTS `tb_dizimista` ('
+      '  `cod_dizimo` int(11) NOT NULL AUTO_INCREMENT,'
+      '  `cod_talao` int(11) DEFAULT NULL,'
+      '  `cod_cheque` int(11) DEFAULT NULL,'
+      '  `nome` varchar(50) DEFAULT NULL,'
+      '  `valor` double DEFAULT NULL,'
+      '  `data` date DEFAULT NULL,'
+      '  `cargo` varchar(50) DEFAULT NULL,'
+      '  `cod_congregacao` int(11) NOT NULL,'
+      '  PRIMARY KEY (`cod_dizimo`),'
+      '  KEY `tb_dizimista_tb_congregacao_fk` (`cod_congregacao`),'
+      
+        '  CONSTRAINT `tb_dizimista_tb_congregacao_fk` FOREIGN KEY (`cod_' +
+        'congregacao`) REFERENCES `tb_congregacao` (`cod_congregacao`)'
+      ') ')
+    Left = 416
+    Top = 200
+  end
 end

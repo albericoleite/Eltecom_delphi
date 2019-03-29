@@ -76,8 +76,9 @@ object frmPrincipal: TfrmPrincipal
       object EntradasSadas1: TMenuItem
         Caption = 'Entradas & Sa'#237'das'
       end
-      object Dizimsita1: TMenuItem
-        Caption = 'Dizimsita'
+      object mniDizimo: TMenuItem
+        Caption = 'Dizimos'
+        OnClick = mniDizimoClick
       end
       object N3: TMenuItem
         Caption = '-'

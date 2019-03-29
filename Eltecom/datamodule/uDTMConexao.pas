@@ -24,6 +24,7 @@ type
     fdqryCriartb_seguranca: TFDQuery;
     fdqryCriartb_usuario: TFDQuery;
     fdqrySetores: TFDQuery;
+    fdqryCriartb_dizimo: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

@@ -10,16 +10,16 @@ inherited frmCadSetores: TfrmCadSetores
     Width = 734
     Height = 274
     ActivePage = tabManutencao
-    ExplicitWidth = 729
-    ExplicitHeight = 420
+    ExplicitWidth = 734
+    ExplicitHeight = 274
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 721
-      ExplicitHeight = 392
+      ExplicitWidth = 726
+      ExplicitHeight = 246
       inherited pnlListagem: TPanel
         Width = 726
-        ExplicitWidth = 721
+        ExplicitWidth = 726
       end
       inherited grdListagem: TDBGrid
         Width = 726
@@ -61,8 +61,8 @@ inherited frmCadSetores: TfrmCadSetores
     inherited tabManutencao: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 721
-      ExplicitHeight = 392
+      ExplicitWidth = 726
+      ExplicitHeight = 246
       object edtcod_setor: TLabeledEdit
         Tag = 1
         Left = 8
@@ -93,8 +93,8 @@ inherited frmCadSetores: TfrmCadSetores
   inherited pnlRodape: TPanel
     Top = 274
     Width = 734
-    ExplicitTop = 420
-    ExplicitWidth = 729
+    ExplicitTop = 274
+    ExplicitWidth = 734
     inherited btnNavigator: TDBNavigator
       Left = 408
       Hints.Strings = ()
@@ -102,7 +102,7 @@ inherited frmCadSetores: TfrmCadSetores
     end
     inherited btnFechar: TBitBtn
       Left = 642
-      ExplicitLeft = 637
+      ExplicitLeft = 642
     end
     inherited btnGravar: TBitBtn
       Left = 246

@@ -1218,6 +1218,14 @@ object frmAtualizaDB: TfrmAtualizaDB
         Caption = 'Usu'#225'rio'
         TabOrder = 11
       end
+      object chkDizimo: TCheckBox
+        Left = 368
+        Top = 117
+        Width = 73
+        Height = 17
+        Caption = 'Dizimo'
+        TabOrder = 12
+      end
     end
   end
 end

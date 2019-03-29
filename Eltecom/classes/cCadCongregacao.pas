@@ -12,7 +12,7 @@ type
     // VARIAVEIS PRIVADA SOMENTE DENTRO DA CLASSE
     ConexaoDB: TFDConnection;
     F_cod_congregacao: Integer;
-    F_cod_central: string;
+    F_cod_central: Integer;
     F_congregacao: string;
     F_setor: string;
     F_polo: string;
@@ -58,7 +58,7 @@ type
     // PARA FORNECER INFORMAÇÕESD EM RUMTIME
     property cod_congregacao: Integer read F_cod_congregacao
       write F_cod_congregacao;
-    property cod_central: string read F_cod_central write F_cod_central;
+    property cod_central: Integer read F_cod_central write F_cod_central;
     property congregacao: string read F_congregacao write F_congregacao;
     property setor: string read F_setor write F_setor;
     property polo: string read F_polo write F_polo;
@@ -230,7 +230,7 @@ begin
       ' :usuario_cadastro, :cong_principal, :dirigente, :cod_setor,   '+
       ' :cod_igreja, :cod_cc, :sigla)');
 Qry.ParamByName('cod_congregacao').AsInteger := Self.F_cod_congregacao;
-Qry.ParamByName('cod_central').Asstring := Self.F_cod_central;
+Qry.ParamByName('cod_central').AsInteger := Self.F_cod_central;
 Qry.ParamByName('congregacao').Asstring := Self.F_congregacao;
 Qry.ParamByName('setor').Asstring := Self.F_setor;
 Qry.ParamByName('polo').Asstring := Self.F_polo;
@@ -280,7 +280,7 @@ Qry.ParamByName('sigla').Asstring := Self.F_sigla;
     Qry.ParamByName('cod_congregacao').AsInteger := id;
 
     try Qry.Open; Self.F_cod_congregacao := Qry.FieldByName('cod_congregacao')
-      .AsInteger; Self.F_cod_central := Qry.FieldByName('cod_central').AsString;
+      .AsInteger; Self.F_cod_central := Qry.FieldByName('cod_central').AsInteger;
     Self.F_congregacao := Qry.FieldByName('congregacao').AsString;
     Self.F_setor := Qry.FieldByName('setor').AsString;
     Self.F_polo := Qry.FieldByName('polo').AsString;
