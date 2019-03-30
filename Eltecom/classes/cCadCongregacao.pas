@@ -264,7 +264,9 @@ Qry.ParamByName('cod_cc').AsInteger := Self.F_cod_cc;
 Qry.ParamByName('sigla').Asstring := Self.F_sigla;
 
 
-      try Qry.SQL.Text; Qry.ExecSQL; except Result := false; end;
+      try Qry.SQL.Text;
+      Qry.ExecSQL;
+      except Result := false; end;
       finally if Assigned(Qry) then FreeAndNil(Qry) end; end;
 
     function TCongregacao.Selecionar(id: Integer): Boolean; var Qry: TFDQuery;

@@ -21,6 +21,8 @@ type
     dsCongregacao: TDataSource;
     grp1: TGroupBox;
     fdqryListagem: TFDQuery;
+    fdqryCongregacaoSistema: TFDQuery;
+    intgrfldCongregacaoSistemacod_congregacao: TIntegerField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dsCongSistemaUpdateData(Sender: TObject);
@@ -47,6 +49,10 @@ end;
 procedure TfrmCongSistema.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 //frmMenu.pnlBotoes.Visible := True;
+dtmPrincipal.fdqryCong_sistema.Refresh;
+    dtmPrincipal.congAtiva:=  dtmPrincipal.fdqryCong_sistema.FieldByName('cod_congregacao').AsInteger;
+    dtmPrincipal.descCongAtiva:= dtmPrincipal.fdqryCong_sistema.FieldByName('congregacao').AsString;
+fdqryCongregacaoSistema.close;
 fdqryListagem.close;
 Action := cafree;
 frmCongSistema := nil;
@@ -54,7 +60,7 @@ end;
 
 procedure TfrmCongSistema.FormCreate(Sender: TObject);
 begin
-dtmPrincipal.fdqryCong_sistema.Open;
+fdqryCongregacaoSistema.Open;
 fdqryListagem.Open;
 end;
 

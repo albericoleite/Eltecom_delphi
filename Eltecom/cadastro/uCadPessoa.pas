@@ -201,6 +201,8 @@ begin
   oPessoa.funcao            := lbledtFuncao.Text;
   oPessoa.uf_nascimento     := cbbUFnascimento.Text;
   oPessoa.uf_endereco       := cbbUfImovel.Text;
+  oPessoa.congregacao       := dtmPrincipal.descCongAtiva;
+  oPessoa.setor             :=dtmPrincipal.setor;
 
   if (EstadodoCadastro = ecInserir) then
     Result := oPessoa.Inserir
@@ -284,7 +286,7 @@ end;
 procedure TfrmCadPessoa.cbbMembCongChange(Sender: TObject);
 begin
   inherited;
-if cbbMembCong.Text='Congregado' then
+if cbbMembCong.Text='CONGREGADO' then
 dtdtMembro.Enabled:=false
 else dtdtMembro.Enabled:=true
 
@@ -299,6 +301,7 @@ end;
 
 procedure TfrmCadPessoa.FormCreate(Sender: TObject);
 begin
+QryListagem.ParamByName('cod_congregacao').AsInteger:=dtmPrincipal.congAtiva;
   inherited;
   oPessoa := TPessoa.Create(dtmPrincipal.ConexaoDB);
   IndiceAtual := 'cod_pessoa';

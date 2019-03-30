@@ -3,8 +3,8 @@ object frmCongSistema: TfrmCongSistema
   Top = 0
   BorderStyle = bsSingle
   Caption = 'Congrega'#231#227'o do Sistema'
-  ClientHeight = 138
-  ClientWidth = 382
+  ClientHeight = 130
+  ClientWidth = 377
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -88,10 +88,10 @@ object frmCongSistema: TfrmCongSistema
     end
   end
   object dsCongSistema: TDataSource
-    DataSet = dtmPrincipal.fdqryCong_sistema
+    DataSet = fdqryCongregacaoSistema
     OnUpdateData = dsCongSistemaUpdateData
-    Left = 456
-    Top = 96
+    Left = 624
+    Top = 64
   end
   object dsCongregacao: TDataSource
     DataSet = fdqryListagem
@@ -99,10 +99,24 @@ object frmCongSistema: TfrmCongSistema
     Top = 16
   end
   object fdqryListagem: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'SELECT cod_congregacao, congregacao FROM tb_congregacao')
     Left = 352
     Top = 152
+  end
+  object fdqryCongregacaoSistema: TFDQuery
+    Active = True
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'select cod_congregacao from tb_parametro_sistema')
+    Left = 616
+    Top = 144
+    object intgrfldCongregacaoSistemacod_congregacao: TIntegerField
+      FieldName = 'cod_congregacao'
+      Origin = 'cod_congregacao'
+      Required = True
+    end
   end
 end

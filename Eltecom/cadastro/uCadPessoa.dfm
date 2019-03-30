@@ -2,6 +2,7 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 486
   ClientWidth = 833
+  ExplicitTop = -103
   ExplicitWidth = 839
   ExplicitHeight = 515
   PixelsPerInch = 96
@@ -27,8 +28,6 @@ inherited frmCadPessoa: TfrmCadPessoa
     ExplicitWidth = 833
     ExplicitHeight = 448
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 825
       ExplicitHeight = 420
       inherited pnlListagem: TPanel
@@ -48,6 +47,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           item
             Expanded = False
             FieldName = 'nome_pessoa'
+            Width = 270
             Visible = True
           end
           item
@@ -59,23 +59,35 @@ inherited frmCadPessoa: TfrmCadPessoa
             Expanded = False
             FieldName = 'dta_nascimento'
             Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'congregacao'
+            Title.Caption = 'Congrega'#231#227'o'
+            Width = 193
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'membro_congregado'
+            Title.Caption = 'Tipo'
+            Width = 114
+            Visible = True
           end>
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 825
       ExplicitHeight = 420
       object lblTipo: TLabel
-        Left = 336
+        Left = 334
         Top = 3
         Width = 20
         Height = 13
         Caption = 'Tipo'
       end
       object lblSexo: TLabel
-        Left = 431
+        Left = 439
         Top = 4
         Width = 24
         Height = 13
@@ -130,12 +142,12 @@ inherited frmCadPessoa: TfrmCadPessoa
       end
       object cbbMembCong: TComboBox
         Tag = 2
-        Left = 336
+        Left = 334
         Top = 20
-        Width = 89
+        Width = 100
         Height = 21
+        CharCase = ecUpperCase
         TabOrder = 2
-        Text = 'Membro'
         OnChange = cbbMembCongChange
         Items.Strings = (
           'MEMBRO'
@@ -143,7 +155,7 @@ inherited frmCadPessoa: TfrmCadPessoa
       end
       object cbbSexo: TComboBox
         Tag = 2
-        Left = 431
+        Left = 439
         Top = 20
         Width = 34
         Height = 21
@@ -156,9 +168,9 @@ inherited frmCadPessoa: TfrmCadPessoa
       end
       object lbledtRol: TLabeledEdit
         Tag = 2
-        Left = 471
+        Left = 478
         Top = 20
-        Width = 69
+        Width = 62
         Height = 21
         EditLabel.Width = 20
         EditLabel.Height = 13
@@ -846,9 +858,17 @@ inherited frmCadPessoa: TfrmCadPessoa
         'setor, congregacao, nro_rol, nro_cad_congregado, membro_congrega' +
         'do, dta_inclusao, USUARIO_CADASTRO, SITUACAO, cod_congregacao, c' +
         'od_situacao'
-      'FROM igreja.tb_pessoa;')
+      'FROM igreja.tb_pessoa'
+      'where cod_congregacao=:cod_congregacao;')
     Left = 216
     Top = 8
+    ParamData = <
+      item
+        Name = 'COD_CONGREGACAO'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 1
+      end>
     object fdtncfldQryListagemcod_pessoa: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'cod_pessoa'

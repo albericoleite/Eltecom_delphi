@@ -131,7 +131,8 @@ begin
   else if (Time > 0.75) then
     statMenu.Panels[1].Text := 'Boa noite hoje é ' +
       formatdatetime('dddddd', date);
- // statMenu.Panels[2].Text := status; // + IdIPWatch1.LocalIP;
+ statMenu.Panels[2].Text :='Congregação '+dtmPrincipal.descCongAtiva;// status; // + IdIPWatch1.LocalIP;
+ // statMenu.Panels[3].Text :='Whatsapp:https://api.whatsapp.com/send?1=pt_BR&phone=5584981416012';
  // statMenu.Panels[3].Text := dtmConexao.strngfldCongregacaoAtivaSistemacongregacao.Text;
 end;
 

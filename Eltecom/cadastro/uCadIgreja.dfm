@@ -13,8 +13,6 @@ inherited frmCadIgreja: TfrmCadIgreja
     ExplicitWidth = 769
     ExplicitHeight = 231
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 761
       ExplicitHeight = 203
       inherited pnlListagem: TPanel
@@ -58,8 +56,6 @@ inherited frmCadIgreja: TfrmCadIgreja
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 761
       ExplicitHeight = 203
       object lbledtNome: TLabeledEdit
@@ -218,8 +214,7 @@ inherited frmCadIgreja: TfrmCadIgreja
           Height = 164
           Align = alClient
           PopupMenu = pmFoto
-          ExplicitWidth = 176
-          ExplicitHeight = 165
+          ExplicitWidth = 144
         end
       end
     end
@@ -231,6 +226,12 @@ inherited frmCadIgreja: TfrmCadIgreja
     ExplicitWidth = 769
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
+    end
+    inherited btnNovo: TBitBtn
+      Visible = False
+    end
+    inherited btnApagar: TBitBtn
+      Visible = False
     end
     inherited btnFechar: TBitBtn
       Left = 677

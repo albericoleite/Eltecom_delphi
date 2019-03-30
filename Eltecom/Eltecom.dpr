@@ -22,7 +22,9 @@ uses
   uCadDepartamento in 'cadastro\uCadDepartamento.pas' {frmCadDepartamento},
   cCadDepartamento in 'classes\cCadDepartamento.pas',
   uCadCongregacao in 'cadastro\uCadCongregacao.pas' {frmCadCongregacao},
-  cCadCongregacao in 'classes\cCadCongregacao.pas';
+  cCadCongregacao in 'classes\cCadCongregacao.pas',
+  uCadDizimo in 'cadastro\uCadDizimo.pas' {frmCadDizimos},
+  cCadDizimo in 'classes\cCadDizimo.pas';
 
 {$R *.res}
 
@@ -30,6 +32,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmCadCongregacao, frmCadCongregacao);
   Application.Run;
 end.

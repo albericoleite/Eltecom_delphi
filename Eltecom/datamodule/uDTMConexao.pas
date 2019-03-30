@@ -25,6 +25,8 @@ type
     fdqryCriartb_usuario: TFDQuery;
     fdqrySetores: TFDQuery;
     fdqryCriartb_dizimo: TFDQuery;
+    strngfldCong_sistemacongregacao: TStringField;
+    strngfldCong_sistemasetor: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -32,6 +34,7 @@ type
     { Public declarations }
     congAtiva :Integer;
     descCongAtiva:string;
+    setor:string;
   end;
 
 var
@@ -48,7 +51,8 @@ begin
  try
     fdqryCong_sistema.Open;
     congAtiva:=  fdqryCong_sistema.FieldByName('cod_congregacao').AsInteger;
-    //descCongAtiva:= fdqryCong_sistema.FieldByName('congregacao').AsString;
+    descCongAtiva:= fdqryCong_sistema.FieldByName('congregacao').AsString;
+     setor:= fdqryCong_sistema.FieldByName('setor').AsString;
  Except
   // ShowMessage('Erro na fdqryCong_sistema! ');
  end;

@@ -4,15 +4,19 @@ interface
 
 uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, frxClass, frxDBSet;
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Comp.UI, Data.DB,
+  FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
+  FireDAC.DApt, FireDAC.Comp.DataSet, frxClass, frxDBSet, frxChBox,
+  frxExportText, frxExportPDF, frxExportCSV, System.IniFiles,Vcl.Dialogs, TlHelp32,Windows , WinSvc,
+  VCLTee.TeeData, frxChart;
 
 type
   TdtmRelatorio = class(TDataModule)
     frxrprtCartaRecomendacao: TfrxReport;
-    frxdbdtstBuscaIgreja: TfrxDBDataset;
-    frxdbdtstBuscaPessoa: TfrxDBDataset;
+    frxdbBuscaIgreja: TfrxDBDataset;
+    frxdbBuscaPessoa: TfrxDBDataset;
     fdqryBucarIgreja: TFDQuery;
     fdtncfldBucarIgrejacod_igreja: TFDAutoIncField;
     strngfldBucarIgrejanome_igreja: TStringField;
@@ -85,6 +89,11 @@ type
     strngfldBuscaPessoaRelatoriocongregacao: TStringField;
     strngfldBuscaPessoaRelatoriosetor: TStringField;
     dsBuscaPessoaRelatorio: TDataSource;
+    frxrprtNotifOcorrencia: TfrxReport;
+    strngfldBuscaPessoaRelatorioigreja: TStringField;
+    strngfldBuscaPessoaRelatorioSITUACAO: TStringField;
+    strngfldBuscaPessoaRelatoriocongregacao_1: TStringField;
+    strngfldBuscaPessoaRelatoriosetorcong: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

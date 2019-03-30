@@ -4,7 +4,7 @@ object frmEmitirDoc: TfrmEmitirDoc
   BorderStyle = bsSingle
   Caption = 'Cartas e Relat'#243'rios'
   ClientHeight = 277
-  ClientWidth = 905
+  ClientWidth = 567
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -69,6 +69,8 @@ object frmEmitirDoc: TfrmEmitirDoc
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDblClick = dbgrdMembroDblClick
+    OnTitleClick = dbgrdMembroTitleClick
     Columns = <
       item
         Expanded = False
@@ -149,6 +151,7 @@ object frmEmitirDoc: TfrmEmitirDoc
       Hint = 'CARTA DE RECOMENDA'#199#195'O'
       Caption = 'Recomenda'#231#227'o'
       TabOrder = 0
+      OnClick = chkRecomendacaoClick
     end
     object chkVisita: TCheckBox
       Left = 7
@@ -158,6 +161,7 @@ object frmEmitirDoc: TfrmEmitirDoc
       Hint = 'CARTA DE VISITA'
       Caption = 'Visita'
       TabOrder = 1
+      OnClick = chkVisitaClick
     end
     object chkTransferencia: TCheckBox
       Left = 7
@@ -167,6 +171,7 @@ object frmEmitirDoc: TfrmEmitirDoc
       Hint = 'CARTA DE TRANSFER'#202'NCIA INTERNA'
       Caption = 'Transfer'#234'ncia'
       TabOrder = 2
+      OnClick = chkTransferenciaClick
     end
   end
   object grpDocumento: TGroupBox
@@ -191,7 +196,6 @@ object frmEmitirDoc: TfrmEmitirDoc
       Width = 113
       Height = 17
       Caption = 'Not. de Ocorrencia'
-      Enabled = False
       TabOrder = 1
     end
     object chkFxMembro: TCheckBox

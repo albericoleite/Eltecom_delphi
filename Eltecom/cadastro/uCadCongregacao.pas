@@ -137,6 +137,7 @@ procedure TfrmCadCongregacao.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
+  dtmPrincipal.fdqryCong_sistema.Refresh;
 if Assigned(oCongregacao) then
      FreeAndNil(oCongregacao);
 end;
@@ -172,6 +173,7 @@ begin
        oCongregacao.usuario_cadastro:='Admin';
        oCongregacao.cod_setor:=dblkcbbSetor.KeyValue;
        oCongregacao.setor:= dblkcbbSetor.Text;
+       oCongregacao.situacao:='0';
 
 
     if (EstadodoCadastro=ecInserir) then

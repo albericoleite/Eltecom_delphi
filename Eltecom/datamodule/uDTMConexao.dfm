@@ -28,15 +28,33 @@ object dtmPrincipal: TdtmPrincipal
   object fdqryCong_sistema: TFDQuery
     Connection = ConexaoDB
     SQL.Strings = (
-      'SELECT cod_congregacao'
-      'FROM tb_parametro_sistema')
-    Left = 48
+      'SELECT a.cod_congregacao,b.congregacao,b.setor'
+      'FROM tb_parametro_sistema a'
+      'inner join tb_congregacao b '
+      'on a.cod_congregacao = b.cod_congregacao')
+    Left = 64
     Top = 96
     object fdtncfldCong_sistemacod_congregacao: TFDAutoIncField
       FieldName = 'cod_congregacao'
       Origin = 'cod_congregacao'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
+    end
+    object strngfldCong_sistemacongregacao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'congregacao'
+      Origin = 'congregacao'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 25
+    end
+    object strngfldCong_sistemasetor: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'setor'
+      Origin = 'setor'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 25
     end
   end
   object fdqryCriartb_dept_pessoa: TFDQuery
