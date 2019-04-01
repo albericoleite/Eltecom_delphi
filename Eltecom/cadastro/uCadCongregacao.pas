@@ -101,7 +101,7 @@ implementation
 {$REGION 'Override'}
 function TfrmCadCongregacao.Apagar: Boolean;
 begin
-if oCongregacao.Selecionar(QryListagem.FieldByName('cod_departamento').AsInteger) then
+if oCongregacao.Selecionar(QryListagem.FieldByName('cod_congregacao').AsInteger) then
       Result:=oCongregacao.Apagar;
 end;
 

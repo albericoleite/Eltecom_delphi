@@ -24,7 +24,11 @@ uses
   uCadCongregacao in 'cadastro\uCadCongregacao.pas' {frmCadCongregacao},
   cCadCongregacao in 'classes\cCadCongregacao.pas',
   uCadDizimo in 'cadastro\uCadDizimo.pas' {frmCadDizimos},
-  cCadDizimo in 'classes\cCadDizimo.pas';
+  cCadDizimo in 'classes\cCadDizimo.pas',
+  uCadFuncao in 'cadastro\uCadFuncao.pas' {frmCadFuncao},
+  cCadFuncao in 'classes\cCadFuncao.pas',
+  uCadCargo in 'cadastro\uCadCargo.pas' {frmCadCargo},
+  cCadCargo in 'classes\cCadCargo.pas';
 
 {$R *.res}
 

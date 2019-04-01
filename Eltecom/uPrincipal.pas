@@ -26,6 +26,10 @@ type
     Configurao1: TMenuItem;
     CartaseDocumentos1: TMenuItem;
     Departamentos1: TMenuItem;
+    mniSobre: TMenuItem;
+    mniFunes1: TMenuItem;
+    mniCargos1: TMenuItem;
+    mniN4: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -36,6 +40,9 @@ type
     procedure Departamentos1Click(Sender: TObject);
     procedure Congregaes1Click(Sender: TObject);
     procedure mniDizimoClick(Sender: TObject);
+    procedure mniSobreClick(Sender: TObject);
+    procedure mniFunes1Click(Sender: TObject);
+    procedure mniCargos1Click(Sender: TObject);
   private
     procedure AtualizaBandoDados(aForm:TfrmAtualizaDB);
     { Private declarations }
@@ -51,7 +58,7 @@ implementation
 {$R *.dfm}
 
 uses uCadSetores, uCadPessoa, untCongSistema,uCadIgreja, uEmissaoDocumentos,
-uCadDepartamento, uCadCongregacao, uCadDizimo;
+uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cCadCargo, uCadCargo;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -143,11 +150,34 @@ frmCadIgreja.ShowModal;
 frmCadIgreja.Release;
 end;
 
+procedure TfrmPrincipal.mniCargos1Click(Sender: TObject);
+begin
+ frmCadCargo:= TfrmCadCargo.Create(self);
+frmCadCargo.ShowModal;
+frmCadCargo.Release;
+end;
+
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
 begin
 frmCadDizimos:= TfrmCadDizimos.Create(self);
 frmCadDizimos.ShowModal;
 frmCadDizimos.Release;
+end;
+
+procedure TfrmPrincipal.mniFunes1Click(Sender: TObject);
+begin
+  frmCadFuncao:= TfrmCadFuncao.Create(self);
+frmCadFuncao.ShowModal;
+frmCadFuncao.Release;
+end;
+
+procedure TfrmPrincipal.mniSobreClick(Sender: TObject);
+begin
+     ShowMessage('- SOBRE O PROGRAMA '+
+
+' Programador :Albérico Leite  '+
+' Comunicação: (84) 98141-6012  '+
+'E-mail: albericoleite@live.com');
 end;
 
 procedure TfrmPrincipal.Sair1Click(Sender: TObject);
@@ -164,75 +194,84 @@ frmCadSetores.Release;
 end;
 
 procedure TfrmPrincipal.AtualizaBandoDados(aForm:TfrmAtualizaDB);
+var sl:Integer;
 begin
+sl:= 50;
  aForm.chkConexBD.Checked:= true;
  aForm.Refresh;
  //TODO: CRIAR QUERY NO DATAMODULE PARA EXECUTAR A ATUALIZAÇÃO DO BANCO
  //Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
  aForm.chkIgreja.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
  //Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
  aForm.chkSetor.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
 dtmPrincipal.fdqryCriartb_congregacao.ExecSQL;
  aForm.chkCongregacao.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
   //Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
  aForm.chkPessoa.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
   //Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
  aForm.chkTesouraria.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
  //Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
  aForm.chkAlteratabela.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
  //CRIAR TABELA DE DEPARTAMENTO
  dtmPrincipal.fdqryCriartb_departamento.ExecSQL;
  aForm.chkDepartamento.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
  //CRIAR TABELA DE DEPT_PESSOA
  dtmPrincipal.fdqryCriartb_dept_pessoa.ExecSQL;
  aForm.chkDepPessoa.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
  //CRIAR TABELA DE FUNÇÃO
  dtmPrincipal.fdqryCriartb_funcao.ExecSQL;
  aForm.chkFuncao.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
-  //CRIAR TABELA DE SEGURANÇA
+//CRIAR TABELA DE SEGURANÇA
  dtmPrincipal.fdqryCriartb_seguranca.ExecSQL;
  aForm.chkSeguranca.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
-   //CRIAR TABELA DE USUÁRIO
+//CRIAR TABELA DE USUÁRIO
  dtmPrincipal.fdqryCriartb_usuario.ExecSQL;
  aForm.chkUsuario.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
 
-    //CRIAR TABELA DE DIZIMO
+//CRIAR TABELA DE DIZIMO
  dtmPrincipal.fdqryCriartb_dizimo.ExecSQL;
  aForm.chkDizimo.Checked:= true;
  aForm.Refresh;
- Sleep(100);
+ Sleep(sl);
+
+
+//CRIAR TABELA DE CARGO
+ dtmPrincipal.fdqryCriartb_cargo.ExecSQL;
+ aForm.chkCargo.Checked:= true;
+ aForm.Refresh;
+ Sleep(sl);
 
 
 end;

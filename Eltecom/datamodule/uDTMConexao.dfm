@@ -1,6 +1,7 @@
 object dtmPrincipal: TdtmPrincipal
   OldCreateOrder = False
   OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
   Height = 429
   Width = 659
   object ConexaoDB: TFDConnection
@@ -186,7 +187,7 @@ object dtmPrincipal: TdtmPrincipal
       'SELECT cod_setor, setor'
       'FROM igreja.tb_setor;')
     Left = 560
-    Top = 240
+    Top = 208
   end
   object fdqryCriartb_dizimo: TFDQuery
     Connection = ConexaoDB
@@ -208,5 +209,47 @@ object dtmPrincipal: TdtmPrincipal
       ') ')
     Left = 416
     Top = 200
+  end
+  object fdqryDepartamentos: TFDQuery
+    Connection = ConexaoDB
+    SQL.Strings = (
+      'select * from tb_departamento')
+    Left = 552
+    Top = 264
+    object fdtncfldDepartamentoscod_departamento: TFDAutoIncField
+      FieldName = 'cod_departamento'
+      Origin = 'cod_departamento'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object strngfldDepartamentosnome_departamento: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_departamento'
+      Origin = 'nome_departamento'
+      Size = 50
+    end
+  end
+  object fdqryCriartb_cargo: TFDQuery
+    Connection = ConexaoDB
+    SQL.Strings = (
+      'CREATE TABLE IF NOT EXISTS `tb_cargo` ('
+      '  `cod_cargo` int(10) NOT NULL AUTO_INCREMENT,'
+      '  `cargo` varchar(50) DEFAULT NULL,'
+      '  PRIMARY KEY (`cod_cargo`)'
+      ')')
+    Left = 416
+    Top = 264
+    object FDAutoIncField1: TFDAutoIncField
+      FieldName = 'cod_departamento'
+      Origin = 'cod_departamento'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object StringField1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_departamento'
+      Origin = 'nome_departamento'
+      Size = 50
+    end
   end
 end

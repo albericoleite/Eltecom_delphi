@@ -66,6 +66,17 @@ object frmPrincipal: TfrmPrincipal
       object N2: TMenuItem
         Caption = '-'
       end
+      object mniCargos1: TMenuItem
+        Caption = 'Cargos'
+        OnClick = mniCargos1Click
+      end
+      object mniFunes1: TMenuItem
+        Caption = 'Fun'#231#245'es'
+        OnClick = mniFunes1Click
+      end
+      object mniN4: TMenuItem
+        Caption = '-'
+      end
       object Sair1: TMenuItem
         Caption = 'Sair'
         OnClick = Sair1Click
@@ -94,6 +105,10 @@ object frmPrincipal: TfrmPrincipal
     object Configurao1: TMenuItem
       Caption = 'Configura'#231#227'o'
       OnClick = Configurao1Click
+    end
+    object mniSobre: TMenuItem
+      Caption = 'Sobre'
+      OnClick = mniSobreClick
     end
   end
 end

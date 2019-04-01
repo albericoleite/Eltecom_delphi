@@ -13,6 +13,8 @@ inherited frmCadCongregacao: TfrmCadCongregacao
     ExplicitWidth = 750
     ExplicitHeight = 337
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 742
       ExplicitHeight = 309
       inherited pnlListagem: TPanel
@@ -49,6 +51,8 @@ inherited frmCadCongregacao: TfrmCadCongregacao
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 742
       ExplicitHeight = 309
       object lbl2: TLabel

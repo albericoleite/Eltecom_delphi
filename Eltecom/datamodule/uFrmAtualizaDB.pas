@@ -26,6 +26,7 @@ type
     chkSeguranca: TCheckBox;
     chkUsuario: TCheckBox;
     chkDizimo: TCheckBox;
+    chkCargo: TCheckBox;
   private
     { Private declarations }
   public
