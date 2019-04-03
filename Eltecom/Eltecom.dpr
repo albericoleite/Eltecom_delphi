@@ -28,7 +28,11 @@ uses
   uCadFuncao in 'cadastro\uCadFuncao.pas' {frmCadFuncao},
   cCadFuncao in 'classes\cCadFuncao.pas',
   uCadCargo in 'cadastro\uCadCargo.pas' {frmCadCargo},
-  cCadCargo in 'classes\cCadCargo.pas';
+  cCadCargo in 'classes\cCadCargo.pas',
+  uCadDepartPessoa in 'cadastro\uCadDepartPessoa.pas' {frmCaddeparPessoa},
+  cCadDepartPessoa in 'classes\cCadDepartPessoa.pas',
+  uCadFuncaoPessoa in 'cadastro\uCadFuncaoPessoa.pas' {frmCadFuncaoPessoa},
+  cCadFuncaoPessoa in 'classes\cCadFuncaoPessoa.pas';
 
 {$R *.res}
 

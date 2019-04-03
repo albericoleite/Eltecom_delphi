@@ -252,4 +252,25 @@ object dtmPrincipal: TdtmPrincipal
       Size = 50
     end
   end
+  object fdqryCriartb_func_pessoa: TFDQuery
+    Connection = ConexaoDB
+    SQL.Strings = (
+      'CREATE TABLE IF NOT EXISTS `tb_func_pessoa` ('
+      '  `cod_func_pessoa` int(11) NOT NULL AUTO_INCREMENT,'
+      '  `cod_funcao` int(25) NOT NULL,'
+      '  `nome_funcao` varchar(50) DEFAULT NULL,'
+      '  `cod_pessoa` int(11) DEFAULT NULL,'
+      '  `nome_pessoa` varchar(50) DEFAULT NULL,'
+      '  `dta_inclusao` datetime DEFAULT CURRENT_TIMESTAMP,'
+      
+        '  `status` varchar(20) DEFAULT '#39'ATIVO'#39' COMMENT '#39'ATIVO / INATIVO'#39 +
+        ','
+      '  `dta_alteracao` datetime DEFAULT NULL,'
+      '  `usuario_inclusao` varchar(50) DEFAULT NULL,'
+      '  `usuario_alteracao` varchar(50) DEFAULT NULL,'
+      '  PRIMARY KEY (`cod_func_pessoa`)'
+      ') ')
+    Left = 480
+    Top = 336
+  end
 end

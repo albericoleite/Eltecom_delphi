@@ -39,6 +39,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       Enabled = False
       ParentBackground = False
       TabOrder = 0
+      ExplicitLeft = 30
       object imgBD: TImage
         Left = 8
         Top = 16
@@ -1233,6 +1234,14 @@ object frmAtualizaDB: TfrmAtualizaDB
         Height = 17
         Caption = 'Cargo'
         TabOrder = 13
+      end
+      object chkfuncoesPessoas: TCheckBox
+        Left = 368
+        Top = 163
+        Width = 113
+        Height = 17
+        Caption = 'Fun'#231#245'es e Pessoas'
+        TabOrder = 14
       end
     end
   end

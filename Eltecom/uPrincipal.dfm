@@ -61,7 +61,14 @@ object frmPrincipal: TfrmPrincipal
       end
       object Departamentos1: TMenuItem
         Caption = 'Departamentos'
-        OnClick = Departamentos1Click
+        object mniDepartamentos2: TMenuItem
+          Caption = 'Departamentos'
+          OnClick = mniDepartamentos2Click
+        end
+        object mniDepartamentoPessoas1: TMenuItem
+          Caption = 'Departamento / Pessoas'
+          OnClick = mniDepartamentoPessoas1Click
+        end
       end
       object N2: TMenuItem
         Caption = '-'
@@ -72,7 +79,14 @@ object frmPrincipal: TfrmPrincipal
       end
       object mniFunes1: TMenuItem
         Caption = 'Fun'#231#245'es'
-        OnClick = mniFunes1Click
+        object mniFunes2: TMenuItem
+          Caption = 'Fun'#231#245'es'
+          OnClick = mniFunes2Click
+        end
+        object mniFunesPessoas1: TMenuItem
+          Caption = 'Fun'#231#245'es / Pessoas'
+          OnClick = mniFunesPessoas1Click
+        end
       end
       object mniN4: TMenuItem
         Caption = '-'

@@ -33,6 +33,7 @@ type
     fdqryCriartb_cargo: TFDQuery;
     FDAutoIncField1: TFDAutoIncField;
     StringField1: TStringField;
+    fdqryCriartb_func_pessoa: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

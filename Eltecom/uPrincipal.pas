@@ -30,6 +30,10 @@ type
     mniFunes1: TMenuItem;
     mniCargos1: TMenuItem;
     mniN4: TMenuItem;
+    mniDepartamentos2: TMenuItem;
+    mniDepartamentoPessoas1: TMenuItem;
+    mniFunes2: TMenuItem;
+    mniFunesPessoas1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -37,12 +41,14 @@ type
     procedure Configurao1Click(Sender: TObject);
     procedure Igreja1Click(Sender: TObject);
     procedure CartaseDocumentos1Click(Sender: TObject);
-    procedure Departamentos1Click(Sender: TObject);
     procedure Congregaes1Click(Sender: TObject);
     procedure mniDizimoClick(Sender: TObject);
     procedure mniSobreClick(Sender: TObject);
-    procedure mniFunes1Click(Sender: TObject);
     procedure mniCargos1Click(Sender: TObject);
+    procedure mniDepartamentos2Click(Sender: TObject);
+    procedure mniDepartamentoPessoas1Click(Sender: TObject);
+    procedure mniFunes2Click(Sender: TObject);
+    procedure mniFunesPessoas1Click(Sender: TObject);
   private
     procedure AtualizaBandoDados(aForm:TfrmAtualizaDB);
     { Private declarations }
@@ -58,7 +64,7 @@ implementation
 {$R *.dfm}
 
 uses uCadSetores, uCadPessoa, untCongSistema,uCadIgreja, uEmissaoDocumentos,
-uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cCadCargo, uCadCargo;
+uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -87,15 +93,6 @@ frmCadCongregacao:= TfrmCadCongregacao.Create(self);
 frmCadCongregacao.ShowModal;
 frmCadCongregacao.Release;
 end;
-
-procedure TfrmPrincipal.Departamentos1Click(Sender: TObject);
-begin
-frmCadDepartamento:= TfrmCadDepartamento.Create(self);
-frmCadDepartamento.ShowModal;
-frmCadDepartamento.Release;
-end;
-
-
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
@@ -157,6 +154,20 @@ frmCadCargo.ShowModal;
 frmCadCargo.Release;
 end;
 
+procedure TfrmPrincipal.mniDepartamentoPessoas1Click(Sender: TObject);
+begin
+frmCaddeparPessoa:= TfrmCaddeparPessoa.Create(self);
+frmCaddeparPessoa.ShowModal;
+frmCaddeparPessoa.Release;
+end;
+
+procedure TfrmPrincipal.mniDepartamentos2Click(Sender: TObject);
+begin
+frmCadDepartamento:= TfrmCadDepartamento.Create(self);
+frmCadDepartamento.ShowModal;
+frmCadDepartamento.Release;
+end;
+
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
 begin
 frmCadDizimos:= TfrmCadDizimos.Create(self);
@@ -164,11 +175,18 @@ frmCadDizimos.ShowModal;
 frmCadDizimos.Release;
 end;
 
-procedure TfrmPrincipal.mniFunes1Click(Sender: TObject);
+procedure TfrmPrincipal.mniFunes2Click(Sender: TObject);
 begin
   frmCadFuncao:= TfrmCadFuncao.Create(self);
 frmCadFuncao.ShowModal;
 frmCadFuncao.Release;
+end;
+
+procedure TfrmPrincipal.mniFunesPessoas1Click(Sender: TObject);
+begin
+frmCadFuncaoPessoa:= TfrmCadFuncaoPessoa.Create(self);
+frmCadFuncaoPessoa.ShowModal;
+frmCaddeparPessoa.Release;
 end;
 
 procedure TfrmPrincipal.mniSobreClick(Sender: TObject);
@@ -266,10 +284,15 @@ dtmPrincipal.fdqryCriartb_congregacao.ExecSQL;
  aForm.Refresh;
  Sleep(sl);
 
-
 //CRIAR TABELA DE CARGO
  dtmPrincipal.fdqryCriartb_cargo.ExecSQL;
  aForm.chkCargo.Checked:= true;
+ aForm.Refresh;
+ Sleep(sl);
+
+ //CRIAR TABELA DE FUNÇÃO E PESSOAS
+ dtmPrincipal.fdqryCriartb_func_pessoa.ExecSQL;
+ aForm.chkfuncoesPessoas.Checked:= true;
  aForm.Refresh;
  Sleep(sl);
 

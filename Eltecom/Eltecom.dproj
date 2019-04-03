@@ -163,6 +163,16 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="classes\cCadCargo.pas"/>
+        <DCCReference Include="cadastro\uCadDepartPessoa.pas">
+            <Form>frmCaddeparPessoa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="classes\cCadDepartPessoa.pas"/>
+        <DCCReference Include="cadastro\uCadFuncaoPessoa.pas">
+            <Form>frmCadFuncaoPessoa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="classes\cCadFuncaoPessoa.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
