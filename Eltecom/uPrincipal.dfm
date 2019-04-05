@@ -13,7 +13,9 @@ object frmPrincipal: TfrmPrincipal
   Menu = MainMenu1
   OldCreateOrder = False
   WindowState = wsMaximized
+  OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object statMenu: TStatusBar
@@ -34,6 +36,7 @@ object frmPrincipal: TfrmPrincipal
       item
         Width = 50
       end>
+    ExplicitLeft = -8
   end
   object MainMenu1: TMainMenu
     Left = 16
@@ -87,6 +90,17 @@ object frmPrincipal: TfrmPrincipal
           Caption = 'Fun'#231#245'es / Pessoas'
           OnClick = mniFunesPessoas1Click
         end
+      end
+      object mniN5: TMenuItem
+        Caption = '-'
+      end
+      object mniUsurios1: TMenuItem
+        Caption = 'Usu'#225'rios'
+        OnClick = mniUsurios1Click
+      end
+      object mniAlterarSenha1: TMenuItem
+        Caption = 'Alterar Senha'
+        OnClick = mniAlterarSenha1Click
       end
       object mniN4: TMenuItem
         Caption = '-'

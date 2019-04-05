@@ -3,8 +3,10 @@ unit uPrincipal;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,uDTMConexao, Vcl.ComCtrls, uFrmAtualizaDB,uDTMRelatorio;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,Enter,
+  System.Classes, Vcl.Graphics,  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,
+  uDTMConexao, Vcl.ComCtrls,
+  uFrmAtualizaDB, uDTMRelatorio,cUsuarioLogado;
 
 type
   TfrmPrincipal = class(TForm)
@@ -34,6 +36,9 @@ type
     mniDepartamentoPessoas1: TMenuItem;
     mniFunes2: TMenuItem;
     mniFunesPessoas1: TMenuItem;
+    mniUsurios1: TMenuItem;
+    mniN5: TMenuItem;
+    mniAlterarSenha1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -49,8 +54,14 @@ type
     procedure mniDepartamentoPessoas1Click(Sender: TObject);
     procedure mniFunes2Click(Sender: TObject);
     procedure mniFunesPessoas1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure mniUsurios1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure mniAlterarSenha1Click(Sender: TObject);
   private
-    procedure AtualizaBandoDados(aForm:TfrmAtualizaDB);
+    TeclaEnter: TMREnter;
+    procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
+
     { Private declarations }
   public
     { Public declarations }
@@ -58,72 +69,128 @@ type
 
 var
   frmPrincipal: TfrmPrincipal;
+  oUsuarioLogado:TUsuarioLogado;
 
 implementation
 
 {$R *.dfm}
 
-uses uCadSetores, uCadPessoa, untCongSistema,uCadIgreja, uEmissaoDocumentos,
-uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa;
+uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
+  uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cArquivoIni,
+  cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa, uLogin, uCadUsuario,
+  uAlterarSenha;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
-frmEmitirDoc:= nil;
-frmEmitirDoc := TfrmEmitirDoc.Create(self);
-frmEmitirDoc.Show;
+  frmEmitirDoc := nil;
+  frmEmitirDoc := TfrmEmitirDoc.Create(self);
+  frmEmitirDoc.Show;
 end;
 
 procedure TfrmPrincipal.Clientes1Click(Sender: TObject);
 begin
-frmCadPessoa:= TfrmCadPessoa.Create(self);
-frmCadPessoa.ShowModal;
-frmCadPessoa.Release;
+  frmCadPessoa := TfrmCadPessoa.Create(self);
+  frmCadPessoa.ShowModal;
+  frmCadPessoa.Release;
 end;
 
 procedure TfrmPrincipal.Configurao1Click(Sender: TObject);
 begin
   frmCongSistema := nil;
-  frmCongSistema := tfrmCongSistema.Create(Self);
+  frmCongSistema := tfrmCongSistema.Create(self);
   frmCongSistema.Show;
 end;
 
 procedure TfrmPrincipal.Congregaes1Click(Sender: TObject);
 begin
-frmCadCongregacao:= TfrmCadCongregacao.Create(self);
-frmCadCongregacao.ShowModal;
-frmCadCongregacao.Release;
+  frmCadCongregacao := TfrmCadCongregacao.Create(self);
+  frmCadCongregacao.ShowModal;
+  frmCadCongregacao.Release;
+end;
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+FreeAndNil(TeclaEnter);
+FreeAndNil(dtmPrincipal);
+if Assigned(oUsuarioLogado) then
+     FreeAndNil(oUsuarioLogado);
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
+var
+  port: Integer;
+  SERVER, USER, SENHA, BANCO, DRIVE: string;
 begin
-//Inciar Conexão
- frmAtualizaDB := TfrmAtualizaDB.Create(self);
- frmAtualizaDB.Show;
- frmAtualizaDB.Refresh;
- dtmPrincipal:= TdtmPrincipal.Create(self);
- dtmRelatorio := TdtmRelatorio.Create(self);
- try
- begin
- //TODO: Criar leitura de arquivo .ini com informações de conexão
-  dtmPrincipal.ConexaoDB.Connected:= true;
- end;
- Except
-   begin
+  if not FileExists(TArquivoIni.ArquivoIni) then
+  begin
+    TArquivoIni.AtualizarIni('SERVER', 'TipoDataBase', 'MySQL');
+    TArquivoIni.AtualizarIni('SERVER', 'HostName', '127.0.0.1');
+    TArquivoIni.AtualizarIni('SERVER', 'Port', '3306');
+    TArquivoIni.AtualizarIni('SERVER', 'User', 'igreja');
+    TArquivoIni.AtualizarIni('SERVER', 'Password', 'igreja');
+    TArquivoIni.AtualizarIni('SERVER', 'Database', 'igreja');
+
+    MessageDlg('Arquivo ' + TArquivoIni.ArquivoIni + ' Criado com Sucesso' +
+      '#13' + 'Configure o arquivo antes de inicializar Aplicação',
+      mtInformation, [mbOK], 0);
+
+    Application.Terminate;
+
+  end
+  else
+  begin
+    // Inciar Conexão
+    frmAtualizaDB := TfrmAtualizaDB.Create(self);
+    frmAtualizaDB.Show;
+    frmAtualizaDB.Refresh;
+
+    dtmPrincipal := TdtmPrincipal.Create(self);
+
+    with dtmPrincipal.ConexaoDB do
+    begin
+      Connected := False;
+      if TArquivoIni.LerIni('SERVER', 'TipoDataBase') = 'MYSQL' then
+        DRIVE := 'MYSQL';
+
+      SERVER := TArquivoIni.LerIni('SERVER', 'HostName');
+      port := TArquivoIni.LerIni('SERVER', 'Port').ToInteger;
+      BANCO := TArquivoIni.LerIni('SERVER', 'Database');
+      SENHA := TArquivoIni.LerIni('SERVER', 'Password');
+      USER := TArquivoIni.LerIni('SERVER', 'User');
+
+      dtmPrincipal.ConexaoDB.Connected := False;
+      dtmPrincipal.ConexaoDB.LoginPrompt := False;
+      dtmPrincipal.ConexaoDB.Params.Clear;
+      dtmPrincipal.ConexaoDB.ConnectionString := 'DriverID=' + DRIVE +
+        ';Server=' + SERVER + ';Database=' + BANCO + ';User_name=' + USER +
+        ';Password=' + SENHA + ';Port=' + IntToStr(port);
+
+        end;
+
+    try
+        dtmPrincipal.ConexaoDB.Connected := True;
+    Except
+      begin
         ShowMessage('Problema de Conexão com o Banco');
-   end;
- end;
+        Application.Terminate;
+      end;
+    end;
     AtualizaBandoDados(frmAtualizaDB);
     frmAtualizaDB.Free;
- //try
- //   dtmPrincipal.fdqryCong_sistema.Open;
- //   congAtiva:=  dtmPrincipal.fdqryCong_sistema.FieldByName('cod_congregacao').AsInteger;
-// Except
- //  ShowMessage('Erro na fdqryCong_sistema! ');
- //end;
- //TODO: Instalar componente de Terceiro ENTER
+  end;
+  TeclaEnter:=TMREnter.Create(Self);
+  TeclaEnter.FocusEnabled:=True;
+  TeclaEnter.FocusColor:=clInfoBk;
+  dtmRelatorio := TdtmRelatorio.Create(self);
+  // try
+  // dtmPrincipal.fdqryCong_sistema.Open;
+  // congAtiva:=  dtmPrincipal.fdqryCong_sistema.FieldByName('cod_congregacao').AsInteger;
+  // Except
+  // ShowMessage('Erro na fdqryCong_sistema! ');
+  // end;
+  // TODO: Instalar componente de Terceiro ENTER
 
-
-//Carregar informações do Status Bar
+  // Carregar informações do Status Bar
   statMenu.Panels[0].Text :=
     'ELTECOM - Sistema de Controle Gerencial da Congregação ';
   if (Time < 0.5) then
@@ -135,167 +202,196 @@ begin
   else if (Time > 0.75) then
     statMenu.Panels[1].Text := 'Boa noite hoje é ' +
       formatdatetime('dddddd', date);
- statMenu.Panels[2].Text :='Congregação '+dtmPrincipal.descCongAtiva;// status; // + IdIPWatch1.LocalIP;
- // statMenu.Panels[3].Text :='Whatsapp:https://api.whatsapp.com/send?1=pt_BR&phone=5584981416012';
- // statMenu.Panels[3].Text := dtmConexao.strngfldCongregacaoAtivaSistemacongregacao.Text;
+  statMenu.Panels[2].Text := 'Congregação ' + dtmPrincipal.descCongAtiva;
+  //statMenu.Panels[3].Text := 'Logado com: ' + oUsuarioLogado.nome;
+  // status; // + IdIPWatch1.LocalIP;
+  // statMenu.Panels[3].Text :='Whatsapp:https://api.whatsapp.com/send?1=pt_BR&phone=5584981416012';
+  // statMenu.Panels[3].Text := dtmConexao.strngfldCongregacaoAtivaSistemacongregacao.Text;
+end;
+
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+try
+oUsuarioLogado:= TUsuarioLogado.Create;
+   frmLogin := TfrmLogin.Create(self);
+  frmLogin.ShowModal;
+  //oUsuarioLogado.nome:=frmLogin.edtUsuario;
+finally
+   frmLogin.Release;
+   statMenu.Panels[3].Text := 'Logado com: ' + oUsuarioLogado.nome;
+end;
+
 end;
 
 procedure TfrmPrincipal.Igreja1Click(Sender: TObject);
 begin
-frmCadIgreja:= TfrmCadIgreja.Create(self);
-frmCadIgreja.ShowModal;
-frmCadIgreja.Release;
+  frmCadIgreja := TfrmCadIgreja.Create(self);
+  frmCadIgreja.ShowModal;
+  frmCadIgreja.Release;
+end;
+
+procedure TfrmPrincipal.mniAlterarSenha1Click(Sender: TObject);
+begin
+    frmAlterarSenha := TfrmAlterarSenha.Create(self);
+  frmAlterarSenha.ShowModal;
+  frmAlterarSenha.Release;
 end;
 
 procedure TfrmPrincipal.mniCargos1Click(Sender: TObject);
 begin
- frmCadCargo:= TfrmCadCargo.Create(self);
-frmCadCargo.ShowModal;
-frmCadCargo.Release;
+  frmCadCargo := TfrmCadCargo.Create(self);
+  frmCadCargo.ShowModal;
+  frmCadCargo.Release;
 end;
 
 procedure TfrmPrincipal.mniDepartamentoPessoas1Click(Sender: TObject);
 begin
-frmCaddeparPessoa:= TfrmCaddeparPessoa.Create(self);
-frmCaddeparPessoa.ShowModal;
-frmCaddeparPessoa.Release;
+  frmCaddeparPessoa := TfrmCaddeparPessoa.Create(self);
+  frmCaddeparPessoa.ShowModal;
+  frmCaddeparPessoa.Release;
 end;
 
 procedure TfrmPrincipal.mniDepartamentos2Click(Sender: TObject);
 begin
-frmCadDepartamento:= TfrmCadDepartamento.Create(self);
-frmCadDepartamento.ShowModal;
-frmCadDepartamento.Release;
+  frmCadDepartamento := TfrmCadDepartamento.Create(self);
+  frmCadDepartamento.ShowModal;
+  frmCadDepartamento.Release;
 end;
 
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
 begin
-frmCadDizimos:= TfrmCadDizimos.Create(self);
-frmCadDizimos.ShowModal;
-frmCadDizimos.Release;
+  frmCadDizimos := TfrmCadDizimos.Create(self);
+  frmCadDizimos.ShowModal;
+  frmCadDizimos.Release;
 end;
 
 procedure TfrmPrincipal.mniFunes2Click(Sender: TObject);
 begin
-  frmCadFuncao:= TfrmCadFuncao.Create(self);
-frmCadFuncao.ShowModal;
-frmCadFuncao.Release;
+  frmCadFuncao := TfrmCadFuncao.Create(self);
+  frmCadFuncao.ShowModal;
+  frmCadFuncao.Release;
 end;
 
 procedure TfrmPrincipal.mniFunesPessoas1Click(Sender: TObject);
 begin
-frmCadFuncaoPessoa:= TfrmCadFuncaoPessoa.Create(self);
-frmCadFuncaoPessoa.ShowModal;
-frmCaddeparPessoa.Release;
+  frmCadFuncaoPessoa := TfrmCadFuncaoPessoa.Create(self);
+  frmCadFuncaoPessoa.ShowModal;
+  frmCaddeparPessoa.Release;
 end;
 
 procedure TfrmPrincipal.mniSobreClick(Sender: TObject);
 begin
-     ShowMessage('- SOBRE O PROGRAMA '+
+  ShowMessage('- SOBRE O PROGRAMA ' +
 
-' Programador :Albérico Leite  '+
-' Comunicação: (84) 98141-6012  '+
-'E-mail: albericoleite@live.com');
+    ' Programador :Albérico Leite  ' + ' Comunicação: (84) 98141-6012  ' +
+    'E-mail: albericoleite@live.com');
+end;
+
+procedure TfrmPrincipal.mniUsurios1Click(Sender: TObject);
+begin
+  frmCadUsuario := TfrmCadUsuario.Create(self);
+  frmCadUsuario.ShowModal;
+  frmCadUsuario.Release;
 end;
 
 procedure TfrmPrincipal.Sair1Click(Sender: TObject);
 begin
-//close;
-Application.Terminate;
+  // close;
+  Application.Terminate;
 end;
 
 procedure TfrmPrincipal.Setores1Click(Sender: TObject);
 begin
-frmCadSetores:= TfrmCadSetores.Create(self);
-frmCadSetores.ShowModal;
-frmCadSetores.Release;
+  frmCadSetores := TfrmCadSetores.Create(self);
+  frmCadSetores.ShowModal;
+  frmCadSetores.Release;
 end;
 
-procedure TfrmPrincipal.AtualizaBandoDados(aForm:TfrmAtualizaDB);
-var sl:Integer;
+procedure TfrmPrincipal.AtualizaBandoDados(aForm: TfrmAtualizaDB);
+var
+  sl: Integer;
 begin
-sl:= 50;
- aForm.chkConexBD.Checked:= true;
- aForm.Refresh;
- //TODO: CRIAR QUERY NO DATAMODULE PARA EXECUTAR A ATUALIZAÇÃO DO BANCO
- //Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
- aForm.chkIgreja.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  sl := 50;
+  aForm.chkConexBD.Checked := true;
+  aForm.Refresh;
+  // TODO: CRIAR QUERY NO DATAMODULE PARA EXECUTAR A ATUALIZAÇÃO DO BANCO
+  // Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
+  aForm.chkIgreja.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
- //Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
- aForm.chkSetor.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
+  aForm.chkSetor.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
-dtmPrincipal.fdqryCriartb_congregacao.ExecSQL;
- aForm.chkCongregacao.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  dtmPrincipal.fdqryCriartb_congregacao.ExecSQL;
+  aForm.chkCongregacao.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
-  //Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
- aForm.chkPessoa.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
+  aForm.chkPessoa.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
-  //Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
- aForm.chkTesouraria.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
+  aForm.chkTesouraria.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
- //Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
- aForm.chkAlteratabela.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
+  aForm.chkAlteratabela.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
- //CRIAR TABELA DE DEPARTAMENTO
- dtmPrincipal.fdqryCriartb_departamento.ExecSQL;
- aForm.chkDepartamento.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // CRIAR TABELA DE DEPARTAMENTO
+  dtmPrincipal.fdqryCriartb_departamento.ExecSQL;
+  aForm.chkDepartamento.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
- //CRIAR TABELA DE DEPT_PESSOA
- dtmPrincipal.fdqryCriartb_dept_pessoa.ExecSQL;
- aForm.chkDepPessoa.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // CRIAR TABELA DE DEPT_PESSOA
+  dtmPrincipal.fdqryCriartb_dept_pessoa.ExecSQL;
+  aForm.chkDepPessoa.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
- //CRIAR TABELA DE FUNÇÃO
- dtmPrincipal.fdqryCriartb_funcao.ExecSQL;
- aForm.chkFuncao.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // CRIAR TABELA DE FUNÇÃO
+  dtmPrincipal.fdqryCriartb_funcao.ExecSQL;
+  aForm.chkFuncao.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
-//CRIAR TABELA DE SEGURANÇA
- dtmPrincipal.fdqryCriartb_seguranca.ExecSQL;
- aForm.chkSeguranca.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // CRIAR TABELA DE SEGURANÇA
+  dtmPrincipal.fdqryCriartb_seguranca.ExecSQL;
+  aForm.chkSeguranca.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
-//CRIAR TABELA DE USUÁRIO
- dtmPrincipal.fdqryCriartb_usuario.ExecSQL;
- aForm.chkUsuario.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // CRIAR TABELA DE USUÁRIO
+  dtmPrincipal.fdqryCriartb_usuario.ExecSQL;
+  aForm.chkUsuario.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
-//CRIAR TABELA DE DIZIMO
- dtmPrincipal.fdqryCriartb_dizimo.ExecSQL;
- aForm.chkDizimo.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // CRIAR TABELA DE DIZIMO
+  dtmPrincipal.fdqryCriartb_dizimo.ExecSQL;
+  aForm.chkDizimo.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
-//CRIAR TABELA DE CARGO
- dtmPrincipal.fdqryCriartb_cargo.ExecSQL;
- aForm.chkCargo.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
+  // CRIAR TABELA DE CARGO
+  dtmPrincipal.fdqryCriartb_cargo.ExecSQL;
+  aForm.chkCargo.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
- //CRIAR TABELA DE FUNÇÃO E PESSOAS
- dtmPrincipal.fdqryCriartb_func_pessoa.ExecSQL;
- aForm.chkfuncoesPessoas.Checked:= true;
- aForm.Refresh;
- Sleep(sl);
-
+  // CRIAR TABELA DE FUNÇÃO E PESSOAS
+  dtmPrincipal.fdqryCriartb_func_pessoa.ExecSQL;
+  aForm.chkfuncoesPessoas.Checked := true;
+  aForm.Refresh;
+  Sleep(sl);
 
 end;
 
