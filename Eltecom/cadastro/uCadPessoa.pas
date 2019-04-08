@@ -10,7 +10,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,
-  cCadPessoa, RxToolEdit, uDTMConexao, uEnum;
+  cCadPessoa, RxToolEdit, uDTMConexao, uEnum, Vcl.Menus;
 
 type
   TfrmCadPessoa = class(TfrmTelaheranca)
@@ -140,6 +140,11 @@ type
     lbledtFuncao: TLabeledEdit;
     lbl15: TLabel;
     medtTeltrabalho: TMaskEdit;
+    pnlImagem: TPanel;
+    imgFoto: TImage;
+    pmImagem: TPopupMenu;
+    mniCarregarImagem1: TMenuItem;
+    mniLimparImagem1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -281,6 +286,7 @@ begin
   inherited;
   dtdtNascimento.Date := Date;
   lbledtNome.SetFocus;
+  cbbMembCong.ItemIndex:=0;
 end;
 
 procedure TfrmCadPessoa.cbbMembCongChange(Sender: TObject);

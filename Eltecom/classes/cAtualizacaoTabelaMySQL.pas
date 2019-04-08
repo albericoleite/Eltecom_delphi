@@ -1,0 +1,149 @@
+unit cAtualizacaoTabelaMySQL;
+
+interface
+uses System.Classes, Vcl.Controls,
+  Vcl.ExtCtrls, Vcl.Dialogs, FireDAC.Comp.Client, System.SysUtils,cAtualizacaoBancoDeDados;
+
+type
+ TAtualizacaoTabelaMySQL = class(TAtualizaBancoDados)
+
+ private
+  function  TabelaExiste(aNomeTabela:String):Boolean;
+  procedure Igreja;
+  procedure Cargo;
+    procedure Dizimista;
+    procedure Departamento;
+ protected
+
+ public
+
+   constructor Create(aConexao: TFDConnection);
+   destructor Destroy; override;
+ end;
+
+implementation
+
+{ AtualizacaoTabelaMySQL }
+
+constructor TAtualizacaoTabelaMySQL.Create(aConexao: TFDConnection);
+begin
+  ConexaoDB := aConexao;
+  Igreja;
+  Cargo;
+  Dizimista;
+  Departamento;
+end;
+
+destructor TAtualizacaoTabelaMySQL.Destroy;
+begin
+
+  inherited;
+end;
+
+function TAtualizacaoTabelaMySQL.TabelaExiste(aNomeTabela: String): Boolean;
+var
+  Qry: TFDQuery;
+begin
+  try
+    Result := False;
+    Qry := TFDQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('SELECT count(DISTINCT TABLE_NAME) as ID '+
+    ' FROM INFORMATION_SCHEMA.TABLES  '+
+    ' WHERE TABLE_NAME = :NomeTabela ');
+    Qry.ParamByName('NomeTabela').AsString := aNomeTabela;
+    Qry.Open;
+
+    if Qry.FieldByName('ID').AsInteger>0 then
+     Result := True;
+
+  finally
+    Qry.Close;
+    if Assigned(Qry) then
+      FreeAndNil(Qry)
+  end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.Igreja;
+begin
+   if not TabelaExiste('tb_igreja') then
+   begin
+     ExecutaDiretoBancoDeDados(
+          '   CREATE TABLE IF NOT EXISTS `tb_igreja` ( '+
+          ' `cod_igreja` int(11) NOT NULL AUTO_INCREMENT, '+
+          ' `nome_igreja` varchar(50) DEFAULT NULL, '+
+          ' `cidade` varchar(50) DEFAULT NULL, '+
+          ' `dta_fundacao` date DEFAULT NULL,   '+
+          ' `nome_presidente` varchar(50) DEFAULT NULL,   '+
+          ' `dta_inclusao` datetime DEFAULT NULL, '+
+          ' `sigla_igreja` varchar(20) DEFAULT NULL, '+
+          ' `site` varchar(50) DEFAULT NULL,  '+
+          ' `email` varchar(50) DEFAULT NULL,  '+
+          ' `cnpj` varchar(50) DEFAULT NULL,  '+
+          ' `logradouro` varchar(50) DEFAULT NULL, '+
+          ' `bairro` varchar(50) DEFAULT NULL, '+
+          ' `uf` varchar(2) DEFAULT NULL,  '+
+          ' `fone` varchar(25) DEFAULT NULL,  '+
+          ' `foto` mediumblob, '+
+          ' `percentual_ajuste` int(11) DEFAULT '+'35'+', '+
+          ' `sistema` int(11) NOT NULL DEFAULT '+'0'+', '+
+          ' `situacao` int(11) NOT NULL DEFAULT '+'0'+', '+
+          ' PRIMARY KEY (`cod_igreja`)  '+
+          ' )');
+   end;
+
+end;
+
+procedure TAtualizacaoTabelaMySQL.Cargo;
+begin
+   if not TabelaExiste('tb_cargo') then
+   begin
+     ExecutaDiretoBancoDeDados(
+          '  CREATE TABLE  `tb_cargo` (  '+
+          ' `cod_cargo` int(10) NOT NULL AUTO_INCREMENT, '+
+          ' `cargo` varchar(50) DEFAULT NULL, '+
+          ' PRIMARY KEY (`cod_cargo`) '+
+          ' )');
+   end;
+
+end;
+
+procedure TAtualizacaoTabelaMySQL.Dizimista;
+begin
+   if not TabelaExiste('tb_dizimista') then
+   begin
+     ExecutaDiretoBancoDeDados(
+          '  CREATE TABLE `tb_dizimista` ( '+
+  ' `cod_dizimo` int(11) NOT NULL AUTO_INCREMENT, '+
+  ' `cod_talao` int(11) DEFAULT NULL, '+
+  ' `cod_cheque` int(11) DEFAULT NULL, '+
+  ' `nome` varchar(50) DEFAULT NULL, '+
+  ' `valor` double DEFAULT NULL, '+
+  ' `data` date DEFAULT NULL, '+
+  ' `cargo` varchar(50) DEFAULT NULL, '+
+  ' `cod_congregacao` int(11) NOT NULL,  '+
+  ' PRIMARY KEY (`cod_dizimo`),  '+
+  ' KEY `tb_dizimista_tb_congregacao_fk` (`cod_congregacao`),'+
+  ' CONSTRAINT `tb_dizimista_tb_congregacao_fk` FOREIGN KEY (`cod_congregacao`) REFERENCES `tb_congregacao` (`cod_congregacao`)  '+
+  ' )');
+   end;
+
+end;
+
+procedure TAtualizacaoTabelaMySQL.Departamento;
+begin
+   if not TabelaExiste('tb_departamento') then
+   begin
+     ExecutaDiretoBancoDeDados(
+          ' CREATE TABLE `tb_departamento` ( '+
+  ' `cod_departamento` int(11) NOT NULL AUTO_INCREMENT, '+
+  ' `nome_departamento` varchar(50) DEFAULT NULL, '+
+  ' PRIMARY KEY (`cod_departamento`) '+
+  ' )');
+   end;
+
+end;
+
+
+end.

@@ -70,10 +70,13 @@ begin
     Qry.SQL.Add('DELETE FROM igreja.tb_cargo WHERE cod_cargo=:cod_cargo');
     Qry.ParamByName('cod_cargo').AsInteger := F_cod_cargo;
     try
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
 
   Finally
     if Assigned(Qry) then
@@ -94,12 +97,14 @@ begin
     Qry.SQL.Add('UPDATE igreja.tb_cargo  SET cargo=:cargo WHERE cod_cargo=:cod_cargo');
     Qry.ParamByName('cod_cargo').AsInteger := F_cod_cargo;
     Qry.ParamByName('cargo').AsString := F_cargo;
-    try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+   try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)
@@ -120,11 +125,13 @@ begin
     Qry.ParamByName('cargo').AsString := Self.F_cargo;
 
     try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)

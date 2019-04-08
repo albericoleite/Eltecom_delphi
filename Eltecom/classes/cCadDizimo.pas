@@ -79,11 +79,14 @@ begin
     Qry.SQL.Add
       ('DELETE FROM igreja.tb_dizimista WHERE cod_dizimo=:cod_dizimo ');
     Qry.ParamByName('cod_dizimo').AsInteger := F_cod_dizimo;
-    try
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+     try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
 
   Finally
     if Assigned(Qry) then
@@ -114,11 +117,13 @@ begin
     Qry.ParamByName('data').AsDate := F_data;
     Qry.ParamByName('cargo').AsString := F_cargo;
     try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)
@@ -144,9 +149,14 @@ Qry.ParamByName('nome').Asstring := Self.F_nome;
 Qry.ParamByName('valor').AsFloat := Self.F_valor;
 Qry.ParamByName('data').AsDate := Self.F_data;
 Qry.ParamByName('cargo').Asstring := Self.F_cargo;
-      try Qry.SQL.Text;
-       Qry.ExecSQL;
-       except Result := false; end;
+      try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
       finally if Assigned(Qry) then FreeAndNil(Qry) end; end;
 
     function TDizimo.Selecionar(id: Integer): Boolean; var Qry: TFDQuery;

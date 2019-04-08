@@ -239,13 +239,12 @@ inherited frmCadIgreja: TfrmCadIgreja
     end
   end
   inherited QryListagem: TFDQuery
-    Active = True
     SQL.Strings = (
       
         'SELECT cod_igreja, nome_igreja, cidade, dta_fundacao, nome_presi' +
         'dente, dta_inclusao, sigla_igreja, site, email, cnpj, logradouro' +
         ', bairro, uf, fone, foto, percentual_ajuste, sistema, situacao'
-      'FROM igreja.tb_igreja;')
+      'FROM igreja.tb_igreja')
     Left = 264
     Top = 0
     object fdtncfldQryListagemcod_igreja: TFDAutoIncField

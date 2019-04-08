@@ -137,7 +137,7 @@ procedure TfrmCadCongregacao.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
-  dtmPrincipal.fdqryCong_sistema.Refresh;
+  //dtmPrincipal.fdqryCong_sistema.Refresh;
 if Assigned(oCongregacao) then
      FreeAndNil(oCongregacao);
 end;

@@ -132,8 +132,8 @@ object dtmPrincipal: TdtmPrincipal
       '  `nome_departamento` varchar(50) DEFAULT NULL,'
       '  PRIMARY KEY (`cod_departamento`)'
       ') ')
-    Left = 408
-    Top = 24
+    Left = 192
+    Top = 304
   end
   object fdqryCriartb_funcao: TFDQuery
     Connection = ConexaoDB
@@ -186,8 +186,8 @@ object dtmPrincipal: TdtmPrincipal
     SQL.Strings = (
       'SELECT cod_setor, setor'
       'FROM igreja.tb_setor;')
-    Left = 560
-    Top = 208
+    Left = 312
+    Top = 128
   end
   object fdqryCriartb_dizimo: TFDQuery
     Connection = ConexaoDB
@@ -207,8 +207,8 @@ object dtmPrincipal: TdtmPrincipal
         '  CONSTRAINT `tb_dizimista_tb_congregacao_fk` FOREIGN KEY (`cod_' +
         'congregacao`) REFERENCES `tb_congregacao` (`cod_congregacao`)'
       ') ')
-    Left = 416
-    Top = 200
+    Left = 32
+    Top = 288
   end
   object fdqryDepartamentos: TFDQuery
     Connection = ConexaoDB
@@ -237,8 +237,8 @@ object dtmPrincipal: TdtmPrincipal
       '  `cargo` varchar(50) DEFAULT NULL,'
       '  PRIMARY KEY (`cod_cargo`)'
       ')')
-    Left = 416
-    Top = 264
+    Left = 40
+    Top = 336
     object FDAutoIncField1: TFDAutoIncField
       FieldName = 'cod_departamento'
       Origin = 'cod_departamento'
@@ -270,7 +270,7 @@ object dtmPrincipal: TdtmPrincipal
       '  `usuario_alteracao` varchar(50) DEFAULT NULL,'
       '  PRIMARY KEY (`cod_func_pessoa`)'
       ') ')
-    Left = 480
+    Left = 520
     Top = 336
   end
 end

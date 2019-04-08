@@ -1,7 +1,5 @@
 inherited frmCadFuncao: TfrmCadFuncao
   Caption = 'Cadastro de Fun'#231#227'o'
-  ExplicitWidth = 806
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -35,10 +33,6 @@ inherited frmCadFuncao: TfrmCadFuncao
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       object lbl2: TLabel
         Left = 350
         Top = 3
@@ -92,7 +86,7 @@ inherited frmCadFuncao: TfrmCadFuncao
   inherited QryListagem: TFDQuery
     SQL.Strings = (
       'SELECT cod_funcao, funcao, cod_departamento, nome_departamento'
-      'FROM igreja.tb_funcao;')
+      'FROM igreja.tb_funcao')
     Left = 624
     Top = 112
     object fdtncfldQryListagemcod_funcao: TFDAutoIncField
@@ -100,6 +94,7 @@ inherited frmCadFuncao: TfrmCadFuncao
       FieldName = 'cod_funcao'
       Origin = 'cod_funcao'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object strngfldQryListagemfuncao: TStringField
       AutoGenerateValue = arDefault

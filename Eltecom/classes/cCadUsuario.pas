@@ -90,11 +90,14 @@ begin
     Qry.SQL.Clear;
     Qry.SQL.Add('DELETE FROM tb_usuario WHERE codigo=:codigo');
     Qry.ParamByName('codigo').AsInteger := F_codigo;
-    try
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+     try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
 
   Finally
     if Assigned(Qry) then
@@ -122,11 +125,13 @@ begin
     Qry.ParamByName('status').AsString := F_status;
     Qry.ParamByName('tema').AsString := F_tema;
     try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)
@@ -151,12 +156,14 @@ begin
     Qry.ParamByName('status').AsString := Self.F_status;
     Qry.ParamByName('tema').AsString := Self.F_tema;
 
-    try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+     try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)
@@ -209,11 +216,13 @@ begin
     Qry.ParamByName('codigo').AsInteger := F_codigo;
      Qry.ParamByName('senha').AsString := F_senha;
     try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)

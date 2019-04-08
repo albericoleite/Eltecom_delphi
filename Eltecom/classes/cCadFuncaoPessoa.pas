@@ -91,10 +91,13 @@ begin
     ' WHERE cod_func_pessoa=:cod_func_pessoa ');
     Qry.ParamByName('cod_func_pessoa').AsInteger := F_cod_func_pessoa;
     try
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
 
   Finally
     if Assigned(Qry) then
@@ -124,12 +127,14 @@ begin
     Qry.ParamByName('nome_pessoa').AsString := F_nome_pessoa;
     Qry.ParamByName('status').AsString := F_status;
     Qry.ParamByName('usuario_alteracao').AsString := F_usuario_alteracao;
-    try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+   try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)
@@ -157,11 +162,13 @@ begin
     Qry.ParamByName('usuario_inclusao').AsString := Self.F_usuario_inclusao;
     Qry.ParamByName('status').AsString := Self.F_status;
     try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)

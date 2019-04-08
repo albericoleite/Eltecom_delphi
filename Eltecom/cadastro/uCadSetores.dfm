@@ -13,8 +13,6 @@ inherited frmCadSetores: TfrmCadSetores
     ExplicitWidth = 734
     ExplicitHeight = 274
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 726
       ExplicitHeight = 246
       inherited pnlListagem: TPanel
@@ -59,8 +57,6 @@ inherited frmCadSetores: TfrmCadSetores
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 726
       ExplicitHeight = 246
       object edtcod_setor: TLabeledEdit
@@ -112,7 +108,7 @@ inherited frmCadSetores: TfrmCadSetores
   inherited QryListagem: TFDQuery
     SQL.Strings = (
       'SELECT cod_setor, setor'
-      'FROM igreja.tb_setor;')
+      'FROM igreja.tb_setor')
     object QryListagemcod_setor: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'cod_setor'

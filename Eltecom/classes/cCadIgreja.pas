@@ -96,9 +96,12 @@ begin
        Qry.SQL.Clear;
        Qry.SQL.Add('DELETE FROM tb_igreja WHERE cod_igreja=:cod_igreja; ');
        Qry.ParamByName('cod_igreja').AsInteger:=F_cod_igreja;
-       try
+        try
+        ConexaoDB.StartTransaction;
          Qry.ExecSQL;
+         ConexaoDB.Commit;
        except
+       ConexaoDB.Rollback;
         Result:=false;
        end;
 
@@ -152,8 +155,11 @@ begin
        Qry.ParamByName('sistema').AsString:=F_sigla_igreja;
        Qry.ParamByName('situacao').AsString:=F_sigla_igreja;
        try
+        ConexaoDB.StartTransaction;
          Qry.ExecSQL;
+         ConexaoDB.Commit;
        except
+       ConexaoDB.Rollback;
         Result:=false;
        end;
     finally
@@ -191,9 +197,12 @@ begin
        Qry.ParamByName('sistema').AsString:=F_sigla_igreja;
        Qry.ParamByName('situacao').AsString:=F_sigla_igreja;
        try
+        ConexaoDB.StartTransaction;
          Qry.ExecSQL;
+         ConexaoDB.Commit;
        except
-                           Result:=false;
+       ConexaoDB.Rollback;
+        Result:=false;
        end;
     finally
        if Assigned(Qry) then

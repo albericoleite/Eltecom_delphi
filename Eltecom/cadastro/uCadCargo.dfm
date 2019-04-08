@@ -5,10 +5,6 @@ inherited frmCadCargo: TfrmCadCargo
   inherited pgcPrincipal: TPageControl
     ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       inherited grdListagem: TDBGrid
         DataSource = dtsListagem
         Columns = <
@@ -25,10 +21,6 @@ inherited frmCadCargo: TfrmCadCargo
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       object lbledtCargo: TLabeledEdit
         Tag = 2
         Left = 79
@@ -65,7 +57,7 @@ inherited frmCadCargo: TfrmCadCargo
   inherited QryListagem: TFDQuery
     SQL.Strings = (
       'SELECT cod_cargo, cargo'
-      'FROM igreja.tb_cargo;')
+      'FROM igreja.tb_cargo')
     object fdtncfldQryListagemcod_cargo: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'cod_cargo'

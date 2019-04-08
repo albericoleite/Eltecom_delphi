@@ -1,9 +1,8 @@
 inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 486
-  ClientWidth = 833
-  ExplicitTop = -103
-  ExplicitWidth = 839
+  ClientWidth = 956
+  ExplicitWidth = 962
   ExplicitHeight = 515
   PixelsPerInch = 96
   TextHeight = 13
@@ -22,20 +21,21 @@ inherited frmCadPessoa: TfrmCadPessoa
     Caption = 'Situa'#231#227'o Acad'#234'mica'
   end
   inherited pgcPrincipal: TPageControl
-    Width = 833
+    Width = 956
     Height = 448
-    ActivePage = tabManutencao
-    ExplicitWidth = 833
+    ExplicitWidth = 956
     ExplicitHeight = 448
     inherited tabListagem: TTabSheet
-      ExplicitWidth = 825
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 948
       ExplicitHeight = 420
       inherited pnlListagem: TPanel
-        Width = 825
-        ExplicitWidth = 825
+        Width = 948
+        ExplicitWidth = 948
       end
       inherited grdListagem: TDBGrid
-        Width = 825
+        Width = 948
         Height = 355
         DataSource = dtsListagem
         Columns = <
@@ -71,13 +71,15 @@ inherited frmCadPessoa: TfrmCadPessoa
             Expanded = False
             FieldName = 'membro_congregado'
             Title.Caption = 'Tipo'
-            Width = 114
+            Width = 93
             Visible = True
           end>
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitWidth = 825
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 948
       ExplicitHeight = 420
       object lblTipo: TLabel
         Left = 334
@@ -101,7 +103,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Caption = 'Data Nascimento'
       end
       object lblufnascimento: TLabel
-        Left = 745
+        Left = 739
         Top = 3
         Width = 47
         Height = 13
@@ -207,7 +209,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Tag = 2
         Left = 546
         Top = 20
-        Width = 95
+        Width = 85
         Height = 21
         Hint = 'Data Nascimento'
         ClickKey = 114
@@ -243,7 +245,7 @@ inherited frmCadPessoa: TfrmCadPessoa
       end
       object cbbUFnascimento: TComboBox
         Tag = 2
-        Left = 745
+        Left = 739
         Top = 20
         Width = 44
         Height = 21
@@ -280,7 +282,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           'TO')
       end
       object lbledtNatural: TLabeledEdit
-        Left = 647
+        Left = 639
         Top = 20
         Width = 92
         Height = 21
@@ -294,7 +296,7 @@ inherited frmCadPessoa: TfrmCadPessoa
       object grpDatas: TGroupBox
         Left = 3
         Top = 181
-        Width = 121
+        Width = 110
         Height = 190
         Caption = 'Datas'
         TabOrder = 14
@@ -329,7 +331,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         object dtdtBtaguas: TDateEdit
           Left = 14
           Top = 32
-          Width = 95
+          Width = 85
           Height = 21
           Hint = 'Batimo em '#193'guas'
           ClickKey = 114
@@ -337,11 +339,12 @@ inherited frmCadPessoa: TfrmCadPessoa
           NumGlyphs = 2
           CalendarStyle = csDialog
           TabOrder = 0
+          Text = '01/01/2019'
         end
         object dtdtbtespirito: TDateEdit
           Left = 14
           Top = 75
-          Width = 95
+          Width = 85
           Height = 21
           Hint = 'Batismo no Espirito Santo'
           ClickKey = 114
@@ -353,7 +356,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         object dtdtConversao: TDateEdit
           Left = 14
           Top = 117
-          Width = 95
+          Width = 85
           Height = 21
           Hint = 'Batismo no Espirito Santo'
           ClickKey = 114
@@ -365,7 +368,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         object dtdtMembro: TDateEdit
           Left = 14
           Top = 159
-          Width = 95
+          Width = 85
           Height = 21
           Hint = 'Batismo no Espirito Santo'
           ClickKey = 114
@@ -386,7 +389,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Text = '   .   .   -  '
       end
       object grpEscolaridade: TGroupBox
-        Left = 130
+        Left = 114
         Top = 178
         Width = 268
         Height = 193
@@ -494,8 +497,8 @@ inherited frmCadPessoa: TfrmCadPessoa
         end
       end
       object grpCivil: TGroupBox
-        Left = 404
-        Top = 185
+        Left = 388
+        Top = 183
         Width = 245
         Height = 150
         TabOrder = 16
@@ -561,7 +564,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         object dtdtCasamento: TDateEdit
           Left = 14
           Top = 119
-          Width = 95
+          Width = 85
           Height = 21
           Hint = 'Batismo no Espirito Santo'
           ClickKey = 114
@@ -827,19 +830,39 @@ inherited frmCadPessoa: TfrmCadPessoa
           Text = '(  )     -    '
         end
       end
+      object pnlImagem: TPanel
+        Left = 823
+        Top = 3
+        Width = 122
+        Height = 172
+        BorderStyle = bsSingle
+        TabOrder = 18
+        object imgFoto: TImage
+          Left = 1
+          Top = 1
+          Width = 116
+          Height = 166
+          Align = alClient
+          PopupMenu = pmImagem
+          ExplicitLeft = 8
+          ExplicitTop = 0
+          ExplicitWidth = 105
+          ExplicitHeight = 105
+        end
+      end
     end
   end
   inherited pnlRodape: TPanel
     Top = 448
-    Width = 833
+    Width = 956
     ExplicitTop = 448
-    ExplicitWidth = 833
+    ExplicitWidth = 956
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
     end
     inherited btnFechar: TBitBtn
-      Left = 741
-      ExplicitLeft = 741
+      Left = 864
+      ExplicitLeft = 864
     end
   end
   inherited QryListagem: TFDQuery
@@ -859,7 +882,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         'do, dta_inclusao, USUARIO_CADASTRO, SITUACAO, cod_congregacao, c' +
         'od_situacao'
       'FROM igreja.tb_pessoa'
-      'where cod_congregacao=:cod_congregacao;')
+      'where cod_congregacao=:cod_congregacao')
     Left = 216
     Top = 8
     ParamData = <
@@ -1194,5 +1217,15 @@ inherited frmCadPessoa: TfrmCadPessoa
   inherited dtsListagem: TDataSource
     Left = 296
     Top = 8
+  end
+  object pmImagem: TPopupMenu
+    Left = 856
+    Top = 64
+    object mniCarregarImagem1: TMenuItem
+      Caption = 'Carregar Imagem'
+    end
+    object mniLimparImagem1: TMenuItem
+      Caption = 'Limpar Imagem'
+    end
   end
 end

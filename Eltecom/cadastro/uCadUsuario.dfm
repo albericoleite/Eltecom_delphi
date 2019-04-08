@@ -127,7 +127,7 @@ inherited frmCadUsuario: TfrmCadUsuario
   inherited QryListagem: TFDQuery
     SQL.Strings = (
       'SELECT codigo, usuario, senha, setor, status, tema'
-      'FROM igreja.tb_usuario;')
+      'FROM igreja.tb_usuario')
     object fdtncfldQryListagemcodigo: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'codigo'

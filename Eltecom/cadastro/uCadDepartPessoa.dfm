@@ -1,8 +1,5 @@
 inherited frmCaddeparPessoa: TfrmCaddeparPessoa
   Caption = 'Cadastrar pessoas nos Departamentos'
-  ExplicitTop = -34
-  ExplicitWidth = 806
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel [0]
@@ -15,10 +12,6 @@ inherited frmCaddeparPessoa: TfrmCaddeparPessoa
   inherited pgcPrincipal: TPageControl
     ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       inherited grdListagem: TDBGrid
         DataSource = dtsListagem
         Columns = <
@@ -53,10 +46,6 @@ inherited frmCaddeparPessoa: TfrmCaddeparPessoa
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       object lbl2: TLabel
         Left = 63
         Top = 3
@@ -134,7 +123,7 @@ inherited frmCaddeparPessoa: TfrmCaddeparPessoa
         'SELECT cod_dept_pessoa, cod_departamento, nome_departamento, cod' +
         '_pessoa, nome_pessoa, dta_inclusao, dta_alteracao, status, usuar' +
         'io_inclusao, usuario_alteracao'
-      'FROM igreja.tb_dept_pessoa;')
+      'FROM igreja.tb_dept_pessoa')
     Left = 448
     Top = 96
     object fdtncfldQryListagemcod_dept_pessoa: TFDAutoIncField

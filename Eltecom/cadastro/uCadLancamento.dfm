@@ -2,17 +2,16 @@ inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
   ClientWidth = 736
   ExplicitWidth = 742
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 736
-    ExplicitLeft = 8
-    ExplicitTop = 30
     ExplicitWidth = 736
     inherited tabListagem: TTabSheet
+      ExplicitWidth = 728
       inherited pnlListagem: TPanel
         Width = 728
+        ExplicitWidth = 728
       end
       inherited grdListagem: TDBGrid
         Width = 728
@@ -53,10 +52,6 @@ inherited frmCadLancamento: TfrmCadLancamento
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 22
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       object pnl1: TPanel
         Left = 3
         Top = 3
@@ -160,33 +155,24 @@ inherited frmCadLancamento: TfrmCadLancamento
   end
   inherited pnlRodape: TPanel
     Width = 736
+    ExplicitWidth = 736
     inherited btnNavigator: TDBNavigator
       Left = 413
       Hints.Strings = ()
       ExplicitLeft = 413
     end
-    inherited btnCancelar: TBitBtn
-      TabOrder = 4
-    end
-    inherited btnApagar: TBitBtn
-      TabOrder = 5
-    end
     inherited btnFechar: TBitBtn
       Left = 644
-      TabOrder = 6
-    end
-    inherited btnGravar: TBitBtn
-      TabOrder = 3
+      ExplicitLeft = 644
     end
   end
   inherited QryListagem: TFDQuery
-    Active = True
     SQL.Strings = (
       
         'SELECT cod_entrada, nro_documento, dta_movimento, dta_inclusao, ' +
         'usuario_inclusao, descricao, valor, tipo, status, cod_congregaca' +
         'o, situacao'
-      'FROM igreja.tb_tesouraria;')
+      'FROM igreja.tb_tesouraria')
     Left = 584
     Top = 208
     object fdtncfldQryListagemcod_entrada: TFDAutoIncField
@@ -194,6 +180,7 @@ inherited frmCadLancamento: TfrmCadLancamento
       FieldName = 'cod_entrada'
       Origin = 'cod_entrada'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object intgrfldQryListagemnro_documento: TIntegerField
       AutoGenerateValue = arDefault

@@ -59,7 +59,7 @@ object frmTelaheranca: TfrmTelaheranca
           Height = 25
           Caption = '&Pesquisar'
           TabOrder = 1
-          Visible = False
+          OnClick = btnPesquisarClick
         end
       end
       object grdListagem: TDBGrid
@@ -209,7 +209,7 @@ object frmTelaheranca: TfrmTelaheranca
         E1C4B4E2C4B5E1C3B4E0C1B2E0BFAFDEBDACDDBAA9DBB8A5DAB5A2D9B29ED7AF
         9BD6AC97D4A993C68C70FF00FFD4AA94D4AB95D5AB95D4AA95D4A993D4A892D3
         A791D2A68FD2A48DD2A38CD1A28BD0A189CFA088CF9E86FF00FF}
-      TabOrder = 3
+      TabOrder = 4
       OnClick = btnCancelarClick
     end
     object btnApagar: TBitBtn
@@ -245,7 +245,7 @@ object frmTelaheranca: TfrmTelaheranca
         4444441B1B1B1F1F1F2A2A2A484848838383AAAAAAADADADA0A0A09393938888
         887F7F7F7A7A7AFF00FFB4B4B48282824444441B1B1B1F1F1F2A2A2A48484883
         8383AAAAAAADADADA0A0A09393938888887F7F7F7A7A7AFF00FF}
-      TabOrder = 4
+      TabOrder = 5
       OnClick = btnApagarClick
     end
     object btnFechar: TBitBtn
@@ -282,7 +282,7 @@ object frmTelaheranca: TfrmTelaheranca
         FF00FFB3B2B2C2C1C1D4D4D4D9D9D9DFDEDEE0E0E0E3E3E3E3E3E3C5C5C5B4B3
         B3FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFC2C1C1BEBDBDB4
         B3B3B4B3B3BDBCBCC2C1C1FF00FFFF00FFFF00FFFF00FFFF00FF}
-      TabOrder = 5
+      TabOrder = 6
       OnClick = btnFecharClick
     end
     object btnGravar: TBitBtn
@@ -318,7 +318,7 @@ object frmTelaheranca: TfrmTelaheranca
         CA9B754229924229924229924229924229924229924229924229924229924229
         92422992BC7B498F450CFF00FFB1805D975C454D1C744D1C744D1C744D1C744D
         1C744D1C744D1C744D1C744D1C744D1C744D1C74853D2687410A}
-      TabOrder = 6
+      TabOrder = 3
       OnClick = btnGravarClick
     end
   end

@@ -69,8 +69,11 @@ begin
        Qry.SQL.Add('DELETE FROM tb_setor WHERE cod_setor=:cod_setor; ');
        Qry.ParamByName('cod_setor').AsInteger:=F_cod_setor;
        try
+        ConexaoDB.StartTransaction;
          Qry.ExecSQL;
+         ConexaoDB.Commit;
        except
+       ConexaoDB.Rollback;
         Result:=false;
        end;
 
@@ -94,8 +97,11 @@ begin
        Qry.ParamByName('setor').AsString:=F_Setor;
        Qry.ParamByName('cod_setor').AsInteger:=F_cod_setor;
        try
+        ConexaoDB.StartTransaction;
          Qry.ExecSQL;
+         ConexaoDB.Commit;
        except
+       ConexaoDB.Rollback;
         Result:=false;
        end;
     finally
@@ -114,10 +120,13 @@ begin
        Qry.SQL.Clear;
        Qry.SQL.Add('INSERT INTO tb_setor (setor,cod_igreja) VALUES(:descricao,1);');
        Qry.ParamByName('descricao').AsString:=F_Setor;
-       try
+      try
+        ConexaoDB.StartTransaction;
          Qry.ExecSQL;
+         ConexaoDB.Commit;
        except
-                           Result:=false;
+       ConexaoDB.Rollback;
+        Result:=false;
        end;
     finally
        if Assigned(Qry) then

@@ -36,7 +36,6 @@ object frmPrincipal: TfrmPrincipal
       item
         Width = 50
       end>
-    ExplicitLeft = -8
   end
   object MainMenu1: TMainMenu
     Left = 16
@@ -114,6 +113,7 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Financeiro'
       object EntradasSadas1: TMenuItem
         Caption = 'Entradas & Sa'#237'das'
+        OnClick = EntradasSadas1Click
       end
       object mniDizimo: TMenuItem
         Caption = 'Dizimos'

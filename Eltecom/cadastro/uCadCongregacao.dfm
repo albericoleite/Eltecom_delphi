@@ -13,8 +13,6 @@ inherited frmCadCongregacao: TfrmCadCongregacao
     ExplicitWidth = 750
     ExplicitHeight = 337
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 742
       ExplicitHeight = 309
       inherited pnlListagem: TPanel
@@ -51,8 +49,6 @@ inherited frmCadCongregacao: TfrmCadCongregacao
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 742
       ExplicitHeight = 309
       object lbl2: TLabel
@@ -395,7 +391,9 @@ inherited frmCadCongregacao: TfrmCadCongregacao
     ExplicitTop = 337
     ExplicitWidth = 750
     inherited btnNavigator: TDBNavigator
+      Left = 413
       Hints.Strings = ()
+      ExplicitLeft = 413
     end
     inherited btnFechar: TBitBtn
       Left = 658
@@ -411,7 +409,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         'er_sub, data_aber_cong, data_fun_coa, data_fun_com, data_fun_coi' +
         ', data_fun_cv, data_cadastro, usuario_cadastro, cong_principal, ' +
         'dirigente, cod_setor, cod_igreja, cod_cc, sigla'
-      'FROM igreja.tb_congregacao;')
+      'FROM igreja.tb_congregacao')
     Left = 192
     Top = 0
     object fdtncfldQryListagemcod_congregacao: TFDAutoIncField

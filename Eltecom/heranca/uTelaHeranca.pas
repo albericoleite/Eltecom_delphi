@@ -45,9 +45,10 @@ type
     procedure grdListagemDblClick(Sender: TObject);
     procedure grdListagemKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure btnPesquisarClick(Sender: TObject);
   private
     { Private declarations }
-
+  SelectOriginal:string;
 procedure ControlarBotoes(btnNovo,btnAlterar,  btnCancelar,
  BtnGravar, btnApagar:TBitBtn;
  btnNavigator:TDBNavigator ;pgcPrincipal:TPageControl; Flag:Boolean );
@@ -156,6 +157,66 @@ EstadoDoCadastro:= ecInserir;
 LimparEdit;
 end;
 
+procedure TfrmTelaheranca.btnPesquisarClick(Sender: TObject);
+var I:Integer;
+TipoCampo:TFieldType;
+NomeCampo:string;
+WhereOrAnd:string;
+CondicaoSQL:string;
+begin
+if mskPesquisar.Text='' then  begin
+  QryListagem.Close;
+  QryListagem.SQL.Clear;
+  QryListagem.SQL.Add(SelectOriginal);
+  QryListagem.Open;
+  Abort;
+end;
+
+for I := 0 to QryListagem.FieldCount-1 do
+  begin
+     if QryListagem.Fields[I].FieldName = IndiceAtual then
+     begin
+       TipoCampo:= QryListagem.Fields[I].DataType;
+       NomeCampo:= QryListagem.Fields[I].FieldName;
+       Break;
+     end;
+  end;
+
+ //ATRIBUI A CLAUSULA NO SQL
+  if Pos('where',LowerCase(SelectOriginal))>1 then
+  begin
+    WhereOrAnd:=' and '
+  end else
+  begin
+     WhereOrAnd:=' where '
+  end;
+
+ if (TipoCampo=ftString) or (TipoCampo=ftWideString) then
+   begin
+     CondicaoSQL:= WhereOrAnd+' '+NomeCampo+' LIKE '+QuotedStr('%'+mskPesquisar.Text+'%');
+   end
+   else if (TipoCampo=ftInteger) or (TipoCampo=ftSmallint) then
+   begin
+     CondicaoSQL:= WhereOrAnd+' '+NomeCampo+'='+mskPesquisar.Text
+   end
+   else if (TipoCampo=ftDate) or (TipoCampo=ftDateTime) then
+   begin
+     CondicaoSQL:= WhereOrAnd+' '+NomeCampo+'='+QuotedStr(mskPesquisar.Text)
+   end
+   else if (TipoCampo=ftFloat) or (TipoCampo=ftCurrency) then
+   begin
+     CondicaoSQL:= WhereOrAnd+' '+NomeCampo+'='+StringReplace(mskPesquisar.Text,',','.',[rfReplaceAll]);
+   end;
+
+  QryListagem.Close;
+  QryListagem.SQL.Clear;
+  QryListagem.SQL.Add(SelectOriginal);
+  QryListagem.SQL.Add(CondicaoSQL);
+  QryListagem.SQL.text;
+  QryListagem.Open;
+
+end;
+
 procedure TfrmTelaheranca.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 QryListagem.Close;
@@ -180,6 +241,7 @@ if (QryListagem.SQL.Text<>EmptyStr) then
 begin
      QryListagem.IndexFieldNames:=IndiceAtual;
      ExibirLabelIndice(IndiceAtual,lblIndice);
+     SelectOriginal:=QryListagem.SQL.Text;
      QryListagem.Open;
 end;
 ControlarIndiceTab(pgcPrincipal,0);

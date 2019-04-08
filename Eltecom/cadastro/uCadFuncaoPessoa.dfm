@@ -1,15 +1,9 @@
 inherited frmCadFuncaoPessoa: TfrmCadFuncaoPessoa
   Caption = 'Cadastro de Pessoas e Fun'#231#245'es'
-  ExplicitWidth = 806
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       inherited grdListagem: TDBGrid
         DataSource = dtsListagem
         Columns = <
@@ -44,10 +38,6 @@ inherited frmCadFuncaoPessoa: TfrmCadFuncaoPessoa
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 22
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       object lbl2: TLabel
         Left = 63
         Top = 3
@@ -125,7 +115,7 @@ inherited frmCadFuncaoPessoa: TfrmCadFuncaoPessoa
         'SELECT cod_func_pessoa, cod_funcao, nome_funcao, cod_pessoa, nom' +
         'e_pessoa, dta_inclusao, status, dta_alteracao, usuario_inclusao,' +
         ' usuario_alteracao'
-      'FROM tb_func_pessoa;')
+      'FROM tb_func_pessoa')
     Left = 560
     Top = 104
     object fdtncfldQryListagemcod_func_pessoa: TFDAutoIncField
@@ -133,6 +123,7 @@ inherited frmCadFuncaoPessoa: TfrmCadFuncaoPessoa
       FieldName = 'cod_func_pessoa'
       Origin = 'cod_func_pessoa'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object intgrfldQryListagemcod_funcao: TIntegerField
       DisplayLabel = 'C'#243'digo Fun'#231#227'o'

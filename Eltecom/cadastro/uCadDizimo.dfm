@@ -1,20 +1,17 @@
 inherited frmCadDizimos: TfrmCadDizimos
   Caption = 'Cadastro de Dizimos'
   ClientWidth = 829
-  ExplicitTop = -17
   ExplicitWidth = 835
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 829
+    ExplicitWidth = 829
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
+      ExplicitWidth = 821
       inherited pnlListagem: TPanel
         Width = 821
+        ExplicitWidth = 821
       end
       inherited grdListagem: TDBGrid
         Width = 821
@@ -58,10 +55,7 @@ inherited frmCadDizimos: TfrmCadDizimos
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 20
-      ExplicitTop = 16
       ExplicitWidth = 821
-      ExplicitHeight = 390
       object lbl1: TLabel
         Left = 546
         Top = 3
@@ -178,20 +172,21 @@ inherited frmCadDizimos: TfrmCadDizimos
   end
   inherited pnlRodape: TPanel
     Width = 829
+    ExplicitWidth = 829
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
     end
     inherited btnFechar: TBitBtn
       Left = 737
+      ExplicitLeft = 737
     end
   end
   inherited QryListagem: TFDQuery
-    Active = True
     SQL.Strings = (
       
         'SELECT cod_dizimo, cod_talao, cod_cheque, nome, valor, `data`, c' +
         'argo, cod_congregacao'
-      'FROM igreja.tb_dizimista;')
+      'FROM igreja.tb_dizimista')
     Left = 264
     Top = 0
     object fdtncfldQryListagemcod_dizimo: TFDAutoIncField
@@ -199,6 +194,7 @@ inherited frmCadDizimos: TfrmCadDizimos
       FieldName = 'cod_dizimo'
       Origin = 'cod_dizimo'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object intgrfldQryListagemcod_talao: TIntegerField
       AutoGenerateValue = arDefault

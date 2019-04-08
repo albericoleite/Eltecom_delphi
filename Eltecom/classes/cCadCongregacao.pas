@@ -134,11 +134,14 @@ begin
     Qry.SQL.Add
       ('DELETE FROM igreja.tb_congregacao WHERE cod_congregacao=:cod_congregacao ');
     Qry.ParamByName('cod_congregacao').AsInteger := F_cod_congregacao;
-    try
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+     try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
 
   Finally
     if Assigned(Qry) then
@@ -196,12 +199,14 @@ begin
     Qry.ParamByName('cod_igreja').AsString := F_cod_igreja;
     Qry.ParamByName('cod_cc').AsInteger := F_cod_cc;
     Qry.ParamByName('sigla').AsString := F_sigla;
-    try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+     try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)
@@ -264,9 +269,14 @@ Qry.ParamByName('cod_cc').AsInteger := Self.F_cod_cc;
 Qry.ParamByName('sigla').Asstring := Self.F_sigla;
 
 
-      try Qry.SQL.Text;
-      Qry.ExecSQL;
-      except Result := false; end;
+     try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
       finally if Assigned(Qry) then FreeAndNil(Qry) end; end;
 
     function TCongregacao.Selecionar(id: Integer): Boolean; var Qry: TFDQuery;

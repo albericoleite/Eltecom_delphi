@@ -83,10 +83,13 @@ begin
       ('DELETE FROM tb_tesouraria WHERE cod_entrada=:cod_entrada');
     Qry.ParamByName('cod_entrada').AsInteger := F_cod_entrada;
     try
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
 
   Finally
     if Assigned(Qry) then
@@ -118,11 +121,13 @@ begin
     Qry.ParamByName('dta_movimento').AsDate := F_dta_movimento;
     Qry.ParamByName('status').AsString := F_status;
     try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)
@@ -152,9 +157,14 @@ begin
     Qry.ParamByName('dta_movimento').AsDate := Self.F_dta_movimento;
     Qry.ParamByName('situacao').AsInteger := Self.F_situacao;
     Qry.ParamByName('status').Asstring := Self.F_status;
-      try Qry.SQL.Text;
-       Qry.ExecSQL;
-       except Result := false; end;
+    try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
       finally if Assigned(Qry) then FreeAndNil(Qry) end; end;
 
     function TLancamento.Selecionar(id: Integer): Boolean; var Qry: TFDQuery;

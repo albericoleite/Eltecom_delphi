@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,Enter,
   System.Classes, Vcl.Graphics,  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,
-  uDTMConexao, Vcl.ComCtrls,
+  uDTMConexao, Vcl.ComCtrls, FireDAC.Stan.Option,
   uFrmAtualizaDB, uDTMRelatorio,cUsuarioLogado;
 
 type
@@ -58,9 +58,11 @@ type
     procedure mniUsurios1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure mniAlterarSenha1Click(Sender: TObject);
+    procedure EntradasSadas1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
+    procedure CriarForm(aNomeForm: TFormClass);
 
     { Private declarations }
   public
@@ -76,9 +78,9 @@ implementation
 {$R *.dfm}
 
 uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
-  uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cArquivoIni,
+  uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cArquivoIni, cAtualizacaoBancoDeDados,
   cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa, uLogin, uCadUsuario,
-  uAlterarSenha;
+  uAlterarSenha, uCadLancamento;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -89,9 +91,7 @@ end;
 
 procedure TfrmPrincipal.Clientes1Click(Sender: TObject);
 begin
-  frmCadPessoa := TfrmCadPessoa.Create(self);
-  frmCadPessoa.ShowModal;
-  frmCadPessoa.Release;
+  CriarForm(TfrmCadPessoa);
 end;
 
 procedure TfrmPrincipal.Configurao1Click(Sender: TObject);
@@ -164,8 +164,9 @@ begin
       dtmPrincipal.ConexaoDB.ConnectionString := 'DriverID=' + DRIVE +
         ';Server=' + SERVER + ';Database=' + BANCO + ';User_name=' + USER +
         ';Password=' + SENHA + ';Port=' + IntToStr(port);
-
-        end;
+      dtmPrincipal.ConexaoDB.TxOptions.AutoCommit:=True;
+      dtmPrincipal.ConexaoDB.TxOptions.Isolation:=xiReadCommitted;
+      end;
 
     try
         dtmPrincipal.ConexaoDB.Connected := True;
@@ -225,58 +226,42 @@ end;
 
 procedure TfrmPrincipal.Igreja1Click(Sender: TObject);
 begin
-  frmCadIgreja := TfrmCadIgreja.Create(self);
-  frmCadIgreja.ShowModal;
-  frmCadIgreja.Release;
+  CriarForm(TfrmCadIgreja);
 end;
 
 procedure TfrmPrincipal.mniAlterarSenha1Click(Sender: TObject);
 begin
-    frmAlterarSenha := TfrmAlterarSenha.Create(self);
-  frmAlterarSenha.ShowModal;
-  frmAlterarSenha.Release;
+   CriarForm(TfrmAlterarSenha);
 end;
 
 procedure TfrmPrincipal.mniCargos1Click(Sender: TObject);
 begin
-  frmCadCargo := TfrmCadCargo.Create(self);
-  frmCadCargo.ShowModal;
-  frmCadCargo.Release;
+  CriarForm(TfrmCadCargo);
 end;
 
 procedure TfrmPrincipal.mniDepartamentoPessoas1Click(Sender: TObject);
 begin
-  frmCaddeparPessoa := TfrmCaddeparPessoa.Create(self);
-  frmCaddeparPessoa.ShowModal;
-  frmCaddeparPessoa.Release;
+  CriarForm(TfrmCaddeparPessoa);
 end;
 
 procedure TfrmPrincipal.mniDepartamentos2Click(Sender: TObject);
 begin
-  frmCadDepartamento := TfrmCadDepartamento.Create(self);
-  frmCadDepartamento.ShowModal;
-  frmCadDepartamento.Release;
+   CriarForm(TfrmCadDepartamento);
 end;
 
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
 begin
-  frmCadDizimos := TfrmCadDizimos.Create(self);
-  frmCadDizimos.ShowModal;
-  frmCadDizimos.Release;
+  CriarForm(TfrmCadDizimos);
 end;
 
 procedure TfrmPrincipal.mniFunes2Click(Sender: TObject);
 begin
-  frmCadFuncao := TfrmCadFuncao.Create(self);
-  frmCadFuncao.ShowModal;
-  frmCadFuncao.Release;
+  CriarForm(TfrmCadFuncao);
 end;
 
 procedure TfrmPrincipal.mniFunesPessoas1Click(Sender: TObject);
 begin
-  frmCadFuncaoPessoa := TfrmCadFuncaoPessoa.Create(self);
-  frmCadFuncaoPessoa.ShowModal;
-  frmCaddeparPessoa.Release;
+   CriarForm(TfrmCadFuncaoPessoa);
 end;
 
 procedure TfrmPrincipal.mniSobreClick(Sender: TObject);
@@ -289,9 +274,7 @@ end;
 
 procedure TfrmPrincipal.mniUsurios1Click(Sender: TObject);
 begin
-  frmCadUsuario := TfrmCadUsuario.Create(self);
-  frmCadUsuario.ShowModal;
-  frmCadUsuario.Release;
+  CriarForm(TfrmCadUsuario);
 end;
 
 procedure TfrmPrincipal.Sair1Click(Sender: TObject);
@@ -302,21 +285,28 @@ end;
 
 procedure TfrmPrincipal.Setores1Click(Sender: TObject);
 begin
-  frmCadSetores := TfrmCadSetores.Create(self);
-  frmCadSetores.ShowModal;
-  frmCadSetores.Release;
+  CriarForm(TfrmCadSetores);
 end;
 
 procedure TfrmPrincipal.AtualizaBandoDados(aForm: TfrmAtualizaDB);
 var
   sl: Integer;
+  oAtualizarMySQL:TAtualizaBancoDadosMysql;
 begin
   sl := 50;
   aForm.chkConexBD.Checked := true;
   aForm.Refresh;
+
+  try
+    oAtualizarMySQL:= TAtualizaBancoDadosMySQL.Create(dtmPrincipal.ConexaoDB);
+    oAtualizarMySQL.AtualizarBancoDeDadosMySQL;
+  finally
+    if Assigned(oAtualizarMySQL) then
+     FreeAndNil(oAtualizarMySQL);
+  end;
   // TODO: CRIAR QUERY NO DATAMODULE PARA EXECUTAR A ATUALIZAÇÃO DO BANCO
   // Exemplo dtmPrincipal.fdqryCong_sistema.ExecSQL;
-  aForm.chkIgreja.Checked := true;
+ { aForm.chkIgreja.Checked := true;
   aForm.Refresh;
   Sleep(sl);
 
@@ -391,8 +381,25 @@ begin
   dtmPrincipal.fdqryCriartb_func_pessoa.ExecSQL;
   aForm.chkfuncoesPessoas.Checked := true;
   aForm.Refresh;
-  Sleep(sl);
+  Sleep(sl);     }
 
+end;
+
+procedure TfrmPrincipal.CriarForm(aNomeForm:TFormClass);
+var form:TForm;
+begin
+  try
+    form := aNomeForm.Create(Application);
+    form.ShowModal;
+  finally
+    if Assigned(form) then
+       form.Release;
+  end;
+end;
+
+procedure TfrmPrincipal.EntradasSadas1Click(Sender: TObject);
+begin
+CriarForm(TfrmCadLancamento);
 end;
 
 end.

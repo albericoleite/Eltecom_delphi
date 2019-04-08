@@ -75,10 +75,13 @@ begin
     Qry.SQL.Add('DELETE FROM igreja.tb_funcao WHERE cod_funcao=:cod_funcao');
     Qry.ParamByName('cod_funcao').AsInteger := F_cod_funcao;
     try
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
 
   Finally
     if Assigned(Qry) then
@@ -103,12 +106,14 @@ begin
     Qry.ParamByName('funcao').AsString := F_funcao;
     Qry.ParamByName('cod_departamento').AsInteger := F_cod_departamento ;
     Qry.ParamByName('nome_departamento').AsString := F_nome_departamento;
-    try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+     try
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)
@@ -132,11 +137,13 @@ begin
     Qry.ParamByName('nome_departamento').AsString := F_nome_departamento;
 
     try
-      Qry.SQL.Text;
-      Qry.ExecSQL;
-    except
-      Result := false;
-    end;
+        ConexaoDB.StartTransaction;
+         Qry.ExecSQL;
+         ConexaoDB.Commit;
+       except
+       ConexaoDB.Rollback;
+        Result:=false;
+       end;
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)

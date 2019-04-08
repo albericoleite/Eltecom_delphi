@@ -40,7 +40,11 @@ uses
   cCadCargo in 'classes\cCadCargo.pas',
   Enter in 'terceiros\Enter.pas',
   uAlterarSenha in 'login\uAlterarSenha.pas' {frmAlterarSenha},
-  cUsuarioLogado in 'classes\cUsuarioLogado.pas';
+  cUsuarioLogado in 'classes\cUsuarioLogado.pas',
+  uCadLancamento in 'cadastro\uCadLancamento.pas' {frmCadLancamento},
+  cCadLancamento in 'classes\cCadLancamento.pas',
+  cAtualizacaoBancoDeDados in 'classes\cAtualizacaoBancoDeDados.pas',
+  cAtualizacaoTabelaMySQL in 'classes\cAtualizacaoTabelaMySQL.pas';
 
 {$R *.res}
 
@@ -48,5 +52,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmCadLancamento, frmCadLancamento);
   Application.Run;
 end.
