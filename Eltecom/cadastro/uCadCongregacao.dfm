@@ -13,6 +13,8 @@ inherited frmCadCongregacao: TfrmCadCongregacao
     ExplicitWidth = 750
     ExplicitHeight = 337
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 742
       ExplicitHeight = 309
       inherited pnlListagem: TPanel
@@ -49,6 +51,8 @@ inherited frmCadCongregacao: TfrmCadCongregacao
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 742
       ExplicitHeight = 309
       object lbl2: TLabel
@@ -57,6 +61,13 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         Width = 26
         Height = 13
         Caption = 'Setor'
+      end
+      object lbl3: TLabel
+        Left = 350
+        Top = 3
+        Width = 43
+        Height = 13
+        Caption = 'Dirigente'
       end
       object lbledtCodigo: TLabeledEdit
         Tag = 1
@@ -85,8 +96,8 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         TabOrder = 1
       end
       object lbledtDirigente: TLabeledEdit
-        Left = 350
-        Top = 20
+        Left = 438
+        Top = 249
         Width = 243
         Height = 21
         CharCase = ecUpperCase
@@ -95,6 +106,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         EditLabel.Caption = 'Dirigente'
         MaxLength = 45
         TabOrder = 5
+        Visible = False
       end
       object grpResidencia: TGroupBox
         Left = 0
@@ -383,6 +395,16 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         ListSource = dsSetores
         TabOrder = 7
       end
+      object dblkcbbDirigente: TDBLookupComboBox
+        Left = 350
+        Top = 20
+        Width = 243
+        Height = 21
+        KeyField = 'nome'
+        ListField = 'lista'
+        ListSource = dsDirigente
+        TabOrder = 8
+      end
     end
   end
   inherited pnlRodape: TPanel
@@ -607,6 +629,30 @@ inherited frmCadCongregacao: TfrmCadCongregacao
   end
   object dsSetores: TDataSource
     DataSet = dtmPrincipal.fdqrySetores
-    Left = 344
+    Left = 592
+    Top = 152
+  end
+  object dsDirigente: TDataSource
+    DataSet = fdqryDirigente
+    Left = 504
+    Top = 184
+  end
+  object fdqryDirigente: TFDQuery
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'select nome as lista, nome  from tb_obreiro_cargo')
+    Left = 384
+    Top = 184
+    object strngfldDirigentelista: TStringField
+      FieldName = 'lista'
+      Size = 50
+    end
+    object strngfldDirigentenome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome'
+      Origin = 'NOME'
+      ProviderFlags = []
+      Size = 50
+    end
   end
 end

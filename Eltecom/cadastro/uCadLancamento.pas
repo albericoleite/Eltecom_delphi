@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, uEnum,cCadLancamento,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,uDTMConexao,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,
-  RxToolEdit, RxCurrEdit;
+  RxToolEdit, RxCurrEdit,System.DateUtils;
 
 type
   TfrmCadLancamento = class(TfrmTelaheranca)
@@ -34,23 +34,36 @@ type
     lbledtCodTalao: TLabeledEdit;
     lbledtDescricao: TLabeledEdit;
     lbledtCodigo: TLabeledEdit;
+    dtdtIni: TDateEdit;
+    lblDataNascimento: TLabel;
+    lbl4: TLabel;
+    dtdtFim: TDateEdit;
+    lbl5: TLabel;
+    btnBuscar: TBitBtn;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnNovoClick(Sender: TObject);
     procedure cbbTipoKeyPress(Sender: TObject; var Key: Char);
     procedure btnGravarClick(Sender: TObject);
+    procedure btnBuscarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnApagarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
      oLancamento: TLancamento;
     function Apagar:Boolean; override;
     function Gravar(EstadodoCadastro:TEstadoDoCadastro):Boolean; override;
+    procedure ListaLancamentosPeriodo;
   public
     { Public declarations }
   end;
 
 var
   frmCadLancamento: TfrmCadLancamento;
+  SelectOriginal,CondicaoSQL:string;
+  dti,dtf:TDateTime;
 
 implementation
 
@@ -84,10 +97,38 @@ if oLancamento.Selecionar(QryListagem.FieldByName('cod_entrada').AsInteger) then
 
 end;
 
-procedure TfrmCadLancamento.btnGravarClick(Sender: TObject);
+procedure TfrmCadLancamento.btnApagarClick(Sender: TObject);
+begin
+dti:= dtdtIni.Date;
+  dtf:=dtdtFim.Date;
+  inherited;
+  dti:= dtdtIni.Date;
+  dtf:=dtdtFim.Date;
+end;
+
+procedure TfrmCadLancamento.btnBuscarClick(Sender: TObject);
 begin
   inherited;
+ListaLancamentosPeriodo;
+end;
+
+procedure TfrmCadLancamento.btnCancelarClick(Sender: TObject);
+begin
+  dti:= dtdtIni.Date;
+  dtf:=dtdtFim.Date;
+  inherited;
+dtdtIni.Date:=dti;
+dtdtFim.Date:=dtf;
+end;
+
+procedure TfrmCadLancamento.btnGravarClick(Sender: TObject);
+begin
+  dti:= dtdtIni.Date;
+  dtf:=dtdtFim.Date;
+  inherited;
 btnNovo.SetFocus;
+dtdtIni.Date:=dti;
+dtdtFim.Date:=dtf;
 end;
 
 procedure TfrmCadLancamento.btnNovoClick(Sender: TObject);
@@ -124,9 +165,18 @@ end;
 
 procedure TfrmCadLancamento.FormCreate(Sender: TObject);
 begin
+  ListaLancamentosPeriodo;
   inherited;
   oLancamento:= TLancamento.Create(dtmPrincipal.ConexaoDB);
    IndiceAtual:='cod_entrada';
+   dtdtIni.Date:=StartOfTheMonth(now);
+   dtdtFim.Date:=Now;
+end;
+
+procedure TfrmCadLancamento.FormShow(Sender: TObject);
+begin
+  inherited;
+btnBuscarClick(sender);
 end;
 
 function TfrmCadLancamento.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
@@ -147,6 +197,15 @@ begin
     else if (EstadodoCadastro=ecAlterar) then
      Result:=oLancamento.Atualizar;
 
+end;
+
+procedure TfrmCadLancamento.ListaLancamentosPeriodo;
+begin
+  QryListagem.Close;
+  QryListagem.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+  QryListagem.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
+  QryListagem.SQL.Text;
+  QryListagem.Open;
 end;
 
 {$endregion}

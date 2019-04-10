@@ -1,17 +1,81 @@
 inherited frmCadDizimos: TfrmCadDizimos
   Caption = 'Cadastro de Dizimos'
   ClientWidth = 829
+  ExplicitTop = -65
   ExplicitWidth = 835
+  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 829
+    ActivePage = tabManutencao
     ExplicitWidth = 829
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 821
+      ExplicitHeight = 390
       inherited pnlListagem: TPanel
         Width = 821
         ExplicitWidth = 821
+        object lblDataNascimento: TLabel [1]
+          Left = 370
+          Top = -1
+          Width = 53
+          Height = 13
+          Caption = 'Data Inicial'
+        end
+        object lbl5: TLabel [2]
+          Left = 470
+          Top = 1
+          Width = 48
+          Height = 13
+          Caption = 'Data Final'
+        end
+        object dtdtIni: TDateEdit
+          Left = 370
+          Top = 18
+          Width = 83
+          Height = 21
+          Hint = 'Data Inicial'
+          ClickKey = 114
+          DialogTitle = 'Selecione a Data'
+          NumGlyphs = 2
+          CalendarStyle = csDialog
+          TabOrder = 2
+          Text = '01/04/2019'
+        end
+        object dtdtFim: TDateEdit
+          Left = 470
+          Top = 18
+          Width = 84
+          Height = 21
+          Hint = 'Data Finaal'
+          ClickKey = 114
+          DialogTitle = 'Selecione a Data'
+          NumGlyphs = 2
+          CalendarStyle = csDialog
+          TabOrder = 3
+          Text = '10/04/2019'
+        end
+        object btnBuscar: TBitBtn
+          Left = 560
+          Top = 14
+          Width = 49
+          Height = 25
+          Caption = 'Buscar'
+          TabOrder = 4
+          OnClick = btnBuscarClick
+        end
+        object btnImprimir: TBitBtn
+          Left = 648
+          Top = 14
+          Width = 75
+          Height = 25
+          Caption = 'Imprimir'
+          TabOrder = 5
+          OnClick = btnImprimirClick
+        end
       end
       inherited grdListagem: TDBGrid
         Width = 821
@@ -55,7 +119,10 @@ inherited frmCadDizimos: TfrmCadDizimos
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 821
+      ExplicitHeight = 390
       object lbl1: TLabel
         Left = 546
         Top = 3
@@ -96,6 +163,7 @@ inherited frmCadDizimos: TfrmCadDizimos
         Top = 20
         Width = 265
         Height = 21
+        CharCase = ecUpperCase
         EditLabel.Width = 27
         EditLabel.Height = 13
         EditLabel.Caption = 'Nome'
@@ -132,7 +200,7 @@ inherited frmCadDizimos: TfrmCadDizimos
       object dtdtData: TDateEdit
         Left = 546
         Top = 20
-        Width = 95
+        Width = 87
         Height = 21
         Hint = 'Data de abertura como Sub Congrega'#231#227'o.'
         ClickKey = 114
@@ -140,6 +208,7 @@ inherited frmCadDizimos: TfrmCadDizimos
         NumGlyphs = 2
         CalendarStyle = csDialog
         TabOrder = 6
+        Text = '01/01/2019'
       end
       object dblkcbbCargo: TDBLookupComboBox
         Left = 647
@@ -182,13 +251,32 @@ inherited frmCadDizimos: TfrmCadDizimos
     end
   end
   inherited QryListagem: TFDQuery
+    Active = True
     SQL.Strings = (
       
-        'SELECT cod_dizimo, cod_talao, cod_cheque, nome, valor, `data`, c' +
-        'argo, cod_congregacao'
-      'FROM igreja.tb_dizimista')
+        'SELECT t.cod_dizimo, t.cod_talao, t.cod_cheque, t.nome, t.valor,' +
+        ' t.`data`, t.cargo, t.cod_congregacao'
+      
+        'FROM tb_dizimista t join tb_parametro_sistema a on a.cod_congreg' +
+        'acao = t.cod_congregacao where t.`data` between '
+      ':dtini'
+      'and '
+      ':dtfim')
     Left = 264
     Top = 0
+    ParamData = <
+      item
+        Name = 'DTINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 43466d
+      end
+      item
+        Name = 'DTFIM'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 43586d
+      end>
     object fdtncfldQryListagemcod_dizimo: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'cod_dizimo'

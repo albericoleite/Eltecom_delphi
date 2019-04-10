@@ -3,6 +3,7 @@ inherited frmCadFuncaoPessoa: TfrmCadFuncaoPessoa
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
       inherited grdListagem: TDBGrid
         DataSource = dtsListagem
@@ -205,10 +206,9 @@ inherited frmCadFuncaoPessoa: TfrmCadFuncaoPessoa
     Top = 232
   end
   object fdqryPessoas: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
-      'SELECT cod_pessoa, nome_pessoa '
+      'SELECT cod_pessoa, nome_pessoa'
       'FROM tb_pessoa a inner join tb_parametro_sistema b '
       'on a.cod_congregacao = b.cod_congregacao')
     Left = 448

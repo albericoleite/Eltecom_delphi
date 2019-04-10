@@ -94,6 +94,64 @@ type
     strngfldBuscaPessoaRelatorioSITUACAO: TStringField;
     strngfldBuscaPessoaRelatoriocongregacao_1: TStringField;
     strngfldBuscaPessoaRelatoriosetorcong: TStringField;
+    frxrprtFichaMembro: TfrxReport;
+    frxrprtFichaCongregado: TfrxReport;
+    frxrprtBatismoAguas: TfrxReport;
+    fdqryPessoas_dept: TFDQuery;
+    intgrfldPessoas_deptcod_departamento: TIntegerField;
+    fdtncfldPessoas_deptcod_dept_pessoa: TFDAutoIncField;
+    intgrfldPessoas_deptcod_pessoa: TIntegerField;
+    strngfldPessoas_deptnome_departamento: TStringField;
+    strngfldPessoas_deptnome_pessoa: TStringField;
+    lrgntfldPessoas_deptidade: TLargeintField;
+    frxrprtPessoas_dept: TfrxReport;
+    frxdbPessoa_dept: TfrxDBDataset;
+    frxdbCongregacao: TfrxDBDataset;
+    fdqryCongregacao: TFDQuery;
+    intgrfldTesourariaDescricaoCongregacaocod_igreja: TIntegerField;
+    fdtncfldCongregacaocod_congregacao: TFDAutoIncField;
+    intgrfldTesourariaDescricaoCongregacaocod_central: TIntegerField;
+    strngfldCongregacaocongregacao: TStringField;
+    intgrfldTesourariaDescricaoCongregacaocod_setor: TIntegerField;
+    strngfldCongregacaotelefone: TStringField;
+    strngfldCongregacaocnpj: TStringField;
+    strngfldCongregacaositeblog: TStringField;
+    strngfldCongregacaoendereco: TStringField;
+    strngfldCongregacaocomplemento: TStringField;
+    strngfldCongregacaobairro: TStringField;
+    strngfldCongregacaocep: TStringField;
+    strngfldCongregacaocidade: TStringField;
+    strngfldCongregacaodiasculto: TStringField;
+    strngfldCongregacaodiacoa: TStringField;
+    strngfldCongregacaodiacom: TStringField;
+    strngfldCongregacaodiacoi: TStringField;
+    strngfldCongregacaodiacv: TStringField;
+    dtfldCongregacaodata_aber_sub: TDateField;
+    dtfldCongregacaodata_aber_cong: TDateField;
+    dtfldCongregacaodata_fun_coa: TDateField;
+    dtfldCongregacaodata_fun_com: TDateField;
+    dtfldCongregacaodata_fun_coi: TDateField;
+    dtfldCongregacaodata_fun_cv: TDateField;
+    dtfldCongregacaodata_cadastro: TDateField;
+    strngfldCongregacaousuario_cadastro: TStringField;
+    strngfldCongregacaocong_principal: TStringField;
+    strngfldCongregacaodirigente: TStringField;
+    intgrfldCongregacaosituacao: TIntegerField;
+    intgrfldCongregacaocod_cc: TIntegerField;
+    strngfldCongregacaosigla: TStringField;
+    strngfldCongregacaosetor: TStringField;
+    dtfldPessoas_deptdta_nascimento: TDateField;
+    frxrprtDizimista: TfrxReport;
+    fdqryDizimista: TFDQuery;
+    fdtncfldDizimistacod_dizimo: TFDAutoIncField;
+    intgrfldDizimistacod_talao: TIntegerField;
+    intgrfldDizimistacod_cheque: TIntegerField;
+    strngfldDizimistanome: TStringField;
+    dtfldDizimistadata: TDateField;
+    strngfldDizimistacargo: TStringField;
+    fltfldDizimistavalor: TFloatField;
+    intgrfldDizimistacod_congregacao: TIntegerField;
+    frxdbDizimista: TfrxDBDataset;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -108,7 +166,7 @@ var
 implementation
 
 uses
-  uDTMConexao;
+  uDTMConexao, uCadDizimo;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 

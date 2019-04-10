@@ -4,14 +4,72 @@ inherited frmCadLancamento: TfrmCadLancamento
   ExplicitWidth = 742
   PixelsPerInch = 96
   TextHeight = 13
+  object lbl4: TLabel [0]
+    Left = 474
+    Top = 23
+    Width = 81
+    Height = 13
+    Caption = 'Data Nascimento'
+  end
   inherited pgcPrincipal: TPageControl
     Width = 736
+    ExplicitLeft = -12
+    ExplicitTop = 8
     ExplicitWidth = 736
     inherited tabListagem: TTabSheet
       ExplicitWidth = 728
       inherited pnlListagem: TPanel
         Width = 728
         ExplicitWidth = 728
+        object lblDataNascimento: TLabel [1]
+          Left = 370
+          Top = -1
+          Width = 53
+          Height = 13
+          Caption = 'Data Inicial'
+        end
+        object lbl5: TLabel [2]
+          Left = 470
+          Top = 1
+          Width = 48
+          Height = 13
+          Caption = 'Data Final'
+        end
+        object dtdtIni: TDateEdit
+          Left = 370
+          Top = 18
+          Width = 84
+          Height = 21
+          Hint = 'Data Inicial'
+          ClickKey = 114
+          DialogTitle = 'Selecione a Data'
+          NumGlyphs = 2
+          CalendarStyle = csDialog
+          TabOrder = 2
+          Text = '01/04/2019'
+        end
+        object dtdtFim: TDateEdit
+          Left = 470
+          Top = 18
+          Width = 84
+          Height = 21
+          Hint = 'Data Finaal'
+          ClickKey = 114
+          DialogTitle = 'Selecione a Data'
+          NumGlyphs = 2
+          CalendarStyle = csDialog
+          TabOrder = 3
+          Text = '10/04/2019'
+        end
+        object btnBuscar: TBitBtn
+          Left = 560
+          Top = 14
+          Width = 49
+          Height = 25
+          Caption = 'Buscar'
+          TabOrder = 4
+          OnClick = btnBuscarClick
+        end
       end
       inherited grdListagem: TDBGrid
         Width = 728
@@ -52,6 +110,7 @@ inherited frmCadLancamento: TfrmCadLancamento
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitWidth = 728
       object pnl1: TPanel
         Left = 3
         Top = 3
@@ -167,14 +226,33 @@ inherited frmCadLancamento: TfrmCadLancamento
     end
   end
   inherited QryListagem: TFDQuery
+    Active = True
     SQL.Strings = (
+      'SELECT t.cod_entrada, t.nro_documento, t.dta_movimento'
+      ', t.dta_inclusao, t.usuario_inclusao'
+      ', t.descricao, t.valor, t.tipo, t.status'
+      ', t.cod_congregacao, t.situacao'
       
-        'SELECT cod_entrada, nro_documento, dta_movimento, dta_inclusao, ' +
-        'usuario_inclusao, descricao, valor, tipo, status, cod_congregaca' +
-        'o, situacao'
-      'FROM igreja.tb_tesouraria')
+        'FROM tb_tesouraria t join tb_parametro_sistema a on a.cod_congre' +
+        'gacao = t.cod_congregacao where t.dta_movimento between '
+      ':dtini'
+      'and '
+      ':dtfim')
     Left = 584
     Top = 208
+    ParamData = <
+      item
+        Name = 'DTINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 43466d
+      end
+      item
+        Name = 'DTFIM'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 43586d
+      end>
     object fdtncfldQryListagemcod_entrada: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'cod_entrada'

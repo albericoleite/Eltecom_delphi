@@ -49,11 +49,12 @@ end;
 procedure TfrmCongSistema.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 //frmMenu.pnlBotoes.Visible := True;
-dtmPrincipal.fdqryCong_sistema.Refresh;
+dtmPrincipal.fdqryCong_sistema.Open;
     dtmPrincipal.congAtiva:=  dtmPrincipal.fdqryCong_sistema.FieldByName('cod_congregacao').AsInteger;
     dtmPrincipal.descCongAtiva:= dtmPrincipal.fdqryCong_sistema.FieldByName('congregacao').AsString;
 fdqryCongregacaoSistema.close;
 fdqryListagem.close;
+dtmPrincipal.fdqryCong_sistema.Close;
 Action := cafree;
 frmCongSistema := nil;
 end;

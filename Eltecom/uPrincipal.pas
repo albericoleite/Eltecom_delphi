@@ -39,6 +39,7 @@ type
     mniUsurios1: TMenuItem;
     mniN5: TMenuItem;
     mniAlterarSenha1: TMenuItem;
+    mniDepartamentos3: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -59,6 +60,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure mniAlterarSenha1Click(Sender: TObject);
     procedure EntradasSadas1Click(Sender: TObject);
+    procedure mniDepartamentos3Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -80,7 +82,7 @@ implementation
 uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cArquivoIni, cAtualizacaoBancoDeDados,
   cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa, uLogin, uCadUsuario,
-  uAlterarSenha, uCadLancamento;
+  uAlterarSenha, uCadLancamento, uDepartamentos;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -189,7 +191,6 @@ begin
   // Except
   // ShowMessage('Erro na fdqryCong_sistema! ');
   // end;
-  // TODO: Instalar componente de Terceiro ENTER
 
   // Carregar informações do Status Bar
   statMenu.Panels[0].Text :=
@@ -249,6 +250,11 @@ begin
    CriarForm(TfrmCadDepartamento);
 end;
 
+procedure TfrmPrincipal.mniDepartamentos3Click(Sender: TObject);
+begin
+ CriarForm(TfrmDepartamentos);
+end;
+
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
 begin
   CriarForm(TfrmCadDizimos);
@@ -296,7 +302,7 @@ begin
   sl := 50;
   aForm.chkConexBD.Checked := true;
   aForm.Refresh;
-
+   //TODO: CRIAR CARGO PESSOA
   try
     oAtualizarMySQL:= TAtualizaBancoDadosMySQL.Create(dtmPrincipal.ConexaoDB);
     oAtualizarMySQL.AtualizarBancoDeDadosMySQL;

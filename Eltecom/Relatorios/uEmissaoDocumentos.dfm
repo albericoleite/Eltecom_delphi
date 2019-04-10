@@ -95,11 +95,14 @@ object frmEmitirDoc: TfrmEmitirDoc
   end
   object chkMembro: TCheckBox
     Left = 266
-    Top = 4
+    Top = 0
     Width = 143
     Height = 17
     Caption = 'Listar somente Membros:'
+    Checked = True
+    State = cbChecked
     TabOrder = 2
+    OnClick = chkMembroClick
   end
   object mmoObservacao: TMemo
     Left = 567
@@ -182,20 +185,21 @@ object frmEmitirDoc: TfrmEmitirDoc
     Caption = 'Documentos'
     TabOrder = 8
     object chkRequerimento: TCheckBox
-      Left = 8
+      Left = 3
       Top = 14
       Width = 97
       Height = 17
       Caption = 'Requerimento'
       Enabled = False
       TabOrder = 0
+      OnClick = chkRequerimentoClick
     end
     object chkOcorrencia: TCheckBox
       Left = 8
       Top = 37
       Width = 113
       Height = 17
-      Caption = 'Not. de Ocorrencia'
+      Caption = 'Not. de Ocorr'#234'ncia'
       TabOrder = 1
     end
     object chkFxMembro: TCheckBox
@@ -204,7 +208,6 @@ object frmEmitirDoc: TfrmEmitirDoc
       Width = 121
       Height = 17
       Caption = 'Ficha de Membro'
-      Enabled = False
       TabOrder = 2
     end
     object chkFxCongregado: TCheckBox
@@ -213,7 +216,6 @@ object frmEmitirDoc: TfrmEmitirDoc
       Width = 124
       Height = 17
       Caption = 'Ficha de Congregado'
-      Enabled = False
       TabOrder = 3
     end
     object chkFxBatismo: TCheckBox
@@ -222,7 +224,6 @@ object frmEmitirDoc: TfrmEmitirDoc
       Width = 110
       Height = 17
       Caption = 'Ficha de Batismo'
-      Enabled = False
       TabOrder = 4
     end
     object chkTodas: TCheckBox

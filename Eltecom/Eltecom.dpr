@@ -44,7 +44,8 @@ uses
   uCadLancamento in 'cadastro\uCadLancamento.pas' {frmCadLancamento},
   cCadLancamento in 'classes\cCadLancamento.pas',
   cAtualizacaoBancoDeDados in 'classes\cAtualizacaoBancoDeDados.pas',
-  cAtualizacaoTabelaMySQL in 'classes\cAtualizacaoTabelaMySQL.pas';
+  cAtualizacaoTabelaMySQL in 'classes\cAtualizacaoTabelaMySQL.pas',
+  uDepartamentos in 'Relatorios\uDepartamentos.pas' {frmDepartamentos};
 
 {$R *.res}
 
@@ -52,6 +53,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmCadLancamento, frmCadLancamento);
   Application.Run;
 end.

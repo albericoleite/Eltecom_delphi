@@ -186,8 +186,8 @@ object dtmPrincipal: TdtmPrincipal
     SQL.Strings = (
       'SELECT cod_setor, setor'
       'FROM igreja.tb_setor;')
-    Left = 312
-    Top = 128
+    Left = 416
+    Top = 288
   end
   object fdqryCriartb_dizimo: TFDQuery
     Connection = ConexaoDB

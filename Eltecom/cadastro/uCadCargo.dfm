@@ -1,10 +1,15 @@
 inherited frmCadCargo: TfrmCadCargo
   Caption = 'Cadastro de Cargos Eclesi'#225'ticos'
+  ExplicitWidth = 806
+  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 792
+      ExplicitHeight = 390
       inherited grdListagem: TDBGrid
         DataSource = dtsListagem
         Columns = <
@@ -21,6 +26,10 @@ inherited frmCadCargo: TfrmCadCargo
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 792
+      ExplicitHeight = 390
       object lbledtCargo: TLabeledEdit
         Tag = 2
         Left = 79
@@ -55,6 +64,7 @@ inherited frmCadCargo: TfrmCadCargo
     end
   end
   inherited QryListagem: TFDQuery
+    Active = True
     SQL.Strings = (
       'SELECT cod_cargo, cargo'
       'FROM igreja.tb_cargo')

@@ -129,6 +129,10 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Cartas e Documentos'
         OnClick = CartaseDocumentos1Click
       end
+      object mniDepartamentos3: TMenuItem
+        Caption = 'Departamentos'
+        OnClick = mniDepartamentos3Click
+      end
     end
     object Configurao1: TMenuItem
       Caption = 'Configura'#231#227'o'

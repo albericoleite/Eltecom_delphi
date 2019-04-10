@@ -78,6 +78,12 @@ type
     dblkcbbSetor: TDBLookupComboBox;
     lbl2: TLabel;
     dsSetores: TDataSource;
+    dsDirigente: TDataSource;
+    fdqryDirigente: TFDQuery;
+    dblkcbbDirigente: TDBLookupComboBox;
+    lbl3: TLabel;
+    strngfldDirigentelista: TStringField;
+    strngfldDirigentenome: TStringField;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -122,6 +128,7 @@ if oCongregacao.Selecionar(QryListagem.FieldByName('cod_congregacao').AsInteger)
     medtTelefone.Text := oCongregacao.telefone;
     medtCEP.Text := oCongregacao.cep;
     dblkcbbSetor.KeyValue:= oCongregacao.cod_setor;
+    dblkcbbDirigente.KeyValue:=oCongregacao.dirigente;
 
     end
   else
@@ -138,6 +145,8 @@ procedure TfrmCadCongregacao.FormClose(Sender: TObject;
 begin
   inherited;
   //dtmPrincipal.fdqryCong_sistema.Refresh;
+    fdqryDirigente.close;
+   dtmPrincipal.fdqrySetores.close;
 if Assigned(oCongregacao) then
      FreeAndNil(oCongregacao);
 end;
@@ -147,6 +156,8 @@ begin
   inherited;
   oCongregacao:= TCongregacao.Create(dtmPrincipal.ConexaoDB);
    IndiceAtual:='cod_congregacao';
+   fdqryDirigente.Open;
+   dtmPrincipal.fdqrySetores.Open;
 end;
 
 function TfrmCadCongregacao.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
@@ -174,6 +185,7 @@ begin
        oCongregacao.cod_setor:=dblkcbbSetor.KeyValue;
        oCongregacao.setor:= dblkcbbSetor.Text;
        oCongregacao.situacao:='0';
+       oCongregacao.dirigente:=dblkcbbDirigente.Text;
 
 
     if (EstadodoCadastro=ecInserir) then
