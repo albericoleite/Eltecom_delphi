@@ -11,7 +11,21 @@ uses
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,uEnum,  uDTMConexao, cCadDepartPessoa;
 
 type
-  TfrmCaddeparPessoa = class(TfrmTelaheranca)
+  TfrmCadDepartPessoa = class(TfrmTelaheranca)
+    lbledtCodDeptpessoa: TLabeledEdit;
+    dblkcbbPessoa: TDBLookupComboBox;
+    lbl2: TLabel;
+    lbl1: TLabel;
+    lbl3: TLabel;
+    fdqryPessoas: TFDQuery;
+    dsPessoas: TDataSource;
+    dsDepartamentos: TDataSource;
+    fdqryDepartamentos: TFDQuery;
+    lbl4: TLabel;
+    dsSituacao: TDataSource;
+    fdqrySituacao: TFDQuery;
+    fdtncfldPessoascod_pessoa: TFDAutoIncField;
+    strngfldPessoasnome_pessoa: TStringField;
     fdtncfldQryListagemcod_dept_pessoa: TFDAutoIncField;
     intgrfldQryListagemcod_departamento: TIntegerField;
     strngfldQryListagemnome_departamento: TStringField;
@@ -22,20 +36,8 @@ type
     strngfldQryListagemstatus: TStringField;
     strngfldQryListagemusuario_inclusao: TStringField;
     strngfldQryListagemusuario_alteracao: TStringField;
-    lbledtCodDeptpessoa: TLabeledEdit;
-    dblkcbbPessoa: TDBLookupComboBox;
-    lbl2: TLabel;
-    dblkcbbDepartamento: TDBLookupComboBox;
-    lbl1: TLabel;
-    lbl3: TLabel;
-    fdqryPessoas: TFDQuery;
-    dsPessoas: TDataSource;
-    dsDepartamentos: TDataSource;
-    fdqryDepartamentos: TFDQuery;
-    lbl4: TLabel;
     dblkcbbSitucao: TDBLookupComboBox;
-    dsSituacao: TDataSource;
-    fdqrySituacao: TFDQuery;
+    dblkcbbDepartamento: TDBLookupComboBox;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -49,7 +51,7 @@ type
   end;
 
 var
-  frmCaddeparPessoa: TfrmCaddeparPessoa;
+  frmCadDepartPessoa: TfrmCadDepartPessoa;
 
 implementation
 
@@ -57,14 +59,14 @@ implementation
 {$R *.dfm}
 
 {$REGION 'Override'}
-function TfrmCaddeparPessoa.Apagar: Boolean;
+function TfrmCadDepartPessoa.Apagar: Boolean;
 begin
 if oDepartPessoa.Selecionar(QryListagem.FieldByName('cod_dept_pessoa').AsInteger) then
       Result:=oDepartPessoa.Apagar;
 end;
 
 
-function TfrmCaddeparPessoa.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
+function TfrmCadDepartPessoa.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
 begin
     if lbledtCodDeptpessoa.Text<>EmptyStr then
        oDepartPessoa.cod_dept_pessoa:=StrToInt(lbledtCodDeptpessoa.Text)
@@ -84,7 +86,7 @@ end;
 
 {$endregion}
 
-procedure TfrmCaddeparPessoa.btnAlterarClick(Sender: TObject);
+procedure TfrmCadDepartPessoa.btnAlterarClick(Sender: TObject);
 begin
 if oDepartPessoa.Selecionar(QryListagem.FieldByName('cod_dept_pessoa').AsInteger) then
   begin
@@ -103,7 +105,7 @@ if oDepartPessoa.Selecionar(QryListagem.FieldByName('cod_dept_pessoa').AsInteger
 
 end;
 
-procedure TfrmCaddeparPessoa.FormClose(Sender: TObject;
+procedure TfrmCadDepartPessoa.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
@@ -113,7 +115,7 @@ if Assigned(oDepartPessoa) then
     FreeAndNil(oDepartPessoa);
 end;
 
-procedure TfrmCaddeparPessoa.FormCreate(Sender: TObject);
+procedure TfrmCadDepartPessoa.FormCreate(Sender: TObject);
 begin
   inherited;
 fdqryPessoas.Open;

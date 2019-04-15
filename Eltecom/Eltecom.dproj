@@ -201,6 +201,17 @@
             <Form>frmDepartamentos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="cadastro\uCadCargoPessoa.pas">
+            <Form>frmCadCargoPessoa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="classes\cCadCargoPessoa.pas"/>
+        <DCCReference Include="classes\cAtualizacaoCampoMySQL.pas"/>
+        <DCCReference Include="classes\cAcaoAcesso.pas"/>
+        <DCCReference Include="cadastro\uCadAcaoAcesso.pas">
+            <Form>frmCadAcaoAcesso</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

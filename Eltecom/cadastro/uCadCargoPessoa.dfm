@@ -1,5 +1,6 @@
-inherited frmCadDepartPessoa: TfrmCadDepartPessoa
-  Caption = 'Cadastrar pessoas nos Departamentos'
+inherited frmCadCargoPessoa: TfrmCadCargoPessoa
+  Caption = 'Cadastrar Obreiros'
+  ExplicitTop = -91
   ExplicitWidth = 806
   ExplicitHeight = 485
   PixelsPerInch = 96
@@ -12,6 +13,7 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
     Caption = 'Nome'
   end
   inherited pgcPrincipal: TPageControl
+    ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
@@ -22,24 +24,20 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
         Columns = <
           item
             Expanded = False
-            FieldName = 'cod_dept_pessoa'
-            Width = 44
+            FieldName = 'COD_MEMBRO'
+            Width = 50
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'nome_pessoa'
+            FieldName = 'NOME'
+            Width = 271
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'nome_departamento'
-            Width = 207
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'status'
+            FieldName = 'CARGO'
+            Width = 242
             Visible = True
           end>
       end
@@ -59,9 +57,9 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
       object lbl3: TLabel
         Left = 391
         Top = 3
-        Width = 69
+        Width = 29
         Height = 13
-        Caption = 'Departamento'
+        Caption = 'Cargo'
       end
       object lbl4: TLabel
         Left = 603
@@ -93,6 +91,16 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
         ListSource = dsPessoas
         TabOrder = 1
       end
+      object dblkcbbCargo: TDBLookupComboBox
+        Left = 391
+        Top = 20
+        Width = 206
+        Height = 21
+        KeyField = 'cod_cargo'
+        ListField = 'cargo'
+        ListSource = dsCargos
+        TabOrder = 2
+      end
       object dblkcbbSitucao: TDBLookupComboBox
         Left = 603
         Top = 20
@@ -101,16 +109,6 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
         KeyField = 'TIPO'
         ListField = 'SITUACAO'
         ListSource = dsSituacao
-        TabOrder = 2
-      end
-      object dblkcbbDepartamento: TDBLookupComboBox
-        Left = 391
-        Top = 20
-        Width = 206
-        Height = 21
-        KeyField = 'cod_departamento'
-        ListField = 'nome_departamento'
-        ListSource = dsDepartamentos
         TabOrder = 3
       end
     end
@@ -121,73 +119,55 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
     end
   end
   inherited QryListagem: TFDQuery
+    Active = True
     SQL.Strings = (
       
-        'SELECT cod_dept_pessoa, cod_departamento, nome_departamento, cod' +
-        '_pessoa, nome_pessoa, dta_inclusao, dta_alteracao, status, usuar' +
-        'io_inclusao, usuario_alteracao'
-      'FROM tb_dept_pessoa')
-    Left = 488
-    Top = 232
-    object fdtncfldQryListagemcod_dept_pessoa: TFDAutoIncField
+        'SELECT COD_CARG_PESSOA, COD_MEMBRO, NOME, COD_CARGO, CARGO, STAT' +
+        'US, COD_CONGREGACAO'
+      'FROM tb_obreiro_cargo')
+    Left = 448
+    Top = 96
+    object QryListagemCOD_MEMBRO: TIntegerField
       DisplayLabel = 'C'#243'digo'
-      FieldName = 'cod_dept_pessoa'
-      Origin = 'cod_dept_pessoa'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object intgrfldQryListagemcod_departamento: TIntegerField
-      FieldName = 'cod_departamento'
-      Origin = 'cod_departamento'
+      FieldName = 'COD_MEMBRO'
+      Origin = 'COD_MEMBRO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object strngfldQryListagemnome_departamento: TStringField
-      AutoGenerateValue = arDefault
-      DisplayLabel = 'Departamento'
-      FieldName = 'nome_departamento'
-      Origin = 'nome_departamento'
-      Size = 50
-    end
-    object intgrfldQryListagemcod_pessoa: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'cod_pessoa'
-      Origin = 'cod_pessoa'
-    end
-    object strngfldQryListagemnome_pessoa: TStringField
+    object QryListagemNOME: TStringField
       AutoGenerateValue = arDefault
       DisplayLabel = 'Nome'
-      FieldName = 'nome_pessoa'
-      Origin = 'nome_pessoa'
+      FieldName = 'NOME'
+      Origin = 'NOME'
       Size = 50
     end
-    object dtmfldQryListagemdta_inclusao: TDateTimeField
+    object QryListagemCOD_CARGO: TIntegerField
       AutoGenerateValue = arDefault
-      FieldName = 'dta_inclusao'
-      Origin = 'dta_inclusao'
+      FieldName = 'COD_CARGO'
+      Origin = 'COD_CARGO'
     end
-    object dtmfldQryListagemdta_alteracao: TDateTimeField
+    object QryListagemCARGO: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'dta_alteracao'
-      Origin = 'dta_alteracao'
+      DisplayLabel = 'Cargo'
+      FieldName = 'CARGO'
+      Origin = 'CARGO'
+      Size = 50
     end
-    object strngfldQryListagemstatus: TStringField
+    object QryListagemCOD_CARG_PESSOA: TIntegerField
+      FieldName = 'COD_CARG_PESSOA'
+      Origin = 'COD_CARG_PESSOA'
+      Required = True
+    end
+    object QryListagemSTATUS: TStringField
       AutoGenerateValue = arDefault
-      DisplayLabel = 'Situa'#231#227'o'
-      FieldName = 'status'
-      Origin = '`status`'
+      FieldName = 'STATUS'
+      Origin = '`STATUS`'
       Size = 1
     end
-    object strngfldQryListagemusuario_inclusao: TStringField
+    object QryListagemCOD_CONGREGACAO: TIntegerField
       AutoGenerateValue = arDefault
-      FieldName = 'usuario_inclusao'
-      Origin = 'usuario_inclusao'
-      Size = 50
-    end
-    object strngfldQryListagemusuario_alteracao: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'usuario_alteracao'
-      Origin = 'usuario_alteracao'
-      Size = 50
+      FieldName = 'COD_CONGREGACAO'
+      Origin = 'COD_CONGREGACAO'
     end
   end
   inherited dtsListagem: TDataSource
@@ -199,40 +179,40 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
     SQL.Strings = (
       'SELECT cod_pessoa, nome_pessoa'
       'FROM tb_pessoa a inner join tb_parametro_sistema b '
-      'on a.cod_congregacao = b.cod_congregacao')
+      'on a.cod_congregacao = b.cod_congregacao'
+      'where sexo ='#39'M'#39)
     Left = 448
     Top = 168
-    object fdtncfldPessoascod_pessoa: TFDAutoIncField
-      FieldName = 'cod_pessoa'
-      Origin = 'cod_pessoa'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object strngfldPessoasnome_pessoa: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'nome_pessoa'
-      Origin = 'nome_pessoa'
-      Size = 50
-    end
   end
   object dsPessoas: TDataSource
     DataSet = fdqryPessoas
     Left = 392
     Top = 232
   end
-  object dsDepartamentos: TDataSource
-    DataSet = fdqryDepartamentos
+  object dsCargos: TDataSource
+    DataSet = fdqryCargos
     Left = 592
     Top = 208
   end
-  object fdqryDepartamentos: TFDQuery
+  object fdqryCargos: TFDQuery
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
-      'SELECT cod_departamento, nome_departamento'
-      'FROM igreja.tb_departamento;'
+      'SELECT cod_cargo , cargo from tb_cargo'
       '')
     Left = 592
     Top = 136
+    object fdtncfldCargoscod_cargo: TFDAutoIncField
+      FieldName = 'cod_cargo'
+      Origin = 'cod_cargo'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object strngfldCargoscargo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cargo'
+      Origin = 'cargo'
+      Size = 50
+    end
   end
   object dsSituacao: TDataSource
     DataSet = fdqrySituacao

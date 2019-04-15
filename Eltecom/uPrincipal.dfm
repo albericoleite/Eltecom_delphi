@@ -77,7 +77,14 @@ object frmPrincipal: TfrmPrincipal
       end
       object mniCargos1: TMenuItem
         Caption = 'Cargos'
-        OnClick = mniCargos1Click
+        object mniCargos2: TMenuItem
+          Caption = 'Cargos'
+          OnClick = mniCargos2Click
+        end
+        object mniCargosPessoas1: TMenuItem
+          Caption = 'Cargos / Pessoas'
+          OnClick = mniCargosPessoas1Click
+        end
       end
       object mniFunes1: TMenuItem
         Caption = 'Fun'#231#245'es'
@@ -100,6 +107,10 @@ object frmPrincipal: TfrmPrincipal
       object mniAlterarSenha1: TMenuItem
         Caption = 'Alterar Senha'
         OnClick = mniAlterarSenha1Click
+      end
+      object mniAoAcesso1: TMenuItem
+        Caption = 'A'#231#227'o Acesso'
+        OnClick = mniAoAcesso1Click
       end
       object mniN4: TMenuItem
         Caption = '-'

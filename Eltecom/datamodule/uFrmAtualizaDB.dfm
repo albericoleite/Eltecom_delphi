@@ -3,8 +3,8 @@ object frmAtualizaDB: TfrmAtualizaDB
   Top = 0
   BorderStyle = bsNone
   Caption = 'frmAtualizaDB'
-  ClientHeight = 291
-  ClientWidth = 540
+  ClientHeight = 47
+  ClientWidth = 423
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -39,10 +39,11 @@ object frmAtualizaDB: TfrmAtualizaDB
       Enabled = False
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 30
+      ExplicitWidth = 411
+      ExplicitHeight = 35
       object imgBD: TImage
-        Left = 8
-        Top = 16
+        Left = 0
+        Top = 48
         Width = 153
         Height = 209
         Center = True
@@ -1111,11 +1112,11 @@ object frmAtualizaDB: TfrmAtualizaDB
           DBAD9DEFB58536D50000000049454E44AE426082}
       end
       object lblAt: TLabel
-        Left = 200
+        Left = 11
         Top = 8
-        Width = 254
+        Width = 383
         Height = 24
-        Caption = 'Atualiza'#231#227'o Bando de Dados'
+        Caption = 'Atualiza'#231#227'o Bando de Dados... AGUARDE...'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -20

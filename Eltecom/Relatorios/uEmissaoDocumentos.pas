@@ -109,7 +109,7 @@ begin
     // dtmConexao.frxrprtNotifOcorrencia.Export(dtmConexao.frxPDFExport1);
     dtmRelatorio.frxrprtNotifOcorrencia.ShowReport();
   end;
-   //TODO:COPIAR FIXAS DE MEMBROS,CONGREGADOS E FICHA DE BASTISMO
+
 
  if chkFxMembro.Checked=true then
     begin

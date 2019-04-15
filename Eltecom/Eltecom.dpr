@@ -45,7 +45,12 @@ uses
   cCadLancamento in 'classes\cCadLancamento.pas',
   cAtualizacaoBancoDeDados in 'classes\cAtualizacaoBancoDeDados.pas',
   cAtualizacaoTabelaMySQL in 'classes\cAtualizacaoTabelaMySQL.pas',
-  uDepartamentos in 'Relatorios\uDepartamentos.pas' {frmDepartamentos};
+  uDepartamentos in 'Relatorios\uDepartamentos.pas' {frmDepartamentos},
+  uCadCargoPessoa in 'cadastro\uCadCargoPessoa.pas' {frmCadCargoPessoa},
+  cCadCargoPessoa in 'classes\cCadCargoPessoa.pas',
+  cAtualizacaoCampoMySQL in 'classes\cAtualizacaoCampoMySQL.pas',
+  cAcaoAcesso in 'classes\cAcaoAcesso.pas',
+  uCadAcaoAcesso in 'cadastro\uCadAcaoAcesso.pas' {frmCadAcaoAcesso};
 
 {$R *.res}
 

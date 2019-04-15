@@ -2,7 +2,8 @@ unit cAtualizacaoTabelaMySQL;
 
 interface
 uses System.Classes, Vcl.Controls,
-  Vcl.ExtCtrls, Vcl.Dialogs, FireDAC.Comp.Client, System.SysUtils,cAtualizacaoBancoDeDados;
+  Vcl.ExtCtrls, Vcl.Dialogs, FireDAC.Comp.Client, System.SysUtils,
+  cAtualizacaoBancoDeDados,cCadUsuario;
 
 type
  TAtualizacaoTabelaMySQL = class(TAtualizaBancoDados)
@@ -13,6 +14,9 @@ type
   procedure Cargo;
     procedure Dizimista;
     procedure Departamento;
+    procedure Usuario;
+    procedure AcaoAcesso;
+
  protected
 
  public
@@ -32,6 +36,9 @@ begin
   Cargo;
   Dizimista;
   Departamento;
+  Usuario;
+  AcaoAcesso;
+  //TODO: CRIAR OS METODOS PARA CRIAÇÃO DAS DEMAIS TABELAS
 end;
 
 destructor TAtualizacaoTabelaMySQL.Destroy;
@@ -95,6 +102,18 @@ begin
 
 end;
 
+procedure TAtualizacaoTabelaMySQL.AcaoAcesso;
+begin
+   if not TabelaExiste('tb_acao_acesso') then
+   begin
+     ExecutaDiretoBancoDeDados('CREATE TABLE `tb_acao_acesso` ( '+
+  ' `cod_acao_acesso` INT NOT NULL AUTO_INCREMENT, '+
+  ' `descricao` VARCHAR(100) NOT NULL, '+
+  ' `chave` VARCHAR(60) NOT NULL, '+
+  ' PRIMARY KEY (`cod_acao_acesso`))');
+   end;
+end;
+
 procedure TAtualizacaoTabelaMySQL.Cargo;
 begin
    if not TabelaExiste('tb_cargo') then
@@ -136,11 +155,43 @@ begin
    if not TabelaExiste('tb_departamento') then
    begin
      ExecutaDiretoBancoDeDados(
-          ' CREATE TABLE `tb_departamento` ( '+
-  ' `cod_departamento` int(11) NOT NULL AUTO_INCREMENT, '+
-  ' `nome_departamento` varchar(50) DEFAULT NULL, '+
-  ' PRIMARY KEY (`cod_departamento`) '+
+     ' CREATE TABLE `tb_departamento` ( '+
+      ' `cod_departamento` int(11) NOT NULL AUTO_INCREMENT, '+
+      ' `nome_departamento` varchar(50) DEFAULT NULL, '+
+      ' PRIMARY KEY (`cod_departamento`) '+
+      ' )');
+   end;
+
+end;
+
+procedure TAtualizacaoTabelaMySQL.Usuario;
+var oUsuario:Tusuario;
+begin
+   if not TabelaExiste('tb_usuario') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_usuario` (  '+
+  ' `codigo` int(11) NOT NULL AUTO_INCREMENT, '+
+  ' `usuario` varchar(12) DEFAULT NULL, '+
+  ' `senha` varchar(12) DEFAULT NULL, '+
+  ' `setor` varchar(50) DEFAULT NULL, '+
+  ' `status` varchar(20) DEFAULT NULL, '+
+  ' `tema` varchar(50) DEFAULT '+'LUNA'+',  '+
+  ' PRIMARY KEY (`codigo`), '+
+  ' UNIQUE KEY `Codigo` (`codigo`)  '+
   ' )');
+   end;
+
+   try
+    oUsuario:=TUsuario.Create(ConexaoDB);
+    oUsuario.usuario:='ADMIN';
+    oUsuario.senha:='admin';
+    oUsuario.status:='ATIVO';
+    if not oUsuario.UsuarioExiste(oUsuario.usuario) then
+       oUsuario.Inserir;
+   finally
+      if Assigned(oUsuario) then
+       FreeAndNil(oUsuario);
    end;
 
 end;

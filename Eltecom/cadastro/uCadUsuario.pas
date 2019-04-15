@@ -46,7 +46,7 @@ implementation
 
 {$R *.dfm}
 {$REGION 'Override'}
-//TODO: CONFIGURAR ENTER
+
 function TfrmCadUsuario.Apagar: Boolean;
 begin
   if oUsuario.Selecionar(QryListagem.FieldByName('codigo').AsInteger) then

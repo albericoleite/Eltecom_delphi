@@ -67,7 +67,7 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('DELETE FROM igreja.tb_cargo WHERE cod_cargo=:cod_cargo');
+    Qry.SQL.Add('DELETE FROM tb_cargo WHERE cod_cargo=:cod_cargo');
     Qry.ParamByName('cod_cargo').AsInteger := F_cod_cargo;
     try
         ConexaoDB.StartTransaction;

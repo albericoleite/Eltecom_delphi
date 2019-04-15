@@ -40,6 +40,9 @@ type
     mniN5: TMenuItem;
     mniAlterarSenha1: TMenuItem;
     mniDepartamentos3: TMenuItem;
+    mniCargos2: TMenuItem;
+    mniCargosPessoas1: TMenuItem;
+    mniAoAcesso1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -50,7 +53,6 @@ type
     procedure Congregaes1Click(Sender: TObject);
     procedure mniDizimoClick(Sender: TObject);
     procedure mniSobreClick(Sender: TObject);
-    procedure mniCargos1Click(Sender: TObject);
     procedure mniDepartamentos2Click(Sender: TObject);
     procedure mniDepartamentoPessoas1Click(Sender: TObject);
     procedure mniFunes2Click(Sender: TObject);
@@ -61,6 +63,9 @@ type
     procedure mniAlterarSenha1Click(Sender: TObject);
     procedure EntradasSadas1Click(Sender: TObject);
     procedure mniDepartamentos3Click(Sender: TObject);
+    procedure mniCargos2Click(Sender: TObject);
+    procedure mniCargosPessoas1Click(Sender: TObject);
+    procedure mniAoAcesso1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -82,7 +87,7 @@ implementation
 uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cArquivoIni, cAtualizacaoBancoDeDados,
   cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa, uLogin, uCadUsuario,
-  uAlterarSenha, uCadLancamento, uDepartamentos;
+  uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa, uCadAcaoAcesso, cAcaoAcesso;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -133,7 +138,7 @@ begin
     TArquivoIni.AtualizarIni('SERVER', 'Database', 'igreja');
 
     MessageDlg('Arquivo ' + TArquivoIni.ArquivoIni + ' Criado com Sucesso' +
-      '#13' + 'Configure o arquivo antes de inicializar Aplicação',
+      'Configure o arquivo antes de inicializar Aplicação',
       mtInformation, [mbOK], 0);
 
     Application.Terminate;
@@ -141,18 +146,18 @@ begin
   end
   else
   begin
-    // Inciar Conexão
+    //Atualização do Banco de Dados
     frmAtualizaDB := TfrmAtualizaDB.Create(self);
     frmAtualizaDB.Show;
     frmAtualizaDB.Refresh;
 
     dtmPrincipal := TdtmPrincipal.Create(self);
-
+    // Inciar Conexão
     with dtmPrincipal.ConexaoDB do
     begin
       Connected := False;
-      if TArquivoIni.LerIni('SERVER', 'TipoDataBase') = 'MYSQL' then
-        DRIVE := 'MYSQL';
+      if TArquivoIni.LerIni('SERVER', 'TipoDataBase') = 'MySQL' then
+        DRIVE := 'MySQL';
 
       SERVER := TArquivoIni.LerIni('SERVER', 'HostName');
       port := TArquivoIni.LerIni('SERVER', 'Port').ToInteger;
@@ -179,6 +184,20 @@ begin
       end;
     end;
     AtualizaBandoDados(frmAtualizaDB);
+
+    //INSERINDO INFORMAÇÕES DOS FORMULARIOS PARA CONTROLE DE ACESSO
+    TAcaoAcesso.CriarAcoes(TfrmCadDizimos,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadAcaoAcesso,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadCargoPessoa,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadLancamento,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadUsuario,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadFuncaoPessoa,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadDepartPessoa,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadCargo,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadFuncao,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadCongregacao,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadDepartamento,dtmPrincipal.ConexaoDB);
+
     frmAtualizaDB.Free;
   end;
   TeclaEnter:=TMREnter.Create(Self);
@@ -235,14 +254,24 @@ begin
    CriarForm(TfrmAlterarSenha);
 end;
 
-procedure TfrmPrincipal.mniCargos1Click(Sender: TObject);
+procedure TfrmPrincipal.mniAoAcesso1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadCargo);
+   CriarForm(TfrmCadAcaoAcesso);
+end;
+
+procedure TfrmPrincipal.mniCargos2Click(Sender: TObject);
+begin
+ CriarForm(TfrmCadCargo);
+end;
+
+procedure TfrmPrincipal.mniCargosPessoas1Click(Sender: TObject);
+begin
+    CriarForm(TfrmCadCargoPessoa);
 end;
 
 procedure TfrmPrincipal.mniDepartamentoPessoas1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCaddeparPessoa);
+  CriarForm(TfrmCadDepartPessoa);
 end;
 
 procedure TfrmPrincipal.mniDepartamentos2Click(Sender: TObject);
@@ -302,7 +331,7 @@ begin
   sl := 50;
   aForm.chkConexBD.Checked := true;
   aForm.Refresh;
-   //TODO: CRIAR CARGO PESSOA
+
   try
     oAtualizarMySQL:= TAtualizaBancoDadosMySQL.Create(dtmPrincipal.ConexaoDB);
     oAtualizarMySQL.AtualizarBancoDeDadosMySQL;

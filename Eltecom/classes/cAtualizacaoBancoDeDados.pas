@@ -27,7 +27,7 @@ Type
 implementation
 
 uses
-cAtualizacaoTabelaMySQL;
+cAtualizacaoTabelaMySQL,cAtualizacaoCampoMySQL;
 
 { TAtualizaBancoDados }
 
@@ -63,10 +63,12 @@ end;
 function TAtualizaBancoDadosMySQL.AtualizarBancoDeDadosMySQL: Boolean;
 var oAtualizaDB:TAtualizaBancoDados;
     oTabela: TAtualizacaoTabelaMySQL;
+    oCampo: TAtualizacaoCampoMySQL;
 begin
 try
   oAtualizaDB:=TAtualizaBancoDados.Create(ConexaoDB);
   oTabela:=  TAtualizacaoTabelaMySQL.Create(ConexaoDB);
+  oCampo:= TAtualizacaoCampoMySQL.Create(ConexaoDB);
 finally
 if Assigned(oAtualizaDB) then
   FreeAndNil(oAtualizaDB);

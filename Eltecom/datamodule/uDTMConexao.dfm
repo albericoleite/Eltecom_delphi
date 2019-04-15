@@ -146,7 +146,7 @@ object dtmPrincipal: TdtmPrincipal
       '  PRIMARY KEY (`cod_funcao`)'
       ')')
     Left = 408
-    Top = 88
+    Top = 56
   end
   object fdqryCriartb_seguranca: TFDQuery
     Connection = ConexaoDB
@@ -272,5 +272,21 @@ object dtmPrincipal: TdtmPrincipal
       ') ')
     Left = 520
     Top = 336
+  end
+  object fdqryCriartb_ob_carg: TFDQuery
+    Connection = ConexaoDB
+    SQL.Strings = (
+      'CREATE TABLE IF NOT EXISTS `tb_obreiro_cargo` ('
+      '  `COD_CARG_PESSOA` int(10) NOT NULL AUTO_INCREMENT,'
+      '  `COD_MEMBRO` int(10) NOT NULL,'
+      '  `NOME` varchar(50) DEFAULT NULL,'
+      '  `COD_CARGO` int(10) DEFAULT NULL,'
+      '  `CARGO` varchar(50) DEFAULT NULL,'
+      '  `STATUS` varchar(1) DEFAULT '#39'0'#39','
+      '  `COD_CONGREGACAO` int(10) DEFAULT NULL,'
+      '  PRIMARY KEY (`COD_CARG_PESSOA`)'
+      ')')
+    Left = 408
+    Top = 216
   end
 end
