@@ -52,7 +52,8 @@ uses
   cAcaoAcesso in 'classes\cAcaoAcesso.pas',
   uCadAcaoAcesso in 'cadastro\uCadAcaoAcesso.pas' {frmCadAcaoAcesso},
   uCadAjudaDeCusto in 'cadastro\uCadAjudaDeCusto.pas' {frmCadAjudaDeCusto},
-  cCadRecibo in 'classes\cCadRecibo.pas';
+  cCadRecibo in 'classes\cCadRecibo.pas',
+  uUsuarioVsAcoes in 'login\uUsuarioVsAcoes.pas' {frmUsuarioVsAcoes};
 
 {$R *.res}
 

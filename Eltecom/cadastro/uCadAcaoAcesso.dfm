@@ -1,8 +1,8 @@
 inherited frmCadAcaoAcesso: TfrmCadAcaoAcesso
   Caption = 'Cadastro de A'#231#227'o de Acesso'
   ClientWidth = 785
-  ExplicitTop = -60
   ExplicitWidth = 791
+  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -10,7 +10,10 @@ inherited frmCadAcaoAcesso: TfrmCadAcaoAcesso
     ActivePage = tabManutencao
     ExplicitWidth = 785
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 777
+      ExplicitHeight = 390
       inherited pnlListagem: TPanel
         Width = 777
         ExplicitWidth = 777
@@ -40,7 +43,10 @@ inherited frmCadAcaoAcesso: TfrmCadAcaoAcesso
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 777
+      ExplicitHeight = 390
       object lbledtCodigo: TLabeledEdit
         Tag = 1
         Left = 8

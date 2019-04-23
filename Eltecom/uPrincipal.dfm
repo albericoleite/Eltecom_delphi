@@ -112,6 +112,10 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'A'#231#227'o Acesso'
         OnClick = mniAoAcesso1Click
       end
+      object mniUsuriosVSAes1: TMenuItem
+        Caption = 'Usu'#225'rios VS A'#231#245'es'
+        OnClick = mniUsuriosVSAes1Click
+      end
       object mniN4: TMenuItem
         Caption = '-'
       end

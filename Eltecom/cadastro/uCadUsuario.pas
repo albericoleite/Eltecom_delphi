@@ -44,6 +44,9 @@ var
 
 implementation
 
+uses
+  cAcaoAcesso;
+
 {$R *.dfm}
 {$REGION 'Override'}
 
@@ -77,6 +80,8 @@ begin
     Result := oUsuario.Inserir
   else if (EstadodoCadastro = ecAlterar) then
     Result := oUsuario.Atualizar;
+
+    TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
 end;
 

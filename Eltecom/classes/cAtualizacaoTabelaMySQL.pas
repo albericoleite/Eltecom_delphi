@@ -18,6 +18,7 @@ type
     procedure AcaoAcesso;
     procedure Recibo;
     procedure ReciboTipo;
+    procedure UsuarioAcaoAcesso;
 
  protected
 
@@ -42,6 +43,7 @@ begin
   AcaoAcesso;
   Recibo;
   ReciboTipo;
+  UsuarioAcaoAcesso;
   //TODO: CRIAR OS METODOS PARA CRIAÇÃO DAS DEMAIS TABELAS
 end;
 
@@ -252,6 +254,23 @@ begin
     ExecutaDiretoBancoDeDados('INSERT INTO tb_recibo_tipo '+
   ' (id_tipo, desc_tipo) VALUES(274,'+QuotedStr('Doação Evangelística')+')');
  end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.UsuarioAcaoAcesso;
+begin
+   if not TabelaExiste('tb_usuarios_acao_acesso') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE tb_usuarios_acao_acesso (  '+
+	' cod_usuario int NOT NULL,  '+
+	' cod_acao_acesso int NOT NULL,  '+
+	' ativo bit DEFAULT 1 NOT NULL,  '+
+	' CONSTRAINT tb_usuarios_acao_acesso_pk PRIMARY KEY (cod_usuario,cod_acao_acesso), '+
+	' CONSTRAINT tb_usuarios_acao_acesso_tb_usuario_fk FOREIGN KEY (cod_usuario) REFERENCES igreja.tb_usuario(codigo), '+
+	' CONSTRAINT tb_usuarios_acao_acesso_tb_acao_acesso_fk FOREIGN KEY (cod_acao_acesso) REFERENCES igreja.tb_acao_acesso(cod_acao_acesso) '+
+  ' )');
+   end;
+
 end;
 
 end.
