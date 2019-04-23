@@ -130,6 +130,10 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Dizimos'
         OnClick = mniDizimoClick
       end
+      object mniDoaoAjudadeCusto1: TMenuItem
+        Caption = 'Doa'#231#227'o / Ajuda de Custo'
+        OnClick = mniDoaoAjudadeCusto1Click
+      end
       object N3: TMenuItem
         Caption = '-'
       end

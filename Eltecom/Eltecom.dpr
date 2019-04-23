@@ -50,7 +50,9 @@ uses
   cCadCargoPessoa in 'classes\cCadCargoPessoa.pas',
   cAtualizacaoCampoMySQL in 'classes\cAtualizacaoCampoMySQL.pas',
   cAcaoAcesso in 'classes\cAcaoAcesso.pas',
-  uCadAcaoAcesso in 'cadastro\uCadAcaoAcesso.pas' {frmCadAcaoAcesso};
+  uCadAcaoAcesso in 'cadastro\uCadAcaoAcesso.pas' {frmCadAcaoAcesso},
+  uCadAjudaDeCusto in 'cadastro\uCadAjudaDeCusto.pas' {frmCadAjudaDeCusto},
+  cCadRecibo in 'classes\cCadRecibo.pas';
 
 {$R *.res}
 

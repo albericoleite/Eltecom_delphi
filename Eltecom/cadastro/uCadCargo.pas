@@ -16,6 +16,8 @@ type
     strngfldQryListagemcargo: TStringField;
     lbledtCargo: TLabeledEdit;
     lbledtCodigo: TLabeledEdit;
+    intgrfldQryListagemnivel: TIntegerField;
+    lbledtNivel: TLabeledEdit;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -50,6 +52,7 @@ begin
        else
        oCargo.cod_cargo :=0;
        oCargo.cargo:=lbledtCargo.Text;
+       oCargo.nivel:=StrToInt(lbledtNivel.Text);
 
 
     if (EstadodoCadastro=ecInserir) then
@@ -68,6 +71,7 @@ if oCargo.Selecionar(QryListagem.FieldByName('cod_cargo').AsInteger) then
   begin
     lbledtCodigo.Text    := IntToStr(oCargo.cod_cargo);
     lbledtCargo.Text       := oCargo.cargo;
+    lbledtNivel.Text:=  oCargo.nivel.ToString();
     end
   else
   begin

@@ -65,9 +65,16 @@ end;
 
 procedure TAtualizacaoCampoMySQL.versao1;
 begin
- if not CampoExisteNaTabela('tb_usuario','teste') then
+//Adicionar Nivel de cargo para utilizar como ordenação
+ if not CampoExisteNaTabela('tb_cargo','nivel') then
  begin
-   ExecutaDiretoBancoDeDados('ALTER TABLE BLA BLA BLA ');
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_cargo ADD nivel INT DEFAULT 0 NOT NULL;');
+ end;
+
+ //Adicionar código da congregação no recibo
+  if not CampoExisteNaTabela('tb_recibo','cod_congregacao') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_recibo ADD cod_congregacao int(11) NULL;');
  end;
 
 end;

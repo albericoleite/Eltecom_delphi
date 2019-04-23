@@ -13,6 +13,7 @@ type
     // VARIAVEIS PRIVADA SOMENTE DENTRO DA CLASSE
     ConexaoDB: TFDConnection;
     F_cod_cargo: Integer;
+    F_nivel: Integer;
     F_cargo: string;
 
   public
@@ -30,6 +31,8 @@ type
       write F_cod_cargo;
     property cargo: string read F_cargo
       write F_cargo;
+      property nivel: Integer read F_nivel
+      write F_nivel;
   end;
 
 implementation
@@ -94,9 +97,10 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('UPDATE igreja.tb_cargo  SET cargo=:cargo WHERE cod_cargo=:cod_cargo');
+    Qry.SQL.Add('UPDATE tb_cargo  SET cargo=:cargo ,nivel=:nivel WHERE cod_cargo=:cod_cargo');
     Qry.ParamByName('cod_cargo').AsInteger := F_cod_cargo;
     Qry.ParamByName('cargo').AsString := F_cargo;
+    Qry.ParamByName('nivel').AsInteger := F_nivel;
    try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -120,9 +124,10 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('INSERT INTO igreja.tb_cargo  (cargo)  '+
-    ' VALUES(:cargo)');
-    Qry.ParamByName('cargo').AsString := Self.F_cargo;
+    Qry.SQL.Add('INSERT INTO igreja.tb_cargo  (cargo,nivel)  '+
+    ' VALUES(:cargo,:nivel)');
+    Qry.ParamByName('cargo').AsString  := Self.F_cargo;
+    Qry.ParamByName('nivel').AsInteger := Self.F_nivel;
 
     try
         ConexaoDB.StartTransaction;
@@ -147,14 +152,15 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('SELECT cod_cargo, cargo '+
-    ' FROM igreja.tb_cargo where cod_cargo=:cod_cargo ');
+    Qry.SQL.Add('SELECT cod_cargo, cargo,nivel '+
+    ' FROM tb_cargo where cod_cargo=:cod_cargo ');
     Qry.ParamByName('cod_cargo').AsInteger := id;
 
     try
       Qry.Open;
       Self.F_cod_cargo := Qry.FieldByName('cod_cargo').AsInteger;
       Self.F_cargo := Qry.FieldByName('cargo').AsString;
+      Self.F_nivel := Qry.FieldByName('nivel').AsInteger;
     Except
       Result := false;
     end;

@@ -16471,6 +16471,7 @@ object dtmRelatorio: TdtmRelatorio
         Width = 718.110700000000000000
         DataSet = frxdbDizimista
         DataSetName = 'frxdbDizimista'
+        Filter = '<frxdbDizimista."cargo"><>'#39'MEMBRO'#39
         RowCount = 0
         object Memo34: TfrxMemoView
           Width = 34.015770000000000000
@@ -19656,10 +19657,321 @@ object dtmRelatorio: TdtmRelatorio
       'valor=valor'
       'data=data'
       'cargo=cargo'
-      'cod_congregacao=cod_congregacao')
+      'cod_congregacao=cod_congregacao'
+      'nivel=nivel')
     DataSet = frmCadDizimos.QryListagem
     BCDToCurrency = False
     Left = 160
     Top = 288
+  end
+  object frxrprtRecibo: TfrxReport
+    Version = '5.1.5'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42779.493980902800000000
+    ReportOptions.LastChange = 42779.493980902800000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 616
+    Top = 144
+    Datasets = <
+      item
+        DataSet = frxdbDBRecibo
+        DataSetName = 'frxDBRecibo'
+      end>
+    Variables = <
+      item
+        Name = ' variaveis'
+        Value = Null
+      end
+      item
+        Name = 'nome'
+        Value = Null
+      end
+      item
+        Name = 'cpf'
+        Value = Null
+      end
+      item
+        Name = 'endereco'
+        Value = Null
+      end
+      item
+        Name = 'bairro'
+        Value = Null
+      end
+      item
+        Name = 'cidade'
+        Value = Null
+      end
+      item
+        Name = 'data'
+        Value = Null
+      end
+      item
+        Name = 'valor'
+        Value = Null
+      end
+      item
+        Name = 'valor_extenso'
+        Value = Null
+      end>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object Memo1: TfrxMemoView
+        Align = baCenter
+        Left = 311.811225000000000000
+        Top = 37.795300000000000000
+        Width = 94.488250000000000000
+        Height = 30.236240000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -24
+        Font.Name = 'calibri'
+        Font.Style = [fsBold]
+        Memo.UTF8W = (
+          'RECIBO:')
+        ParentFont = False
+      end
+      object Memo2: TfrxMemoView
+        Align = baCenter
+        Left = 59.811225000000000000
+        Top = 98.267780000000000000
+        Width = 598.488250000000000000
+        Height = 95.425170000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'calibri'
+        Font.Style = []
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        Frame.Width = 0.100000000000000000
+        Memo.UTF8W = (
+          ' ADPAR- Igreja Evang'#233'lica Assembleia de Deus em Parnamirim'
+          ''
+          
+            ' Rua Otavio Gomes de Castro, 27 '#8211' Centro '#8211' Parnamirim/RN '#8211' CEP 5' +
+            '9140-140'
+          ''
+          ' CNPJ 08.332.785/0018-50')
+        ParentFont = False
+      end
+      object Memo3: TfrxMemoView
+        Left = 60.472480000000000000
+        Top = 226.771800000000000000
+        Width = 597.165740000000000000
+        Height = 170.078850000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'calibri'
+        Font.Style = []
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        Frame.Width = 0.100000000000000000
+        Memo.UTF8W = (
+          ''
+          ''
+          ' Nome:  [frxDBRecibo."descricao"]'
+          ''
+          ' Endere'#231'o:  [frxDBRecibo."endereco"]'
+          ''
+          ' Cidade:  [frxDBRecibo."cidade"]'
+          ''
+          ' CPF :  [frxDBRecibo."cpf"]')
+        ParentFont = False
+        Formats = <
+          item
+          end
+          item
+          end
+          item
+          end
+          item
+          end>
+      end
+      object Memo4: TfrxMemoView
+        Left = 60.472480000000000000
+        Top = 226.771800000000000000
+        Width = 151.181200000000000000
+        Height = 26.456710000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'calibri'
+        Font.Style = [fsBold]
+        Frame.Width = 0.100000000000000000
+        Memo.UTF8W = (
+          ' Dados do Favorecido:')
+        ParentFont = False
+      end
+      object Memo5: TfrxMemoView
+        Align = baCenter
+        Left = 64.252010000000000000
+        Top = 434.645950000000000000
+        Width = 589.606680000000000000
+        Height = 56.692950000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'calibri'
+        Font.Style = []
+        Frame.Width = 0.100000000000000000
+        Memo.UTF8W = (
+          
+            'Recebi da ADPAR, a import'#226'ncia de  [frxDBRecibo."valor"]  ,   ( ' +
+            '[valor_extenso] ) , a t'#237'tulo de doa'#231#227'o.')
+        ParentFont = False
+        Formats = <
+          item
+            FormatStr = '%2.2m'
+            Kind = fkNumeric
+          end
+          item
+          end>
+      end
+      object Memo6: TfrxMemoView
+        Align = baCenter
+        Left = 64.252010000000000000
+        Top = 525.354670000000000000
+        Width = 589.606680000000000000
+        Height = 75.590600000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'calibri'
+        Font.Style = []
+        Frame.Width = 0.100000000000000000
+        Memo.UTF8W = (
+          ''
+          '(   ) 272- Doa'#231#227'o Assistencial'
+          ''
+          '(   ) 274- Doa'#231#227'o Evangel'#237'stica')
+        ParentFont = False
+      end
+      object Memo7: TfrxMemoView
+        Align = baCenter
+        Left = 64.252010000000000000
+        Top = 650.079160000000000000
+        Width = 589.606680000000000000
+        Height = 18.897650000000000000
+        Memo.UTF8W = (
+          'Parnamirim-RN,    [frxDBRecibo."data_recibo"]')
+      end
+      object Memo8: TfrxMemoView
+        Left = 60.472480000000000000
+        Top = 850.394250000000000000
+        Width = 317.480520000000000000
+        Height = 56.692950000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        ParentFont = False
+      end
+      object Memo9: TfrxMemoView
+        Left = 377.953000000000000000
+        Top = 850.394250000000000000
+        Width = 317.480520000000000000
+        Height = 75.590600000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        ParentFont = False
+      end
+      object Memo10: TfrxMemoView
+        Left = 60.472480000000000000
+        Top = 907.087200000000000000
+        Width = 317.480520000000000000
+        Height = 18.897650000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'calibri'
+        Font.Style = []
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        HAlign = haCenter
+        Memo.UTF8W = (
+          'Assinatura do Doador')
+        ParentFont = False
+        VAlign = vaBottom
+      end
+      object Memo11: TfrxMemoView
+        Left = 377.953000000000000000
+        Top = 907.087200000000000000
+        Width = 317.480520000000000000
+        Height = 18.897650000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Calibri'
+        Font.Style = []
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        HAlign = haCenter
+        Memo.UTF8W = (
+          'Assinatura do Favorecido')
+        ParentFont = False
+        VAlign = vaBottom
+      end
+      object Memo12: TfrxMemoView
+        Left = 521.575140000000000000
+        Top = 75.590600000000000000
+        Width = 136.063080000000000000
+        Height = 18.897650000000000000
+        DisplayFormat.FormatStr = '%2.2m'
+        DisplayFormat.Kind = fkNumeric
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Calibri'
+        Font.Style = [fsBold]
+        Memo.UTF8W = (
+          'VALOR [frxDBRecibo."valor"]')
+        ParentFont = False
+        VAlign = vaBottom
+      end
+    end
+  end
+  object frxdbDBRecibo: TfrxDBDataset
+    UserName = 'frxDBRecibo'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'cod_recibo=cod_recibo'
+      'descricao=descricao'
+      'data_recibo=data_recibo'
+      'valor=valor'
+      'endereco=endereco'
+      'bairro=bairro'
+      'cidade=cidade'
+      'uf=uf'
+      'cpf=cpf'
+      'cod_operacao=cod_operacao'
+      'data_lancamento=data_lancamento')
+    DataSet = frmCadAjudaDeCusto.QryListagem
+    BCDToCurrency = False
+    Left = 512
+    Top = 176
   end
 end

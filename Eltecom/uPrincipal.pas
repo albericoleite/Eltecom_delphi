@@ -43,6 +43,7 @@ type
     mniCargos2: TMenuItem;
     mniCargosPessoas1: TMenuItem;
     mniAoAcesso1: TMenuItem;
+    mniDoaoAjudadeCusto1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -66,6 +67,7 @@ type
     procedure mniCargos2Click(Sender: TObject);
     procedure mniCargosPessoas1Click(Sender: TObject);
     procedure mniAoAcesso1Click(Sender: TObject);
+    procedure mniDoaoAjudadeCusto1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -87,7 +89,7 @@ implementation
 uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cArquivoIni, cAtualizacaoBancoDeDados,
   cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa, uLogin, uCadUsuario,
-  uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa, uCadAcaoAcesso, cAcaoAcesso;
+  uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa, uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -197,6 +199,7 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmCadFuncao,dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmCadCongregacao,dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmCadDepartamento,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadAjudaDeCusto,dtmPrincipal.ConexaoDB);
 
     frmAtualizaDB.Free;
   end;
@@ -287,6 +290,11 @@ end;
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
 begin
   CriarForm(TfrmCadDizimos);
+end;
+
+procedure TfrmPrincipal.mniDoaoAjudadeCusto1Click(Sender: TObject);
+begin
+ CriarForm(TfrmCadAjudaDeCusto);
 end;
 
 procedure TfrmPrincipal.mniFunes2Click(Sender: TObject);

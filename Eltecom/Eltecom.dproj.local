@@ -73,8 +73,8 @@
     <Transaction>2019/04/01 16:32:14.000.359,C:\EltecomGuit\Eltecom\cadastro\cCadCargo.pas=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
     <Transaction>2019/04/01 16:32:14.000.359,C:\EltecomGuit\Eltecom\cadastro\cCadCargo.dfm=C:\EltecomGuit\Eltecom\Unit1.dfm</Transaction>
     <Transaction>2019/04/01 16:39:27.000.657,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
-    <Transaction>2019/04/01 16:40:23.000.765,C:\EltecomGuit\Eltecom\cadastro\uCadCargo.pas=C:\EltecomGuit\Eltecom\cadastro\cCadCargo.pas</Transaction>
     <Transaction>2019/04/01 16:40:23.000.765,C:\EltecomGuit\Eltecom\cadastro\uCadCargo.dfm=C:\EltecomGuit\Eltecom\cadastro\cCadCargo.dfm</Transaction>
+    <Transaction>2019/04/01 16:40:23.000.765,C:\EltecomGuit\Eltecom\cadastro\uCadCargo.pas=C:\EltecomGuit\Eltecom\cadastro\cCadCargo.pas</Transaction>
     <Transaction>2019/04/01 16:40:42.000.863,C:\EltecomGuit\Eltecom\classes\cCadCargo.pas=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
     <Transaction>2019/04/02 09:01:30.000.206,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
     <Transaction>2019/04/02 09:01:43.000.302,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
@@ -94,15 +94,20 @@
     <Transaction>2019/04/08 16:47:24.000.337,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
     <Transaction>2019/04/08 16:47:47.000.001,C:\EltecomGuit\Eltecom\classes\cAtualizacaoTabelaMySQL.pas=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
     <Transaction>2019/04/10 16:57:22.000.428,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
-    <Transaction>2019/04/10 16:57:51.000.029,C:\EltecomGuit\Eltecom\Unit1.dfm=C:\EltecomGuit\Eltecom\Relatorios\uDepartamentos.dfm</Transaction>
     <Transaction>2019/04/10 16:57:51.000.029,C:\EltecomGuit\Eltecom\Unit1.pas=C:\EltecomGuit\Eltecom\Relatorios\uDepartamentos.pas</Transaction>
+    <Transaction>2019/04/10 16:57:51.000.029,C:\EltecomGuit\Eltecom\Unit1.dfm=C:\EltecomGuit\Eltecom\Relatorios\uDepartamentos.dfm</Transaction>
     <Transaction>2019/04/11 17:22:08.000.980,=C:\EltecomGuit\Eltecom\cadastro\uCadCargoPessoa.pas</Transaction>
     <Transaction>2019/04/11 17:22:27.000.198,=C:\EltecomGuit\Eltecom\classes\cCadCargoPessoa.pas</Transaction>
-    <Transaction>2019/04/15 15:15:42.561,=C:\EltecomGuit\Eltecom\classes\cAtualizacaoCampoMySQL.pas</Transaction>
-    <Transaction>2019/04/15 15:45:03.005,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
-    <Transaction>2019/04/15 15:45:30.479,C:\EltecomGuit\Eltecom\classes\cAcaoAcesso.pas=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
-    <Transaction>2019/04/15 16:34:33.822,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
-    <Transaction>2019/04/15 16:34:46.230,C:\EltecomGuit\Eltecom\cadastro\uCadAcaoAcesso.pas=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
-    <Transaction>2019/04/15 16:34:46.230,C:\EltecomGuit\Eltecom\cadastro\uCadAcaoAcesso.dfm=C:\EltecomGuit\Eltecom\Unit1.dfm</Transaction>
+    <Transaction>2019/04/15 15:15:42.000.561,=C:\EltecomGuit\Eltecom\classes\cAtualizacaoCampoMySQL.pas</Transaction>
+    <Transaction>2019/04/15 15:45:03.000.005,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/04/15 15:45:30.000.479,C:\EltecomGuit\Eltecom\classes\cAcaoAcesso.pas=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/04/15 16:34:33.000.822,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/04/15 16:34:46.000.230,C:\EltecomGuit\Eltecom\cadastro\uCadAcaoAcesso.pas=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/04/15 16:34:46.000.230,C:\EltecomGuit\Eltecom\cadastro\uCadAcaoAcesso.dfm=C:\EltecomGuit\Eltecom\Unit1.dfm</Transaction>
+    <Transaction>2019/04/23 09:07:16.527,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/04/23 09:07:26.461,=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/04/23 09:07:48.481,C:\EltecomGuit\Eltecom\cadastro\uCadAjudaDeCusto.dfm=C:\EltecomGuit\Eltecom\Unit1.dfm</Transaction>
+    <Transaction>2019/04/23 09:07:48.481,C:\EltecomGuit\Eltecom\cadastro\uCadAjudaDeCusto.pas=C:\EltecomGuit\Eltecom\Unit1.pas</Transaction>
+    <Transaction>2019/04/23 09:21:50.469,=C:\EltecomGuit\Eltecom\classes\cCadRecibo.pas</Transaction>
   </Transactions>
 </BorlandProject>

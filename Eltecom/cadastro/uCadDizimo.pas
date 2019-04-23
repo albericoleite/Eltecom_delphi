@@ -40,6 +40,7 @@ type
     dtdtFim: TDateEdit;
     btnBuscar: TBitBtn;
     btnImprimir: TBitBtn;
+    intgrfldQryListagemnivel: TIntegerField;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -110,6 +111,9 @@ end;
 procedure TfrmCadDizimos.btnImprimirClick(Sender: TObject);
 begin
   inherited;
+  QryListagem.Close;
+  QryListagem.SQL[7]:= ' order by b.nivel desc ';
+  QryListagem.Open;
   dtmRelatorio.frxdbDizimista.DataSet:=QryListagem;
 {if dtmRelatorio.fdqryDizimistacod_dizimo.IsNull then
 begin

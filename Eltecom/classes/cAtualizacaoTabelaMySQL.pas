@@ -16,6 +16,8 @@ type
     procedure Departamento;
     procedure Usuario;
     procedure AcaoAcesso;
+    procedure Recibo;
+    procedure ReciboTipo;
 
  protected
 
@@ -38,6 +40,8 @@ begin
   Departamento;
   Usuario;
   AcaoAcesso;
+  Recibo;
+  ReciboTipo;
   //TODO: CRIAR OS METODOS PARA CRIAÇÃO DAS DEMAIS TABELAS
 end;
 
@@ -58,7 +62,8 @@ begin
     Qry.SQL.Clear;
     Qry.SQL.Add('SELECT count(DISTINCT TABLE_NAME) as ID '+
     ' FROM INFORMATION_SCHEMA.TABLES  '+
-    ' WHERE TABLE_NAME = :NomeTabela ');
+    ' WHERE TABLE_NAME = :NomeTabela  '+
+    ' and TABLE_SCHEMA ='+QuotedStr('igreja'));
     Qry.ParamByName('NomeTabela').AsString := aNomeTabela;
     Qry.Open;
 
@@ -122,8 +127,20 @@ begin
           '  CREATE TABLE  `tb_cargo` (  '+
           ' `cod_cargo` int(10) NOT NULL AUTO_INCREMENT, '+
           ' `cargo` varchar(50) DEFAULT NULL, '+
+          ' `nivel` int(11) NOT NULL DEFAULT 0, '+
           ' PRIMARY KEY (`cod_cargo`) '+
           ' )');
+
+          ExecutaDiretoBancoDeDados('INSERT INTO tb_cargo (cargo,nivel) VALUES  '+
+        ' ('+QuotedStr('COOPERADOR')+',1)   '+
+' ,('+QuotedStr('AUXILIAR DE CONGREGAÇÃO')+',2)   '+
+' ,('+QuotedStr('AUXILIAR')+',3)   '+
+' ,('+QuotedStr('DIÁCONO')+',4)   '+
+' ,('+QuotedStr('PRESBITERO')+',5)  '+
+' ,('+QuotedStr('EVANGELISTA')+',6)   '+
+' ,('+QuotedStr('PASTOR')+',7)  '+
+' ;');
+
    end;
 
 end;
@@ -196,5 +213,45 @@ begin
 
 end;
 
+
+procedure TAtualizacaoTabelaMySQL.Recibo;
+begin
+   if not TabelaExiste('tb_recibo') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_recibo` ( '+
+  ' `cod_recibo` int(11) NOT NULL AUTO_INCREMENT, '+
+  ' `descricao` varchar(255) NOT NULL,  '+
+  ' `data_recibo` date NOT NULL,   '+
+  ' `valor` double NOT NULL,   '+
+  ' `endereco` varchar(255) NOT NULL,   '+
+  ' `bairro` varchar(100) DEFAULT NULL,  '+
+  ' `cidade` varchar(100) NOT NULL,  '+
+  ' `uf` varchar(2) NOT NULL,   '+
+  ' `cpf` varchar(25) NOT NULL, '+
+  ' `cod_operacao` int(11) DEFAULT NULL,  '+
+  ' `data_lancamento` date DEFAULT NULL,  '+
+  ' `cod_congregacao` int(11) DEFAULT NULL, '+
+  ' PRIMARY KEY (`cod_recibo`) ) ');
+   end;
+
+end;
+
+procedure TAtualizacaoTabelaMySQL.ReciboTipo;
+begin
+   if not TabelaExiste('tb_recibo_tipo') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_recibo_tipo` (  '+
+  ' `id_tipo` int(11) NOT NULL AUTO_INCREMENT, '+
+  ' `desc_tipo` varchar(45) DEFAULT NULL,  '+
+  ' PRIMARY KEY (`id_tipo`)) ');
+
+  ExecutaDiretoBancoDeDados('INSERT INTO tb_recibo_tipo '+
+  ' (id_tipo, desc_tipo) VALUES(272,'+QuotedStr('Doação Assistencial')+')');
+    ExecutaDiretoBancoDeDados('INSERT INTO tb_recibo_tipo '+
+  ' (id_tipo, desc_tipo) VALUES(274,'+QuotedStr('Doação Evangelística')+')');
+ end;
+end;
 
 end.

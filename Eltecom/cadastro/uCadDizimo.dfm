@@ -1,14 +1,13 @@
 inherited frmCadDizimos: TfrmCadDizimos
   Caption = 'Cadastro de Dizimos'
   ClientWidth = 829
-  ExplicitTop = -65
+  ExplicitTop = -17
   ExplicitWidth = 835
   ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 829
-    ActivePage = tabManutencao
     ExplicitWidth = 829
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
@@ -255,13 +254,16 @@ inherited frmCadDizimos: TfrmCadDizimos
     SQL.Strings = (
       
         'SELECT t.cod_dizimo, t.cod_talao, t.cod_cheque, t.nome, t.valor,' +
-        ' t.`data`, t.cargo, t.cod_congregacao'
+        ' t.`data`, t.cargo, t.cod_congregacao,b.nivel'
       
-        'FROM tb_dizimista t join tb_parametro_sistema a on a.cod_congreg' +
-        'acao = t.cod_congregacao where t.`data` between '
+        'FROM tb_dizimista t inner join tb_parametro_sistema a on a.cod_c' +
+        'ongregacao = t.cod_congregacao '
+      'left join tb_cargo b on b.cargo = t.cargo'
+      'where t.`data` between '
       ':dtini'
       'and '
-      ':dtfim')
+      ':dtfim'
+      'order by b.nivel desc')
     Left = 264
     Top = 0
     ParamData = <
@@ -328,6 +330,13 @@ inherited frmCadDizimos: TfrmCadDizimos
       FieldName = 'cod_congregacao'
       Origin = 'cod_congregacao'
       Required = True
+    end
+    object intgrfldQryListagemnivel: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nivel'
+      Origin = 'nivel'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
   inherited dtsListagem: TDataSource

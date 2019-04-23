@@ -5,6 +5,7 @@ inherited frmCadCargo: TfrmCadCargo
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
@@ -21,6 +22,11 @@ inherited frmCadCargo: TfrmCadCargo
           item
             Expanded = False
             FieldName = 'cargo'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'nivel'
             Visible = True
           end>
       end
@@ -56,6 +62,19 @@ inherited frmCadCargo: TfrmCadCargo
         NumbersOnly = True
         TabOrder = 1
       end
+      object lbledtNivel: TLabeledEdit
+        Tag = 1
+        Left = 350
+        Top = 20
+        Width = 35
+        Height = 21
+        EditLabel.Width = 23
+        EditLabel.Height = 13
+        EditLabel.Caption = 'N'#237'vel'
+        MaxLength = 10
+        NumbersOnly = True
+        TabOrder = 2
+      end
     end
   end
   inherited pnlRodape: TPanel
@@ -64,9 +83,8 @@ inherited frmCadCargo: TfrmCadCargo
     end
   end
   inherited QryListagem: TFDQuery
-    Active = True
     SQL.Strings = (
-      'SELECT cod_cargo, cargo'
+      'SELECT cod_cargo, cargo,nivel'
       'FROM igreja.tb_cargo')
     object fdtncfldQryListagemcod_cargo: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'
@@ -81,6 +99,12 @@ inherited frmCadCargo: TfrmCadCargo
       FieldName = 'cargo'
       Origin = 'cargo'
       Size = 50
+    end
+    object intgrfldQryListagemnivel: TIntegerField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Nivel'
+      FieldName = 'nivel'
+      Origin = 'nivel'
     end
   end
 end

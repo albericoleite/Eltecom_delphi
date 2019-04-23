@@ -1,7 +1,7 @@
 inherited frmCadCargoPessoa: TfrmCadCargoPessoa
   Caption = 'Cadastrar Obreiros'
-  ExplicitTop = -91
-  ExplicitWidth = 806
+  ClientWidth = 751
+  ExplicitWidth = 757
   ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
@@ -13,13 +13,18 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
     Caption = 'Nome'
   end
   inherited pgcPrincipal: TPageControl
+    Width = 751
     ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
       ExplicitWidth = 792
       ExplicitHeight = 390
+      inherited pnlListagem: TPanel
+        Width = 743
+      end
       inherited grdListagem: TDBGrid
+        Width = 743
         DataSource = dtsListagem
         Columns = <
           item
@@ -104,7 +109,7 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
       object dblkcbbSitucao: TDBLookupComboBox
         Left = 603
         Top = 20
-        Width = 134
+        Width = 102
         Height = 21
         KeyField = 'TIPO'
         ListField = 'SITUACAO'
@@ -114,8 +119,18 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
     end
   end
   inherited pnlRodape: TPanel
+    Width = 751
     inherited btnNavigator: TDBNavigator
+      Left = 413
       Hints.Strings = ()
+      ExplicitLeft = 413
+    end
+    inherited btnAlterar: TBitBtn
+      Left = 85
+      ExplicitLeft = 85
+    end
+    inherited btnFechar: TBitBtn
+      Left = 659
     end
   end
   inherited QryListagem: TFDQuery

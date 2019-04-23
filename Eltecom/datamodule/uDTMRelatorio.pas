@@ -152,6 +152,8 @@ type
     fltfldDizimistavalor: TFloatField;
     intgrfldDizimistacod_congregacao: TIntegerField;
     frxdbDizimista: TfrxDBDataset;
+    frxrprtRecibo: TfrxReport;
+    frxdbDBRecibo: TfrxDBDataset;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -166,7 +168,7 @@ var
 implementation
 
 uses
-  uDTMConexao, uCadDizimo;
+  uDTMConexao, uCadDizimo, cCadRecibo, uCadAjudaDeCusto;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
