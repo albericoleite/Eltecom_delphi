@@ -4,8 +4,8 @@ object frmLogin: TfrmLogin
   BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'Login'
-  ClientHeight = 137
-  ClientWidth = 321
+  ClientHeight = 117
+  ClientWidth = 232
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,8 +19,8 @@ object frmLogin: TfrmLogin
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
-    Left = 56
-    Top = 19
+    Left = 16
+    Top = 11
     Width = 62
     Height = 19
     Caption = 'Usu'#225'rio'
@@ -32,8 +32,8 @@ object frmLogin: TfrmLogin
     ParentFont = False
   end
   object lbl2: TLabel
-    Left = 56
-    Top = 59
+    Left = 16
+    Top = 51
     Width = 50
     Height = 19
     Caption = 'Senha'
@@ -45,8 +45,8 @@ object frmLogin: TfrmLogin
     ParentFont = False
   end
   object edtUsuario: TEdit
-    Left = 136
-    Top = 16
+    Left = 96
+    Top = 8
     Width = 121
     Height = 26
     Font.Charset = ANSI_CHARSET
@@ -59,8 +59,8 @@ object frmLogin: TfrmLogin
     Text = 'admin'
   end
   object edtSenha: TEdit
-    Left = 136
-    Top = 56
+    Left = 96
+    Top = 48
     Width = 121
     Height = 26
     Font.Charset = ANSI_CHARSET
@@ -74,8 +74,8 @@ object frmLogin: TfrmLogin
     Text = 'admin'
   end
   object btnSair: TBitBtn
-    Left = 56
-    Top = 87
+    Left = 16
+    Top = 79
     Width = 90
     Height = 25
     Caption = 'Sair'
@@ -110,8 +110,8 @@ object frmLogin: TfrmLogin
     OnClick = btnSairClick
   end
   object btnEntrar: TBitBtn
-    Left = 167
-    Top = 88
+    Left = 127
+    Top = 80
     Width = 90
     Height = 25
     Caption = 'Acessar'

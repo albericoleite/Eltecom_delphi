@@ -15,6 +15,7 @@ object frmPrincipal: TfrmPrincipal
   WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
+  OnPaint = FormPaint
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -154,8 +155,15 @@ object frmPrincipal: TfrmPrincipal
       end
     end
     object Configurao1: TMenuItem
-      Caption = 'Configura'#231#227'o'
-      OnClick = Configurao1Click
+      Caption = 'Ferramentas'
+      object mniConsultarDados1: TMenuItem
+        Caption = 'Consultar Dados'
+        OnClick = mniConsultarDados1Click
+      end
+      object mniConfigurao2: TMenuItem
+        Caption = 'Configura'#231#227'o'
+        OnClick = mniConfigurao2Click
+      end
     end
     object mniSobre: TMenuItem
       Caption = 'Sobre'

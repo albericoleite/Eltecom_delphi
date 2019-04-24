@@ -9,11 +9,10 @@ inherited frmCadUsuario: TfrmCadUsuario
   inherited pgcPrincipal: TPageControl
     Width = 731
     Height = 309
+    ActivePage = tabManutencao
     ExplicitWidth = 731
     ExplicitHeight = 309
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 723
       ExplicitHeight = 281
       inherited pnlListagem: TPanel
@@ -52,8 +51,6 @@ inherited frmCadUsuario: TfrmCadUsuario
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 723
       ExplicitHeight = 281
       object lbl4: TLabel
@@ -62,6 +59,13 @@ inherited frmCadUsuario: TfrmCadUsuario
         Width = 41
         Height = 13
         Caption = 'Situa'#231#227'o'
+      end
+      object lbl1: TLabel
+        Left = 484
+        Top = 50
+        Width = 26
+        Height = 13
+        Caption = 'Tema'
       end
       object lbledt_codigo: TLabeledEdit
         Tag = 1
@@ -110,6 +114,13 @@ inherited frmCadUsuario: TfrmCadUsuario
         ListField = 'SITUACAO'
         ListSource = dsFuncoes
         TabOrder = 3
+      end
+      object cbbTemas: TComboBox
+        Left = 484
+        Top = 67
+        Width = 144
+        Height = 21
+        TabOrder = 4
       end
     end
   end

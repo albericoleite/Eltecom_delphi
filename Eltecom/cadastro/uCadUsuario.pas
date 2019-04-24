@@ -10,7 +10,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,
-  uEnum, uDTMConexao, cCadUsuario;
+  uEnum, uDTMConexao, cCadUsuario,Vcl.Themes;
 
 type
   TfrmCadUsuario = class(TfrmTelaheranca)
@@ -27,9 +27,12 @@ type
     dsFuncoes: TDataSource;
     dblkcbbStatus: TDBLookupComboBox;
     lbl4: TLabel;
+    cbbTemas: TComboBox;
+    lbl1: TLabel;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnNovoClick(Sender: TObject);
   private
     { Private declarations }
     oUsuario: TUsuario;
@@ -72,7 +75,7 @@ begin
   oUsuario.usuario := lbledtNome.Text;
   oUsuario.senha := lbledtSenha.Text;
   oUsuario.status := dblkcbbStatus.KeyValue;
-  // oUsuario.tema
+  oUsuario.tema  :=cbbTemas.Text;
   // oUsuario.setor
   // oUsuario.status
 
@@ -88,13 +91,18 @@ end;
 {$ENDREGION}
 
 procedure TfrmCadUsuario.btnAlterarClick(Sender: TObject);
+var v :String;
 begin
+cbbTemas.Items.Clear;
+ for v in TStyleManager.StyleNames do
+    cbbTemas.Items.Add(v);
   if oUsuario.Selecionar(QryListagem.FieldByName('codigo').AsInteger) then
   begin
     lbledt_codigo.Text := IntToStr(oUsuario.codigo);
     lbledtNome.Text := oUsuario.usuario;
     lbledtSenha.Text := oUsuario.senha;
     dblkcbbStatus.KeyValue := oUsuario.status;
+    cbbTemas.Text:=oUsuario.tema;
   end
   else
   begin
@@ -102,7 +110,15 @@ begin
     Abort;
   end;
   inherited;
+end;
 
+procedure TfrmCadUsuario.btnNovoClick(Sender: TObject);
+var
+ v :String;
+begin
+  inherited;
+ for v in TStyleManager.StyleNames do
+    cbbTemas.Items.Add(v);
 end;
 
 procedure TfrmCadUsuario.FormClose(Sender: TObject; var Action: TCloseAction);

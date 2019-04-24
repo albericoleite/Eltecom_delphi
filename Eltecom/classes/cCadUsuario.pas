@@ -255,7 +255,7 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('SELECT codigo,usuario,senha '+
+    Qry.SQL.Add('SELECT codigo,usuario,senha,tema '+
     ' FROM tb_usuario where usuario=:usuario and  senha=:senha ');
     Qry.ParamByName('usuario').AsString := aUsuario;
     Qry.ParamByName('senha').AsString := Criptografar(aSenha);
@@ -266,6 +266,7 @@ begin
       F_codigo:=Qry.FieldByName('codigo').AsInteger;
       F_usuario:=Qry.FieldByName('usuario').AsString;
       F_senha:=  Qry.FieldByName('senha').AsString;
+      F_tema:=  Qry.FieldByName('tema').AsString;
       Result :=True ;
       end
       else

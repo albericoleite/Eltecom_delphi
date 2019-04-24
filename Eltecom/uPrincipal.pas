@@ -45,11 +45,12 @@ type
     mniAoAcesso1: TMenuItem;
     mniDoaoAjudadeCusto1: TMenuItem;
     mniUsuriosVSAes1: TMenuItem;
+    mniConsultarDados1: TMenuItem;
+    mniConfigurao2: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
     procedure Clientes1Click(Sender: TObject);
-    procedure Configurao1Click(Sender: TObject);
     procedure Igreja1Click(Sender: TObject);
     procedure CartaseDocumentos1Click(Sender: TObject);
     procedure Congregaes1Click(Sender: TObject);
@@ -70,6 +71,9 @@ type
     procedure mniAoAcesso1Click(Sender: TObject);
     procedure mniDoaoAjudadeCusto1Click(Sender: TObject);
     procedure mniUsuriosVSAes1Click(Sender: TObject);
+    procedure mniConfigurao2Click(Sender: TObject);
+    procedure mniConsultarDados1Click(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -90,8 +94,8 @@ implementation
 
 uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cArquivoIni, cAtualizacaoBancoDeDados,
-  cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa, uLogin, uCadUsuario,
-  uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa, uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes;
+  cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa, uLogin, uCadUsuario,Vcl.Themes,
+  uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa, uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes, uConsultarDados;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -103,13 +107,6 @@ end;
 procedure TfrmPrincipal.Clientes1Click(Sender: TObject);
 begin
   CriarForm(TfrmCadPessoa);
-end;
-
-procedure TfrmPrincipal.Configurao1Click(Sender: TObject);
-begin
-  frmCongSistema := nil;
-  frmCongSistema := tfrmCongSistema.Create(self);
-  frmCongSistema.Show;
 end;
 
 procedure TfrmPrincipal.Congregaes1Click(Sender: TObject);
@@ -237,12 +234,18 @@ begin
   // statMenu.Panels[3].Text := dtmConexao.strngfldCongregacaoAtivaSistemacongregacao.Text;
 end;
 
+procedure TfrmPrincipal.FormPaint(Sender: TObject);
+begin
+ TStyleManager.SetStyle(oUsuarioLogado.tema);
+end;
+
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
 try
 oUsuarioLogado:= TUsuarioLogado.Create;
    frmLogin := TfrmLogin.Create(self);
   frmLogin.ShowModal;
+
   //oUsuarioLogado.nome:=frmLogin.edtUsuario;
 finally
    frmLogin.Release;
@@ -274,6 +277,20 @@ end;
 procedure TfrmPrincipal.mniCargosPessoas1Click(Sender: TObject);
 begin
     CriarForm(TfrmCadCargoPessoa);
+end;
+
+procedure TfrmPrincipal.mniConfigurao2Click(Sender: TObject);
+begin
+  frmCongSistema := nil;
+  frmCongSistema := tfrmCongSistema.Create(self);
+  frmCongSistema.Show;
+end;
+
+procedure TfrmPrincipal.mniConsultarDados1Click(Sender: TObject);
+begin
+  frmConsultaDados := nil;
+  frmConsultaDados := TfrmConsultaDados.Create(self);
+  frmConsultaDados.Show;
 end;
 
 procedure TfrmPrincipal.mniDepartamentoPessoas1Click(Sender: TObject);

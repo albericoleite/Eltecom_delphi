@@ -53,7 +53,8 @@ uses
   uCadAcaoAcesso in 'cadastro\uCadAcaoAcesso.pas' {frmCadAcaoAcesso},
   uCadAjudaDeCusto in 'cadastro\uCadAjudaDeCusto.pas' {frmCadAjudaDeCusto},
   cCadRecibo in 'classes\cCadRecibo.pas',
-  uUsuarioVsAcoes in 'login\uUsuarioVsAcoes.pas' {frmUsuarioVsAcoes};
+  uUsuarioVsAcoes in 'login\uUsuarioVsAcoes.pas' {frmUsuarioVsAcoes},
+  uConsultarDados in 'login\uConsultarDados.pas' {frmConsultaDados};
 
 {$R *.res}
 

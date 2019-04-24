@@ -46,6 +46,7 @@ try
   oUsuarioLogado.codigo:=oUsuario.codigo;
   oUsuarioLogado.nome:=oUsuario.usuario;
   oUsuarioLogado.senha:=oUsuario.senha;
+  oUsuarioLogado.tema:= oUsuario.tema;
     FecharFormulario
   end else begin
     MessageDlg('Usuário Inválido',mtInformation,[mbOK],0);
