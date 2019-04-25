@@ -217,7 +217,7 @@ object frmTelaheranca: TfrmTelaheranca
     end
     object btnApagar: TBitBtn
       Tag = 99
-      Left = 327
+      Left = 329
       Top = 6
       Width = 80
       Height = 25

@@ -39,7 +39,6 @@ type
     mniUsurios1: TMenuItem;
     mniN5: TMenuItem;
     mniAlterarSenha1: TMenuItem;
-    mniDepartamentos3: TMenuItem;
     mniCargos2: TMenuItem;
     mniCargosPessoas1: TMenuItem;
     mniAoAcesso1: TMenuItem;
@@ -65,7 +64,6 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure mniAlterarSenha1Click(Sender: TObject);
     procedure EntradasSadas1Click(Sender: TObject);
-    procedure mniDepartamentos3Click(Sender: TObject);
     procedure mniCargos2Click(Sender: TObject);
     procedure mniCargosPessoas1Click(Sender: TObject);
     procedure mniAoAcesso1Click(Sender: TObject);
@@ -95,7 +93,7 @@ implementation
 uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cArquivoIni, cAtualizacaoBancoDeDados,
   cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa, uLogin, uCadUsuario,Vcl.Themes,
-  uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa, uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes, uConsultarDados;
+  uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa, uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes, uConsultarDados, uTelaHeranca;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -199,6 +197,12 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmCadCongregacao,dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmCadDepartamento,dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmCadAjudaDeCusto,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmUsuarioVsAcoes,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadPessoa,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadIgreja,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmConsultaDados,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmAlterarSenha,dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadSetores,dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -301,11 +305,6 @@ end;
 procedure TfrmPrincipal.mniDepartamentos2Click(Sender: TObject);
 begin
    CriarForm(TfrmCadDepartamento);
-end;
-
-procedure TfrmPrincipal.mniDepartamentos3Click(Sender: TObject);
-begin
- CriarForm(TfrmDepartamentos);
 end;
 
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
@@ -459,7 +458,15 @@ var form:TForm;
 begin
   try
     form := aNomeForm.Create(Application);
-    form.ShowModal;
+    if TfrmTelaheranca.TenhoAcesso(oUsuarioLogado.codigo,form.Name,dtmPrincipal.ConexaoDB) then
+begin
+form.ShowModal;
+end else begin
+  MessageDlg('Usuário: '+oUsuarioLogado.nome+', não tem permissão de acesso',mtWarning,[mbOK],0);
+  Abort;
+end;
+
+
   finally
     if Assigned(form) then
        form.Release;
