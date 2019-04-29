@@ -181,7 +181,6 @@ object dtmPrincipal: TdtmPrincipal
     Top = 144
   end
   object fdqrySetores: TFDQuery
-    Active = True
     Connection = ConexaoDB
     SQL.Strings = (
       'SELECT cod_setor, setor'

@@ -6,7 +6,9 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,Enter,
   System.Classes, Vcl.Graphics,  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,
   uDTMConexao, Vcl.ComCtrls, FireDAC.Stan.Option,
-  uFrmAtualizaDB, uDTMRelatorio,cUsuarioLogado;
+  uFrmAtualizaDB, uDTMRelatorio,cUsuarioLogado, VclTee.TeeGDIPlus,
+  VCLTee.TeEngine, VCLTee.TeeProcs, VCLTee.Chart, VCLTee.DBChart, Vcl.ExtCtrls,
+  VCLTee.Series;
 
 type
   TfrmPrincipal = class(TForm)
@@ -46,6 +48,12 @@ type
     mniUsuriosVSAes1: TMenuItem;
     mniConsultarDados1: TMenuItem;
     mniConfigurao2: TMenuItem;
+    pnl1: TPanel;
+    dbchtPessoas: TDBChart;
+    brsrsSeries1: TBarSeries;
+    pnl2: TPanel;
+    dbcht1: TDBChart;
+    brsrs1: TBarSeries;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -93,7 +101,7 @@ implementation
 uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cArquivoIni, cAtualizacaoBancoDeDados,
   cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa, uLogin, uCadUsuario,Vcl.Themes,
-  uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa, uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes, uConsultarDados, uTelaHeranca;
+  uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa, uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes, uConsultarDados, uTelaHeranca, uDTMGraficos;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -240,7 +248,7 @@ end;
 
 procedure TfrmPrincipal.FormPaint(Sender: TObject);
 begin
- TStyleManager.SetStyle(oUsuarioLogado.tema);
+ //TStyleManager.SetStyle(oUsuarioLogado.tema);
 end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);

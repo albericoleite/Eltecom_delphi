@@ -2,6 +2,7 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 486
   ClientWidth = 956
+  ExplicitTop = -121
   ExplicitWidth = 962
   ExplicitHeight = 515
   PixelsPerInch = 96

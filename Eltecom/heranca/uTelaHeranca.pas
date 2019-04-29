@@ -427,6 +427,16 @@ begin
        end;
     end;
 
+        if (Components[i] is TDBLookupComboBox) then   begin
+       if (TDBLookupComboBox(Components[i]).Tag =2) then    begin
+         MessageDlg(TDBLookupComboBox(Components[i]).Hint +
+         ' é um campo obrigatório',mtInformation,[mbOK],0);
+         TDBLookupComboBox(Components[i]).SetFocus;
+         Result:=true;
+         Break;
+       end;
+    end;
+
   end;
 
 end;

@@ -54,7 +54,8 @@ uses
   uCadAjudaDeCusto in 'cadastro\uCadAjudaDeCusto.pas' {frmCadAjudaDeCusto},
   cCadRecibo in 'classes\cCadRecibo.pas',
   uUsuarioVsAcoes in 'login\uUsuarioVsAcoes.pas' {frmUsuarioVsAcoes},
-  uConsultarDados in 'login\uConsultarDados.pas' {frmConsultaDados};
+  uConsultarDados in 'login\uConsultarDados.pas' {frmConsultaDados},
+  uDTMGraficos in 'datamodule\uDTMGraficos.pas' {dtmGrafico: TDataModule};
 
 {$R *.res}
 
@@ -62,5 +63,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TdtmGrafico, dtmGrafico);
   Application.Run;
 end.

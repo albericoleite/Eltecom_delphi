@@ -38,6 +38,7 @@ type
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnNovoClick(Sender: TObject);
   private
     { Private declarations }
     oCargoPessoa: TCargoPessoa;
@@ -58,8 +59,9 @@ implementation
 {$REGION 'Override'}
 function TfrmCadCargoPessoa.Apagar: Boolean;
 begin
-if oCargoPessoa.Selecionar(QryListagem.FieldByName('cod_dept_pessoa').AsInteger) then
+if oCargoPessoa.Selecionar(QryListagem.FieldByName('cod_carg_pessoa').AsInteger) then
       Result:=oCargoPessoa.Apagar;
+       fdqryPessoas.Refresh;
 end;
 
 
@@ -78,7 +80,7 @@ begin
     Result:=oCargoPessoa.Inserir
     else if (EstadodoCadastro=ecAlterar) then
      Result:=oCargoPessoa.Atualizar;
-
+   fdqryPessoas.Refresh;
 end;
 
 {$endregion}
@@ -100,6 +102,12 @@ if oCargoPessoa.Selecionar(QryListagem.FieldByName('cod_carg_pessoa').AsInteger)
   end;
   inherited;
 
+end;
+
+procedure TfrmCadCargoPessoa.btnNovoClick(Sender: TObject);
+begin
+  inherited;
+dblkcbbSitucao.ListFieldIndex:=1;
 end;
 
 procedure TfrmCadCargoPessoa.FormClose(Sender: TObject;

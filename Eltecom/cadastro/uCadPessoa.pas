@@ -227,6 +227,7 @@ end;
 
 procedure TfrmCadPessoa.btnAlterarClick(Sender: TObject);
 begin
+//TODO: VERIFICAR CAMPO DAS DATAS
   if oPessoa.Selecionar(QryListagem.FieldByName('cod_pessoa').AsInteger) then
   begin
     lbledt_codigo.Text    := IntToStr(oPessoa.cod_pessoa);

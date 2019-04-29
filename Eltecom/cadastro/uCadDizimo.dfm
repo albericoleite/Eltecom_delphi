@@ -1,7 +1,6 @@
 inherited frmCadDizimos: TfrmCadDizimos
   Caption = 'Cadastro de Dizimos'
   ClientWidth = 829
-  ExplicitTop = -17
   ExplicitWidth = 835
   ExplicitHeight = 485
   PixelsPerInch = 96
@@ -357,5 +356,95 @@ inherited frmCadDizimos: TfrmCadDizimos
     DataSet = fdqryCargos
     Left = 464
     Top = 200
+  end
+  object fdqryDizimistas: TFDQuery
+    Active = True
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      
+        'SELECT t.cod_dizimo, t.cod_talao, t.cod_cheque, t.nome, t.valor,' +
+        ' t.`data`, t.cargo, t.cod_congregacao,b.nivel'
+      
+        'FROM tb_dizimista t inner join tb_parametro_sistema a on a.cod_c' +
+        'ongregacao = t.cod_congregacao '
+      'left join tb_cargo b on b.cargo = t.cargo'
+      'where t.`data` between '
+      ':dtini'
+      'and '
+      ':dtfim'
+      'order by b.nivel desc')
+    Left = 568
+    ParamData = <
+      item
+        Name = 'DTINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 43466d
+      end
+      item
+        Name = 'DTFIM'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 43586d
+      end>
+    object fdtncfld1: TFDAutoIncField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'cod_dizimo'
+      Origin = 'cod_dizimo'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object intgrfld1: TIntegerField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'C'#243'digo do Tal'#227'o'
+      FieldName = 'cod_talao'
+      Origin = 'cod_talao'
+    end
+    object intgrfld2: TIntegerField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'C'#243'digo do Cheque'
+      FieldName = 'cod_cheque'
+      Origin = 'cod_cheque'
+    end
+    object strngfld1: TStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Nome'
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 50
+    end
+    object fltfld1: TFloatField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Valor'
+      FieldName = 'valor'
+      Origin = 'valor'
+      currency = True
+    end
+    object dtfld1: TDateField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Data'
+      FieldName = 'data'
+      Origin = '`data`'
+    end
+    object strngfld2: TStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Cargo'
+      FieldName = 'cargo'
+      Origin = 'cargo'
+      Size = 50
+    end
+    object intgrfld3: TIntegerField
+      DisplayLabel = 'C'#243'digo da Congrega'#231#227'o'
+      FieldName = 'cod_congregacao'
+      Origin = 'cod_congregacao'
+      Required = True
+    end
+    object intgrfld4: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nivel'
+      Origin = 'nivel'
+      ProviderFlags = []
+      ReadOnly = True
+    end
   end
 end

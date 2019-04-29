@@ -41,6 +41,16 @@ type
     btnBuscar: TBitBtn;
     btnImprimir: TBitBtn;
     intgrfldQryListagemnivel: TIntegerField;
+    fdqryDizimistas: TFDQuery;
+    fdtncfld1: TFDAutoIncField;
+    intgrfld1: TIntegerField;
+    intgrfld2: TIntegerField;
+    strngfld1: TStringField;
+    fltfld1: TFloatField;
+    dtfld1: TDateField;
+    strngfld2: TStringField;
+    intgrfld3: TIntegerField;
+    intgrfld4: TIntegerField;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

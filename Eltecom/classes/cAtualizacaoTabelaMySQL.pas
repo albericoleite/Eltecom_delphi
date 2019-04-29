@@ -19,6 +19,12 @@ type
     procedure Recibo;
     procedure ReciboTipo;
     procedure UsuarioAcaoAcesso;
+    procedure Setor;
+    procedure ParametroSistema;
+    procedure Classe;
+    procedure ClasseAluno;
+    procedure ClasseProfessor;
+    procedure Professor;
 
  protected
 
@@ -44,6 +50,12 @@ begin
   Recibo;
   ReciboTipo;
   UsuarioAcaoAcesso;
+  Setor;
+  ParametroSistema;
+  Classe;
+  ClasseAluno;
+  Professor;
+  ClasseProfessor;
   //TODO: CRIAR OS METODOS PARA CRIAÇÃO DAS DEMAIS TABELAS
 end;
 
@@ -215,7 +227,6 @@ begin
 
 end;
 
-
 procedure TAtualizacaoTabelaMySQL.Recibo;
 begin
    if not TabelaExiste('tb_recibo') then
@@ -271,6 +282,100 @@ begin
   ' )');
    end;
 
+end;
+
+procedure TAtualizacaoTabelaMySQL.Setor;
+begin
+   if not TabelaExiste('tb_setor') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_setor` (    '+
+  ' `cod_setor` int(11) NOT NULL AUTO_INCREMENT,  '+
+  ' `setor` varchar(45) DEFAULT NULL,  '+
+  ' `cod_igreja` int(11) NOT NULL, '+
+  ' `cod_congregacao` int(11) DEFAULT NULL,  '+
+  ' `data_cadastro` date DEFAULT NULL,    '+
+  ' `usuario_cadastro` int(11) DEFAULT NULL,   '+
+  ' PRIMARY KEY (`cod_setor`),  '+
+  ' KEY `tb_setor_tb_igreja_fk` (`cod_igreja`),   '+
+  ' KEY `tb_setor_tb_congregacao_fk` (`cod_congregacao`), '+
+  ' KEY `tb_setor_tb_usuario_fk` (`usuario_cadastro`),  '+
+  ' CONSTRAINT `tb_setor_tb_congregacao_fk` FOREIGN KEY (`cod_congregacao`) REFERENCES `tb_congregacao` (`cod_congregacao`), '+
+  ' CONSTRAINT `tb_setor_tb_igreja_fk` FOREIGN KEY (`cod_igreja`) REFERENCES `tb_igreja` (`cod_igreja`),  '+
+  ' CONSTRAINT `tb_setor_tb_usuario_fk` FOREIGN KEY (`usuario_cadastro`) REFERENCES `tb_usuario` (`codigo`))');
+   end;
+
+end;
+
+procedure TAtualizacaoTabelaMySQL.ParametroSistema;
+begin
+   if not TabelaExiste('tb_parametro_sistema') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_parametro_sistema` (  '+
+     ' `cod_congregacao` int(11) NOT NULL AUTO_INCREMENT,  '+
+     ' PRIMARY KEY (`cod_congregacao`))');
+   end;
+
+end;
+
+procedure TAtualizacaoTabelaMySQL.Classe;
+begin
+   if not TabelaExiste('tb_classe') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_classe` (  '+
+  ' `cod_classe` int(11) NOT NULL AUTO_INCREMENT, '+
+  ' `classe` varchar(20) DEFAULT NULL,  '+
+  ' `cla_descricao` varchar(100) DEFAULT NULL,  '+
+  ' PRIMARY KEY (`cod_classe`))');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.ClasseAluno;
+begin
+   if not TabelaExiste('tb_classe_aluno') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_classe_aluno` (  '+
+  ' `codigo` int(11) NOT NULL, '+
+  ' `cod_aluno` int(11) DEFAULT NULL,   '+
+  ' `aluno` varchar(50) DEFAULT NULL, '+
+  ' `cod_classe` int(11) DEFAULT NULL, '+
+  ' `classe` varchar(50) DEFAULT NULL,  '+
+  ' PRIMARY KEY (`codigo`) )');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.Professor;
+begin
+   if not TabelaExiste('tb_professor') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_professor` ( '+
+  ' `cod_professor` int(11) NOT NULL AUTO_INCREMENT,  '+
+  ' `cod_pessoa` int(11) NOT NULL, '+
+  ' `nome` varchar(50) DEFAULT NULL,  '+
+  ' `usuario_cadastro` varchar(20) DEFAULT NULL,  '+
+  ' `dta_cadastro` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  '+
+  ' `status` varchar(10) DEFAULT '+'ATIVO'+',  '+
+  ' PRIMARY KEY (`cod_professor`), '+
+  ' KEY `fk_pessoa_prof` (`cod_pessoa`) )');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.ClasseProfessor;
+begin
+   if not TabelaExiste('tb_classe_professor') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_classe_professor` (  '+
+  ' `codigo` int(11) DEFAULT NULL,  '+
+  ' `cod_professor` int(11) DEFAULT NULL,  '+
+  ' `professor` varchar(20) DEFAULT NULL, '+
+  ' `cod_classe` int(11) DEFAULT NULL,  '+
+  ' `classe` varchar(20) DEFAULT NULL ) ');
+   end;
 end;
 
 end.

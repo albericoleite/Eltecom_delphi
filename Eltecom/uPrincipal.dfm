@@ -2,8 +2,8 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Eltecom - 2019.1'
-  ClientHeight = 240
-  ClientWidth = 475
+  ClientHeight = 463
+  ClientWidth = 1225
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,8 +21,8 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 13
   object statMenu: TStatusBar
     Left = 0
-    Top = 223
-    Width = 475
+    Top = 446
+    Width = 1225
     Height = 17
     Panels = <
       item
@@ -37,6 +37,87 @@ object frmPrincipal: TfrmPrincipal
       item
         Width = 50
       end>
+  end
+  object pnl1: TPanel
+    Left = 0
+    Top = 0
+    Width = 497
+    Height = 249
+    Align = alCustom
+    TabOrder = 1
+    object dbchtPessoas: TDBChart
+      Left = 10
+      Top = 9
+      Width = 479
+      Height = 232
+      Title.Color = clBlack
+      Title.Font.Color = clBlack
+      Title.Text.Strings = (
+        'Quantidade de Cadastros')
+      ClipPoints = False
+      Align = alCustom
+      TabOrder = 0
+      DefaultCanvas = 'TGDIPlusCanvas'
+      PrintMargins = (
+        15
+        26
+        15
+        26)
+      ColorPaletteIndex = 13
+      object brsrsSeries1: TBarSeries
+        ColorEachPoint = True
+        DataSource = dtmGrafico.fdqryPessoas
+        XLabelsSource = 'tipo'
+        XValues.Name = 'X'
+        XValues.Order = loAscending
+        XValues.ValueSource = 'qtd'
+        YValues.Name = 'Bar'
+        YValues.Order = loNone
+        YValues.ValueSource = 'qtd'
+      end
+    end
+  end
+  object pnl2: TPanel
+    Left = 503
+    Top = 0
+    Width = 722
+    Height = 249
+    Align = alCustom
+    TabOrder = 2
+    object dbcht1: TDBChart
+      Left = 10
+      Top = 9
+      Width = 703
+      Height = 232
+      Title.Color = clBlack
+      Title.Font.Color = clBlack
+      Title.Text.Strings = (
+        'Resumo de Dizimistas')
+      ClipPoints = False
+      Legend.CheckBoxesStyle = cbsRadio
+      Legend.LegendStyle = lsValues
+      Legend.TextStyle = ltsRightValue
+      Align = alCustom
+      TabOrder = 0
+      DefaultCanvas = 'TGDIPlusCanvas'
+      PrintMargins = (
+        15
+        26
+        15
+        26)
+      ColorPaletteIndex = 13
+      object brsrs1: TBarSeries
+        ColorEachPoint = True
+        DataSource = dtmGrafico.fdqryDizimosAnual
+        XLabelsSource = 'sigla'
+        XValues.Name = 'X'
+        XValues.Order = loAscending
+        XValues.ValueSource = 'mes'
+        YValues.Name = 'Bar'
+        YValues.Order = loNone
+        YValues.ValueSource = 'valor'
+      end
+    end
   end
   object MainMenu1: TMainMenu
     Left = 16

@@ -1,8 +1,8 @@
 inherited frmCadCargoPessoa: TfrmCadCargoPessoa
   Caption = 'Cadastrar Obreiros'
   ClientWidth = 751
+  ExplicitTop = -24
   ExplicitWidth = 757
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel [0]
@@ -15,13 +15,12 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
   inherited pgcPrincipal: TPageControl
     Width = 751
     ActivePage = tabManutencao
+    ExplicitWidth = 751
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
+      ExplicitWidth = 743
       inherited pnlListagem: TPanel
         Width = 743
+        ExplicitWidth = 743
       end
       inherited grdListagem: TDBGrid
         Width = 743
@@ -50,7 +49,7 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
     inherited tabManutencao: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 792
+      ExplicitWidth = 743
       ExplicitHeight = 390
       object lbl2: TLabel
         Left = 63
@@ -87,6 +86,7 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
         TabOrder = 0
       end
       object dblkcbbPessoa: TDBLookupComboBox
+        Tag = 2
         Left = 63
         Top = 20
         Width = 322
@@ -97,6 +97,7 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
         TabOrder = 1
       end
       object dblkcbbCargo: TDBLookupComboBox
+        Tag = 2
         Left = 391
         Top = 20
         Width = 206
@@ -107,10 +108,12 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
         TabOrder = 2
       end
       object dblkcbbSitucao: TDBLookupComboBox
+        Tag = 2
         Left = 603
         Top = 20
         Width = 102
         Height = 21
+        Hint = 'Situa'#231#227'o'
         KeyField = 'TIPO'
         ListField = 'SITUACAO'
         ListSource = dsSituacao
@@ -120,17 +123,15 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
   end
   inherited pnlRodape: TPanel
     Width = 751
+    ExplicitWidth = 751
     inherited btnNavigator: TDBNavigator
       Left = 413
       Hints.Strings = ()
       ExplicitLeft = 413
     end
-    inherited btnAlterar: TBitBtn
-      Left = 85
-      ExplicitLeft = 85
-    end
     inherited btnFechar: TBitBtn
       Left = 659
+      ExplicitLeft = 659
     end
   end
   inherited QryListagem: TFDQuery
@@ -195,7 +196,8 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
       'SELECT cod_pessoa, nome_pessoa'
       'FROM tb_pessoa a inner join tb_parametro_sistema b '
       'on a.cod_congregacao = b.cod_congregacao'
-      'where sexo ='#39'M'#39)
+      'where sexo ='#39'M'#39
+      'and cod_pessoa not in (select cod_membro from tb_obreiro_cargo)')
     Left = 448
     Top = 168
   end
@@ -241,7 +243,7 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
       'select 0 AS TIPO, '#39'ATIVO'#39' SITUACAO from dual'
       'union all'
       'select 1, '#39'INATIVO'#39' from dual')
-    Left = 720
-    Top = 232
+    Left = 288
+    Top = 176
   end
 end
