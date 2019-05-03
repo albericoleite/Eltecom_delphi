@@ -327,7 +327,7 @@ begin
      ' CREATE TABLE `tb_classe` (  '+
   ' `cod_classe` int(11) NOT NULL AUTO_INCREMENT, '+
   ' `classe` varchar(20) DEFAULT NULL,  '+
-  ' `cla_descricao` varchar(100) DEFAULT NULL,  '+
+  ' `descricao` varchar(100) DEFAULT NULL,  '+
   ' PRIMARY KEY (`cod_classe`))');
    end;
 end;
@@ -338,7 +338,7 @@ begin
    begin
      ExecutaDiretoBancoDeDados(
      ' CREATE TABLE `tb_classe_aluno` (  '+
-  ' `codigo` int(11) NOT NULL, '+
+  ' `codigo` int(11) NOT NULL AUTO_INCREMENT, '+
   ' `cod_aluno` int(11) DEFAULT NULL,   '+
   ' `aluno` varchar(50) DEFAULT NULL, '+
   ' `cod_classe` int(11) DEFAULT NULL, '+

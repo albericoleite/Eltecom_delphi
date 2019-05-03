@@ -230,6 +230,25 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="classes\cCadProfessor.pas"/>
+        <DCCReference Include="cadastro\uCadProfessor.pas">
+            <Form>frmCadProfessor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="classes\cCadClasse.pas"/>
+        <DCCReference Include="cadastro\uCadClasse.pas">
+            <Form>frmCadClasse</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="classes\cCadClasseAluno.pas"/>
+        <DCCReference Include="cadastro\uCadClasseAluno.pas">
+            <Form>frmCadClasseAluno</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Relatorios\uAniversariantes.pas">
+            <Form>frmAniversariantes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

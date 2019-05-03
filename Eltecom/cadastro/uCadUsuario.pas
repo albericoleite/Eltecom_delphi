@@ -33,6 +33,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnNovoClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
   private
     { Private declarations }
     oUsuario: TUsuario;
@@ -110,6 +111,12 @@ cbbTemas.Items.Clear;
     Abort;
   end;
   inherited;
+end;
+
+procedure TfrmCadUsuario.btnGravarClick(Sender: TObject);
+begin
+  inherited;
+//TODO: VALIDAR ALTERAÇÃO DE USUARIO
 end;
 
 procedure TfrmCadUsuario.btnNovoClick(Sender: TObject);

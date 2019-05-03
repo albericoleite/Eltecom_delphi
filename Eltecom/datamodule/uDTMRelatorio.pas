@@ -158,6 +158,16 @@ type
     frxcsvxprt1: TfrxCSVExport;
     frxhtmlxprt1: TfrxHTMLExport;
     frxsmpltxtxprt1: TfrxSimpleTextExport;
+    fdqryAniverariantes: TFDQuery;
+    fdtncfldAniverariantescod_pessoa: TFDAutoIncField;
+    strngfldAniverariantesnome_pessoa: TStringField;
+    strngfldAniverariantessexo: TStringField;
+    strngfldAniverariantesmembro_congregado: TStringField;
+    dtfldAniverariantesdta_nascimento: TDateField;
+    lrgntfldAniverariantesidade: TLargeintField;
+    frxdbDBAniversariantes: TfrxDBDataset;
+    frxrprtAniversariantes: TfrxReport;
+    strngfldAniverariantesfiltro: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

@@ -1,8 +1,8 @@
 inherited frmCadCargoPessoa: TfrmCadCargoPessoa
   Caption = 'Cadastrar Obreiros'
   ClientWidth = 751
-  ExplicitTop = -24
   ExplicitWidth = 757
+  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel [0]
@@ -17,7 +17,10 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
     ActivePage = tabManutencao
     ExplicitWidth = 751
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 743
+      ExplicitHeight = 390
       inherited pnlListagem: TPanel
         Width = 743
         ExplicitWidth = 743
@@ -86,7 +89,6 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
         TabOrder = 0
       end
       object dblkcbbPessoa: TDBLookupComboBox
-        Tag = 2
         Left = 63
         Top = 20
         Width = 322
@@ -97,7 +99,6 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
         TabOrder = 1
       end
       object dblkcbbCargo: TDBLookupComboBox
-        Tag = 2
         Left = 391
         Top = 20
         Width = 206
@@ -108,7 +109,6 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
         TabOrder = 2
       end
       object dblkcbbSitucao: TDBLookupComboBox
-        Tag = 2
         Left = 603
         Top = 20
         Width = 102
@@ -233,8 +233,8 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
   end
   object dsSituacao: TDataSource
     DataSet = fdqrySituacao
-    Left = 736
-    Top = 97
+    Left = 360
+    Top = 145
   end
   object fdqrySituacao: TFDQuery
     Active = True

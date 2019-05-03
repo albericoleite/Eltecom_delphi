@@ -55,7 +55,14 @@ uses
   cCadRecibo in 'classes\cCadRecibo.pas',
   uUsuarioVsAcoes in 'login\uUsuarioVsAcoes.pas' {frmUsuarioVsAcoes},
   uConsultarDados in 'login\uConsultarDados.pas' {frmConsultaDados},
-  uDTMGraficos in 'datamodule\uDTMGraficos.pas' {dtmGrafico: TDataModule};
+  uDTMGraficos in 'datamodule\uDTMGraficos.pas' {dtmGrafico: TDataModule},
+  cCadProfessor in 'classes\cCadProfessor.pas',
+  uCadProfessor in 'cadastro\uCadProfessor.pas' {frmCadProfessor},
+  cCadClasse in 'classes\cCadClasse.pas',
+  uCadClasse in 'cadastro\uCadClasse.pas' {frmCadClasse},
+  cCadClasseAluno in 'classes\cCadClasseAluno.pas',
+  uCadClasseAluno in 'cadastro\uCadClasseAluno.pas' {frmCadClasseAluno},
+  uAniversariantes in 'Relatorios\uAniversariantes.pas' {frmAniversariantes};
 
 {$R *.res}
 
@@ -63,6 +70,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TdtmGrafico, dtmGrafico);
   Application.Run;
 end.

@@ -6,6 +6,10 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 792
+      ExplicitHeight = 390
       inherited pnlListagem: TPanel
         object btnImprimir: TBitBtn
           Left = 648
@@ -244,6 +248,7 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
       FieldName = 'cod_recibo'
       Origin = 'cod_recibo'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object strngfldQryListagemdescricao: TStringField
       DisplayLabel = 'Descri'#231#227'o'

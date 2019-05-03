@@ -42,6 +42,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     oRecibo: TRecibo;
@@ -266,6 +267,14 @@ procedure TfrmCadAjudaDeCusto.btnNovoClick(Sender: TObject);
 begin
   inherited;
 lbledtDescricao.SetFocus;
+end;
+
+procedure TfrmCadAjudaDeCusto.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+if Assigned(oRecibo) then
+    FreeAndNil(oRecibo);
 end;
 
 procedure TfrmCadAjudaDeCusto.FormCreate(Sender: TObject);
