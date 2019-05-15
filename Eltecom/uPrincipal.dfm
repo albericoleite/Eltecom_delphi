@@ -37,20 +37,20 @@ object frmPrincipal: TfrmPrincipal
       item
         Width = 50
       end>
-    ExplicitWidth = 1225
   end
   object pnlGeral: TPanel
     Left = 0
-    Top = 0
+    Top = 41
     Width = 1269
-    Height = 543
+    Height = 502
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 1225
+    ExplicitTop = 0
+    ExplicitHeight = 400
     object spl3: TSplitter
       Left = 562
       Top = 1
-      Height = 541
+      Height = 500
       ExplicitLeft = 608
       ExplicitTop = 224
       ExplicitHeight = 100
@@ -59,10 +59,10 @@ object frmPrincipal: TfrmPrincipal
       Left = 565
       Top = 1
       Width = 703
-      Height = 541
+      Height = 500
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 659
+      ExplicitHeight = 541
       object spl2: TSplitter
         Left = 1
         Top = 257
@@ -76,15 +76,15 @@ object frmPrincipal: TfrmPrincipal
         Left = 1
         Top = 260
         Width = 701
-        Height = 280
+        Height = 239
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 657
+        ExplicitHeight = 280
         object dbcht2: TDBChart
           Left = 1
           Top = 1
           Width = 699
-          Height = 278
+          Height = 237
           Title.Color = clBlack
           Title.Font.Color = clBlack
           Title.Text.Strings = (
@@ -93,7 +93,7 @@ object frmPrincipal: TfrmPrincipal
           Legend.Visible = False
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 655
+          ExplicitHeight = 278
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
             15
@@ -122,7 +122,6 @@ object frmPrincipal: TfrmPrincipal
         Height = 256
         Align = alTop
         TabOrder = 1
-        ExplicitWidth = 657
         object dbcht1: TDBChart
           Left = 1
           Top = 1
@@ -138,7 +137,8 @@ object frmPrincipal: TfrmPrincipal
           Legend.TextStyle = ltsRightValue
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 655
+          ExplicitLeft = 0
+          ExplicitTop = 31
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
             15
@@ -165,30 +165,32 @@ object frmPrincipal: TfrmPrincipal
       Left = 1
       Top = 1
       Width = 561
-      Height = 541
+      Height = 500
       Align = alLeft
       TabOrder = 1
+      ExplicitHeight = 541
       object spl1: TSplitter
         Left = 1
-        Top = 259
+        Top = 255
         Width = 559
         Height = 3
         Cursor = crVSplit
         Align = alTop
+        ExplicitTop = 259
         ExplicitWidth = 283
       end
       object pnl1: TPanel
         Left = 1
         Top = 1
         Width = 559
-        Height = 258
+        Height = 254
         Align = alTop
         TabOrder = 0
         object dbchtPessoas: TDBChart
           Left = 1
           Top = 1
           Width = 557
-          Height = 256
+          Height = 252
           Title.Color = clBlack
           Title.Font.Color = clBlack
           Title.Text.Strings = (
@@ -200,6 +202,10 @@ object frmPrincipal: TfrmPrincipal
           View3DOptions.Rotation = 360
           Align = alClient
           TabOrder = 0
+          ExplicitLeft = 56
+          ExplicitTop = 8
+          ExplicitWidth = 454
+          ExplicitHeight = 87
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
             15
@@ -248,16 +254,19 @@ object frmPrincipal: TfrmPrincipal
       end
       object pnl4: TPanel
         Left = 1
-        Top = 262
+        Top = 258
         Width = 559
-        Height = 278
+        Height = 241
         Align = alClient
         TabOrder = 1
+        ExplicitLeft = -4
+        ExplicitTop = 290
+        ExplicitHeight = 179
         object dbcht3: TDBChart
           Left = 1
           Top = 1
           Width = 557
-          Height = 276
+          Height = 239
           Title.Color = clBlack
           Title.Font.Color = clBlack
           Title.Text.Strings = (
@@ -265,6 +274,9 @@ object frmPrincipal: TfrmPrincipal
           ClipPoints = False
           Align = alClient
           TabOrder = 0
+          ExplicitLeft = -3
+          ExplicitTop = 265
+          ExplicitHeight = 275
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
             15
@@ -287,6 +299,25 @@ object frmPrincipal: TfrmPrincipal
         end
       end
     end
+  end
+  object pnl5: TPanel
+    Left = 0
+    Top = 0
+    Width = 1269
+    Height = 41
+    Align = alTop
+    Alignment = taLeftJustify
+    Caption = 'Dashboard'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -33
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    OnClick = pnl5Click
+    ExplicitLeft = -8
+    ExplicitWidth = 185
   end
   object MainMenu1: TMainMenu
     Left = 16
@@ -421,6 +452,10 @@ object frmPrincipal: TfrmPrincipal
           OnClick = mniAluno1Click
         end
       end
+      object mniRelatrios2: TMenuItem
+        Caption = 'Relat'#243'rios'
+        OnClick = mniRelatrios2Click
+      end
     end
     object Configurao1: TMenuItem
       Caption = 'Ferramentas'
@@ -437,5 +472,11 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Sobre'
       OnClick = mniSobreClick
     end
+  end
+  object tmrDashboard: TTimer
+    Interval = 60000
+    OnTimer = tmrDashboardTimer
+    Left = 632
+    Top = 296
   end
 end

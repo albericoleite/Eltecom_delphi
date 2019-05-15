@@ -49,6 +49,7 @@ type
     procedure dbgrdMembroDblClick(Sender: TObject);
     procedure chkMembroClick(Sender: TObject);
     procedure chkRequerimentoClick(Sender: TObject);
+    procedure chkObservacaoClick(Sender: TObject);
   private
     procedure ImprimirCarta(Sender: TObject);
     { Private declarations }
@@ -185,6 +186,18 @@ dtmRelatorio.fdqryBuscaPessoaRelatorio.Open;
 lbl2.Caption:= 'Total:' + dtmRelatorio.fdqryBuscaPessoaRelatorio.RecordCount.ToString;
 end;
 
+procedure TfrmEmitirDoc.chkObservacaoClick(Sender: TObject);
+begin
+ if chkObservacao.Checked =true then
+ begin
+   mmoObservacao.Enabled:=True;
+   mmoObservacao.SetFocus;
+ end else begin
+ mmoObservacao.Clear;
+   mmoObservacao.Enabled:=False;
+ end;
+end;
+
 procedure TfrmEmitirDoc.chkRecomendacaoClick(Sender: TObject);
 begin
   if chkRecomendacao.Checked = true then
@@ -253,6 +266,7 @@ begin
   dtmRelatorio.fdqryBuscaPessoaRelatorio.Open;
   dtpDocumento.Date := now;
   lbl2.Caption:= 'Total:' + dtmRelatorio.fdqryBuscaPessoaRelatorio.RecordCount.ToString;
+  frmEmitirDoc.Width := 573;
 end;
 
 end.

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, Enter,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,
   uDTMConexao, Vcl.ComCtrls, FireDAC.Stan.Option,
-  uFrmAtualizaDB, uDTMRelatorio, cUsuarioLogado, VclTee.TeeGDIPlus,
+  uFrmAtualizaDB, uDTMRelatorio, cUsuarioLogado, VclTee.TeeGDIPlus, cFuncao,
   VclTee.TeEngine, VclTee.TeeProcs, VclTee.Chart, VclTee.DBChart, Vcl.ExtCtrls,
   VclTee.Series;
 
@@ -73,6 +73,9 @@ type
     spl2: TSplitter;
     psrsSeries1: TPieSeries;
     mniAniversariantes1: TMenuItem;
+    mniRelatrios2: TMenuItem;
+    pnl5: TPanel;
+    tmrDashboard: TTimer;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -103,15 +106,18 @@ type
     procedure mniClasse1Click(Sender: TObject);
     procedure mniAluno1Click(Sender: TObject);
     procedure mniAniversariantes1Click(Sender: TObject);
+    procedure mniRelatrios2Click(Sender: TObject);
+    procedure pnl5Click(Sender: TObject);
+    procedure tmrDashboardTimer(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
-    procedure CriarForm(aNomeForm: TFormClass);
     procedure AtualizarGraficos;
 
     { Private declarations }
   public
     { Public declarations }
+
   end;
 
 var
@@ -130,7 +136,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
-  uCadClasse, uCadClasseAluno, uAniversariantes;
+  uCadClasse, uCadClasseAluno, uAniversariantes, UEBD;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -141,7 +147,7 @@ end;
 
 procedure TfrmPrincipal.Clientes1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadPessoa);
+  TFuncao.CriarForm(TfrmCadPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.Congregaes1Click(Sender: TObject);
@@ -245,6 +251,7 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmCadClasse, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmCadClasseAluno, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmAniversariantes, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmRelatoriosEBD, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -265,8 +272,10 @@ begin
   // end;
 
   // Carregar informações do Status Bar
+  statMenu.Panels[0].Width:=320;
   statMenu.Panels[0].Text :=
     'ELTECOM - Sistema de Controle Gerencial da Congregação ';
+    statMenu.Panels[1].Width:=300;
   if (Time < 0.5) then
     statMenu.Panels[1].Text := 'Bom dia hoje é ' +
       formatdatetime('dddddd', date)
@@ -276,6 +285,7 @@ begin
   else if (Time > 0.75) then
     statMenu.Panels[1].Text := 'Boa noite hoje é ' +
       formatdatetime('dddddd', date);
+  statMenu.Panels[2].Width:=250;
   statMenu.Panels[2].Text := 'Congregação ' + dtmPrincipal.descCongAtiva;
   // statMenu.Panels[3].Text := 'Logado com: ' + oUsuarioLogado.nome;
   // status; // + IdIPWatch1.LocalIP;
@@ -305,42 +315,42 @@ end;
 
 procedure TfrmPrincipal.Igreja1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadIgreja);
+    TFuncao.CriarForm(TfrmCadIgreja, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniAlterarSenha1Click(Sender: TObject);
 begin
-  CriarForm(TfrmAlterarSenha);
+  TFuncao.CriarForm(TfrmAlterarSenha, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniAluno1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadClasseAluno);
+  TFuncao.CriarForm(TfrmCadClasseAluno, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniAniversariantes1Click(Sender: TObject);
 begin
-  CriarForm(TfrmAniversariantes);
+  TFuncao.CriarForm(TfrmAniversariantes, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniAoAcesso1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadAcaoAcesso);
+  TFuncao.CriarForm(TfrmCadAcaoAcesso, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniCargos2Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadCargo);
+  TFuncao.CriarForm(TfrmCadCargo, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniCargosPessoas1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadCargoPessoa);
+  TFuncao.CriarForm(TfrmCadCargoPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniClasse1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadClasse);
+  TFuncao.CriarForm(TfrmCadClasse, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniConfigurao2Click(Sender: TObject);
@@ -359,37 +369,42 @@ end;
 
 procedure TfrmPrincipal.mniDepartamentoPessoas1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadDepartPessoa);
+  TFuncao.CriarForm(TfrmCadDepartPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniDepartamentos2Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadDepartamento);
+  TFuncao.CriarForm(TfrmCadDepartamento, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
 begin
-  CriarForm(TfrmCadDizimos);
+  TFuncao.CriarForm(TfrmCadDizimos, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniDoaoAjudadeCusto1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadAjudaDeCusto);
+  TFuncao.CriarForm(TfrmCadAjudaDeCusto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniFunes2Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadFuncao);
+  TFuncao.CriarForm(TfrmCadFuncao, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniFunesPessoas1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadFuncaoPessoa);
+  TFuncao.CriarForm(TfrmCadFuncaoPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniProfessor1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadProfessor);
+  TFuncao.CriarForm(TfrmCadProfessor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.mniRelatrios2Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmRelatoriosEBD, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniSobreClick(Sender: TObject);
@@ -402,12 +417,17 @@ end;
 
 procedure TfrmPrincipal.mniUsurios1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadUsuario);
+  TFuncao.CriarForm(TfrmCadUsuario, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniUsuriosVSAes1Click(Sender: TObject);
 begin
-  CriarForm(TfrmUsuarioVsAcoes);
+  TFuncao.CriarForm(TfrmUsuarioVsAcoes, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.pnl5Click(Sender: TObject);
+begin
+AtualizarGraficos;
 end;
 
 procedure TfrmPrincipal.Sair1Click(Sender: TObject);
@@ -418,7 +438,12 @@ end;
 
 procedure TfrmPrincipal.Setores1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadSetores);
+  TFuncao.CriarForm(TfrmCadSetores, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.tmrDashboardTimer(Sender: TObject);
+begin
+AtualizarGraficos;
 end;
 
 procedure TfrmPrincipal.AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -518,49 +543,43 @@ begin
 
 end;
 
-procedure TfrmPrincipal.CriarForm(aNomeForm: TFormClass);
-var
-  form: TForm;
-begin
-  try
-    form := aNomeForm.Create(Application);
-    if TfrmTelaheranca.TenhoAcesso(oUsuarioLogado.codigo, form.Name,
-      dtmPrincipal.ConexaoDB) then
-    begin
-      form.ShowModal;
-    end
-    else
-    begin
-      MessageDlg('Usuário: ' + oUsuarioLogado.nome +
-        ', não tem permissão de acesso', mtWarning, [mbOK], 0);
-      Abort;
-    end;
-
-  finally
-    if Assigned(form) then
-      form.Release;
-    AtualizarGraficos;
-  end;
-end;
-
 procedure TfrmPrincipal.AtualizarGraficos;
 begin
-  if DTMGrafico.fdqryPessoas.Active then
-  begin
-    DTMGrafico.fdqryPessoas.Close;
-    DTMGrafico.fdqryClassesAlunos.Close;
-    DTMGrafico.fdqryPessoasCargos.Close;
-  end;
+try
+    Screen.Cursor :=crSQLWait;
 
+  if DTMGrafico.fdqryPessoas.Active then
+    DTMGrafico.fdqryPessoas.Close;
+
+  if DTMGrafico.fdqryDizimosAnual.Active then
+    DTMGrafico.fdqryDizimosAnual.Close;
+
+
+  if DTMGrafico.fdqryPessoasCargos.Active then
+    DTMGrafico.fdqryPessoasCargos.Close;
+
+
+  if DTMGrafico.fdqryClassesAlunos.Active then
+    DTMGrafico.fdqryClassesAlunos.Close;
+
+
+  DTMGrafico.fdqryDizimosAnual.ParamByName('cod_congregacao').AsInteger:=dtmPrincipal.congAtiva;
+  DTMGrafico.fdqryPessoas.ParamByName('cod_congregacao').AsInteger:=dtmPrincipal.congAtiva;
+  DTMGrafico.fdqryClassesAlunos.ParamByName('cod_congregacao').AsInteger:=dtmPrincipal.congAtiva;
+  DTMGrafico.fdqryPessoas.ParamByName('cod_congregacao').AsInteger:=dtmPrincipal.congAtiva;
+  DTMGrafico.fdqryPessoasCargos.ParamByName('cod_congregacao').AsInteger:=dtmPrincipal.congAtiva;
   DTMGrafico.fdqryPessoas.Open;
   DTMGrafico.fdqryClassesAlunos.Open;
   DTMGrafico.fdqryDizimosAnual.Open;
   DTMGrafico.fdqryPessoasCargos.Open;
+finally
+     Screen.Cursor := crDefault;
+end;
 end;
 
 procedure TfrmPrincipal.EntradasSadas1Click(Sender: TObject);
 begin
-  CriarForm(TfrmCadLancamento);
+  TFuncao.CriarForm(TfrmCadLancamento, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 end.

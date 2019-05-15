@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, Vcl.Buttons, uEnum,RxToolEdit, RxCurrEdit;
+  FireDAC.Comp.Client, Vcl.Buttons, uEnum,RxToolEdit, RxCurrEdit,cUsuarioLogado;
 
 type
   TfrmTelaheranca = class(TForm)
@@ -66,8 +66,7 @@ procedure ControlarBotoes(btnNovo,btnAlterar,  btnCancelar,
     function Apagar:Boolean; virtual;
     function Gravar(EstadodoCadastro:TEstadoDoCadastro):Boolean; virtual;
     procedure BloqueiaCTRL_DEL_DBGRID(var Key: Word; Shift: TShiftState);
-    class function TenhoAcesso(aCod_usuario: Integer; aChave: string;
-      aConexao: TFDConnection): Boolean; static;
+
   end;
 
 var
@@ -87,7 +86,7 @@ uses
 
 procedure TfrmTelaheranca.btnAlterarClick(Sender: TObject);
 begin
-if not TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
+if not TUsuarioLogado.TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
 begin
   MessageDlg('Usuário: '+oUsuarioLogado.nome+', não tem permissão de acesso',mtWarning,[mbOK],0);
   Abort;
@@ -99,7 +98,7 @@ end;
 
 procedure TfrmTelaheranca.btnApagarClick(Sender: TObject);
 begin
-if not TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
+if not TUsuarioLogado.TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
 begin
   MessageDlg('Usuário: '+oUsuarioLogado.nome+', não tem permissão de acesso',mtWarning,[mbOK],0);
   Abort;
@@ -136,7 +135,7 @@ end;
 
 procedure TfrmTelaheranca.btnGravarClick(Sender: TObject);
 begin
-if not TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
+if not TUsuarioLogado.TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
 begin
   MessageDlg('Usuário: '+oUsuarioLogado.nome+', não tem permissão de acesso',mtWarning,[mbOK],0);
   Abort;
@@ -174,7 +173,7 @@ end;
 
 procedure TfrmTelaheranca.btnNovoClick(Sender: TObject);
 begin
-if not TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
+if not TUsuarioLogado.TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
 begin
   MessageDlg('Usuário: '+oUsuarioLogado.nome+', não tem permissão de acesso',mtWarning,[mbOK],0);
   Abort;
@@ -194,7 +193,7 @@ NomeCampo:string;
 WhereOrAnd:string;
 CondicaoSQL:string;
 begin
-if not TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
+if not TUsuarioLogado.TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
 begin
   MessageDlg('Usuário: '+oUsuarioLogado.nome+', não tem permissão de acesso',mtWarning,[mbOK],0);
   Abort;
@@ -460,32 +459,5 @@ end;
 
 {$endregion}
 
-class function   TfrmTelaheranca.TenhoAcesso(aCod_usuario:Integer; aChave:string; aConexao:TFDConnection):Boolean;
-var
-  Qry: TFDQuery;
-begin
-  try
-  Result:=True;
-    Qry := TFDQuery.Create(nil);
-    Qry.Connection := aConexao;
-    Qry.SQL.Clear;
-
-    Qry.SQL.Add('select a.cod_usuario from tb_usuarios_acao_acesso a  '+
-    ' where a.cod_usuario=:cod_usuario   '+
-    ' and a.cod_acao_acesso =(select b.cod_acao_acesso from tb_acao_acesso b '+
-    ' where b.chave =:chave )and a.ativo = 1');
-    Qry.ParamByName('cod_usuario').AsInteger := aCod_usuario;
-    Qry.ParamByName('chave').AsString := aChave;
-    Qry.Open;
-
-    if Qry.IsEmpty then
-       Result:=False;
-
-  finally
-    if Assigned(Qry) then
-      FreeAndNil(Qry);
-  end;
-
-end;
 
 end.

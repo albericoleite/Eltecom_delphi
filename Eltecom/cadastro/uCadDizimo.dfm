@@ -7,6 +7,7 @@ inherited frmCadDizimos: TfrmCadDizimos
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 829
+    ActivePage = tabManutencao
     ExplicitWidth = 829
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
@@ -167,6 +168,7 @@ inherited frmCadDizimos: TfrmCadDizimos
         EditLabel.Caption = 'Nome'
         MaxLength = 45
         TabOrder = 4
+        OnChange = lbledtNomeChange
       end
       object lbledtCodtalao: TLabeledEdit
         Tag = 2

@@ -358,9 +358,10 @@ begin
   ' `nome` varchar(50) DEFAULT NULL,  '+
   ' `usuario_cadastro` varchar(20) DEFAULT NULL,  '+
   ' `dta_cadastro` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  '+
-  ' `status` varchar(10) DEFAULT '+'ATIVO'+',  '+
+  ' `STATUS` varchar(1) DEFAULT '+QuotedStr('0')+', '+
   ' PRIMARY KEY (`cod_professor`), '+
-  ' KEY `fk_pessoa_prof` (`cod_pessoa`) )');
+  ' KEY `fk_pessoa_prof` (`cod_pessoa`), '+
+  ' CONSTRAINT `tb_professor_tb_pessoa_fk` FOREIGN KEY (`cod_pessoa`) REFERENCES `tb_pessoa` (`cod_pessoa`))');
    end;
 end;
 

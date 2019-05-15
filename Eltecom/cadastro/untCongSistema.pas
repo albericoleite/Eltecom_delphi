@@ -37,6 +37,9 @@ var
 
 implementation
 
+uses
+  uPrincipal;
+
 
 {$R *.dfm}
 

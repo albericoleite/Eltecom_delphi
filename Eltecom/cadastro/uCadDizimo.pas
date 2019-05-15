@@ -59,6 +59,7 @@ type
     procedure btnBuscarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
+    procedure lbledtNomeChange(Sender: TObject);
   private
     { Private declarations }
     oDizimo: TDizimo;
@@ -220,6 +221,27 @@ begin
     Result:=oDizimo.Inserir
     else if (EstadodoCadastro=ecAlterar) then
      Result:=oDizimo.Atualizar;
+
+end;
+
+procedure TfrmCadDizimos.lbledtNomeChange(Sender: TObject);
+   Var Aux : Integer;
+  begin
+If lbledtNome.Focused Then
+  begin
+    dtmPrincipal.fdqryPessoa.Close;
+    dtmPrincipal.fdqryPessoa.Open;
+    if dtmPrincipal.fdqryPessoa.Locate('nome_pessoa',copy(lbledtNome.Text,1,lbledtNome.SelStart),[loCaseInsensitive,loPartialKey]) then
+    begin
+      lbledtNome.OnChange := nil; // Não ativar o evento agora.
+      Aux := lbledtNome.SelStart; // Posição do cursor no EditFornecedor
+      lbledtNome.Text := dtmPrincipal.fdqryPessoa.FieldByName('nome_pessoa').AsString; // Foi o que encontramos pois o codigo só passa por aqui se existe a informação
+      lbledtNome.SelStart := Aux; // Atualizamos a posição do cursor.
+      lbledtNome.OnChange := lbledtNomeChange; // Agora podemos chamar novamente.
+     //dsDizimos.DataSet.FieldByName('nome').Value := dtmConexao.fdqryBuscarObreirocod_pessoa.Text;
+    end;
+  end;
+  inherited;
 
 end;
 

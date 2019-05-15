@@ -4,7 +4,7 @@ object frmEmitirDoc: TfrmEmitirDoc
   BorderStyle = bsSingle
   Caption = 'Cartas e Relat'#243'rios'
   ClientHeight = 277
-  ClientWidth = 567
+  ClientWidth = 565
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -121,6 +121,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     Height = 17
     Caption = 'Inserir Observa'#231#227'o, Digite Abaixo:'
     TabOrder = 4
+    OnClick = chkObservacaoClick
   end
   object dtpDocumento: TDateTimePicker
     Left = 799

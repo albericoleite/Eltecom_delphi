@@ -62,7 +62,9 @@ uses
   uCadClasse in 'cadastro\uCadClasse.pas' {frmCadClasse},
   cCadClasseAluno in 'classes\cCadClasseAluno.pas',
   uCadClasseAluno in 'cadastro\uCadClasseAluno.pas' {frmCadClasseAluno},
-  uAniversariantes in 'Relatorios\uAniversariantes.pas' {frmAniversariantes};
+  uAniversariantes in 'Relatorios\uAniversariantes.pas' {frmAniversariantes},
+  UEBD in 'Relatorios\UEBD.pas' {frmRelatoriosEBD},
+  cFuncao in 'classes\cFuncao.pas';
 
 {$R *.res}
 

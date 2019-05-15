@@ -76,6 +76,7 @@ begin
        oCargoPessoa.cod_membro:= dblkcbbPessoa.KeyValue;
        oCargoPessoa.nome:=dblkcbbPessoa.Text;
        oCargoPessoa.status:= dblkcbbSitucao.KeyValue;
+       oCargoPessoa.cod_congregacao:=dtmPrincipal.congAtiva;
     if (EstadodoCadastro=ecInserir) then
     Result:=oCargoPessoa.Inserir
     else if (EstadodoCadastro=ecAlterar) then
