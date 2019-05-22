@@ -2,7 +2,6 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 486
   ClientWidth = 956
-  ExplicitTop = -121
   ExplicitWidth = 962
   ExplicitHeight = 515
   PixelsPerInch = 96
@@ -1225,9 +1224,11 @@ inherited frmCadPessoa: TfrmCadPessoa
     Top = 64
     object mniCarregarImagem1: TMenuItem
       Caption = 'Carregar Imagem'
+      OnClick = mniCarregarImagem1Click
     end
     object mniLimparImagem1: TMenuItem
       Caption = 'Limpar Imagem'
+      OnClick = mniLimparImagem1Click
     end
   end
 end

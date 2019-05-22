@@ -10,7 +10,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,
-  cCadPessoa, RxToolEdit, uDTMConexao, uEnum, Vcl.Menus;
+  cCadPessoa, RxToolEdit, uDTMConexao, uEnum, Vcl.Menus,cFuncao;
 
 type
   TfrmCadPessoa = class(TfrmTelaheranca)
@@ -152,6 +152,8 @@ type
     procedure grdListagemKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure cbbMembCongChange(Sender: TObject);
+    procedure mniLimparImagem1Click(Sender: TObject);
+    procedure mniCarregarImagem1Click(Sender: TObject);
   private
     { Private declarations }
     oPessoa: TPessoa;
@@ -209,6 +211,12 @@ begin
   oPessoa.congregacao       := dtmPrincipal.descCongAtiva;
   oPessoa.setor             :=dtmPrincipal.setor;
 
+
+  if imgFoto.Picture.Bitmap.Empty then
+     oPessoa.foto.Assign(nil)
+     else
+      oPessoa.foto.Assign(imgFoto.Picture);
+
   if (EstadodoCadastro = ecInserir) then
     Result := oPessoa.Inserir
   else if (EstadodoCadastro = ecAlterar) then
@@ -221,6 +229,18 @@ procedure TfrmCadPessoa.grdListagemKeyDown(Sender: TObject; var Key: Word;
 begin
   inherited;
 BloqueiaCTRL_DEL_DBGRID(Key,Shift);
+end;
+
+procedure TfrmCadPessoa.mniCarregarImagem1Click(Sender: TObject);
+begin
+  inherited;
+ TFuncao.CarregarImagem(imgFoto);
+end;
+
+procedure TfrmCadPessoa.mniLimparImagem1Click(Sender: TObject);
+begin
+  inherited;
+    TFuncao.LimparImagem(imgFoto);
 end;
 
 {$ENDREGION}
@@ -262,6 +282,7 @@ begin
      cbbAcademica.Text    := oPessoa.grau_instrucao;
      cbbFormTeo.Text      := oPessoa.formacao_teologica;
      cbbSitformteo.Text    := oPessoa.form_teo_situacao;
+     imgFoto.Picture.Assign(oPessoa.foto);
     // cbbEstdCivil.Text    := oPessoa.
     //      :=
    {

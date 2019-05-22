@@ -76,6 +76,7 @@ type
     mniRelatrios2: TMenuItem;
     pnl5: TPanel;
     tmrDashboard: TTimer;
+    BackupeRestore1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -109,6 +110,7 @@ type
     procedure mniRelatrios2Click(Sender: TObject);
     procedure pnl5Click(Sender: TObject);
     procedure tmrDashboardTimer(Sender: TObject);
+    procedure BackupeRestore1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -136,7 +138,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
-  uCadClasse, uCadClasseAluno, uAniversariantes, UEBD;
+  uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -252,6 +254,7 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmCadClasseAluno, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmAniversariantes, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmRelatoriosEBD, dtmPrincipal.ConexaoDB);
+     TAcaoAcesso.CriarAcoes(TfrmBackupRestore, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -575,6 +578,11 @@ try
 finally
      Screen.Cursor := crDefault;
 end;
+end;
+
+procedure TfrmPrincipal.BackupeRestore1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmBackupRestore, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.EntradasSadas1Click(Sender: TObject);

@@ -3,7 +3,7 @@ unit cCadPessoa;
 interface
 
 uses System.Classes, Vcl.Controls,
-  Vcl.ExtCtrls, Vcl.Dialogs, FireDAC.Comp.Client, System.SysUtils;
+  Vcl.ExtCtrls, Vcl.Dialogs, FireDAC.Comp.Client, System.SysUtils,Vcl.Imaging.jpeg,Vcl.Graphics,system.StrUtils;
 // LISTA DE UNITS
 
 type
@@ -64,6 +64,7 @@ type
     F_SITUACAO: string;
     F_cod_situacao: Integer;
     F_congregacao:string;
+    F_foto :TBitmap;
   public
     constructor Create(aConexao: TFDConnection); // CONSTRUTOR DA CLASSE
     destructor Destroy; override; // DESTROI A CLASSE USAR OVERRIDE POR CAUSA
@@ -143,6 +144,7 @@ type
     property SITUACAO: string read F_SITUACAO write F_SITUACAO;
     property cod_situacao: Integer read F_cod_situacao write F_cod_situacao;
     property congregacao: string read F_congregacao write F_congregacao;
+    property foto: TBitmap read F_foto write F_foto;
   end;
 
 implementation
@@ -152,11 +154,16 @@ implementation
 constructor TPessoa.Create;
 begin
   ConexaoDB := aConexao;
+  F_foto :=TBitmap.Create;
+  F_foto.Assign(nil);
 end;
 
 destructor TPessoa.Destroy;
 begin
-
+   if Assigned(F_foto) then begin
+     F_foto.Assign(nil);
+     F_foto.Free;
+   end;
   inherited;
 end;
 {$ENDREGION}
@@ -206,7 +213,7 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('UPDATE igreja.tb_pessoa ' + ' SET nome_pessoa=:nome_pessoa ' +
+    Qry.SQL.Add('UPDATE tb_pessoa ' + ' SET nome_pessoa=:nome_pessoa ' +
       ', sexo=:sexo  ' + ', nome_pai=:nome_pai ' + ', nome_mae=:nome_mae   ' +
       ', dta_nascimento=:dta_nascimento ' +
       ', membro_congregado=:membro_congregado ' + ', nro_rol=:nro_rol ' +
@@ -239,7 +246,7 @@ begin
       ', setor=:setor ' +
       ', nro_cad_congregado=:nro_cad_congregado , SITUACAO=:SITUACAO ' +
       ', cod_congregacao=:cod_congregacao ' + ', cod_situacao=:cod_situacao,congregacao=:congregacao ' +
-      ' WHERE cod_pessoa=:cod_pessoa; ');
+      ', foto=:foto WHERE cod_pessoa=:cod_pessoa; ');
     Qry.ParamByName('cod_situacao').AsInteger := F_cod_situacao;
     Qry.ParamByName('cod_congregacao').AsInteger := F_cod_congregacao;
     Qry.ParamByName('SITUACAO').AsString := F_SITUACAO;
@@ -298,6 +305,12 @@ begin
     Qry.ParamByName('estado_casa').AsString := F_estado_casa;
     Qry.ParamByName('cpf').AsString := F_cpf;
      Qry.ParamByName('congregacao').AsString := F_congregacao;
+
+     if F_foto.Empty then
+      Qry.ParamByName('foto').Clear
+      else
+     Qry.ParamByName('foto').Assign(F_foto);
+
      try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -315,6 +328,7 @@ end;
 function TPessoa.Inserir: Boolean;
 var
   Qry: TFDQuery;
+  BS: TStream;
 begin
   try
     Result := True;
@@ -326,12 +340,12 @@ begin
       + ' membro_congregado,nro_rol,naturalidade,dta_conversao,uf_nascimento, '
       + ' nacionalidade,nrorg,cpf, orgaorg,estado_civil_atual,estado_civil_anterior,complemento, '
       + ' fone_residencial,estado_casa ,funcao,uf_endereco,profissao,fone_trabalho,igreja,setor, '+
-        ' nro_cad_congregado,SITUACAO,cod_situacao,dta_membro,congregacao)  '
+        ' nro_cad_congregado,SITUACAO,cod_situacao,dta_membro,congregacao , foto)  '
       + ' VALUES(:nome_pessoa, :sexo, :nome_pai,:nome_mae,:dta_nascimento,' +
       ' :cod_congregacao,:membro_congregado,:nro_rol,:naturalidade,:dta_conversao, '
       + ' :uf_nascimento,:nacionalidade,:nrorg,:cpf, :orgaorg,:estado_civil_atual,:estado_civil_anterior, '
       + ':complemento,:fone_residencial,:estado_casa,:funcao,:uf_endereco,:profissao,:fone_trabalho,:igreja,:setor,:nro_cad_congregado,:SITUACAO, '
-      + ' :cod_situacao,:dta_membro,:congregacao) ');
+      + ' :cod_situacao,:dta_membro,:congregacao ,:foto ) ');
     Qry.ParamByName('nome_pessoa').AsString := Self.F_nome_pessoa;
     Qry.ParamByName('sexo').AsString := Self.F_sexo;
     Qry.ParamByName('nome_pai').AsString := Self.F_nome_pai;
@@ -365,6 +379,15 @@ begin
       Self.F_estado_civil_anterior;
     Qry.ParamByName('complemento').AsString := Self.F_complemento;
     Qry.ParamByName('congregacao').AsString := Self.F_congregacao;
+
+
+
+    if self.F_foto.Empty then
+      Qry.ParamByName('foto').Clear
+      else
+       Qry.ParamByName('foto').Assign(Self.F_foto);
+
+
     try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -436,6 +459,7 @@ begin
         Qry.FieldByName('nro_cad_congregado').AsString;
       Self.F_SITUACAO := Qry.FieldByName('SITUACAO').AsString;
       Self.F_membro_congregado := Qry.FieldByName('membro_congregado').AsString;
+      //self.F_foto.Assign(Qry.FieldByName('foto'));
     Except
       Result := false;
     end;

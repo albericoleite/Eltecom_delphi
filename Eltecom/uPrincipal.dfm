@@ -45,8 +45,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 502
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 0
-    ExplicitHeight = 400
     object spl3: TSplitter
       Left = 562
       Top = 1
@@ -62,7 +60,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 500
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 541
       object spl2: TSplitter
         Left = 1
         Top = 257
@@ -79,7 +76,6 @@ object frmPrincipal: TfrmPrincipal
         Height = 239
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 280
         object dbcht2: TDBChart
           Left = 1
           Top = 1
@@ -93,7 +89,6 @@ object frmPrincipal: TfrmPrincipal
           Legend.Visible = False
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 278
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
             15
@@ -137,8 +132,6 @@ object frmPrincipal: TfrmPrincipal
           Legend.TextStyle = ltsRightValue
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 0
-          ExplicitTop = 31
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
             15
@@ -168,7 +161,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 500
       Align = alLeft
       TabOrder = 1
-      ExplicitHeight = 541
       object spl1: TSplitter
         Left = 1
         Top = 255
@@ -202,10 +194,6 @@ object frmPrincipal: TfrmPrincipal
           View3DOptions.Rotation = 360
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 56
-          ExplicitTop = 8
-          ExplicitWidth = 454
-          ExplicitHeight = 87
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
             15
@@ -259,9 +247,6 @@ object frmPrincipal: TfrmPrincipal
         Height = 241
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = -4
-        ExplicitTop = 290
-        ExplicitHeight = 179
         object dbcht3: TDBChart
           Left = 1
           Top = 1
@@ -274,9 +259,6 @@ object frmPrincipal: TfrmPrincipal
           ClipPoints = False
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = -3
-          ExplicitTop = 265
-          ExplicitHeight = 275
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
             15
@@ -316,8 +298,6 @@ object frmPrincipal: TfrmPrincipal
     ParentFont = False
     TabOrder = 2
     OnClick = pnl5Click
-    ExplicitLeft = -8
-    ExplicitWidth = 185
   end
   object MainMenu1: TMainMenu
     Left = 16
@@ -466,6 +446,10 @@ object frmPrincipal: TfrmPrincipal
       object mniConsultarDados1: TMenuItem
         Caption = 'Consultar Dados'
         OnClick = mniConsultarDados1Click
+      end
+      object BackupeRestore1: TMenuItem
+        Caption = 'Backup e Restore'
+        OnClick = BackupeRestore1Click
       end
     end
     object mniSobre: TMenuItem

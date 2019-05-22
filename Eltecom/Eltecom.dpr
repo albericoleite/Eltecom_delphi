@@ -64,7 +64,9 @@ uses
   uCadClasseAluno in 'cadastro\uCadClasseAluno.pas' {frmCadClasseAluno},
   uAniversariantes in 'Relatorios\uAniversariantes.pas' {frmAniversariantes},
   UEBD in 'Relatorios\UEBD.pas' {frmRelatoriosEBD},
-  cFuncao in 'classes\cFuncao.pas';
+  cFuncao in 'classes\cFuncao.pas',
+  uTelaHerancaConsulta in 'heranca\uTelaHerancaConsulta.pas' {frmTelaHerancaConsulta},
+  uBackupRestore in 'login\uBackupRestore.pas' {frmBackupRestore};
 
 {$R *.res}
 
