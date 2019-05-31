@@ -27,6 +27,12 @@ type
     procedure Professor;
     procedure Pessoa;
     procedure Congregacao;
+    procedure DepartamentoPessoa;
+    procedure Funcao;
+    procedure FuncaoPessoa;
+    procedure ObreiroCargo;
+    procedure ParametroServidor;
+    procedure Tesouraria;
 
  protected
 
@@ -60,8 +66,13 @@ begin
   Professor;
   ClasseProfessor;
   Congregacao;
+  DepartamentoPessoa;
+  Funcao;
+  FuncaoPessoa;
+  ObreiroCargo;
+  ParametroServidor;
+  Tesouraria;
 
-  //TODO: CRIAR OS METODOS PARA CRIAÇÃO DAS DEMAIS TABELAS
 end;
 
 destructor TAtualizacaoTabelaMySQL.Destroy;
@@ -200,6 +211,81 @@ begin
 
 end;
 
+procedure TAtualizacaoTabelaMySQL.DepartamentoPessoa;
+begin
+   if not TabelaExiste('tb_dept_pessoa') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_dept_pessoa` (  '+
+  ' `cod_dept_pessoa` int(25) NOT NULL AUTO_INCREMENT,  '+
+  ' `cod_departamento` int(25) NOT NULL,  '+
+  ' `nome_departamento` varchar(50) DEFAULT NULL,  '+
+  ' `cod_pessoa` int(25) DEFAULT NULL,   '+
+  ' `nome_pessoa` varchar(50) DEFAULT NULL,  '+
+  ' `dta_inclusao` datetime DEFAULT CURRENT_TIMESTAMP,  '+
+  ' `dta_alteracao` datetime DEFAULT NULL, '+
+  ' `status` varchar(1) DEFAULT NULL, '+
+  ' `usuario_inclusao` varchar(50) DEFAULT NULL, '+
+  ' `usuario_alteracao` varchar(50) DEFAULT NULL,  '+
+  ' PRIMARY KEY (`cod_dept_pessoa`) '+
+  ' )');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.Funcao;
+begin
+   if not TabelaExiste('tb_funcao') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_funcao` (   '+
+  ' `cod_funcao` int(11) NOT NULL AUTO_INCREMENT,  '+
+  ' `funcao` varchar(50) DEFAULT NULL,    '+
+  ' `cod_departamento` int(11) DEFAULT NULL,  '+
+  ' `nome_departamento` varchar(50) DEFAULT NULL,  '+
+  ' PRIMARY KEY (`cod_funcao`)    '+
+  ' )');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.FuncaoPessoa;
+begin
+   if not TabelaExiste('tb_func_pessoa') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_func_pessoa` (  '+
+  ' `cod_func_pessoa` int(11) NOT NULL AUTO_INCREMENT, '+
+  ' `cod_funcao` int(25) NOT NULL,      '+
+  ' `nome_funcao` varchar(50) DEFAULT NULL, '+
+  ' `cod_pessoa` int(11) DEFAULT NULL,     '+
+  ' `nome_pessoa` varchar(50) DEFAULT NULL,  '+
+  ' `dta_inclusao` datetime DEFAULT CURRENT_TIMESTAMP,  '+
+  ' `status` varchar(20) DEFAULT NULL ,   '+
+  ' `dta_alteracao` datetime DEFAULT NULL,  '+
+  ' `usuario_inclusao` varchar(50) DEFAULT NULL,  '+
+  ' `usuario_alteracao` varchar(50) DEFAULT NULL,  '+
+  ' PRIMARY KEY (`cod_func_pessoa`)    '+
+  ' )');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.ObreiroCargo;
+begin
+   if not TabelaExiste('tb_obreiro_cargo') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_obreiro_cargo` (    '+
+  ' `COD_CARG_PESSOA` int(10) NOT NULL AUTO_INCREMENT,   '+
+  ' `COD_MEMBRO` int(10) NOT NULL,  '+
+  ' `NOME` varchar(50) DEFAULT NULL,   '+
+  ' `COD_CARGO` int(10) DEFAULT NULL, '+
+  ' `CARGO` varchar(50) DEFAULT NULL,  '+
+  ' `STATUS` varchar(1) DEFAULT '+QuotedStr('0')+',   '+
+  ' `COD_CONGREGACAO` int(10) DEFAULT NULL,  '+
+  ' PRIMARY KEY (`COD_CARG_PESSOA`)  '+
+  ' )');
+   end;
+end;
+
 procedure TAtualizacaoTabelaMySQL.Usuario;
 var oUsuario:Tusuario;
 begin
@@ -321,7 +407,44 @@ begin
      ' `cod_congregacao` int(11) NOT NULL AUTO_INCREMENT,  '+
      ' PRIMARY KEY (`cod_congregacao`))');
    end;
+end;
 
+procedure TAtualizacaoTabelaMySQL.ParametroServidor;
+begin
+   if not TabelaExiste('tb_parametro_servidor') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_parametro_servidor` (  '+
+  ' `computador` varchar(20) DEFAULT NULL,   '+
+  ' `ip` varchar(20) DEFAULT NULL,      '+
+  ' `tipo` varchar(20) DEFAULT NULL '+
+  ' ) ');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.Tesouraria;
+begin
+   if not TabelaExiste('tb_parametro_servidor') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_tesouraria` (    '+
+  ' `cod_entrada` int(11) NOT NULL AUTO_INCREMENT,   '+
+  ' `nro_documento` int(11) DEFAULT NULL,  '+
+  ' `dta_movimento` date DEFAULT NULL,    '+
+  ' `dta_inclusao` datetime DEFAULT CURRENT_TIMESTAMP,  '+
+  ' `usuario_inclusao` varchar(50) DEFAULT NULL,  '+
+  ' `descricao` varchar(50) DEFAULT NULL,  '+
+  ' `valor` double DEFAULT NULL,   '+
+  ' `tipo` varchar(20) DEFAULT '+QuotedStr('ENTRADA')+',   '+
+  ' `status` varchar(20) DEFAULT '+QuotedStr('ABERTO')+',  '+
+  ' `cod_congregacao` int(11) NOT NULL,   '+
+  ' `situacao` int(11) DEFAULT NULL,  '+
+  ' PRIMARY KEY (`cod_entrada`),  '+
+  ' KEY `tb_tesouraria_tb_congregacao_fk` (`cod_congregacao`), '+
+  ' CONSTRAINT `tb_tesouraria_tb_congregacao_fk` FOREIGN KEY (`cod_congregacao`) '+
+  ' REFERENCES `tb_congregacao` (`cod_congregacao`)  '+
+  ' ) ');
+   end;
 end;
 
 procedure TAtualizacaoTabelaMySQL.Classe;

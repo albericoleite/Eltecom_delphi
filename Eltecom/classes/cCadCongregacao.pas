@@ -234,7 +234,7 @@ begin
       ' :data_fun_com, :data_fun_coi, :data_fun_cv, :data_cadastro,   '+
       ' :usuario_cadastro, :cong_principal, :dirigente, :cod_setor,   '+
       ' :cod_igreja, :cod_cc, :sigla)');
-Qry.ParamByName('cod_congregacao').AsInteger := Self.F_cod_congregacao;
+//Qry.ParamByName('cod_congregacao').AsInteger := Self.F_cod_congregacao;
 Qry.ParamByName('cod_central').AsInteger := Self.F_cod_central;
 Qry.ParamByName('congregacao').Asstring := Self.F_congregacao;
 Qry.ParamByName('setor').Asstring := Self.F_setor;

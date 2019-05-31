@@ -2,7 +2,8 @@ unit cCadPessoa;
 
 interface
 
-uses System.Classes, Vcl.Controls,
+uses System.Classes, Vcl.Controls, Windows, Messages,    Forms,
+   StdCtrls,  DBCtrls, Grids, DBGrids,  Data.DB,
   Vcl.ExtCtrls, Vcl.Dialogs, FireDAC.Comp.Client, System.SysUtils,Vcl.Imaging.jpeg,Vcl.Graphics,system.StrUtils;
 // LISTA DE UNITS
 
@@ -64,6 +65,7 @@ type
     F_SITUACAO: string;
     F_cod_situacao: Integer;
     F_congregacao:string;
+    //F_foto :TJPEGImage;
     F_foto :TBitmap;
   public
     constructor Create(aConexao: TFDConnection); // CONSTRUTOR DA CLASSE
@@ -154,7 +156,7 @@ implementation
 constructor TPessoa.Create;
 begin
   ConexaoDB := aConexao;
-  F_foto :=TBitmap.Create;
+  F_foto := TBitmap.Create;
   F_foto.Assign(nil);
 end;
 
@@ -299,17 +301,18 @@ begin
     Qry.ParamByName('estado_civil_atual').AsString := F_estado_civil_atual;
     Qry.ParamByName('estado_civil_anterior').AsString :=
       F_estado_civil_anterior;
-    Qry.ParamByName('complemento').AsString := F_complemento;
-    Qry.ParamByName('fone_residencial').AsString := F_fone_residencial;
-    Qry.ParamByName('fone_trabalho').AsString := F_fone_trabalho;
-    Qry.ParamByName('estado_casa').AsString := F_estado_casa;
-    Qry.ParamByName('cpf').AsString := F_cpf;
-     Qry.ParamByName('congregacao').AsString := F_congregacao;
-
-     if F_foto.Empty then
+    Qry.ParamByName('complemento').AsString := self.F_complemento;
+    Qry.ParamByName('fone_residencial').AsString := self.F_fone_residencial;
+    Qry.ParamByName('fone_trabalho').AsString := self.F_fone_trabalho;
+    Qry.ParamByName('estado_casa').AsString := self.F_estado_casa;
+    Qry.ParamByName('cpf').AsString := self.F_cpf;
+     Qry.ParamByName('congregacao').AsString := self.F_congregacao;
+     Qry.ParamByName('foto').DataType:=ftBlob;
+      Qry.ParamByName('foto').Clear;
+     {if self.F_foto.Empty  then
       Qry.ParamByName('foto').Clear
       else
-     Qry.ParamByName('foto').Assign(F_foto);
+     Qry.ParamByName('foto').Assign(self.F_foto);  }
 
      try
         ConexaoDB.StartTransaction;
@@ -328,7 +331,8 @@ end;
 function TPessoa.Inserir: Boolean;
 var
   Qry: TFDQuery;
-  BS: TStream;
+   jp:TBitmap;
+   stream: TMemoryStream;
 begin
   try
     Result := True;
@@ -340,12 +344,12 @@ begin
       + ' membro_congregado,nro_rol,naturalidade,dta_conversao,uf_nascimento, '
       + ' nacionalidade,nrorg,cpf, orgaorg,estado_civil_atual,estado_civil_anterior,complemento, '
       + ' fone_residencial,estado_casa ,funcao,uf_endereco,profissao,fone_trabalho,igreja,setor, '+
-        ' nro_cad_congregado,SITUACAO,cod_situacao,dta_membro,congregacao , foto)  '
+        ' nro_cad_congregado,SITUACAO,cod_situacao,dta_membro,congregacao, foto )  '
       + ' VALUES(:nome_pessoa, :sexo, :nome_pai,:nome_mae,:dta_nascimento,' +
       ' :cod_congregacao,:membro_congregado,:nro_rol,:naturalidade,:dta_conversao, '
       + ' :uf_nascimento,:nacionalidade,:nrorg,:cpf, :orgaorg,:estado_civil_atual,:estado_civil_anterior, '
       + ':complemento,:fone_residencial,:estado_casa,:funcao,:uf_endereco,:profissao,:fone_trabalho,:igreja,:setor,:nro_cad_congregado,:SITUACAO, '
-      + ' :cod_situacao,:dta_membro,:congregacao ,:foto ) ');
+      + ' :cod_situacao,:dta_membro,:congregacao , :foto  ) ');
     Qry.ParamByName('nome_pessoa').AsString := Self.F_nome_pessoa;
     Qry.ParamByName('sexo').AsString := Self.F_sexo;
     Qry.ParamByName('nome_pai').AsString := Self.F_nome_pai;
@@ -379,14 +383,31 @@ begin
       Self.F_estado_civil_anterior;
     Qry.ParamByName('complemento').AsString := Self.F_complemento;
     Qry.ParamByName('congregacao').AsString := Self.F_congregacao;
+    Qry.ParamByName('foto').DataType:=ftBlob;
+    Qry.ParamByName('foto').Clear;
+    //Self.F_foto.SaveToStream(stream);
+   { jp:= TBitmap.Create;
+    stream:= TMemoryStream.Create;
+    self.foto.SaveToStream(stream);
+    stream.Seek(0, soFromBeginning);
+    jp.LoadFromStream(stream);
 
+    //jp.Assign(Self.foto);
 
-
-    if self.F_foto.Empty then
+     if self.F_foto.Empty  then
       Qry.ParamByName('foto').Clear
       else
-       Qry.ParamByName('foto').Assign(Self.F_foto);
-
+      Qry.ParamByName('foto').Assign(jp);  }
+    //  stream := Tstream.Create;
+    //  Self.F_foto.SaveToStream(stream);
+   //  Qry.ParamByName('foto').Assign(stream) ;
+    // MemStream.Seek(0,0);
+    // MemStream.Free;
+   { MemStream := TMemoryStream.Create;
+    Self.F_foto.SaveToStream(MemStream);
+    MemStream.Seek(0,0);
+    Qry.ParamByName('foto').LoadFromStream(MemStream,ftBlob);
+    MemStream.Free;    }
 
     try
         ConexaoDB.StartTransaction;
@@ -405,6 +426,7 @@ end;
 function TPessoa.Selecionar(id: Integer): Boolean;
 var
   Qry: TFDQuery;
+  stream : TStream;
 begin
   try
     Result := True;
@@ -455,11 +477,26 @@ begin
       Self.F_emprego_atual := Qry.FieldByName('emprego_atual').AsString;
       Self.F_igreja := Qry.FieldByName('igreja').AsString;
       Self.F_fone_trabalho := Qry.FieldByName('fone_trabalho').AsString;
-      Self.F_nro_cad_congregado :=
-        Qry.FieldByName('nro_cad_congregado').AsString;
+      Self.F_nro_cad_congregado := Qry.FieldByName('nro_cad_congregado').AsString;
       Self.F_SITUACAO := Qry.FieldByName('SITUACAO').AsString;
       Self.F_membro_congregado := Qry.FieldByName('membro_congregado').AsString;
-      //self.F_foto.Assign(Qry.FieldByName('foto'));
+
+      Self.F_foto.Assign(Qry.FieldByName('foto'));
+      //if Qry.FieldByName('foto').Assign(nil) then
+
+    {  //CARREGANDO IMAGEM
+      try
+         stream := Qry.CreateBlobStream(Qry.FieldByName('foto'),bmRead);
+         try
+      Self.F_foto.LoadFromStream(Stream);
+    finally
+      stream.Free;
+    end;
+      finally
+
+      end;  }
+
+
     Except
       Result := false;
     end;
