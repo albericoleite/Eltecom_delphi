@@ -10,7 +10,8 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,
-  cCadPessoa, RxToolEdit, uDTMConexao, uEnum, Vcl.Menus,cFuncao;
+  cCadPessoa, RxToolEdit, uDTMConexao, uEnum, Vcl.Menus,cFuncao,
+  Vcl.Imaging.jpeg;
 
 type
   TfrmCadPessoa = class(TfrmTelaheranca)
@@ -25,61 +26,6 @@ type
     lbledtNomeMae: TLabeledEdit;
     dtdtNascimento: TDateEdit;
     lblDataNascimento: TLabel;
-    fdtncfldQryListagemcod_pessoa: TFDAutoIncField;
-    strngfldQryListagemnome_pessoa: TStringField;
-    blbfldQryListagemfoto: TBlobField;
-    strngfldQryListagemsexo: TStringField;
-    strngfldQryListagemnome_pai: TStringField;
-    strngfldQryListagemnome_mae: TStringField;
-    dtfldQryListagemdta_nascimento: TDateField;
-    strngfldQryListagemnaturalidade: TStringField;
-    strngfldQryListagemuf_nascimento: TStringField;
-    strngfldQryListagemnacionalidade: TStringField;
-    strngfldQryListagemnrorg: TStringField;
-    strngfldQryListagemorgaorg: TStringField;
-    strngfldQryListagemcpf: TStringField;
-    strngfldQryListagememail: TStringField;
-    strngfldQryListagemgrau_instr_situacao: TStringField;
-    strngfldQryListagemgrau_instrucao: TStringField;
-    strngfldQryListagemform_teo_situacao: TStringField;
-    strngfldQryListagemformacao_teologica: TStringField;
-    strngfldQryListagemestado_civil_atual: TStringField;
-    strngfldQryListagemestado_civil_anterior: TStringField;
-    strngfldQryListagemnome_conjugue: TStringField;
-    dtfldQryListagemdta_casamento: TDateField;
-    strngfldQryListagemlogradouro: TStringField;
-    strngfldQryListagemuf_endereco: TStringField;
-    strngfldQryListagemestado_casa: TStringField;
-    strngfldQryListagemcomplemento: TStringField;
-    strngfldQryListagemfone_residencial: TStringField;
-    strngfldQryListagembairro: TStringField;
-    strngfldQryListagemcep: TStringField;
-    strngfldQryListagemcidade: TStringField;
-    strngfldQryListagemfone_celular: TStringField;
-    dtfldQryListagemdta_conversao: TDateField;
-    dtfldQryListagemdta_batismo_esprito: TDateField;
-    dtfldQryListagemdta_batismo_aguas: TDateField;
-    dtfldQryListagemdta_congregado: TDateField;
-    strngfldQryListagemlocal_descisao_congregado: TStringField;
-    dtfldQryListagemdta_membro: TDateField;
-    strngfldQryListagemorigem_eclesiastica: TStringField;
-    strngfldQryListagemproced_eclesiastica: TStringField;
-    strngfldQryListagemprofissao: TStringField;
-    strngfldQryListagemhabilitacao_profissional: TStringField;
-    strngfldQryListagememprego_atual: TStringField;
-    strngfldQryListagemfuncao: TStringField;
-    strngfldQryListagemfone_trabalho: TStringField;
-    strngfldQryListagemigreja: TStringField;
-    strngfldQryListagemsetor: TStringField;
-    strngfldQryListagemcongregacao: TStringField;
-    strngfldQryListagemnro_rol: TStringField;
-    strngfldQryListagemnro_cad_congregado: TStringField;
-    strngfldQryListagemmembro_congregado: TStringField;
-    dtfldQryListagemdta_inclusao: TDateField;
-    strngfldQryListagemUSUARIO_CADASTRO: TStringField;
-    strngfldQryListagemSITUACAO: TStringField;
-    intgrfldQryListagemcod_congregacao: TIntegerField;
-    intgrfldQryListagemcod_situacao: TIntegerField;
     lbledtNacionalidade: TLabeledEdit;
     lbledtRG: TLabeledEdit;
     cbbUFnascimento: TComboBox;
@@ -145,6 +91,61 @@ type
     pmImagem: TPopupMenu;
     mniCarregarImagem1: TMenuItem;
     mniLimparImagem1: TMenuItem;
+    QryListagemcod_pessoa: TFDAutoIncField;
+    QryListagemnome_pessoa: TStringField;
+    QryListagemfoto: TBlobField;
+    QryListagemsexo: TStringField;
+    QryListagemnome_pai: TStringField;
+    QryListagemnome_mae: TStringField;
+    QryListagemdta_nascimento: TDateField;
+    QryListagemnaturalidade: TStringField;
+    QryListagemuf_nascimento: TStringField;
+    QryListagemnacionalidade: TStringField;
+    QryListagemnrorg: TStringField;
+    QryListagemorgaorg: TStringField;
+    QryListagemcpf: TStringField;
+    QryListagememail: TStringField;
+    QryListagemgrau_instr_situacao: TStringField;
+    QryListagemgrau_instrucao: TStringField;
+    QryListagemform_teo_situacao: TStringField;
+    QryListagemformacao_teologica: TStringField;
+    QryListagemestado_civil_atual: TStringField;
+    QryListagemestado_civil_anterior: TStringField;
+    QryListagemnome_conjugue: TStringField;
+    QryListagemdta_casamento: TDateField;
+    QryListagemlogradouro: TStringField;
+    QryListagemuf_endereco: TStringField;
+    QryListagemestado_casa: TStringField;
+    QryListagemcomplemento: TStringField;
+    QryListagemfone_residencial: TStringField;
+    QryListagembairro: TStringField;
+    QryListagemcep: TStringField;
+    QryListagemcidade: TStringField;
+    QryListagemfone_celular: TStringField;
+    QryListagemdta_conversao: TDateField;
+    QryListagemdta_batismo_esprito: TDateField;
+    QryListagemdta_batismo_aguas: TDateField;
+    QryListagemdta_congregado: TDateField;
+    QryListagemlocal_descisao_congregado: TStringField;
+    QryListagemdta_membro: TDateField;
+    QryListagemorigem_eclesiastica: TStringField;
+    QryListagemproced_eclesiastica: TStringField;
+    QryListagemprofissao: TStringField;
+    QryListagemhabilitacao_profissional: TStringField;
+    QryListagememprego_atual: TStringField;
+    QryListagemfuncao: TStringField;
+    QryListagemfone_trabalho: TStringField;
+    QryListagemigreja: TStringField;
+    QryListagemsetor: TStringField;
+    QryListagemcongregacao: TStringField;
+    QryListagemnro_rol: TStringField;
+    QryListagemnro_cad_congregado: TStringField;
+    QryListagemmembro_congregado: TStringField;
+    QryListagemdta_inclusao: TDateField;
+    QryListagemUSUARIO_CADASTRO: TStringField;
+    QryListagemSITUACAO: TStringField;
+    QryListagemcod_congregacao: TIntegerField;
+    QryListagemcod_situacao: TIntegerField;
     procedure FormCreate(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -154,6 +155,7 @@ type
     procedure cbbMembCongChange(Sender: TObject);
     procedure mniLimparImagem1Click(Sender: TObject);
     procedure mniCarregarImagem1Click(Sender: TObject);
+    procedure pgcPrincipalChange(Sender: TObject);
   private
     { Private declarations }
     oPessoa: TPessoa;
@@ -178,6 +180,7 @@ begin
 end;
 
 function TfrmCadPessoa.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
+var jpg : TJPEGImage;
 begin
   if lbledt_codigo.Text <> EmptyStr then
     oPessoa.cod_pessoa := StrToInt(lbledt_codigo.Text)
@@ -197,7 +200,7 @@ begin
   oPessoa.dta_conversao     :=dtdtConversao.Date;
   oPessoa.dta_batismo_esprito :=dtdtbtespirito.Date;
   oPessoa.dta_batismo_aguas   :=dtdtBtaguas.Date;
- // oPessoa.dta_membro        :=dtdtMembro.Date;
+  oPessoa.dta_membro        :=dtdtMembro.Date;
   oPessoa.cep               := medtCEP.Text;
   oPessoa.logradouro        := lbledtEndereco.Text;
   oPessoa.bairro            := lbledtBairro.Text;
@@ -211,11 +214,17 @@ begin
   oPessoa.congregacao       := dtmPrincipal.descCongAtiva;
   oPessoa.setor             :=dtmPrincipal.setor;
 
+ //jpg.LoadFromFile(imgFoto.Picture.Bitmap);
 
-  if imgFoto.Picture.Bitmap.Empty then
+ if imgFoto.Picture.Bitmap.Empty then
+ begin
      oPessoa.foto.Assign(nil)
+   //imgFoto.Picture.LoadFromFile('C:\mysql\img\semfoto.jpg');
+ end
      else
+     begin
       oPessoa.foto.Assign(imgFoto.Picture);
+     end;
 
   if (EstadodoCadastro = ecInserir) then
     Result := oPessoa.Inserir
@@ -243,11 +252,17 @@ begin
     TFuncao.LimparImagem(imgFoto);
 end;
 
+procedure TfrmCadPessoa.pgcPrincipalChange(Sender: TObject);
+begin
+  inherited;
+
+end;
+
 {$ENDREGION}
 
 procedure TfrmCadPessoa.btnAlterarClick(Sender: TObject);
+var JPG: TImage;
 begin
-//TODO: VERIFICAR CAMPO DAS DATAS
   if oPessoa.Selecionar(QryListagem.FieldByName('cod_pessoa').AsInteger) then
   begin
     lbledt_codigo.Text    := IntToStr(oPessoa.cod_pessoa);
@@ -283,6 +298,13 @@ begin
      cbbFormTeo.Text      := oPessoa.formacao_teologica;
      cbbSitformteo.Text    := oPessoa.form_teo_situacao;
      imgFoto.Picture.Assign(oPessoa.foto);
+
+     { if oPessoa.foto.Empty then
+     //if oPessoa.foto. then
+      //imgFoto.Picture.Assign(JPG)
+      imgFoto.Picture.LoadFromFile('C:\mysql\img\semfoto.jpg')
+      else
+     imgFoto.Picture.Assign(oPessoa.foto);  }
     // cbbEstdCivil.Text    := oPessoa.
     //      :=
    {

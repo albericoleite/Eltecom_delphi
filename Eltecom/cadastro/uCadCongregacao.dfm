@@ -105,7 +105,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         EditLabel.Height = 13
         EditLabel.Caption = 'Dirigente'
         MaxLength = 45
-        TabOrder = 5
+        TabOrder = 8
         Visible = False
       end
       object grpResidencia: TGroupBox
@@ -113,7 +113,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         Top = 47
         Width = 814
         Height = 90
-        TabOrder = 2
+        TabOrder = 5
         object lblCEP: TLabel
           Left = 489
           Top = 44
@@ -268,7 +268,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         Width = 126
         Height = 148
         Caption = 'Funda'#231#227'o'
-        TabOrder = 3
+        TabOrder = 6
         object Label1: TLabel
           Left = 14
           Top = 101
@@ -333,7 +333,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         Width = 122
         Height = 114
         Caption = 'Abertura'
-        TabOrder = 4
+        TabOrder = 7
         object Label3: TLabel
           Left = 14
           Top = 59
@@ -383,7 +383,9 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         EditLabel.Caption = 'Cod. Central'
         MaxLength = 10
         NumbersOnly = True
-        TabOrder = 6
+        TabOrder = 3
+        Text = '00000'
+        OnExit = lbledtCodCentralExit
       end
       object dblkcbbSetor: TDBLookupComboBox
         Left = 670
@@ -393,7 +395,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         KeyField = 'cod_setor'
         ListField = 'setor'
         ListSource = dsSetores
-        TabOrder = 7
+        TabOrder = 4
       end
       object dblkcbbDirigente: TDBLookupComboBox
         Left = 350
@@ -403,7 +405,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         KeyField = 'nome'
         ListField = 'lista'
         ListSource = dsDirigente
-        TabOrder = 8
+        TabOrder = 2
       end
     end
   end

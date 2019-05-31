@@ -135,14 +135,21 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
     end
   end
   inherited QryListagem: TFDQuery
-    Active = True
     SQL.Strings = (
       
         'SELECT COD_CARG_PESSOA, COD_MEMBRO, NOME, COD_CARGO, CARGO, STAT' +
         'US, COD_CONGREGACAO'
-      'FROM tb_obreiro_cargo')
+      'FROM tb_obreiro_cargo'
+      'where COD_CONGREGACAO=:COD_CONGREGACAO')
     Left = 448
     Top = 96
+    ParamData = <
+      item
+        Name = 'COD_CONGREGACAO'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 2
+      end>
     object QryListagemCOD_MEMBRO: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'COD_MEMBRO'

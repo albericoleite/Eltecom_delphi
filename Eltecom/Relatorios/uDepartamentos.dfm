@@ -1,11 +1,11 @@
-object frmDepartamentos: TfrmDepartamentos
+object frmRelDept: TfrmRelDept
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Relat'#243'rios'
-  ClientHeight = 60
-  ClientWidth = 163
+  ClientHeight = 72
+  ClientWidth = 236
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,16 +19,22 @@ object frmDepartamentos: TfrmDepartamentos
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
-    Left = 9
+    Left = 22
     Top = 8
-    Width = 126
-    Height = 13
+    Width = 185
+    Height = 19
     Caption = 'Selecione o Departamento'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   object dblkcbbDepartamentos: TDBLookupComboBox
-    Left = 9
-    Top = 27
-    Width = 145
+    Left = 28
+    Top = 33
+    Width = 179
     Height = 21
     KeyField = 'codigo'
     ListField = 'departamento'

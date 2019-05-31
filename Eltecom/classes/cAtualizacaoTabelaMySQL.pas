@@ -25,6 +25,8 @@ type
     procedure ClasseAluno;
     procedure ClasseProfessor;
     procedure Professor;
+    procedure Pessoa;
+    procedure Congregacao;
 
  protected
 
@@ -46,6 +48,7 @@ begin
   Dizimista;
   Departamento;
   Usuario;
+  Pessoa;
   AcaoAcesso;
   Recibo;
   ReciboTipo;
@@ -56,6 +59,8 @@ begin
   ClasseAluno;
   Professor;
   ClasseProfessor;
+  Congregacao;
+
   //TODO: CRIAR OS METODOS PARA CRIAÇÃO DAS DEMAIS TABELAS
 end;
 
@@ -379,4 +384,119 @@ begin
    end;
 end;
 
+procedure TAtualizacaoTabelaMySQL.Pessoa;
+ begin
+   if not TabelaExiste('tb_pessoa') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_pessoa` (          '+
+  ' `cod_pessoa` int(11) NOT NULL AUTO_INCREMENT,    '+
+  ' `nome_pessoa` varchar(50) DEFAULT NULL,     '+
+  ' `foto` mediumblob,                      '+
+  ' `sexo` varchar(1) DEFAULT NULL,       '+
+  ' `nome_pai` varchar(50) DEFAULT NULL,   '+
+  ' `nome_mae` varchar(50) DEFAULT NULL,     '+
+  ' `dta_nascimento` date DEFAULT NULL,      '+
+  ' `naturalidade` varchar(50) DEFAULT NULL,   '+
+  ' `uf_nascimento` varchar(2) DEFAULT NULL,    '+
+  ' `nacionalidade` varchar(50) DEFAULT NULL,    '+
+  ' `nrorg` varchar(20) DEFAULT NULL,    '+
+  ' `orgaorg` varchar(10) DEFAULT NULL,   '+
+  ' `cpf` varchar(20) DEFAULT NULL,        '+
+  ' `email` varchar(50) DEFAULT NULL,      '+
+  ' `grau_instr_situacao` varchar(30) DEFAULT NULL,   '+
+  ' `grau_instrucao` varchar(30) DEFAULT NULL,     '+
+  ' `form_teo_situacao` varchar(30) DEFAULT NULL,   '+
+  ' `formacao_teologica` varchar(30) DEFAULT NULL,    '+
+  ' `estado_civil_atual` varchar(20) DEFAULT NULL,     '+
+  ' `estado_civil_anterior` varchar(20) DEFAULT NULL,   '+
+  ' `nome_conjugue` varchar(50) DEFAULT NULL,   '+
+  ' `dta_casamento` date DEFAULT NULL,    '+
+  ' `logradouro` varchar(250) DEFAULT NULL,   '+
+  ' `uf_endereco` varchar(2) DEFAULT NULL,     '+
+  ' `estado_casa` varchar(20) DEFAULT NULL,      '+
+  ' `complemento` varchar(50) DEFAULT NULL,        '+
+  ' `fone_residencial` varchar(30) DEFAULT NULL,   '+
+  ' `bairro` varchar(30) DEFAULT NULL,          '+
+  ' `cep` varchar(20) DEFAULT NULL,           '+
+  ' `cidade` varchar(30) DEFAULT NULL,    '+
+  ' `fone_celular` varchar(30) DEFAULT NULL,   '+
+  ' `dta_conversao` date DEFAULT NULL,        '+
+  ' `dta_batismo_esprito` date DEFAULT NULL,    '+
+  ' `dta_batismo_aguas` date DEFAULT NULL,     '+
+  ' `dta_congregado` date DEFAULT NULL,       '+
+  ' `local_descisao_congregado` varchar(50) DEFAULT NULL,    '+
+  ' `dta_membro` date DEFAULT NULL,      '+
+  ' `origem_eclesiastica` varchar(50) DEFAULT NULL,    '+
+  ' `proced_eclesiastica` varchar(50) DEFAULT NULL,   '+
+  ' `profissao` varchar(50) DEFAULT NULL,        '+
+  ' `habilitacao_profissional` varchar(30) DEFAULT NULL,   '+
+  ' `emprego_atual` varchar(30) DEFAULT NULL,     '+
+  ' `funcao` varchar(30) DEFAULT NULL,         '+
+  ' `fone_trabalho` varchar(30) DEFAULT NULL,      '+
+  ' `igreja` varchar(30) DEFAULT NULL,     '+
+  ' `setor` varchar(15) DEFAULT NULL,   '+
+  ' `congregacao` varchar(30) DEFAULT NULL,   '+
+  ' `nro_rol` varchar(15) DEFAULT NULL,          '+
+  ' `nro_cad_congregado` varchar(15) DEFAULT NULL,    '+
+  ' `membro_congregado` varchar(15) DEFAULT NULL,    '+
+  ' `dta_inclusao` date DEFAULT NULL,        '+
+  ' `USUARIO_CADASTRO` varchar(20) DEFAULT NULL,   '+
+  ' `SITUACAO` varchar(50) DEFAULT NULL,      '+
+  ' `cod_congregacao` int(11) NOT NULL,    '+
+  ' `cod_situacao` int(11) DEFAULT NULL,    '+
+  ' PRIMARY KEY (`cod_pessoa`),         '+
+  ' KEY `tb_pessoa_tb_congregacao_fk` (`cod_congregacao`),    '+
+  ' CONSTRAINT `tb_pessoa_tb_congregacao_fk` FOREIGN KEY (`cod_congregacao`)  '+
+  ' REFERENCES `tb_congregacao` (`cod_congregacao`)    '+
+  ' ) ');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.Congregacao;
+begin
+   if not TabelaExiste('tb_congregacao') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     ' CREATE TABLE `tb_congregacao` (   '+
+  ' `cod_congregacao` int(11) NOT NULL AUTO_INCREMENT,   '+
+  ' `cod_central` int(11) DEFAULT NULL,        '+
+  ' `congregacao` varchar(25) DEFAULT NULL,   '+
+  ' `setor` varchar(25) DEFAULT NULL,    '+
+  ' `polo` varchar(25) DEFAULT NULL,    '+
+  ' `situacao` int(11) DEFAULT NULL,      '+
+  ' `telefone` varchar(20) DEFAULT NULL,  '+
+  ' `cnpj` varchar(20) DEFAULT NULL,      '+
+  ' `siteblog` varchar(50) DEFAULT NULL,    '+
+  ' `endereco` varchar(100) DEFAULT NULL,   '+
+  ' `complemento` varchar(25) DEFAULT NULL,   '+
+  ' `bairro` varchar(25) DEFAULT NULL,      '+
+  ' `cep` varchar(25) DEFAULT NULL,      '+
+  ' `cidade` varchar(50) DEFAULT NULL,    '+
+  ' `diasculto` varchar(25) DEFAULT NULL,   '+
+  ' `diacoa` varchar(25) DEFAULT NULL,     '+
+  ' `diacom` varchar(25) DEFAULT NULL,    '+
+  ' `diacoi` varchar(25) DEFAULT NULL,   '+
+  ' `diacv` varchar(25) DEFAULT NULL,    '+
+  ' `data_aber_sub` date DEFAULT NULL,   '+
+  ' `data_aber_cong` date DEFAULT NULL,   '+
+  ' `data_fun_coa` date DEFAULT NULL,   '+
+  ' `data_fun_com` date DEFAULT NULL,    '+
+  ' `data_fun_coi` date DEFAULT NULL,    '+
+  ' `data_fun_cv` date DEFAULT NULL,     '+
+  ' `data_cadastro` date DEFAULT NULL,   '+
+  ' `usuario_cadastro` varchar(50) DEFAULT NULL,   '+
+  ' `cong_principal` varchar(10) DEFAULT NULL,   '+
+  ' `dirigente` varchar(30) DEFAULT NULL,   '+
+  ' `cod_setor` int(11) DEFAULT NULL,    '+
+  ' `cod_igreja` int(11) NOT NULL,     '+
+  ' `cod_cc` int(11) DEFAULT NULL,    '+
+  ' `sigla` varchar(25) DEFAULT NULL,   '+
+  ' PRIMARY KEY (`cod_congregacao`),     '+
+  ' KEY `tb_congregacao_tb_setor_fk` (`cod_setor`),   '+
+  ' KEY `tb_congregacao_tb_igreja_fk` (`cod_igreja`),   '+
+  ' CONSTRAINT `tb_congregacao_tb_igreja_fk` FOREIGN KEY (`cod_igreja`) REFERENCES `tb_igreja` (`cod_igreja`)  '+
+')');
+   end;;
+end;
 end.

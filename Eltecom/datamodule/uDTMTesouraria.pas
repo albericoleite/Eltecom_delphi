@@ -3,10 +3,74 @@ unit uDTMTesouraria;
 interface
 
 uses
-  System.SysUtils, System.Classes;
+  System.SysUtils, System.Classes, frxClass, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, frxDBSet;
 
 type
   TdtmTesouraria = class(TDataModule)
+    frxrprtFechamento: TfrxReport;
+    frxdbBuscaIgreja: TfrxDBDataset;
+    fdqryBucarIgreja: TFDQuery;
+    fdtncfldBucarIgrejacod_igreja: TFDAutoIncField;
+    strngfldBucarIgrejanome_igreja: TStringField;
+    strngfldBucarIgrejacidade: TStringField;
+    dtfldBucarIgrejadta_fundacao: TDateField;
+    strngfldBucarIgrejanome_presidente: TStringField;
+    dtmfldBucarIgrejadta_inclusao: TDateTimeField;
+    strngfldBucarIgrejasigla_igreja: TStringField;
+    strngfldBucarIgrejasite: TStringField;
+    strngfldBucarIgrejaemail: TStringField;
+    strngfldBucarIgrejacnpj: TStringField;
+    strngfldBucarIgrejalogradouro: TStringField;
+    strngfldBucarIgrejabairro: TStringField;
+    strngfldBucarIgrejauf: TStringField;
+    strngfldBucarIgrejafone: TStringField;
+    blbfldBucarIgrejafoto: TBlobField;
+    intgrfldBucarIgrejapercentual_ajuste: TIntegerField;
+    fdqryBuscaCongregacao: TFDQuery;
+    intgrfldTesourariaDescricaoBuscaCongregacaocod_igreja: TIntegerField;
+    fdtncfldBuscaCongregacaocod_congregacao: TFDAutoIncField;
+    intgrfldTesourariaDescricaoBuscaCongregacaocod_central: TIntegerField;
+    strngfldBuscaCongregacaocongregacao: TStringField;
+    intgrfldTesourariaDescricaoBuscaCongregacaocod_setor: TIntegerField;
+    intgrfldTesourariaDescricaoBuscaCongregacaosituacao: TIntegerField;
+    strngfldBuscaCongregacaotelefone: TStringField;
+    strngfldBuscaCongregacaocnpj: TStringField;
+    strngfldBuscaCongregacaositeblog: TStringField;
+    strngfldBuscaCongregacaoendereco: TStringField;
+    strngfldBuscaCongregacaocomplemento: TStringField;
+    strngfldBuscaCongregacaobairro: TStringField;
+    strngfldBuscaCongregacaocep: TStringField;
+    strngfldBuscaCongregacaocidade: TStringField;
+    strngfldBuscaCongregacaodiasculto: TStringField;
+    strngfldBuscaCongregacaodiacoa: TStringField;
+    strngfldBuscaCongregacaodiacom: TStringField;
+    strngfldBuscaCongregacaodiacoi: TStringField;
+    strngfldBuscaCongregacaodiacv: TStringField;
+    dtfldBuscaCongregacaodata_aber_sub: TDateField;
+    dtfldBuscaCongregacaodata_aber_cong: TDateField;
+    dtfldBuscaCongregacaodata_fun_coa: TDateField;
+    dtfldBuscaCongregacaodata_fun_com: TDateField;
+    dtfldBuscaCongregacaodata_fun_coi: TDateField;
+    dtfldBuscaCongregacaodata_fun_cv: TDateField;
+    dtfldBuscaCongregacaodata_cadastro: TDateField;
+    strngfldBuscaCongregacaousuario_cadastro: TStringField;
+    strngfldBuscaCongregacaocong_principal: TStringField;
+    strngfldBuscaCongregacaodirigente: TStringField;
+    strngfldBuscaCongregacaosetor: TStringField;
+    intgrfldBuscaCongregacaocod_cc: TIntegerField;
+    frxdbCongregacao: TfrxDBDataset;
+    fdqryTes_valores: TFDQuery;
+    intgrfldTes_valoresnro_documento: TIntegerField;
+    dtfldTes_valoresdta_movimento: TDateField;
+    strngfldTes_valoresdescricao: TStringField;
+    fltfldTes_valoresENTRADA: TFloatField;
+    fltfldTes_valoresSAIDA: TFloatField;
+    frxdbdtstTes_valores: TfrxDBDataset;
+    fdqryTotalLancamentos: TFDQuery;
+    fltfldTes_Entrada_Totaltotal: TFloatField;
   private
     { Private declarations }
   public

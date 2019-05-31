@@ -77,6 +77,7 @@ type
     pnl5: TPanel;
     tmrDashboard: TTimer;
     BackupeRestore1: TMenuItem;
+    mniDepartamentos3: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -111,6 +112,7 @@ type
     procedure pnl5Click(Sender: TObject);
     procedure tmrDashboardTimer(Sender: TObject);
     procedure BackupeRestore1Click(Sender: TObject);
+    procedure mniDepartamentos3Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -254,7 +256,8 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmCadClasseAluno, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmAniversariantes, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmRelatoriosEBD, dtmPrincipal.ConexaoDB);
-     TAcaoAcesso.CriarAcoes(TfrmBackupRestore, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmBackupRestore, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmRelDept, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -380,6 +383,11 @@ begin
   TFuncao.CriarForm(TfrmCadDepartamento, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
+procedure TfrmPrincipal.mniDepartamentos3Click(Sender: TObject);
+begin
+TFuncao.CriarForm(TfrmRelDept, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
 begin
   TFuncao.CriarForm(TfrmCadDizimos, oUsuarioLogado, dtmPrincipal.ConexaoDB);
@@ -451,10 +459,10 @@ end;
 
 procedure TfrmPrincipal.AtualizaBandoDados(aForm: TfrmAtualizaDB);
 var
-  sl: Integer;
+ // sl: Integer;
   oAtualizarMySQL: TAtualizaBancoDadosMysql;
 begin
-  sl := 50;
+  //sl := 50;
   aForm.chkConexBD.Checked := True;
   aForm.Refresh;
 

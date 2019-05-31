@@ -1,7 +1,8 @@
 inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
-  ClientWidth = 736
-  ExplicitWidth = 742
+  ClientWidth = 727
+  ExplicitWidth = 733
+  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   object lbl4: TLabel [0]
@@ -12,32 +13,62 @@ inherited frmCadLancamento: TfrmCadLancamento
     Caption = 'Data Nascimento'
   end
   inherited pgcPrincipal: TPageControl
-    Width = 736
-    ExplicitLeft = -12
-    ExplicitTop = 8
+    Width = 727
     ExplicitWidth = 736
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 728
+      ExplicitHeight = 390
       inherited pnlListagem: TPanel
-        Width = 728
+        Width = 719
+        Height = 89
         ExplicitWidth = 728
+        ExplicitHeight = 89
+        inherited lblIndice: TLabel
+          Top = 8
+          ExplicitTop = 8
+        end
         object lblDataNascimento: TLabel [1]
           Left = 370
-          Top = -1
+          Top = 7
           Width = 53
           Height = 13
           Caption = 'Data Inicial'
         end
         object lbl5: TLabel [2]
           Left = 470
-          Top = 1
+          Top = 9
           Width = 48
           Height = 13
           Caption = 'Data Final'
         end
+        object lbl6: TLabel [3]
+          Left = 16
+          Top = 51
+          Width = 67
+          Height = 24
+          Caption = 'Per'#237'odo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        inherited mskPesquisar: TMaskEdit
+          Top = 24
+          Width = 226
+          ExplicitTop = 24
+          ExplicitWidth = 226
+        end
+        inherited btnPesquisar: TBitBtn
+          Top = 22
+          ExplicitTop = 22
+        end
         object dtdtIni: TDateEdit
           Left = 370
-          Top = 18
+          Top = 26
           Width = 84
           Height = 21
           Hint = 'Data Inicial'
@@ -50,7 +81,7 @@ inherited frmCadLancamento: TfrmCadLancamento
         end
         object dtdtFim: TDateEdit
           Left = 470
-          Top = 18
+          Top = 26
           Width = 84
           Height = 21
           Hint = 'Data Finaal'
@@ -63,16 +94,44 @@ inherited frmCadLancamento: TfrmCadLancamento
         end
         object btnBuscar: TBitBtn
           Left = 560
-          Top = 14
+          Top = 22
           Width = 49
           Height = 25
           Caption = 'Buscar'
           TabOrder = 4
           OnClick = btnBuscarClick
         end
+        object btnImprimir: TBitBtn
+          Left = 632
+          Top = 22
+          Width = 49
+          Height = 25
+          Caption = 'Imprimir'
+          TabOrder = 5
+          OnClick = btnImprimirClick
+        end
+        object mmoSemana: TMemo
+          Left = 121
+          Top = 51
+          Width = 121
+          Height = 24
+          Alignment = taRightJustify
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Lines.Strings = (
+            '01 a 30 /2019')
+          ParentFont = False
+          TabOrder = 6
+        end
       end
       inherited grdListagem: TDBGrid
-        Width = 728
+        Top = 89
+        Width = 719
+        Height = 301
         DataSource = dtsListagem
         Columns = <
           item
@@ -110,7 +169,10 @@ inherited frmCadLancamento: TfrmCadLancamento
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 728
+      ExplicitHeight = 390
       object pnl1: TPanel
         Left = 3
         Top = 3
@@ -118,21 +180,21 @@ inherited frmCadLancamento: TfrmCadLancamento
         Height = 65
         TabOrder = 0
         object lbl1: TLabel
-          Left = 489
-          Top = 7
+          Left = 471
+          Top = 5
           Width = 23
           Height = 13
           Caption = 'Data'
         end
         object lbl2: TLabel
-          Left = 655
+          Left = 637
           Top = 5
           Width = 20
           Height = 13
           Caption = 'Tipo'
         end
         object lbl3: TLabel
-          Left = 580
+          Left = 562
           Top = 7
           Width = 24
           Height = 13
@@ -140,7 +202,7 @@ inherited frmCadLancamento: TfrmCadLancamento
         end
         object cbbTipo: TComboBox
           Tag = 2
-          Left = 655
+          Left = 637
           Top = 24
           Width = 69
           Height = 21
@@ -154,7 +216,7 @@ inherited frmCadLancamento: TfrmCadLancamento
             'SAIDA')
         end
         object crncydtValor: TCurrencyEdit
-          Left = 580
+          Left = 562
           Top = 24
           Width = 65
           Height = 21
@@ -162,7 +224,7 @@ inherited frmCadLancamento: TfrmCadLancamento
           TabOrder = 3
         end
         object dtdtData: TDateEdit
-          Left = 489
+          Left = 471
           Top = 24
           Width = 84
           Height = 21
@@ -189,7 +251,7 @@ inherited frmCadLancamento: TfrmCadLancamento
           Tag = 2
           Left = 201
           Top = 24
-          Width = 278
+          Width = 264
           Height = 21
           CharCase = ecUpperCase
           EditLabel.Width = 46
@@ -213,7 +275,7 @@ inherited frmCadLancamento: TfrmCadLancamento
     end
   end
   inherited pnlRodape: TPanel
-    Width = 736
+    Width = 727
     ExplicitWidth = 736
     inherited btnNavigator: TDBNavigator
       Left = 413
@@ -221,7 +283,7 @@ inherited frmCadLancamento: TfrmCadLancamento
       ExplicitLeft = 413
     end
     inherited btnFechar: TBitBtn
-      Left = 644
+      Left = 635
       ExplicitLeft = 644
     end
   end

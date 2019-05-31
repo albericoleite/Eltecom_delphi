@@ -99,6 +99,7 @@ begin
   inherited;
   oFuncao:= TFuncao.Create(dtmPrincipal.ConexaoDB);
    IndiceAtual:='cod_funcao';
+   dtmPrincipal.fdqryDepartamentos.Open;
 end;
 
 end.

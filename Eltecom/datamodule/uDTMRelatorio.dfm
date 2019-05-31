@@ -20047,10 +20047,17 @@ object dtmRelatorio: TdtmRelatorio
       
         'YEAR(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(a.dta_nascimento)))as idad' +
         'e , a.membro_congregado as filtro'
+      ' from tb_pessoa a '
       
-        ' from tb_pessoa a where Month(a.dta_nascimento) BETWEEN month(:d' +
-        'ta1) and month(:dta2) and a.cod_pessoa not in (select x.cod_memb' +
-        'ro from tb_obreiro_cargo x)'
+        'inner join tb_parametro_sistema c on c.cod_congregacao =a.cod_co' +
+        'ngregacao'
+      
+        'where Month(a.dta_nascimento) BETWEEN month(:dta1) and month(:dt' +
+        'a2) and a.cod_pessoa not in (select x.cod_membro from tb_obreiro' +
+        '_cargo x'
+      
+        'inner join tb_parametro_sistema c on c.cod_congregacao =x.cod_co' +
+        'ngregacao)'
       'union all'
       
         'select a.cod_pessoa,a.nome_pessoa,a.sexo,a.membro_congregado,a.d' +
@@ -20060,9 +20067,12 @@ object dtmRelatorio: TdtmRelatorio
         'e , b.cargo'
       ' from tb_pessoa a'
       
+        'inner join tb_parametro_sistema c on c.cod_congregacao =a.cod_co' +
+        'ngregacao'
+      
         'inner join tb_obreiro_cargo b on b.cod_membro = a.cod_pessoa whe' +
-        're Month(a.dta_nascimento) BETWEEN month(:dta1) and month(:dta2)' +
-        ') x'
+        're Month(a.dta_nascimento) BETWEEN month(:dta1) and month(:dta2)'
+      '  )x'
       'where x.filtro like :filtro'
       ''
       ''

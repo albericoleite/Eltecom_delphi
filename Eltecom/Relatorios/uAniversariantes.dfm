@@ -4,8 +4,8 @@ object frmAniversariantes: TfrmAniversariantes
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Aniversariantes'
-  ClientHeight = 102
-  ClientWidth = 292
+  ClientHeight = 105
+  ClientWidth = 289
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -60,7 +60,7 @@ object frmAniversariantes: TfrmAniversariantes
   object btnVisualizar: TBitBtn
     Left = 214
     Top = 68
-    Width = 71
+    Width = 59
     Height = 25
     Caption = 'Visualizar'
     TabOrder = 1

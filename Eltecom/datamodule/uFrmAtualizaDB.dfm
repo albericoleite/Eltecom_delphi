@@ -3,8 +3,8 @@ object frmAtualizaDB: TfrmAtualizaDB
   Top = 0
   BorderStyle = bsNone
   Caption = 'frmAtualizaDB'
-  ClientHeight = 47
-  ClientWidth = 423
+  ClientHeight = 54
+  ClientWidth = 419
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,21 +16,26 @@ object frmAtualizaDB: TfrmAtualizaDB
   PixelsPerInch = 96
   TextHeight = 13
   object pnl1: TPanel
-    Left = 3
-    Top = 3
-    Width = 534
-    Height = 286
+    Left = 0
+    Top = 0
+    Width = 419
+    Height = 54
+    Align = alClient
     BevelOuter = bvLowered
     BevelWidth = 3
     BorderWidth = 3
     Color = clBlack
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 3
+    ExplicitTop = 3
+    ExplicitWidth = 534
+    ExplicitHeight = 286
     object pnl2: TPanel
       Left = 6
       Top = 6
-      Width = 522
-      Height = 274
+      Width = 407
+      Height = 42
       Align = alClient
       BevelOuter = bvNone
       BevelWidth = 3
@@ -39,8 +44,8 @@ object frmAtualizaDB: TfrmAtualizaDB
       Enabled = False
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 411
-      ExplicitHeight = 35
+      ExplicitWidth = 522
+      ExplicitHeight = 274
       object imgBD: TImage
         Left = 0
         Top = 48

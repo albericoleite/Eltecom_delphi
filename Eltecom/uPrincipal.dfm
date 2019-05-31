@@ -140,10 +140,13 @@ object frmPrincipal: TfrmPrincipal
             26)
           ColorPaletteIndex = 13
           object brsrs1: TBarSeries
+            BarBrush.Gradient.EndColor = 11842740
             ColorEachPoint = True
             Marks.Angle = 31
             DataSource = dtmGrafico.fdqryDizimosAnual
             XLabelsSource = 'sigla'
+            Emboss.Color = 33280
+            Gradient.EndColor = 11842740
             XValues.Name = 'X'
             XValues.Order = loAscending
             XValues.ValueSource = 'mes'
@@ -413,6 +416,10 @@ object frmPrincipal: TfrmPrincipal
       object mniAniversariantes1: TMenuItem
         Caption = 'Aniversariantes'
         OnClick = mniAniversariantes1Click
+      end
+      object mniDepartamentos3: TMenuItem
+        Caption = 'Departamentos'
+        OnClick = mniDepartamentos3Click
       end
     end
     object mniEBD1: TMenuItem

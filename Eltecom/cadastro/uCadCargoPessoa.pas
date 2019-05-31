@@ -126,9 +126,11 @@ begin
   inherited;
 fdqryPessoas.Open;
 fdqryCargos.Open;
+QryListagem.Close;
+QryListagem.ParamByName('COD_CONGREGACAO').AsInteger:= dtmPrincipal.congAtiva;
+QryListagem.open;
   oCargoPessoa:= TCargoPessoa.Create(dtmPrincipal.ConexaoDB);
    IndiceAtual:='cod_membro';
-   //TODO: FINALIZAR CADASTRO DE OBREIROS POR CONGREGAÇÃO E ID
 end;
 
 end.

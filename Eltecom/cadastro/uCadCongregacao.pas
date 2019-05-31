@@ -87,6 +87,8 @@ type
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure lbledtCodCentralExit(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
   private
     { Private declarations }
     oCongregacao: TCongregacao;
@@ -140,6 +142,12 @@ if oCongregacao.Selecionar(QryListagem.FieldByName('cod_congregacao').AsInteger)
 
 end;
 
+procedure TfrmCadCongregacao.btnNovoClick(Sender: TObject);
+begin
+  inherited;
+lbledtCongregacao.SetFocus;
+end;
+
 procedure TfrmCadCongregacao.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
@@ -186,6 +194,7 @@ begin
        oCongregacao.setor:= dblkcbbSetor.Text;
        oCongregacao.situacao:='0';
        oCongregacao.dirigente:=dblkcbbDirigente.Text;
+       oCongregacao.cod_igreja:='1';
 
 
     if (EstadodoCadastro=ecInserir) then
@@ -193,6 +202,13 @@ begin
     else if (EstadodoCadastro=ecAlterar) then
      Result:=oCongregacao.Atualizar;
 
+end;
+
+procedure TfrmCadCongregacao.lbledtCodCentralExit(Sender: TObject);
+begin
+  inherited;
+if lbledtCodCentral.Text ='' then
+lbledtCodCentral.Text:='00000';
 end;
 
 {$endregion}

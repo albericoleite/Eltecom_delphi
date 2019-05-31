@@ -10,7 +10,7 @@ uses
   Vcl.DBCtrls, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
-  TfrmDepartamentos = class(TForm)
+  TfrmRelDept = class(TForm)
     fdqryDepartamentos: TFDQuery;
     dsDepartamentos: TDataSource;
     dblkcbbDepartamentos: TDBLookupComboBox;
@@ -25,7 +25,7 @@ type
   end;
 
 var
-  frmDepartamentos: TfrmDepartamentos;
+  frmRelDept: TfrmRelDept;
 
 implementation
 
@@ -34,7 +34,7 @@ uses
 
 {$R *.dfm}
 
-procedure TfrmDepartamentos.dblkcbbDepartamentosClick(Sender: TObject);
+procedure TfrmRelDept.dblkcbbDepartamentosClick(Sender: TObject);
 begin
 dtmRelatorio.fdqryPessoas_dept.Close;
 dtmRelatorio.fdqryPessoas_dept.ParamByName('cod_dpt').AsInteger:=dblkcbbDepartamentos.KeyValue;
@@ -52,13 +52,13 @@ end;
 
 end;
 
-procedure TfrmDepartamentos.FormClose(Sender: TObject;
+procedure TfrmRelDept.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
 fdqryDepartamentos.Close;
 end;
 
-procedure TfrmDepartamentos.FormCreate(Sender: TObject);
+procedure TfrmRelDept.FormCreate(Sender: TObject);
 begin
 fdqryDepartamentos.Open;
 end;

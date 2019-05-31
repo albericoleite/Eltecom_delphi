@@ -17,24 +17,12 @@ type
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     fdqryCong_sistema: TFDQuery;
     fdtncfldCong_sistemacod_congregacao: TFDAutoIncField;
-    fdqryCriartb_dept_pessoa: TFDQuery;
-    fdqryCriartb_congregacao: TFDQuery;
-    fdqryCriartb_departamento: TFDQuery;
-    fdqryCriartb_funcao: TFDQuery;
-    fdqryCriartb_seguranca: TFDQuery;
-    fdqryCriartb_usuario: TFDQuery;
-    fdqrySetores: TFDQuery;
-    fdqryCriartb_dizimo: TFDQuery;
     strngfldCong_sistemacongregacao: TStringField;
     strngfldCong_sistemasetor: TStringField;
     fdqryDepartamentos: TFDQuery;
     fdtncfldDepartamentoscod_departamento: TFDAutoIncField;
     strngfldDepartamentosnome_departamento: TStringField;
-    fdqryCriartb_cargo: TFDQuery;
-    FDAutoIncField1: TFDAutoIncField;
-    StringField1: TStringField;
     fdqryCriartb_func_pessoa: TFDQuery;
-    fdqryCriartb_ob_carg: TFDQuery;
     fdqryPessoa: TFDQuery;
     fdtncfldPessoacod_pessoa: TFDAutoIncField;
     strngfldPessoanome_pessoa: TStringField;
@@ -91,6 +79,7 @@ type
     strngfldPessoasetor: TStringField;
     strngfldPessoacongregacao: TStringField;
     strngfldPessoaSITUACAO: TStringField;
+    fdqrySetores: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

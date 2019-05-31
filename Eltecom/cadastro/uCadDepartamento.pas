@@ -22,6 +22,7 @@ type
     procedure btnAlterarClick(Sender: TObject);
     procedure grdListagemKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure btnNovoClick(Sender: TObject);
   private
     { Private declarations }
      oDepartamento: TDepartamento;
@@ -84,6 +85,12 @@ if oDepartamento.Selecionar(QryListagem.FieldByName('cod_departamento').AsIntege
   end;
   inherited;
 
+end;
+
+procedure TfrmCadDepartamento.btnNovoClick(Sender: TObject);
+begin
+  inherited;
+lbledtDepartamento.SetFocus;
 end;
 
 procedure TfrmCadDepartamento.FormClose(Sender: TObject;

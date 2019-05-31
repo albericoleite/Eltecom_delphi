@@ -40,7 +40,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <VCL_Custom_Styles>Carbon|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\15.0\Styles\Carbon.vsf;&quot;Golden Graphite|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\15.0\Styles\GoldenGraphite.vsf&quot;;Luna|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\15.0\Styles\Luna.vsf</VCL_Custom_Styles>
+        <VCL_Custom_Styles>Carbon|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\15.0\Styles\Carbon.vsf;&quot;Emerald Light Slate|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\15.0\Styles\EmeraldLightSlate.vsf&quot;;&quot;Golden Graphite|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\15.0\Styles\GoldenGraphite.vsf&quot;;Luna|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\15.0\Styles\Luna.vsf</VCL_Custom_Styles>
         <SanitizedProjectName>Eltecom</SanitizedProjectName>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
@@ -198,7 +198,7 @@
         <DCCReference Include="classes\cAtualizacaoBancoDeDados.pas"/>
         <DCCReference Include="classes\cAtualizacaoTabelaMySQL.pas"/>
         <DCCReference Include="Relatorios\uDepartamentos.pas">
-            <Form>frmDepartamentos</Form>
+            <Form>frmRelDept</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="cadastro\uCadCargoPessoa.pas">
@@ -254,6 +254,14 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="classes\cFuncao.pas"/>
+        <DCCReference Include="heranca\uTelaHerancaConsulta.pas">
+            <Form>frmTelaHerancaConsulta</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="login\uBackupRestore.pas">
+            <Form>frmBackupRestore</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

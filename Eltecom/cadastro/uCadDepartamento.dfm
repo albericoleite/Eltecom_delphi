@@ -2,6 +2,7 @@ inherited frmCadDepartamento: TfrmCadDepartamento
   Caption = 'Cadastro de Departamento'
   ClientHeight = 462
   ClientWidth = 732
+  ExplicitTop = -80
   ExplicitWidth = 738
   ExplicitHeight = 491
   PixelsPerInch = 96

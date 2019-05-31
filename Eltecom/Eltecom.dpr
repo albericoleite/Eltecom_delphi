@@ -45,7 +45,7 @@ uses
   cCadLancamento in 'classes\cCadLancamento.pas',
   cAtualizacaoBancoDeDados in 'classes\cAtualizacaoBancoDeDados.pas',
   cAtualizacaoTabelaMySQL in 'classes\cAtualizacaoTabelaMySQL.pas',
-  uDepartamentos in 'Relatorios\uDepartamentos.pas' {frmDepartamentos},
+  uDepartamentos in 'Relatorios\uDepartamentos.pas' {frmRelDept},
   uCadCargoPessoa in 'cadastro\uCadCargoPessoa.pas' {frmCadCargoPessoa},
   cCadCargoPessoa in 'classes\cCadCargoPessoa.pas',
   cAtualizacaoCampoMySQL in 'classes\cAtualizacaoCampoMySQL.pas',
@@ -73,6 +73,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  TStyleManager.TrySetStyle('Emerald Light Slate');
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.

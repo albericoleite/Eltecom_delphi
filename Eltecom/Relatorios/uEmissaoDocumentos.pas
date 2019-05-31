@@ -266,7 +266,7 @@ begin
   dtmRelatorio.fdqryBuscaPessoaRelatorio.Open;
   dtpDocumento.Date := now;
   lbl2.Caption:= 'Total:' + dtmRelatorio.fdqryBuscaPessoaRelatorio.RecordCount.ToString;
-  frmEmitirDoc.Width := 573;
+  //frmEmitirDoc.Width := 573;
 end;
 
 end.
