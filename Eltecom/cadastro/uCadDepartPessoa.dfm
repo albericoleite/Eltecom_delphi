@@ -1,5 +1,6 @@
 inherited frmCadDepartPessoa: TfrmCadDepartPessoa
   Caption = 'Cadastrar pessoas nos Departamentos'
+  ExplicitTop = -24
   ExplicitWidth = 806
   ExplicitHeight = 485
   PixelsPerInch = 96

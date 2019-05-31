@@ -1,5 +1,6 @@
 inherited frmCadClasseAluno: TfrmCadClasseAluno
   Caption = 'Cadastrar Alunos nas Classes'
+  ExplicitTop = -24
   ExplicitWidth = 806
   ExplicitHeight = 485
   PixelsPerInch = 96

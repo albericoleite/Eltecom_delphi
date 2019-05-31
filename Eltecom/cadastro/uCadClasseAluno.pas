@@ -30,6 +30,7 @@ type
     dsPessoas: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnAlterarClick(Sender: TObject);
   private
     { Private declarations }
     oClasseAluno: TClasseAluno;
@@ -38,8 +39,7 @@ type
 
   public
     { Public declarations }
-  end;
-  //TODO: CORRIGIR E TESTAR O CRUD DA TELA
+  end;    S
 var
   frmCadClasseAluno: TfrmCadClasseAluno;
 
@@ -53,6 +53,23 @@ function TfrmCadClasseAluno.Apagar: Boolean;
 begin
   if oClasseAluno.Selecionar(QryListagem.FieldByName('codigo').AsInteger) then
       Result:=oClasseAluno.Apagar;
+end;
+
+procedure TfrmCadClasseAluno.btnAlterarClick(Sender: TObject);
+begin
+  inherited;
+if oClasseAluno.Selecionar(QryListagem.FieldByName('codigo').AsInteger) then
+  begin
+    lbledtCodigo.Text    := IntToStr(oClasseAluno.codigo);
+    dblkcbbPessoa.KeyValue:= oClasseAluno.cod_aluno;
+    dblkcbbClasse.KeyValue:= oClasseAluno.cod_classe;
+    end
+  else
+  begin
+    btnCancelar.Click;
+    Abort;
+  end;
+  inherited;
 end;
 
 procedure TfrmCadClasseAluno.FormClose(Sender: TObject;
