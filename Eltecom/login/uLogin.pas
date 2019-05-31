@@ -4,16 +4,22 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls;
 
 type
   TfrmLogin = class(TForm)
-    edtUsuario: TEdit;
-    edtSenha: TEdit;
+    pnl1: TPanel;
     lbl1: TLabel;
     lbl2: TLabel;
+    edtUsuario: TEdit;
+    edtSenha: TEdit;
     btnSair: TBitBtn;
     btnEntrar: TBitBtn;
+    lbl3: TLabel;
+    lbl4: TLabel;
+    lbl5: TLabel;
+    img1: TImage;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
     procedure btnSairClick(Sender: TObject);

@@ -1,6 +1,5 @@
 inherited frmCadClasse: TfrmCadClasse
   Caption = 'Cadastro de Classes'
-  ExplicitTop = -74
   ExplicitWidth = 806
   ExplicitHeight = 485
   PixelsPerInch = 96

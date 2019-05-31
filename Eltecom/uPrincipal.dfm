@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Eltecom - 2019.1'
+  Caption = 'Sistema de Gest'#227'o Congregacional - 2019.1'
   ClientHeight = 560
   ClientWidth = 1269
   Color = clBtnFace
@@ -87,7 +87,12 @@ object frmPrincipal: TfrmPrincipal
             'Pessoas por Cargos')
           ClipPoints = False
           Legend.Visible = False
+          View3DOptions.Elevation = 315
+          View3DOptions.Orthogonal = False
+          View3DOptions.Perspective = 0
+          View3DOptions.Rotation = 360
           Align = alClient
+          Color = clWhite
           TabOrder = 0
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
@@ -96,17 +101,33 @@ object frmPrincipal: TfrmPrincipal
             15
             26)
           ColorPaletteIndex = 13
-          object brsrs2: TBarSeries
-            ColorEachPoint = True
+          object psrshrzbrsrspsrshrzbrsrspsrsbrsrs2: TPieSeries
             Marks.Angle = 17
+            Marks.Callout.Length = 20
             DataSource = dtmGrafico.fdqryPessoasCargos
             XLabelsSource = 'CARGO'
-            XValues.Name = 'X'
             XValues.Order = loAscending
             XValues.ValueSource = 'qtd'
-            YValues.Name = 'Bar'
+            YValues.Name = 'Pie'
             YValues.Order = loNone
             YValues.ValueSource = 'qtd'
+            Frame.InnerBrush.BackColor = clRed
+            Frame.InnerBrush.Gradient.EndColor = clGray
+            Frame.InnerBrush.Gradient.MidColor = clWhite
+            Frame.InnerBrush.Gradient.StartColor = 4210752
+            Frame.InnerBrush.Gradient.Visible = True
+            Frame.MiddleBrush.BackColor = clYellow
+            Frame.MiddleBrush.Gradient.EndColor = 8553090
+            Frame.MiddleBrush.Gradient.MidColor = clWhite
+            Frame.MiddleBrush.Gradient.StartColor = clGray
+            Frame.MiddleBrush.Gradient.Visible = True
+            Frame.OuterBrush.BackColor = clGreen
+            Frame.OuterBrush.Gradient.EndColor = 4210752
+            Frame.OuterBrush.Gradient.MidColor = clWhite
+            Frame.OuterBrush.Gradient.StartColor = clSilver
+            Frame.OuterBrush.Gradient.Visible = True
+            Frame.Width = 4
+            OtherSlice.Legend.Visible = False
           end
         end
       end
@@ -131,6 +152,7 @@ object frmPrincipal: TfrmPrincipal
           Legend.LegendStyle = lsValues
           Legend.TextStyle = ltsRightValue
           Align = alClient
+          Color = clWhite
           TabOrder = 0
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
@@ -138,7 +160,7 @@ object frmPrincipal: TfrmPrincipal
             26
             15
             26)
-          ColorPaletteIndex = 13
+          ColorPaletteIndex = 10
           object brsrs1: TBarSeries
             BarBrush.Gradient.EndColor = 11842740
             ColorEachPoint = True
@@ -196,6 +218,7 @@ object frmPrincipal: TfrmPrincipal
           View3DOptions.Perspective = 0
           View3DOptions.Rotation = 360
           Align = alClient
+          Color = clWhite
           TabOrder = 0
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
@@ -260,7 +283,12 @@ object frmPrincipal: TfrmPrincipal
           Title.Text.Strings = (
             'Alunos por Classe')
           ClipPoints = False
+          View3DOptions.Elevation = 315
+          View3DOptions.Orthogonal = False
+          View3DOptions.Perspective = 0
+          View3DOptions.Rotation = 360
           Align = alClient
+          Color = clWhite
           TabOrder = 0
           DefaultCanvas = 'TGDIPlusCanvas'
           PrintMargins = (
@@ -269,17 +297,34 @@ object frmPrincipal: TfrmPrincipal
             15
             26)
           ColorPaletteIndex = 13
-          object brsrs3: TBarSeries
-            ColorEachPoint = True
+          object psrsbrsrs3: TPieSeries
             Marks.Angle = 34
+            Marks.Callout.Length = 20
             DataSource = dtmGrafico.fdqryClassesAlunos
             XLabelsSource = 'classe'
-            XValues.Name = 'X'
             XValues.Order = loAscending
             XValues.ValueSource = 'qtd'
-            YValues.Name = 'Bar'
+            YValues.Name = 'Pie'
             YValues.Order = loNone
             YValues.ValueSource = 'qtd'
+            Frame.InnerBrush.BackColor = clRed
+            Frame.InnerBrush.Gradient.EndColor = clGray
+            Frame.InnerBrush.Gradient.MidColor = clWhite
+            Frame.InnerBrush.Gradient.StartColor = 4210752
+            Frame.InnerBrush.Gradient.Visible = True
+            Frame.MiddleBrush.BackColor = clYellow
+            Frame.MiddleBrush.Gradient.EndColor = 8553090
+            Frame.MiddleBrush.Gradient.MidColor = clWhite
+            Frame.MiddleBrush.Gradient.StartColor = clGray
+            Frame.MiddleBrush.Gradient.Visible = True
+            Frame.OuterBrush.BackColor = clGreen
+            Frame.OuterBrush.Gradient.EndColor = 4210752
+            Frame.OuterBrush.Gradient.MidColor = clWhite
+            Frame.OuterBrush.Gradient.StartColor = clSilver
+            Frame.OuterBrush.Gradient.Visible = True
+            Frame.Width = 4
+            Emboss.Transparency = 36
+            OtherSlice.Legend.Visible = False
           end
         end
       end
@@ -392,7 +437,7 @@ object frmPrincipal: TfrmPrincipal
     object Movimentao1: TMenuItem
       Caption = 'Financeiro'
       object EntradasSadas1: TMenuItem
-        Caption = 'Entradas & Sa'#237'das'
+        Caption = 'Entradas  |  Sa'#237'das'
         OnClick = EntradasSadas1Click
       end
       object mniDizimo: TMenuItem
@@ -400,7 +445,7 @@ object frmPrincipal: TfrmPrincipal
         OnClick = mniDizimoClick
       end
       object mniDoaoAjudadeCusto1: TMenuItem
-        Caption = 'Doa'#231#227'o / Ajuda de Custo'
+        Caption = 'Doa'#231#227'o | Ajuda de Custo'
         OnClick = mniDoaoAjudadeCusto1Click
       end
       object N3: TMenuItem

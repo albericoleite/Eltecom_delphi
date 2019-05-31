@@ -168,6 +168,15 @@ type
     frxdbDBAniversariantes: TfrxDBDataset;
     frxrprtAniversariantes: TfrxReport;
     strngfldAniverariantesfiltro: TStringField;
+    frxrprtAlunos: TfrxReport;
+    frxdbAlunos: TfrxDBDataset;
+    fdqryAlunos: TFDQuery;
+    intgrfldAlunoscod_aluno: TIntegerField;
+    strngfldAlunosaluno: TStringField;
+    intgrfldAlunoscod_classe: TIntegerField;
+    strngfldAlunosclasse: TStringField;
+    dtfldAlunosdta_nascimento: TDateField;
+    lrgntfldAlunosidade: TLargeintField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

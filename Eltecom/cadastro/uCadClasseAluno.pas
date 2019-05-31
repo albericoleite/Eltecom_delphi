@@ -39,7 +39,7 @@ type
 
   public
     { Public declarations }
-  end;    S
+  end;
 var
   frmCadClasseAluno: TfrmCadClasseAluno;
 

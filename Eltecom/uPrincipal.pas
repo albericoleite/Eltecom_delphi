@@ -59,12 +59,10 @@ type
     brsrsSeries1: TBarSeries;
     pnl4: TPanel;
     dbcht3: TDBChart;
-    brsrs3: TBarSeries;
     spl1: TSplitter;
     pnlDireita: TPanel;
     pnl3: TPanel;
     dbcht2: TDBChart;
-    brsrs2: TBarSeries;
     pnl2: TPanel;
     dbcht1: TDBChart;
     brsrs1: TBarSeries;
@@ -78,6 +76,8 @@ type
     tmrDashboard: TTimer;
     BackupeRestore1: TMenuItem;
     mniDepartamentos3: TMenuItem;
+    psrsbrsrs3: TPieSeries;
+    psrshrzbrsrspsrshrzbrsrspsrsbrsrs2: TPieSeries;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -280,7 +280,7 @@ begin
   // Carregar informações do Status Bar
   statMenu.Panels[0].Width:=320;
   statMenu.Panels[0].Text :=
-    'ELTECOM - Sistema de Controle Gerencial da Congregação ';
+    'Sistema de Controle Gerencial da Congregação ';
     statMenu.Panels[1].Width:=300;
   if (Time < 0.5) then
     statMenu.Panels[1].Text := 'Bom dia hoje é ' +
@@ -301,7 +301,7 @@ end;
 
 procedure TfrmPrincipal.FormPaint(Sender: TObject);
 begin
-  // TStyleManager.SetStyle(oUsuarioLogado.tema);
+  //TStyleManager.SetStyle(oUsuarioLogado.tema);
 end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
