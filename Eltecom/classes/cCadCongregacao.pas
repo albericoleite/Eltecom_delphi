@@ -44,6 +44,7 @@ type
     F_cod_igreja: string;
     F_cod_cc: Integer;
     F_sigla: string;
+    F_cod_dirigente: Integer;
 
   public
     constructor Create(aConexao: TFDConnection); // CONSTRUTOR DA CLASSE
@@ -95,6 +96,8 @@ type
     property cod_igreja: string read F_cod_igreja write F_cod_igreja;
     property cod_cc: Integer read F_cod_cc write F_cod_cc;
     property sigla: string read F_sigla write F_sigla;
+    property cod_dirigente: Integer read F_cod_dirigente
+      write F_cod_dirigente;
   end;
 
 implementation
@@ -159,14 +162,14 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('UPDATE igreja.tb_congregacao ' +
+    Qry.SQL.Add('UPDATE tb_congregacao ' +
       ' SET cod_central=:cod_central, congregacao=:congregacao, setor=:setor, polo=:polo, '
       + 'situacao=:situacao, telefone=:telefone, cnpj=:cnpj, siteblog=:siteblog, endereco=:endereco, '
       + 'complemento=:complemento, bairro=:bairro, cep=:cep, cidade=:cidade, diasculto=:diasculto, '
       + 'diacoa=:diacoa, diacom=:diacom, diacoi=:diacoi, diacv=:diacv, data_aber_sub=:data_aber_sub, '
       + 'data_aber_cong=:data_aber_cong, data_fun_coa=:data_fun_coa, data_fun_com=:data_fun_com, data_fun_coi=:data_fun_coi, '
       + 'data_fun_cv=:data_fun_cv, cong_principal=:cong_principal, ' +
-      'dirigente=:dirigente, cod_setor=:cod_setor, cod_igreja=:cod_igreja, cod_cc=:cod_cc, sigla=:sigla '
+      'dirigente=:dirigente, cod_setor=:cod_setor, cod_igreja=:cod_igreja, cod_cc=:cod_cc, sigla=:sigla,cod_dirigente=:cod_dirigente '
       + ' WHERE cod_congregacao=:cod_congregacao');
     Qry.ParamByName('cod_congregacao').AsInteger := F_cod_congregacao;
     Qry.ParamByName('cod_central').AsInteger := F_cod_central;
@@ -199,6 +202,7 @@ begin
     Qry.ParamByName('cod_igreja').AsString := F_cod_igreja;
     Qry.ParamByName('cod_cc').AsInteger := F_cod_cc;
     Qry.ParamByName('sigla').AsString := F_sigla;
+    Qry.ParamByName('cod_dirigente').AsInteger := F_cod_dirigente;
      try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -222,18 +226,18 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('INSERT INTO igreja.tb_congregacao(cod_central, congregacao, '+
+    Qry.SQL.Add('INSERT INTO tb_congregacao(cod_central, congregacao, '+
       ' setor, polo, situacao, telefone, cnpj, siteblog, endereco, complemento, '+
       ' bairro, cep, cidade, diasculto, diacoa, diacom, diacoi, diacv, '+
       ' data_aber_sub, data_aber_cong, data_fun_coa, data_fun_com, data_fun_coi, '+
-      ' data_fun_cv, data_cadastro, usuario_cadastro, cong_principal, dirigente,  '+
-      ' cod_setor, cod_igreja, cod_cc, sigla)VALUES(:cod_central, :congregacao, '+
+      ' data_fun_cv, data_cadastro, usuario_cadastro, cong_principal, cod_dirigente,  '+
+      ' cod_setor, cod_igreja, cod_cc, sigla,cod_dirigente )VALUES(:cod_central, :congregacao, '+
       ' :setor, :polo, :situacao, :telefone, :cnpj, :siteblog, :endereco,  '+
       ' :complemento, :bairro, :cep, :cidade, :diasculto, :diacoa, :diacom, '+
       ' :diacoi, :diacv, :data_aber_sub, :data_aber_cong, :data_fun_coa,    '+
       ' :data_fun_com, :data_fun_coi, :data_fun_cv, :data_cadastro,   '+
       ' :usuario_cadastro, :cong_principal, :dirigente, :cod_setor,   '+
-      ' :cod_igreja, :cod_cc, :sigla)');
+      ' :cod_igreja, :cod_cc, :sigla,:cod_dirigente)');
 //Qry.ParamByName('cod_congregacao').AsInteger := Self.F_cod_congregacao;
 Qry.ParamByName('cod_central').AsInteger := Self.F_cod_central;
 Qry.ParamByName('congregacao').Asstring := Self.F_congregacao;
@@ -267,6 +271,7 @@ Qry.ParamByName('cod_setor').Asstring := Self.F_cod_setor;
 Qry.ParamByName('cod_igreja').Asstring := Self.F_cod_igreja;
 Qry.ParamByName('cod_cc').AsInteger := Self.F_cod_cc;
 Qry.ParamByName('sigla').Asstring := Self.F_sigla;
+Qry.ParamByName('cod_dirigente').AsInteger := Self.F_cod_dirigente;
 
 
      try
@@ -287,8 +292,8 @@ Qry.ParamByName('sigla').Asstring := Self.F_sigla;
       + 'telefone, cnpj, siteblog, endereco, complemento, bairro, cep, cidade, diasculto, '
       + ' diacoa, diacom, diacoi, diacv, data_aber_sub, data_aber_cong, data_fun_coa, '
       + ' data_fun_com, data_fun_coi, data_fun_cv, data_cadastro, usuario_cadastro, '
-      + ' cong_principal, dirigente, cod_setor, cod_igreja, cod_cc, sigla ' +
-      'FROM igreja.tb_congregacao WHERE cod_congregacao=:cod_congregacao ');
+      + ' cong_principal, dirigente, cod_setor, cod_igreja, cod_cc, sigla,cod_dirigente ' +
+      'FROM tb_congregacao WHERE cod_congregacao=:cod_congregacao ');
     Qry.ParamByName('cod_congregacao').AsInteger := id;
 
     try Qry.Open; Self.F_cod_congregacao := Qry.FieldByName('cod_congregacao')
@@ -324,6 +329,7 @@ Qry.ParamByName('sigla').Asstring := Self.F_sigla;
     Self.F_cod_igreja := Qry.FieldByName('cod_igreja').AsString;
     Self.F_cod_cc := Qry.FieldByName('cod_cc').AsInteger;
     Self.F_sigla := Qry.FieldByName('sigla').AsString;
+    Self.F_cod_dirigente := Qry.FieldByName('cod_dirigente').AsInteger;
 
     Except Result := false; end;
 

@@ -13,35 +13,36 @@ type
     ConexaoDB: TFDConnection;
     constructor Create(aConexao: TFDConnection);
     procedure ExecutaDiretoBancoDeDados(aScript: String);
-end;
+  end;
 
 Type
   TAtualizaBancoDadosMySQL = Class
-    private
-      ConexaoDB: TFDConnection;
-    public
-      function AtualizarBancoDeDadosMySQL: Boolean;
-      constructor Create(aConexao: TFDConnection);
+  private
+    ConexaoDB: TFDConnection;
+  public
+    function AtualizarBancoDeDadosMySQL: Boolean;
+    constructor Create(aConexao: TFDConnection);
   End;
 
 implementation
 
 uses
-cAtualizacaoTabelaMySQL,cAtualizacaoCampoMySQL;
+  cAtualizacaoTabelaMySQL, cAtualizacaoCampoMySQL;
 
 { TAtualizaBancoDados }
 
 constructor TAtualizaBancoDados.Create(aConexao: TFDConnection);
 begin
-   ConexaoDB := aConexao;
+  ConexaoDB := aConexao;
 end;
 
 procedure TAtualizaBancoDados.ExecutaDiretoBancoDeDados(aScript: String);
-Var Qry:TFDQuery;
+Var
+  Qry: TFDQuery;
 Begin
   Try
-    Qry:=TFDQuery.Create(nil);
-    Qry.Connection:=ConexaoDB;
+    Qry := TFDQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
     Qry.SQL.Add(aScript);
     Try
@@ -54,28 +55,32 @@ Begin
   Finally
     Qry.Close;
     if Assigned(Qry) then
-       FreeAndNil(Qry);
+      FreeAndNil(Qry);
   End;
 end;
 
 { TAtualizaBancoDadosMySQL }
 
 function TAtualizaBancoDadosMySQL.AtualizarBancoDeDadosMySQL: Boolean;
-var oAtualizaDB:TAtualizaBancoDados;
-    oTabela: TAtualizacaoTabelaMySQL;
-    oCampo: TAtualizacaoCampoMySQL;
+var
+  oAtualizaDB: TAtualizaBancoDados;
+  oTabela: TAtualizacaoTabelaMySQL;
+  oCampo: TAtualizacaoCampoMySQL;
 begin
-try
-  oAtualizaDB:=TAtualizaBancoDados.Create(ConexaoDB);
-  oTabela:=  TAtualizacaoTabelaMySQL.Create(ConexaoDB);
-  oCampo:= TAtualizacaoCampoMySQL.Create(ConexaoDB);
-finally
-if Assigned(oAtualizaDB) then
-  FreeAndNil(oAtualizaDB);
+  try
+    oAtualizaDB := TAtualizaBancoDados.Create(ConexaoDB);
+    oTabela := TAtualizacaoTabelaMySQL.Create(ConexaoDB);
+    oCampo := TAtualizacaoCampoMySQL.Create(ConexaoDB);
+  finally
+    if Assigned(oAtualizaDB) then
+      FreeAndNil(oAtualizaDB);
 
-  if Assigned(oTabela) then
-  FreeAndNil(oTabela);
-end;
+    if Assigned(oTabela) then
+      FreeAndNil(oTabela);
+
+    if Assigned(oCampo) then
+      FreeAndNil(oCampo);
+  end;
 
 end;
 

@@ -477,7 +477,14 @@ object frmPrincipal: TfrmPrincipal
         end
         object mniProfessor1: TMenuItem
           Caption = 'Professor'
-          OnClick = mniProfessor1Click
+          object mniProfessor2: TMenuItem
+            Caption = 'Professor'
+            OnClick = mniProfessor2Click
+          end
+          object mniProfessorClasse1: TMenuItem
+            Caption = 'Professor | Classe'
+            OnClick = mniProfessorClasse1Click
+          end
         end
         object mniAluno1: TMenuItem
           Caption = 'Aluno'

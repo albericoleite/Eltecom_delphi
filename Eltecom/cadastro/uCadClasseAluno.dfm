@@ -1,6 +1,5 @@
 inherited frmCadClasseAluno: TfrmCadClasseAluno
   Caption = 'Cadastrar Alunos nas Classes'
-  ExplicitTop = -24
   ExplicitWidth = 806
   ExplicitHeight = 485
   PixelsPerInch = 96
@@ -108,6 +107,8 @@ inherited frmCadClasseAluno: TfrmCadClasseAluno
       'SELECT codigo, cod_aluno, aluno, cod_classe, classe'
       'FROM tb_classe_aluno'
       '')
+    Left = 472
+    Top = 120
     object QryListagemcodigo: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'codigo'

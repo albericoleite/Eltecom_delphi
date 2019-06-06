@@ -54,7 +54,7 @@ end;
 constructor TAtualizacaoCampoMySQL.Create(aConexao: TFDConnection);
 begin
     ConexaoDB := aConexao;
-    //versao1;
+    versao1;
 end;
 
 destructor TAtualizacaoCampoMySQL.Destroy;
@@ -75,6 +75,24 @@ begin
   if not CampoExisteNaTabela('tb_recibo','cod_congregacao') then
  begin
    ExecutaDiretoBancoDeDados('ALTER TABLE tb_recibo ADD cod_congregacao int(11) NULL;');
+ end;
+
+  //Adicionar código da congregação no recibo
+  if not CampoExisteNaTabela('tb_congregacao','cod_dirigente') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_congregacao ADD cod_dirigente int(11) NULL;');
+ end;
+
+   //Adicionar código da congregação no recibo
+  if not CampoExisteNaTabela('tb_classe_aluno','tb_classe_aluno_tb_classe_fk') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_classe_aluno ADD CONSTRAINT tb_classe_aluno_tb_classe_fk FOREIGN KEY (cod_classe) REFERENCES tb_classe(cod_classe);');
+ end;
+
+    //Adicionar código da congregação no recibo
+  if not CampoExisteNaTabela('tb_classe_professor','tb_classe_professor_tb_classe_fk') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_classe_professor ADD CONSTRAINT tb_classe_professor_tb_classe_fk FOREIGN KEY (cod_classe) REFERENCES tb_classe(cod_classe);');
  end;
 
 end;

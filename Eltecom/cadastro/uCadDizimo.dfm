@@ -362,19 +362,58 @@ inherited frmCadDizimos: TfrmCadDizimos
     Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
+      '##DIZIMISTA GERAL'
       
         'SELECT t.cod_dizimo, t.cod_talao, t.cod_cheque, t.nome, t.valor,' +
-        ' t.`data`, t.cargo, t.cod_congregacao,b.nivel'
+        ' t.`data`, t.cargo, t.cod_congregacao,0 as nivel,0 as rol'
       
         'FROM tb_dizimista t inner join tb_parametro_sistema a on a.cod_c' +
         'ongregacao = t.cod_congregacao '
-      'left join tb_cargo b on b.cargo = t.cargo'
       'where t.`data` between '
       ':dtini'
       'and '
       ':dtfim'
-      'order by b.nivel desc')
+      'and t.cargo = '#39'MEMBRO'#39
+      'union all'
+      '##DIRIGENTE'
+      
+        'select e.cod_dizimo,e.cod_talao,e.cod_cheque, c.nome_pessoa as n' +
+        'ome,e.valor,e.`data`,"DIRIGENTE",c.cod_congregacao,100,c.nro_rol' +
+        '  from tb_congregacao a '
+      
+        'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
+        'ongregacao'
+      'left join tb_pessoa c on c.cod_pessoa = a.cod_dirigente'
+      'inner join tb_obreiro_cargo d on d.COD_MEMBRO = c.cod_pessoa'
+      
+        'left join tb_dizimista e on e.NOME = c.nome_pessoa and e.CARGO =' +
+        ' d.CARGO '
+      'and e.`data` between :dtini and :dtfim'
+      'union all '
+      '##OBREIROS'
+      
+        'select c.cod_dizimo,c.cod_talao,c.cod_cheque,a.NOME,c.valor,c.`d' +
+        'ata`,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol from tb_obreiro' +
+        '_cargo a '
+      'inner join tb_cargo x on x.cod_cargo = a.COD_CARGO'
+      'inner join tb_pessoa y on y.cod_pessoa = a.cod_membro'
+      
+        'inner join tb_parametro_sistema b on a.COD_CONGREGACAO = b.cod_c' +
+        'ongregacao'
+      
+        'left join tb_dizimista c on c.cod_congregacao = a.COD_CONGREGACA' +
+        'O and c.cargo = a.CARGO and c.nome = a.NOME'
+      'and c.`data` between :dtini and :dtfim'
+      
+        'where a.cod_membro <> (select  c.cod_pessoa  from tb_congregacao' +
+        ' a '
+      
+        'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
+        'ongregacao'
+      'left join tb_pessoa c on c.cod_pessoa = a.cod_dirigente)'
+      'order by nivel desc')
     Left = 568
+    Top = 16
     ParamData = <
       item
         Name = 'DTINI'
@@ -388,64 +427,63 @@ inherited frmCadDizimos: TfrmCadDizimos
         ParamType = ptInput
         Value = 43800d
       end>
-    object fdtncfld1: TFDAutoIncField
-      DisplayLabel = 'C'#243'digo'
+    object intgrfldDizimistascod_dizimo: TIntegerField
+      AutoGenerateValue = arDefault
       FieldName = 'cod_dizimo'
       Origin = 'cod_dizimo'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object intgrfld1: TIntegerField
+    object intgrfldDizimistascod_talao: TIntegerField
       AutoGenerateValue = arDefault
-      DisplayLabel = 'C'#243'digo do Tal'#227'o'
       FieldName = 'cod_talao'
       Origin = 'cod_talao'
     end
-    object intgrfld2: TIntegerField
+    object intgrfldDizimistascod_cheque: TIntegerField
       AutoGenerateValue = arDefault
-      DisplayLabel = 'C'#243'digo do Cheque'
       FieldName = 'cod_cheque'
       Origin = 'cod_cheque'
     end
-    object strngfld1: TStringField
+    object strngfldDizimistasnome: TStringField
       AutoGenerateValue = arDefault
-      DisplayLabel = 'Nome'
       FieldName = 'nome'
       Origin = 'nome'
       Size = 50
     end
-    object fltfld1: TFloatField
+    object fltfldDizimistasvalor: TFloatField
       AutoGenerateValue = arDefault
-      DisplayLabel = 'Valor'
       FieldName = 'valor'
       Origin = 'valor'
-      currency = True
     end
-    object dtfld1: TDateField
+    object dtfldDizimistasdata: TDateField
       AutoGenerateValue = arDefault
-      DisplayLabel = 'Data'
       FieldName = 'data'
       Origin = '`data`'
     end
-    object strngfld2: TStringField
+    object strngfldDizimistascargo: TStringField
       AutoGenerateValue = arDefault
-      DisplayLabel = 'Cargo'
       FieldName = 'cargo'
       Origin = 'cargo'
       Size = 50
     end
-    object intgrfld3: TIntegerField
-      DisplayLabel = 'C'#243'digo da Congrega'#231#227'o'
+    object intgrfldDizimistascod_congregacao: TIntegerField
       FieldName = 'cod_congregacao'
       Origin = 'cod_congregacao'
       Required = True
     end
-    object intgrfld4: TIntegerField
+    object lrgntfldDizimistasnivel: TLargeintField
       AutoGenerateValue = arDefault
       FieldName = 'nivel'
       Origin = 'nivel'
       ProviderFlags = []
       ReadOnly = True
+    end
+    object strngfldDizimistasrol: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'rol'
+      Origin = 'rol'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 15
     end
   end
 end

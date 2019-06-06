@@ -78,6 +78,8 @@ type
     mniDepartamentos3: TMenuItem;
     psrsbrsrs3: TPieSeries;
     psrshrzbrsrspsrshrzbrsrspsrsbrsrs2: TPieSeries;
+    mniProfessor2: TMenuItem;
+    mniProfessorClasse1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -104,7 +106,6 @@ type
     procedure mniConfigurao2Click(Sender: TObject);
     procedure mniConsultarDados1Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
-    procedure mniProfessor1Click(Sender: TObject);
     procedure mniClasse1Click(Sender: TObject);
     procedure mniAluno1Click(Sender: TObject);
     procedure mniAniversariantes1Click(Sender: TObject);
@@ -113,6 +114,8 @@ type
     procedure tmrDashboardTimer(Sender: TObject);
     procedure BackupeRestore1Click(Sender: TObject);
     procedure mniDepartamentos3Click(Sender: TObject);
+    procedure mniProfessor2Click(Sender: TObject);
+    procedure mniProfessorClasse1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -140,7 +143,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
-  uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore;
+  uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -258,6 +261,7 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmRelatoriosEBD, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmBackupRestore, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmRelDept, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadClasseProfessor, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -408,9 +412,14 @@ begin
   TFuncao.CriarForm(TfrmCadFuncaoPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
-procedure TfrmPrincipal.mniProfessor1Click(Sender: TObject);
+procedure TfrmPrincipal.mniProfessor2Click(Sender: TObject);
 begin
-  TFuncao.CriarForm(TfrmCadProfessor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+TFuncao.CriarForm(TfrmCadProfessor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.mniProfessorClasse1Click(Sender: TObject);
+begin
+TFuncao.CriarForm(TfrmCadClasseProfessor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniRelatrios2Click(Sender: TObject);

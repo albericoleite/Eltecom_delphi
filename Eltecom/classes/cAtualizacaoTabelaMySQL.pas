@@ -498,12 +498,15 @@ begin
    if not TabelaExiste('tb_classe_professor') then
    begin
      ExecutaDiretoBancoDeDados(
-     ' CREATE TABLE `tb_classe_professor` (  '+
-  ' `codigo` int(11) DEFAULT NULL,  '+
-  ' `cod_professor` int(11) DEFAULT NULL,  '+
-  ' `professor` varchar(20) DEFAULT NULL, '+
-  ' `cod_classe` int(11) DEFAULT NULL,  '+
-  ' `classe` varchar(20) DEFAULT NULL ) ');
+     'CREATE TABLE `tb_classe_professor` (  '+
+     ' `codigo` int(11) NOT NULL AUTO_INCREMENT,  '+
+    ' `cod_professor` int(11) DEFAULT NULL,   '+
+    ' `professor` varchar(20) DEFAULT NULL,  '+
+    ' `cod_classe` int(11) DEFAULT NULL,    '+
+    ' `classe` varchar(20) DEFAULT NULL,  '+
+    ' PRIMARY KEY (`codigo`),     '+
+    ' KEY `tb_classe_professor_tb_classe_fk` (`cod_classe`), '+
+    ' CONSTRAINT `tb_classe_professor_tb_classe_fk` FOREIGN KEY (`cod_classe`) REFERENCES `tb_classe` (`cod_classe`))');
    end;
 end;
 

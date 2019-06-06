@@ -42,15 +42,16 @@ type
     btnImprimir: TBitBtn;
     intgrfldQryListagemnivel: TIntegerField;
     fdqryDizimistas: TFDQuery;
-    fdtncfld1: TFDAutoIncField;
-    intgrfld1: TIntegerField;
-    intgrfld2: TIntegerField;
-    strngfld1: TStringField;
-    fltfld1: TFloatField;
-    dtfld1: TDateField;
-    strngfld2: TStringField;
-    intgrfld3: TIntegerField;
-    intgrfld4: TIntegerField;
+    intgrfldDizimistascod_dizimo: TIntegerField;
+    intgrfldDizimistascod_talao: TIntegerField;
+    intgrfldDizimistascod_cheque: TIntegerField;
+    strngfldDizimistasnome: TStringField;
+    fltfldDizimistasvalor: TFloatField;
+    dtfldDizimistasdata: TDateField;
+    strngfldDizimistascargo: TStringField;
+    intgrfldDizimistascod_congregacao: TIntegerField;
+    lrgntfldDizimistasnivel: TLargeintField;
+    strngfldDizimistasrol: TStringField;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -84,7 +85,7 @@ uses
 {$REGION 'Override'}
 function TfrmCadDizimos.Apagar: Boolean;
 begin
-if oDizimo.Selecionar(QryListagem.FieldByName('cod_departamento').AsInteger) then
+if oDizimo.Selecionar(QryListagem.FieldByName('cod_dizimo').AsInteger) then
       Result:=oDizimo.Apagar;
 end;
 
@@ -122,9 +123,9 @@ end;
 procedure TfrmCadDizimos.btnImprimirClick(Sender: TObject);
 begin
   inherited;
-fdqryDizimistas.Close;
+{fdqryDizimistas.Close;
 fdqryDizimistas.SQL.Text:= QryListagem.SQL.Text;
-fdqryDizimistas.Open;
+fdqryDizimistas.Open;}
   dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
 {if dtmRelatorio.fdqryDizimistacod_dizimo.IsNull then
 begin
@@ -254,6 +255,12 @@ begin
   QryListagem.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
   QryListagem.SQL.Text;
   QryListagem.Open;
+
+  fdqryDizimistas.Close;
+  fdqryDizimistas.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+  fdqryDizimistas.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
+  fdqryDizimistas.SQL.Text;
+  fdqryDizimistas.Open;
 end;
 
 
