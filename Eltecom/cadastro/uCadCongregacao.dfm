@@ -402,8 +402,8 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         Top = 20
         Width = 243
         Height = 21
-        KeyField = 'nome'
-        ListField = 'lista'
+        KeyField = 'cod_membro'
+        ListField = 'nome'
         ListSource = dsDirigente
         TabOrder = 2
       end
@@ -642,19 +642,19 @@ inherited frmCadCongregacao: TfrmCadCongregacao
   object fdqryDirigente: TFDQuery
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
-      'select nome as lista, nome  from tb_obreiro_cargo')
+      'select nome as nome, cod_membro  from tb_obreiro_cargo')
     Left = 384
     Top = 184
-    object strngfldDirigentelista: TStringField
-      FieldName = 'lista'
-      Size = 50
-    end
-    object strngfldDirigentenome: TStringField
+    object fdqryDirigentenome: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'nome'
       Origin = 'NOME'
-      ProviderFlags = []
       Size = 50
+    end
+    object fdqryDirigentecod_membro: TIntegerField
+      FieldName = 'cod_membro'
+      Origin = 'COD_MEMBRO'
+      Required = True
     end
   end
 end

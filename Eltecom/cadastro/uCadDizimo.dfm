@@ -7,7 +7,6 @@ inherited frmCadDizimos: TfrmCadDizimos
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 829
-    ActivePage = tabManutencao
     ExplicitWidth = 829
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
@@ -112,7 +111,7 @@ inherited frmCadDizimos: TfrmCadDizimos
           item
             Expanded = False
             FieldName = 'cargo'
-            Width = 101
+            Width = 157
             Visible = True
           end>
       end
@@ -278,7 +277,7 @@ inherited frmCadDizimos: TfrmCadDizimos
         Name = 'DTFIM'
         DataType = ftDate
         ParamType = ptInput
-        Value = 43586d
+        Value = 43800d
       end>
     object fdtncfldQryListagemcod_dizimo: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'
@@ -387,7 +386,7 @@ inherited frmCadDizimos: TfrmCadDizimos
         Name = 'DTFIM'
         DataType = ftDate
         ParamType = ptInput
-        Value = 43586d
+        Value = 43800d
       end>
     object fdtncfld1: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'

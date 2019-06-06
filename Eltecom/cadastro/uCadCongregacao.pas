@@ -82,8 +82,8 @@ type
     fdqryDirigente: TFDQuery;
     dblkcbbDirigente: TDBLookupComboBox;
     lbl3: TLabel;
-    strngfldDirigentelista: TStringField;
-    strngfldDirigentenome: TStringField;
+    fdqryDirigentenome: TStringField;
+    fdqryDirigentecod_membro: TIntegerField;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -195,6 +195,7 @@ begin
        oCongregacao.situacao:='0';
        oCongregacao.dirigente:=dblkcbbDirigente.Text;
        oCongregacao.cod_igreja:='1';
+       oCongregacao.cod_dirigente:= dblkcbbDirigente.KeyValue;
 
 
     if (EstadodoCadastro=ecInserir) then

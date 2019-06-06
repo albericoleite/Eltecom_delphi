@@ -177,6 +177,8 @@ type
     strngfldAlunosclasse: TStringField;
     dtfldAlunosdta_nascimento: TDateField;
     lrgntfldAlunosidade: TLargeintField;
+    strngfldAlunossexo: TStringField;
+    frxrprt_old: TfrxReport;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

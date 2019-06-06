@@ -122,10 +122,10 @@ end;
 procedure TfrmCadDizimos.btnImprimirClick(Sender: TObject);
 begin
   inherited;
-  QryListagem.Close;
-  QryListagem.SQL[7]:= ' order by b.nivel desc ';
-  QryListagem.Open;
-  dtmRelatorio.frxdbDizimista.DataSet:=QryListagem;
+fdqryDizimistas.Close;
+fdqryDizimistas.SQL.Text:= QryListagem.SQL.Text;
+fdqryDizimistas.Open;
+  dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
 {if dtmRelatorio.fdqryDizimistacod_dizimo.IsNull then
 begin
   Application.MessageBox('nenhum Dizimo nessa Data','Atenção!');
