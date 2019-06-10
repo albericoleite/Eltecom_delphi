@@ -8,7 +8,10 @@ uses
   uDTMConexao, Vcl.ComCtrls, FireDAC.Stan.Option,
   uFrmAtualizaDB, uDTMRelatorio, cUsuarioLogado, VclTee.TeeGDIPlus, cFuncao,
   VclTee.TeEngine, VclTee.TeeProcs, VclTee.Chart, VclTee.DBChart, Vcl.ExtCtrls,
-  VclTee.Series;
+  VclTee.Series, Vcl.Tabs, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids,
+  Vcl.RibbonLunaStyleActnCtrls, Vcl.Ribbon, Vcl.ToolWin, Vcl.ActnMan,
+  Vcl.ActnCtrls, System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
+  Vcl.ImgList, Vcl.ActnMenus, Vcl.RibbonActnMenus, Vcl.Buttons;
 
 type
   TfrmPrincipal = class(TForm)
@@ -53,33 +56,70 @@ type
     mniProfessor1: TMenuItem;
     mniAluno1: TMenuItem;
     mniClasse1: TMenuItem;
-    pnlEsquerda: TPanel;
-    pnl1: TPanel;
-    dbchtPessoas: TDBChart;
-    brsrsSeries1: TBarSeries;
-    pnl4: TPanel;
-    dbcht3: TDBChart;
-    spl1: TSplitter;
-    pnlDireita: TPanel;
-    pnl3: TPanel;
-    dbcht2: TDBChart;
-    pnl2: TPanel;
-    dbcht1: TDBChart;
-    brsrs1: TBarSeries;
-    pnlGeral: TPanel;
-    spl3: TSplitter;
-    spl2: TSplitter;
-    psrsSeries1: TPieSeries;
     mniAniversariantes1: TMenuItem;
     mniRelatrios2: TMenuItem;
     pnl5: TPanel;
     tmrDashboard: TTimer;
     BackupeRestore1: TMenuItem;
     mniDepartamentos3: TMenuItem;
-    psrsbrsrs3: TPieSeries;
-    psrshrzbrsrspsrshrzbrsrspsrsbrsrs2: TPieSeries;
     mniProfessor2: TMenuItem;
     mniProfessorClasse1: TMenuItem;
+    pgcDashs: TPageControl;
+    Principal: TTabSheet;
+    Financeiro: TTabSheet;
+    EBD: TTabSheet;
+    pnlGeral: TPanel;
+    spl3: TSplitter;
+    pnlDireita: TPanel;
+    spl2: TSplitter;
+    pnl3: TPanel;
+    dbcht2: TDBChart;
+    psrshrzbrsrspsrshrzbrsrspsrsbrsrs2: TPieSeries;
+    pnl2: TPanel;
+    dbcht1: TDBChart;
+    brsrs1: TBarSeries;
+    pnlEsquerda: TPanel;
+    spl1: TSplitter;
+    pnl1: TPanel;
+    dbchtPessoas: TDBChart;
+    brsrsSeries1: TBarSeries;
+    psrsSeries1: TPieSeries;
+    pnl4: TPanel;
+    pnl6: TPanel;
+    spl4: TSplitter;
+    pnl7: TPanel;
+    spl5: TSplitter;
+    pnl8: TPanel;
+    dbcht4: TDBChart;
+    psrs1: TPieSeries;
+    pnl9: TPanel;
+    dbcht5: TDBChart;
+    brsrs2: TBarSeries;
+    pnl10: TPanel;
+    spl6: TSplitter;
+    pnl11: TPanel;
+    dbcht6: TDBChart;
+    pnl12: TPanel;
+    pnl13: TPanel;
+    spl7: TSplitter;
+    pnl14: TPanel;
+    spl8: TSplitter;
+    pnl15: TPanel;
+    pnl16: TPanel;
+    pnl17: TPanel;
+    spl9: TSplitter;
+    pnl18: TPanel;
+    pnl19: TPanel;
+    dbcht11: TDBChart;
+    psrs6: TPieSeries;
+    brsrsSeries2: TBarSeries;
+    dbcht7: TDBChart;
+    brsrs3: TBarSeries;
+    lbl2: TLabel;
+    dbgrd1: TDBGrid;
+    mniImportarCadastros1: TMenuItem;
+    mniRelatrios3: TMenuItem;
+    acttb1: TActionToolBar;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -116,6 +156,10 @@ type
     procedure mniDepartamentos3Click(Sender: TObject);
     procedure mniProfessor2Click(Sender: TObject);
     procedure mniProfessorClasse1Click(Sender: TObject);
+    procedure mniImportarCadastros1Click(Sender: TObject);
+    procedure mniRelatrios3Click(Sender: TObject);
+    procedure act1Execute(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -143,7 +187,8 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
-  uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor;
+  uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor, uImportarExportarDados, uRelatoriosFinanceiro,
+  uDTMRelatorioFinanceiro;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -262,10 +307,13 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmBackupRestore, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmRelDept, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmCadClasseProfessor, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmImportarExportarDados, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmRelatoriosFinanceiro, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
     DTMGrafico := TdtmGrafico.Create(self);
+    //DTMRelatorioFinanceiro := TdtmRelatorioFinanceiro.Create(self);
     AtualizarGraficos;
 
     frmAtualizaDB.Free;
@@ -282,9 +330,9 @@ begin
   // end;
 
   // Carregar informações do Status Bar
-  statMenu.Panels[0].Width:=320;
+  statMenu.Panels[0].Width:=200;
   statMenu.Panels[0].Text :=
-    'Sistema de Controle Gerencial da Congregação ';
+    '   Splendor Gestão de Igrejas ';
     statMenu.Panels[1].Width:=300;
   if (Time < 0.5) then
     statMenu.Panels[1].Text := 'Bom dia hoje é ' +
@@ -412,6 +460,11 @@ begin
   TFuncao.CriarForm(TfrmCadFuncaoPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
+procedure TfrmPrincipal.mniImportarCadastros1Click(Sender: TObject);
+begin
+TFuncao.CriarForm(TfrmImportarExportarDados, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
 procedure TfrmPrincipal.mniProfessor2Click(Sender: TObject);
 begin
 TFuncao.CriarForm(TfrmCadProfessor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
@@ -425,6 +478,11 @@ end;
 procedure TfrmPrincipal.mniRelatrios2Click(Sender: TObject);
 begin
   TFuncao.CriarForm(TfrmRelatoriosEBD, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.mniRelatrios3Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmRelatoriosFinanceiro, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniSobreClick(Sender: TObject);
@@ -466,6 +524,11 @@ begin
 AtualizarGraficos;
 end;
 
+procedure TfrmPrincipal.act1Execute(Sender: TObject);
+begin
+Application.Terminate;
+end;
+
 procedure TfrmPrincipal.AtualizaBandoDados(aForm: TfrmAtualizaDB);
 var
  // sl: Integer;
@@ -504,6 +567,15 @@ try
   if DTMGrafico.fdqryClassesAlunos.Active then
     DTMGrafico.fdqryClassesAlunos.Close;
 
+      if DTMGrafico.fdqryAniverariantesMes.Active then
+    DTMGrafico.fdqryAniverariantesMes.Close;
+
+       if DTMGrafico.fdqrySaidasAnual.Active then
+    DTMGrafico.fdqrySaidasAnual.Close;
+
+      if DTMGrafico.fdqryEntrasAnual.Active then
+    DTMGrafico.fdqryEntrasAnual.Close;
+
 
   DTMGrafico.fdqryDizimosAnual.ParamByName('cod_congregacao').AsInteger:=dtmPrincipal.congAtiva;
   DTMGrafico.fdqryPessoas.ParamByName('cod_congregacao').AsInteger:=dtmPrincipal.congAtiva;
@@ -514,6 +586,9 @@ try
   DTMGrafico.fdqryClassesAlunos.Open;
   DTMGrafico.fdqryDizimosAnual.Open;
   DTMGrafico.fdqryPessoasCargos.Open;
+   DTMGrafico.fdqryAniverariantesMes.Open;
+    DTMGrafico.fdqryEntrasAnual.Open;
+     DTMGrafico.fdqrySaidasAnual.Open;
 finally
      Screen.Cursor := crDefault;
 end;
@@ -522,6 +597,11 @@ end;
 procedure TfrmPrincipal.BackupeRestore1Click(Sender: TObject);
 begin
   TFuncao.CriarForm(TfrmBackupRestore, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.btn1Click(Sender: TObject);
+begin
+Application.Terminate;
 end;
 
 procedure TfrmPrincipal.EntradasSadas1Click(Sender: TObject);

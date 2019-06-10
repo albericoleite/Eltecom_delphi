@@ -1,11 +1,11 @@
 inherited frmCadCargo: TfrmCadCargo
   Caption = 'Cadastro de Cargos Eclesi'#225'ticos'
+  ExplicitTop = -24
   ExplicitWidth = 806
   ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24

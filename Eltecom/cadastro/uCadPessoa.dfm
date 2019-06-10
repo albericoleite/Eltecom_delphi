@@ -2,6 +2,7 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 486
   ClientWidth = 956
+  ExplicitTop = -107
   ExplicitWidth = 962
   ExplicitHeight = 515
   PixelsPerInch = 96
@@ -1052,6 +1053,7 @@ inherited frmCadPessoa: TfrmCadPessoa
             00000000000000000000000000000000000007FFD9}
           PopupMenu = pmImagem
           Proportional = True
+          OnDblClick = imgFotoDblClick
           ExplicitLeft = 8
           ExplicitTop = 0
           ExplicitWidth = 105
@@ -1078,29 +1080,32 @@ inherited frmCadPessoa: TfrmCadPessoa
       
         'SELECT cod_pessoa, nome_pessoa, foto, sexo, nome_pai, nome_mae, ' +
         'dta_nascimento, naturalidade, uf_nascimento, nacionalidade, nror' +
-        'g, orgaorg, cpf, email, grau_instr_situacao, grau_instrucao, for' +
-        'm_teo_situacao, formacao_teologica, estado_civil_atual, estado_c' +
-        'ivil_anterior, nome_conjugue, dta_casamento, logradouro, uf_ende' +
-        'reco, estado_casa, complemento, fone_residencial, bairro, cep, c' +
-        'idade, fone_celular, dta_conversao, dta_batismo_esprito, dta_bat' +
-        'ismo_aguas, dta_congregado, local_descisao_congregado, dta_membr' +
-        'o, origem_eclesiastica, proced_eclesiastica, profissao, habilita' +
-        'cao_profissional, emprego_atual, funcao, fone_trabalho, igreja, ' +
-        'setor, congregacao, nro_rol, nro_cad_congregado, membro_congrega' +
-        'do, dta_inclusao, USUARIO_CADASTRO, SITUACAO, cod_congregacao, c' +
-        'od_situacao'
-      'FROM igreja.tb_pessoa'
-      'where cod_congregacao=:cod_congregacao')
+        'g, orgaorg, cpf, email, '
+      
+        'grau_instr_situacao, grau_instrucao, form_teo_situacao, formacao' +
+        '_teologica, estado_civil_atual, estado_civil_anterior, '
+      
+        'nome_conjugue, dta_casamento, logradouro, uf_endereco, estado_ca' +
+        'sa, complemento, fone_residencial, bairro, cep, '
+      
+        'cidade, fone_celular, dta_conversao, dta_batismo_esprito, dta_ba' +
+        'tismo_aguas, dta_congregado, local_descisao_congregado, '
+      
+        'dta_membro, origem_eclesiastica, proced_eclesiastica, profissao,' +
+        ' habilitacao_profissional, emprego_atual, funcao, '
+      
+        'fone_trabalho, igreja, setor, congregacao, nro_rol, nro_cad_cong' +
+        'regado, membro_congregado, dta_inclusao, USUARIO_CADASTRO, SITUA' +
+        'CAO, A.cod_congregacao, cod_situacao'
+      'FROM igreja.tb_pessoa A'
+      
+        'INNER JOIN TB_PARAMETRO_SISTEMA B ON B.COD_CONGREGACAO = A.COD_C' +
+        'ONGREGACAO'
+      '')
     Left = 216
     Top = 8
-    ParamData = <
-      item
-        Name = 'COD_CONGREGACAO'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = 1
-      end>
     object QryListagemcod_pessoa: TFDAutoIncField
+      DisplayLabel = 'C'#243'digo'
       FieldName = 'cod_pessoa'
       Origin = 'cod_pessoa'
       ProviderFlags = [pfInWhere, pfInKey]
@@ -1108,6 +1113,7 @@ inherited frmCadPessoa: TfrmCadPessoa
     end
     object QryListagemnome_pessoa: TStringField
       AutoGenerateValue = arDefault
+      DisplayLabel = 'Nome'
       FieldName = 'nome_pessoa'
       Origin = 'nome_pessoa'
       Size = 50
@@ -1137,6 +1143,7 @@ inherited frmCadPessoa: TfrmCadPessoa
     end
     object QryListagemdta_nascimento: TDateField
       AutoGenerateValue = arDefault
+      DisplayLabel = 'Data Nasc.'
       FieldName = 'dta_nascimento'
       Origin = 'dta_nascimento'
     end
@@ -1414,6 +1421,7 @@ inherited frmCadPessoa: TfrmCadPessoa
     end
   end
   inherited dtsListagem: TDataSource
+    OnDataChange = dtsListagemDataChange
     Left = 496
   end
   object pmImagem: TPopupMenu
@@ -1427,5 +1435,13 @@ inherited frmCadPessoa: TfrmCadPessoa
       Caption = 'Limpar Imagem'
       OnClick = mniLimparImagem1Click
     end
+  end
+  object dlgOpenPicBuscarFoto: TOpenPictureDialog
+    Filter = 
+      'Arquivo de Imagem JPG (*.jpeg)|*.jpeg|Arquivo de Imagem JPG (*.j' +
+      'pg)|*.jpg'
+    Title = 'Escolha a Imagem da Igreja'
+    Left = 853
+    Top = 240
   end
 end

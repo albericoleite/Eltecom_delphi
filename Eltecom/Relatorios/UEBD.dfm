@@ -12,6 +12,7 @@ object frmRelatoriosEBD: TfrmRelatoriosEBD
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -62,6 +63,7 @@ object frmRelatoriosEBD: TfrmRelatoriosEBD
     Height = 25
     Caption = 'Visualizar'
     TabOrder = 2
+    OnClick = btnVisualizarClick
   end
   object dblkcbbClasses: TDBLookupComboBox
     Left = 8
@@ -83,6 +85,7 @@ object frmRelatoriosEBD: TfrmRelatoriosEBD
       FieldName = 'cod_classe'
       Origin = 'cod_classe'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object strngfldClassesclasse: TStringField
       AutoGenerateValue = arDefault

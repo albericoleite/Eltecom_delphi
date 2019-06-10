@@ -4,12 +4,12 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHeranca, FireDAC.Stan.Intf,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHeranca, FireDAC.Stan.Intf,Vcl.Imaging.jpeg,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,uEnum,cCadIgreja,
-  RxAnimate, Vcl.Menus;
+  RxAnimate, Vcl.Menus, Vcl.ExtDlgs;
 
 type
   TfrmCadIgreja = class(TfrmTelaheranca)
@@ -47,10 +47,15 @@ type
     pmFoto: TPopupMenu;
     CarregarImagem1: TMenuItem;
     LimparImagem1: TMenuItem;
+    dlgOpenPicBuscarFoto: TOpenPictureDialog;
     procedure btnAlterarClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
+    procedure CarregarImagem1Click(Sender: TObject);
+    procedure imgFotoDblClick(Sender: TObject);
+    procedure dtsListagemDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
     oIgreja: TIgreja;
@@ -92,6 +97,30 @@ begin
      Result:=oIgreja.Atualizar;
 
 end;
+procedure TfrmCadIgreja.imgFotoDblClick(Sender: TObject);
+var jpg : TJPEGImage;
+begin
+  inherited;
+if dlgOpenPicBuscarFoto.Execute then
+begin
+try
+  dtsListagem.Edit;
+  jpg:= TJPEGImage.Create;
+  // dtmcon.fdqryMembroFOTO.
+  blbfldQryListagemfoto.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
+  //dtmcon.fdqryMembroFOTO.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
+  jpg.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
+  imgFoto.Picture.Assign(jpg);
+  jpg.Free;
+except
+ on E: Exception do begin
+ jpg.Free;
+ Application.MessageBox('Arquivo não permitido!','Atenção');
+ end;
+end;
+end;
+end;
+
 {$endregion}
 
 procedure TfrmCadIgreja.btnAlterarClick(Sender: TObject);
@@ -117,6 +146,13 @@ begin
 
 end;
 
+procedure TfrmCadIgreja.btnGravarClick(Sender: TObject);
+begin
+  inherited;
+//TODO:INSERIR IMAGEM LOGO DA IGREJA PARA SAIR NOS RELATÓRIOS,CRIAR TRATAMENTO CASO NULL
+// NÃO DAR ERRO
+end;
+
 procedure TfrmCadIgreja.btnNovoClick(Sender: TObject);
 begin
   inherited;
@@ -124,6 +160,73 @@ begin
   lbledtNome.SetFocus;
 end;
 
+
+procedure TfrmCadIgreja.CarregarImagem1Click(Sender: TObject);
+//var jpg : TJPEGImage;
+begin
+  inherited;
+ {
+if dlgOpenPicBuscarFoto.Execute  then
+begin
+try
+  dsIgreja.Edit;
+  jpg:= TJPEGImage.Create;
+  // dtmcon.fdqryMembroFOTO.
+  dtmConexao.fdqryIgrejafoto.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
+  //dtmcon.fdqryMembroFOTO.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
+  jpg.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
+  imgFoto.Picture.Assign(jpg);
+  jpg.Free;
+except
+ on E: Exception do begin
+ jpg.Free;
+ Application.MessageBox('Arquivo não permitido!','Atenção');
+ end;
+end;
+end;  }
+end;
+
+procedure TfrmCadIgreja.dtsListagemDataChange(Sender: TObject; Field: TField);
+var jpg1 : TJPEGImage;
+stream : TMemoryStream;
+caminho: AnsiString;
+//ARQUIVO BINARIOS AUDIO, VIDEO E FOTOS
+begin
+  inherited;
+  if not blbfldQryListagemfoto.IsNull then
+   BEGIN
+   try
+  // ALOCANDO ESPAÇO NA MEMORIA RAM
+  jpg1:= TJPEGImage.Create;
+  stream:= TMemoryStream.Create;
+  //CARREGANDO A IMAGEM PARA A MEMORIA RAM
+  blbfldQryListagemfoto.SaveToStream(stream);
+  //VOLTANDO O PONTEIRO PARA O INICIO DOS DADOS
+  stream.Seek(0, soFromBeginning);
+  //GRANDO A INFORMAÇÃO NA JPG
+  jpg1.LoadFromStream(stream);
+  //CARREGANDO A  IMAGEM NO IMAGE
+  imgFoto.Picture.Assign(jpg1);
+  //LIBERANDO MEMORIA APAGANDO AS INSTANCIAS
+  jpg1.Free;
+  stream.Free;
+   except
+      on e : Exception do begin
+       jpg1.Free;
+      stream.Free;
+      MessageBox(Application.Handle, PChar(e.Message),PChar('Falha ao carregar a imagem da Igreja'),MB_OK+MB_ICONWARNING);
+      end;
+   end;
+   END
+   else
+   begin
+  // caminho:=(ExtractFilePath(Application.ExeName) + 'semfoto.jpg');
+   caminho :='C:\mysql\img\semfoto.jpg';
+   imgFoto.Picture.LoadFromFile(caminho);
+   //imgFoto.Picture.LoadFromFile('C:\Program Files (x86)\Eltecom\semfoto.jpg');
+     //imgFoto.Picture.Assign(nil);
+   end;
+end;
 
 procedure TfrmCadIgreja.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

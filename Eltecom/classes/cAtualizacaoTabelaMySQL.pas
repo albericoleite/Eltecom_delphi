@@ -501,9 +501,9 @@ begin
      'CREATE TABLE `tb_classe_professor` (  '+
      ' `codigo` int(11) NOT NULL AUTO_INCREMENT,  '+
     ' `cod_professor` int(11) DEFAULT NULL,   '+
-    ' `professor` varchar(20) DEFAULT NULL,  '+
+    ' `professor` varchar(50) DEFAULT NULL,  '+
     ' `cod_classe` int(11) DEFAULT NULL,    '+
-    ' `classe` varchar(20) DEFAULT NULL,  '+
+    ' `classe` varchar(50) DEFAULT NULL,  '+
     ' PRIMARY KEY (`codigo`),     '+
     ' KEY `tb_classe_professor_tb_classe_fk` (`cod_classe`), '+
     ' CONSTRAINT `tb_classe_professor_tb_classe_fk` FOREIGN KEY (`cod_classe`) REFERENCES `tb_classe` (`cod_classe`))');

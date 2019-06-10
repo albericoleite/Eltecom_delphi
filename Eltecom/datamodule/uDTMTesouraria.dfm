@@ -442,7 +442,7 @@ object dtmTesouraria: TdtmTesouraria
         end
         object Memo16: TfrxMemoView
           Left = 222.992270000000000000
-          Top = 64.252009999999990000
+          Top = 64.252009999999980000
           Width = 381.732530000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -458,7 +458,7 @@ object dtmTesouraria: TdtmTesouraria
         end
         object Memo20: TfrxMemoView
           Left = 604.724800000000000000
-          Top = 64.252009999999990000
+          Top = 64.252009999999980000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -572,7 +572,7 @@ object dtmTesouraria: TdtmTesouraria
         object Memo73: TfrxMemoView
           Align = baCenter
           Left = 105.826840000000000000
-          Top = 94.488250000000000000
+          Top = 94.488249999999990000
           Width = 506.457020000000000000
           Height = 30.236240000000000000
           Font.Charset = DEFAULT_CHARSET

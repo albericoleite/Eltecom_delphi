@@ -26,6 +26,7 @@ type
     strngfldClassesdescricao: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnVisualizarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,10 +43,24 @@ uses
 
 {$R *.dfm}
 
+procedure TfrmRelatoriosEBD.btnVisualizarClick(Sender: TObject);
+begin
+dtmRelatorio.fdqryAlunos.Close;
+   dtmRelatorio.frxrprtAlunos.Variables['Filtro'] := QuotedStr(dblkcbbClasses.Text);
+  dtmRelatorio.fdqryAlunos.Params.ParamByName('filtro').AsString:= dblkcbbClasses.Text;
+  dtmRelatorio.fdqryAlunos.Open;
+  if  not dtmRelatorio.fdqryAlunos.IsEmpty then
+begin
+   dtmRelatorio.frxrprtAlunos.ReportOptions.Name := 'Alunos';
+   dtmRelatorio.frxrprtAlunos.ShowReport();
+end;
+end;
+
 procedure TfrmRelatoriosEBD.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
 fdqryClasses.Close;
+dtmRelatorio.fdqryAlunos.Close;
 end;
 
 procedure TfrmRelatoriosEBD.FormCreate(Sender: TObject);

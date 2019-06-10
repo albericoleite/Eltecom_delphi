@@ -33,9 +33,11 @@ uses
   uDTMRelatorio, uDTMConexao;
 
 {$R *.dfm}
-
+                 //TODO: ERRO DE FOTO NO RELATÓRIO    , ORDERNAR POR DIA DE ANIVER,E NOME
 procedure TfrmRelDept.dblkcbbDepartamentosClick(Sender: TObject);
 begin
+
+dtmRelatorio := TdtmRelatorio.Create(self);
 dtmRelatorio.fdqryPessoas_dept.Close;
 dtmRelatorio.fdqryPessoas_dept.ParamByName('cod_dpt').AsInteger:=dblkcbbDepartamentos.KeyValue;
 dtmRelatorio.fdqryPessoas_dept.Open;

@@ -120,7 +120,7 @@ begin
        Qry:=TFDQuery.Create(nil);
        Qry.Connection:= ConexaoDB;
        Qry.SQL.Clear;
-       Qry.SQL.Add('UPDATE igreja.tb_igreja '+
+       Qry.SQL.Add('UPDATE tb_igreja '+
         ' SET nome_igreja=:nome_igreja '+
         ', cidade=:cidade '+
         ', dta_fundacao=:dta_fundacao '+
@@ -176,7 +176,7 @@ begin
        Qry:=TFDQuery.Create(nil);
        Qry.Connection:= ConexaoDB;
        Qry.SQL.Clear;
-       Qry.SQL.Add('INSERT INTO igreja.tb_igreja '+
+       Qry.SQL.Add('INSERT INTO tb_igreja '+
         '(nome_igreja, cidade, dta_fundacao, nome_presidente, dta_inclusao, sigla_igreja, '+
         'site, email, cnpj, logradouro, bairro, uf, fone, percentual_ajuste, sistema, situacao) '+
         'VALUES(:nome_igreja, :cidade, :dta_fundacao, :nome_presidente, :dta_inclusao, :sigla_igreja '+
@@ -218,8 +218,10 @@ try
       Qry:=TFDQuery.Create(nil);
        Qry.Connection:= ConexaoDB;
        Qry.SQL.Clear;
-       Qry.SQL.Add('SELECT cod_igreja, nome_igreja, cidade, dta_fundacao, nome_presidente, '+
-       ' dta_inclusao, sigla_igreja, site, email, cnpj, logradouro, bairro, uf, fone, '+
+       Qry.SQL.Add('SELECT cod_igreja, nome_igreja, cidade, dta_fundacao,   '+
+       ' nome_presidente, '+
+       ' dta_inclusao, sigla_igreja, site, email, cnpj  '+
+       ' , logradouro, bairro, uf, fone, '+
        ' percentual_ajuste, sistema, situacao FROM igreja.tb_igreja where  cod_igreja = :cod_igreja ');
       Qry.ParamByName('cod_igreja').AsInteger:=id;
 

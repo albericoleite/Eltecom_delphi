@@ -41,8 +41,9 @@ type
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
-    procedure btnImprimirClick(Sender: TObject);
+    procedure btnImprimirssClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnImprimirClick(Sender: TObject);
   private
     { Private declarations }
     oRecibo: TRecibo;
@@ -101,6 +102,16 @@ if oRecibo.Selecionar(QryListagem.FieldByName('cod_recibo').AsInteger) then
 end;
 
 procedure TfrmCadAjudaDeCusto.btnImprimirClick(Sender: TObject);
+var valor:string;
+begin
+  inherited;
+dtmRelatorio.frxdbDBRecibo.DataSet:=QryListagem;
+valor := valorPorExtenso(QryListagem.FieldByName('valor').AsFloat);
+dtmRelatorio.frxrprtRecibo.Variables['valor_extenso'] := QuotedStr(valor);
+dtmRelatorio.frxrprtRecibo.ShowReport();
+end;
+
+procedure TfrmCadAjudaDeCusto.btnImprimirssClick(Sender: TObject);
 var valor:string;
 begin
   inherited;

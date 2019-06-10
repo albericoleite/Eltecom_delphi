@@ -44,9 +44,9 @@ type
     dtdtFim: TDateEdit;
     lbl5: TLabel;
     btnBuscar: TBitBtn;
-    btnImprimir: TBitBtn;
     mmoSemana: TMemo;
     lbl6: TLabel;
+    btnImprimir: TBitBtn;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -57,7 +57,7 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnApagarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure btnImprimirClick(Sender: TObject);
+    procedure btnImprimir1Click(Sender: TObject);
   private
     { Private declarations }
     oLancamento: TLancamento;
@@ -145,7 +145,7 @@ begin
   dtmTesouraria.fdqryTes_valores.Refresh;
 end;
 
-procedure TfrmCadLancamento.btnImprimirClick(Sender: TObject);
+procedure TfrmCadLancamento.btnImprimir1Click(Sender: TObject);
 begin
   inherited;
   if QryListagem.Active then

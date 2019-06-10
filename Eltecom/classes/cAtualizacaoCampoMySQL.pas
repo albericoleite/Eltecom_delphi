@@ -83,17 +83,20 @@ begin
    ExecutaDiretoBancoDeDados('ALTER TABLE tb_congregacao ADD cod_dirigente int(11) NULL;');
  end;
 
-   //Adicionar código da congregação no recibo
+  {  //Adicionar código da congregação no recibo
   if not CampoExisteNaTabela('tb_classe_aluno','tb_classe_aluno_tb_classe_fk') then
  begin
    ExecutaDiretoBancoDeDados('ALTER TABLE tb_classe_aluno ADD CONSTRAINT tb_classe_aluno_tb_classe_fk FOREIGN KEY (cod_classe) REFERENCES tb_classe(cod_classe);');
  end;
 
     //Adicionar código da congregação no recibo
-  if not CampoExisteNaTabela('tb_classe_professor','tb_classe_professor_tb_classe_fk') then
+ if not CampoExisteNaTabela('tb_classe_professor','tb_classe_professor_tb_classe_fk') then
  begin
    ExecutaDiretoBancoDeDados('ALTER TABLE tb_classe_professor ADD CONSTRAINT tb_classe_professor_tb_classe_fk FOREIGN KEY (cod_classe) REFERENCES tb_classe(cod_classe);');
- end;
+ end;  }
+
+ //ALTER TABLE igreja.tb_classe_professor MODIFY COLUMN professor varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+//ALTER TABLE igreja.tb_classe_professor MODIFY COLUMN classe varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
 
 end;
 

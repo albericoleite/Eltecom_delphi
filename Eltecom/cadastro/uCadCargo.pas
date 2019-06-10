@@ -21,6 +21,7 @@ type
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure grdListagemTitleClick(Column: TColumn);
   private
     { Private declarations }
     oCargo: TCargo;
@@ -62,6 +63,12 @@ begin
 
 end;
 
+
+procedure TfrmCadCargo.grdListagemTitleClick(Column: TColumn);
+begin
+  inherited;
+
+end;
 
 {$endregion}
 

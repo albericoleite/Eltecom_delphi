@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHeranca, FireDAC.Stan.Intf,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHeranca, FireDAC.Stan.Intf,  cFuncao,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,system.DateUtils,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
@@ -52,6 +52,9 @@ type
     intgrfldDizimistascod_congregacao: TIntegerField;
     lrgntfldDizimistasnivel: TLargeintField;
     strngfldDizimistasrol: TStringField;
+    fdqryDizimosTotal: TFDQuery;
+    fltfldDizimosTotaltotal: TFloatField;
+    lblTotal: TLabel;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -121,39 +124,21 @@ ListaLancamentosPeriodo;
 end;
 
 procedure TfrmCadDizimos.btnImprimirClick(Sender: TObject);
+var mes: string;
 begin
   inherited;
-{fdqryDizimistas.Close;
-fdqryDizimistas.SQL.Text:= QryListagem.SQL.Text;
-fdqryDizimistas.Open;}
+ListaLancamentosPeriodo;
   dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
-{if dtmRelatorio.fdqryDizimistacod_dizimo.IsNull then
-begin
-  Application.MessageBox('nenhum Dizimo nessa Data','Atenção!');
-  dtdtIni.SetFocus;
-end
-else
-begin
-dtmRelatorio.frxrprtDizimista.Variables['Data'] := QuotedStr(uppercase(formatdatetime('MMMM ', (dtpData.Date))) +'de '+ formatdatetime('yyyy',
-    (dtpData.Date)));
-
- dtmRelatorio.fdqryDizimistaObreiros.Close;
-  dtmRelatorio.fdqryDizimistaObreiros.Params.ParamByName('DATA').AsString := uppercase(formatdatetime('yyyy-mm-dd', (dtpData.Date)));
-     dtmRelatorio.fdqryDizimistaObreiros.Open;
-
-     dtmRelatorio.fdqryDizimistaMembro.Close;
-  dtmRelatorio.fdqryDizimistaMembro.Params.ParamByName('DATA').AsString := uppercase(formatdatetime('yyyy-mm-dd', (dtpData.Date)));
-     dtmRelatorio.fdqryDizimistaMembro.Open;
-
-      }
-
+  dtmRelatorio.frxdbDizimosTotal.DataSet:=fdqryDizimosTotal;
+       mes:= TFuncao.ExtensoMes(MonthOf(dtdtini.Date));
+   dtmRelatorio.fdqryCongregacao.Open;
+   dtmRelatorio.frxrprtDizimista.Variables['Data'] := QuotedStr(mes);
   dtmRelatorio.frxrprtDizimista.ReportOptions.Name :=
-    'Visualização de Impressão: Dizimistas do mês ';
-    //uppercase(formatdatetime('MMMM ', (dtpData.Date))) +'de '+ formatdatetime('yyyy',
-   // (dtpData.Date));
+    'Visualização de Impressão: Dizimistas do mês: '+mes;
     dtmRelatorio.frxrprtDizimista.PrepareReport(True);
     dtmRelatorio.frxrprtDizimista.ShowReport();
 end;
+
 
 procedure TfrmCadDizimos.btnNovoClick(Sender: TObject);
 begin
@@ -188,6 +173,8 @@ begin
   inherited;
 if Assigned(oDizimo) then
      FreeAndNil(oDizimo);
+ dtmRelatorio.fdqryCongregacao.Close;
+ fdqryDizimosTotal.Close;
 end;
 
 procedure TfrmCadDizimos.FormCreate(Sender: TObject);
@@ -197,6 +184,7 @@ begin
    IndiceAtual:='cod_dizimo';
    dtdtIni.Date:=StartOfTheMonth(now);
    dtdtFim.Date:=Now;
+   btnBuscarClick(sender);
 end;
 
 procedure TfrmCadDizimos.FormShow(Sender: TObject);
@@ -253,14 +241,20 @@ begin
   QryListagem.Close;
   QryListagem.ParamByName('dtini').AsDateTime := dtdtIni.Date;
   QryListagem.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
-  QryListagem.SQL.Text;
   QryListagem.Open;
 
   fdqryDizimistas.Close;
   fdqryDizimistas.ParamByName('dtini').AsDateTime := dtdtIni.Date;
   fdqryDizimistas.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
-  fdqryDizimistas.SQL.Text;
   fdqryDizimistas.Open;
+
+
+  fdqryDizimosTotal.Close;
+  fdqryDizimosTotal.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+  fdqryDizimosTotal.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
+  fdqryDizimosTotal.Open;
+
+  lblTotal.Caption:= 'Valor Total:' +fdqryDizimosTotal.FieldByName('total').AsString;
 end;
 
 

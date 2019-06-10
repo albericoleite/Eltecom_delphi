@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Sistema de Gest'#227'o Congregacional - 2019.1'
+  Caption = 'Splendor Gest'#227'o de Igrejas - 2019.1'
   ClientHeight = 560
   ClientWidth = 1269
   Color = clBtnFace
@@ -38,318 +38,753 @@ object frmPrincipal: TfrmPrincipal
         Width = 50
       end>
   end
-  object pnlGeral: TPanel
-    Left = 0
-    Top = 41
-    Width = 1269
-    Height = 502
-    Align = alClient
-    TabOrder = 1
-    object spl3: TSplitter
-      Left = 562
-      Top = 1
-      Height = 500
-      ExplicitLeft = 608
-      ExplicitTop = 224
-      ExplicitHeight = 100
-    end
-    object pnlDireita: TPanel
-      Left = 565
-      Top = 1
-      Width = 703
-      Height = 500
-      Align = alClient
-      TabOrder = 0
-      object spl2: TSplitter
-        Left = 1
-        Top = 257
-        Width = 701
-        Height = 3
-        Cursor = crVSplit
-        Align = alTop
-        ExplicitWidth = 283
-      end
-      object pnl3: TPanel
-        Left = 1
-        Top = 260
-        Width = 701
-        Height = 239
-        Align = alClient
-        TabOrder = 0
-        object dbcht2: TDBChart
-          Left = 1
-          Top = 1
-          Width = 699
-          Height = 237
-          Title.Color = clBlack
-          Title.Font.Color = clBlack
-          Title.Text.Strings = (
-            'Pessoas por Cargos')
-          ClipPoints = False
-          Legend.Visible = False
-          View3DOptions.Elevation = 315
-          View3DOptions.Orthogonal = False
-          View3DOptions.Perspective = 0
-          View3DOptions.Rotation = 360
-          Align = alClient
-          Color = clWhite
-          TabOrder = 0
-          DefaultCanvas = 'TGDIPlusCanvas'
-          PrintMargins = (
-            15
-            26
-            15
-            26)
-          ColorPaletteIndex = 13
-          object psrshrzbrsrspsrshrzbrsrspsrsbrsrs2: TPieSeries
-            Marks.Angle = 17
-            Marks.Callout.Length = 20
-            DataSource = dtmGrafico.fdqryPessoasCargos
-            XLabelsSource = 'CARGO'
-            XValues.Order = loAscending
-            XValues.ValueSource = 'qtd'
-            YValues.Name = 'Pie'
-            YValues.Order = loNone
-            YValues.ValueSource = 'qtd'
-            Frame.InnerBrush.BackColor = clRed
-            Frame.InnerBrush.Gradient.EndColor = clGray
-            Frame.InnerBrush.Gradient.MidColor = clWhite
-            Frame.InnerBrush.Gradient.StartColor = 4210752
-            Frame.InnerBrush.Gradient.Visible = True
-            Frame.MiddleBrush.BackColor = clYellow
-            Frame.MiddleBrush.Gradient.EndColor = 8553090
-            Frame.MiddleBrush.Gradient.MidColor = clWhite
-            Frame.MiddleBrush.Gradient.StartColor = clGray
-            Frame.MiddleBrush.Gradient.Visible = True
-            Frame.OuterBrush.BackColor = clGreen
-            Frame.OuterBrush.Gradient.EndColor = 4210752
-            Frame.OuterBrush.Gradient.MidColor = clWhite
-            Frame.OuterBrush.Gradient.StartColor = clSilver
-            Frame.OuterBrush.Gradient.Visible = True
-            Frame.Width = 4
-            OtherSlice.Legend.Visible = False
-          end
-        end
-      end
-      object pnl2: TPanel
-        Left = 1
-        Top = 1
-        Width = 701
-        Height = 256
-        Align = alTop
-        TabOrder = 1
-        object dbcht1: TDBChart
-          Left = 1
-          Top = 1
-          Width = 699
-          Height = 254
-          Title.Color = clBlack
-          Title.Font.Color = clBlack
-          Title.Text.Strings = (
-            'Resumo de Dizimistas')
-          ClipPoints = False
-          Legend.CheckBoxesStyle = cbsRadio
-          Legend.LegendStyle = lsValues
-          Legend.TextStyle = ltsRightValue
-          Align = alClient
-          Color = clWhite
-          TabOrder = 0
-          DefaultCanvas = 'TGDIPlusCanvas'
-          PrintMargins = (
-            15
-            26
-            15
-            26)
-          ColorPaletteIndex = 10
-          object brsrs1: TBarSeries
-            BarBrush.Gradient.EndColor = 11842740
-            ColorEachPoint = True
-            Marks.Angle = 31
-            DataSource = dtmGrafico.fdqryDizimosAnual
-            XLabelsSource = 'sigla'
-            Emboss.Color = 33280
-            Gradient.EndColor = 11842740
-            XValues.Name = 'X'
-            XValues.Order = loAscending
-            XValues.ValueSource = 'mes'
-            YValues.Name = 'Bar'
-            YValues.Order = loNone
-            YValues.ValueSource = 'valor'
-          end
-        end
-      end
-    end
-    object pnlEsquerda: TPanel
-      Left = 1
-      Top = 1
-      Width = 561
-      Height = 500
-      Align = alLeft
-      TabOrder = 1
-      object spl1: TSplitter
-        Left = 1
-        Top = 255
-        Width = 559
-        Height = 3
-        Cursor = crVSplit
-        Align = alTop
-        ExplicitTop = 259
-        ExplicitWidth = 283
-      end
-      object pnl1: TPanel
-        Left = 1
-        Top = 1
-        Width = 559
-        Height = 254
-        Align = alTop
-        TabOrder = 0
-        object dbchtPessoas: TDBChart
-          Left = 1
-          Top = 1
-          Width = 557
-          Height = 252
-          Title.Color = clBlack
-          Title.Font.Color = clBlack
-          Title.Text.Strings = (
-            'Quantidade de Cadastros')
-          ClipPoints = False
-          View3DOptions.Elevation = 315
-          View3DOptions.Orthogonal = False
-          View3DOptions.Perspective = 0
-          View3DOptions.Rotation = 360
-          Align = alClient
-          Color = clWhite
-          TabOrder = 0
-          DefaultCanvas = 'TGDIPlusCanvas'
-          PrintMargins = (
-            15
-            26
-            15
-            26)
-          ColorPaletteIndex = 13
-          object brsrsSeries1: TBarSeries
-            Active = False
-            ColorEachPoint = True
-            DataSource = dtmGrafico.fdqryPessoas
-            XLabelsSource = 'tipo'
-            XValues.Name = 'X'
-            XValues.Order = loAscending
-            XValues.ValueSource = 'qtd'
-            YValues.Name = 'Bar'
-            YValues.Order = loNone
-            YValues.ValueSource = 'qtd'
-          end
-          object psrsSeries1: TPieSeries
-            DataSource = dtmGrafico.fdqryPessoas
-            XLabelsSource = 'tipo'
-            XValues.Order = loAscending
-            YValues.Name = 'Pie'
-            YValues.Order = loNone
-            YValues.ValueSource = 'qtd'
-            Frame.InnerBrush.BackColor = clRed
-            Frame.InnerBrush.Gradient.EndColor = clGray
-            Frame.InnerBrush.Gradient.MidColor = clWhite
-            Frame.InnerBrush.Gradient.StartColor = 4210752
-            Frame.InnerBrush.Gradient.Visible = True
-            Frame.MiddleBrush.BackColor = clYellow
-            Frame.MiddleBrush.Gradient.EndColor = 8553090
-            Frame.MiddleBrush.Gradient.MidColor = clWhite
-            Frame.MiddleBrush.Gradient.StartColor = clGray
-            Frame.MiddleBrush.Gradient.Visible = True
-            Frame.OuterBrush.BackColor = clGreen
-            Frame.OuterBrush.Gradient.EndColor = 4210752
-            Frame.OuterBrush.Gradient.MidColor = clWhite
-            Frame.OuterBrush.Gradient.StartColor = clSilver
-            Frame.OuterBrush.Gradient.Visible = True
-            Frame.Width = 4
-            OtherSlice.Legend.Visible = False
-          end
-        end
-      end
-      object pnl4: TPanel
-        Left = 1
-        Top = 258
-        Width = 559
-        Height = 241
-        Align = alClient
-        TabOrder = 1
-        object dbcht3: TDBChart
-          Left = 1
-          Top = 1
-          Width = 557
-          Height = 239
-          Title.Color = clBlack
-          Title.Font.Color = clBlack
-          Title.Text.Strings = (
-            'Alunos por Classe')
-          ClipPoints = False
-          View3DOptions.Elevation = 315
-          View3DOptions.Orthogonal = False
-          View3DOptions.Perspective = 0
-          View3DOptions.Rotation = 360
-          Align = alClient
-          Color = clWhite
-          TabOrder = 0
-          DefaultCanvas = 'TGDIPlusCanvas'
-          PrintMargins = (
-            15
-            26
-            15
-            26)
-          ColorPaletteIndex = 13
-          object psrsbrsrs3: TPieSeries
-            Marks.Angle = 34
-            Marks.Callout.Length = 20
-            DataSource = dtmGrafico.fdqryClassesAlunos
-            XLabelsSource = 'classe'
-            XValues.Order = loAscending
-            XValues.ValueSource = 'qtd'
-            YValues.Name = 'Pie'
-            YValues.Order = loNone
-            YValues.ValueSource = 'qtd'
-            Frame.InnerBrush.BackColor = clRed
-            Frame.InnerBrush.Gradient.EndColor = clGray
-            Frame.InnerBrush.Gradient.MidColor = clWhite
-            Frame.InnerBrush.Gradient.StartColor = 4210752
-            Frame.InnerBrush.Gradient.Visible = True
-            Frame.MiddleBrush.BackColor = clYellow
-            Frame.MiddleBrush.Gradient.EndColor = 8553090
-            Frame.MiddleBrush.Gradient.MidColor = clWhite
-            Frame.MiddleBrush.Gradient.StartColor = clGray
-            Frame.MiddleBrush.Gradient.Visible = True
-            Frame.OuterBrush.BackColor = clGreen
-            Frame.OuterBrush.Gradient.EndColor = 4210752
-            Frame.OuterBrush.Gradient.MidColor = clWhite
-            Frame.OuterBrush.Gradient.StartColor = clSilver
-            Frame.OuterBrush.Gradient.Visible = True
-            Frame.Width = 4
-            Emboss.Transparency = 36
-            OtherSlice.Legend.Visible = False
-          end
-        end
-      end
-    end
-  end
   object pnl5: TPanel
     Left = 0
     Top = 0
     Width = 1269
-    Height = 41
+    Height = 33
     Align = alTop
     Alignment = taLeftJustify
-    Caption = 'Dashboard'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -33
+    Font.Color = clHighlight
+    Font.Height = -24
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
     OnClick = pnl5Click
   end
+  object pgcDashs: TPageControl
+    Left = 0
+    Top = 56
+    Width = 1269
+    Height = 487
+    ActivePage = Principal
+    Align = alClient
+    MultiLine = True
+    TabOrder = 2
+    object Principal: TTabSheet
+      Caption = 'Principal'
+      object pnlGeral: TPanel
+        Left = 0
+        Top = 0
+        Width = 1261
+        Height = 459
+        Align = alClient
+        TabOrder = 0
+        object spl3: TSplitter
+          Left = 562
+          Top = 1
+          Height = 457
+          ExplicitLeft = 608
+          ExplicitTop = 224
+          ExplicitHeight = 100
+        end
+        object pnlDireita: TPanel
+          Left = 565
+          Top = 1
+          Width = 695
+          Height = 457
+          Align = alClient
+          TabOrder = 0
+          object spl2: TSplitter
+            Left = 1
+            Top = 257
+            Width = 693
+            Height = 3
+            Cursor = crVSplit
+            Align = alTop
+            ExplicitWidth = 283
+          end
+          object pnl3: TPanel
+            Left = 1
+            Top = 260
+            Width = 693
+            Height = 196
+            Align = alClient
+            TabOrder = 0
+            object dbcht2: TDBChart
+              Left = 1
+              Top = 1
+              Width = 691
+              Height = 194
+              Title.Color = clBlack
+              Title.Font.Color = clBlack
+              Title.Text.Strings = (
+                'Pessoas por Cargos')
+              ClipPoints = False
+              Legend.Visible = False
+              View3DOptions.Elevation = 315
+              View3DOptions.Orthogonal = False
+              View3DOptions.Perspective = 0
+              View3DOptions.Rotation = 360
+              Align = alClient
+              Color = clWhite
+              TabOrder = 0
+              DefaultCanvas = 'TGDIPlusCanvas'
+              PrintMargins = (
+                15
+                26
+                15
+                26)
+              ColorPaletteIndex = 13
+              object psrshrzbrsrspsrshrzbrsrspsrsbrsrs2: TPieSeries
+                Marks.Angle = 17
+                Marks.Callout.Length = 20
+                DataSource = dtmGrafico.fdqryPessoasCargos
+                XLabelsSource = 'CARGO'
+                XValues.Order = loAscending
+                XValues.ValueSource = 'qtd'
+                YValues.Name = 'Pie'
+                YValues.Order = loNone
+                YValues.ValueSource = 'qtd'
+                Frame.InnerBrush.BackColor = clRed
+                Frame.InnerBrush.Gradient.EndColor = clGray
+                Frame.InnerBrush.Gradient.MidColor = clWhite
+                Frame.InnerBrush.Gradient.StartColor = 4210752
+                Frame.InnerBrush.Gradient.Visible = True
+                Frame.MiddleBrush.BackColor = clYellow
+                Frame.MiddleBrush.Gradient.EndColor = 8553090
+                Frame.MiddleBrush.Gradient.MidColor = clWhite
+                Frame.MiddleBrush.Gradient.StartColor = clGray
+                Frame.MiddleBrush.Gradient.Visible = True
+                Frame.OuterBrush.BackColor = clGreen
+                Frame.OuterBrush.Gradient.EndColor = 4210752
+                Frame.OuterBrush.Gradient.MidColor = clWhite
+                Frame.OuterBrush.Gradient.StartColor = clSilver
+                Frame.OuterBrush.Gradient.Visible = True
+                Frame.Width = 4
+                OtherSlice.Legend.Visible = False
+              end
+            end
+          end
+          object pnl2: TPanel
+            Left = 1
+            Top = 1
+            Width = 693
+            Height = 256
+            Align = alTop
+            TabOrder = 1
+            object dbcht1: TDBChart
+              Left = 1
+              Top = 1
+              Width = 691
+              Height = 254
+              Title.Color = clBlack
+              Title.Font.Color = clBlack
+              Title.Text.Strings = (
+                'Resumo de Dizimistas')
+              ClipPoints = False
+              Legend.CheckBoxesStyle = cbsRadio
+              Legend.LegendStyle = lsValues
+              Legend.TextStyle = ltsRightValue
+              Align = alClient
+              Color = clWhite
+              TabOrder = 0
+              DefaultCanvas = 'TGDIPlusCanvas'
+              PrintMargins = (
+                15
+                26
+                15
+                26)
+              ColorPaletteIndex = 10
+              object brsrs1: TBarSeries
+                BarBrush.Gradient.EndColor = 11842740
+                ColorEachPoint = True
+                Marks.Angle = 31
+                DataSource = dtmGrafico.fdqryDizimosAnual
+                XLabelsSource = 'sigla'
+                Emboss.Color = 33280
+                Gradient.EndColor = 11842740
+                XValues.Name = 'X'
+                XValues.Order = loAscending
+                XValues.ValueSource = 'mes'
+                YValues.Name = 'Bar'
+                YValues.Order = loNone
+                YValues.ValueSource = 'valor'
+              end
+            end
+          end
+        end
+        object pnlEsquerda: TPanel
+          Left = 1
+          Top = 1
+          Width = 561
+          Height = 457
+          Align = alLeft
+          TabOrder = 1
+          object spl1: TSplitter
+            Left = 1
+            Top = 255
+            Width = 559
+            Height = 3
+            Cursor = crVSplit
+            Align = alTop
+            ExplicitTop = 259
+            ExplicitWidth = 283
+          end
+          object pnl1: TPanel
+            Left = 1
+            Top = 1
+            Width = 559
+            Height = 254
+            Align = alTop
+            TabOrder = 0
+            object dbchtPessoas: TDBChart
+              Left = 1
+              Top = 1
+              Width = 557
+              Height = 252
+              Title.Color = clBlack
+              Title.Font.Color = clBlack
+              Title.Text.Strings = (
+                'Quantidade de Cadastros')
+              ClipPoints = False
+              View3DOptions.Elevation = 315
+              View3DOptions.Orthogonal = False
+              View3DOptions.Perspective = 0
+              View3DOptions.Rotation = 360
+              Align = alClient
+              Color = clWhite
+              TabOrder = 0
+              DefaultCanvas = 'TGDIPlusCanvas'
+              PrintMargins = (
+                15
+                26
+                15
+                26)
+              ColorPaletteIndex = 13
+              object brsrsSeries1: TBarSeries
+                Active = False
+                ColorEachPoint = True
+                DataSource = dtmGrafico.fdqryPessoas
+                XLabelsSource = 'tipo'
+                XValues.Name = 'X'
+                XValues.Order = loAscending
+                XValues.ValueSource = 'qtd'
+                YValues.Name = 'Bar'
+                YValues.Order = loNone
+                YValues.ValueSource = 'qtd'
+              end
+              object psrsSeries1: TPieSeries
+                DataSource = dtmGrafico.fdqryPessoas
+                XLabelsSource = 'tipo'
+                XValues.Order = loAscending
+                YValues.Name = 'Pie'
+                YValues.Order = loNone
+                YValues.ValueSource = 'qtd'
+                Frame.InnerBrush.BackColor = clRed
+                Frame.InnerBrush.Gradient.EndColor = clGray
+                Frame.InnerBrush.Gradient.MidColor = clWhite
+                Frame.InnerBrush.Gradient.StartColor = 4210752
+                Frame.InnerBrush.Gradient.Visible = True
+                Frame.MiddleBrush.BackColor = clYellow
+                Frame.MiddleBrush.Gradient.EndColor = 8553090
+                Frame.MiddleBrush.Gradient.MidColor = clWhite
+                Frame.MiddleBrush.Gradient.StartColor = clGray
+                Frame.MiddleBrush.Gradient.Visible = True
+                Frame.OuterBrush.BackColor = clGreen
+                Frame.OuterBrush.Gradient.EndColor = 4210752
+                Frame.OuterBrush.Gradient.MidColor = clWhite
+                Frame.OuterBrush.Gradient.StartColor = clSilver
+                Frame.OuterBrush.Gradient.Visible = True
+                Frame.Width = 4
+                OtherSlice.Legend.Visible = False
+              end
+            end
+          end
+          object pnl4: TPanel
+            Left = 1
+            Top = 258
+            Width = 559
+            Height = 198
+            Align = alClient
+            TabOrder = 1
+            object lbl2: TLabel
+              Left = 1
+              Top = 1
+              Width = 557
+              Height = 13
+              Align = alTop
+              Caption = 'Aniversariantes do M'#234's'
+              ExplicitWidth = 112
+            end
+            object dbgrd1: TDBGrid
+              Left = 1
+              Top = 14
+              Width = 557
+              Height = 183
+              Align = alClient
+              DataSource = dtmGrafico.dsAniver
+              Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+              TabOrder = 0
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              TitleFont.Style = []
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'nome_pessoa'
+                  Width = 243
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'sexo'
+                  Width = 29
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'membro_congregado'
+                  Width = 68
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'dta_nascimento'
+                  Width = 100
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'idade'
+                  Width = 44
+                  Visible = True
+                end>
+            end
+          end
+        end
+      end
+    end
+    object Financeiro: TTabSheet
+      Caption = 'Financeiro'
+      ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+      object pnl6: TPanel
+        Left = 0
+        Top = 0
+        Width = 1261
+        Height = 459
+        Align = alClient
+        TabOrder = 0
+        object spl4: TSplitter
+          Left = 562
+          Top = 1
+          Height = 457
+          ExplicitLeft = 608
+          ExplicitTop = 224
+          ExplicitHeight = 100
+        end
+        object pnl7: TPanel
+          Left = 565
+          Top = 1
+          Width = 695
+          Height = 457
+          Align = alClient
+          TabOrder = 0
+          object spl5: TSplitter
+            Left = 1
+            Top = 257
+            Width = 693
+            Height = 3
+            Cursor = crVSplit
+            Align = alTop
+            ExplicitWidth = 283
+          end
+          object pnl8: TPanel
+            Left = 1
+            Top = 260
+            Width = 693
+            Height = 196
+            Align = alClient
+            TabOrder = 0
+            object dbcht4: TDBChart
+              Left = 1
+              Top = 1
+              Width = 691
+              Height = 194
+              Title.Color = clBlack
+              Title.Font.Color = clBlack
+              Title.Text.Strings = (
+                'Pessoas por Cargos')
+              ClipPoints = False
+              Legend.Visible = False
+              View3DOptions.Elevation = 315
+              View3DOptions.Orthogonal = False
+              View3DOptions.Perspective = 0
+              View3DOptions.Rotation = 360
+              Align = alClient
+              Color = clWhite
+              TabOrder = 0
+              DefaultCanvas = 'TGDIPlusCanvas'
+              PrintMargins = (
+                15
+                26
+                15
+                26)
+              ColorPaletteIndex = 13
+              object psrs1: TPieSeries
+                Marks.Angle = 17
+                Marks.Callout.Length = 20
+                DataSource = dtmGrafico.fdqryPessoasCargos
+                XLabelsSource = 'CARGO'
+                XValues.Order = loAscending
+                XValues.ValueSource = 'qtd'
+                YValues.Name = 'Pie'
+                YValues.Order = loNone
+                YValues.ValueSource = 'qtd'
+                Frame.InnerBrush.BackColor = clRed
+                Frame.InnerBrush.Gradient.EndColor = clGray
+                Frame.InnerBrush.Gradient.MidColor = clWhite
+                Frame.InnerBrush.Gradient.StartColor = 4210752
+                Frame.InnerBrush.Gradient.Visible = True
+                Frame.MiddleBrush.BackColor = clYellow
+                Frame.MiddleBrush.Gradient.EndColor = 8553090
+                Frame.MiddleBrush.Gradient.MidColor = clWhite
+                Frame.MiddleBrush.Gradient.StartColor = clGray
+                Frame.MiddleBrush.Gradient.Visible = True
+                Frame.OuterBrush.BackColor = clGreen
+                Frame.OuterBrush.Gradient.EndColor = 4210752
+                Frame.OuterBrush.Gradient.MidColor = clWhite
+                Frame.OuterBrush.Gradient.StartColor = clSilver
+                Frame.OuterBrush.Gradient.Visible = True
+                Frame.Width = 4
+                OtherSlice.Legend.Visible = False
+              end
+            end
+          end
+          object pnl9: TPanel
+            Left = 1
+            Top = 1
+            Width = 693
+            Height = 256
+            Align = alTop
+            TabOrder = 1
+            object dbcht5: TDBChart
+              Left = 1
+              Top = 1
+              Width = 691
+              Height = 254
+              Title.Color = clBlack
+              Title.Font.Color = clBlack
+              Title.Text.Strings = (
+                'Resumo de Dizimistas')
+              ClipPoints = False
+              Legend.CheckBoxesStyle = cbsRadio
+              Legend.LegendStyle = lsValues
+              Legend.TextStyle = ltsRightValue
+              Align = alClient
+              Color = clWhite
+              TabOrder = 0
+              DefaultCanvas = 'TGDIPlusCanvas'
+              PrintMargins = (
+                15
+                26
+                15
+                26)
+              ColorPaletteIndex = 10
+              object brsrs2: TBarSeries
+                BarBrush.Gradient.EndColor = 11842740
+                ColorEachPoint = True
+                Marks.Angle = 31
+                DataSource = dtmGrafico.fdqryDizimosAnual
+                XLabelsSource = 'sigla'
+                Emboss.Color = 33280
+                Gradient.EndColor = 11842740
+                XValues.Name = 'X'
+                XValues.Order = loAscending
+                XValues.ValueSource = 'mes'
+                YValues.Name = 'Bar'
+                YValues.Order = loNone
+                YValues.ValueSource = 'valor'
+              end
+            end
+          end
+        end
+        object pnl10: TPanel
+          Left = 1
+          Top = 1
+          Width = 561
+          Height = 457
+          Align = alLeft
+          TabOrder = 1
+          object spl6: TSplitter
+            Left = 1
+            Top = 255
+            Width = 559
+            Height = 3
+            Cursor = crVSplit
+            Align = alTop
+            ExplicitTop = 259
+            ExplicitWidth = 283
+          end
+          object pnl11: TPanel
+            Left = 1
+            Top = 1
+            Width = 559
+            Height = 254
+            Align = alTop
+            TabOrder = 0
+            object dbcht6: TDBChart
+              Left = 1
+              Top = 1
+              Width = 557
+              Height = 252
+              Title.Color = clBlack
+              Title.Font.Color = clBlack
+              Title.Text.Strings = (
+                'Entradas Mensais')
+              ClipPoints = False
+              View3DOptions.Elevation = 315
+              View3DOptions.Orthogonal = False
+              View3DOptions.Perspective = 0
+              View3DOptions.Rotation = 360
+              Align = alClient
+              Color = clWhite
+              TabOrder = 0
+              DefaultCanvas = 'TGDIPlusCanvas'
+              PrintMargins = (
+                15
+                26
+                15
+                26)
+              ColorPaletteIndex = 13
+              object brsrsSeries2: TBarSeries
+                ColorEachPoint = True
+                DataSource = dtmGrafico.fdqryEntrasAnual
+                XLabelsSource = 'sigla'
+                XValues.Name = 'X'
+                XValues.Order = loAscending
+                XValues.ValueSource = 'mes'
+                YValues.Name = 'Bar'
+                YValues.Order = loNone
+                YValues.ValueSource = 'valor'
+              end
+            end
+          end
+          object pnl12: TPanel
+            Left = 1
+            Top = 258
+            Width = 559
+            Height = 198
+            Align = alClient
+            TabOrder = 1
+            object dbcht7: TDBChart
+              Left = 1
+              Top = 1
+              Width = 557
+              Height = 196
+              Title.Color = clBlack
+              Title.Font.Color = clBlack
+              Title.Text.Strings = (
+                'Sa'#237'das Mensais')
+              ClipPoints = False
+              View3DOptions.Elevation = 315
+              View3DOptions.Orthogonal = False
+              View3DOptions.Perspective = 0
+              View3DOptions.Rotation = 360
+              Align = alClient
+              Color = clWhite
+              TabOrder = 0
+              DefaultCanvas = 'TGDIPlusCanvas'
+              PrintMargins = (
+                15
+                30
+                15
+                30)
+              ColorPaletteIndex = 13
+              object brsrs3: TBarSeries
+                ColorEachPoint = True
+                DataSource = dtmGrafico.fdqrySaidasAnual
+                XLabelsSource = 'sigla'
+                XValues.Name = 'X'
+                XValues.Order = loAscending
+                XValues.ValueSource = 'mes'
+                YValues.Name = 'Bar'
+                YValues.Order = loNone
+                YValues.ValueSource = 'valor'
+              end
+            end
+          end
+        end
+      end
+    end
+    object EBD: TTabSheet
+      Caption = 'EBD'
+      ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+      object pnl13: TPanel
+        Left = 0
+        Top = 0
+        Width = 1261
+        Height = 459
+        Align = alClient
+        TabOrder = 0
+        object spl7: TSplitter
+          Left = 562
+          Top = 1
+          Height = 457
+          ExplicitLeft = 608
+          ExplicitTop = 224
+          ExplicitHeight = 100
+        end
+        object pnl14: TPanel
+          Left = 565
+          Top = 1
+          Width = 695
+          Height = 457
+          Align = alClient
+          TabOrder = 0
+          object spl8: TSplitter
+            Left = 1
+            Top = 257
+            Width = 693
+            Height = 3
+            Cursor = crVSplit
+            Align = alTop
+            ExplicitWidth = 283
+          end
+          object pnl15: TPanel
+            Left = 1
+            Top = 260
+            Width = 693
+            Height = 196
+            Align = alClient
+            TabOrder = 0
+          end
+          object pnl16: TPanel
+            Left = 1
+            Top = 1
+            Width = 693
+            Height = 256
+            Align = alTop
+            TabOrder = 1
+          end
+        end
+        object pnl17: TPanel
+          Left = 1
+          Top = 1
+          Width = 561
+          Height = 457
+          Align = alLeft
+          TabOrder = 1
+          object spl9: TSplitter
+            Left = 1
+            Top = 255
+            Width = 559
+            Height = 3
+            Cursor = crVSplit
+            Align = alTop
+            ExplicitTop = 259
+            ExplicitWidth = 283
+          end
+          object pnl18: TPanel
+            Left = 1
+            Top = 1
+            Width = 559
+            Height = 254
+            Align = alTop
+            TabOrder = 0
+          end
+          object pnl19: TPanel
+            Left = 1
+            Top = 258
+            Width = 559
+            Height = 198
+            Align = alClient
+            TabOrder = 1
+            object dbcht11: TDBChart
+              Left = 1
+              Top = 1
+              Width = 557
+              Height = 196
+              Title.Color = clBlack
+              Title.Font.Color = clBlack
+              Title.Text.Strings = (
+                'Alunos por Classe')
+              ClipPoints = False
+              View3DOptions.Elevation = 315
+              View3DOptions.Orthogonal = False
+              View3DOptions.Perspective = 0
+              View3DOptions.Rotation = 360
+              Align = alClient
+              Color = clWhite
+              TabOrder = 0
+              DefaultCanvas = 'TGDIPlusCanvas'
+              PrintMargins = (
+                15
+                26
+                15
+                26)
+              ColorPaletteIndex = 13
+              object psrs6: TPieSeries
+                Marks.Angle = 34
+                Marks.Callout.Length = 20
+                DataSource = dtmGrafico.fdqryClassesAlunos
+                XLabelsSource = 'classe'
+                XValues.Order = loAscending
+                XValues.ValueSource = 'qtd'
+                YValues.Name = 'Pie'
+                YValues.Order = loNone
+                YValues.ValueSource = 'qtd'
+                Frame.InnerBrush.BackColor = clRed
+                Frame.InnerBrush.Gradient.EndColor = clGray
+                Frame.InnerBrush.Gradient.MidColor = clWhite
+                Frame.InnerBrush.Gradient.StartColor = 4210752
+                Frame.InnerBrush.Gradient.Visible = True
+                Frame.MiddleBrush.BackColor = clYellow
+                Frame.MiddleBrush.Gradient.EndColor = 8553090
+                Frame.MiddleBrush.Gradient.MidColor = clWhite
+                Frame.MiddleBrush.Gradient.StartColor = clGray
+                Frame.MiddleBrush.Gradient.Visible = True
+                Frame.OuterBrush.BackColor = clGreen
+                Frame.OuterBrush.Gradient.EndColor = 4210752
+                Frame.OuterBrush.Gradient.MidColor = clWhite
+                Frame.OuterBrush.Gradient.StartColor = clSilver
+                Frame.OuterBrush.Gradient.Visible = True
+                Frame.Width = 4
+                Emboss.Transparency = 36
+                OtherSlice.Legend.Visible = False
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  object acttb1: TActionToolBar
+    Left = 0
+    Top = 33
+    Width = 1269
+    Height = 23
+    Caption = 'acttb1'
+    Color = clMenuBar
+    ColorMap.DisabledFontColor = 7171437
+    ColorMap.HighlightColor = clWhite
+    ColorMap.BtnSelectedFont = clBlack
+    ColorMap.UnusedColor = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    Spacing = 0
+  end
   object MainMenu1: TMainMenu
-    Left = 16
-    Top = 8
+    BiDiMode = bdLeftToRight
+    ParentBiDiMode = False
+    Left = 488
+    Top = 80
     object Cadastro1: TMenuItem
       Caption = 'Cadastro'
       object Clientes1: TMenuItem
@@ -451,6 +886,10 @@ object frmPrincipal: TfrmPrincipal
       object N3: TMenuItem
         Caption = '-'
       end
+      object mniRelatrios3: TMenuItem
+        Caption = 'Relat'#243'rios'
+        OnClick = mniRelatrios3Click
+      end
     end
     object Relatrios1: TMenuItem
       Caption = 'Relat'#243'rios'
@@ -510,16 +949,21 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Backup e Restore'
         OnClick = BackupeRestore1Click
       end
+      object mniImportarCadastros1: TMenuItem
+        Caption = 'Importar Cadastros'
+        OnClick = mniImportarCadastros1Click
+      end
     end
     object mniSobre: TMenuItem
       Caption = 'Sobre'
+      Enabled = False
       OnClick = mniSobreClick
     end
   end
   object tmrDashboard: TTimer
     Interval = 60000
     OnTimer = tmrDashboardTimer
-    Left = 632
-    Top = 296
+    Left = 696
+    Top = 96
   end
 end

@@ -248,7 +248,7 @@ begin
       ', setor=:setor ' +
       ', nro_cad_congregado=:nro_cad_congregado , SITUACAO=:SITUACAO ' +
       ', cod_congregacao=:cod_congregacao ' + ', cod_situacao=:cod_situacao,congregacao=:congregacao ' +
-      ', foto=:foto WHERE cod_pessoa=:cod_pessoa; ');
+      ' WHERE cod_pessoa=:cod_pessoa; ');
     Qry.ParamByName('cod_situacao').AsInteger := F_cod_situacao;
     Qry.ParamByName('cod_congregacao').AsInteger := F_cod_congregacao;
     Qry.ParamByName('SITUACAO').AsString := F_SITUACAO;
@@ -307,8 +307,8 @@ begin
     Qry.ParamByName('estado_casa').AsString := self.F_estado_casa;
     Qry.ParamByName('cpf').AsString := self.F_cpf;
      Qry.ParamByName('congregacao').AsString := self.F_congregacao;
-     Qry.ParamByName('foto').DataType:=ftBlob;
-      Qry.ParamByName('foto').Clear;
+   //  Qry.ParamByName('foto').DataType:=ftBlob;
+   //   Qry.ParamByName('foto').Clear;
      {if self.F_foto.Empty  then
       Qry.ParamByName('foto').Clear
       else
@@ -433,7 +433,7 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('SELECT cod_pessoa, nome_pessoa, foto,          ' +
+    Qry.SQL.Add('SELECT cod_pessoa, nome_pessoa,          ' +
       ' sexo, nome_pai, nome_mae, dta_nascimento, naturalidade,    ' +
       ' uf_nascimento, nacionalidade, nrorg, orgaorg, cpf, email,     ' +
       ' grau_instr_situacao, grau_instrucao, form_teo_situacao,        ' +
@@ -481,7 +481,7 @@ begin
       Self.F_SITUACAO := Qry.FieldByName('SITUACAO').AsString;
       Self.F_membro_congregado := Qry.FieldByName('membro_congregado').AsString;
 
-      Self.F_foto.Assign(Qry.FieldByName('foto'));
+   //   Self.F_foto.Assign(Qry.FieldByName('foto'));
       //if Qry.FieldByName('foto').Assign(nil) then
 
     {  //CARREGANDO IMAGEM

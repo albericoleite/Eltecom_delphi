@@ -98,12 +98,6 @@ type
     frxrprtFichaCongregado: TfrxReport;
     frxrprtBatismoAguas: TfrxReport;
     fdqryPessoas_dept: TFDQuery;
-    intgrfldPessoas_deptcod_departamento: TIntegerField;
-    fdtncfldPessoas_deptcod_dept_pessoa: TFDAutoIncField;
-    intgrfldPessoas_deptcod_pessoa: TIntegerField;
-    strngfldPessoas_deptnome_departamento: TStringField;
-    strngfldPessoas_deptnome_pessoa: TStringField;
-    lrgntfldPessoas_deptidade: TLargeintField;
     frxrprtPessoas_dept: TfrxReport;
     frxdbPessoa_dept: TfrxDBDataset;
     frxdbCongregacao: TfrxDBDataset;
@@ -140,7 +134,6 @@ type
     intgrfldCongregacaocod_cc: TIntegerField;
     strngfldCongregacaosigla: TStringField;
     strngfldCongregacaosetor: TStringField;
-    dtfldPessoas_deptdta_nascimento: TDateField;
     frxrprtDizimista: TfrxReport;
     fdqryDizimista: TFDQuery;
     fdtncfldDizimistacod_dizimo: TFDAutoIncField;
@@ -179,6 +172,17 @@ type
     lrgntfldAlunosidade: TLargeintField;
     strngfldAlunossexo: TStringField;
     frxrprt_old: TfrxReport;
+    frxrprtDizimistaDetalhe: TfrxReport;
+    frxdbDizimosTotal: TfrxDBDataset;
+    fdqryPessoas_deptcod_departamento: TIntegerField;
+    fdqryPessoas_deptcod_dept_pessoa: TIntegerField;
+    fdqryPessoas_deptcod_pessoa: TIntegerField;
+    fdqryPessoas_deptnome_departamento: TStringField;
+    fdqryPessoas_deptnome_pessoa: TStringField;
+    fdqryPessoas_deptidade: TIntegerField;
+    fdqryPessoas_deptdta_nascimento: TDateField;
+    fdqryPessoas_deptdia: TIntegerField;
+    frxrprt1: TfrxReport;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
