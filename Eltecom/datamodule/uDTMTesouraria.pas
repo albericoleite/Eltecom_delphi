@@ -87,6 +87,23 @@ type
     fltfldQuadroDizimistasDEZEMBRO: TFloatField;
     frxdbQuadroDizimistas: TfrxDBDataset;
     frxrprtDizimistasAnual: TfrxReport;
+    frxrprt1: TfrxReport;
+    frxrprtDizimistasAnualPg: TfrxReport;
+    fdqryQuadroDizimistasPg: TFDQuery;
+    frxdbQuadroDizimistaspG: TfrxDBDataset;
+    strngfldQuadroDizimistasPgnome_pessoa: TStringField;
+    strngfldQuadroDizimistasPgJANEIRO: TStringField;
+    strngfldQuadroDizimistasPgFEVEREIRO: TStringField;
+    strngfldQuadroDizimistasPgMARÇO: TStringField;
+    strngfldQuadroDizimistasPgABRIL: TStringField;
+    strngfldQuadroDizimistasPgMAIO: TStringField;
+    strngfldQuadroDizimistasPgJUNHO: TStringField;
+    strngfldQuadroDizimistasPgJULHO: TStringField;
+    strngfldQuadroDizimistasPgAGOSTO: TStringField;
+    strngfldQuadroDizimistasPgSETEMBRO: TStringField;
+    strngfldQuadroDizimistasPgOUTUBRO: TStringField;
+    strngfldQuadroDizimistasPgNOVEMBRO: TStringField;
+    strngfldQuadroDizimistasPgDEZEMBRO: TStringField;
   private
     { Private declarations }
   public

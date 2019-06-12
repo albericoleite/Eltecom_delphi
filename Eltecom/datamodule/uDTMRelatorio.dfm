@@ -24408,7 +24408,7 @@ object dtmRelatorio: TdtmRelatorio
     DataSet = frmCadDizimos.fdqryDizimosTotal
     BCDToCurrency = False
     Left = 424
-    Top = 352
+    Top = 320
   end
   object frxrprt1: TfrxReport
     Version = '5.1.5'

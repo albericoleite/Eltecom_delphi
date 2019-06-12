@@ -120,6 +120,7 @@ type
     mniImportarCadastros1: TMenuItem;
     mniRelatrios3: TMenuItem;
     acttb1: TActionToolBar;
+    mniControledeDzimo1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -160,6 +161,7 @@ type
     procedure mniRelatrios3Click(Sender: TObject);
     procedure act1Execute(Sender: TObject);
     procedure btn1Click(Sender: TObject);
+    procedure mniControledeDzimo1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -188,7 +190,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
   uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor, uImportarExportarDados, uRelatoriosFinanceiro,
-  uDTMRelatorioFinanceiro;
+  uDTMRelatorioFinanceiro, uQuadroAnual;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -309,6 +311,7 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmCadClasseProfessor, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmImportarExportarDados, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmRelatoriosFinanceiro, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmQuadroAnual, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -423,6 +426,11 @@ begin
   frmConsultaDados := nil;
   frmConsultaDados := TfrmConsultaDados.Create(self);
   frmConsultaDados.Show;
+end;
+
+procedure TfrmPrincipal.mniControledeDzimo1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmQuadroAnual, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniDepartamentoPessoas1Click(Sender: TObject);

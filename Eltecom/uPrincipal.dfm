@@ -362,10 +362,6 @@ object frmPrincipal: TfrmPrincipal
     object Financeiro: TTabSheet
       Caption = 'Financeiro'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnl6: TPanel
         Left = 0
         Top = 0
@@ -618,10 +614,6 @@ object frmPrincipal: TfrmPrincipal
     object EBD: TTabSheet
       Caption = 'EBD'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnl13: TPanel
         Left = 0
         Top = 0
@@ -783,8 +775,8 @@ object frmPrincipal: TfrmPrincipal
   object MainMenu1: TMainMenu
     BiDiMode = bdLeftToRight
     ParentBiDiMode = False
-    Left = 488
-    Top = 80
+    Left = 384
+    Top = 48
     object Cadastro1: TMenuItem
       Caption = 'Cadastro'
       object Clientes1: TMenuItem
@@ -870,7 +862,7 @@ object frmPrincipal: TfrmPrincipal
       end
     end
     object Movimentao1: TMenuItem
-      Caption = 'Financeiro'
+      Caption = 'Tesouraria'
       object EntradasSadas1: TMenuItem
         Caption = 'Entradas  |  Sa'#237'das'
         OnClick = EntradasSadas1Click
@@ -889,6 +881,10 @@ object frmPrincipal: TfrmPrincipal
       object mniRelatrios3: TMenuItem
         Caption = 'Relat'#243'rios'
         OnClick = mniRelatrios3Click
+      end
+      object mniControledeDzimo1: TMenuItem
+        Caption = 'Controle de D'#237'zimo'
+        OnClick = mniControledeDzimo1Click
       end
     end
     object Relatrios1: TMenuItem
