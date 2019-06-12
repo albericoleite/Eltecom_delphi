@@ -4,7 +4,7 @@ object frmEmitirDoc: TfrmEmitirDoc
   BorderStyle = bsSingle
   Caption = 'Cartas e Relat'#243'rios'
   ClientHeight = 277
-  ClientWidth = 565
+  ClientWidth = 568
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -25,7 +25,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     Caption = 'Digite o nome do Membro:'
   end
   object lbl3: TLabel
-    Left = 799
+    Left = 807
     Top = 8
     Width = 84
     Height = 13
@@ -39,8 +39,8 @@ object frmEmitirDoc: TfrmEmitirDoc
     Caption = 'Total: '
   end
   object lbl4: TLabel
-    Left = 567
-    Top = 4
+    Left = 577
+    Top = 8
     Width = 134
     Height = 13
     Caption = 'Informe a igreja de destino:'
@@ -105,7 +105,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     OnClick = chkMembroClick
   end
   object mmoObservacao: TMemo
-    Left = 567
+    Left = 575
     Top = 71
     Width = 332
     Height = 198
@@ -115,7 +115,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     TabOrder = 3
   end
   object chkObservacao: TCheckBox
-    Left = 567
+    Left = 575
     Top = 48
     Width = 201
     Height = 17
@@ -124,7 +124,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     OnClick = chkObservacaoClick
   end
   object dtpDocumento: TDateTimePicker
-    Left = 799
+    Left = 807
     Top = 21
     Width = 100
     Height = 21
@@ -133,7 +133,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     TabOrder = 5
   end
   object edtDestino: TEdit
-    Left = 567
+    Left = 575
     Top = 21
     Width = 218
     Height = 21

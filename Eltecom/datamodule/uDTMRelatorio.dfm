@@ -936,7 +936,7 @@ object dtmRelatorio: TdtmRelatorio
   end
   object dsBuscaPessoaRelatorio: TDataSource
     DataSet = fdqryBuscaPessoaRelatorio
-    Left = 32
+    Left = 56
     Top = 136
   end
   object frxrprtNotifOcorrencia: TfrxReport
@@ -21109,8 +21109,8 @@ object dtmRelatorio: TdtmRelatorio
       'begin'
       ''
       'end.')
-    Left = 692
-    Top = 240
+    Left = 804
+    Top = 320
     Datasets = <
       item
         DataSet = frxdbBuscaIgreja
@@ -24425,8 +24425,8 @@ object dtmRelatorio: TdtmRelatorio
       'begin'
       ''
       'end.')
-    Left = 560
-    Top = 405
+    Left = 816
+    Top = 413
     Datasets = <
       item
         DataSet = frxdbDBAniversariantes

@@ -11,6 +11,7 @@ uses System.Classes, Vcl.Controls,
  private
   function  CampoExisteNaTabela(aNomeTabela, aCampo:string):Boolean;
   procedure versao1;
+    function ViewExiste(aNomeView: string): Boolean;
   protected
 
   public
@@ -39,6 +40,31 @@ begin
     '   AND TABLE_NAME  = :NomeTabela');
     Qry.ParamByName('NomeTabela').AsString := aNomeTabela;
     Qry.ParamByName('Campo').AsString := aCampo;
+    Qry.Open;
+
+    if Qry.FieldByName('ID').AsInteger>0 then
+     Result := True;
+
+  finally
+    Qry.Close;
+    if Assigned(Qry) then
+      FreeAndNil(Qry)
+  end;
+end;
+
+function TAtualizacaoCampoMySQL.ViewExiste(aNomeView :string): Boolean;
+var
+  Qry: TFDQuery;
+begin
+  try
+    Result := False;
+    Qry := TFDQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('SELECT COUNT(*)as ID     FROM INFORMATION_SCHEMA.VIEWS  '+
+     ' where TABLE_NAME = :view');
+    Qry.ParamByName('view').AsString := aNomeView;
+
     Qry.Open;
 
     if Qry.FieldByName('ID').AsInteger>0 then
@@ -81,6 +107,32 @@ begin
   if not CampoExisteNaTabela('tb_congregacao','cod_dirigente') then
  begin
    ExecutaDiretoBancoDeDados('ALTER TABLE tb_congregacao ADD cod_dirigente int(11) NULL;');
+ end;
+
+   if not ViewExiste('v_dizimista_total_mes_ano') then
+ begin
+   ExecutaDiretoBancoDeDados('create  or replace view '+
+   ' `v_dizimista_total_mes_ano` as select   '+
+    ' `x`.`nome` as `nome`,      '+
+   '  sum(`x`.`valor`) as `valor`,   '+
+   '  `x`.`nro_mes` as `nro_mes`,   '+
+   '  `x`.`ano` as `ano`          '+
+    ' from                            '+
+   ' (  '+
+    '     select `igreja`.`tb_dizimista`.`nome` as `nome`,   '+
+     '   `igreja`.`tb_dizimista`.`data` as `data`,       '+
+     '   `igreja`.`tb_dizimista`.`valor` as `valor`,        '+
+     '   month(`igreja`.`tb_dizimista`.`data`) as `nro_mes`,  '+
+     '   year(`igreja`.`tb_dizimista`.`data`) as `ano`    '+
+   ' from                          '+
+   '     `igreja`.`tb_dizimista`) `x`   '+
+   ' group by           '+
+   ' `x`.`nome`,      '+
+   ' `x`.`nro_mes`,   '+
+   ' `x`.`ano`       '+
+  ' order by            '+
+   ' `x`.`nome`,     '+
+   ' `x`.`nro_mes`');
  end;
 
   {  //Adicionar código da congregação no recibo

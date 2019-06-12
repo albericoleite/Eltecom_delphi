@@ -71,6 +71,22 @@ type
     frxdbdtstTes_valores: TfrxDBDataset;
     fdqryTotalLancamentos: TFDQuery;
     fltfldTes_Entrada_Totaltotal: TFloatField;
+    fdqryQuadroDizimistas: TFDQuery;
+    strngfldQuadroDizimistasnome_pessoa: TStringField;
+    fltfldQuadroDizimistasJANEIRO: TFloatField;
+    fltfldQuadroDizimistasFEVEREIRO: TFloatField;
+    fltfldQuadroDizimistasMARÇO: TFloatField;
+    fltfldQuadroDizimistasABRIL: TFloatField;
+    fltfldQuadroDizimistasMAIO: TFloatField;
+    fltfldQuadroDizimistasJUNHO: TFloatField;
+    fltfldQuadroDizimistasJULHO: TFloatField;
+    fltfldQuadroDizimistasAGOSTO: TFloatField;
+    fltfldQuadroDizimistasSETEMBRO: TFloatField;
+    fltfldQuadroDizimistasOUTUBRO: TFloatField;
+    fltfldQuadroDizimistasNOVEMBRO: TFloatField;
+    fltfldQuadroDizimistasDEZEMBRO: TFloatField;
+    frxdbQuadroDizimistas: TfrxDBDataset;
+    frxrprtDizimistasAnual: TfrxReport;
   private
     { Private declarations }
   public
