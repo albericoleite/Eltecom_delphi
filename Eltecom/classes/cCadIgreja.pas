@@ -26,7 +26,7 @@ F_fone:string;
 F_percentual_ajuste:Integer;
 F_sistema:Integer;
 F_situacao:Integer;
-F_foto:TImage;
+//F_foto:TImage;
 
 
 public
@@ -59,7 +59,7 @@ property fone:string                    read F_fone               write F_fone;
 property percentual_ajuste:integer      read F_percentual_ajuste      write F_percentual_ajuste;
 property sistema:integer                read F_sistema            write F_sistema;
 property situacao:integer               read F_situacao           write F_situacao;
-property foto:TImage                    read F_foto               write F_foto;
+//property foto:TImage                    read F_foto               write F_foto;
 end;
 
 
@@ -134,7 +134,7 @@ begin
         ', bairro=:bairro '+
         ', uf=:uf '+
         ', fone=:fone '+
-        'percentual_ajuste=:percentual_ajuste '+
+        ',percentual_ajuste=:percentual_ajuste '+
         ', sistema=:sistema '+
         ', situacao=:situacao '+
         ' WHERE cod_igreja=:cod_igreja');
@@ -144,16 +144,17 @@ begin
        Qry.ParamByName('nome_presidente').AsString:=F_nome_presidente;
        Qry.ParamByName('dta_inclusao').AsDateTime :=F_dta_inclusao;
        Qry.ParamByName('sigla_igreja').AsString:=F_sigla_igreja;
-       Qry.ParamByName('site').AsString:=F_sigla_igreja;
-       Qry.ParamByName('email').AsString:=F_sigla_igreja;
-       Qry.ParamByName('cnpj').AsString:=F_sigla_igreja;
-       Qry.ParamByName('logradouro').AsString:=F_sigla_igreja;
-       Qry.ParamByName('bairro').AsString:=F_sigla_igreja;
-       Qry.ParamByName('uf').AsString:=F_sigla_igreja;
-       Qry.ParamByName('fone').AsString:=F_sigla_igreja;
-       Qry.ParamByName('percentual_ajuste').AsString:=F_sigla_igreja;
-       Qry.ParamByName('sistema').AsString:=F_sigla_igreja;
-       Qry.ParamByName('situacao').AsString:=F_sigla_igreja;
+       Qry.ParamByName('site').AsString:=F_site;
+       Qry.ParamByName('email').AsString:=F_email;
+       Qry.ParamByName('cnpj').AsString:=F_cnpj;
+       Qry.ParamByName('logradouro').AsString:=F_logradouro;
+       Qry.ParamByName('bairro').AsString:=F_bairro;
+       Qry.ParamByName('uf').AsString:=F_uf;
+       Qry.ParamByName('fone').AsString:=F_fone;
+       Qry.ParamByName('percentual_ajuste').AsInteger:=F_percentual_ajuste;
+       Qry.ParamByName('sistema').AsInteger:=F_sistema;
+       Qry.ParamByName('situacao').AsInteger:=F_situacao;
+       Qry.ParamByName('cidade').AsString:=F_cidade;
        try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -196,6 +197,7 @@ begin
        Qry.ParamByName('percentual_ajuste').AsString:=F_sigla_igreja;
        Qry.ParamByName('sistema').AsString:=F_sigla_igreja;
        Qry.ParamByName('situacao').AsString:=F_sigla_igreja;
+       Qry.ParamByName('cidade').AsString:=F_cidade;
        try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;

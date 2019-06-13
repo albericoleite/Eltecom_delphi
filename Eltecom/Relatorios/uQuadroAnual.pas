@@ -47,7 +47,7 @@ uses
 procedure TfrmQuadroAnual.btnImprimirClick(Sender: TObject);
 begin
 
-if rbNormal.Checked = true then   begin
+if rbValor.Checked = true then   begin
 dtmTesouraria.fdqryQuadroDizimistas.Close;
   dtmTesouraria.fdqryQuadroDizimistas.ParamByName('ano').AsInteger := dblkcbbAnos.KeyValue;
   dtmTesouraria.fdqryQuadroDizimistas.Open;
@@ -60,7 +60,7 @@ dtmTesouraria.fdqryQuadroDizimistas.Close;
     dtmTesouraria.frxrprtDizimistasAnual.ShowReport();
 end;
 
-if rbValor.Checked = true then   begin
+if rbNormal.Checked = true then   begin
 dtmTesouraria.fdqryQuadroDizimistasPg.Close;
   dtmTesouraria.fdqryQuadroDizimistasPg.ParamByName('ano').AsInteger := dblkcbbAnos.KeyValue;
   dtmTesouraria.fdqryQuadroDizimistasPg.Open;

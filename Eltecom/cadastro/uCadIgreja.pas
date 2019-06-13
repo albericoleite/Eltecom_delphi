@@ -44,9 +44,6 @@ type
     lbledtPercAjuste: TLabeledEdit;
     pnlImage: TPanel;
     imgFoto: TImage;
-    pmFoto: TPopupMenu;
-    CarregarImagem1: TMenuItem;
-    LimparImagem1: TMenuItem;
     dlgOpenPicBuscarFoto: TOpenPictureDialog;
     procedure btnAlterarClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -90,6 +87,16 @@ begin
        else
        oIgreja.cod_igreja:=0;
        oIgreja.nome_igreja:=lbledtNome.Text;
+       oIgreja.sigla_igreja := lbledtSigla.Text;
+       oIgreja.nome_presidente:= lbledtPresidente.Text;
+       oIgreja.site:= lbledtSite.Text;
+       oIgreja.logradouro:= lbledtLogradouro.Text;
+       oIgreja.bairro:= lbledtBairro.Text;
+       oIgreja.percentual_ajuste:= StrToInt( lbledtPercAjuste.Text);
+       oIgreja.cidade := lbledtCidade.Text;
+       oIgreja.email := lbledtEmail.Text;
+       oIgreja.cnpj:= lbledtCNPJ.Text;
+
 
     if (EstadodoCadastro=ecInserir) then
     Result:=oIgreja.Inserir
@@ -101,6 +108,7 @@ procedure TfrmCadIgreja.imgFotoDblClick(Sender: TObject);
 var jpg : TJPEGImage;
 begin
   inherited;
+
 if dlgOpenPicBuscarFoto.Execute then
 begin
 try
@@ -109,6 +117,7 @@ try
   // dtmcon.fdqryMembroFOTO.
   blbfldQryListagemfoto.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
   //dtmcon.fdqryMembroFOTO.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
+  Jpg.CompressionQuality :=7;
   jpg.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
   imgFoto.Picture.Assign(jpg);
   jpg.Free;
@@ -136,6 +145,8 @@ begin
     lbledtLogradouro.Text := oIgreja.logradouro;
     lbledtSite.Text       := oIgreja.site;
     lbledtSigla.Text      := oIgreja.sigla_igreja;
+    lbledtPercAjuste.Text :=oIgreja.percentual_ajuste.ToString();
+    lbledtCNPJ.Text       := oIgreja.cnpj;
     end
   else
   begin

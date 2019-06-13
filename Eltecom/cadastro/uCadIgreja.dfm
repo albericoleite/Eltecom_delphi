@@ -424,12 +424,11 @@ inherited frmCadIgreja: TfrmCadIgreja
             0000000000000000000000000000000000000000000000000000000000000000
             0000000000000000000000000000000000000000000000000000000000000000
             00000000000000000000000000000000000007FFD9}
-          PopupMenu = pmFoto
           Proportional = True
-          ShowHint = True
-          Stretch = True
+          ShowHint = False
           OnDblClick = imgFotoDblClick
-          ExplicitWidth = 128
+          ExplicitLeft = 0
+          ExplicitTop = 0
         end
       end
     end
@@ -573,17 +572,6 @@ inherited frmCadIgreja: TfrmCadIgreja
     OnDataChange = dtsListagemDataChange
     Left = 160
     Top = 0
-  end
-  object pmFoto: TPopupMenu
-    Left = 640
-    Top = 56
-    object CarregarImagem1: TMenuItem
-      Caption = 'Carregar Imagem'
-      OnClick = CarregarImagem1Click
-    end
-    object LimparImagem1: TMenuItem
-      Caption = 'Limpar Imagem'
-    end
   end
   object dlgOpenPicBuscarFoto: TOpenPictureDialog
     Filter = 

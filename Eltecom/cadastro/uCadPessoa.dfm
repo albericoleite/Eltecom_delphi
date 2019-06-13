@@ -2,7 +2,6 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 486
   ClientWidth = 956
-  ExplicitTop = -107
   ExplicitWidth = 962
   ExplicitHeight = 515
   PixelsPerInch = 96
@@ -1051,7 +1050,6 @@ inherited frmCadPessoa: TfrmCadPessoa
             0000000000000000000000000000000000000000000000000000000000000000
             0000000000000000000000000000000000000000000000000000000000000000
             00000000000000000000000000000000000007FFD9}
-          PopupMenu = pmImagem
           Proportional = True
           OnDblClick = imgFotoDblClick
           ExplicitLeft = 8
@@ -1424,24 +1422,12 @@ inherited frmCadPessoa: TfrmCadPessoa
     OnDataChange = dtsListagemDataChange
     Left = 496
   end
-  object pmImagem: TPopupMenu
-    Left = 856
-    Top = 64
-    object mniCarregarImagem1: TMenuItem
-      Caption = 'Carregar Imagem'
-      OnClick = mniCarregarImagem1Click
-    end
-    object mniLimparImagem1: TMenuItem
-      Caption = 'Limpar Imagem'
-      OnClick = mniLimparImagem1Click
-    end
-  end
   object dlgOpenPicBuscarFoto: TOpenPictureDialog
     Filter = 
       'Arquivo de Imagem JPG (*.jpeg)|*.jpeg|Arquivo de Imagem JPG (*.j' +
       'pg)|*.jpg'
     Title = 'Escolha a Imagem da Igreja'
-    Left = 853
-    Top = 240
+    Left = 864
+    Top = 200
   end
 end

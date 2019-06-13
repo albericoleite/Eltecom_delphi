@@ -88,9 +88,6 @@ type
     medtTeltrabalho: TMaskEdit;
     pnlImagem: TPanel;
     imgFoto: TImage;
-    pmImagem: TPopupMenu;
-    mniCarregarImagem1: TMenuItem;
-    mniLimparImagem1: TMenuItem;
     QryListagemcod_pessoa: TFDAutoIncField;
     QryListagemnome_pessoa: TStringField;
     QryListagemfoto: TBlobField;
