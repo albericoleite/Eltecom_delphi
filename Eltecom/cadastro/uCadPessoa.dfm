@@ -2,6 +2,7 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 486
   ClientWidth = 956
+  ExplicitTop = -54
   ExplicitWidth = 962
   ExplicitHeight = 515
   PixelsPerInch = 96
@@ -163,6 +164,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Top = 20
         Width = 34
         Height = 21
+        CharCase = ecUpperCase
         ItemIndex = 0
         TabOrder = 3
         Text = 'M'
@@ -1426,8 +1428,8 @@ inherited frmCadPessoa: TfrmCadPessoa
     Filter = 
       'Arquivo de Imagem JPG (*.jpeg)|*.jpeg|Arquivo de Imagem JPG (*.j' +
       'pg)|*.jpg'
-    Title = 'Escolha a Imagem da Igreja'
-    Left = 864
-    Top = 200
+    Title = 'Escolha a Imagem da Pessoa'
+    Left = 856
+    Top = 216
   end
 end

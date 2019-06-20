@@ -1,29 +1,29 @@
 inherited frmCadIgreja: TfrmCadIgreja
   Caption = 'Cadastro de Igreja'
-  ClientHeight = 269
-  ClientWidth = 769
-  ExplicitWidth = 775
-  ExplicitHeight = 298
+  ClientHeight = 266
+  ClientWidth = 779
+  ExplicitWidth = 785
+  ExplicitHeight = 295
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    Width = 769
-    Height = 231
+    Width = 779
+    Height = 228
     ActivePage = tabManutencao
-    ExplicitWidth = 769
-    ExplicitHeight = 231
+    ExplicitWidth = 779
+    ExplicitHeight = 228
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 761
-      ExplicitHeight = 203
+      ExplicitWidth = 727
+      ExplicitHeight = 200
       inherited pnlListagem: TPanel
-        Width = 761
-        ExplicitWidth = 761
+        Width = 771
+        ExplicitWidth = 727
       end
       inherited grdListagem: TDBGrid
-        Width = 761
-        Height = 138
+        Width = 771
+        Height = 135
         DataSource = dtsListagem
         Columns = <
           item
@@ -60,8 +60,8 @@ inherited frmCadIgreja: TfrmCadIgreja
     inherited tabManutencao: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 761
-      ExplicitHeight = 203
+      ExplicitWidth = 771
+      ExplicitHeight = 200
       object lbledtNome: TLabeledEdit
         Tag = 2
         Left = 55
@@ -434,10 +434,10 @@ inherited frmCadIgreja: TfrmCadIgreja
     end
   end
   inherited pnlRodape: TPanel
-    Top = 231
-    Width = 769
-    ExplicitTop = 231
-    ExplicitWidth = 769
+    Top = 228
+    Width = 779
+    ExplicitTop = 228
+    ExplicitWidth = 779
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
     end
@@ -448,8 +448,8 @@ inherited frmCadIgreja: TfrmCadIgreja
       Visible = False
     end
     inherited btnFechar: TBitBtn
-      Left = 677
-      ExplicitLeft = 677
+      Left = 687
+      ExplicitLeft = 687
     end
   end
   inherited QryListagem: TFDQuery
@@ -552,7 +552,7 @@ inherited frmCadIgreja: TfrmCadIgreja
       Origin = 'fone'
       Size = 25
     end
-    object blbfldQryListagemfoto: TBlobField
+    object QryListagemfoto: TBlobField
       AutoGenerateValue = arDefault
       FieldName = 'foto'
       Origin = 'foto'
@@ -575,8 +575,8 @@ inherited frmCadIgreja: TfrmCadIgreja
   end
   object dlgOpenPicBuscarFoto: TOpenPictureDialog
     Filter = 
-      'Arquivo de Imagem JPG (*.jpeg)|*.jpeg|Arquivo de Imagem JPG (*.j' +
-      'pg)|*.jpg'
+      'Arquivo de Imagem JPG (*.jpg)|*.jpg|Arquivo de Imagem JPEG (*.jp' +
+      'eg)|*.jpeg'
     Title = 'Escolha a Imagem da Igreja'
     Left = 517
     Top = 144

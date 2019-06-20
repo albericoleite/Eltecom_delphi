@@ -76,6 +76,7 @@ type
 
 var
   frmCadDizimos: TfrmCadDizimos;
+  dtai,dtaf : TDateTime;
 
 implementation
 
@@ -195,6 +196,8 @@ end;
 
 function TfrmCadDizimos.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
 begin
+dtai :=dtdtIni.Date;
+dtaf := dtdtFim.Date;
     if lbledtCodDizimo.Text<>EmptyStr then
        oDizimo.cod_dizimo:=StrToInt(lbledtCodDizimo.Text)
        else
@@ -211,6 +214,8 @@ begin
     else if (EstadodoCadastro=ecAlterar) then
      Result:=oDizimo.Atualizar;
 
+     dtdtIni.Date :=dtai ;
+     dtdtFim.Date :=dtaf;
 end;
 
 procedure TfrmCadDizimos.lbledtNomeChange(Sender: TObject);

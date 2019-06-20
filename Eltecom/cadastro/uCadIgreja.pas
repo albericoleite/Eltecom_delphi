@@ -30,7 +30,7 @@ type
     strngfldQryListagembairro: TStringField;
     strngfldQryListagemuf: TStringField;
     strngfldQryListagemfone: TStringField;
-    blbfldQryListagemfoto: TBlobField;
+    QryListagemfoto: TBlobField;
     intgrfldQryListagempercentual_ajuste: TIntegerField;
     intgrfldQryListagemsistema: TIntegerField;
     lbledtCidade: TLabeledEdit;
@@ -49,7 +49,6 @@ type
     procedure btnNovoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
-    procedure btnGravarClick(Sender: TObject);
     procedure CarregarImagem1Click(Sender: TObject);
     procedure imgFotoDblClick(Sender: TObject);
     procedure dtsListagemDataChange(Sender: TObject; Field: TField);
@@ -108,16 +107,15 @@ procedure TfrmCadIgreja.imgFotoDblClick(Sender: TObject);
 var jpg : TJPEGImage;
 begin
   inherited;
-
 if dlgOpenPicBuscarFoto.Execute then
 begin
 try
   dtsListagem.Edit;
   jpg:= TJPEGImage.Create;
   // dtmcon.fdqryMembroFOTO.
-  blbfldQryListagemfoto.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
+  QryListagemfoto.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
   //dtmcon.fdqryMembroFOTO.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
-  Jpg.CompressionQuality :=7;
+  //jpg.CompressionQuality :=7;
   jpg.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
   imgFoto.Picture.Assign(jpg);
   jpg.Free;
@@ -155,13 +153,6 @@ begin
   end;
   inherited;
 
-end;
-
-procedure TfrmCadIgreja.btnGravarClick(Sender: TObject);
-begin
-  inherited;
-//TODO:INSERIR IMAGEM LOGO DA IGREJA PARA SAIR NOS RELATÓRIOS,CRIAR TRATAMENTO CASO NULL
-// NÃO DAR ERRO
 end;
 
 procedure TfrmCadIgreja.btnNovoClick(Sender: TObject);
@@ -204,14 +195,14 @@ caminho: AnsiString;
 //ARQUIVO BINARIOS AUDIO, VIDEO E FOTOS
 begin
   inherited;
-  if not blbfldQryListagemfoto.IsNull then
+  if not QryListagemfoto.IsNull then
    BEGIN
    try
   // ALOCANDO ESPAÇO NA MEMORIA RAM
   jpg1:= TJPEGImage.Create;
   stream:= TMemoryStream.Create;
   //CARREGANDO A IMAGEM PARA A MEMORIA RAM
-  blbfldQryListagemfoto.SaveToStream(stream);
+  QryListagemfoto.SaveToStream(stream);
   //VOLTANDO O PONTEIRO PARA O INICIO DOS DADOS
   stream.Seek(0, soFromBeginning);
   //GRANDO A INFORMAÇÃO NA JPG

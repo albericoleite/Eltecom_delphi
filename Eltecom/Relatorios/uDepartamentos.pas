@@ -33,7 +33,7 @@ uses
   uDTMRelatorio, uDTMConexao;
 
 {$R *.dfm}
-                 //TODO: ERRO DE FOTO NO RELATÓRIO    , ORDERNAR POR DIA DE ANIVER,E NOME
+
 procedure TfrmRelDept.dblkcbbDepartamentosClick(Sender: TObject);
 begin
 

@@ -71,7 +71,8 @@ uses
   uCadClasseProfessor in 'cadastro\uCadClasseProfessor.pas' {frmCadClasseProfessor},
   uImportarExportarDados in 'login\uImportarExportarDados.pas' {frmImportarExportarDados},
   uRelatoriosFinanceiro in 'Relatorios\uRelatoriosFinanceiro.pas' {frmRelatoriosFinanceiro},
-  uDTMRelatorioFinanceiro in 'datamodule\uDTMRelatorioFinanceiro.pas' {dtmRelatorioFinanceiro: TDataModule};
+  uDTMRelatorioFinanceiro in 'datamodule\uDTMRelatorioFinanceiro.pas' {dtmRelatorioFinanceiro: TDataModule},
+  uQuadroAnual in 'Relatorios\uQuadroAnual.pas' {frmQuadroAnual};
 
 {$R *.res}
 

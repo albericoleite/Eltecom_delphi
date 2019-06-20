@@ -252,6 +252,7 @@ try
   // dtmcon.fdqryMembroFOTO.
   QryListagemfoto.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
   //dtmcon.fdqryMembroFOTO.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
+  jpg.CompressionQuality :=7;
   jpg.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
   imgFoto.Picture.Assign(jpg);
   jpg.Free;

@@ -19,11 +19,13 @@ object frmQuadroAnual: TfrmQuadroAnual
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
-    Left = 24
-    Top = 8
-    Width = 211
-    Height = 19
-    Caption = 'Quadro Anual de Dimistas'
+    Left = 0
+    Top = 0
+    Width = 262
+    Height = 17
+    Align = alTop
+    Alignment = taCenter
+    Caption = 'Quadro Anual de Dizimistas'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16

@@ -11,7 +11,7 @@
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42225.645197615700000000
-    ReportOptions.LastChange = 42864.813471666690000000
+    ReportOptions.LastChange = 42864.813471666700000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -303,7 +303,7 @@
             end>
         end
         object Memo22: TfrxMemoView
-          Top = 49.133889999999990000
+          Top = 49.133890000000000000
           Width = 763.465060000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -397,12 +397,12 @@
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
-        Height = 83.149660000000000000
+        Height = 257.008040000000000000
         Top = 238.110390000000000000
         Width = 718.110700000000000000
         object Memo11: TfrxMemoView
           Left = 559.370440000000000000
-          Top = 1.779529999999994000
+          Top = 1.779529999999990000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DisplayFormat.FormatStr = '%2.2m'
@@ -422,7 +422,7 @@
         end
         object Memo12: TfrxMemoView
           Left = 638.740570000000000000
-          Top = 1.779529999999994000
+          Top = 1.779529999999990000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -442,7 +442,7 @@
         end
         object Memo16: TfrxMemoView
           Left = 222.992270000000000000
-          Top = 64.252009999999990000
+          Top = 64.252010000000000000
           Width = 381.732530000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -458,7 +458,7 @@
         end
         object Memo20: TfrxMemoView
           Left = 604.724800000000000000
-          Top = 64.252009999999990000
+          Top = 64.252010000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -485,7 +485,7 @@
         object Memo63: TfrxMemoView
           Align = baCenter
           Left = 111.496135000000000000
-          Top = 30.236240000000010000
+          Top = 30.236240000000000000
           Width = 495.118430000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -503,7 +503,7 @@
         end
         object Memo21: TfrxMemoView
           Left = 340.157700000000000000
-          Top = 2.559059999999988000
+          Top = 2.559059999999990000
           Width = 215.433210000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -516,14 +516,8 @@
           ParentFont = False
           VAlign = vaCenter
         end
-      end
-      object PageFooter1: TfrxPageFooter
-        FillType = ftBrush
-        Height = 124.724490000000000000
-        Top = 381.732530000000000000
-        Width = 718.110700000000000000
         object Memo70: TfrxMemoView
-          Top = 68.031540000000010000
+          Top = 162.519790000000000000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -539,7 +533,7 @@
         end
         object Memo71: TfrxMemoView
           Left = 249.448980000000000000
-          Top = 68.031540000000010000
+          Top = 162.519790000000000000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -555,7 +549,7 @@
         end
         object Memo72: TfrxMemoView
           Left = 498.897960000000000000
-          Top = 68.031540000000010000
+          Top = 162.519790000000000000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -572,7 +566,7 @@
         object Memo73: TfrxMemoView
           Align = baCenter
           Left = 105.826840000000000000
-          Top = 94.488250000000000000
+          Top = 188.976500000000000000
           Width = 506.457020000000000000
           Height = 30.236240000000000000
           Font.Charset = DEFAULT_CHARSET

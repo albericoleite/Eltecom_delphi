@@ -24,8 +24,6 @@ object frmLogin: TfrmLogin
     Height = 214
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 429
-    ExplicitHeight = 220
     object lbl1: TLabel
       Left = 32
       Top = 75
@@ -466,8 +464,8 @@ object frmLogin: TfrmLogin
       Text = 'admin'
     end
     object btnSair: TBitBtn
-      Left = 143
-      Top = 160
+      Left = 431
+      Top = 12
       Width = 90
       Height = 25
       Caption = 'Sair'
@@ -499,11 +497,12 @@ object frmLogin: TfrmLogin
         D363C4D7244E6EFF00FFFF00FF244E6E244E6E244E6E244E6E244E6E244E6E24
         4E6E244E6E244E6E244E6E244E6E244E6E244E6E244E6EFF00FF}
       TabOrder = 3
+      Visible = False
       OnClick = btnSairClick
     end
     object btnEntrar: TBitBtn
-      Left = 32
-      Top = 160
+      Left = 320
+      Top = 12
       Width = 90
       Height = 25
       Caption = 'Acessar'
@@ -535,7 +534,26 @@ object frmLogin: TfrmLogin
         75C3C7C4FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBACEC089DBA268DB8959
         D97851D46F55CE7371C986AFC6B3FF00FFFF00FFFF00FFFF00FF}
       TabOrder = 2
+      Visible = False
       OnClick = btnEntrarClick
+    end
+    object sbtbtn1: TsBitBtn
+      Left = 32
+      Top = 151
+      Width = 90
+      Height = 27
+      Caption = 'Acessar'
+      TabOrder = 4
+      OnClick = sbtbtn1Click
+    end
+    object sbtbtn2: TsBitBtn
+      Left = 143
+      Top = 151
+      Width = 90
+      Height = 27
+      Caption = 'Sair'
+      TabOrder = 5
+      OnClick = sbtbtn2Click
     end
   end
 end

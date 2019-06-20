@@ -11,7 +11,8 @@ uses
   VclTee.Series, Vcl.Tabs, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids,
   Vcl.RibbonLunaStyleActnCtrls, Vcl.Ribbon, Vcl.ToolWin, Vcl.ActnMan,
   Vcl.ActnCtrls, System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
-  Vcl.ImgList, Vcl.ActnMenus, Vcl.RibbonActnMenus, Vcl.Buttons;
+  Vcl.ImgList, Vcl.ActnMenus, Vcl.RibbonActnMenus, Vcl.Buttons, sSkinManager,
+  Vcl.Imaging.jpeg, sButton, sBitBtn;
 
 type
   TfrmPrincipal = class(TForm)
@@ -81,9 +82,6 @@ type
     pnlEsquerda: TPanel;
     spl1: TSplitter;
     pnl1: TPanel;
-    dbchtPessoas: TDBChart;
-    brsrsSeries1: TBarSeries;
-    psrsSeries1: TPieSeries;
     pnl4: TPanel;
     pnl6: TPanel;
     spl4: TSplitter;
@@ -119,8 +117,11 @@ type
     dbgrd1: TDBGrid;
     mniImportarCadastros1: TMenuItem;
     mniRelatrios3: TMenuItem;
-    acttb1: TActionToolBar;
     mniControledeDzimo1: TMenuItem;
+    dbchtPessoas: TDBChart;
+    brsrsSeries1: TBarSeries;
+    psrsSeries1: TPieSeries;
+    img1: TImage;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);

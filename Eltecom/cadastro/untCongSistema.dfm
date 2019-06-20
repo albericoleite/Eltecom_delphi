@@ -1,6 +1,7 @@
 object frmCongSistema: TfrmCongSistema
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Congrega'#231#227'o do Sistema'
   ClientHeight = 130

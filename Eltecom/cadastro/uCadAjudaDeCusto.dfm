@@ -5,6 +5,7 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
@@ -186,6 +187,13 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
         Height = 13
         Caption = 'Valor'
       end
+      object lbl4: TLabel
+        Left = 596
+        Top = 5
+        Width = 47
+        Height = 13
+        Caption = 'Opera'#231#227'o'
+      end
       object lbledtCodDizimo: TLabeledEdit
         Tag = 1
         Left = 8
@@ -236,7 +244,7 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
         EditLabel.Height = 13
         EditLabel.Caption = 'Endere'#231'o'
         MaxLength = 45
-        TabOrder = 5
+        TabOrder = 6
       end
       object lbledtBairro: TLabeledEdit
         Tag = 2
@@ -249,7 +257,7 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
         EditLabel.Height = 13
         EditLabel.Caption = 'Bairro'
         MaxLength = 45
-        TabOrder = 6
+        TabOrder = 7
       end
       object lbledtCidade: TLabeledEdit
         Tag = 2
@@ -262,7 +270,7 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
         EditLabel.Height = 13
         EditLabel.Caption = 'Cidade'
         MaxLength = 45
-        TabOrder = 7
+        TabOrder = 8
       end
       object cbbUF: TComboBox
         Tag = 2
@@ -271,7 +279,7 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
         Width = 44
         Height = 21
         ItemIndex = 19
-        TabOrder = 8
+        TabOrder = 9
         Text = 'RN'
         Items.Strings = (
           'AC'
@@ -319,6 +327,17 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
         Height = 21
         DisplayFormat = '0.00;-0.00'
         TabOrder = 3
+      end
+      object dblkcbbOperacao: TDBLookupComboBox
+        Left = 596
+        Top = 20
+        Width = 145
+        Height = 21
+        KeyField = 'id_tipo'
+        ListField = 'desc_tipo'
+        ListFieldIndex = 1
+        ListSource = dsOperacao
+        TabOrder = 5
       end
     end
   end
@@ -414,5 +433,29 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
   inherited dtsListagem: TDataSource
     Left = 424
     Top = 40
+  end
+  object fdqryOperacao: TFDQuery
+    Active = True
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'select * from tb_recibo_tipo')
+    Left = 688
+    Top = 128
+    object fdtncfldOperacaoid_tipo: TFDAutoIncField
+      FieldName = 'id_tipo'
+      Origin = 'id_tipo'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object strngfldOperacaodesc_tipo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'desc_tipo'
+      Origin = 'desc_tipo'
+      Size = 45
+    end
+  end
+  object dsOperacao: TDataSource
+    DataSet = fdqryOperacao
+    Left = 392
+    Top = 232
   end
 end

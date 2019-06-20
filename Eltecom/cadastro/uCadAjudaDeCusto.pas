@@ -38,6 +38,12 @@ type
     crncydtValor: TCurrencyEdit;
     lbl3: TLabel;
     btnImprimir: TBitBtn;
+    lbl4: TLabel;
+    fdqryOperacao: TFDQuery;
+    fdtncfldOperacaoid_tipo: TFDAutoIncField;
+    strngfldOperacaodesc_tipo: TStringField;
+    dsOperacao: TDataSource;
+    dblkcbbOperacao: TDBLookupComboBox;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -278,12 +284,14 @@ procedure TfrmCadAjudaDeCusto.btnNovoClick(Sender: TObject);
 begin
   inherited;
 lbledtDescricao.SetFocus;
+dtdtData.Date:=Date;
 end;
 
 procedure TfrmCadAjudaDeCusto.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
+   fdqryOperacao.Close;
 if Assigned(oRecibo) then
     FreeAndNil(oRecibo);
 end;
@@ -293,7 +301,8 @@ begin
   inherited;
    oRecibo:= TRecibo.Create(dtmPrincipal.ConexaoDB);
    IndiceAtual:='cod_recibo';
-   dtdtData.Date:=Now;
+   dtdtData.Date:=Date;
+   fdqryOperacao.Open;
 
 end;
 
@@ -305,7 +314,7 @@ begin
        else
        oRecibo.cod_recibo :=0;
        oRecibo.cod_congregacao:=dtmPrincipal.congAtiva;
-       //oRecibo.cod_talao := StrToInt(lbledtCodtalao.Text);
+       oRecibo.cod_operacao:=  dblkcbbOperacao.KeyValue;
        //oRecibo.cod_cheque:= StrToInt(lbledtCodCheque.Text);
        oRecibo.descricao:=lbledtDescricao.Text;
        oRecibo.valor := StrToFloat(crncydtValor.Text);
