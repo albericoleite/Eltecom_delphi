@@ -94,6 +94,7 @@ if oRecibo.Selecionar(QryListagem.FieldByName('cod_recibo').AsInteger) then
     lbledtBairro.Text := oRecibo.bairro;
     cbbUF.Text := oRecibo.uf;
     medtCPF.Text:=oRecibo.cpf;
+    dblkcbbOperacao.KeyValue :=oRecibo.cod_operacao;
     //lbledtUF.Text := oRecibo.descricao;
     //lbledtDescricao.Text := oRecibo.descricao;
 

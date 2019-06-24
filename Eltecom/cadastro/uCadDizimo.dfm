@@ -2,7 +2,6 @@ inherited frmCadDizimos: TfrmCadDizimos
   Caption = 'Cadastro de Dizimos'
   ClientWidth = 829
   ExplicitWidth = 835
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -360,7 +359,6 @@ inherited frmCadDizimos: TfrmCadDizimos
     end
   end
   inherited QryListagem: TFDQuery
-    Active = True
     SQL.Strings = (
       
         'SELECT t.cod_dizimo, t.cod_talao, t.cod_cheque, t.nome, t.valor,' +
@@ -379,13 +377,13 @@ inherited frmCadDizimos: TfrmCadDizimos
     ParamData = <
       item
         Name = 'DTINI'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43466d
       end
       item
         Name = 'DTFIM'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43800d
       end>

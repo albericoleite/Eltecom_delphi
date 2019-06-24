@@ -70,8 +70,6 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
     Height = 201
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 215
-    ExplicitWidth = 232
     object btnSemana: TBitBtn
       Left = 8
       Top = 8
@@ -79,6 +77,15 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
       Height = 25
       Caption = 'Semanal'
       TabOrder = 0
+      OnClick = btnSemanaClick
+    end
+    object btngGravicoMensal: TBitBtn
+      Left = 6
+      Top = 39
+      Width = 91
+      Height = 25
+      Caption = 'Gr'#225'fico Mensal'
+      TabOrder = 1
       OnClick = btnSemanaClick
     end
   end

@@ -407,6 +407,20 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         ListSource = dsDirigente
         TabOrder = 2
       end
+      object lbledtCodCc: TLabeledEdit
+        Left = 279
+        Top = 161
+        Width = 65
+        Height = 21
+        EditLabel.Width = 105
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Cod. Centro de Custo'
+        MaxLength = 10
+        NumbersOnly = True
+        TabOrder = 9
+        Text = '00000'
+        OnExit = lbledtCodCcExit
+      end
     end
   end
   inherited pnlRodape: TPanel
@@ -418,6 +432,10 @@ inherited frmCadCongregacao: TfrmCadCongregacao
       Left = 413
       Hints.Strings = ()
       ExplicitLeft = 413
+    end
+    inherited btnAlterar: TBitBtn
+      Left = 80
+      ExplicitLeft = 80
     end
     inherited btnFechar: TBitBtn
       Left = 658

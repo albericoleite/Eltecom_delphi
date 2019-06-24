@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.Imaging.jpeg, sBitBtn;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.Imaging.jpeg;
 
 type
   TfrmLogin = class(TForm)
@@ -20,8 +20,6 @@ type
     lbl4: TLabel;
     lbl5: TLabel;
     img1: TImage;
-    sbtbtn1: TsBitBtn;
-    sbtbtn2: TsBitBtn;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
     procedure btnSairClick(Sender: TObject);

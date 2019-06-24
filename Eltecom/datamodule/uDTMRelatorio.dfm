@@ -5,7 +5,7 @@ object dtmRelatorio: TdtmRelatorio
   Height = 511
   Width = 892
   object frxrprtCartaRecomendacao: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -64,8 +64,10 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object frxDBDataset1nome_pessoa: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 35.905535000000000000
         Top = 440.512060000000000000
         Width = 646.299630000000000000
@@ -75,6 +77,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -15
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             '             Apresentamos para que recebais no Senhor, segundo o' +
@@ -103,6 +106,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo2: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 222.992270000000000000
         Top = 850.394250000000000000
         Width = 272.126160000000000000
@@ -119,6 +123,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo3: TfrxMemoView
+        AllowVectorExport = True
         Left = 593.386210000000000000
         Top = 801.260360000000000000
         Width = 105.826840000000000000
@@ -136,6 +141,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo4: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Top = 1009.134510000000000000
         Width = 718.110700000000000000
         Height = 37.795300000000000000
@@ -175,6 +181,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo5: TfrxMemoView
+        AllowVectorExport = True
         Top = 937.323440000000000000
         Width = 718.110700000000000000
         Height = 18.897650000000000000
@@ -183,6 +190,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         Fill.BackColor = 13434828
         Memo.UTF8W = (
           
@@ -191,6 +199,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo6: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 7.559060000000000000
         Width = 582.047620000000000000
@@ -200,6 +209,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -27
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaIgreja."nome_igreja"]')
         ParentFont = False
@@ -212,6 +222,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object frxdbBuscaIgrejanome_presidente: TfrxMemoView
+        AllowVectorExport = True
         Left = 38.795300000000000000
         Top = 695.433520000000000000
         Width = 400.630180000000000000
@@ -221,6 +232,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Times New Roman'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Frame.Width = 4.000000000000000000
         Memo.UTF8W = (
           '[frxdbBuscaIgreja."nome_presidente"]')
@@ -228,6 +240,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaBottom
       end
       object Memo7: TfrxMemoView
+        AllowVectorExport = True
         Left = 38.795300000000000000
         Top = 715.110700000000000000
         Width = 185.196970000000000000
@@ -237,6 +250,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 4.000000000000000000
         Memo.UTF8W = (
           'Pastor Presidente da [frxdbBuscaIgreja."sigla_igreja"]')
@@ -244,6 +258,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaBottom
       end
       object Memo8: TfrxMemoView
+        AllowVectorExport = True
         Top = 268.346630000000000000
         Width = 313.700990000000000000
         Height = 22.677180000000000000
@@ -259,6 +274,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaIgrejadta_fundacao: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 74.149660000000000000
         Width = 582.047620000000000000
@@ -270,12 +286,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -19
         Font.Name = 'calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'Fundada em [frxdbBuscaIgreja."dta_fundacao"]')
         ParentFont = False
       end
       object Memo9: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 102.047310000000000000
         Width = 582.047620000000000000
@@ -285,6 +303,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Frame.Width = 4.000000000000000000
         HAlign = haCenter
         Memo.UTF8W = (
@@ -293,6 +312,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaBottom
       end
       object frxdbBuscaIgrejacidade: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 37.795300000000000000
         Width = 582.047620000000000000
@@ -302,12 +322,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -27
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'em [frxdbBuscaIgreja."cidade"]')
         ParentFont = False
       end
       object Memo11: TfrxMemoView
+        AllowVectorExport = True
         Left = 37.795300000000000000
         Top = 531.252320000000000000
         Width = 377.953000000000000000
@@ -317,6 +339,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           'Obs.: [Observacao]')
         ParentFont = False
@@ -327,17 +350,20 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Picture2: TfrxPictureView
+        AllowVectorExport = True
         Width = 136.063001890000000000
         Height = 170.078757240000000000
         DataField = 'foto'
         DataSet = frxdbBuscaIgreja
         DataSetName = 'frxdbBuscaIgreja'
+        Frame.Typ = []
         HightQuality = True
         Transparent = False
         TransparentColor = clWhite
       end
       object Memo13: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 158.740260000000000000
         Top = 372.173470000000000000
         Width = 400.630180000000000000
@@ -347,6 +373,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -15
         Font.Name = 'times New Roman'
         Font.Style = [fsBold, fsUnderline]
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[Tipo]')
@@ -354,6 +381,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo14: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Top = 192.756030000000000000
         Width = 718.110700000000000000
         Height = 37.795300000000000000
@@ -362,6 +390,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -15
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         Fill.BackColor = 13434828
         HAlign = haRight
         Memo.UTF8W = (
@@ -942,7 +971,7 @@ object dtmRelatorio: TdtmRelatorio
     Top = 136
   end
   object frxrprtNotifOcorrencia: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -981,11 +1010,14 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object Picture1: TfrxPictureView
+        AllowVectorExport = True
         Left = 3.779530000000000000
         Top = 3.779530000000000000
         Width = 120.944960000000000000
         Height = 143.622140000000000000
+        Frame.Typ = []
         Picture.Data = {
           0A54504E474F626A65637489504E470D0A1A0A0000000D494844520000008200
           0000970806000000D91883D5000000097048597300002E2300002E230178A53F
@@ -2633,6 +2665,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo4: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Top = 1009.134510000000000000
         Width = 718.110700000000000000
         Height = 37.795300000000000000
@@ -2672,6 +2705,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo5: TfrxMemoView
+        AllowVectorExport = True
         Left = 3.779530000000000000
         Top = 653.858690000000000000
         Width = 616.063390000000000000
@@ -2681,6 +2715,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Times New Roman'
         Font.Style = [fsBold, fsItalic]
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           
@@ -2689,6 +2724,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo6: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 7.559060000000000000
         Width = 582.047620000000000000
@@ -2698,6 +2734,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -27
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaIgreja."nome_igreja"]')
         ParentFont = False
@@ -2710,6 +2747,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object frxdbBuscaIgrejadta_fundacao: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 74.149660000000000000
         Width = 582.047620000000000000
@@ -2723,12 +2761,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -19
         Font.Name = 'calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'Fundada em [frxdbBuscaIgreja."dta_fundacao"]')
         ParentFont = False
       end
       object Memo9: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 102.047310000000000000
         Width = 582.047620000000000000
@@ -2740,6 +2780,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Frame.Width = 4.000000000000000000
         HAlign = haCenter
         Memo.UTF8W = (
@@ -2748,6 +2789,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaBottom
       end
       object frxdbBuscaIgrejacidade: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 37.795300000000000000
         Width = 582.047620000000000000
@@ -2759,6 +2801,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -27
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'no RIO GRANDE do NORTE')
@@ -2766,6 +2809,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo3: TfrxMemoView
         Align = baLeft
+        AllowVectorExport = True
         Top = 162.519790000000000000
         Width = 279.685220000000000000
         Height = 26.456710000000000000
@@ -2775,12 +2819,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
         Frame.Color = clLime
+        Frame.Typ = []
         Fill.BackColor = clLime
         Memo.UTF8W = (
           'NOTIFICA'#199#195'O DE OCORR'#202'NCIA')
         ParentFont = False
       end
       object Memo1: TfrxMemoView
+        AllowVectorExport = True
         Left = 26.456710000000000000
         Top = 192.756030000000000000
         Width = 498.897960000000000000
@@ -2791,6 +2837,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'calibri'
         Font.Style = []
         Frame.Color = clLime
+        Frame.Typ = []
         Memo.UTF8W = (
           'Anexar toda documenta'#231#227'o necess'#225'ria, conforme o caso.'
           
@@ -2799,6 +2846,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo7: TfrxMemoView
+        AllowVectorExport = True
         Top = 234.330860000000000000
         Width = 396.850650000000000000
         Height = 18.897650000000000000
@@ -2808,11 +2856,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
         Frame.Color = 16763904
+        Frame.Typ = []
         Memo.UTF8W = (
           'IDENTIFICA'#199#195'O DO MEMBRO OU CONGREGADO')
         ParentFont = False
       end
       object Memo2: TfrxMemoView
+        AllowVectorExport = True
         Top = 438.425480000000000000
         Width = 154.960730000000000000
         Height = 18.897650000000000000
@@ -2822,11 +2872,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
         Frame.Color = 16763904
+        Frame.Typ = []
         Memo.UTF8W = (
           'VEM COMUNICAR')
         ParentFont = False
       end
       object Memo10: TfrxMemoView
+        AllowVectorExport = True
         Top = 457.102660000000000000
         Width = 154.960730000000000000
         Height = 18.897650000000000000
@@ -2836,11 +2888,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
         Frame.Color = 16763904
+        Frame.Typ = []
         Memo.UTF8W = (
           'Ao Secret'#225'rio Geral')
         ParentFont = False
       end
       object Memo11: TfrxMemoView
+        AllowVectorExport = True
         Left = 3.779530000000000000
         Top = 721.890230000000000000
         Width = 170.078850000000000000
@@ -2851,11 +2905,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = []
         Frame.Color = 16763904
+        Frame.Typ = []
         Memo.UTF8W = (
           'Em Parnamirim-RN____/____/_____')
         ParentFont = False
       end
       object Memo12: TfrxMemoView
+        AllowVectorExport = True
         Left = 211.653680000000000000
         Top = 718.110700000000000000
         Width = 211.653680000000000000
@@ -2873,6 +2929,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo13: TfrxMemoView
+        AllowVectorExport = True
         Left = 449.764070000000000000
         Top = 718.110700000000000000
         Width = 211.653680000000000000
@@ -2891,6 +2948,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo14: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 232.441095000000000000
         Top = 884.410020000000000000
         Width = 253.228510000000000000
@@ -2908,6 +2966,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo15: TfrxMemoView
+        AllowVectorExport = True
         Top = 805.039890000000000000
         Width = 272.126160000000000000
         Height = 18.897650000000000000
@@ -2917,11 +2976,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = []
         Frame.Color = 16763904
+        Frame.Typ = []
         Memo.UTF8W = (
           'Entrada na Secretaria Geral em:          ___/____/_____')
         ParentFont = False
       end
       object Memo16: TfrxMemoView
+        AllowVectorExport = True
         Top = 823.937540000000000000
         Width = 272.126160000000000000
         Height = 18.897650000000000000
@@ -2931,17 +2992,20 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = []
         Frame.Color = 16763904
+        Frame.Typ = []
         Memo.UTF8W = (
           'Conclu'#237'do pela Secretaria Geral em:   ___/____/_____')
         ParentFont = False
       end
       object Line1: TfrxLineView
+        AllowVectorExport = True
         Top = 782.362710000000000000
         Width = 718.110700000000000000
         Color = clBlack
         Frame.Typ = [ftTop]
       end
       object Memo17: TfrxMemoView
+        AllowVectorExport = True
         Top = 763.465060000000000000
         Width = 204.094620000000000000
         Height = 18.897650000000000000
@@ -2951,12 +3015,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
         Frame.Color = 16763904
+        Frame.Typ = []
         Fill.BackColor = clSilver
         Memo.UTF8W = (
           'USO EXCLUSIVO DA SECRETARIA GERAL')
         ParentFont = False
       end
       object Memo18: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 801.260360000000000000
         Width = 226.771800000000000000
@@ -2972,6 +3038,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object CheckBox1: TfrxCheckBoxView
+        AllowVectorExport = True
         Left = 7.559060000000000000
         Top = 192.756030000000000000
         Width = 15.118120000000000000
@@ -2979,8 +3046,10 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         CheckStyle = csCheck
         Frame.Color = clNavy
+        Frame.Typ = []
       end
       object CheckBox2: TfrxCheckBoxView
+        AllowVectorExport = True
         Left = 7.559060000000000000
         Top = 207.874150000000000000
         Width = 15.118120000000000000
@@ -2988,8 +3057,10 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         CheckStyle = csCheck
         Frame.Color = clNavy
+        Frame.Typ = []
       end
       object Memo19: TfrxMemoView
+        AllowVectorExport = True
         Top = 264.567100000000000000
         Width = 264.567100000000000000
         Height = 34.015770000000000000
@@ -3005,6 +3076,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxDBDataset1cidade: TfrxMemoView
+        AllowVectorExport = True
         Top = 280.685220000000000000
         Width = 264.567100000000000000
         Height = 15.118120000000000000
@@ -3016,12 +3088,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo20: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 264.567100000000000000
         Width = 49.133890000000000000
@@ -3038,6 +3112,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxDBDataset1setor: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 278.905690000000000000
         Width = 49.133890000000000000
@@ -3049,11 +3124,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."setorcong"]')
         ParentFont = False
       end
       object Memo21: TfrxMemoView
+        AllowVectorExport = True
         Left = 313.700990000000000000
         Top = 264.567100000000000000
         Width = 336.378170000000000000
@@ -3070,6 +3147,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxDBDataset1congregacao: TfrxMemoView
+        AllowVectorExport = True
         Left = 313.700990000000000000
         Top = 279.685220000000000000
         Width = 287.244280000000000000
@@ -3082,11 +3160,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."congregacao"]')
         ParentFont = False
       end
       object Memo22: TfrxMemoView
+        AllowVectorExport = True
         Top = 298.582870000000000000
         Width = 532.913730000000000000
         Height = 34.015770000000000000
@@ -3101,6 +3181,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo23: TfrxMemoView
+        AllowVectorExport = True
         Left = 532.913730000000000000
         Top = 298.582870000000000000
         Width = 117.165430000000000000
@@ -3116,6 +3197,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxDBDataset1nro_rol: TfrxMemoView
+        AllowVectorExport = True
         Left = 532.913730000000000000
         Top = 313.700990000000000000
         Width = 117.165430000000000000
@@ -3128,11 +3210,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nro_rol"]')
         ParentFont = False
       end
       object frxDBDataset1nome_pessoa: TfrxMemoView
+        AllowVectorExport = True
         Top = 313.700990000000000000
         Width = 483.779840000000000000
         Height = 18.897650000000000000
@@ -3144,11 +3228,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_pessoa"]')
         ParentFont = False
       end
       object Memo8: TfrxMemoView
+        AllowVectorExport = True
         Top = 332.598640000000000000
         Width = 325.039580000000000000
         Height = 34.015770000000000000
@@ -3163,6 +3249,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo24: TfrxMemoView
+        AllowVectorExport = True
         Left = 325.039580000000000000
         Top = 332.598640000000000000
         Width = 325.039580000000000000
@@ -3178,6 +3265,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo25: TfrxMemoView
+        AllowVectorExport = True
         Top = 366.614410000000000000
         Width = 139.842610000000000000
         Height = 34.015770000000000000
@@ -3192,6 +3280,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo26: TfrxMemoView
+        AllowVectorExport = True
         Left = 139.842610000000000000
         Top = 366.614410000000000000
         Width = 283.464750000000000000
@@ -3207,6 +3296,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo27: TfrxMemoView
+        AllowVectorExport = True
         Left = 423.307360000000000000
         Top = 366.614410000000000000
         Width = 226.771800000000000000
@@ -3222,6 +3312,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxDBDataset1dta_nascimento: TfrxMemoView
+        AllowVectorExport = True
         Top = 381.732530000000000000
         Width = 139.842610000000000000
         Height = 18.897650000000000000
@@ -3233,11 +3324,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_nascimento"]')
         ParentFont = False
       end
       object frxDBDataset1nome_pai: TfrxMemoView
+        AllowVectorExport = True
         Top = 347.716760000000000000
         Width = 298.582870000000000000
         Height = 18.897650000000000000
@@ -3249,11 +3342,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_pai"]')
         ParentFont = False
       end
       object frxDBDataset1nome_mae: TfrxMemoView
+        AllowVectorExport = True
         Left = 325.039580000000000000
         Top = 347.716760000000000000
         Width = 302.362400000000000000
@@ -3266,11 +3361,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_mae"]')
         ParentFont = False
       end
       object frxDBDataset1naturalidade: TfrxMemoView
+        AllowVectorExport = True
         Left = 139.842610000000000000
         Top = 381.732530000000000000
         Width = 283.464750000000000000
@@ -3283,11 +3380,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."naturalidade"]')
         ParentFont = False
       end
       object frxDBDataset1nacionalidade: TfrxMemoView
+        AllowVectorExport = True
         Left = 423.307360000000000000
         Top = 381.732530000000000000
         Width = 211.653680000000000000
@@ -3300,11 +3399,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nacionalidade"]')
         ParentFont = False
       end
       object Memo28: TfrxMemoView
+        AllowVectorExport = True
         Top = 400.630180000000000000
         Width = 139.842610000000000000
         Height = 34.015770000000000000
@@ -3319,6 +3420,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo29: TfrxMemoView
+        AllowVectorExport = True
         Left = 139.842610000000000000
         Top = 400.630180000000000000
         Width = 249.448980000000000000
@@ -3334,6 +3436,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo30: TfrxMemoView
+        AllowVectorExport = True
         Left = 389.291590000000000000
         Top = 400.630180000000000000
         Width = 260.787570000000000000
@@ -3349,6 +3452,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxDBDataset1cpf: TfrxMemoView
+        AllowVectorExport = True
         Left = 389.291590000000000000
         Top = 415.748300000000000000
         Width = 260.787570000000000000
@@ -3361,11 +3465,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cpf"]')
         ParentFont = False
       end
       object frxDBDataset1orgaorg: TfrxMemoView
+        AllowVectorExport = True
         Left = 139.842610000000000000
         Top = 415.748300000000000000
         Width = 249.448980000000000000
@@ -3378,11 +3484,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."orgaorg"]')
         ParentFont = False
       end
       object frxDBDataset1nrorg: TfrxMemoView
+        AllowVectorExport = True
         Top = 415.748300000000000000
         Width = 139.842610000000000000
         Height = 18.897650000000000000
@@ -3394,11 +3502,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nrorg"]')
         ParentFont = False
       end
       object Memo31: TfrxMemoView
+        AllowVectorExport = True
         Left = 56.692950000000000000
         Top = 491.338900000000000000
         Width = 540.472790000000000000
@@ -3408,11 +3518,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           'ABERTURA de Processo Disciplinar '#8211' Anexar Den'#250'ncia')
         ParentFont = False
       end
       object Memo32: TfrxMemoView
+        AllowVectorExport = True
         Left = 56.692950000000000000
         Top = 510.236550000000000000
         Width = 540.472790000000000000
@@ -3422,6 +3534,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             'FALECIMENTO do membro/congregado supra-identificado em: dd / mm ' +
@@ -3429,6 +3542,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo33: TfrxMemoView
+        AllowVectorExport = True
         Left = 56.692950000000000000
         Top = 529.134200000000000000
         Width = 540.472790000000000000
@@ -3438,11 +3552,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           'DESLIGAMENTO DO ROL '#8211' Anexar Oficio ')
         ParentFont = False
       end
       object Memo34: TfrxMemoView
+        AllowVectorExport = True
         Left = 56.692950000000000000
         Top = 548.031850000000000000
         Width = 540.472790000000000000
@@ -3452,11 +3568,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           'SUSPENS'#195'O ADMINISTRATIVA '#8211' Anexar Processo')
         ParentFont = False
       end
       object Memo35: TfrxMemoView
+        AllowVectorExport = True
         Left = 56.692950000000000000
         Top = 604.724800000000000000
         Width = 540.472790000000000000
@@ -3466,6 +3584,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             'RECEBIDO POR TRANSFER'#202'NCIA da congrega'#231#227'o da IEADERN: __________' +
@@ -3473,6 +3592,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo36: TfrxMemoView
+        AllowVectorExport = True
         Left = 56.692950000000000000
         Top = 623.622450000000000000
         Width = 540.472790000000000000
@@ -3482,6 +3602,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             'RECONCILIA'#199#195'O do membro/congregado supra-indicado em: dd / mm / ' +
@@ -3489,6 +3610,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo37: TfrxMemoView
+        AllowVectorExport = True
         Top = 491.338900000000000000
         Width = 49.133890000000000000
         Height = 18.897650000000000000
@@ -3504,6 +3626,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo38: TfrxMemoView
+        AllowVectorExport = True
         Top = 510.236550000000000000
         Width = 49.133890000000000000
         Height = 18.897650000000000000
@@ -3519,6 +3642,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo39: TfrxMemoView
+        AllowVectorExport = True
         Top = 529.134200000000000000
         Width = 49.133890000000000000
         Height = 18.897650000000000000
@@ -3534,6 +3658,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo40: TfrxMemoView
+        AllowVectorExport = True
         Top = 548.031850000000000000
         Width = 49.133890000000000000
         Height = 18.897650000000000000
@@ -3549,6 +3674,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo41: TfrxMemoView
+        AllowVectorExport = True
         Top = 604.724800000000000000
         Width = 49.133890000000000000
         Height = 18.897650000000000000
@@ -3564,6 +3690,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo42: TfrxMemoView
+        AllowVectorExport = True
         Top = 623.622450000000000000
         Width = 49.133890000000000000
         Height = 18.897650000000000000
@@ -3579,6 +3706,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo43: TfrxMemoView
+        AllowVectorExport = True
         Left = 56.692950000000000000
         Top = 566.929500000000000000
         Width = 540.472790000000000000
@@ -3588,11 +3716,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           'SUSPENS'#195'O DA COMUNH'#195'O '#8211' Anexar Processo')
         ParentFont = False
       end
       object Memo44: TfrxMemoView
+        AllowVectorExport = True
         Top = 566.929500000000000000
         Width = 49.133890000000000000
         Height = 18.897650000000000000
@@ -3608,6 +3738,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo45: TfrxMemoView
+        AllowVectorExport = True
         Left = 56.692950000000000000
         Top = 585.827150000000000000
         Width = 540.472790000000000000
@@ -3617,11 +3748,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           'EXCLUS'#195'O '#8211' Anexar Processo ')
         ParentFont = False
       end
       object Memo46: TfrxMemoView
+        AllowVectorExport = True
         Top = 585.827150000000000000
         Width = 49.133890000000000000
         Height = 18.897650000000000000
@@ -3637,6 +3770,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object CheckBox3: TfrxCheckBoxView
+        AllowVectorExport = True
         Left = 7.559060000000000000
         Top = 497.118430000000000000
         Width = 7.559060000000000000
@@ -3647,6 +3781,7 @@ object dtmRelatorio: TdtmRelatorio
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox4: TfrxCheckBoxView
+        AllowVectorExport = True
         Left = 7.559060000000000000
         Top = 515.795610000000000000
         Width = 7.559060000000000000
@@ -3657,6 +3792,7 @@ object dtmRelatorio: TdtmRelatorio
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox5: TfrxCheckBoxView
+        AllowVectorExport = True
         Left = 7.559060000000000000
         Top = 534.693260000000000000
         Width = 7.559060000000000000
@@ -3667,6 +3803,7 @@ object dtmRelatorio: TdtmRelatorio
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox6: TfrxCheckBoxView
+        AllowVectorExport = True
         Left = 7.559060000000000000
         Top = 553.811380000000000000
         Width = 7.559060000000000000
@@ -3677,6 +3814,7 @@ object dtmRelatorio: TdtmRelatorio
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox7: TfrxCheckBoxView
+        AllowVectorExport = True
         Left = 7.559060000000000000
         Top = 573.488560000000000000
         Width = 7.559060000000000000
@@ -3687,6 +3825,7 @@ object dtmRelatorio: TdtmRelatorio
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox8: TfrxCheckBoxView
+        AllowVectorExport = True
         Left = 7.559060000000000000
         Top = 591.386210000000000000
         Width = 7.559060000000000000
@@ -3697,6 +3836,7 @@ object dtmRelatorio: TdtmRelatorio
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox9: TfrxCheckBoxView
+        AllowVectorExport = True
         Left = 7.559060000000000000
         Top = 610.283860000000000000
         Width = 7.559060000000000000
@@ -3707,6 +3847,7 @@ object dtmRelatorio: TdtmRelatorio
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox10: TfrxCheckBoxView
+        AllowVectorExport = True
         Left = 7.559060000000000000
         Top = 629.401980000000000000
         Width = 7.559060000000000000
@@ -3717,6 +3858,7 @@ object dtmRelatorio: TdtmRelatorio
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object Memo47: TfrxMemoView
+        AllowVectorExport = True
         Top = 264.346630000000000000
         Width = 650.079160000000000000
         Height = 170.078850000000000000
@@ -3730,6 +3872,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo48: TfrxMemoView
+        AllowVectorExport = True
         Left = 0.220470000000000000
         Top = 229.551330000000000000
         Width = 650.079160000000000000
@@ -3746,7 +3889,7 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object frxrprtFichaMembro: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3790,7 +3933,9 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object Memo18: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 890.969080000000000000
         Width = 226.771800000000000000
@@ -3804,6 +3949,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Picture1: TfrxPictureView
+        AllowVectorExport = True
         Left = 3.779530000000000000
         Top = 3.779530000000000000
         Width = 120.944960000000000000
@@ -3811,12 +3957,15 @@ object dtmRelatorio: TdtmRelatorio
         DataField = 'foto'
         DataSet = frxdbBuscaIgreja
         DataSetName = 'frxdbBuscaIgreja'
+        Frame.Typ = []
         HightQuality = False
         Transparent = False
         TransparentColor = clWhite
       end
       object Memo4: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
+        Left = -0.000000000000024203
         Top = 1009.134510000000000000
         Width = 718.110700000000000000
         Height = 37.795300000000000000
@@ -3857,6 +4006,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo6: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 7.559060000000000000
         Width = 582.047620000000000000
@@ -3866,6 +4016,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -27
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaIgreja."nome_igreja"]')
         ParentFont = False
@@ -3878,6 +4029,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object frxdbBuscaIgrejadta_fundacao: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 74.149660000000000000
         Width = 582.047620000000000000
@@ -3891,12 +4043,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -19
         Font.Name = 'calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'Fundada em [frxdbBuscaIgreja."dta_fundacao"]')
         ParentFont = False
       end
       object Memo9: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 102.047310000000000000
         Width = 582.047620000000000000
@@ -3908,6 +4062,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Frame.Width = 4.000000000000000000
         HAlign = haCenter
         Memo.UTF8W = (
@@ -3916,6 +4071,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaBottom
       end
       object frxdbBuscaIgrejacidade: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 37.795300000000000000
         Width = 582.047620000000000000
@@ -3927,6 +4083,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -27
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'no RIO GRANDE do NORTE')
@@ -3934,6 +4091,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo3: TfrxMemoView
         Align = baLeft
+        AllowVectorExport = True
         Top = 162.519790000000000000
         Width = 634.961040000000000000
         Height = 60.472480000000000000
@@ -3943,6 +4101,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
         Frame.Color = clLime
+        Frame.Typ = []
         Memo.UTF8W = (
           'FORMUL'#193'RIO CADASTRAL DE MEMBRO '
           
@@ -3951,12 +4110,14 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Line1: TfrxLineView
+        AllowVectorExport = True
         Top = 827.717070000000000000
         Width = 718.110700000000000000
         Color = clBlack
         Frame.Typ = [ftTop]
       end
       object Memo1: TfrxMemoView
+        AllowVectorExport = True
         Top = 222.992270000000000000
         Width = 264.567100000000000000
         Height = 34.015770000000000000
@@ -3972,6 +4133,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo2: TfrxMemoView
+        AllowVectorExport = True
         Top = 239.110390000000000000
         Width = 264.567100000000000000
         Height = 15.118120000000000000
@@ -3982,12 +4144,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaIgreja."cidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo5: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 222.992270000000000000
         Width = 49.133890000000000000
@@ -4004,6 +4168,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo10: TfrxMemoView
+        AllowVectorExport = True
         Left = 313.700990000000000000
         Top = 222.992270000000000000
         Width = 291.023810000000000000
@@ -4020,6 +4185,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo32: TfrxMemoView
+        AllowVectorExport = True
         Top = 257.008040000000000000
         Width = 634.961040000000000000
         Height = 34.015770000000000000
@@ -4034,6 +4200,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo33: TfrxMemoView
+        AllowVectorExport = True
         Left = 604.724800000000000000
         Top = 222.992270000000000000
         Width = 113.385900000000000000
@@ -4049,6 +4216,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo34: TfrxMemoView
+        AllowVectorExport = True
         Left = 606.724800000000000000
         Top = 237.110390000000000000
         Width = 109.606370000000000000
@@ -4060,6 +4228,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = ANSI_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -4069,11 +4238,13 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftGlass
         Highlight.Fill.Color = clYellow
         Highlight.Fill.Blend = 0.500000000000000000
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nro_rol"]')
         ParentFont = False
       end
       object Memo35: TfrxMemoView
+        AllowVectorExport = True
         Top = 272.126160000000000000
         Width = 483.779840000000000000
         Height = 18.897650000000000000
@@ -4085,11 +4256,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_pessoa"]')
         ParentFont = False
       end
       object Memo36: TfrxMemoView
+        AllowVectorExport = True
         Left = 634.961040000000000000
         Top = 257.008040000000000000
         Width = 83.149660000000000000
@@ -4105,6 +4278,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaPessoasexo: TfrxMemoView
+        AllowVectorExport = True
         Left = 634.961040000000000000
         Top = 272.126160000000000000
         Width = 83.149660000000000000
@@ -4116,6 +4290,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             '[IIF(<frxdbBuscaPessoa."sexo">='#39'M'#39','#39'[X] Masc'#9'  [  ] Fem'#39','#39'[  ] M' +
@@ -4123,6 +4298,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo37: TfrxMemoView
+        AllowVectorExport = True
         Top = 291.023810000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -4146,6 +4322,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo38: TfrxMemoView
+        AllowVectorExport = True
         Top = 306.141930000000000000
         Width = 359.055350000000000000
         Height = 26.456692910000000000
@@ -4160,6 +4337,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo39: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 306.141930000000000000
         Width = 359.055350000000000000
@@ -4175,6 +4353,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo40: TfrxMemoView
+        AllowVectorExport = True
         Top = 321.260050000000000000
         Width = 359.055350000000000000
         Height = 11.338582680000000000
@@ -4186,12 +4365,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_pai"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo41: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 321.260050000000000000
         Width = 359.055350000000000000
@@ -4204,12 +4385,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_mae"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo42: TfrxMemoView
+        AllowVectorExport = True
         Left = 638.740570000000000000
         Top = 109.606370000000000000
         Width = 79.370130000000000000
@@ -4230,6 +4413,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo43: TfrxMemoView
+        AllowVectorExport = True
         Top = 332.598640000000000000
         Width = 124.724490000000000000
         Height = 26.456692910000000000
@@ -4244,6 +4428,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo44: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 332.598640000000000000
         Width = 283.464750000000000000
@@ -4259,6 +4444,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo45: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 332.598640000000000000
         Width = 226.771800000000000000
@@ -4274,6 +4460,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo46: TfrxMemoView
+        AllowVectorExport = True
         Top = 347.716760000000000000
         Width = 124.724490000000000000
         Height = 11.338582680000000000
@@ -4285,12 +4472,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_nascimento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo47: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 347.716760000000000000
         Width = 283.464750000000000000
@@ -4303,12 +4492,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."naturalidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo48: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 347.716760000000000000
         Width = 211.653680000000000000
@@ -4321,12 +4512,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nacionalidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo51: TfrxMemoView
+        AllowVectorExport = True
         Left = 408.189240000000000000
         Top = 332.598640000000000000
         Width = 83.149660000000000000
@@ -4342,6 +4535,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaPessoauf_nascimento: TfrxMemoView
+        AllowVectorExport = True
         Left = 410.189240000000000000
         Top = 345.716760000000000000
         Width = 75.590600000000000000
@@ -4354,6 +4548,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -4363,12 +4558,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."uf_nascimento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo49: TfrxMemoView
+        AllowVectorExport = True
         Top = 359.055350000000000000
         Width = 124.724490000000000000
         Height = 26.456692910000000000
@@ -4383,6 +4580,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo50: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 359.055350000000000000
         Width = 143.622140000000000000
@@ -4398,6 +4596,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo52: TfrxMemoView
+        AllowVectorExport = True
         Left = 268.346630000000000000
         Top = 359.055350000000000000
         Width = 113.385900000000000000
@@ -4413,6 +4612,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo53: TfrxMemoView
+        AllowVectorExport = True
         Left = 268.346630000000000000
         Top = 374.173470000000000000
         Width = 113.385900000000000000
@@ -4425,6 +4625,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -4434,12 +4635,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cpf"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo54: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 374.173470000000000000
         Width = 143.622140000000000000
@@ -4452,6 +4655,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -4461,12 +4665,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."orgaorg"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo55: TfrxMemoView
+        AllowVectorExport = True
         Top = 374.173470000000000000
         Width = 124.724490000000000000
         Height = 11.338582680000000000
@@ -4478,6 +4684,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -4488,12 +4695,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.Fill.StartColor = clYellow
         Highlight.Fill.EndColor = clYellow
         Highlight.Fill.GradientStyle = gsHorizontal
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nrorg"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo56: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 359.055350000000000000
         Width = 336.378170000000000000
@@ -4509,6 +4718,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaPessoaemail: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 374.173470000000000000
         Width = 336.378170000000000000
@@ -4521,12 +4731,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."email"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo57: TfrxMemoView
+        AllowVectorExport = True
         Top = 487.559370000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -4543,6 +4755,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo58: TfrxMemoView
+        AllowVectorExport = True
         Top = 502.677490000000000000
         Width = 593.386210000000000000
         Height = 26.456710000000000000
@@ -4557,6 +4770,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo59: TfrxMemoView
+        AllowVectorExport = True
         Left = 593.386210000000000000
         Top = 502.677490000000000000
         Width = 124.724490000000000000
@@ -4575,6 +4789,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo60: TfrxMemoView
+        AllowVectorExport = True
         Top = 517.795610000000000000
         Width = 593.386210000000000000
         Height = 11.338590000000000000
@@ -4585,12 +4800,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."logradouro"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo62: TfrxMemoView
+        AllowVectorExport = True
         Top = 529.134200000000000000
         Width = 608.504330000000000000
         Height = 26.456692910000000000
@@ -4605,6 +4822,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo64: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 529.134200000000000000
         Width = 109.606370000000000000
@@ -4620,6 +4838,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo67: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 540.472790000000000000
         Width = 109.606370000000000000
@@ -4631,12 +4850,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."fone_residencial"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo70: TfrxMemoView
+        AllowVectorExport = True
         Top = 555.590910000000000000
         Width = 381.732530000000000000
         Height = 26.456692910000000000
@@ -4651,6 +4872,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo72: TfrxMemoView
+        AllowVectorExport = True
         Left = 495.118430000000000000
         Top = 555.590910000000000000
         Width = 113.385900000000000000
@@ -4666,6 +4888,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo75: TfrxMemoView
+        AllowVectorExport = True
         Top = 570.709030000000000000
         Width = 381.732530000000000000
         Height = 11.338582680000000000
@@ -4676,12 +4899,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."bairro"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo8: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 555.590910000000000000
         Width = 109.606370000000000000
@@ -4697,6 +4922,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo11: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 570.709030000000000000
         Width = 109.606370000000000000
@@ -4708,12 +4934,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."fone_celular"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object frxdbBuscaPessoacidade: TfrxMemoView
+        AllowVectorExport = True
         Left = 495.118430000000000000
         Top = 570.709030000000000000
         Width = 113.385900000000000000
@@ -4726,12 +4954,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo12: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 555.590910000000000000
         Width = 113.385900000000000000
@@ -4747,6 +4977,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo13: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 569.709030000000000000
         Width = 113.385900000000000000
@@ -4758,6 +4989,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -4767,12 +4999,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cep"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo19: TfrxMemoView
+        AllowVectorExport = True
         Top = 582.047620000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -4789,6 +5023,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo20: TfrxMemoView
+        AllowVectorExport = True
         Top = 597.165740000000000000
         Width = 181.417440000000000000
         Height = 26.456692910000000000
@@ -4803,6 +5038,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo22: TfrxMemoView
+        AllowVectorExport = True
         Top = 612.283860000000000000
         Width = 181.417440000000000000
         Height = 11.338582680000000000
@@ -4813,12 +5049,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_conversao"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo23: TfrxMemoView
+        AllowVectorExport = True
         Top = 623.622450000000000000
         Width = 400.630180000000000000
         Height = 26.456692910000000000
@@ -4833,6 +5071,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo24: TfrxMemoView
+        AllowVectorExport = True
         Left = 400.630180000000000000
         Top = 623.622450000000000000
         Width = 317.480520000000000000
@@ -4848,6 +5087,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo25: TfrxMemoView
+        AllowVectorExport = True
         Left = 400.630180000000000000
         Top = 638.740570000000000000
         Width = 317.480520000000000000
@@ -4859,12 +5099,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."proced_eclesiastica"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object frxdbBuscaPessoaorigem_eclesiastica: TfrxMemoView
+        AllowVectorExport = True
         Top = 638.740570000000000000
         Width = 400.630180000000000000
         Height = 11.338582680000000000
@@ -4876,12 +5118,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."origem_eclesiastica"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo26: TfrxMemoView
+        AllowVectorExport = True
         Left = 181.417440000000000000
         Top = 597.165740000000000000
         Width = 177.637910000000000000
@@ -4897,6 +5141,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo27: TfrxMemoView
+        AllowVectorExport = True
         Left = 181.417440000000000000
         Top = 612.283860000000000000
         Width = 177.637910000000000000
@@ -4908,12 +5153,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_batismo_esprito"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo28: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 597.165740000000000000
         Width = 181.417440000000000000
@@ -4929,6 +5176,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo29: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 612.283860000000000000
         Width = 181.417440000000000000
@@ -4940,12 +5188,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_batismo_aguas"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo21: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 597.165740000000000000
         Width = 177.637910000000000000
@@ -4961,6 +5211,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo30: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 612.283860000000000000
         Width = 177.637910000000000000
@@ -4972,12 +5223,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_membro"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo61: TfrxMemoView
+        AllowVectorExport = True
         Top = 650.079160000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -4994,6 +5247,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo63: TfrxMemoView
+        AllowVectorExport = True
         Top = 665.197280000000000000
         Width = 359.055350000000000000
         Height = 34.015770000000000000
@@ -5008,6 +5262,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo65: TfrxMemoView
+        AllowVectorExport = True
         Top = 680.315400000000000000
         Width = 359.055350000000000000
         Height = 18.897650000000000000
@@ -5018,11 +5273,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."profissao"]')
         ParentFont = False
       end
       object Memo66: TfrxMemoView
+        AllowVectorExport = True
         Top = 699.213050000000000000
         Width = 359.055350000000000000
         Height = 34.015770000000000000
@@ -5037,6 +5294,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo68: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 699.213050000000000000
         Width = 181.417440000000000000
@@ -5052,6 +5310,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo69: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 714.331170000000000000
         Width = 181.417440000000000000
@@ -5063,11 +5322,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."funcao"]')
         ParentFont = False
       end
       object Memo71: TfrxMemoView
+        AllowVectorExport = True
         Top = 714.331170000000000000
         Width = 359.055350000000000000
         Height = 18.897650000000000000
@@ -5078,11 +5339,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."emprego_atual"]')
         ParentFont = False
       end
       object Memo73: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 665.197280000000000000
         Width = 359.055350000000000000
@@ -5098,6 +5361,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo76: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 699.213050000000000000
         Width = 177.637910000000000000
@@ -5113,6 +5377,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo77: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 714.331170000000000000
         Width = 177.637910000000000000
@@ -5124,11 +5389,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."fone_trabalho"]')
         ParentFont = False
       end
       object frxdbBuscaPessoahabilitacao_profissional: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 680.315400000000000000
         Width = 359.055350000000000000
@@ -5141,11 +5408,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."habilitacao_profissional"]')
         ParentFont = False
       end
       object Memo74: TfrxMemoView
+        AllowVectorExport = True
         Top = 955.221090000000000000
         Width = 718.110700000000000000
         Height = 49.133890000000000000
@@ -5161,7 +5430,8 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo78: TfrxMemoView
         Align = baCenter
-        Left = 75.590600000000000000
+        AllowVectorExport = True
+        Left = 75.590599999999970000
         Top = 978.898270000000000000
         Width = 566.929500000000000000
         Height = 18.897650000000000000
@@ -5170,6 +5440,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Fill.BackColor = clYellow
         HAlign = haCenter
         Memo.UTF8W = (
@@ -5179,6 +5450,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo79: TfrxMemoView
+        AllowVectorExport = True
         Left = 498.897960000000000000
         Top = 922.205320000000000000
         Width = 211.653680000000000000
@@ -5196,6 +5468,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo14: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 891.969080000000000000
         Width = 226.771800000000000000
@@ -5209,6 +5482,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo80: TfrxMemoView
+        AllowVectorExport = True
         Left = 272.126160000000000000
         Top = 923.205320000000000000
         Width = 211.653680000000000000
@@ -5226,6 +5500,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo81: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 827.717070000000000000
         Width = 226.771800000000000000
@@ -5239,6 +5514,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo82: TfrxMemoView
+        AllowVectorExport = True
         Left = 272.126160000000000000
         Top = 858.953310000000000000
         Width = 211.653680000000000000
@@ -5256,6 +5532,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo83: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 827.717070000000000000
         Width = 226.771800000000000000
@@ -5269,6 +5546,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo84: TfrxMemoView
+        AllowVectorExport = True
         Left = 498.897960000000000000
         Top = 858.953310000000000000
         Width = 211.653680000000000000
@@ -5286,6 +5564,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo15: TfrxMemoView
+        AllowVectorExport = True
         Top = 827.717070000000000000
         Width = 264.567100000000000000
         Height = 64.252010000000000000
@@ -5298,6 +5577,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo16: TfrxMemoView
+        AllowVectorExport = True
         Top = 891.969080000000000000
         Width = 264.567100000000000000
         Height = 64.252010000000000000
@@ -5312,6 +5592,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo85: TfrxMemoView
+        AllowVectorExport = True
         Top = 862.732840000000000000
         Width = 173.858380000000000000
         Height = 18.897650000000000000
@@ -5320,6 +5601,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '________________, ___ / ___ / 201__')
@@ -5327,6 +5609,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo86: TfrxMemoView
+        AllowVectorExport = True
         Top = 925.984850000000000000
         Width = 173.858380000000000000
         Height = 18.897650000000000000
@@ -5335,6 +5618,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '________________, ___ / ___ / 201__')
@@ -5342,6 +5626,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo17: TfrxMemoView
+        AllowVectorExport = True
         Top = 774.803650000000000000
         Width = 718.110700000000000000
         Height = 52.913420000000000000
@@ -5354,6 +5639,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo87: TfrxMemoView
+        AllowVectorExport = True
         Top = 774.803650000000000000
         Width = 718.110700000000000000
         Height = 52.913420000000000000
@@ -5362,6 +5648,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -12
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             'Eu, [frxdbBuscaPessoa."nome_pessoa"], subscrevo e assino o prese' +
@@ -5374,6 +5661,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo88: TfrxMemoView
+        AllowVectorExport = True
         Top = 748.346940000000000000
         Width = 718.110700000000000000
         Height = 26.456710000000000000
@@ -5402,6 +5690,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo89: TfrxMemoView
+        AllowVectorExport = True
         Top = 733.228820000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -5418,6 +5707,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo90: TfrxMemoView
+        AllowVectorExport = True
         Top = 544.252320000000000000
         Width = 593.386210000000000000
         Height = 11.338590000000000000
@@ -5428,12 +5718,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."complemento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo91: TfrxMemoView
+        AllowVectorExport = True
         Top = 385.512060000000000000
         Width = 359.055350000000000000
         Height = 49.133872910000000000
@@ -5448,6 +5740,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo92: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 385.512060000000000000
         Width = 359.055350000000000000
@@ -5463,6 +5756,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo93: TfrxMemoView
+        AllowVectorExport = True
         Top = 396.850650000000000000
         Width = 359.055350000000000000
         Height = 34.015762680000000000
@@ -5473,6 +5767,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           
@@ -5500,6 +5795,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo96: TfrxMemoView
+        AllowVectorExport = True
         Left = 245.669450000000000000
         Top = 434.645950000000000000
         Width = 200.315090000000000000
@@ -5515,6 +5811,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo97: TfrxMemoView
+        AllowVectorExport = True
         Left = 445.984540000000000000
         Top = 434.645950000000000000
         Width = 272.126160000000000000
@@ -5530,6 +5827,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo99: TfrxMemoView
+        AllowVectorExport = True
         Left = 248.669450000000000000
         Top = 447.764070000000000000
         Width = 120.944960000000000000
@@ -5541,12 +5839,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '__/_____/__')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo100: TfrxMemoView
+        AllowVectorExport = True
         Left = 445.984540000000000000
         Top = 449.764070000000000000
         Width = 257.008040000000000000
@@ -5558,6 +5858,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             '[IIF(<frxdbBuscaPessoa."estado_civil_anterior">='#39'SOLTEIRO'#39','#39'[ X]' +
@@ -5567,6 +5868,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo103: TfrxMemoView
+        AllowVectorExport = True
         Top = 461.102660000000000000
         Width = 434.645950000000000000
         Height = 26.456692910000000000
@@ -5581,6 +5883,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo108: TfrxMemoView
+        AllowVectorExport = True
         Top = 476.220780000000000000
         Width = 434.645950000000000000
         Height = 11.338582680000000000
@@ -5591,12 +5894,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_conjugue"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo109: TfrxMemoView
+        AllowVectorExport = True
         Left = 434.645950000000000000
         Top = 461.102660000000000000
         Width = 283.464750000000000000
@@ -5612,6 +5917,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo110: TfrxMemoView
+        AllowVectorExport = True
         Left = 434.645950000000000000
         Top = 476.220780000000000000
         Width = 170.078850000000000000
@@ -5623,12 +5929,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_casamento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo95: TfrxMemoView
+        AllowVectorExport = True
         Top = 434.645950000000000000
         Width = 245.669450000000000000
         Height = 26.456692910000000000
@@ -5643,6 +5951,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo98: TfrxMemoView
+        AllowVectorExport = True
         Top = 449.764070000000000000
         Width = 245.669450000000000000
         Height = 11.338582680000000000
@@ -5653,6 +5962,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             '[IIF(<frxdbBuscaPessoa."estado_civil_atual">='#39'SOLTEIRO'#39','#39'[ X] So' +
@@ -5662,6 +5972,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo94: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 396.850650000000000000
         Width = 359.055350000000000000
@@ -5673,6 +5984,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           
@@ -5683,6 +5995,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Picture2: TfrxPictureView
+        AllowVectorExport = True
         Left = 640.740570000000000000
         Top = 109.606370000000000000
         Width = 75.590600000000000000
@@ -5691,12 +6004,14 @@ object dtmRelatorio: TdtmRelatorio
         DataField = 'foto'
         DataSet = frxdbBuscaPessoa
         DataSetName = 'frxdbBuscaPessoa'
+        Frame.Typ = []
         HightQuality = False
         Transparent = False
         TransparentColor = clWhite
       end
       object Memo101: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 179.527675000000000000
         Top = 960.221090000000000000
         Width = 359.055350000000000000
@@ -5706,12 +6021,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Fill.BackColor = clYellow
         Memo.UTF8W = (
           'ANEXAR FOTO RECENTE E C'#211'PIA DOS SEGUINTES DOCUMENTOS:')
         ParentFont = False
       end
       object Memo7: TfrxMemoView
+        AllowVectorExport = True
         Left = 268.346630000000000000
         Top = 238.110390000000000000
         Width = 41.574830000000000000
@@ -5723,6 +6040,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."setorcong"]')
@@ -5730,6 +6048,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo31: TfrxMemoView
+        AllowVectorExport = True
         Left = 313.700990000000000000
         Top = 238.110390000000000000
         Width = 287.244280000000000000
@@ -5741,6 +6060,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."congregacao"]')
         ParentFont = False
@@ -5749,7 +6069,7 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object frxrprtFichaCongregado: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -5793,7 +6113,9 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object Memo18: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 890.969080000000000000
         Width = 226.771800000000000000
@@ -5807,6 +6129,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Picture1: TfrxPictureView
+        AllowVectorExport = True
         Left = 3.779530000000000000
         Top = 3.779530000000000000
         Width = 120.944960000000000000
@@ -5814,6 +6137,7 @@ object dtmRelatorio: TdtmRelatorio
         DataField = 'foto'
         DataSet = frxdbBuscaIgreja
         DataSetName = 'frxdbBuscaIgreja'
+        Frame.Typ = []
         Picture.Data = {
           0A54504E474F626A65637489504E470D0A1A0A0000000D494844520000008200
           0000970806000000D91883D5000000097048597300002E2300002E230178A53F
@@ -7461,6 +7785,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo4: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Top = 1009.134510000000000000
         Width = 718.110700000000000000
         Height = 37.795300000000000000
@@ -7501,6 +7826,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo6: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 7.559060000000000000
         Width = 582.047620000000000000
@@ -7510,6 +7836,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -27
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaIgreja."nome_igreja"]')
         ParentFont = False
@@ -7522,6 +7849,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object frxdbBuscaIgrejadta_fundacao: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 74.149660000000000000
         Width = 582.047620000000000000
@@ -7535,12 +7863,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -19
         Font.Name = 'calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'Fundada em [frxdbBuscaIgreja."dta_fundacao"]')
         ParentFont = False
       end
       object Memo9: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 102.047310000000000000
         Width = 582.047620000000000000
@@ -7552,6 +7882,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Frame.Width = 4.000000000000000000
         HAlign = haCenter
         Memo.UTF8W = (
@@ -7560,6 +7891,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaBottom
       end
       object frxdbBuscaIgrejacidade: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 37.795300000000000000
         Width = 582.047620000000000000
@@ -7571,6 +7903,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -27
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'no RIO GRANDE do NORTE')
@@ -7578,6 +7911,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo3: TfrxMemoView
         Align = baLeft
+        AllowVectorExport = True
         Top = 162.519790000000000000
         Width = 634.961040000000000000
         Height = 60.472480000000000000
@@ -7587,17 +7921,20 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri Light'
         Font.Style = [fsBold]
         Frame.Color = clLime
+        Frame.Typ = []
         Memo.UTF8W = (
           'FORMUL'#193'RIO DE ADMISS'#195'O DE CONGREGADO')
         ParentFont = False
       end
       object Line1: TfrxLineView
+        AllowVectorExport = True
         Top = 827.717070000000000000
         Width = 718.110700000000000000
         Color = clBlack
         Frame.Typ = [ftTop]
       end
       object Memo1: TfrxMemoView
+        AllowVectorExport = True
         Top = 222.992270000000000000
         Width = 264.567100000000000000
         Height = 34.015770000000000000
@@ -7613,6 +7950,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo2: TfrxMemoView
+        AllowVectorExport = True
         Top = 239.110390000000000000
         Width = 264.567100000000000000
         Height = 15.118120000000000000
@@ -7623,12 +7961,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaIgreja."cidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo5: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 222.992270000000000000
         Width = 49.133890000000000000
@@ -7645,6 +7985,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo10: TfrxMemoView
+        AllowVectorExport = True
         Left = 313.700990000000000000
         Top = 222.992270000000000000
         Width = 257.008040000000000000
@@ -7661,6 +8002,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo32: TfrxMemoView
+        AllowVectorExport = True
         Top = 257.008040000000000000
         Width = 634.961040000000000000
         Height = 34.015770000000000000
@@ -7675,6 +8017,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo33: TfrxMemoView
+        AllowVectorExport = True
         Left = 570.709030000000000000
         Top = 222.992270000000000000
         Width = 147.401670000000000000
@@ -7690,6 +8033,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo34: TfrxMemoView
+        AllowVectorExport = True
         Left = 606.724800000000000000
         Top = 237.110390000000000000
         Width = 109.606370000000000000
@@ -7701,6 +8045,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = ANSI_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -7710,11 +8055,13 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftGlass
         Highlight.Fill.Color = clYellow
         Highlight.Fill.Blend = 0.500000000000000000
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nro_rol"]')
         ParentFont = False
       end
       object Memo35: TfrxMemoView
+        AllowVectorExport = True
         Top = 272.126160000000000000
         Width = 483.779840000000000000
         Height = 18.897650000000000000
@@ -7726,11 +8073,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_pessoa"]')
         ParentFont = False
       end
       object Memo36: TfrxMemoView
+        AllowVectorExport = True
         Left = 634.961040000000000000
         Top = 257.008040000000000000
         Width = 83.149660000000000000
@@ -7746,6 +8095,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaPessoasexo: TfrxMemoView
+        AllowVectorExport = True
         Left = 634.961040000000000000
         Top = 272.126160000000000000
         Width = 83.149660000000000000
@@ -7757,6 +8107,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             '[IIF(<frxdbBuscaPessoa."sexo">='#39'M'#39','#39'[X] Masc'#9'  [  ] Fem'#39','#39'[  ] M' +
@@ -7764,6 +8115,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo37: TfrxMemoView
+        AllowVectorExport = True
         Top = 291.023810000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -7787,6 +8139,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo38: TfrxMemoView
+        AllowVectorExport = True
         Top = 306.141930000000000000
         Width = 359.055350000000000000
         Height = 26.456692910000000000
@@ -7801,6 +8154,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo39: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 306.141930000000000000
         Width = 359.055350000000000000
@@ -7816,6 +8170,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo40: TfrxMemoView
+        AllowVectorExport = True
         Top = 321.260050000000000000
         Width = 359.055350000000000000
         Height = 11.338582680000000000
@@ -7827,12 +8182,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_pai"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo41: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 321.260050000000000000
         Width = 359.055350000000000000
@@ -7845,12 +8202,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_mae"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo42: TfrxMemoView
+        AllowVectorExport = True
         Left = 638.740570000000000000
         Top = 109.606370000000000000
         Width = 79.370130000000000000
@@ -7871,6 +8230,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo43: TfrxMemoView
+        AllowVectorExport = True
         Top = 332.598640000000000000
         Width = 124.724490000000000000
         Height = 26.456692910000000000
@@ -7885,6 +8245,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo44: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 332.598640000000000000
         Width = 283.464750000000000000
@@ -7900,6 +8261,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo45: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 332.598640000000000000
         Width = 226.771800000000000000
@@ -7915,6 +8277,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo46: TfrxMemoView
+        AllowVectorExport = True
         Top = 347.716760000000000000
         Width = 124.724490000000000000
         Height = 11.338582680000000000
@@ -7926,12 +8289,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_nascimento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo47: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 347.716760000000000000
         Width = 283.464750000000000000
@@ -7944,12 +8309,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."naturalidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo48: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 347.716760000000000000
         Width = 211.653680000000000000
@@ -7962,12 +8329,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nacionalidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo51: TfrxMemoView
+        AllowVectorExport = True
         Left = 408.189240000000000000
         Top = 332.598640000000000000
         Width = 83.149660000000000000
@@ -7983,6 +8352,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaPessoauf_nascimento: TfrxMemoView
+        AllowVectorExport = True
         Left = 410.189240000000000000
         Top = 345.716760000000000000
         Width = 75.590600000000000000
@@ -7995,6 +8365,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -8004,12 +8375,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."uf_nascimento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo49: TfrxMemoView
+        AllowVectorExport = True
         Top = 359.055350000000000000
         Width = 124.724490000000000000
         Height = 26.456692910000000000
@@ -8024,6 +8397,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo50: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 359.055350000000000000
         Width = 143.622140000000000000
@@ -8039,6 +8413,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo52: TfrxMemoView
+        AllowVectorExport = True
         Left = 268.346630000000000000
         Top = 359.055350000000000000
         Width = 113.385900000000000000
@@ -8054,6 +8429,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo53: TfrxMemoView
+        AllowVectorExport = True
         Left = 268.346630000000000000
         Top = 374.173470000000000000
         Width = 113.385900000000000000
@@ -8066,6 +8442,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -8075,12 +8452,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cpf"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo54: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 374.173470000000000000
         Width = 143.622140000000000000
@@ -8093,6 +8472,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -8102,12 +8482,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."orgaorg"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo55: TfrxMemoView
+        AllowVectorExport = True
         Top = 374.173470000000000000
         Width = 124.724490000000000000
         Height = 11.338582680000000000
@@ -8119,6 +8501,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -8129,12 +8512,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.Fill.StartColor = clYellow
         Highlight.Fill.EndColor = clYellow
         Highlight.Fill.GradientStyle = gsHorizontal
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nrorg"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo56: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 359.055350000000000000
         Width = 336.378170000000000000
@@ -8150,6 +8535,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaPessoaemail: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 374.173470000000000000
         Width = 336.378170000000000000
@@ -8162,12 +8548,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."email"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo57: TfrxMemoView
+        AllowVectorExport = True
         Top = 487.559370000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -8184,6 +8572,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo58: TfrxMemoView
+        AllowVectorExport = True
         Top = 502.677490000000000000
         Width = 593.386210000000000000
         Height = 26.456710000000000000
@@ -8198,6 +8587,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo59: TfrxMemoView
+        AllowVectorExport = True
         Left = 593.386210000000000000
         Top = 502.677490000000000000
         Width = 124.724490000000000000
@@ -8216,6 +8606,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo60: TfrxMemoView
+        AllowVectorExport = True
         Top = 517.795610000000000000
         Width = 593.386210000000000000
         Height = 11.338590000000000000
@@ -8226,12 +8617,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."logradouro"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo62: TfrxMemoView
+        AllowVectorExport = True
         Top = 529.134200000000000000
         Width = 608.504330000000000000
         Height = 26.456692910000000000
@@ -8246,6 +8639,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo64: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 529.134200000000000000
         Width = 109.606370000000000000
@@ -8261,6 +8655,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo67: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 540.472790000000000000
         Width = 109.606370000000000000
@@ -8272,12 +8667,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."fone_residencial"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo70: TfrxMemoView
+        AllowVectorExport = True
         Top = 555.590910000000000000
         Width = 381.732530000000000000
         Height = 26.456692910000000000
@@ -8292,6 +8689,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo72: TfrxMemoView
+        AllowVectorExport = True
         Left = 495.118430000000000000
         Top = 555.590910000000000000
         Width = 113.385900000000000000
@@ -8307,6 +8705,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo75: TfrxMemoView
+        AllowVectorExport = True
         Top = 570.709030000000000000
         Width = 381.732530000000000000
         Height = 11.338582680000000000
@@ -8317,12 +8716,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."bairro"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo8: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 555.590910000000000000
         Width = 109.606370000000000000
@@ -8338,6 +8739,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo11: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 570.709030000000000000
         Width = 109.606370000000000000
@@ -8349,12 +8751,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."fone_celular"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object frxdbBuscaPessoacidade: TfrxMemoView
+        AllowVectorExport = True
         Left = 495.118430000000000000
         Top = 570.709030000000000000
         Width = 113.385900000000000000
@@ -8367,12 +8771,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo12: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 555.590910000000000000
         Width = 113.385900000000000000
@@ -8388,6 +8794,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo13: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 569.709030000000000000
         Width = 113.385900000000000000
@@ -8399,6 +8806,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -8408,12 +8816,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cep"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo19: TfrxMemoView
+        AllowVectorExport = True
         Top = 582.047620000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -8430,6 +8840,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo20: TfrxMemoView
+        AllowVectorExport = True
         Top = 597.165740000000000000
         Width = 181.417440000000000000
         Height = 26.456692910000000000
@@ -8444,6 +8855,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo22: TfrxMemoView
+        AllowVectorExport = True
         Top = 612.283860000000000000
         Width = 181.417440000000000000
         Height = 11.338582680000000000
@@ -8454,12 +8866,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_conversao"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo23: TfrxMemoView
+        AllowVectorExport = True
         Top = 623.622450000000000000
         Width = 400.630180000000000000
         Height = 26.456692910000000000
@@ -8474,6 +8888,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo24: TfrxMemoView
+        AllowVectorExport = True
         Left = 400.630180000000000000
         Top = 623.622450000000000000
         Width = 317.480520000000000000
@@ -8489,6 +8904,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo25: TfrxMemoView
+        AllowVectorExport = True
         Left = 400.630180000000000000
         Top = 638.740570000000000000
         Width = 317.480520000000000000
@@ -8500,12 +8916,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."proced_eclesiastica"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object frxdbBuscaPessoaorigem_eclesiastica: TfrxMemoView
+        AllowVectorExport = True
         Top = 638.740570000000000000
         Width = 400.630180000000000000
         Height = 11.338582680000000000
@@ -8517,12 +8935,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."origem_eclesiastica"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo26: TfrxMemoView
+        AllowVectorExport = True
         Left = 181.417440000000000000
         Top = 597.165740000000000000
         Width = 177.637910000000000000
@@ -8538,6 +8958,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo27: TfrxMemoView
+        AllowVectorExport = True
         Left = 181.417440000000000000
         Top = 612.283860000000000000
         Width = 177.637910000000000000
@@ -8549,12 +8970,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_batismo_esprito"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo28: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 597.165740000000000000
         Width = 181.417440000000000000
@@ -8570,6 +8993,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo29: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 612.283860000000000000
         Width = 181.417440000000000000
@@ -8581,12 +9005,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_batismo_aguas"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo21: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 597.165740000000000000
         Width = 177.637910000000000000
@@ -8602,6 +9028,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo30: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 612.283860000000000000
         Width = 177.637910000000000000
@@ -8613,12 +9040,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_membro"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo61: TfrxMemoView
+        AllowVectorExport = True
         Top = 650.079160000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -8635,6 +9064,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo63: TfrxMemoView
+        AllowVectorExport = True
         Top = 665.197280000000000000
         Width = 359.055350000000000000
         Height = 34.015770000000000000
@@ -8649,6 +9079,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo65: TfrxMemoView
+        AllowVectorExport = True
         Top = 680.315400000000000000
         Width = 359.055350000000000000
         Height = 18.897650000000000000
@@ -8659,11 +9090,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."profissao"]')
         ParentFont = False
       end
       object Memo66: TfrxMemoView
+        AllowVectorExport = True
         Top = 699.213050000000000000
         Width = 359.055350000000000000
         Height = 34.015770000000000000
@@ -8678,6 +9111,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo68: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 699.213050000000000000
         Width = 181.417440000000000000
@@ -8693,6 +9127,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo69: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 714.331170000000000000
         Width = 181.417440000000000000
@@ -8704,11 +9139,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."funcao"]')
         ParentFont = False
       end
       object Memo71: TfrxMemoView
+        AllowVectorExport = True
         Top = 714.331170000000000000
         Width = 359.055350000000000000
         Height = 18.897650000000000000
@@ -8719,11 +9156,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."emprego_atual"]')
         ParentFont = False
       end
       object Memo73: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 665.197280000000000000
         Width = 359.055350000000000000
@@ -8739,6 +9178,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo76: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 699.213050000000000000
         Width = 177.637910000000000000
@@ -8754,6 +9194,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo77: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 714.331170000000000000
         Width = 177.637910000000000000
@@ -8765,11 +9206,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."fone_trabalho"]')
         ParentFont = False
       end
       object frxdbBuscaPessoahabilitacao_profissional: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 680.315400000000000000
         Width = 359.055350000000000000
@@ -8782,11 +9225,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."habilitacao_profissional"]')
         ParentFont = False
       end
       object Memo74: TfrxMemoView
+        AllowVectorExport = True
         Top = 955.221090000000000000
         Width = 718.110700000000000000
         Height = 49.133890000000000000
@@ -8802,6 +9247,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo78: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 978.898270000000000000
         Width = 445.984540000000000000
@@ -8811,6 +9257,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Fill.BackColor = clYellow
         HAlign = haCenter
         Memo.UTF8W = (
@@ -8820,6 +9267,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo79: TfrxMemoView
+        AllowVectorExport = True
         Left = 498.897960000000000000
         Top = 922.205320000000000000
         Width = 211.653680000000000000
@@ -8837,6 +9285,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo14: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 891.969080000000000000
         Width = 226.771800000000000000
@@ -8850,6 +9299,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo80: TfrxMemoView
+        AllowVectorExport = True
         Left = 272.126160000000000000
         Top = 923.205320000000000000
         Width = 211.653680000000000000
@@ -8867,6 +9317,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo81: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 827.717070000000000000
         Width = 226.771800000000000000
@@ -8880,6 +9331,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo82: TfrxMemoView
+        AllowVectorExport = True
         Left = 272.126160000000000000
         Top = 858.953310000000000000
         Width = 211.653680000000000000
@@ -8897,6 +9349,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo83: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 827.717070000000000000
         Width = 226.771800000000000000
@@ -8910,6 +9363,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo84: TfrxMemoView
+        AllowVectorExport = True
         Left = 498.897960000000000000
         Top = 858.953310000000000000
         Width = 211.653680000000000000
@@ -8927,6 +9381,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo15: TfrxMemoView
+        AllowVectorExport = True
         Top = 827.717070000000000000
         Width = 264.567100000000000000
         Height = 64.252010000000000000
@@ -8939,6 +9394,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo16: TfrxMemoView
+        AllowVectorExport = True
         Top = 891.969080000000000000
         Width = 264.567100000000000000
         Height = 64.252010000000000000
@@ -8953,6 +9409,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo85: TfrxMemoView
+        AllowVectorExport = True
         Top = 862.732840000000000000
         Width = 173.858380000000000000
         Height = 18.897650000000000000
@@ -8961,6 +9418,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '________________, ___ / ___ / 201__')
@@ -8968,6 +9426,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo86: TfrxMemoView
+        AllowVectorExport = True
         Top = 925.984850000000000000
         Width = 173.858380000000000000
         Height = 18.897650000000000000
@@ -8976,6 +9435,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '________________, ___ / ___ / 201__')
@@ -8983,6 +9443,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo17: TfrxMemoView
+        AllowVectorExport = True
         Top = 774.803650000000000000
         Width = 718.110700000000000000
         Height = 52.913420000000000000
@@ -8995,6 +9456,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo87: TfrxMemoView
+        AllowVectorExport = True
         Top = 774.803650000000000000
         Width = 718.110700000000000000
         Height = 52.913420000000000000
@@ -9003,6 +9465,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -12
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             'Eu, [frxdbBuscaPessoa."nome_pessoa"], subscrevo e assino o prese' +
@@ -9015,6 +9478,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo88: TfrxMemoView
+        AllowVectorExport = True
         Top = 748.346940000000000000
         Width = 718.110700000000000000
         Height = 26.456710000000000000
@@ -9043,6 +9507,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo89: TfrxMemoView
+        AllowVectorExport = True
         Top = 733.228820000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -9059,6 +9524,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo90: TfrxMemoView
+        AllowVectorExport = True
         Top = 544.252320000000000000
         Width = 593.386210000000000000
         Height = 11.338590000000000000
@@ -9069,12 +9535,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."complemento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo91: TfrxMemoView
+        AllowVectorExport = True
         Top = 385.512060000000000000
         Width = 359.055350000000000000
         Height = 49.133872910000000000
@@ -9089,6 +9557,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo92: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 385.512060000000000000
         Width = 359.055350000000000000
@@ -9104,6 +9573,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo93: TfrxMemoView
+        AllowVectorExport = True
         Top = 396.850650000000000000
         Width = 359.055350000000000000
         Height = 34.015762680000000000
@@ -9114,6 +9584,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           
@@ -9141,6 +9612,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo96: TfrxMemoView
+        AllowVectorExport = True
         Left = 245.669450000000000000
         Top = 434.645950000000000000
         Width = 200.315090000000000000
@@ -9156,6 +9628,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo97: TfrxMemoView
+        AllowVectorExport = True
         Left = 445.984540000000000000
         Top = 434.645950000000000000
         Width = 272.126160000000000000
@@ -9171,6 +9644,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo99: TfrxMemoView
+        AllowVectorExport = True
         Left = 248.669450000000000000
         Top = 447.764070000000000000
         Width = 120.944960000000000000
@@ -9182,12 +9656,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '__/_____/__')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo100: TfrxMemoView
+        AllowVectorExport = True
         Left = 445.984540000000000000
         Top = 449.764070000000000000
         Width = 257.008040000000000000
@@ -9199,6 +9675,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             '[IIF(<frxdbBuscaPessoa."estado_civil_anterior">='#39'SOLTEIRO'#39','#39'[ X]' +
@@ -9208,6 +9685,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo103: TfrxMemoView
+        AllowVectorExport = True
         Top = 461.102660000000000000
         Width = 434.645950000000000000
         Height = 26.456692910000000000
@@ -9222,6 +9700,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo108: TfrxMemoView
+        AllowVectorExport = True
         Top = 476.220780000000000000
         Width = 434.645950000000000000
         Height = 11.338582680000000000
@@ -9232,12 +9711,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_conjugue"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo109: TfrxMemoView
+        AllowVectorExport = True
         Left = 434.645950000000000000
         Top = 461.102660000000000000
         Width = 283.464750000000000000
@@ -9253,6 +9734,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo110: TfrxMemoView
+        AllowVectorExport = True
         Left = 434.645950000000000000
         Top = 476.220780000000000000
         Width = 170.078850000000000000
@@ -9264,12 +9746,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_casamento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo95: TfrxMemoView
+        AllowVectorExport = True
         Top = 434.645950000000000000
         Width = 245.669450000000000000
         Height = 26.456692910000000000
@@ -9284,6 +9768,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo98: TfrxMemoView
+        AllowVectorExport = True
         Top = 449.764070000000000000
         Width = 245.669450000000000000
         Height = 11.338582680000000000
@@ -9294,6 +9779,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             '[IIF(<frxdbBuscaPessoa."estado_civil_atual">='#39'SOLTEIRO'#39','#39'[ X] So' +
@@ -9303,6 +9789,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo94: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 396.850650000000000000
         Width = 359.055350000000000000
@@ -9314,6 +9801,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           
@@ -9324,6 +9812,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Picture2: TfrxPictureView
+        AllowVectorExport = True
         Left = 640.740570000000000000
         Top = 109.606370000000000000
         Width = 75.590600000000000000
@@ -9332,12 +9821,14 @@ object dtmRelatorio: TdtmRelatorio
         DataField = 'foto'
         DataSet = frxdbBuscaPessoa
         DataSetName = 'frxdbBuscaPessoa'
+        Frame.Typ = []
         HightQuality = False
         Transparent = False
         TransparentColor = clWhite
       end
       object Memo101: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 204.094620000000000000
         Top = 960.221090000000000000
         Width = 309.921460000000000000
@@ -9347,12 +9838,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Fill.BackColor = clYellow
         Memo.UTF8W = (
           'Anexar foto recente e c'#243'pia dos seguintes documentos:')
         ParentFont = False
       end
       object Memo7: TfrxMemoView
+        AllowVectorExport = True
         Left = 268.346630000000000000
         Top = 238.110390000000000000
         Width = 41.574830000000000000
@@ -9364,6 +9857,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."setorcong"]')
@@ -9371,6 +9865,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo31: TfrxMemoView
+        AllowVectorExport = True
         Left = 313.700990000000000000
         Top = 238.110390000000000000
         Width = 241.889920000000000000
@@ -9382,6 +9877,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."congregacao"]')
         ParentFont = False
@@ -9390,7 +9886,7 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object frxrprtBatismoAguas: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -9434,7 +9930,9 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object Memo18: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 869.291338582677000000
         Width = 226.771800000000000000
@@ -9448,10 +9946,12 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Picture1: TfrxPictureView
+        AllowVectorExport = True
         Left = 3.779530000000000000
         Top = 3.779530000000000000
         Width = 120.944960000000000000
         Height = 143.622140000000000000
+        Frame.Typ = []
         Picture.Data = {
           0A54504E474F626A65637489504E470D0A1A0A0000000D494844520000008200
           0000970806000000D91883D5000000097048597300002E2300002E230178A53F
@@ -11099,6 +11599,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo4: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = -0.000000000000024203
         Top = 1009.134510000000000000
         Width = 718.110700000000000000
@@ -11139,6 +11640,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo6: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 7.559060000000000000
         Width = 582.047620000000000000
@@ -11148,6 +11650,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -27
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaIgreja."nome_igreja"]')
         ParentFont = False
@@ -11160,6 +11663,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object frxdbBuscaIgrejadta_fundacao: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 74.149660000000000000
         Width = 582.047620000000000000
@@ -11173,12 +11677,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -19
         Font.Name = 'calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'Fundada em [frxdbBuscaIgreja."dta_fundacao"]')
         ParentFont = False
       end
       object Memo9: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 102.047310000000000000
         Width = 582.047620000000000000
@@ -11190,6 +11696,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Frame.Width = 4.000000000000000000
         HAlign = haCenter
         Memo.UTF8W = (
@@ -11198,6 +11705,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaBottom
       end
       object frxdbBuscaIgrejacidade: TfrxMemoView
+        AllowVectorExport = True
         Left = 136.063080000000000000
         Top = 37.795300000000000000
         Width = 582.047620000000000000
@@ -11209,12 +11717,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -27
         Font.Name = 'Times New Roman'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'no RIO GRANDE do NORTE')
         ParentFont = False
       end
       object Memo3: TfrxMemoView
+        AllowVectorExport = True
         Top = 177.858380000000000000
         Width = 279.685220000000000000
         Height = 22.677180000000000000
@@ -11224,6 +11734,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
         Frame.Color = clLime
+        Frame.Typ = []
         Fill.BackColor = 13434828
         Memo.UTF8W = (
           'FORMUL'#193'RIO DE ADMISS'#195'O DE MEMBRO '#8211' ')
@@ -11231,12 +11742,14 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaBottom
       end
       object Line1: TfrxLineView
+        AllowVectorExport = True
         Top = 805.039890000000000000
         Width = 718.110700000000000000
         Color = clBlack
         Frame.Typ = [ftTop]
       end
       object Memo1: TfrxMemoView
+        AllowVectorExport = True
         Top = 200.315090000000000000
         Width = 264.567100000000000000
         Height = 34.015770000000000000
@@ -11252,6 +11765,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo2: TfrxMemoView
+        AllowVectorExport = True
         Top = 216.433210000000000000
         Width = 264.567100000000000000
         Height = 15.118120000000000000
@@ -11262,12 +11776,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaIgreja."cidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo5: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 200.315090000000000000
         Width = 49.133890000000000000
@@ -11284,6 +11800,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo7: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 214.653680000000000000
         Width = 49.133890000000000000
@@ -11295,6 +11812,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -11305,11 +11823,13 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.Fill.StartColor = clYellow
         Highlight.Fill.EndColor = clYellow
         Highlight.Fill.GradientStyle = gsHorizontal
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."setorcong"]')
         ParentFont = False
       end
       object Memo10: TfrxMemoView
+        AllowVectorExport = True
         Left = 313.700990000000000000
         Top = 200.315090000000000000
         Width = 211.653680000000000000
@@ -11326,6 +11846,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo31: TfrxMemoView
+        AllowVectorExport = True
         Left = 313.700990000000000000
         Top = 215.433210000000000000
         Width = 196.535560000000000000
@@ -11338,11 +11859,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."congregacao"]')
         ParentFont = False
       end
       object Memo32: TfrxMemoView
+        AllowVectorExport = True
         Top = 234.330860000000000000
         Width = 634.961040000000000000
         Height = 34.015770000000000000
@@ -11357,6 +11880,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo33: TfrxMemoView
+        AllowVectorExport = True
         Left = 525.354670000000000000
         Top = 200.315090000000000000
         Width = 113.385900000000000000
@@ -11372,6 +11896,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo34: TfrxMemoView
+        AllowVectorExport = True
         Left = 527.354670000000000000
         Top = 214.433210000000000000
         Width = 109.606370000000000000
@@ -11383,6 +11908,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = ANSI_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -11392,11 +11918,13 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftGlass
         Highlight.Fill.Color = clYellow
         Highlight.Fill.Blend = 0.500000000000000000
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nro_rol"]')
         ParentFont = False
       end
       object Memo35: TfrxMemoView
+        AllowVectorExport = True
         Top = 249.448980000000000000
         Width = 483.779840000000000000
         Height = 18.897650000000000000
@@ -11408,11 +11936,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_pessoa"]')
         ParentFont = False
       end
       object Memo36: TfrxMemoView
+        AllowVectorExport = True
         Left = 634.961040000000000000
         Top = 234.330860000000000000
         Width = 83.149660000000000000
@@ -11428,6 +11958,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaPessoasexo: TfrxMemoView
+        AllowVectorExport = True
         Left = 634.961040000000000000
         Top = 249.448980000000000000
         Width = 83.149660000000000000
@@ -11439,6 +11970,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             '[IIF(<frxdbBuscaPessoa."sexo">='#39'M'#39','#39'[X] Masc'#9'  [  ] Fem'#39','#39'[  ] M' +
@@ -11446,6 +11978,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo37: TfrxMemoView
+        AllowVectorExport = True
         Top = 268.346630000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -11469,6 +12002,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo38: TfrxMemoView
+        AllowVectorExport = True
         Top = 283.464750000000000000
         Width = 359.055350000000000000
         Height = 26.456692910000000000
@@ -11483,6 +12017,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo39: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 283.464750000000000000
         Width = 359.055350000000000000
@@ -11498,6 +12033,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo40: TfrxMemoView
+        AllowVectorExport = True
         Top = 298.582870000000000000
         Width = 359.055350000000000000
         Height = 11.338582680000000000
@@ -11509,12 +12045,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_pai"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo41: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 298.582870000000000000
         Width = 359.055350000000000000
@@ -11527,12 +12065,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_mae"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo42: TfrxMemoView
+        AllowVectorExport = True
         Left = 638.740570000000000000
         Top = 124.724490000000000000
         Width = 79.370130000000000000
@@ -11553,6 +12093,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo43: TfrxMemoView
+        AllowVectorExport = True
         Top = 309.921460000000000000
         Width = 124.724490000000000000
         Height = 26.456692910000000000
@@ -11567,6 +12108,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo44: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 309.921460000000000000
         Width = 283.464750000000000000
@@ -11582,6 +12124,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo45: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 309.921460000000000000
         Width = 226.771800000000000000
@@ -11597,6 +12140,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo46: TfrxMemoView
+        AllowVectorExport = True
         Top = 325.039580000000000000
         Width = 124.724490000000000000
         Height = 11.338582680000000000
@@ -11608,12 +12152,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_nascimento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo47: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 325.039580000000000000
         Width = 283.464750000000000000
@@ -11626,12 +12172,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."naturalidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo48: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 325.039580000000000000
         Width = 211.653680000000000000
@@ -11644,12 +12192,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nacionalidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo51: TfrxMemoView
+        AllowVectorExport = True
         Left = 408.189240000000000000
         Top = 309.921460000000000000
         Width = 83.149660000000000000
@@ -11665,6 +12215,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaPessoauf_nascimento: TfrxMemoView
+        AllowVectorExport = True
         Left = 410.189240000000000000
         Top = 323.039580000000000000
         Width = 75.590600000000000000
@@ -11677,6 +12228,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -11686,12 +12238,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."uf_nascimento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo49: TfrxMemoView
+        AllowVectorExport = True
         Top = 336.378170000000000000
         Width = 124.724490000000000000
         Height = 26.456692910000000000
@@ -11706,6 +12260,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo50: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 336.378170000000000000
         Width = 143.622140000000000000
@@ -11721,6 +12276,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo52: TfrxMemoView
+        AllowVectorExport = True
         Left = 268.346630000000000000
         Top = 336.378170000000000000
         Width = 113.385900000000000000
@@ -11736,6 +12292,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo53: TfrxMemoView
+        AllowVectorExport = True
         Left = 268.346630000000000000
         Top = 351.496290000000000000
         Width = 113.385900000000000000
@@ -11748,6 +12305,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -11757,12 +12315,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cpf"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo54: TfrxMemoView
+        AllowVectorExport = True
         Left = 124.724490000000000000
         Top = 351.496290000000000000
         Width = 143.622140000000000000
@@ -11775,6 +12335,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -11784,12 +12345,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."orgaorg"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo55: TfrxMemoView
+        AllowVectorExport = True
         Top = 351.496290000000000000
         Width = 124.724490000000000000
         Height = 11.338582680000000000
@@ -11801,6 +12364,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -11811,12 +12375,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.Fill.StartColor = clYellow
         Highlight.Fill.EndColor = clYellow
         Highlight.Fill.GradientStyle = gsHorizontal
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nrorg"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo56: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 336.378170000000000000
         Width = 336.378170000000000000
@@ -11832,6 +12398,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaPessoaemail: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 351.496290000000000000
         Width = 336.378170000000000000
@@ -11844,12 +12411,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."email"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo57: TfrxMemoView
+        AllowVectorExport = True
         Top = 464.882190000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -11866,6 +12435,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo58: TfrxMemoView
+        AllowVectorExport = True
         Top = 480.000310000000000000
         Width = 593.386210000000000000
         Height = 26.456710000000000000
@@ -11880,6 +12450,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo59: TfrxMemoView
+        AllowVectorExport = True
         Left = 593.386210000000000000
         Top = 480.000310000000000000
         Width = 124.724490000000000000
@@ -11898,6 +12469,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo60: TfrxMemoView
+        AllowVectorExport = True
         Top = 495.118430000000000000
         Width = 593.386210000000000000
         Height = 11.338590000000000000
@@ -11908,12 +12480,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."logradouro"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo62: TfrxMemoView
+        AllowVectorExport = True
         Top = 506.457020000000000000
         Width = 608.504330000000000000
         Height = 26.456692910000000000
@@ -11928,6 +12502,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo64: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 506.457020000000000000
         Width = 109.606370000000000000
@@ -11943,6 +12518,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo67: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 517.795610000000000000
         Width = 109.606370000000000000
@@ -11954,12 +12530,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."fone_residencial"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo70: TfrxMemoView
+        AllowVectorExport = True
         Top = 532.913730000000000000
         Width = 381.732530000000000000
         Height = 26.456692910000000000
@@ -11974,6 +12552,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo72: TfrxMemoView
+        AllowVectorExport = True
         Left = 495.118430000000000000
         Top = 532.913730000000000000
         Width = 113.385900000000000000
@@ -11989,6 +12568,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo75: TfrxMemoView
+        AllowVectorExport = True
         Top = 548.031850000000000000
         Width = 381.732530000000000000
         Height = 11.338582680000000000
@@ -11999,12 +12579,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."bairro"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo8: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 532.913730000000000000
         Width = 109.606370000000000000
@@ -12020,6 +12602,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo11: TfrxMemoView
+        AllowVectorExport = True
         Left = 608.504330000000000000
         Top = 548.031850000000000000
         Width = 109.606370000000000000
@@ -12031,12 +12614,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."fone_celular"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object frxdbBuscaPessoacidade: TfrxMemoView
+        AllowVectorExport = True
         Left = 495.118430000000000000
         Top = 548.031850000000000000
         Width = 113.385900000000000000
@@ -12049,12 +12634,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cidade"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo12: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 532.913730000000000000
         Width = 113.385900000000000000
@@ -12070,6 +12657,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo13: TfrxMemoView
+        AllowVectorExport = True
         Left = 381.732530000000000000
         Top = 547.031850000000000000
         Width = 113.385900000000000000
@@ -12081,6 +12669,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Highlight.Font.Charset = DEFAULT_CHARSET
         Highlight.Font.Color = clYellow
         Highlight.Font.Height = -13
@@ -12090,12 +12679,14 @@ object dtmRelatorio: TdtmRelatorio
         Highlight.FillType = ftBrush
         Highlight.Fill.BackColor = clYellow
         Highlight.Fill.ForeColor = clYellow
+        Highlight.Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."cep"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo19: TfrxMemoView
+        AllowVectorExport = True
         Top = 559.370440000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -12112,6 +12703,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo20: TfrxMemoView
+        AllowVectorExport = True
         Top = 574.488560000000000000
         Width = 181.417440000000000000
         Height = 26.456692910000000000
@@ -12126,6 +12718,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo22: TfrxMemoView
+        AllowVectorExport = True
         Top = 589.606680000000000000
         Width = 181.417440000000000000
         Height = 11.338582680000000000
@@ -12136,12 +12729,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_conversao"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo23: TfrxMemoView
+        AllowVectorExport = True
         Top = 600.945270000000000000
         Width = 718.110700000000000000
         Height = 26.456692910000000000
@@ -12156,6 +12751,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object frxdbBuscaPessoaorigem_eclesiastica: TfrxMemoView
+        AllowVectorExport = True
         Top = 616.063390000000000000
         Width = 400.630180000000000000
         Height = 11.338582680000000000
@@ -12167,12 +12763,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."origem_eclesiastica"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo26: TfrxMemoView
+        AllowVectorExport = True
         Left = 181.417440000000000000
         Top = 574.488560000000000000
         Width = 177.637910000000000000
@@ -12188,6 +12786,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo27: TfrxMemoView
+        AllowVectorExport = True
         Left = 181.417440000000000000
         Top = 589.606680000000000000
         Width = 177.637910000000000000
@@ -12199,12 +12798,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_batismo_esprito"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo28: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 574.488560000000000000
         Width = 181.417440000000000000
@@ -12220,6 +12821,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo29: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 589.606680000000000000
         Width = 181.417440000000000000
@@ -12231,12 +12833,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_batismo_aguas"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo21: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 574.488560000000000000
         Width = 177.637910000000000000
@@ -12252,6 +12856,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo30: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 589.606680000000000000
         Width = 177.637910000000000000
@@ -12263,12 +12868,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_membro"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo61: TfrxMemoView
+        AllowVectorExport = True
         Top = 627.401980000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -12285,6 +12892,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo63: TfrxMemoView
+        AllowVectorExport = True
         Top = 642.520100000000000000
         Width = 359.055350000000000000
         Height = 34.015770000000000000
@@ -12299,6 +12907,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo65: TfrxMemoView
+        AllowVectorExport = True
         Top = 657.638220000000000000
         Width = 359.055350000000000000
         Height = 18.897650000000000000
@@ -12309,11 +12918,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."profissao"]')
         ParentFont = False
       end
       object Memo66: TfrxMemoView
+        AllowVectorExport = True
         Top = 676.535870000000000000
         Width = 359.055350000000000000
         Height = 34.015770000000000000
@@ -12328,6 +12939,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo68: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 676.535870000000000000
         Width = 181.417440000000000000
@@ -12343,6 +12955,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo69: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 691.653990000000000000
         Width = 181.417440000000000000
@@ -12354,11 +12967,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."funcao"]')
         ParentFont = False
       end
       object Memo71: TfrxMemoView
+        AllowVectorExport = True
         Top = 691.653990000000000000
         Width = 359.055350000000000000
         Height = 18.897650000000000000
@@ -12369,11 +12984,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."emprego_atual"]')
         ParentFont = False
       end
       object Memo73: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 642.520100000000000000
         Width = 359.055350000000000000
@@ -12389,6 +13006,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo76: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 676.535870000000000000
         Width = 177.637910000000000000
@@ -12404,6 +13022,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo77: TfrxMemoView
+        AllowVectorExport = True
         Left = 540.472790000000000000
         Top = 691.653990000000000000
         Width = 177.637910000000000000
@@ -12415,11 +13034,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."fone_trabalho"]')
         ParentFont = False
       end
       object frxdbBuscaPessoahabilitacao_profissional: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 657.638220000000000000
         Width = 359.055350000000000000
@@ -12432,11 +13053,13 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."habilitacao_profissional"]')
         ParentFont = False
       end
       object Memo74: TfrxMemoView
+        AllowVectorExport = True
         Top = 932.543910000000000000
         Width = 718.110700000000000000
         Height = 49.133890000000000000
@@ -12452,6 +13075,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo78: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 75.590599999999970000
         Top = 956.221090000000000000
         Width = 566.929500000000000000
@@ -12461,6 +13085,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clYellow
         HAlign = haCenter
         Memo.UTF8W = (
@@ -12470,6 +13095,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo79: TfrxMemoView
+        AllowVectorExport = True
         Left = 498.897960000000000000
         Top = 899.528140000000000000
         Width = 211.653680000000000000
@@ -12487,6 +13113,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo14: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 869.291900000000000000
         Width = 226.771800000000000000
@@ -12500,6 +13127,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo80: TfrxMemoView
+        AllowVectorExport = True
         Left = 272.126160000000000000
         Top = 900.528140000000000000
         Width = 211.653680000000000000
@@ -12517,6 +13145,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo81: TfrxMemoView
+        AllowVectorExport = True
         Left = 264.567100000000000000
         Top = 805.039890000000000000
         Width = 226.771800000000000000
@@ -12530,6 +13159,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo82: TfrxMemoView
+        AllowVectorExport = True
         Left = 272.126160000000000000
         Top = 836.276130000000000000
         Width = 211.653680000000000000
@@ -12547,6 +13177,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo83: TfrxMemoView
+        AllowVectorExport = True
         Left = 491.338900000000000000
         Top = 805.039890000000000000
         Width = 226.771800000000000000
@@ -12560,6 +13191,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo84: TfrxMemoView
+        AllowVectorExport = True
         Left = 498.897960000000000000
         Top = 836.276130000000000000
         Width = 211.653680000000000000
@@ -12577,6 +13209,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo15: TfrxMemoView
+        AllowVectorExport = True
         Top = 805.039890000000000000
         Width = 264.567100000000000000
         Height = 64.252010000000000000
@@ -12589,6 +13222,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo16: TfrxMemoView
+        AllowVectorExport = True
         Top = 869.291900000000000000
         Width = 264.567100000000000000
         Height = 64.252010000000000000
@@ -12603,6 +13237,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo85: TfrxMemoView
+        AllowVectorExport = True
         Top = 840.055660000000000000
         Width = 173.858380000000000000
         Height = 18.897650000000000000
@@ -12611,6 +13246,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '________________, ___ / ___ / 201__')
@@ -12618,6 +13254,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo86: TfrxMemoView
+        AllowVectorExport = True
         Top = 903.307670000000000000
         Width = 173.858380000000000000
         Height = 18.897650000000000000
@@ -12626,6 +13263,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           '________________, ___ / ___ / 201__')
@@ -12633,6 +13271,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo17: TfrxMemoView
+        AllowVectorExport = True
         Top = 752.126470000000000000
         Width = 718.110700000000000000
         Height = 52.913420000000000000
@@ -12645,6 +13284,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo87: TfrxMemoView
+        AllowVectorExport = True
         Top = 752.126470000000000000
         Width = 718.110700000000000000
         Height = 52.913420000000000000
@@ -12653,6 +13293,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -12
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             'Eu, [frxdbBuscaPessoa."nome_pessoa"], subscrevo e assino o prese' +
@@ -12665,6 +13306,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo88: TfrxMemoView
+        AllowVectorExport = True
         Top = 725.669760000000000000
         Width = 718.110700000000000000
         Height = 26.456710000000000000
@@ -12693,6 +13335,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo89: TfrxMemoView
+        AllowVectorExport = True
         Top = 710.551640000000000000
         Width = 718.110700000000000000
         Height = 15.118120000000000000
@@ -12709,6 +13352,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo90: TfrxMemoView
+        AllowVectorExport = True
         Top = 521.575140000000000000
         Width = 593.386210000000000000
         Height = 11.338590000000000000
@@ -12719,12 +13363,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."complemento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo91: TfrxMemoView
+        AllowVectorExport = True
         Top = 362.834880000000000000
         Width = 359.055350000000000000
         Height = 49.133872910000000000
@@ -12739,6 +13385,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo92: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 362.834880000000000000
         Width = 359.055350000000000000
@@ -12754,6 +13401,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo93: TfrxMemoView
+        AllowVectorExport = True
         Top = 374.173470000000000000
         Width = 359.055350000000000000
         Height = 34.015762680000000000
@@ -12764,6 +13412,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           
@@ -12791,6 +13440,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo96: TfrxMemoView
+        AllowVectorExport = True
         Left = 245.669450000000000000
         Top = 411.968770000000000000
         Width = 200.315090000000000000
@@ -12806,6 +13456,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo97: TfrxMemoView
+        AllowVectorExport = True
         Left = 445.984540000000000000
         Top = 411.968770000000000000
         Width = 272.126160000000000000
@@ -12821,6 +13472,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo99: TfrxMemoView
+        AllowVectorExport = True
         Left = 248.669450000000000000
         Top = 425.086890000000000000
         Width = 120.944960000000000000
@@ -12832,12 +13484,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '__/_____/__')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo100: TfrxMemoView
+        AllowVectorExport = True
         Left = 445.984540000000000000
         Top = 427.086890000000000000
         Width = 257.008040000000000000
@@ -12849,6 +13503,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             '[IIF(<frxdbBuscaPessoa."estado_civil_anterior">='#39'SOLTEIRO'#39','#39'[ X]' +
@@ -12858,6 +13513,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo103: TfrxMemoView
+        AllowVectorExport = True
         Top = 438.425480000000000000
         Width = 434.645950000000000000
         Height = 26.456692910000000000
@@ -12872,6 +13528,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo108: TfrxMemoView
+        AllowVectorExport = True
         Top = 453.543600000000000000
         Width = 434.645950000000000000
         Height = 11.338582680000000000
@@ -12882,12 +13539,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."nome_conjugue"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo109: TfrxMemoView
+        AllowVectorExport = True
         Left = 434.645950000000000000
         Top = 438.425480000000000000
         Width = 283.464750000000000000
@@ -12903,6 +13562,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo110: TfrxMemoView
+        AllowVectorExport = True
         Left = 434.645950000000000000
         Top = 453.543600000000000000
         Width = 170.078850000000000000
@@ -12914,12 +13574,14 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[frxdbBuscaPessoa."dta_casamento"]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo95: TfrxMemoView
+        AllowVectorExport = True
         Top = 411.968770000000000000
         Width = 245.669450000000000000
         Height = 26.456692910000000000
@@ -12934,6 +13596,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo98: TfrxMemoView
+        AllowVectorExport = True
         Top = 427.086890000000000000
         Width = 245.669450000000000000
         Height = 11.338582680000000000
@@ -12944,6 +13607,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           
             '[IIF(<frxdbBuscaPessoa."estado_civil_atual">='#39'SOLTEIRO'#39','#39'[ X] So' +
@@ -12953,6 +13617,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Memo94: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 374.173470000000000000
         Width = 359.055350000000000000
@@ -12964,6 +13629,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -11
         Font.Name = 'Calibri'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           
@@ -12974,6 +13640,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaCenter
       end
       object Picture2: TfrxPictureView
+        AllowVectorExport = True
         Left = 640.740570000000000000
         Top = 124.724490000000000000
         Width = 79.370130000000000000
@@ -12982,12 +13649,14 @@ object dtmRelatorio: TdtmRelatorio
         DataField = 'foto'
         DataSet = frxdbBuscaPessoa
         DataSetName = 'frxdbBuscaPessoa'
+        Frame.Typ = []
         HightQuality = False
         Transparent = False
         TransparentColor = clWhite
       end
       object Memo101: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 175.748145000000000000
         Top = 937.543910000000000000
         Width = 366.614410000000000000
@@ -12997,6 +13666,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clYellow
         HAlign = haCenter
         Memo.UTF8W = (
@@ -13004,6 +13674,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo102: TfrxMemoView
+        AllowVectorExport = True
         Left = 274.685220000000000000
         Top = 177.858380000000000000
         Width = 362.834880000000000000
@@ -13014,6 +13685,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
         Frame.Color = clLime
+        Frame.Typ = []
         Fill.BackColor = 13434828
         Memo.UTF8W = (
           'BATISMO EM '#193'GUAS')
@@ -13101,7 +13773,7 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object frxrprtPessoas_dept: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -13153,8 +13825,10 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 291.023810000000000000
         Width = 718.110700000000000000
@@ -13162,6 +13836,7 @@ object dtmRelatorio: TdtmRelatorio
         DataSetName = 'frxdbPessoa_dept'
         RowCount = 0
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Width = 41.574830000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -13176,6 +13851,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 41.574830000000000000
           Width = 487.559103940000000000
           Height = 18.897650000000000000
@@ -13190,6 +13866,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 529.795610000000000000
           Width = 124.724360630000000000
           Height = 18.897650000000000000
@@ -13205,6 +13882,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.968925000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
@@ -13225,6 +13903,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -13235,6 +13914,7 @@ object dtmRelatorio: TdtmRelatorio
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object frxdbBuscaIgrejanome_igreja: TfrxMemoView
+          AllowVectorExport = True
           Top = 7.559060000000000000
           Width = 755.906000000000000000
           Height = 86.929190000000000000
@@ -13245,6 +13925,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -12
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbBuscaIgreja."nome_igreja"]'
@@ -13280,6 +13961,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo2: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 143.622140000000000000
           Width = 718.110700000000000000
           Height = 41.574830000000000000
@@ -13288,6 +13970,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -16
           Font.Name = 'Verdana'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -13304,6 +13987,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo3: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 188.976500000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -13312,12 +13996,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold, fsUnderline]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBPessoa_dept."nome_departamento"]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Top = 230.551330000000000000
           Width = 41.574830000000000000
           Height = 18.897650000000000000
@@ -13334,6 +14020,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 41.574830000000000000
           Top = 230.551330000000000000
           Width = 487.559370000000000000
@@ -13351,6 +14038,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 529.795610000000000000
           Top = 230.551330000000000000
           Width = 124.724490000000000000
@@ -13370,6 +14058,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.740570000000000000
           Top = 230.551330000000000000
           Width = 64.252010000000000000
@@ -13387,6 +14076,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 139.842610000000000000
@@ -13394,6 +14084,7 @@ object dtmRelatorio: TdtmRelatorio
           DataField = 'foto'
           DataSet = frxdbBuscaIgreja
           DataSetName = 'frxdbBuscaIgreja'
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
@@ -13401,16 +14092,19 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 332.598640000000000000
         Width = 718.110700000000000000
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 151.181200000000000000
         Top = 415.748300000000000000
         Width = 718.110700000000000000
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Top = 3.779530000000020000
           Width = 718.110700000000000000
           Height = 49.133890000000000000
@@ -13421,6 +14115,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parnamirim, [Date].'
@@ -13430,6 +14125,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo47: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 200.315090000000000000
           Top = 120.944960000000000000
           Width = 317.480520000000000000
@@ -13700,7 +14396,7 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object frxrprtDizimista: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -13764,8 +14460,10 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 400.630180000000000000
         Width = 718.110700000000000000
@@ -13774,6 +14472,7 @@ object dtmRelatorio: TdtmRelatorio
         Filter = '<frxdbDizimista."cargo"><>'#39'MEMBRO'#39
         RowCount = 0
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Width = 34.015770000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -13788,6 +14487,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
@@ -13806,11 +14506,13 @@ object dtmRelatorio: TdtmRelatorio
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbDizimista."data"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."data"]')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Width = 328.819110000000000000
           Height = 18.897650000000000000
@@ -13825,6 +14527,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -13842,11 +14545,13 @@ object dtmRelatorio: TdtmRelatorio
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbDizimista."valor"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."cod_talao"]')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -13866,11 +14571,13 @@ object dtmRelatorio: TdtmRelatorio
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbDizimista."valor"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."valor"]')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -13890,11 +14597,13 @@ object dtmRelatorio: TdtmRelatorio
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbDizimista."cod_cheque">=0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."cod_cheque"]')
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527559060000000000
           Width = 68.031496060000000000
           Height = 18.897650000000000000
@@ -13914,6 +14623,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -13924,6 +14634,7 @@ object dtmRelatorio: TdtmRelatorio
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object frxdbBuscaIgrejanome_igreja: TfrxMemoView
+          AllowVectorExport = True
           Left = 15.118120000000000000
           Width = 755.906000000000000000
           Height = 22.677180000000000000
@@ -13934,12 +14645,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -19
           Font.Name = 'times New Roman'
           Font.Style = [fsBold, fsUnderline]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'IGREJA EVANGELICA ASSEMBL'#201'IA DE DEUS  NO RN')
           ParentFont = False
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 135.133580000000000000
@@ -13947,12 +14660,14 @@ object dtmRelatorio: TdtmRelatorio
           DataField = 'foto'
           DataSet = frxdbBuscaIgreja
           DataSetName = 'frxdbBuscaIgreja'
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Memo2: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 120.944960000000000000
           Width = 718.110700000000000000
           Height = 41.574830000000000000
@@ -13961,6 +14676,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Cambria'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -13979,6 +14695,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo3: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 162.519790000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -13987,6 +14704,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -16
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'RELAT'#211'RIO DE D'#205'ZIMOS IDENTIFICADOS')
@@ -13994,6 +14712,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo4: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 177.637910000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -14002,12 +14721,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -15
           Font.Name = 'Verdana'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '(Dirigente / presb'#237'teros / di'#225'conos / auxiliares / outros)')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Top = 279.685220000000000000
           Width = 34.015770000000000000
           Height = 18.897650000000000000
@@ -14024,6 +14745,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Top = 279.685220000000000000
           Width = 56.692950000000000000
@@ -14043,6 +14765,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Top = 279.685220000000000000
           Width = 328.819110000000000000
@@ -14060,6 +14783,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 279.685220000000000000
           Width = 79.370130000000000000
@@ -14079,6 +14803,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 279.685220000000000000
           Width = 79.370130000000000000
@@ -14096,6 +14821,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Top = 279.685220000000000000
           Width = 71.811070000000000000
@@ -14115,6 +14841,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Top = 279.685220000000000000
           Width = 68.031540000000000000
@@ -14135,6 +14862,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo49: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 194.315090000000000000
           Width = 718.110700000000000000
           Height = 34.015770000000000000
@@ -14145,6 +14873,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -27
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Referente ao M'#234's de [Data]/ 2019')
@@ -14152,6 +14881,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo50: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 100.157545000000000000
           Top = 257.008040000000000000
           Width = 517.795610000000000000
@@ -14161,12 +14891,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Calibri'
           Font.Style = [fsBold, fsUnderline]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'tesoureiro@email.com')
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Top = 22.677180000000000000
           Width = 771.024120000000000000
           Height = 41.574830000000000000
@@ -14177,6 +14909,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -16
           Font.Name = 'times New Roman'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -14186,6 +14919,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo73: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Top = 43.574830000000000000
           Width = 771.024120000000000000
@@ -14197,6 +14931,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -15
           Font.Name = 'times New Roman'
           Font.Style = [fsUnderline]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'adparnamirim@uol.com.br')
@@ -14205,11 +14940,13 @@ object dtmRelatorio: TdtmRelatorio
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 37.795300000000000000
         Top = 340.157700000000000000
         Width = 718.110700000000000000
         Condition = 'frxdbDizimista."cargo"'
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Top = 18.897650000000000000
           Width = 328.819110000000000000
@@ -14227,6 +14964,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -14240,6 +14978,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -14255,6 +14994,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -14268,6 +15008,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Width = 34.015770000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -14279,6 +15020,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
@@ -14293,6 +15035,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -14306,6 +15049,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo65: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Width = 328.819110000000000000
           Height = 18.897650000000000000
@@ -14319,6 +15063,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Top = 18.897650000000000000
           Width = 56.692950000000000000
@@ -14334,6 +15079,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 34.015770000000000000
           Height = 18.897650000000000000
@@ -14346,6 +15092,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Top = 18.897650000000000000
           Width = 68.031540000000000000
@@ -14360,6 +15107,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Top = 18.897650000000000000
           Width = 71.811070000000000000
@@ -14374,6 +15122,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 18.897650000000000000
           Width = 79.370130000000000000
@@ -14388,6 +15137,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 18.897650000000000000
           Width = 79.370130000000000000
@@ -14406,6 +15156,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object MasterData3: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 483.779840000000000000
         Width = 718.110700000000000000
@@ -14414,6 +15165,7 @@ object dtmRelatorio: TdtmRelatorio
         Filter = '<frxdbDizimista."cargo">='#39'MEMBRO'#39
         RowCount = 0
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -14431,6 +15183,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -14446,6 +15199,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -14466,11 +15220,13 @@ object dtmRelatorio: TdtmRelatorio
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbDizimista."cod_cheque"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."cod_cheque"]')
           ParentFont = False
         end
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Width = 68.031496060000000000
           Height = 18.897650000000000000
@@ -14494,11 +15250,13 @@ object dtmRelatorio: TdtmRelatorio
           Highlight.Fill.BackColor = clWhite
           Highlight.Fill.ForeColor = clWhite
           Highlight.Fill.Style = bsClear
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."cod_dizimo"]')
           ParentFont = False
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Width = 328.819110000000000000
           Height = 18.897650000000000000
@@ -14513,6 +15271,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo56: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
@@ -14529,6 +15288,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo57: TfrxMemoView
+          AllowVectorExport = True
           Width = 34.015770000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -14545,11 +15305,13 @@ object dtmRelatorio: TdtmRelatorio
       end
       object GroupHeader2: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 442.205010000000000000
         Width = 718.110700000000000000
         Condition = 'frxdbDizimista."cargo"'
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Width = 328.819110000000000000
           Height = 18.897650000000000000
@@ -14565,6 +15327,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -14578,6 +15341,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -14593,6 +15357,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -14606,6 +15371,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Width = 34.015770000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -14617,6 +15383,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
@@ -14631,6 +15398,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo64: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -14646,10 +15414,12 @@ object dtmRelatorio: TdtmRelatorio
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 253.228510000000000000
         Top = 563.149970000000000000
         Width = 718.110700000000000000
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Top = 15.118120000000000000
           Width = 718.110700000000000000
           Height = 49.133890000000000000
@@ -14660,6 +15430,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Arial Black'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 2.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -14668,6 +15439,7 @@ object dtmRelatorio: TdtmRelatorio
           VAlign = vaCenter
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Top = 94.488250000000000000
           Width = 718.110700000000000000
           Height = 49.133890000000000000
@@ -14676,6 +15448,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parnamirim, [Date].'
@@ -14692,6 +15465,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo47: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 215.433210000000000000
           Top = 204.094620000000000000
           Width = 287.244280000000000000
@@ -14795,7 +15569,7 @@ object dtmRelatorio: TdtmRelatorio
     Top = 288
   end
   object frxrprtRecibo: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -14870,8 +15644,10 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object Memo1: TfrxMemoView
         Align = baCenter
+        AllowVectorExport = True
         Left = 311.811225000000000000
         Top = 37.795300000000000000
         Width = 94.488250000000000000
@@ -14881,13 +15657,15 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -24
         Font.Name = 'calibri'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Memo.UTF8W = (
           'RECIBO:')
         ParentFont = False
       end
       object Memo2: TfrxMemoView
         Align = baCenter
-        Left = 59.811225000000000000
+        AllowVectorExport = True
+        Left = 59.811224999999970000
         Top = 98.267780000000000000
         Width = 598.488250000000000000
         Height = 95.425170000000000000
@@ -14911,6 +15689,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo3: TfrxMemoView
+        AllowVectorExport = True
         Left = 60.472480000000000000
         Top = 226.771800000000000000
         Width = 597.165740000000000000
@@ -14944,6 +15723,7 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Memo4: TfrxMemoView
+        AllowVectorExport = True
         Left = 60.472480000000000000
         Top = 226.771800000000000000
         Width = 151.181200000000000000
@@ -14953,6 +15733,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -15
         Font.Name = 'calibri'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Frame.Width = 0.100000000000000000
         Memo.UTF8W = (
           ' Dados do Favorecido:')
@@ -14960,7 +15741,8 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo5: TfrxMemoView
         Align = baCenter
-        Left = 64.252010000000000000
+        AllowVectorExport = True
+        Left = 64.252009999999970000
         Top = 434.645950000000000000
         Width = 589.606680000000000000
         Height = 56.692950000000000000
@@ -14969,6 +15751,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -15
         Font.Name = 'calibri'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 0.100000000000000000
         Memo.UTF8W = (
           
@@ -14985,33 +15768,47 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Memo6: TfrxMemoView
         Align = baCenter
-        Left = 64.252010000000000000
+        AllowVectorExport = True
+        Left = 64.252009999999970000
         Top = 525.354670000000000000
         Width = 589.606680000000000000
-        Height = 75.590600000000000000
+        Height = 200.315090000000000000
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -15
         Font.Name = 'calibri'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 0.100000000000000000
         Memo.UTF8W = (
           ''
-          '(   ) 272- Doa'#231#227'o Assistencial'
+          
+            '[IIF(<frxDBRecibo."cod_operacao">=272,'#39'(X)'#39','#39'(  )'#39')] 272- Doa'#231#227'o' +
+            ' Assistencial'
           ''
-          '(   ) 274- Doa'#231#227'o Evangel'#237'stica')
+          
+            '[IIF(<frxDBRecibo."cod_operacao">=274,'#39'(X)'#39','#39'(  )'#39')] 274- Doa'#231#227'o' +
+            ' Evangel'#237'stica')
         ParentFont = False
+        Formats = <
+          item
+          end
+          item
+          end>
       end
       object Memo7: TfrxMemoView
         Align = baCenter
-        Left = 64.252010000000000000
+        AllowVectorExport = True
+        Left = 64.252009999999970000
         Top = 650.079160000000000000
         Width = 589.606680000000000000
         Height = 18.897650000000000000
+        Frame.Typ = []
         Memo.UTF8W = (
           'Parnamirim-RN,    [frxDBRecibo."data_recibo"]')
       end
       object Memo8: TfrxMemoView
+        AllowVectorExport = True
         Left = 60.472480000000000000
         Top = 850.394250000000000000
         Width = 317.480520000000000000
@@ -15025,6 +15822,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo9: TfrxMemoView
+        AllowVectorExport = True
         Left = 377.953000000000000000
         Top = 850.394250000000000000
         Width = 317.480520000000000000
@@ -15038,6 +15836,7 @@ object dtmRelatorio: TdtmRelatorio
         ParentFont = False
       end
       object Memo10: TfrxMemoView
+        AllowVectorExport = True
         Left = 60.472480000000000000
         Top = 907.087200000000000000
         Width = 317.480520000000000000
@@ -15055,6 +15854,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaBottom
       end
       object Memo11: TfrxMemoView
+        AllowVectorExport = True
         Left = 377.953000000000000000
         Top = 907.087200000000000000
         Width = 317.480520000000000000
@@ -15072,6 +15872,7 @@ object dtmRelatorio: TdtmRelatorio
         VAlign = vaBottom
       end
       object Memo12: TfrxMemoView
+        AllowVectorExport = True
         Left = 521.575140000000000000
         Top = 75.590600000000000000
         Width = 136.063080000000000000
@@ -15083,6 +15884,7 @@ object dtmRelatorio: TdtmRelatorio
         Font.Height = -15
         Font.Name = 'Calibri'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Memo.UTF8W = (
           'VALOR [frxDBRecibo."valor"]')
         ParentFont = False
@@ -15115,11 +15917,13 @@ object dtmRelatorio: TdtmRelatorio
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -15129,6 +15933,7 @@ object dtmRelatorio: TdtmRelatorio
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
     Left = 800
     Top = 176
   end
@@ -15140,6 +15945,7 @@ object dtmRelatorio: TdtmRelatorio
     Separator = ';'
     OEMCodepage = False
     UTF8 = False
+    OpenAfterExport = False
     NoSysSymbols = True
     ForcedQuotes = False
     Left = 808
@@ -15150,6 +15956,7 @@ object dtmRelatorio: TdtmRelatorio
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    OpenAfterExport = False
     FixedWidth = True
     Background = False
     Centered = False
@@ -15167,6 +15974,7 @@ object dtmRelatorio: TdtmRelatorio
     Frames = False
     EmptyLines = False
     OEMCodepage = False
+    OpenAfterExport = False
     DeleteEmptyColumns = True
     Left = 800
     Top = 48
@@ -15297,7 +16105,7 @@ object dtmRelatorio: TdtmRelatorio
     Top = 349
   end
   object frxrprtAniversariantes: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -15344,10 +16152,12 @@ object dtmRelatorio: TdtmRelatorio
       Height = 1000.000000000000000000
       Width = 1000.000000000000000000
       object Memo1: TfrxMemoView
+        AllowVectorExport = True
         Left = 72.000000000000000000
         Top = 104.000000000000000000
         Width = 80.000000000000000000
         Height = 16.000000000000000000
+        Frame.Typ = []
         Wysiwyg = False
       end
     end
@@ -15364,8 +16174,10 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 291.023810000000000000
         Width = 718.110700000000000000
@@ -15374,6 +16186,7 @@ object dtmRelatorio: TdtmRelatorio
         Filter = '<frxDBAniversariantes."filtro">=<Filtro>'
         RowCount = 0
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Width = 41.574830000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -15388,6 +16201,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 42.692950000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
@@ -15404,6 +16218,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Width = 291.023810000000000000
           Height = 18.897650000000000000
@@ -15418,6 +16233,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 447.645950000000000000
           Width = 204.094620000000000000
           Height = 18.897650000000000000
@@ -15433,6 +16249,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 652.968925000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
@@ -15450,6 +16267,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 408.834880000000000000
           Width = 37.795300000000000000
           Height = 18.897650000000000000
@@ -15467,6 +16285,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -15477,6 +16296,7 @@ object dtmRelatorio: TdtmRelatorio
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object frxdbBuscaIgrejanome_igreja: TfrxMemoView
+          AllowVectorExport = True
           Top = 7.559059999999991000
           Width = 755.906000000000000000
           Height = 86.929190000000000000
@@ -15485,6 +16305,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -12
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbBuscaIgreja."nome_igreja"]'
@@ -15520,6 +16341,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo2: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = -0.000000000000024203
           Top = 143.622140000001000000
           Width = 718.110700000000000000
@@ -15529,6 +16351,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -16
           Font.Name = 'Verdana'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbCongregacao."congregacao"] ( [frxdbCongregacao."setor"] ) ')
@@ -15545,6 +16368,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo3: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = -0.000000000000024203
           Top = 188.976500000001000000
           Width = 718.110700000000000000
@@ -15554,12 +16378,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ANIVERSARIANTES')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Top = 230.551330000001000000
           Width = 41.574830000000000000
           Height = 18.897650000000000000
@@ -15575,6 +16401,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 42.574830000000000000
           Top = 230.551330000001000000
           Width = 75.590600000000000000
@@ -15593,6 +16420,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 230.551330000001000000
           Width = 291.023810000000000000
@@ -15609,6 +16437,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 443.866420000000000000
           Top = 230.551330000001000000
           Width = 207.874150000000000000
@@ -15628,6 +16457,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 652.740570000000000000
           Top = 230.551330000001000000
           Width = 64.252010000000000000
@@ -15645,6 +16475,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 408.834880000000000000
           Top = 230.551330000001000000
           Width = 37.795300000000000000
@@ -15664,6 +16495,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Picture2: TfrxPictureView
+          AllowVectorExport = True
           Left = 37.795300000000000000
           Width = 94.488250000000000000
           Height = 109.606370000000000000
@@ -15671,6 +16503,7 @@ object dtmRelatorio: TdtmRelatorio
           DataField = 'foto'
           DataSet = frxdbBuscaIgreja
           DataSetName = 'frxdbBuscaIgreja'
+          Frame.Typ = []
           Picture.Data = {
             0A54504E474F626A65637489504E470D0A1A0A0000000D494844520000023600
             00023D08030000001EAFC2C4000000017352474200AECE1CE90000000467414D
@@ -16758,10 +17591,12 @@ object dtmRelatorio: TdtmRelatorio
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 181.417440000000000000
         Top = 370.393940000000000000
         Width = 718.110700000000000000
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 49.133890000000000000
           DisplayFormat.FormatStr = 'dd '#39'de'#39' mmmm '#39'de'#39' yyyy'
@@ -16771,6 +17606,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parnamirim, [Date].'
@@ -16780,6 +17616,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo47: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 200.315090000000000000
           Top = 124.724490000000000000
           Width = 317.480520000000000000
@@ -16799,7 +17636,7 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object frxrprtAlunos: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -16859,8 +17696,10 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 291.023810000000000000
         Width = 718.110700000000000000
@@ -16869,6 +17708,7 @@ object dtmRelatorio: TdtmRelatorio
         Filter = '<frxDBAlunos."classe">=<Filtro>'
         RowCount = 0
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Width = 41.574830000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -16883,6 +17723,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 42.692950000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
@@ -16902,6 +17743,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Width = 291.023810000000000000
           Height = 18.897650000000000000
@@ -16919,6 +17761,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 447.645950000000000000
           Width = 204.094620000000000000
           Height = 18.897650000000000000
@@ -16937,6 +17780,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 652.968925000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
@@ -16956,6 +17800,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 408.834880000000000000
           Width = 37.795300000000000000
           Height = 18.897650000000000000
@@ -16976,6 +17821,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -16986,6 +17832,7 @@ object dtmRelatorio: TdtmRelatorio
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object frxdbBuscaIgrejanome_igreja: TfrxMemoView
+          AllowVectorExport = True
           Top = 7.559060000000000000
           Width = 755.906000000000000000
           Height = 86.929190000000000000
@@ -16994,6 +17841,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -12
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbBuscaIgreja."nome_igreja"]'
@@ -17028,6 +17876,7 @@ object dtmRelatorio: TdtmRelatorio
             end>
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 7.559060000000000000
           Width = 131.354050000000000000
@@ -17035,12 +17884,14 @@ object dtmRelatorio: TdtmRelatorio
           DataField = 'foto'
           DataSet = frxdbBuscaIgreja
           DataSetName = 'frxdbBuscaIgreja'
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Memo2: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 143.622140000000000000
           Width = 718.110700000000000000
           Height = 41.574830000000000000
@@ -17049,6 +17900,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -16
           Font.Name = 'Verdana'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbCongregacao."congregacao"] ( [frxdbCongregacao."setor"] ) ')
@@ -17065,6 +17917,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo3: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 188.976500000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -17073,12 +17926,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ALUNOS')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Top = 230.551330000000000000
           Width = 41.574830000000000000
           Height = 18.897650000000000000
@@ -17094,6 +17949,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 42.574830000000000000
           Top = 230.551330000000000000
           Width = 75.590600000000000000
@@ -17112,6 +17968,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 230.551330000000000000
           Width = 291.023810000000000000
@@ -17128,6 +17985,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 443.866420000000000000
           Top = 230.551330000000000000
           Width = 207.874150000000000000
@@ -17147,6 +18005,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 652.740570000000000000
           Top = 230.551330000000000000
           Width = 64.252010000000000000
@@ -17164,6 +18023,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 408.834880000000000000
           Top = 230.551330000000000000
           Width = 37.795300000000000000
@@ -17185,16 +18045,19 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 332.598640000000000000
         Width = 718.110700000000000000
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 181.417440000000000000
         Top = 415.748300000000000000
         Width = 718.110700000000000000
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 49.133890000000000000
           DisplayFormat.FormatStr = 'dd '#39'de'#39' mmmm '#39'de'#39' yyyy'
@@ -17204,6 +18067,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parnamirim, [Date].'
@@ -17213,6 +18077,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo47: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 200.315090000000000000
           Top = 124.724490000000000000
           Width = 317.480520000000000000
@@ -17318,7 +18183,7 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object frxrprt_old: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -17378,8 +18243,10 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 332.598640000000000000
         Width = 718.110700000000000000
@@ -17388,6 +18255,7 @@ object dtmRelatorio: TdtmRelatorio
         Filter = '<frxdbDizimista."cargo"><>'#39'MEMBRO'#39
         RowCount = 0
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Width = 34.015770000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -17401,6 +18269,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
@@ -17417,6 +18286,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Width = 328.819110000000000000
           Height = 18.897650000000000000
@@ -17431,6 +18301,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -17446,6 +18317,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -17463,6 +18335,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -17483,11 +18356,13 @@ object dtmRelatorio: TdtmRelatorio
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbDizimista."cod_cheque"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."cod_cheque"]')
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -17511,6 +18386,7 @@ object dtmRelatorio: TdtmRelatorio
           Highlight.Fill.BackColor = clWhite
           Highlight.Fill.ForeColor = clWhite
           Highlight.Fill.Style = bsClear
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."cod_dizimo"]')
           ParentFont = False
@@ -17518,6 +18394,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -17528,6 +18405,7 @@ object dtmRelatorio: TdtmRelatorio
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object frxdbBuscaIgrejanome_igreja: TfrxMemoView
+          AllowVectorExport = True
           Top = 7.559059999999999000
           Width = 755.906000000000000000
           Height = 86.929190000000000000
@@ -17538,6 +18416,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -12
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'IGREJA EVANG'#201'LICA ASSEMBL'#201'IA DE DEUS'
@@ -17549,10 +18428,12 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 11.338590000000000000
           Width = 104.897340000000000000
           Height = 108.117810000000000000
+          Frame.Typ = []
           Picture.Data = {
             0A54504E474F626A65637489504E470D0A1A0A0000000D494844520000023600
             00023D08030000001EAFC2C4000000017352474200AECE1CE90000000467414D
@@ -18639,6 +19520,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo2: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = -0.000000000000024203
           Top = 128.504020000000000000
           Width = 718.110700000000000000
@@ -18648,6 +19530,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -16
           Font.Name = 'Verdana'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Centro de Custo=[frxdbCongregacao."cod_cc"] , [Data]'
@@ -18669,6 +19552,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo3: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = -0.000000000000024203
           Top = 170.078850000000000000
           Width = 718.110700000000000000
@@ -18678,6 +19562,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'RELAT'#211'RIO DE D'#205'ZIMOS IDENTIFICADOS')
@@ -18685,6 +19570,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo4: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = -0.000000000000024203
           Top = 185.196970000000000000
           Width = 718.110700000000000000
@@ -18694,12 +19580,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '(Dirigente / presb'#237'teros / di'#225'conos / auxiliares)')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Top = 230.551330000000000000
           Width = 34.015770000000000000
           Height = 18.897650000000000000
@@ -18715,6 +19603,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Top = 230.551330000000000000
           Width = 56.692950000000000000
@@ -18733,6 +19622,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Top = 230.551330000000000000
           Width = 328.819110000000000000
@@ -18749,6 +19639,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 230.551330000000000000
           Width = 79.370130000000000000
@@ -18768,6 +19659,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 230.551330000000000000
           Width = 79.370130000000000000
@@ -18785,6 +19677,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Top = 230.551330000000000000
           Width = 71.811070000000000000
@@ -18804,6 +19697,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Top = 230.551330000000000000
           Width = 68.031540000000000000
@@ -18825,10 +19719,12 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 374.173470000000000000
         Width = 718.110700000000000000
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -18848,6 +19744,7 @@ object dtmRelatorio: TdtmRelatorio
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
@@ -18856,6 +19753,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 2.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -18866,11 +19764,13 @@ object dtmRelatorio: TdtmRelatorio
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 291.023810000000000000
         Width = 718.110700000000000000
         Condition = 'frxdbDizimista."cargo"'
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Width = 328.819110000000000000
           Height = 18.897650000000000000
@@ -18887,6 +19787,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -18900,6 +19801,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -18915,6 +19817,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -18928,6 +19831,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Width = 34.015770000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -18939,6 +19843,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
@@ -18953,6 +19858,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -18968,10 +19874,12 @@ object dtmRelatorio: TdtmRelatorio
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 181.417440000000000000
         Top = 457.323130000000000000
         Width = 718.110700000000000000
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 49.133890000000000000
           DisplayFormat.FormatStr = 'dd '#39'de'#39' mmmm '#39'de'#39' yyyy'
@@ -18981,6 +19889,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parnamirim, [Date].'
@@ -18990,6 +19899,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo47: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 200.315090000000000000
           Top = 124.724489999999900000
           Width = 317.480520000000000000
@@ -19015,8 +19925,10 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object Header2: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -19027,6 +19939,7 @@ object dtmRelatorio: TdtmRelatorio
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Top = 7.559060000000000000
           Width = 755.906000000000000000
           Height = 86.929190000000000000
@@ -19037,6 +19950,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -12
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'IGREJA EVANG'#201'LICA ASSEMBL'#201'IA DE DEUS'
@@ -19048,10 +19962,12 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Picture2: TfrxPictureView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 11.338590000000000000
           Width = 104.897340000000000000
           Height = 108.117810000000000000
+          Frame.Typ = []
           Picture.Data = {
             0A54504E474F626A65637489504E470D0A1A0A0000000D494844520000023600
             00023D08030000001EAFC2C4000000017352474200AECE1CE90000000467414D
@@ -20138,6 +21054,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo9: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 128.504020000000000000
           Width = 718.110700000000000000
           Height = 41.574830000000000000
@@ -20146,6 +21063,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -16
           Font.Name = 'Verdana'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Centro de Custo=[frxdbCongregacao."cod_cc"] , [Data]'
@@ -20167,6 +21085,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo10: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 170.078850000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -20175,6 +21094,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'RELAT'#211'RIO DE D'#205'ZIMOS IDENTIFICADOS')
@@ -20182,6 +21102,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo11: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 185.196970000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -20190,12 +21111,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '(Membros e Congregados)')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Top = 230.551330000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
@@ -20211,6 +21134,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 52.913420000000000000
           Top = 230.551330000000000000
           Width = 64.252010000000000000
@@ -20229,6 +21153,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 230.551330000000000000
           Width = 374.173470000000000000
@@ -20245,6 +21170,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 230.551330000000000000
           Width = 79.370130000000000000
@@ -20264,6 +21190,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 230.551330000000000000
           Width = 79.370130000000000000
@@ -20281,6 +21208,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Top = 230.551330000000000000
           Width = 71.811070000000000000
@@ -20302,6 +21230,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object MasterData2: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 291.023810000000000000
         Width = 718.110700000000000000
@@ -20310,6 +21239,7 @@ object dtmRelatorio: TdtmRelatorio
         Filter = '<frxdbDizimista."cargo">='#39'MEMBRO'#39
         RowCount = 0
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Width = 52.913420000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -20323,6 +21253,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 52.913420000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
@@ -20342,6 +21273,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Width = 370.393940000000000000
           Height = 18.897650000000000000
@@ -20359,6 +21291,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -20377,6 +21310,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -20397,6 +21331,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -20417,10 +21352,12 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Footer2: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 332.598640000000000000
         Width = 718.110700000000000000
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -20440,6 +21377,7 @@ object dtmRelatorio: TdtmRelatorio
           VAlign = vaCenter
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
@@ -20448,6 +21386,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 2.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -20458,10 +21397,12 @@ object dtmRelatorio: TdtmRelatorio
       end
       object PageFooter2: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 181.417440000000000000
         Top = 415.748300000000000000
         Width = 718.110700000000000000
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 49.133890000000000000
           DisplayFormat.FormatStr = 'dd '#39'de'#39' mmmm '#39'de'#39' yyyy'
@@ -20471,6 +21412,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parnamirim, [Date].'
@@ -20480,6 +21422,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo32: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 200.315090000000000000
           Top = 124.724490000000000000
           Width = 317.480520000000000000
@@ -20499,7 +21442,7 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object frxrprtDizimistaDetalhe: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -20534,11 +21477,14 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object Chart2: TfrxChartView
+        AllowVectorExport = True
         Top = 559.370440000000000000
         Width = 718.110700000000000000
         Height = 211.653680000000000000
         HighlightColor = clBlack
+        Frame.Typ = []
         Chart = {
           5450463006544368617274054368617274044C656674020003546F7002000557
           696474680390010648656967687403FA00144261636B57616C6C2E50656E2E56
@@ -20576,7 +21522,6 @@ object dtmRelatorio: TdtmRelatorio
         ChartElevation = 315
         SeriesData = <
           item
-            InheritedName = 'TfrxSeriesItem3'
             DataType = dtDBData
             DataSet = frxdbDizimista
             DataSetName = 'frxdbDizimista'
@@ -20590,10 +21535,12 @@ object dtmRelatorio: TdtmRelatorio
           end>
       end
       object Chart1: TfrxChartView
+        AllowVectorExport = True
         Top = 94.488250000000000000
         Width = 718.110700000000000000
         Height = 211.653680000000000000
         HighlightColor = clBlack
+        Frame.Typ = []
         Chart = {
           5450463006544368617274054368617274044C656674020003546F7002000557
           696474680390010648656967687403FA00144261636B57616C6C2E50656E2E56
@@ -20608,7 +21555,6 @@ object dtmRelatorio: TdtmRelatorio
         ChartElevation = 345
         SeriesData = <
           item
-            InheritedName = 'TfrxSeriesItem2'
             DataType = dtDBData
             DataSet = frxdbDizimista
             DataSetName = 'frxdbDizimista'
@@ -20634,7 +21580,7 @@ object dtmRelatorio: TdtmRelatorio
     Top = 320
   end
   object frxrprt1: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -20681,10 +21627,12 @@ object dtmRelatorio: TdtmRelatorio
       Height = 1000.000000000000000000
       Width = 1000.000000000000000000
       object Memo1: TfrxMemoView
+        AllowVectorExport = True
         Left = 72.000000000000000000
         Top = 104.000000000000000000
         Width = 80.000000000000000000
         Height = 16.000000000000000000
+        Frame.Typ = []
         Wysiwyg = False
       end
     end
@@ -20701,8 +21649,10 @@ object dtmRelatorio: TdtmRelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 291.023810000000000000
         Width = 718.110700000000000000
@@ -20711,6 +21661,7 @@ object dtmRelatorio: TdtmRelatorio
         Filter = '<frxDBAniversariantes."filtro">=<Filtro>'
         RowCount = 0
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Width = 41.574830000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -20725,6 +21676,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 42.692950000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
@@ -20741,6 +21693,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Width = 291.023810000000000000
           Height = 18.897650000000000000
@@ -20755,6 +21708,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 447.645950000000000000
           Width = 204.094620000000000000
           Height = 18.897650000000000000
@@ -20770,6 +21724,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 652.968925000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
@@ -20787,6 +21742,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 408.834880000000000000
           Width = 37.795300000000000000
           Height = 18.897650000000000000
@@ -20804,6 +21760,7 @@ object dtmRelatorio: TdtmRelatorio
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -20814,6 +21771,7 @@ object dtmRelatorio: TdtmRelatorio
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object frxdbBuscaIgrejanome_igreja: TfrxMemoView
+          AllowVectorExport = True
           Top = 7.559059999999999000
           Width = 755.906000000000000000
           Height = 86.929190000000000000
@@ -20822,6 +21780,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -12
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbBuscaIgreja."nome_igreja"]'
@@ -20857,6 +21816,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo2: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = -0.000000000000024203
           Top = 143.622140000000000000
           Width = 718.110700000000000000
@@ -20866,6 +21826,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -16
           Font.Name = 'Verdana'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbCongregacao."congregacao"] ( [frxdbCongregacao."setor"] ) ')
@@ -20882,6 +21843,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo3: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = -0.000000000000024203
           Top = 188.976500000000000000
           Width = 718.110700000000000000
@@ -20891,12 +21853,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ANIVERSARIANTES')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Top = 230.551330000000000000
           Width = 41.574830000000000000
           Height = 18.897650000000000000
@@ -20912,6 +21876,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 42.574830000000000000
           Top = 230.551330000000000000
           Width = 75.590600000000000000
@@ -20930,6 +21895,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 230.551330000000000000
           Width = 291.023810000000000000
@@ -20946,6 +21912,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 443.866420000000000000
           Top = 230.551330000000000000
           Width = 207.874150000000000000
@@ -20965,6 +21932,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 652.740570000000000000
           Top = 230.551330000000000000
           Width = 64.252010000000000000
@@ -20982,6 +21950,7 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 408.834880000000000000
           Top = 230.551330000000000000
           Width = 37.795300000000000000
@@ -21001,12 +21970,14 @@ object dtmRelatorio: TdtmRelatorio
           ParentFont = False
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Width = 94.488250000000000000
           Height = 109.606370000000000000
           Center = True
           DataField = 'foto'
           DataSet = frxdbBuscaIgreja
           DataSetName = 'frxdbBuscaIgreja'
+          Frame.Typ = []
           Picture.Data = {
             0A54504E474F626A65637489504E470D0A1A0A0000000D494844520000023600
             00023D08030000001EAFC2C4000000017352474200AECE1CE90000000467414D
@@ -22094,10 +23065,12 @@ object dtmRelatorio: TdtmRelatorio
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 181.417440000000000000
         Top = 370.393940000000000000
         Width = 718.110700000000000000
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 49.133890000000000000
           DisplayFormat.FormatStr = 'dd '#39'de'#39' mmmm '#39'de'#39' yyyy'
@@ -22107,6 +23080,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Height = -13
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parnamirim, [Date].'
@@ -22116,6 +23090,7 @@ object dtmRelatorio: TdtmRelatorio
         end
         object Memo47: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 200.315090000000000000
           Top = 124.724490000000000000
           Width = 317.480520000000000000

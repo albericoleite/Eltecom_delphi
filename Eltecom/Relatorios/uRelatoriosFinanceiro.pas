@@ -16,6 +16,7 @@ type
     dtdtIni: TDateEdit;
     lbl5: TLabel;
     lblDataNascimento: TLabel;
+    btngGravicoMensal: TBitBtn;
     procedure btnSemanaClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

@@ -144,6 +144,10 @@ type
     QryListagemcod_congregacao: TIntegerField;
     QryListagemcod_situacao: TIntegerField;
     dlgOpenPicBuscarFoto: TOpenPictureDialog;
+    pnl1: TPanel;
+    imgFotoP: TImage;
+    lblnome: TLabel;
+    lblEstadoCivil: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -156,6 +160,8 @@ type
     procedure pgcPrincipalChange(Sender: TObject);
     procedure imgFotoDblClick(Sender: TObject);
     procedure dtsListagemDataChange(Sender: TObject; Field: TField);
+    procedure grdListagemCellClick(Column: TColumn);
+    procedure grdListagemTitleClick(Column: TColumn);
   private
     { Private declarations }
     oPessoa: TPessoa;
@@ -213,6 +219,9 @@ begin
   oPessoa.uf_endereco       := cbbUfImovel.Text;
   oPessoa.congregacao       := dtmPrincipal.descCongAtiva;
   oPessoa.setor             :=dtmPrincipal.setor;
+  oPessoa.estado_civil_atual := cbbEstdCivil.Text;
+  oPessoa.estado_civil_anterior:=cbbEstcivianterior.Text;
+  oPessoa.nome_conjugue     :=lbledtNomeConjugue.Text;
 
  //jpg.LoadFromFile(imgFoto.Picture.Bitmap);
 
@@ -233,11 +242,107 @@ begin
 
 end;
 
+procedure TfrmCadPessoa.grdListagemCellClick(Column: TColumn);
+ var jpg1 : TJPEGImage;
+stream : TMemoryStream;
+caminho: AnsiString;
+begin
+  inherited;
+lblnome.Caption:= QryListagemnome_pessoa.Text;
+lblEstadoCivil.Caption:= 'Estado Civíl:'+QryListagemestado_civil_atual.Text ;
+//ARQUIVO BINARIOS AUDIO, VIDEO E FOTOS
+begin
+  inherited;
+  if not QryListagemfoto.IsNull then
+   BEGIN
+   try
+  // ALOCANDO ESPAÇO NA MEMORIA RAM
+  jpg1:= TJPEGImage.Create;
+  stream:= TMemoryStream.Create;
+  //CARREGANDO A IMAGEM PARA A MEMORIA RAM
+  QryListagemfoto.SaveToStream(stream);
+  //VOLTANDO O PONTEIRO PARA O INICIO DOS DADOS
+  stream.Seek(0, soFromBeginning);
+  //GRANDO A INFORMAÇÃO NA JPG
+  jpg1.LoadFromStream(stream);
+  //CARREGANDO A  IMAGEM NO IMAGE
+  imgFotoP.Picture.Assign(jpg1);
+  //LIBERANDO MEMORIA APAGANDO AS INSTANCIAS
+  jpg1.Free;
+  stream.Free;
+   except
+      on e : Exception do begin
+       jpg1.Free;
+      stream.Free;
+      MessageBox(Application.Handle, PChar(e.Message),PChar('Falha ao carregar a imagem da Igreja'),MB_OK+MB_ICONWARNING);
+      end;
+   end;
+   END
+   else
+   begin
+  // caminho:=(ExtractFilePath(Application.ExeName) + 'semfoto.jpg');
+   caminho :='C:\mysql\img\semfoto.jpg';
+   imgFotoP.Picture.LoadFromFile(caminho);
+   //imgFoto.Picture.LoadFromFile('C:\Program Files (x86)\Eltecom\semfoto.jpg');
+     //imgFoto.Picture.Assign(nil);
+   end;
+end;
+end;
+
 procedure TfrmCadPessoa.grdListagemKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
+  var jpg1 : TJPEGImage;
+stream : TMemoryStream;
+caminho: AnsiString;
 begin
   inherited;
 BloqueiaCTRL_DEL_DBGRID(Key,Shift);
+    lblnome.Caption:= QryListagemnome_pessoa.Text;
+    lblEstadoCivil.Caption:= 'Estado Civíl:'+QryListagemestado_civil_atual.Text;
+//ARQUIVO BINARIOS AUDIO, VIDEO E FOTOS
+begin
+  inherited;
+  if not QryListagemfoto.IsNull then
+   BEGIN
+   try
+  // ALOCANDO ESPAÇO NA MEMORIA RAM
+  jpg1:= TJPEGImage.Create;
+  stream:= TMemoryStream.Create;
+  //CARREGANDO A IMAGEM PARA A MEMORIA RAM
+  QryListagemfoto.SaveToStream(stream);
+  //VOLTANDO O PONTEIRO PARA O INICIO DOS DADOS
+  stream.Seek(0, soFromBeginning);
+  //GRANDO A INFORMAÇÃO NA JPG
+  jpg1.LoadFromStream(stream);
+  //CARREGANDO A  IMAGEM NO IMAGE
+  imgFotoP.Picture.Assign(jpg1);
+  //LIBERANDO MEMORIA APAGANDO AS INSTANCIAS
+  jpg1.Free;
+  stream.Free;
+   except
+      on e : Exception do begin
+       jpg1.Free;
+      stream.Free;
+      MessageBox(Application.Handle, PChar(e.Message),PChar('Falha ao carregar a imagem da Igreja'),MB_OK+MB_ICONWARNING);
+      end;
+   end;
+   END
+   else
+   begin
+  // caminho:=(ExtractFilePath(Application.ExeName) + 'semfoto.jpg');
+   caminho :='C:\mysql\img\semfoto.jpg';
+   imgFotoP.Picture.LoadFromFile(caminho);
+   //imgFoto.Picture.LoadFromFile('C:\Program Files (x86)\Eltecom\semfoto.jpg');
+     //imgFoto.Picture.Assign(nil);
+   end;
+end;
+end;
+
+procedure TfrmCadPessoa.grdListagemTitleClick(Column: TColumn);
+begin
+  inherited;
+lblnome.Caption:= QryListagemnome_pessoa.Text;
+lblEstadoCivil.Caption:= 'Estado Civíl:'+QryListagemestado_civil_atual.Text;
 end;
 
 procedure TfrmCadPessoa.imgFotoDblClick(Sender: TObject);
@@ -322,6 +427,9 @@ begin
      cbbAcademica.Text    := oPessoa.grau_instrucao;
      cbbFormTeo.Text      := oPessoa.formacao_teologica;
      cbbSitformteo.Text    := oPessoa.form_teo_situacao;
+     cbbEstdCivil.Text        :=oPessoa.estado_civil_atual;
+     cbbEstcivianterior.Text  :=oPessoa.estado_civil_anterior;
+     lbledtNomeConjugue.Text  :=oPessoa.nome_conjugue;
      //imgFoto.Picture.Assign(oPessoa.foto);
 
      { if oPessoa.foto.Empty then

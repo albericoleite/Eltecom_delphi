@@ -10,7 +10,7 @@ uses
   FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.Comp.DataSet, frxClass, frxDBSet, frxChBox,
   frxExportText, frxExportPDF, frxExportCSV, System.IniFiles,Vcl.Dialogs, TlHelp32,Windows , WinSvc,
-  VCLTee.TeeData, frxChart, frxExportHTML;
+  VCLTee.TeeData, frxChart, frxExportHTML, frxExportBaseDialog;
 
 type
   TdtmRelatorio = class(TDataModule)

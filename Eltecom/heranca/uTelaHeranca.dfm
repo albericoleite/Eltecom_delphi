@@ -28,10 +28,6 @@ object frmTelaheranca: TfrmTelaheranca
     TabOrder = 0
     object tabListagem: TTabSheet
       Caption = 'Listagem'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnlListagem: TPanel
         Left = 0
         Top = 0
@@ -40,15 +36,15 @@ object frmTelaheranca: TfrmTelaheranca
         Align = alTop
         TabOrder = 0
         object lblIndice: TLabel
-          Left = 16
-          Top = 0
+          Left = 10
+          Top = 5
           Width = 75
           Height = 13
           Caption = 'CampoPesquisa'
         end
         object mskPesquisar: TMaskEdit
-          Left = 16
-          Top = 16
+          Left = 10
+          Top = 21
           Width = 241
           Height = 21
           TabOrder = 0
@@ -58,8 +54,8 @@ object frmTelaheranca: TfrmTelaheranca
         end
         object btnPesquisar: TBitBtn
           Tag = 99
-          Left = 280
-          Top = 14
+          Left = 274
+          Top = 19
           Width = 75
           Height = 25
           Caption = '&Pesquisar'
@@ -88,10 +84,6 @@ object frmTelaheranca: TfrmTelaheranca
     object tabManutencao: TTabSheet
       Caption = 'Manuten'#231#227'o'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
   end
   object pnlRodape: TPanel

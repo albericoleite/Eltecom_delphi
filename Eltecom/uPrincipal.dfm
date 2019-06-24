@@ -589,16 +589,24 @@ object frmPrincipal: TfrmPrincipal
               Left = 1
               Top = 1
               Width = 557
-              Height = 13
+              Height = 19
               Align = alTop
               Caption = 'Aniversariantes do M'#234's'
-              ExplicitWidth = 112
+              Color = clHotLight
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+              ExplicitWidth = 190
             end
             object dbgrd1: TDBGrid
               Left = 1
-              Top = 14
+              Top = 20
               Width = 557
-              Height = 206
+              Height = 200
               Align = alClient
               DataSource = dtmGrafico.dsAniver
               Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -1108,7 +1116,7 @@ object frmPrincipal: TfrmPrincipal
     object Cadastro1: TMenuItem
       Caption = 'Cadastro'
       object Clientes1: TMenuItem
-        Caption = 'Membros / Congregados'
+        Caption = 'Membros | Congregados'
         OnClick = Clientes1Click
       end
       object N1: TMenuItem
@@ -1133,7 +1141,7 @@ object frmPrincipal: TfrmPrincipal
           OnClick = mniDepartamentos2Click
         end
         object mniDepartamentoPessoas1: TMenuItem
-          Caption = 'Departamento / Pessoas'
+          Caption = 'Departamento | Pessoas'
           OnClick = mniDepartamentoPessoas1Click
         end
       end
@@ -1147,7 +1155,7 @@ object frmPrincipal: TfrmPrincipal
           OnClick = mniCargos2Click
         end
         object mniCargosPessoas1: TMenuItem
-          Caption = 'Cargos / Pessoas'
+          Caption = 'Cargos | Pessoas'
           OnClick = mniCargosPessoas1Click
         end
       end
@@ -1158,7 +1166,7 @@ object frmPrincipal: TfrmPrincipal
           OnClick = mniFunes2Click
         end
         object mniFunesPessoas1: TMenuItem
-          Caption = 'Fun'#231#245'es / Pessoas'
+          Caption = 'Fun'#231#245'es | Pessoas'
           OnClick = mniFunesPessoas1Click
         end
       end

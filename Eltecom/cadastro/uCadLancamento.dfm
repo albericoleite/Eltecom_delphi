@@ -2,7 +2,6 @@ inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
   ClientWidth = 727
   ExplicitWidth = 733
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   object lbl4: TLabel [0]
@@ -387,7 +386,6 @@ inherited frmCadLancamento: TfrmCadLancamento
     end
   end
   inherited QryListagem: TFDQuery
-    Active = True
     SQL.Strings = (
       'SELECT t.cod_entrada, t.nro_documento, t.dta_movimento'
       ', t.dta_inclusao, t.usuario_inclusao'

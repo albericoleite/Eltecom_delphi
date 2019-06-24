@@ -1,7 +1,5 @@
 inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
   Caption = 'Cadastrar Ajuda de Custo'
-  ExplicitWidth = 806
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -445,6 +443,7 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
       FieldName = 'id_tipo'
       Origin = 'id_tipo'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object strngfldOperacaodesc_tipo: TStringField
       AutoGenerateValue = arDefault

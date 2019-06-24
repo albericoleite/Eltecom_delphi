@@ -3,7 +3,7 @@
   Height = 521
   Width = 935
   object frxrprtFechamento: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -11,7 +11,7 @@
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42225.645197615700000000
-    ReportOptions.LastChange = 42864.813471666700000000
+    ReportOptions.LastChange = 42864.813471666690000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -59,8 +59,10 @@
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 196.535560000000000000
         Width = 718.110700000000000000
@@ -68,6 +70,7 @@
         DataSetName = 'frxdbdtstTes_valores'
         RowCount = 0
         object frxdbTes_Entradanro_documento: TfrxMemoView
+          AllowVectorExport = True
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -81,6 +84,7 @@
           ParentFont = False
         end
         object frxdbTes_Entradadta_movimento: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
@@ -97,6 +101,7 @@
           ParentFont = False
         end
         object frxdbTes_Entradadescricao: TfrxMemoView
+          AllowVectorExport = True
           Left = 132.283550000000000000
           Width = 427.086890000000000000
           Height = 18.897650000000000000
@@ -111,6 +116,7 @@
           ParentFont = False
         end
         object frxdbTes_Entradavalor: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -138,6 +144,7 @@
           VAlign = vaCenter
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -166,6 +173,7 @@
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -176,6 +184,7 @@
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 136.063080000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -191,6 +200,7 @@
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 136.063080000000000000
           Width = 52.913420000000000000
@@ -208,6 +218,7 @@
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 132.283550000000000000
           Top = 136.063080000000000000
           Width = 427.086890000000000000
@@ -224,6 +235,7 @@
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 136.063080000000000000
           Width = 79.370130000000000000
@@ -241,6 +253,7 @@
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 136.063080000000000000
           Width = 79.370130000000000000
@@ -258,6 +271,7 @@
           VAlign = vaCenter
         end
         object frxdbBuscaIgrejanome_igreja: TfrxMemoView
+          AllowVectorExport = True
           Width = 755.906000000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -265,6 +279,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbBuscaIgreja."nome_igreja"] EM [frxdbBuscaIgreja."cidade"]')
@@ -276,6 +291,7 @@
             end>
         end
         object frxdbBuscaIgrejalogradouro: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -284,6 +300,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -303,6 +320,7 @@
             end>
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Top = 49.133890000000000000
           Width = 763.465060000000000000
           Height = 18.897650000000000000
@@ -311,6 +329,7 @@
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold, fsItalic]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -319,6 +338,7 @@
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Top = 71.811070000000000000
           Width = 102.047310000000000000
           Height = 26.456710000000000000
@@ -336,6 +356,7 @@
           VAlign = vaBottom
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 71.811070000000000000
           Width = 79.370130000000000000
@@ -351,6 +372,7 @@
           VAlign = vaBottom
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Top = 98.267780000000000000
           Width = 718.110700000000000000
           Height = 26.456710000000000000
@@ -379,6 +401,7 @@
             end>
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 102.047310000000000000
           Top = 71.811070000000000000
           Width = 536.693260000000000000
@@ -397,10 +420,12 @@
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 257.008040000000000000
         Top = 238.110390000000000000
         Width = 718.110700000000000000
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 1.779529999999990000
           Width = 79.370130000000000000
@@ -421,6 +446,7 @@
           VAlign = vaCenter
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 1.779529999999990000
           Width = 79.370130000000000000
@@ -441,6 +467,7 @@
           VAlign = vaCenter
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 222.992270000000000000
           Top = 64.252010000000000000
           Width = 381.732530000000000000
@@ -450,6 +477,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'REPASSE PARA TESOURARIA GERAL (Entradas - Sa'#237'das)')
@@ -457,6 +485,7 @@
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 604.724800000000000000
           Top = 64.252010000000000000
           Width = 113.385900000000000000
@@ -484,6 +513,7 @@
         end
         object Memo63: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 111.496135000000000000
           Top = 30.236240000000000000
           Width = 495.118430000000000000
@@ -493,6 +523,7 @@
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsItalic]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -502,6 +533,7 @@
           VAlign = vaBottom
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 340.157700000000000000
           Top = 2.559059999999990000
           Width = 215.433210000000000000
@@ -511,12 +543,14 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'SOMA ENTRADAS E SA'#205'DAS........')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Top = 162.519790000000000000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
@@ -532,6 +566,7 @@
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.448980000000000000
           Top = 162.519790000000000000
           Width = 219.212740000000000000
@@ -548,6 +583,7 @@
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 498.897960000000000000
           Top = 162.519790000000000000
           Width = 219.212740000000000000
@@ -565,6 +601,7 @@
         end
         object Memo73: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 105.826840000000000000
           Top = 188.976500000000000000
           Width = 506.457020000000000000
@@ -574,6 +611,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -973,13 +1011,13 @@
     ParamData = <
       item
         Name = 'DTINI'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43466d
       end
       item
         Name = 'DTFIM'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43800d
       end>
@@ -1057,13 +1095,13 @@
     ParamData = <
       item
         Name = 'DTINI'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43466d
       end
       item
         Name = 'DTFIM'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43800d
       end>
@@ -1241,7 +1279,7 @@
     Top = 224
   end
   object frxrprtDizimistasAnual: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1249,7 +1287,7 @@
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42225.645197615700000000
-    ReportOptions.LastChange = 42864.813471666700000000
+    ReportOptions.LastChange = 42864.813471666690000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -1302,8 +1340,10 @@
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 196.535560000000000000
         Width = 1046.929810000000000000
@@ -1311,6 +1351,7 @@
         DataSetName = 'frxdbQuadroDizimistas'
         RowCount = 0
         object frxdbTes_Entradanro_documento: TfrxMemoView
+          AllowVectorExport = True
           Width = 321.260050000000000000
           Height = 18.897650000000000000
           DataField = 'nome_pessoa'
@@ -1327,6 +1368,7 @@
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 986.457330000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1348,12 +1390,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."DEZEMBRO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."DEZEMBRO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1375,12 +1419,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."NOVEMBRO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."NOVEMBRO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 865.512370000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1402,12 +1448,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."OUTUBRO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."OUTUBRO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 805.039890000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1429,12 +1477,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."SETEMBRO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."SETEMBRO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1456,12 +1506,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."AGOSTO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."AGOSTO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 684.094930000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1483,12 +1535,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."JULHO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."JULHO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1510,12 +1564,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."JUNHO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."JUNHO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1537,12 +1593,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."MAIO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[SUM(<frxdbQuadroDizimistas."MAIO">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1564,12 +1622,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."ABRIL"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."ABRIL"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 442.205010000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1591,12 +1651,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."MAR'#199'O"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."MAR'#199'O"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1618,12 +1680,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."FEVEREIRO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."FEVEREIRO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 321.260050000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1645,6 +1709,7 @@
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -1655,6 +1720,7 @@
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 136.063080000000000000
           Width = 321.260050000000000000
           Height = 18.897650000000000000
@@ -1664,13 +1730,15 @@
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
-            'Nome')
+            'NOME')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxdbBuscaIgrejanome_igreja: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 145.511905000000000000
           Width = 755.906000000000000000
           Height = 18.897650000000000000
@@ -1679,6 +1747,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbBuscaIgreja."nome_igreja"] EM [frxdbBuscaIgreja."cidade"]')
@@ -1691,100 +1760,64 @@
         end
         object frxdbBuscaIgrejalogradouro: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
+          Left = 0.000000000000044298
           Top = 22.677180000000000000
           Width = 1046.929810000000000000
-          Height = 154.960730000000000000
+          Height = 41.574830000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
-              'Rua Ot'#225'vio Gomes de Castro, 27 - Centro - Parnamirim/RN - CNPJ 0' +
-              '8.332.785/0018-50')
-          ParentFont = False
-          Formats = <
-            item
-            end
-            item
-            end
-            item
-            end
-            item
-            end
-            item
-            end>
-        end
-        object Memo22: TfrxMemoView
-          Align = baCenter
-          Left = 141.732375000000000000
-          Top = 49.133890000000000000
-          Width = 763.465060000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = [fsBold, fsItalic]
-          HAlign = haCenter
-          Memo.UTF8W = (
-            
-              'MAPA PRESTA'#199#195'O DE CONTAS SEMANAL  - CONGREGA'#199#195'O/SUBCONGREGA'#199#195'O/P' +
-              '.PREGA'#199#195'O')
+              '[frxdbBuscaIgreja."logradouro"], [frxdbBuscaIgreja."bairro"]- [f' +
+              'rxdbBuscaIgreja."cidade"]/[frxdbBuscaIgreja."uf"] - CNPJ [frxdbB' +
+              'uscaIgreja."cnpj"]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 170.078850000000000000
           Top = 71.811070000000000000
-          Width = 102.047310000000000000
+          Width = 876.850960000000000000
           Height = 26.456710000000000000
-          DisplayFormat.FormatStr = 'mmmm '
+          DisplayFormat.FormatStr = 'yyyy'
           DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -16
           Font.Name = 'Arial'
-          Font.Style = [fsItalic]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Memo.UTF8W = (
-            'M'#234's: [frxdbdtstTes_valores."dta_movimento"]')
-          ParentFont = False
-          VAlign = vaBottom
-        end
-        object Memo25: TfrxMemoView
-          Left = 808.819420000000000000
-          Top = 71.811070000000000000
-          Width = 79.370130000000000000
-          Height = 26.456710000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
+          Memo.UTF8W = (
+            
+              'Quadro de Dizimistas do Ano: [frxdbdtstTes_valores."dta_moviment' +
+              'o"]')
           ParentFont = False
-          VAlign = vaBottom
+          VAlign = vaCenter
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 170.078850000000000000
           Top = 98.267780000000000000
-          Width = 718.110700000000000000
+          Width = 876.850960000000000000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
-          Font.Style = [fsItalic]
+          Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           Memo.UTF8W = (
             
               'Congrega'#231#227'o:  [frxdbCongregacao."congregacao"]  Setor: [frxdbCon' +
-              'gregacao."setor"]                                               ' +
-              '                                   C.CUSTO: [frxdbCongregacao."c' +
-              'od_cc"]')
+              'gregacao."setor"]      C.CUSTO: [frxdbCongregacao."cod_cc"] Diri' +
+              'gente: [frxdbCongregacao."dirigente"]')
           ParentFont = False
           VAlign = vaCenter
           Formats = <
@@ -1797,23 +1830,8 @@
             item
             end>
         end
-        object Memo24: TfrxMemoView
-          Left = 272.126160000000000000
-          Top = 71.811070000000000000
-          Width = 536.693260000000000000
-          Height = 26.456710000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Memo.UTF8W = (
-            'Semana: [Semana]')
-          ParentFont = False
-          VAlign = vaBottom
-        end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 986.457330000000000000
           Top = 135.842610000000000000
           Width = 60.472480000000000000
@@ -1831,6 +1849,7 @@
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -1848,6 +1867,7 @@
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 865.512370000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -1865,6 +1885,7 @@
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 805.039890000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -1882,6 +1903,7 @@
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -1899,6 +1921,7 @@
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 684.094930000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -1916,6 +1939,7 @@
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -1933,6 +1957,7 @@
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -1950,6 +1975,7 @@
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -1967,6 +1993,7 @@
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 442.205010000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -1984,6 +2011,7 @@
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -2001,6 +2029,7 @@
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 321.260050000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -2018,6 +2047,7 @@
           VAlign = vaCenter
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 139.842610000000000000
@@ -2026,6 +2056,7 @@
           DataField = 'foto'
           DataSet = frxdbBuscaIgreja
           DataSetName = 'frxdbBuscaIgreja'
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
@@ -2033,10 +2064,12 @@
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 241.889920000000000000
         Top = 238.110390000000000000
         Width = 1046.929810000000000000
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 102.047310000000000000
           Width = 219.212740000000000000
@@ -2053,6 +2086,7 @@
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Top = 102.047310000000000000
           Width = 219.212740000000000000
@@ -2069,6 +2103,7 @@
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 763.465060000000000000
           Top = 102.047310000000000000
           Width = 219.212740000000000000
@@ -2085,6 +2120,7 @@
           ParentFont = False
         end
         object Memo73: TfrxMemoView
+          AllowVectorExport = True
           Left = 474.331015000000000000
           Top = 181.417440000000000000
           Width = 506.457020000000000000
@@ -2094,6 +2130,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -2103,6 +2140,7 @@
           VAlign = vaCenter
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Width = 321.260050000000000000
           Height = 18.897650000000000000
           DataSet = frxdbQuadroDizimistas
@@ -2119,6 +2157,7 @@
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 986.457330000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2139,6 +2178,7 @@
           VAlign = vaCenter
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2159,6 +2199,7 @@
           VAlign = vaCenter
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 865.512370000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2179,6 +2220,7 @@
           VAlign = vaCenter
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 805.039890000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2199,6 +2241,7 @@
           VAlign = vaCenter
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2219,6 +2262,7 @@
           VAlign = vaCenter
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 684.094930000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2239,6 +2283,7 @@
           VAlign = vaCenter
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2259,6 +2304,7 @@
           VAlign = vaCenter
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2279,6 +2325,7 @@
           VAlign = vaCenter
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2299,6 +2346,7 @@
           VAlign = vaCenter
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 442.205010000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2319,6 +2367,7 @@
           VAlign = vaCenter
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2339,6 +2388,7 @@
           VAlign = vaCenter
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 321.260050000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2361,10 +2411,12 @@
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 540.472790000000000000
         Width = 1046.929810000000000000
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
@@ -2373,6 +2425,7 @@
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold, fsItalic]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Splendor - Gest'#227'o')
           ParentFont = False
@@ -2381,7 +2434,7 @@
     end
   end
   object frxrprt1: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2389,7 +2442,7 @@
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42225.645197615700000000
-    ReportOptions.LastChange = 42864.813471666700000000
+    ReportOptions.LastChange = 42864.813471666690000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -2442,8 +2495,10 @@
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 181.417440000000000000
         Top = 196.535560000000000000
         Width = 1046.929810000000000000
@@ -2451,6 +2506,7 @@
         DataSetName = 'frxdbQuadroDizimistas'
         RowCount = 0
         object frxdbTes_Entradanro_documento: TfrxMemoView
+          AllowVectorExport = True
           Width = 321.260050000000000000
           Height = 18.897650000000000000
           DataField = 'nome_pessoa'
@@ -2467,6 +2523,7 @@
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 986.457330000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2488,12 +2545,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."DEZEMBRO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."DEZEMBRO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2515,12 +2574,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."NOVEMBRO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."NOVEMBRO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 865.512370000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2540,6 +2601,7 @@
           VAlign = vaCenter
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 805.039890000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2561,12 +2623,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."SETEMBRO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."SETEMBRO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2586,6 +2650,7 @@
           VAlign = vaCenter
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 684.094930000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2605,6 +2670,7 @@
           VAlign = vaCenter
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2624,6 +2690,7 @@
           VAlign = vaCenter
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2645,12 +2712,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."MAIO"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."MAIO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2670,6 +2739,7 @@
           VAlign = vaCenter
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 442.205010000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2691,12 +2761,14 @@
           Highlight.Font.Style = []
           Highlight.Condition = '<frxdbQuadroDizimistas."MAR'#199'O"> = 0'
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbQuadroDizimistas."MAR'#199'O"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2716,6 +2788,7 @@
           VAlign = vaCenter
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 321.260050000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2737,6 +2810,7 @@
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -2747,6 +2821,7 @@
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 136.063080000000000000
           Width = 321.260050000000000000
           Height = 18.897650000000000000
@@ -2762,6 +2837,7 @@
           VAlign = vaCenter
         end
         object frxdbBuscaIgrejanome_igreja: TfrxMemoView
+          AllowVectorExport = True
           Width = 755.906000000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2769,6 +2845,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbBuscaIgreja."nome_igreja"] EM [frxdbBuscaIgreja."cidade"]')
@@ -2780,6 +2857,7 @@
             end>
         end
         object frxdbBuscaIgrejalogradouro: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -2788,6 +2866,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -2807,6 +2886,7 @@
             end>
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Top = 49.133890000000000000
           Width = 763.465060000000000000
           Height = 18.897650000000000000
@@ -2815,6 +2895,7 @@
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold, fsItalic]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -2823,6 +2904,7 @@
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Top = 71.811070000000000000
           Width = 102.047310000000000000
           Height = 26.456710000000000000
@@ -2840,6 +2922,7 @@
           VAlign = vaBottom
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 71.811070000000000000
           Width = 79.370130000000000000
@@ -2855,6 +2938,7 @@
           VAlign = vaBottom
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Top = 98.267780000000000000
           Width = 718.110700000000000000
           Height = 26.456710000000000000
@@ -2883,6 +2967,7 @@
             end>
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 102.047310000000000000
           Top = 71.811070000000000000
           Width = 536.693260000000000000
@@ -2899,6 +2984,7 @@
           VAlign = vaBottom
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 986.457330000000000000
           Top = 135.842610000000000000
           Width = 60.472480000000000000
@@ -2916,6 +3002,7 @@
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -2933,6 +3020,7 @@
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 865.512370000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -2950,6 +3038,7 @@
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 805.039890000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -2967,6 +3056,7 @@
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -2984,6 +3074,7 @@
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 684.094930000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3001,6 +3092,7 @@
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3018,6 +3110,7 @@
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3035,6 +3128,7 @@
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3052,6 +3146,7 @@
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 442.205010000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3069,6 +3164,7 @@
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3086,6 +3182,7 @@
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 321.260050000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3105,10 +3202,12 @@
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 200.315090000000000000
         Top = 400.630180000000000000
         Width = 1046.929810000000000000
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 1.779529999999990000
           Width = 79.370130000000000000
@@ -3129,6 +3228,7 @@
           VAlign = vaCenter
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 1.779529999999990000
           Width = 79.370130000000000000
@@ -3149,6 +3249,7 @@
           VAlign = vaCenter
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 222.992270000000000000
           Top = 64.252010000000000000
           Width = 381.732530000000000000
@@ -3158,6 +3259,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'REPASSE PARA TESOURARIA GERAL (Entradas - Sa'#237'das)')
@@ -3165,6 +3267,7 @@
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 604.724800000000000000
           Top = 64.252010000000000000
           Width = 113.385900000000000000
@@ -3192,6 +3295,7 @@
         end
         object Memo63: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Top = 30.236240000000000000
           Width = 495.118430000000000000
@@ -3201,6 +3305,7 @@
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsItalic]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -3210,6 +3315,7 @@
           VAlign = vaBottom
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 340.157700000000000000
           Top = 2.559059999999990000
           Width = 215.433210000000000000
@@ -3219,12 +3325,14 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'SOMA ENTRADAS E SA'#205'DAS........')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 22.677180000000000000
           Top = 128.504020000000000000
           Width = 219.212740000000000000
@@ -3241,6 +3349,7 @@
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Top = 128.504020000000000000
           Width = 219.212740000000000000
@@ -3257,6 +3366,7 @@
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.472790000000000000
           Top = 128.504020000000000000
           Width = 219.212740000000000000
@@ -3274,6 +3384,7 @@
         end
         object Memo73: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 270.236395000000000000
           Top = 151.181200000000000000
           Width = 506.457020000000000000
@@ -3283,6 +3394,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -3295,7 +3407,7 @@
     end
   end
   object frxrprtDizimistasAnualPg: TfrxReport
-    Version = '5.1.5'
+    Version = '6.2.1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3303,7 +3415,7 @@
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42225.645197615700000000
-    ReportOptions.LastChange = 42864.813471666700000000
+    ReportOptions.LastChange = 42864.813471666690000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -3356,8 +3468,10 @@
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 196.535560000000000000
         Width = 1046.929810000000000000
@@ -3365,6 +3479,7 @@
         DataSetName = 'frxdbQuadroDizimistasPg'
         RowCount = 0
         object frxdbTes_Entradanro_documento: TfrxMemoView
+          AllowVectorExport = True
           Width = 321.260050000000000000
           Height = 18.897650000000000000
           DataSet = frxdbQuadroDizimistas
@@ -3380,6 +3495,7 @@
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 986.457330000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3398,6 +3514,7 @@
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3416,6 +3533,7 @@
           VAlign = vaCenter
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 865.512370000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3434,6 +3552,7 @@
           VAlign = vaCenter
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 805.039890000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3452,6 +3571,7 @@
           VAlign = vaCenter
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3470,6 +3590,7 @@
           VAlign = vaCenter
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 684.094930000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3488,6 +3609,7 @@
           VAlign = vaCenter
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3506,6 +3628,7 @@
           VAlign = vaCenter
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3524,6 +3647,7 @@
           VAlign = vaCenter
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3542,6 +3666,7 @@
           VAlign = vaCenter
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 442.205010000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3560,6 +3685,7 @@
           VAlign = vaCenter
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3578,6 +3704,7 @@
           VAlign = vaCenter
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 321.260050000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -3598,6 +3725,7 @@
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -3608,6 +3736,7 @@
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 136.063080000000000000
           Width = 321.260050000000000000
           Height = 18.897650000000000000
@@ -3617,13 +3746,15 @@
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
-            'Nome')
+            'NOME')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxdbBuscaIgrejanome_igreja: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Left = 145.511905000000000000
           Width = 755.906000000000000000
           Height = 18.897650000000000000
@@ -3632,6 +3763,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbBuscaIgreja."nome_igreja"] EM [frxdbBuscaIgreja."cidade"]')
@@ -3644,6 +3776,7 @@
         end
         object frxdbBuscaIgrejalogradouro: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 22.677180000000000000
           Width = 1046.929810000000000000
           Height = 98.267780000000000000
@@ -3652,11 +3785,13 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
-              'Rua Ot'#225'vio Gomes de Castro, 27 - Centro - Parnamirim/RN - CNPJ 0' +
-              '8.332.785/0018-50')
+              '[frxdbBuscaIgreja."logradouro"], [frxdbBuscaIgreja."bairro"]- [f' +
+              'rxdbBuscaIgreja."cidade"]/[frxdbBuscaIgreja."uf"] - CNPJ [frxdbB' +
+              'uscaIgreja."cnpj"]')
           ParentFont = False
           Formats = <
             item
@@ -3670,61 +3805,33 @@
             item
             end>
         end
-        object Memo22: TfrxMemoView
-          Align = baCenter
-          Left = 141.732375000000000000
-          Top = 49.133890000000000000
-          Width = 763.465060000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Arial'
-          Font.Style = [fsBold, fsItalic]
-          HAlign = haCenter
-          Memo.UTF8W = (
-            
-              'MAPA PRESTA'#199#195'O DE CONTAS SEMANAL  - CONGREGA'#199#195'O/SUBCONGREGA'#199#195'O/P' +
-              '.PREGA'#199#195'O')
-          ParentFont = False
-        end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 170.078850000000000000
           Top = 71.811070000000000000
-          Width = 102.047310000000000000
+          Width = 876.850960000000000000
           Height = 26.456710000000000000
-          DisplayFormat.FormatStr = 'mmmm '
+          DisplayFormat.FormatStr = 'yyyy'
           DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -16
           Font.Name = 'Arial'
-          Font.Style = [fsItalic]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Memo.UTF8W = (
-            'M'#234's: [frxdbdtstTes_valores."dta_movimento"]')
-          ParentFont = False
-          VAlign = vaBottom
-        end
-        object Memo25: TfrxMemoView
-          Left = 808.819420000000000000
-          Top = 71.811070000000000000
-          Width = 79.370130000000000000
-          Height = 26.456710000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
+          Memo.UTF8W = (
+            
+              'Quadro de Dizimistas do Ano: [frxdbdtstTes_valores."dta_moviment' +
+              'o"]')
           ParentFont = False
-          VAlign = vaBottom
+          VAlign = vaCenter
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 170.078850000000000000
           Top = 98.267780000000000000
-          Width = 718.110700000000000000
+          Width = 876.850960000000000000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -3732,12 +3839,12 @@
           Font.Name = 'Arial'
           Font.Style = [fsItalic]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
           Memo.UTF8W = (
             
               'Congrega'#231#227'o:  [frxdbCongregacao."congregacao"]  Setor: [frxdbCon' +
-              'gregacao."setor"]                                               ' +
-              '                                   C.CUSTO: [frxdbCongregacao."c' +
-              'od_cc"]')
+              'gregacao."setor"]      C.CUSTO: [frxdbCongregacao."cod_cc"] Diri' +
+              'gente: [frxdbCongregacao."dirigente"]')
           ParentFont = False
           VAlign = vaCenter
           Formats = <
@@ -3750,23 +3857,8 @@
             item
             end>
         end
-        object Memo24: TfrxMemoView
-          Left = 272.126160000000000000
-          Top = 71.811070000000000000
-          Width = 536.693260000000000000
-          Height = 26.456710000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Memo.UTF8W = (
-            'Semana: [Semana]')
-          ParentFont = False
-          VAlign = vaBottom
-        end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 986.457330000000000000
           Top = 135.842610000000000000
           Width = 60.472480000000000000
@@ -3784,6 +3876,7 @@
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3801,6 +3894,7 @@
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 865.512370000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3818,6 +3912,7 @@
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 805.039890000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3835,6 +3930,7 @@
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3852,6 +3948,7 @@
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 684.094930000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3869,6 +3966,7 @@
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3886,6 +3984,7 @@
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3903,6 +4002,7 @@
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3920,6 +4020,7 @@
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 442.205010000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3937,6 +4038,7 @@
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3954,6 +4056,7 @@
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 321.260050000000000000
           Top = 136.063080000000000000
           Width = 60.472480000000000000
@@ -3971,6 +4074,7 @@
           VAlign = vaCenter
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 139.842610000000000000
@@ -3979,6 +4083,7 @@
           DataField = 'foto'
           DataSet = frxdbBuscaIgreja
           DataSetName = 'frxdbBuscaIgreja'
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
@@ -3986,10 +4091,12 @@
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 241.889920000000000000
         Top = 238.110390000000000000
         Width = 1046.929810000000000000
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 102.047310000000000000
           Width = 219.212740000000000000
@@ -4006,6 +4113,7 @@
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Top = 102.047310000000000000
           Width = 219.212740000000000000
@@ -4022,6 +4130,7 @@
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 763.465060000000000000
           Top = 102.047310000000000000
           Width = 219.212740000000000000
@@ -4038,6 +4147,7 @@
           ParentFont = False
         end
         object Memo73: TfrxMemoView
+          AllowVectorExport = True
           Left = 474.331015000000000000
           Top = 181.417440000000000000
           Width = 506.457020000000000000
@@ -4047,6 +4157,7 @@
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -4058,10 +4169,12 @@
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 540.472790000000000000
         Width = 1046.929810000000000000
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
@@ -4070,6 +4183,7 @@
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold, fsItalic]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Splendor - Gest'#227'o')
           ParentFont = False

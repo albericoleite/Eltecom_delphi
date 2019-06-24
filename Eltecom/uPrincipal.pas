@@ -9,10 +9,10 @@ uses
   uFrmAtualizaDB, uDTMRelatorio, cUsuarioLogado, VclTee.TeeGDIPlus, cFuncao,
   VclTee.TeEngine, VclTee.TeeProcs, VclTee.Chart, VclTee.DBChart, Vcl.ExtCtrls,
   VclTee.Series, Vcl.Tabs, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids,
-  Vcl.RibbonLunaStyleActnCtrls, Vcl.Ribbon, Vcl.ToolWin, Vcl.ActnMan,
+  Vcl.ToolWin, Vcl.ActnMan,
   Vcl.ActnCtrls, System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
-  Vcl.ImgList, Vcl.ActnMenus, Vcl.RibbonActnMenus, Vcl.Buttons, sSkinManager,
-  Vcl.Imaging.jpeg, sButton, sBitBtn;
+  Vcl.ImgList, Vcl.ActnMenus, Vcl.Buttons,
+  Vcl.Imaging.jpeg,  Data.DB;
 
 type
   TfrmPrincipal = class(TForm)

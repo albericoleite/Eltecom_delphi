@@ -147,6 +147,8 @@ type
     property cod_situacao: Integer read F_cod_situacao write F_cod_situacao;
     property congregacao: string read F_congregacao write F_congregacao;
     property foto: TBitmap read F_foto write F_foto;
+    property estado_civil_anterior: string read F_estado_civil_anterior write F_estado_civil_anterior;
+    property estado_civil_atual: string read F_estado_civil_atual write F_estado_civil_atual;
   end;
 
 implementation
@@ -344,12 +346,12 @@ begin
       + ' membro_congregado,nro_rol,naturalidade,dta_conversao,uf_nascimento, '
       + ' nacionalidade,nrorg,cpf, orgaorg,estado_civil_atual,estado_civil_anterior,complemento, '
       + ' fone_residencial,estado_casa ,funcao,uf_endereco,profissao,fone_trabalho,igreja,setor, '+
-        ' nro_cad_congregado,SITUACAO,cod_situacao,dta_membro,congregacao, foto )  '
+        ' nro_cad_congregado,SITUACAO,cod_situacao,dta_membro,congregacao, foto, nome_conjugue )  '
       + ' VALUES(:nome_pessoa, :sexo, :nome_pai,:nome_mae,:dta_nascimento,' +
       ' :cod_congregacao,:membro_congregado,:nro_rol,:naturalidade,:dta_conversao, '
       + ' :uf_nascimento,:nacionalidade,:nrorg,:cpf, :orgaorg,:estado_civil_atual,:estado_civil_anterior, '
       + ':complemento,:fone_residencial,:estado_casa,:funcao,:uf_endereco,:profissao,:fone_trabalho,:igreja,:setor,:nro_cad_congregado,:SITUACAO, '
-      + ' :cod_situacao,:dta_membro,:congregacao , :foto  ) ');
+      + ' :cod_situacao,:dta_membro,:congregacao , :foto ,:nome_conjugue ) ');
     Qry.ParamByName('nome_pessoa').AsString := Self.F_nome_pessoa;
     Qry.ParamByName('sexo').AsString := Self.F_sexo;
     Qry.ParamByName('nome_pai').AsString := Self.F_nome_pai;
@@ -383,6 +385,7 @@ begin
       Self.F_estado_civil_anterior;
     Qry.ParamByName('complemento').AsString := Self.F_complemento;
     Qry.ParamByName('congregacao').AsString := Self.F_congregacao;
+    Qry.ParamByName('nome_conjugue').AsString := Self.F_nome_conjugue;
     Qry.ParamByName('foto').DataType:=ftBlob;
     Qry.ParamByName('foto').Clear;
     //Self.F_foto.SaveToStream(stream);
@@ -480,6 +483,8 @@ begin
       Self.F_nro_cad_congregado := Qry.FieldByName('nro_cad_congregado').AsString;
       Self.F_SITUACAO := Qry.FieldByName('SITUACAO').AsString;
       Self.F_membro_congregado := Qry.FieldByName('membro_congregado').AsString;
+      Self.F_estado_civil_atual := Qry.FieldByName('estado_civil_atual').AsString;
+      Self.F_estado_civil_anterior := Qry.FieldByName('estado_civil_anterior').AsString;
 
    //   Self.F_foto.Assign(Qry.FieldByName('foto'));
       //if Qry.FieldByName('foto').Assign(nil) then

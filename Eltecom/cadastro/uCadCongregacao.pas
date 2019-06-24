@@ -84,11 +84,13 @@ type
     lbl3: TLabel;
     fdqryDirigentenome: TStringField;
     fdqryDirigentecod_membro: TIntegerField;
+    lbledtCodCc: TLabeledEdit;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure lbledtCodCentralExit(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
+    procedure lbledtCodCcExit(Sender: TObject);
   private
     { Private declarations }
     oCongregacao: TCongregacao;
@@ -126,7 +128,7 @@ if oCongregacao.Selecionar(QryListagem.FieldByName('cod_congregacao').AsInteger)
     lbledtBairro.Text := oCongregacao.bairro;
     lbledtComplemento.Text := oCongregacao.complemento;
     lbledtCidade.Text := oCongregacao.cidade;
-    //cbbUfImovel.Text := oCongregacao.uf;
+    lbledtCodCc.Text := IntToStr(oCongregacao.cod_cc);
     medtTelefone.Text := oCongregacao.telefone;
     medtCEP.Text := oCongregacao.cep;
     dblkcbbSetor.KeyValue:= oCongregacao.cod_setor;
@@ -196,6 +198,7 @@ begin
        oCongregacao.dirigente:=dblkcbbDirigente.Text;
        oCongregacao.cod_igreja:='1';
        oCongregacao.cod_dirigente:= dblkcbbDirigente.KeyValue;
+       oCongregacao.cod_cc := StrToInt(lbledtCodCc.Text);
 
 
     if (EstadodoCadastro=ecInserir) then
@@ -203,6 +206,13 @@ begin
     else if (EstadodoCadastro=ecAlterar) then
      Result:=oCongregacao.Atualizar;
 
+end;
+
+procedure TfrmCadCongregacao.lbledtCodCcExit(Sender: TObject);
+begin
+  inherited;
+if lbledtCodCc.Text ='' then
+lbledtCodCc.Text:='00000';
 end;
 
 procedure TfrmCadCongregacao.lbledtCodCentralExit(Sender: TObject);
