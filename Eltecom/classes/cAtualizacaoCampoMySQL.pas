@@ -135,6 +135,21 @@ begin
    ' `x`.`nro_mes`');
  end;
 
+
+ if not ViewExiste('v_lancamentos_total') then
+ begin
+   ExecutaDiretoBancoDeDados('create or replace view v_lancamentos_total as '+
+  ' select * from           '+
+  ' (SELECT sum(t.valor)as valor, t.tipo,t.dta_movimento as data,   '+
+  ' year(t.dta_movimento) AS ano      '+
+  ' ,month(t.dta_movimento) AS mes    '+
+  ' ,week(t.dta_movimento) as semana     '+
+  ' ,weekday(t.dta_movimento) as dia    '+
+  ' FROM tb_tesouraria t join tb_parametro_sistema a     '+
+  ' on a.cod_congregacao = t.cod_congregacao     '+
+  ' group by year(t.dta_movimento),month(t.dta_movimento),t.tipo,t.dta_movimento)x');
+ end;
+
   {  //Adicionar código da congregação no recibo
   if not CampoExisteNaTabela('tb_classe_aluno','tb_classe_aluno_tb_classe_fk') then
  begin

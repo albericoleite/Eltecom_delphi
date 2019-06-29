@@ -24,6 +24,9 @@ type
     rg1: TRadioGroup;
     rbNormal: TRadioButton;
     rbValor: TRadioButton;
+    rg2: TRadioGroup;
+    rbTodos: TRadioButton;
+    rb2: TRadioButton;
     procedure btnSairClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

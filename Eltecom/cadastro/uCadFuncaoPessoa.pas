@@ -35,9 +35,11 @@ type
     dtmfldQryListagemdta_alteracao: TDateTimeField;
     strngfldQryListagemusuario_inclusao: TStringField;
     strngfldQryListagemusuario_alteracao: TStringField;
+    btnImprimir: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
   private
     { Private declarations }
         oFuncaoPessoa: TFuncaoPessoa;
@@ -51,6 +53,9 @@ var
   frmCadFuncaoPessoa: TfrmCadFuncaoPessoa;
 
 implementation
+
+uses
+  uDTMRelatorio;
 
 
 {$R *.dfm}
@@ -99,6 +104,18 @@ if oFuncaoPessoa.Selecionar(QryListagem.FieldByName('cod_func_pessoa').AsInteger
   end;
   inherited;
 
+end;
+
+procedure TfrmCadFuncaoPessoa.btnImprimirClick(Sender: TObject);
+begin
+  inherited;
+ dtmRelatorio.fdqryCargosPessoas.Close;
+  dtmRelatorio.fdqryCargosPessoas.open;
+
+  dtmRelatorio.frxrprtCargosPessoas.ReportOptions.Name :=
+    'Visualização de Impressão: Relação de Cargos:2019';
+    dtmRelatorio.frxrprtCargosPessoas.PrepareReport(True);
+    dtmRelatorio.frxrprtCargosPessoas.ShowReport();
 end;
 
 procedure TfrmCadFuncaoPessoa.FormClose(Sender: TObject;

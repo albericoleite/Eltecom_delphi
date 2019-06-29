@@ -17,8 +17,10 @@ type
     lbl5: TLabel;
     lblDataNascimento: TLabel;
     btngGravicoMensal: TBitBtn;
+    btnMovMensal: TBitBtn;
     procedure btnSemanaClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnMovMensalClick(Sender: TObject);
   private
     procedure AtualizaConsultas;
     { Private declarations }
@@ -35,6 +37,18 @@ uses
   uDTMConexao, uDTMRelatorio, uDTMTesouraria, uDTMRelatorioFinanceiro;
 
 {$R *.dfm}
+
+procedure TfrmRelatoriosFinanceiro.btnMovMensalClick(Sender: TObject);
+begin
+  AtualizaConsultas;
+
+    dtmRelatorioFinanceiro.frxrprtMovFinMensal.ReportOptions.Name :=
+    'Visualização de Impressão: Movimentação Financeira Mensal';
+    //uppercase(formatdatetime('MMMM ', (dtpData.Date))) +'de '+ formatdatetime('yyyy',
+   // (dtpData.Date));
+    dtmRelatorioFinanceiro.frxrprtMovFinMensal.PrepareReport(True);
+    dtmRelatorioFinanceiro.frxrprtMovFinMensal.ShowReport();
+end;
 
 procedure TfrmRelatoriosFinanceiro.btnSemanaClick(Sender: TObject);
 begin
@@ -64,6 +78,14 @@ if dtmRelatorioFinanceiro.fdqryDizimistas.Active then
   dtmRelatorioFinanceiro.fdqryDizimistas.ParamByName('dtini').AsDateTime := dtdtIni.Date;
   dtmRelatorioFinanceiro.fdqryDizimistas.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
   dtmRelatorioFinanceiro.fdqryDizimistas.Open;
+
+if dtmRelatorioFinanceiro.fdqryLancamentosTotal.Active then
+  dtmRelatorioFinanceiro.fdqryLancamentosTotal.Close;
+
+    dtmRelatorioFinanceiro.fdqryLancamentosTotal.ParamByName('data').AsDateTime := dtdtIni.Date;
+   dtmRelatorioFinanceiro.fdqryLancamentosTotal.Open;
+
+
 end;
 
 

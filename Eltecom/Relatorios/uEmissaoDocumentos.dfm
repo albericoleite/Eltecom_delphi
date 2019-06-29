@@ -4,7 +4,7 @@ object frmEmitirDoc: TfrmEmitirDoc
   BorderStyle = bsSingle
   Caption = 'Cartas e Relat'#243'rios'
   ClientHeight = 277
-  ClientWidth = 568
+  ClientWidth = 573
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -128,8 +128,8 @@ object frmEmitirDoc: TfrmEmitirDoc
     Top = 21
     Width = 100
     Height = 21
-    Date = 42223.443553078700000000
-    Time = 42223.443553078700000000
+    Date = 42223.000000000000000000
+    Time = 0.443553078701370400
     TabOrder = 5
   end
   object edtDestino: TEdit

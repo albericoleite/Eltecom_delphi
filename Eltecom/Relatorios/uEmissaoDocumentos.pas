@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
-  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls,uDTMRelatorio, uDTMConexao, uCadPessoa;
+  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls,uDTMRelatorio, uDTMConexao, uCadPessoa,
+  Data.DB;
 
 type
   TfrmEmitirDoc = class(TForm)

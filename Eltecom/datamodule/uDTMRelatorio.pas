@@ -183,6 +183,18 @@ type
     fdqryPessoas_deptdta_nascimento: TDateField;
     fdqryPessoas_deptdia: TIntegerField;
     frxrprt1: TfrxReport;
+    strngfldAniverariantestelefone: TStringField;
+    fdqryCargosPessoas: TFDQuery;
+    frxdbCargosPessoas: TfrxDBDataset;
+    frxrprtCargosPessoas: TfrxReport;
+    fdtncfldCargosPessoascod_func_pessoa: TFDAutoIncField;
+    intgrfldCargosPessoascod_funcao: TIntegerField;
+    intgrfldCargosPessoascod_pessoa: TIntegerField;
+    strngfldCargosPessoasnome_pessoa: TStringField;
+    strngfldCargosPessoasnro_rol: TStringField;
+    strngfldCargosPessoasemail: TStringField;
+    strngfldCargosPessoasfone_celular: TStringField;
+    strngfldCargosPessoasnome_funcao: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

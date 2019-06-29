@@ -1,9 +1,10 @@
 object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
   Caption = 'Relat'#243'rios da Tesouraria'
-  ClientHeight = 201
-  ClientWidth = 447
+  ClientHeight = 59
+  ClientWidth = 366
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,9 +20,10 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
     Left = 0
     Top = 0
     Width = 209
-    Height = 201
+    Height = 59
     Align = alLeft
     TabOrder = 0
+    ExplicitHeight = 69
     object lbl5: TLabel
       Left = 95
       Top = 6
@@ -66,27 +68,40 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
   object pnl2: TPanel
     Left = 209
     Top = 0
-    Width = 238
-    Height = 201
+    Width = 157
+    Height = 59
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 161
+    ExplicitHeight = 69
     object btnSemana: TBitBtn
-      Left = 8
-      Top = 8
+      Left = 120
+      Top = 134
       Width = 75
       Height = 25
       Caption = 'Semanal'
       TabOrder = 0
+      Visible = False
       OnClick = btnSemanaClick
     end
     object btngGravicoMensal: TBitBtn
       Left = 6
-      Top = 39
-      Width = 91
+      Top = 79
+      Width = 131
       Height = 25
       Caption = 'Gr'#225'fico Mensal'
       TabOrder = 1
+      Visible = False
       OnClick = btnSemanaClick
+    end
+    object btnMovMensal: TBitBtn
+      Left = 14
+      Top = 23
+      Width = 131
+      Height = 25
+      Caption = 'Movimenta'#231#227'o Mensal'
+      TabOrder = 2
+      OnClick = btnMovMensalClick
     end
   end
 end

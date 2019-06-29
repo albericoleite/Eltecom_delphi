@@ -45,11 +45,12 @@ object frmPrincipal: TfrmPrincipal
     Height = 33
     Align = alTop
     Alignment = taLeftJustify
+    Caption = 'Dashboard'#39's'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clHighlight
     Font.Height = -24
     Font.Name = 'Tahoma'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
     OnClick = pnl5Click
@@ -592,9 +593,9 @@ object frmPrincipal: TfrmPrincipal
               Height = 19
               Align = alTop
               Caption = 'Aniversariantes do M'#234's'
-              Color = clHotLight
+              Color = clBtnFace
               Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
+              Font.Color = clHighlight
               Font.Height = -16
               Font.Name = 'Tahoma'
               Font.Style = [fsBold]
@@ -1225,13 +1226,13 @@ object frmPrincipal: TfrmPrincipal
     end
     object Relatrios1: TMenuItem
       Caption = 'Relat'#243'rios'
-      object CartaseDocumentos1: TMenuItem
-        Caption = 'Cartas e Documentos'
-        OnClick = CartaseDocumentos1Click
-      end
       object mniAniversariantes1: TMenuItem
         Caption = 'Aniversariantes'
         OnClick = mniAniversariantes1Click
+      end
+      object CartaseDocumentos1: TMenuItem
+        Caption = 'Cartas e Documentos'
+        OnClick = CartaseDocumentos1Click
       end
       object mniDepartamentos3: TMenuItem
         Caption = 'Departamentos'

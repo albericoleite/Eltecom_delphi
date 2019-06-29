@@ -4,7 +4,7 @@ object frmQuadroAnual: TfrmQuadroAnual
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Sele'#231#227'o do Ano'
-  ClientHeight = 183
+  ClientHeight = 223
   ClientWidth = 262
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,7 +22,7 @@ object frmQuadroAnual: TfrmQuadroAnual
     Left = 0
     Top = 0
     Width = 262
-    Height = 17
+    Height = 19
     Align = alTop
     Alignment = taCenter
     Caption = 'Quadro Anual de Dizimistas'
@@ -32,6 +32,7 @@ object frmQuadroAnual: TfrmQuadroAnual
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
+    ExplicitWidth = 225
   end
   object lbl2: TLabel
     Left = 80
@@ -64,7 +65,7 @@ object frmQuadroAnual: TfrmQuadroAnual
   end
   object btnImprimir: TBitBtn
     Left = 24
-    Top = 132
+    Top = 175
     Width = 97
     Height = 36
     Caption = 'Imprimir'
@@ -172,7 +173,7 @@ object frmQuadroAnual: TfrmQuadroAnual
   end
   object btnSair: TBitBtn
     Left = 145
-    Top = 132
+    Top = 175
     Width = 90
     Height = 36
     Caption = 'Sair'
@@ -229,6 +230,34 @@ object frmQuadroAnual: TfrmQuadroAnual
     Height = 17
     Caption = 'Valores'
     TabOrder = 5
+  end
+  object rg2: TRadioGroup
+    Left = 24
+    Top = 119
+    Width = 211
+    Height = 50
+    Caption = 'Filtro'
+    TabOrder = 6
+  end
+  object rbTodos: TRadioButton
+    Left = 56
+    Top = 136
+    Width = 56
+    Height = 17
+    Caption = 'Todos'
+    Checked = True
+    Enabled = False
+    TabOrder = 7
+    TabStop = True
+  end
+  object rb2: TRadioButton
+    Left = 118
+    Top = 136
+    Width = 107
+    Height = 17
+    Caption = 'Somente Obreiros'
+    Enabled = False
+    TabOrder = 8
   end
   object fdqryAnos: TFDQuery
     Connection = dtmPrincipal.ConexaoDB

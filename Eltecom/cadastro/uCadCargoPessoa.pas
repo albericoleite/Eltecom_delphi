@@ -35,10 +35,12 @@ type
     QryListagemCOD_CARG_PESSOA: TIntegerField;
     QryListagemSTATUS: TStringField;
     QryListagemCOD_CONGREGACAO: TIntegerField;
+    btnImprimir: TBitBtn;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnNovoClick(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
   private
     { Private declarations }
     oCargoPessoa: TCargoPessoa;
@@ -52,6 +54,9 @@ var
   frmCadCargoPessoa: TfrmCadCargoPessoa;
 
 implementation
+
+uses
+  uEmissaoDocumentos, uDTMRelatorio;
 
 
 {$R *.dfm}
@@ -103,6 +108,18 @@ if oCargoPessoa.Selecionar(QryListagem.FieldByName('cod_carg_pessoa').AsInteger)
   end;
   inherited;
 
+end;
+
+procedure TfrmCadCargoPessoa.btnImprimirClick(Sender: TObject);
+begin
+  inherited;
+  dtmRelatorio.fdqryCargosPessoas.Close;
+  dtmRelatorio.fdqryCargosPessoas.open;
+
+  dtmRelatorio.frxrprtCargosPessoas.ReportOptions.Name :=
+    'Visualização de Impressão: Relação de Cargos:2019';
+    dtmRelatorio.frxrprtCargosPessoas.PrepareReport(True);
+    dtmRelatorio.frxrprtCargosPessoas.ShowReport();
 end;
 
 procedure TfrmCadCargoPessoa.btnNovoClick(Sender: TObject);

@@ -1,8 +1,5 @@
 inherited frmCadDepartPessoa: TfrmCadDepartPessoa
   Caption = 'Cadastrar pessoas nos Departamentos'
-  ExplicitTop = -24
-  ExplicitWidth = 806
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel [0]
@@ -201,7 +198,8 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
     SQL.Strings = (
       'SELECT cod_pessoa, nome_pessoa'
       'FROM tb_pessoa a inner join tb_parametro_sistema b '
-      'on a.cod_congregacao = b.cod_congregacao')
+      'on a.cod_congregacao = b.cod_congregacao'
+      'order by nome_pessoa')
     Left = 448
     Top = 168
     object fdtncfldPessoascod_pessoa: TFDAutoIncField
