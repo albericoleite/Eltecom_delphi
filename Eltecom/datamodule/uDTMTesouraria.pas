@@ -104,6 +104,13 @@ type
     strngfldQuadroDizimistasPgOUTUBRO: TStringField;
     strngfldQuadroDizimistasPgNOVEMBRO: TStringField;
     strngfldQuadroDizimistasPgDEZEMBRO: TStringField;
+    frxrprtFechamentobkp: TfrxReport;
+    fdqryTes_Entrada_Total: TFDQuery;
+    fltfldTes_Entrada_Totaltotal1: TFloatField;
+    fdqryTes_Saida_Total: TFDQuery;
+    fltfldTes_Saida_Totaltotal: TFloatField;
+    frxdbTes_Saida_Total: TfrxDBDataset;
+    frxdbTes_Entrada_Total: TfrxDBDataset;
   private
     { Private declarations }
   public

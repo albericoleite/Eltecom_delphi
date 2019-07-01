@@ -2,6 +2,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
   Caption = 'Cadastro de Congrega'#231#227'o'
   ClientHeight = 375
   ClientWidth = 750
+  ExplicitTop = -35
   ExplicitWidth = 756
   ExplicitHeight = 404
   PixelsPerInch = 96
@@ -374,15 +375,19 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         end
       end
       object lbledtCodCentral: TLabeledEdit
+        Tag = 2
         Left = 599
         Top = 20
         Width = 65
         Height = 21
+        Hint = 'C'#243'digo Externo da Congrega'#231#227'o'
         EditLabel.Width = 61
         EditLabel.Height = 13
         EditLabel.Caption = 'Cod. Central'
         MaxLength = 10
         NumbersOnly = True
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 3
         Text = '00000'
         OnExit = lbledtCodCentralExit
@@ -408,6 +413,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         TabOrder = 2
       end
       object lbledtCodCc: TLabeledEdit
+        Tag = 2
         Left = 279
         Top = 161
         Width = 65

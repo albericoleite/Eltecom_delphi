@@ -22,7 +22,6 @@ type
     fdqryDepartamentos: TFDQuery;
     fdtncfldDepartamentoscod_departamento: TFDAutoIncField;
     strngfldDepartamentosnome_departamento: TStringField;
-    fdqryCriartb_func_pessoa: TFDQuery;
     fdqryPessoa: TFDQuery;
     fdtncfldPessoacod_pessoa: TFDAutoIncField;
     strngfldPessoanome_pessoa: TStringField;
@@ -80,6 +79,8 @@ type
     strngfldPessoacongregacao: TStringField;
     strngfldPessoaSITUACAO: TStringField;
     fdqrySetores: TFDQuery;
+    cod_setor: TFDAutoIncField;
+    strngfldSetoressetor: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

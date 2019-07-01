@@ -15,11 +15,11 @@ inherited frmCadIgreja: TfrmCadIgreja
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 727
+      ExplicitWidth = 771
       ExplicitHeight = 200
       inherited pnlListagem: TPanel
         Width = 771
-        ExplicitWidth = 727
+        ExplicitWidth = 771
       end
       inherited grdListagem: TDBGrid
         Width = 771
@@ -145,7 +145,7 @@ inherited frmCadIgreja: TfrmCadIgreja
         Top = 148
         Width = 218
         Height = 21
-        CharCase = ecUpperCase
+        CharCase = ecLowerCase
         EditLabel.Width = 24
         EditLabel.Height = 13
         EditLabel.Caption = 'Email'

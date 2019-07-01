@@ -17,7 +17,7 @@ uses
 
 type
   TfrmCadLancamento = class(TfrmTelaheranca)
-    fdtncfldQryListagemcod_entrada: TFDAutoIncField;
+    cod_entrada: TFDAutoIncField;
     intgrfldQryListagemnro_documento: TIntegerField;
     dtfldQryListagemdta_movimento: TDateField;
     dtmfldQryListagemdta_inclusao: TDateTimeField;
@@ -47,6 +47,11 @@ type
     mmoSemana: TMemo;
     lbl6: TLabel;
     btnImprimir: TBitBtn;
+    Label1: TLabel;
+    Label2: TLabel;
+    lbl7: TLabel;
+    crncydtEntrada: TCurrencyEdit;
+    crncydtSaida: TCurrencyEdit;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -58,12 +63,16 @@ type
     procedure btnApagarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnImprimir1Click(Sender: TObject);
+    procedure mmoSaidaChange(Sender: TObject);
+    procedure dtdtIniChange(Sender: TObject);
+    procedure dtdtFimChange(Sender: TObject);
   private
     { Private declarations }
     oLancamento: TLancamento;
     function Apagar: Boolean; override;
     function Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean; override;
     procedure ListaLancamentosPeriodo;
+    function TotalizarEntrada: Double;
   public
     { Public declarations }
   end;
@@ -148,7 +157,8 @@ end;
 procedure TfrmCadLancamento.btnImprimir1Click(Sender: TObject);
 begin
   inherited;
-  if QryListagem.Active then
+  //TODO: Adicionar fundo reserva no fechamento "PARNAMIRIM" (Tes. Francisco Moura);
+  if not strngfldQryListagemstatus.IsNull then
   begin
     // Atualizar consulta da Congregação
     dtmTesouraria.fdqryBuscaCongregacao.Refresh;
@@ -165,7 +175,7 @@ begin
     Application.MessageBox(PChar('Não existe documento localizado nos dias ' +
       DateToStr(dtdtIni.Date) + ' a ' + DateToStr(dtdtFim.Date)), 'Atenção');
   end;
-
+  //TODO: 4 - Adicionar relatório Fechamento "NATAL" (Sec. Alisson Dantas);
 end;
 
 procedure TfrmCadLancamento.btnNovoClick(Sender: TObject);
@@ -190,6 +200,18 @@ begin
       cbbTipo.SetFocus;
     end;
   end;
+end;
+
+procedure TfrmCadLancamento.dtdtFimChange(Sender: TObject);
+begin
+  inherited;
+dtf:=dtdtFim.Date;
+end;
+
+procedure TfrmCadLancamento.dtdtIniChange(Sender: TObject);
+begin
+  inherited;
+dti:=dtdtIni.Date;
 end;
 
 procedure TfrmCadLancamento.FormClose(Sender: TObject;
@@ -240,6 +262,16 @@ begin
 
 end;
 
+function TfrmCadLancamento.TotalizarEntrada:Double;
+begin
+Result :=0;
+      QryListagem.First;
+      while not QryListagem.Eof do   begin
+       Result:= Result + QryListagem.FieldByName('').AsFloat;
+       QryListagem.Next;
+      end;
+end;
+
 procedure TfrmCadLancamento.ListaLancamentosPeriodo;
 begin
   QryListagem.close;
@@ -276,6 +308,37 @@ mmoSemana.Text:= semana;
   except
     Application.MessageBox('Falha na fdqryTotalLancamentos', 'Atenção!');
   end;
+
+   try
+    dtmTesouraria.fdqryTes_Entrada_Total.close;
+    dtmTesouraria.fdqryTes_Entrada_Total.ParamByName('dtini').AsDateTime :=
+      dtdtIni.Date;
+    dtmTesouraria.fdqryTes_Entrada_Total.ParamByName('dtfim').AsDateTime :=
+      dtdtFim.Date;
+    dtmTesouraria.fdqryTes_Entrada_Total.Open;
+  except
+    Application.MessageBox('Falha na fdqryTes_Entrada_Total', 'Atenção!');
+  end;
+
+   try
+    dtmTesouraria.fdqryTes_Saida_Total.close;
+    dtmTesouraria.fdqryTes_Saida_Total.ParamByName('dtini').AsDateTime :=
+      dtdtIni.Date;
+    dtmTesouraria.fdqryTes_Saida_Total.ParamByName('dtfim').AsDateTime :=
+      dtdtFim.Date;
+    dtmTesouraria.fdqryTes_Saida_Total.Open;
+  except
+    Application.MessageBox('Falha na fdqryTes_Saida_Total', 'Atenção!');
+  end;
+
+  crncydtEntrada.Text:=dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text;
+  crncydtSaida.Text:= dtmTesouraria.fltfldTes_Saida_Totaltotal.Text;
+
+end;
+
+procedure TfrmCadLancamento.mmoSaidaChange(Sender: TObject);
+begin
+  inherited;
 
 end;
 

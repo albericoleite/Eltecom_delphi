@@ -148,6 +148,7 @@ type
     imgFotoP: TImage;
     lblnome: TLabel;
     lblEstadoCivil: TLabel;
+    lbl16: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -222,6 +223,7 @@ begin
   oPessoa.estado_civil_atual := cbbEstdCivil.Text;
   oPessoa.estado_civil_anterior:=cbbEstcivianterior.Text;
   oPessoa.nome_conjugue     :=lbledtNomeConjugue.Text;
+  oPessoa.email             := lbledtEmail.Text;
 
  //jpg.LoadFromFile(imgFoto.Picture.Bitmap);
 

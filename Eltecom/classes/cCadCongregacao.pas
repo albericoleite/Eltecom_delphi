@@ -230,7 +230,7 @@ begin
       ' setor, polo, situacao, telefone, cnpj, siteblog, endereco, complemento, '+
       ' bairro, cep, cidade, diasculto, diacoa, diacom, diacoi, diacv, '+
       ' data_aber_sub, data_aber_cong, data_fun_coa, data_fun_com, data_fun_coi, '+
-      ' data_fun_cv, data_cadastro, usuario_cadastro, cong_principal, cod_dirigente,  '+
+      ' data_fun_cv, data_cadastro, usuario_cadastro, cong_principal, dirigente,  '+
       ' cod_setor, cod_igreja, cod_cc, sigla,cod_dirigente )VALUES(:cod_central, :congregacao, '+
       ' :setor, :polo, :situacao, :telefone, :cnpj, :siteblog, :endereco,  '+
       ' :complemento, :bairro, :cep, :cidade, :diasculto, :diacoa, :diacom, '+

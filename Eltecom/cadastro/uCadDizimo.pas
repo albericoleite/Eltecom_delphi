@@ -64,12 +64,14 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure lbledtNomeChange(Sender: TObject);
+    procedure btnApagarClick(Sender: TObject);
   private
     { Private declarations }
     oDizimo: TDizimo;
     function Apagar:Boolean; override;
     function Gravar(EstadodoCadastro:TEstadoDoCadastro):Boolean; override;
     procedure ListaLancamentosPeriodo;
+    function TotalizarEntrada: Double;
   public
     { Public declarations }
   end;
@@ -81,7 +83,7 @@ var
 implementation
 
 uses
-  uDTMRelatorio;
+  uDTMRelatorio, uDTMRelatorioFinanceiro;
 
 
 {$R *.dfm}
@@ -117,6 +119,12 @@ if oDizimo.Selecionar(QryListagem.FieldByName('cod_dizimo').AsInteger) then
 end;
 
 
+
+procedure TfrmCadDizimos.btnApagarClick(Sender: TObject);
+begin
+  inherited;
+  ListaLancamentosPeriodo;
+end;
 
 procedure TfrmCadDizimos.btnBuscarClick(Sender: TObject);
 begin
@@ -258,10 +266,19 @@ begin
   fdqryDizimosTotal.ParamByName('dtini').AsDateTime := dtdtIni.Date;
   fdqryDizimosTotal.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
   fdqryDizimosTotal.Open;
-
-  lblTotal.Caption:= 'Valor Total:' +fdqryDizimosTotal.FieldByName('total').AsString;
+  lblTotal.Caption:=  'Valor Total:' +TotalizarEntrada.ToString();
+  //lblTotal.Caption:= 'Valor Total:' +fdqryDizimosTotal.FieldByName('total').AsString;
 end;
 
+function TfrmCadDizimos.TotalizarEntrada:Double;
+begin
+Result :=0;
+      QryListagem.First;
+      while not QryListagem.Eof do   begin
+       Result:= Result + QryListagem.FieldByName('valor').AsFloat;
+       QryListagem.Next;
+      end;
+end;
 
 
 

@@ -202,8 +202,19 @@ end;
 
 procedure TfrmPrincipal.Clientes1Click(Sender: TObject);
 begin
-  TFuncao.CriarForm(TfrmCadPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
-end;
+if dtmPrincipal.congAtiva.ToString().IsEmpty then
+   begin
+   MessageDlg('Selecione a congregação Padrão do Sistema!', mtInformation,
+      [mbOK], 0);
+  frmCongSistema := nil;
+  frmCongSistema := tfrmCongSistema.Create(self);
+  frmCongSistema.Show;
+   end else
+   begin
+      TFuncao.CriarForm(TfrmCadPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+   end;
+
+  end;
 
 procedure TfrmPrincipal.Congregaes1Click(Sender: TObject);
 begin
@@ -349,6 +360,7 @@ begin
       formatdatetime('dddddd', date);
   statMenu.Panels[2].Width:=250;
   statMenu.Panels[2].Text := 'Congregação ' + dtmPrincipal.descCongAtiva;
+
   // statMenu.Panels[3].Text := 'Logado com: ' + oUsuarioLogado.nome;
   // status; // + IdIPWatch1.LocalIP;
   // statMenu.Panels[3].Text :='Whatsapp:https://api.whatsapp.com/send?1=pt_BR&phone=5584981416012';

@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Splendor Gest'#227'o de Igrejas - 2019.1'
+  Caption = 'Splendor Gest'#227'o de Igrejas - 2019.7.1'
   ClientHeight = 560
   ClientWidth = 1269
   Color = clBtnFace
@@ -656,6 +656,10 @@ object frmPrincipal: TfrmPrincipal
     object Financeiro: TTabSheet
       Caption = 'Financeiro'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnl6: TPanel
         Left = 0
         Top = 0
@@ -908,6 +912,10 @@ object frmPrincipal: TfrmPrincipal
     object EBD: TTabSheet
       Caption = 'EBD'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnl13: TPanel
         Left = 0
         Top = 0

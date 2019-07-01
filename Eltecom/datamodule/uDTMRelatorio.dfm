@@ -19,7 +19,7 @@ object dtmRelatorio: TdtmRelatorio
       'begin'
       ''
       'end.')
-    Left = 568
+    Left = 536
     Top = 11
     Datasets = <
       item
@@ -14432,6 +14432,10 @@ object dtmRelatorio: TdtmRelatorio
       item
         DataSet = frxdbDizimosTotal
         DataSetName = 'frxdbDizimosTotal'
+      end
+      item
+        DataSet = frxdbTesoureiro
+        DataSetName = 'frxdbTesoureiro'
       end>
     Variables = <
       item
@@ -14894,7 +14898,7 @@ object dtmRelatorio: TdtmRelatorio
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            'tesoureiro@email.com')
+            '[frxdbTesoureiro."email"]')
           ParentFont = False
         end
         object Memo72: TfrxMemoView
@@ -15499,9 +15503,9 @@ object dtmRelatorio: TdtmRelatorio
     ParamData = <
       item
         Name = 'DATA'
-        DataType = ftString
+        DataType = ftDateTime
         ParamType = ptInput
-        Value = '2017-01-01'
+        Value = 42736d
       end>
     object fdtncfldDizimistacod_dizimo: TFDAutoIncField
       FieldName = 'cod_dizimo'
@@ -15583,8 +15587,8 @@ object dtmRelatorio: TdtmRelatorio
       'begin'
       ''
       'end.')
-    Left = 616
-    Top = 144
+    Left = 496
+    Top = 160
     Datasets = <
       item
         DataSet = frxdbBuscaIgreja
@@ -15980,7 +15984,6 @@ object dtmRelatorio: TdtmRelatorio
     Top = 48
   end
   object fdqryAniverariantes: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
@@ -16027,13 +16030,13 @@ object dtmRelatorio: TdtmRelatorio
     ParamData = <
       item
         Name = 'DTA1'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 42736d
       end
       item
         Name = 'DTA2'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43070d
       end
@@ -21629,7 +21632,7 @@ object dtmRelatorio: TdtmRelatorio
     DataSet = frmCadDizimos.fdqryDizimosTotal
     BCDToCurrency = False
     Left = 424
-    Top = 320
+    Top = 288
   end
   object frxrprt1: TfrxReport
     Version = '6.2.1'
@@ -23176,6 +23179,7 @@ object dtmRelatorio: TdtmRelatorio
       FieldName = 'cod_func_pessoa'
       Origin = 'cod_func_pessoa'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object intgrfldCargosPessoascod_funcao: TIntegerField
       FieldName = 'cod_funcao'
@@ -23777,5 +23781,41 @@ object dtmRelatorio: TdtmRelatorio
         end
       end
     end
+  end
+  object fdqryTesoureiro: TFDQuery
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'select c.email,c.nome_pessoa from tb_funcao a '
+      'inner join tb_func_pessoa b on b.cod_funcao = a.cod_funcao'
+      'inner join tb_pessoa c on c.cod_pessoa = b.cod_pessoa'
+      'where a.funcao = '#39'1'#186' TESOUREIRO'#39
+      
+        'and c.cod_congregacao = (select cod_congregacao from tb_parametr' +
+        'o_sistema)')
+    Left = 656
+    Top = 13
+    object strngfldTesoureiroemail: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'email'
+      Origin = 'email'
+      Size = 50
+    end
+    object strngfldTesoureironome_pessoa: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_pessoa'
+      Origin = 'nome_pessoa'
+      Size = 50
+    end
+  end
+  object frxdbTesoureiro: TfrxDBDataset
+    UserName = 'frxdbTesoureiro'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'email=email'
+      'nome_pessoa=nome_pessoa')
+    DataSet = fdqryTesoureiro
+    BCDToCurrency = False
+    Left = 748
+    Top = 13
   end
 end

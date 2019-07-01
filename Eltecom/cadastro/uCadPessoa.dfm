@@ -2,6 +2,7 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 486
   ClientWidth = 956
+  ExplicitLeft = -162
   ExplicitWidth = 962
   ExplicitHeight = 515
   PixelsPerInch = 96
@@ -872,12 +873,19 @@ inherited frmCadPessoa: TfrmCadPessoa
           Height = 13
           Caption = 'Telefone Fixo'
         end
+        object lbl16: TLabel
+          Left = 692
+          Top = 46
+          Width = 91
+          Height = 13
+          Caption = 'Situa'#231#227'o do Im'#243'vel'
+        end
         object lbledtEmail: TLabeledEdit
           Left = 274
           Top = 59
           Width = 203
           Height = 21
-          CharCase = ecUpperCase
+          CharCase = ecLowerCase
           EditLabel.Width = 24
           EditLabel.Height = 13
           EditLabel.Caption = 'Email'

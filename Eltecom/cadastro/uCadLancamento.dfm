@@ -1,6 +1,7 @@
 inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
   ClientWidth = 727
+  ExplicitLeft = -39
   ExplicitWidth = 733
   PixelsPerInch = 96
   TextHeight = 13
@@ -10,6 +11,19 @@ inherited frmCadLancamento: TfrmCadLancamento
     Width = 81
     Height = 13
     Caption = 'Data Nascimento'
+  end
+  object Label2: TLabel [1]
+    Left = 489
+    Top = 77
+    Width = 67
+    Height = 24
+    Caption = 'Per'#237'odo'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   inherited pgcPrincipal: TPageControl
     Width = 727
@@ -29,14 +43,14 @@ inherited frmCadLancamento: TfrmCadLancamento
           ExplicitTop = 8
         end
         object lblDataNascimento: TLabel [1]
-          Left = 370
+          Left = 358
           Top = 7
           Width = 53
           Height = 13
           Caption = 'Data Inicial'
         end
         object lbl5: TLabel [2]
-          Left = 470
+          Left = 458
           Top = 9
           Width = 48
           Height = 13
@@ -55,6 +69,32 @@ inherited frmCadLancamento: TfrmCadLancamento
           Font.Style = []
           ParentFont = False
         end
+        object Label1: TLabel [4]
+          Left = 242
+          Top = 53
+          Width = 130
+          Height = 24
+          Caption = 'Total Entradas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object lbl7: TLabel [5]
+          Left = 487
+          Top = 53
+          Width = 110
+          Height = 24
+          Caption = 'Total Sa'#237'das'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
         inherited mskPesquisar: TMaskEdit
           Top = 24
           Width = 226
@@ -62,11 +102,13 @@ inherited frmCadLancamento: TfrmCadLancamento
           ExplicitWidth = 226
         end
         inherited btnPesquisar: TBitBtn
+          Left = 248
           Top = 22
+          ExplicitLeft = 248
           ExplicitTop = 22
         end
         object dtdtIni: TDateEdit
-          Left = 370
+          Left = 358
           Top = 26
           Width = 84
           Height = 21
@@ -77,9 +119,10 @@ inherited frmCadLancamento: TfrmCadLancamento
           CalendarStyle = csDialog
           TabOrder = 2
           Text = '01/04/2019'
+          OnChange = dtdtIniChange
         end
         object dtdtFim: TDateEdit
-          Left = 470
+          Left = 458
           Top = 26
           Width = 84
           Height = 21
@@ -90,9 +133,10 @@ inherited frmCadLancamento: TfrmCadLancamento
           CalendarStyle = csDialog
           TabOrder = 3
           Text = '10/04/2019'
+          OnChange = dtdtFimChange
         end
         object btnBuscar: TBitBtn
-          Left = 560
+          Left = 548
           Top = 22
           Width = 49
           Height = 25
@@ -101,7 +145,7 @@ inherited frmCadLancamento: TfrmCadLancamento
           OnClick = btnBuscarClick
         end
         object mmoSemana: TMemo
-          Left = 121
+          Left = 115
           Top = 51
           Width = 121
           Height = 24
@@ -118,10 +162,10 @@ inherited frmCadLancamento: TfrmCadLancamento
           TabOrder = 5
         end
         object btnImprimir: TBitBtn
-          Left = 615
-          Top = 17
+          Left = 603
+          Top = 9
           Width = 97
-          Height = 36
+          Height = 38
           Caption = 'Imprimir'
           Glyph.Data = {
             360C0000424D360C000000000000360000002800000020000000200000000100
@@ -224,6 +268,36 @@ inherited frmCadLancamento: TfrmCadLancamento
             00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
           TabOrder = 6
           OnClick = btnImprimir1Click
+        end
+        object crncydtEntrada: TCurrencyEdit
+          Left = 378
+          Top = 53
+          Width = 90
+          Height = 24
+          DisplayFormat = 'R$ 0.00;-0.00'
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 7
+        end
+        object crncydtSaida: TCurrencyEdit
+          Left = 610
+          Top = 53
+          Width = 90
+          Height = 24
+          DisplayFormat = 'R$ 0.00;-0.00'
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 8
         end
       end
       inherited grdListagem: TDBGrid
@@ -412,7 +486,7 @@ inherited frmCadLancamento: TfrmCadLancamento
         ParamType = ptInput
         Value = 43586d
       end>
-    object fdtncfldQryListagemcod_entrada: TFDAutoIncField
+    object cod_entrada: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'cod_entrada'
       Origin = 'cod_entrada'

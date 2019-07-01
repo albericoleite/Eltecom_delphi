@@ -195,6 +195,10 @@ type
     strngfldCargosPessoasemail: TStringField;
     strngfldCargosPessoasfone_celular: TStringField;
     strngfldCargosPessoasnome_funcao: TStringField;
+    fdqryTesoureiro: TFDQuery;
+    strngfldTesoureiroemail: TStringField;
+    strngfldTesoureironome_pessoa: TStringField;
+    frxdbTesoureiro: TfrxDBDataset;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

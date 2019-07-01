@@ -8,10 +8,7 @@ inherited frmCadDizimos: TfrmCadDizimos
     Width = 829
     ExplicitWidth = 829
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 821
-      ExplicitHeight = 390
       inherited pnlListagem: TPanel
         Width = 821
         ExplicitWidth = 821
@@ -226,10 +223,7 @@ inherited frmCadDizimos: TfrmCadDizimos
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 821
-      ExplicitHeight = 390
       object lbl1: TLabel
         Left = 546
         Top = 3
@@ -467,7 +461,6 @@ inherited frmCadDizimos: TfrmCadDizimos
     Top = 200
   end
   object fdqryDizimistas: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       '##DIZIMISTA GERAL'
@@ -526,13 +519,13 @@ inherited frmCadDizimos: TfrmCadDizimos
     ParamData = <
       item
         Name = 'DTINI'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43586d
       end
       item
         Name = 'DTFIM'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43615d
       end>
@@ -611,13 +604,13 @@ inherited frmCadDizimos: TfrmCadDizimos
     ParamData = <
       item
         Name = 'DTINI'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43586d
       end
       item
         Name = 'DTFIM'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43615d
       end>

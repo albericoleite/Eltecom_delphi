@@ -132,7 +132,7 @@ if oCongregacao.Selecionar(QryListagem.FieldByName('cod_congregacao').AsInteger)
     medtTelefone.Text := oCongregacao.telefone;
     medtCEP.Text := oCongregacao.cep;
     dblkcbbSetor.KeyValue:= oCongregacao.cod_setor;
-    dblkcbbDirigente.KeyValue:=oCongregacao.dirigente;
+    dblkcbbDirigente.KeyValue:=oCongregacao.cod_dirigente;
 
     end
   else
@@ -148,6 +148,8 @@ procedure TfrmCadCongregacao.btnNovoClick(Sender: TObject);
 begin
   inherited;
 lbledtCongregacao.SetFocus;
+dblkcbbDirigente.KeyValue :=  fdqryDirigente.FieldByName('cod_membro').AsInteger;
+dblkcbbSetor.KeyValue     :=  dtmPrincipal.fdqrySetores.FieldByName('cod_setor').AsInteger;
 end;
 
 procedure TfrmCadCongregacao.FormClose(Sender: TObject;
