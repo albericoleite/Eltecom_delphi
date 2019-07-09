@@ -58,26 +58,6 @@ object dtmPrincipal: TdtmPrincipal
       Size = 25
     end
   end
-  object fdqryDepartamentos: TFDQuery
-    Active = True
-    Connection = ConexaoDB
-    SQL.Strings = (
-      'select * from tb_departamento')
-    Left = 552
-    Top = 264
-    object fdtncfldDepartamentoscod_departamento: TFDAutoIncField
-      FieldName = 'cod_departamento'
-      Origin = 'cod_departamento'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object strngfldDepartamentosnome_departamento: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'nome_departamento'
-      Origin = 'nome_departamento'
-      Size = 50
-    end
-  end
   object fdqryPessoa: TFDQuery
     Connection = ConexaoDB
     SQL.Strings = (
@@ -431,6 +411,25 @@ object dtmPrincipal: TdtmPrincipal
       FieldName = 'setor'
       Origin = 'setor'
       Size = 45
+    end
+  end
+  object fdqryDepartamentos: TFDQuery
+    Connection = ConexaoDB
+    SQL.Strings = (
+      'select * from tb_departamento')
+    Left = 432
+    Top = 112
+    object fdtncfldDepartamentoscod_departamento: TFDAutoIncField
+      FieldName = 'cod_departamento'
+      Origin = 'cod_departamento'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object strngfldDepartamentosnome_departamento: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_departamento'
+      Origin = 'nome_departamento'
+      Size = 50
     end
   end
 end

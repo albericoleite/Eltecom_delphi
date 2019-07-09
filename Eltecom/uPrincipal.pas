@@ -12,7 +12,7 @@ uses
   Vcl.ToolWin, Vcl.ActnMan,
   Vcl.ActnCtrls, System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
   Vcl.ImgList, Vcl.ActnMenus, Vcl.Buttons,
-  Vcl.Imaging.jpeg,  Data.DB;
+  Vcl.Imaging.jpeg,  Data.DB, sSkinManager, acPNG;
 
 type
   TfrmPrincipal = class(TForm)
@@ -89,7 +89,6 @@ type
     spl5: TSplitter;
     pnl8: TPanel;
     dbcht4: TDBChart;
-    psrs1: TPieSeries;
     pnl9: TPanel;
     dbcht5: TDBChart;
     brsrs2: TBarSeries;
@@ -108,8 +107,6 @@ type
     spl9: TSplitter;
     pnl18: TPanel;
     pnl19: TPanel;
-    dbcht11: TDBChart;
-    psrs6: TPieSeries;
     brsrsSeries2: TBarSeries;
     dbcht7: TDBChart;
     brsrs3: TBarSeries;
@@ -122,6 +119,16 @@ type
     brsrsSeries1: TBarSeries;
     psrsSeries1: TPieSeries;
     img1: TImage;
+    pnlKpiProfessores: TPanel;
+    pnlAlunos: TPanel;
+    Label1: TLabel;
+    pnlClasses: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    DBGrid1: TDBGrid;
+    lbl3: TLabel;
+    Series1: TFastLineSeries;
+    Series2: TFastLineSeries;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -610,6 +617,10 @@ try
    DTMGrafico.fdqryAniverariantesMes.Open;
     DTMGrafico.fdqryEntrasAnual.Open;
      DTMGrafico.fdqrySaidasAnual.Open;
+
+     pnlKpiProfessores.Caption:=  TFuncao.SqlValor('select count(*) as VALOR from tb_professor;',dtmPrincipal.ConexaoDB);
+     pnlAlunos.Caption:=  TFuncao.SqlValor('select count(*)as VALOR from tb_classe_aluno;',dtmPrincipal.ConexaoDB);
+     pnlClasses.Caption:=  TFuncao.SqlValor('select count(*)as VALOR from tb_classe;',dtmPrincipal.ConexaoDB);
 finally
      Screen.Cursor := crDefault;
 end;

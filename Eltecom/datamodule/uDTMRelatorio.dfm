@@ -3,7 +3,7 @@ object dtmRelatorio: TdtmRelatorio
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   Height = 511
-  Width = 892
+  Width = 974
   object frxrprtCartaRecomendacao: TfrxReport
     Version = '6.2.1'
     DotMatrixReport = False
@@ -13,7 +13,7 @@ object dtmRelatorio: TdtmRelatorio
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42199.911066134300000000
-    ReportOptions.LastChange = 42205.738723344900000000
+    ReportOptions.LastChange = 43651.370106701400000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -155,30 +155,14 @@ object dtmRelatorio: TdtmRelatorio
         HAlign = haCenter
         Memo.UTF8W = (
           
-            'e-mail da ADPAR adparnamirim@uol.com.br/ Secretaria: adparsec201' +
-            '2@gmail.com CNPJ 08.332.785/0018-50'
+            'e-mail da [frxdbBuscaIgreja."sigla_igreja"] [frxdbBuscaIgreja."e' +
+            'mail"]/ Secretaria: adparsec2012@gmail.com CNPJ 08.332.785/0018-' +
+            '50'
           
-            'Rua Comandante Petit, 905 '#8211' Parnamirim-RN/CEP  59140-140/ fone/f' +
-            'ax: (84) 3645-2380')
+            'Rua Comandante Petit, 905 '#8211' [frxdbBuscaIgreja."cidade"]-[frxdbBu' +
+            'scaIgreja."uf"]/CEP  59140-140/ fone/fax: (84) 3645-2380')
         ParentFont = False
         VAlign = vaBottom
-        Formats = <
-          item
-          end
-          item
-          end
-          item
-          end
-          item
-          end
-          item
-          end
-          item
-          end
-          item
-          end
-          item
-          end>
       end
       object Memo5: TfrxMemoView
         AllowVectorExport = True
@@ -13694,6 +13678,7 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object fdqryPessoas_dept: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select t.cod_departamento'
@@ -13704,7 +13689,7 @@ object dtmRelatorio: TdtmRelatorio
       
         ',YEAR(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(a.dta_nascimento)))as ida' +
         'de'
-      ',a.dta_nascimento,DAYOFMONTH(a.dta_nascimento)dia'
+      ',a.dta_nascimento,DAYOFMONTH(a.dta_nascimento)dia,a.fone_celular'
       
         'from tb_dept_pessoa t  join tb_pessoa a on a.cod_pessoa = t.cod_' +
         'pessoa'
@@ -13770,6 +13755,14 @@ object dtmRelatorio: TdtmRelatorio
       Origin = 'dia'
       ProviderFlags = []
       ReadOnly = True
+    end
+    object fdqryPessoas_deptfone_celular: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'fone_celular'
+      Origin = 'fone_celular'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
     end
   end
   object frxrprtPessoas_dept: TfrxReport
@@ -13853,7 +13846,7 @@ object dtmRelatorio: TdtmRelatorio
         object Memo36: TfrxMemoView
           AllowVectorExport = True
           Left = 41.574830000000000000
-          Width = 487.559103940000000000
+          Width = 332.598373940000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -13898,6 +13891,24 @@ object dtmRelatorio: TdtmRelatorio
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbPessoa_dept."idade"]')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 374.173470000000000000
+          Width = 154.960730000000000000
+          Height = 18.897650000000000000
+          DataField = 'fone_celular'
+          DataSet = frxdbPessoa_dept
+          DataSetName = 'frxdbPessoa_dept'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Calibri'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxdbPessoa_dept."fone_celular"]')
           ParentFont = False
         end
       end
@@ -14023,7 +14034,7 @@ object dtmRelatorio: TdtmRelatorio
           AllowVectorExport = True
           Left = 41.574830000000000000
           Top = 230.551330000000000000
-          Width = 487.559370000000000000
+          Width = 332.598640000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -14089,6 +14100,23 @@ object dtmRelatorio: TdtmRelatorio
           Transparent = False
           TransparentColor = clWhite
         end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 373.953000000000000000
+          Top = 230.551330000000000000
+          Width = 154.960730000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Calibri'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = 16763904
+          Memo.UTF8W = (
+            'Telefone')
+          ParentFont = False
+        end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
@@ -14127,7 +14155,7 @@ object dtmRelatorio: TdtmRelatorio
           Align = baCenter
           AllowVectorExport = True
           Left = 200.315090000000000000
-          Top = 120.944960000000000000
+          Top = 94.488250000000000000
           Width = 317.480520000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -14139,6 +14167,23 @@ object dtmRelatorio: TdtmRelatorio
           HAlign = haCenter
           Memo.UTF8W = (
             'Assinatura do dirigente')
+          ParentFont = False
+        end
+        object Memo17: TfrxMemoView
+          AllowVectorExport = True
+          Left = 574.488560000000000000
+          Top = 132.283550000000000000
+          Width = 143.622140000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsItalic]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Splendor - Gest'#227'o')
           ParentFont = False
         end
       end
@@ -14155,7 +14200,8 @@ object dtmRelatorio: TdtmRelatorio
       'nome_pessoa=nome_pessoa'
       'idade=idade'
       'dta_nascimento=dta_nascimento'
-      'dia=dia')
+      'dia=dia'
+      'fone_celular=fone_celular')
     DataSet = fdqryPessoas_dept
     BCDToCurrency = False
     Left = 160
@@ -14539,7 +14585,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Times New Roman'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haRight
           Highlight.Font.Charset = DEFAULT_CHARSET
@@ -14565,7 +14611,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'times New Roman'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haRight
           Highlight.Font.Charset = DEFAULT_CHARSET
@@ -14591,7 +14637,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Times New Roman'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haRight
           Highlight.Font.Charset = DEFAULT_CHARSET
@@ -15179,7 +15225,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'times New Roman'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haRight
           Memo.UTF8W = (
@@ -15195,7 +15241,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Times New Roman'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haRight
           Memo.UTF8W = (
@@ -15214,7 +15260,7 @@ object dtmRelatorio: TdtmRelatorio
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Times New Roman'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haRight
           Highlight.Font.Charset = DEFAULT_CHARSET
@@ -15240,23 +15286,23 @@ object dtmRelatorio: TdtmRelatorio
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'times New Roman'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          HAlign = haRight
+          HAlign = haCenter
           Highlight.ApplyFill = False
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clWhite
           Highlight.Font.Height = -13
           Highlight.Font.Name = 'Arial'
           Highlight.Font.Style = []
-          Highlight.Condition = '<frxdbDizimista."cod_cheque"> = 0'
+          Highlight.Condition = '<frxdbDizimista."rol"> = 0'
           Highlight.FillType = ftBrush
           Highlight.Fill.BackColor = clWhite
           Highlight.Fill.ForeColor = clWhite
           Highlight.Fill.Style = bsClear
           Highlight.Frame.Typ = []
           Memo.UTF8W = (
-            '[frxdbDizimista."cod_dizimo"]')
+            '[frxdbDizimista."rol"]')
           ParentFont = False
         end
         object Memo55: TfrxMemoView
@@ -23783,6 +23829,7 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object fdqryTesoureiro: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select c.email,c.nome_pessoa from tb_funcao a '

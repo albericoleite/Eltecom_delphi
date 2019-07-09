@@ -109,6 +109,22 @@ begin
    ExecutaDiretoBancoDeDados('ALTER TABLE tb_congregacao ADD cod_dirigente int(11) NULL;');
  end;
 
+   //Adicionar código da pessoa no dizimo
+  if not CampoExisteNaTabela('tb_dizimista','cod_pessoa') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_dizimista ADD cod_pessoa INT(11) NULL;');
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_dizimista ADD CONSTRAINT '+
+   ' tb_dizimista_tb_pessoa_fk FOREIGN KEY (cod_pessoa) REFERENCES tb_pessoa(cod_pessoa);');
+ end;
+
+    //Adicionar SIGLA DO DEPARTAMENTO
+  if not CampoExisteNaTabela('tb_departamento','sigla') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_departamento ADD sigla varchar(10) NULL;');
+ end;
+
+
+
    if not ViewExiste('v_dizimista_total_mes_ano') then
  begin
    ExecutaDiretoBancoDeDados('create  or replace view '+
@@ -148,6 +164,25 @@ begin
   ' FROM tb_tesouraria t join tb_parametro_sistema a     '+
   ' on a.cod_congregacao = t.cod_congregacao     '+
   ' group by year(t.dta_movimento),month(t.dta_movimento),t.tipo,t.dta_movimento)x');
+ end;
+
+
+     //Adicionar SIGLA DO DEPARTAMENTO
+  if not CampoExisteNaTabela('tb_classe_professor','cod_congregacao') then
+ begin
+   ExecutaDiretoBancoDeDados('drop table tb_classe_professor');
+
+   ExecutaDiretoBancoDeDados('CREATE TABLE `tb_classe_professor` (  '+
+  ' `codigo` int(11) NOT NULL AUTO_INCREMENT,     '+
+  ' `cod_professor` int(11) DEFAULT NULL,   '+
+  ' `professor` varchar(50) DEFAULT NULL,   '+
+  ' `cod_classe` int(11) DEFAULT NULL,    '+
+  ' `classe` varchar(20) DEFAULT NULL,    '+
+  ' `cod_congregacao` int(11) NOT NULL,    '+
+  ' PRIMARY KEY (`codigo`),          '+
+  ' KEY `tb_classe_professor_tb_classe_fk` (`cod_classe`),   '+
+  ' KEY `tb_classe_professor_tb_professor_fk` (`cod_professor`) '+
+  ' ) ENGINE=InnoDB DEFAULT CHARSET=latin1;');
  end;
 
   {  //Adicionar código da congregação no recibo

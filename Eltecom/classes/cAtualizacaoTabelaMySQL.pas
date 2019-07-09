@@ -50,6 +50,7 @@ constructor TAtualizacaoTabelaMySQL.Create(aConexao: TFDConnection);
 begin
   ConexaoDB := aConexao;
   Igreja;
+  Departamento;
   Cargo;
   Dizimista;
   Departamento;
@@ -205,8 +206,23 @@ begin
      ' CREATE TABLE `tb_departamento` ( '+
       ' `cod_departamento` int(11) NOT NULL AUTO_INCREMENT, '+
       ' `nome_departamento` varchar(50) DEFAULT NULL, '+
+      ' `sigla` varchar(10) DEFAULT NULL, ' +
       ' PRIMARY KEY (`cod_departamento`) '+
       ' )');
+
+      ExecutaDiretoBancoDeDados(
+     ' INSERT INTO tb_departamento (nome_departamento,sigla) VALUES '+
+    '(''DEPARTAMENTO INFANTIL'',''DEPIN'')      '+
+    ',(''DEPARTAMENTO DE JOVENS E ADOLESCENTES'',''DEJAD'')  '+
+    ' ,(''DEPARTAMENTO FEMININO DA ASSEMBLEIA DE DEUS'',''DEFAD'')  '+
+    ',('' DEPARTAMENTO DA 3ª IDADE'',''DE3ID'')   '+
+    ' ,(''DEPARTAMENTO DE EVANGELIZAÇÃO E MISSÕES'',''DEPEM'')     '+
+    ' ,(''DEPARTAMENTO DE NOVOS CONVERTIDOS'',''DENOC'') '+
+    ' ,(''DEPARTAMENTO DE ENSINO E EDUCAÇÃO CRISTÃ'',''DENEC'')    '+
+    ' ,(''DEPARTAMENTO DE MÚSICA DA ASSEMBLEIA DE DEUS'',''DEMAD'') '+
+    ' , (''DEPARTAMENTO DA FAMÍLIA'',''DEFAM'')   '+
+    ' ,('' DEPARTAMENTO DE ARQUITETURA E ENGENHARIA'',''DAE'')  '+
+     ' ;');
    end;
 
 end;

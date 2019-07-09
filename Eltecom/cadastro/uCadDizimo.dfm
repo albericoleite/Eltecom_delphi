@@ -8,7 +8,10 @@ inherited frmCadDizimos: TfrmCadDizimos
     Width = 829
     ExplicitWidth = 829
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 821
+      ExplicitHeight = 390
       inherited pnlListagem: TPanel
         Width = 821
         ExplicitWidth = 821
@@ -223,7 +226,10 @@ inherited frmCadDizimos: TfrmCadDizimos
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 821
+      ExplicitHeight = 390
       object lbl1: TLabel
         Left = 546
         Top = 3
@@ -461,15 +467,18 @@ inherited frmCadDizimos: TfrmCadDizimos
     Top = 200
   end
   object fdqryDizimistas: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       '##DIZIMISTA GERAL'
       
         'SELECT t.cod_dizimo, t.cod_talao, t.cod_cheque, t.nome, t.valor,' +
-        ' t.`data`, t.cargo, t.cod_congregacao,0 as nivel,0 as rol'
+        ' t.`data`, t.cargo, t.cod_congregacao,0 as nivel,coalesce(y.nro_' +
+        'rol,0) as rol'
       
         'FROM tb_dizimista t inner join tb_parametro_sistema a on a.cod_c' +
         'ongregacao = t.cod_congregacao '
+      'left join tb_pessoa y on y.nome_pessoa = t.nome'
       'where t.`data` between '
       ':dtini'
       'and '
@@ -589,6 +598,7 @@ inherited frmCadDizimos: TfrmCadDizimos
     end
   end
   object fdqryDizimosTotal: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'SELECT  sum(t.valor) as total'

@@ -4,8 +4,8 @@ object frmRelDept: TfrmRelDept
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Relat'#243'rios'
-  ClientHeight = 72
-  ClientWidth = 236
+  ClientHeight = 50
+  ClientWidth = 344
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,10 +19,12 @@ object frmRelDept: TfrmRelDept
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
-    Left = 22
-    Top = 8
-    Width = 185
+    Left = 0
+    Top = 0
+    Width = 344
     Height = 19
+    Align = alTop
+    Alignment = taCenter
     Caption = 'Selecione o Departamento'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -30,17 +32,24 @@ object frmRelDept: TfrmRelDept
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+    ExplicitLeft = 28
+    ExplicitTop = 8
+    ExplicitWidth = 269
   end
   object dblkcbbDepartamentos: TDBLookupComboBox
-    Left = 28
-    Top = 33
-    Width = 179
+    Left = 0
+    Top = 19
+    Width = 344
     Height = 21
+    Align = alTop
     KeyField = 'codigo'
     ListField = 'departamento'
     ListSource = dsDepartamentos
     TabOrder = 0
     OnClick = dblkcbbDepartamentosClick
+    ExplicitLeft = 28
+    ExplicitTop = 33
+    ExplicitWidth = 269
   end
   object fdqryDepartamentos: TFDQuery
     Connection = dtmPrincipal.ConexaoDB

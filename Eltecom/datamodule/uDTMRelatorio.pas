@@ -199,6 +199,7 @@ type
     strngfldTesoureiroemail: TStringField;
     strngfldTesoureironome_pessoa: TStringField;
     frxdbTesoureiro: TfrxDBDataset;
+    fdqryPessoas_deptfone_celular: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

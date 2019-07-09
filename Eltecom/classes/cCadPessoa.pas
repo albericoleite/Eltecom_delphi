@@ -67,6 +67,7 @@ type
     F_congregacao:string;
     //F_foto :TJPEGImage;
     F_foto :TBitmap;
+    function SelecionarAll(id: Integer): Boolean;
   public
     constructor Create(aConexao: TFDConnection); // CONSTRUTOR DA CLASSE
     destructor Destroy; override; // DESTROI A CLASSE USAR OVERRIDE POR CAUSA
@@ -511,6 +512,93 @@ begin
       FreeAndNil(Qry)
   end;
 end;
+
+function TPessoa.SelecionarAll(id: Integer): Boolean;
+var
+  Qry: TFDQuery;
+  stream : TStream;
+begin
+  try
+    Result := True;
+    Qry := TFDQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('SELECT cod_pessoa, nome_pessoa,          ' +
+      ' sexo, nome_pai, nome_mae, dta_nascimento, naturalidade,    ' +
+      ' uf_nascimento, nacionalidade, nrorg, orgaorg, cpf, email,     ' +
+      ' grau_instr_situacao, grau_instrucao, form_teo_situacao,        ' +
+      ' formacao_teologica, estado_civil_atual, estado_civil_anterior,    ' +
+      ' nome_conjugue, dta_casamento, logradouro, uf_endereco, estado_casa, ' +
+      ' complemento, fone_residencial, bairro, cep, cidade, fone_celular,      '
+      + ' dta_conversao, dta_batismo_esprito, dta_batismo_aguas, dta_congregado,   '
+      + ' local_descisao_congregado, dta_membro, origem_eclesiastica,         '
+      + ' proced_eclesiastica, profissao, habilitacao_profissional,         ' +
+      ' emprego_atual, funcao, fone_trabalho, igreja, setor, congregacao,   ' +
+      ' nro_rol, nro_cad_congregado, membro_congregado, dta_inclusao,   ' +
+      ' USUARIO_CADASTRO, SITUACAO, cod_congregacao, cod_situacao    ' +
+      'FROM igreja.tb_pessoa WHERE cod_congregacao=:cod_congregacao; ');
+    Qry.ParamByName('cod_congregacao').AsInteger := id;
+
+    try
+      Qry.Open;
+      Self.F_cod_pessoa := Qry.FieldByName('cod_pessoa').AsInteger;
+      Self.F_nome_pessoa := Qry.FieldByName('nome_pessoa').AsString;
+      Self.F_nome_conjugue := Qry.FieldByName('nome_conjugue').AsString;
+      Self.F_sexo := Qry.FieldByName('sexo').AsString;
+      Self.F_nome_pai := Qry.FieldByName('nome_pai').AsString;
+      Self.F_nome_mae := Qry.FieldByName('nome_mae').AsString;
+      Self.F_email := Qry.FieldByName('email').AsString;
+      Self.F_dta_nascimento := Qry.FieldByName('dta_nascimento').AsDateTime;
+      Self.F_dta_casamento := Qry.FieldByName('dta_casamento').AsDateTime;
+      Self.F_dta_conversao := Qry.FieldByName('dta_conversao').AsDateTime;
+      Self.F_dta_congregado := Qry.FieldByName('dta_membro').AsDateTime;
+      Self.F_dta_membro := Qry.FieldByName('dta_congregado').AsDateTime;
+      Self.F_nro_rol := Qry.FieldByName('nro_rol').AsInteger;
+      Self.F_nrorg := Qry.FieldByName('nrorg').AsString;
+      Self.F_cidade := Qry.FieldByName('cidade').AsString;
+      Self.F_logradouro := Qry.FieldByName('logradouro').AsString;
+      Self.F_bairro := Qry.FieldByName('bairro').AsString;
+      Self.F_cep := Qry.FieldByName('cep').AsString;
+      Self.F_fone_celular := Qry.FieldByName('fone_celular').AsString;
+      Self.F_fone_residencial := Qry.FieldByName('fone_residencial').AsString;
+      Self.F_uf_endereco := Qry.FieldByName('uf_endereco').AsString;
+      Self.F_uf_nascimento := Qry.FieldByName('uf_nascimento').AsString;
+      Self.F_cpf := Qry.FieldByName('cpf').AsString;
+      Self.F_emprego_atual := Qry.FieldByName('emprego_atual').AsString;
+      Self.F_igreja := Qry.FieldByName('igreja').AsString;
+      Self.F_fone_trabalho := Qry.FieldByName('fone_trabalho').AsString;
+      Self.F_nro_cad_congregado := Qry.FieldByName('nro_cad_congregado').AsString;
+      Self.F_SITUACAO := Qry.FieldByName('SITUACAO').AsString;
+      Self.F_membro_congregado := Qry.FieldByName('membro_congregado').AsString;
+      Self.F_estado_civil_atual := Qry.FieldByName('estado_civil_atual').AsString;
+      Self.F_estado_civil_anterior := Qry.FieldByName('estado_civil_anterior').AsString;
+
+   //   Self.F_foto.Assign(Qry.FieldByName('foto'));
+      //if Qry.FieldByName('foto').Assign(nil) then
+
+    {  //CARREGANDO IMAGEM
+      try
+         stream := Qry.CreateBlobStream(Qry.FieldByName('foto'),bmRead);
+         try
+      Self.F_foto.LoadFromStream(Stream);
+    finally
+      stream.Free;
+    end;
+      finally
+
+      end;  }
+
+
+    Except
+      Result := false;
+    end;
+
+  finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry)
+  end;
+end;
+
 {$ENDREGION}
 
 end.

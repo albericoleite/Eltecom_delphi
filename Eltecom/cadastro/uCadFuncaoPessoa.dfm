@@ -3,6 +3,7 @@ inherited frmCadFuncaoPessoa: TfrmCadFuncaoPessoa
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
+    ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
@@ -182,6 +183,7 @@ inherited frmCadFuncaoPessoa: TfrmCadFuncaoPessoa
         Top = 20
         Width = 322
         Height = 21
+        DropDownRows = 15
         KeyField = 'cod_pessoa'
         ListField = 'nome_pessoa'
         ListSource = dsPessoas
@@ -327,7 +329,8 @@ inherited frmCadFuncaoPessoa: TfrmCadFuncaoPessoa
     SQL.Strings = (
       'SELECT cod_pessoa, nome_pessoa'
       'FROM tb_pessoa a inner join tb_parametro_sistema b '
-      'on a.cod_congregacao = b.cod_congregacao')
+      'on a.cod_congregacao = b.cod_congregacao'
+      'order by 2')
     Left = 448
     Top = 168
   end

@@ -2,7 +2,7 @@ inherited frmCadDepartamento: TfrmCadDepartamento
   Caption = 'Cadastro de Departamento'
   ClientHeight = 462
   ClientWidth = 732
-  ExplicitTop = -80
+  ExplicitTop = -122
   ExplicitWidth = 738
   ExplicitHeight = 491
   PixelsPerInch = 96
@@ -10,7 +10,6 @@ inherited frmCadDepartamento: TfrmCadDepartamento
   inherited pgcPrincipal: TPageControl
     Width = 732
     Height = 424
-    ActivePage = tabManutencao
     ExplicitWidth = 732
     ExplicitHeight = 424
     inherited tabListagem: TTabSheet
@@ -35,6 +34,11 @@ inherited frmCadDepartamento: TfrmCadDepartamento
           item
             Expanded = False
             FieldName = 'nome_departamento'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'sigla'
             Visible = True
           end>
       end
@@ -70,6 +74,19 @@ inherited frmCadDepartamento: TfrmCadDepartamento
         NumbersOnly = True
         TabOrder = 1
       end
+      object lbledtSigla: TLabeledEdit
+        Tag = 2
+        Left = 274
+        Top = 68
+        Width = 151
+        Height = 21
+        CharCase = ecUpperCase
+        EditLabel.Width = 22
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Sigla'
+        MaxLength = 10
+        TabOrder = 2
+      end
     end
   end
   inherited pnlRodape: TPanel
@@ -90,7 +107,8 @@ inherited frmCadDepartamento: TfrmCadDepartamento
   inherited QryListagem: TFDQuery
     SQL.Strings = (
       'SELECT '#9'`cod_departamento`, '
-      #9'`nome_departamento`'#9' '
+      #9'`nome_departamento`,'
+      '`sigla`'#9' '
       #9'FROM '
       #9'`igreja`.`tb_departamento` ')
     object fdtncfldQryListagemcod_departamento: TFDAutoIncField
@@ -106,6 +124,13 @@ inherited frmCadDepartamento: TfrmCadDepartamento
       FieldName = 'nome_departamento'
       Origin = 'nome_departamento'
       Size = 50
+    end
+    object QryListagemsigla: TStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Sigla'
+      FieldName = 'sigla'
+      Origin = 'sigla'
+      Size = 10
     end
   end
 end

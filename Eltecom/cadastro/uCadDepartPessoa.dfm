@@ -63,7 +63,7 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
         Caption = 'Departamento'
       end
       object lbl4: TLabel
-        Left = 603
+        Left = 650
         Top = 3
         Width = 41
         Height = 13
@@ -87,13 +87,14 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
         Top = 20
         Width = 322
         Height = 21
+        DropDownRows = 15
         KeyField = 'cod_pessoa'
         ListField = 'nome_pessoa'
         ListSource = dsPessoas
         TabOrder = 1
       end
       object dblkcbbSitucao: TDBLookupComboBox
-        Left = 603
+        Left = 650
         Top = 20
         Width = 134
         Height = 21
@@ -105,7 +106,7 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
       object dblkcbbDepartamento: TDBLookupComboBox
         Left = 391
         Top = 20
-        Width = 206
+        Width = 253
         Height = 21
         KeyField = 'cod_departamento'
         ListField = 'nome_departamento'
@@ -240,12 +241,11 @@ inherited frmCadDepartPessoa: TfrmCadDepartPessoa
     Top = 97
   end
   object fdqrySituacao: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
-      'select 0 AS TIPO, '#39'ATIVO'#39' SITUACAO from dual'
+      'select 1 AS TIPO, '#39'ATIVO'#39' SITUACAO from dual'
       'union all'
-      'select 1, '#39'INATIVO'#39' from dual')
+      'select 0, '#39'INATIVO'#39' from dual')
     Left = 720
     Top = 232
   end

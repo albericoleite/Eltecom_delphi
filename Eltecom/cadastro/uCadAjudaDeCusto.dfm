@@ -3,7 +3,6 @@ inherited frmCadAjudaDeCusto: TfrmCadAjudaDeCusto
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24

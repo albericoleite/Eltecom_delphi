@@ -19,9 +19,6 @@ type
     fdtncfldCong_sistemacod_congregacao: TFDAutoIncField;
     strngfldCong_sistemacongregacao: TStringField;
     strngfldCong_sistemasetor: TStringField;
-    fdqryDepartamentos: TFDQuery;
-    fdtncfldDepartamentoscod_departamento: TFDAutoIncField;
-    strngfldDepartamentosnome_departamento: TStringField;
     fdqryPessoa: TFDQuery;
     fdtncfldPessoacod_pessoa: TFDAutoIncField;
     strngfldPessoanome_pessoa: TStringField;
@@ -81,6 +78,9 @@ type
     fdqrySetores: TFDQuery;
     cod_setor: TFDAutoIncField;
     strngfldSetoressetor: TStringField;
+    fdqryDepartamentos: TFDQuery;
+    fdtncfldDepartamentoscod_departamento: TFDAutoIncField;
+    strngfldDepartamentosnome_departamento: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -108,7 +108,7 @@ begin
     congAtiva:=  fdqryCong_sistema.FieldByName('cod_congregacao').AsInteger;
     descCongAtiva:= fdqryCong_sistema.FieldByName('congregacao').AsString;
      setor:= fdqryCong_sistema.FieldByName('setor').AsString;
-     fdqryDepartamentos.Open;
+     //fdqryDepartamentos.Open;
  Except
   // ShowMessage('Erro na fdqryCong_sistema! ');
  end;
@@ -116,7 +116,7 @@ end;
 
 procedure TdtmPrincipal.DataModuleDestroy(Sender: TObject);
 begin
- fdqryDepartamentos.Close;
+ //fdqryDepartamentos.Close;
 end;
 
 end.

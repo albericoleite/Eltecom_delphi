@@ -47,10 +47,11 @@ object frmPrincipal: TfrmPrincipal
     Alignment = taLeftJustify
     Caption = 'Dashboard'#39's'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clHighlight
+    Font.Color = clTeal
     Font.Height = -24
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
+    ParentBackground = False
     ParentFont = False
     TabOrder = 1
     OnClick = pnl5Click
@@ -62,7 +63,13 @@ object frmPrincipal: TfrmPrincipal
     Height = 510
     ActivePage = Principal
     Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clDefault
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
     MultiLine = True
+    ParentFont = False
     TabOrder = 2
     object Principal: TTabSheet
       Caption = 'Principal'
@@ -192,6 +199,7 @@ object frmPrincipal: TfrmPrincipal
               object brsrs1: TBarSeries
                 BarBrush.Gradient.EndColor = 11842740
                 ColorEachPoint = True
+                Marks.Style = smsPercent
                 Marks.Angle = 31
                 DataSource = dtmGrafico.fdqryDizimosAnual
                 XLabelsSource = 'sigla'
@@ -610,10 +618,16 @@ object frmPrincipal: TfrmPrincipal
               Height = 200
               Align = alClient
               DataSource = dtmGrafico.dsAniver
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBackground
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
               Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+              ParentFont = False
               TabOrder = 0
               TitleFont.Charset = DEFAULT_CHARSET
-              TitleFont.Color = clWindowText
+              TitleFont.Color = clMenuHighlight
               TitleFont.Height = -11
               TitleFont.Name = 'Tahoma'
               TitleFont.Style = []
@@ -656,10 +670,6 @@ object frmPrincipal: TfrmPrincipal
     object Financeiro: TTabSheet
       Caption = 'Financeiro'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnl6: TPanel
         Left = 0
         Top = 0
@@ -668,7 +678,7 @@ object frmPrincipal: TfrmPrincipal
         Align = alClient
         TabOrder = 0
         object spl4: TSplitter
-          Left = 562
+          Left = 641
           Top = 1
           Height = 480
           ExplicitLeft = 608
@@ -676,16 +686,18 @@ object frmPrincipal: TfrmPrincipal
           ExplicitHeight = 100
         end
         object pnl7: TPanel
-          Left = 565
+          Left = 644
           Top = 1
-          Width = 695
+          Width = 616
           Height = 480
           Align = alClient
           TabOrder = 0
+          ExplicitLeft = 565
+          ExplicitWidth = 695
           object spl5: TSplitter
             Left = 1
             Top = 257
-            Width = 693
+            Width = 614
             Height = 3
             Cursor = crVSplit
             Align = alTop
@@ -694,21 +706,22 @@ object frmPrincipal: TfrmPrincipal
           object pnl8: TPanel
             Left = 1
             Top = 260
-            Width = 693
+            Width = 614
             Height = 219
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 693
             object dbcht4: TDBChart
               Left = 1
               Top = 1
-              Width = 691
+              Width = 612
               Height = 217
               Title.Color = clBlack
               Title.Font.Color = clBlack
               Title.Text.Strings = (
-                'Pessoas por Cargos')
+                'Entradas x Sa'#237'das')
               ClipPoints = False
-              Legend.Visible = False
+              Legend.LegendStyle = lsSeries
               View3DOptions.Elevation = 315
               View3DOptions.Orthogonal = False
               View3DOptions.Perspective = 0
@@ -716,6 +729,7 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
+              ExplicitWidth = 691
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
@@ -723,47 +737,45 @@ object frmPrincipal: TfrmPrincipal
                 15
                 26)
               ColorPaletteIndex = 13
-              object psrs1: TPieSeries
-                Marks.Angle = 17
-                Marks.Callout.Length = 20
-                DataSource = dtmGrafico.fdqryPessoasCargos
-                XLabelsSource = 'CARGO'
+              object Series1: TFastLineSeries
+                Marks.Style = smsPointIndex
+                DataSource = dtmGrafico.fdqryEntrasAnual
+                Title = 'Entradas'
+                XLabelsSource = 'sigla'
+                LinePen.Color = 10708548
+                XValues.Name = 'X'
                 XValues.Order = loAscending
-                XValues.ValueSource = 'qtd'
-                YValues.Name = 'Pie'
+                XValues.ValueSource = 'mes'
+                YValues.Name = 'Y'
                 YValues.Order = loNone
-                YValues.ValueSource = 'qtd'
-                Frame.InnerBrush.BackColor = clRed
-                Frame.InnerBrush.Gradient.EndColor = clGray
-                Frame.InnerBrush.Gradient.MidColor = clWhite
-                Frame.InnerBrush.Gradient.StartColor = 4210752
-                Frame.InnerBrush.Gradient.Visible = True
-                Frame.MiddleBrush.BackColor = clYellow
-                Frame.MiddleBrush.Gradient.EndColor = 8553090
-                Frame.MiddleBrush.Gradient.MidColor = clWhite
-                Frame.MiddleBrush.Gradient.StartColor = clGray
-                Frame.MiddleBrush.Gradient.Visible = True
-                Frame.OuterBrush.BackColor = clGreen
-                Frame.OuterBrush.Gradient.EndColor = 4210752
-                Frame.OuterBrush.Gradient.MidColor = clWhite
-                Frame.OuterBrush.Gradient.StartColor = clSilver
-                Frame.OuterBrush.Gradient.Visible = True
-                Frame.Width = 4
-                OtherSlice.Legend.Visible = False
+                YValues.ValueSource = 'valor'
+              end
+              object Series2: TFastLineSeries
+                DataSource = dtmGrafico.fdqrySaidasAnual
+                Title = 'Saidas'
+                XLabelsSource = 'sigla'
+                LinePen.Color = 3513587
+                XValues.Name = 'X'
+                XValues.Order = loAscending
+                XValues.ValueSource = 'mes'
+                YValues.Name = 'Y'
+                YValues.Order = loNone
+                YValues.ValueSource = 'valor'
               end
             end
           end
           object pnl9: TPanel
             Left = 1
             Top = 1
-            Width = 693
+            Width = 614
             Height = 256
             Align = alTop
             TabOrder = 1
+            ExplicitWidth = 693
             object dbcht5: TDBChart
               Left = 1
               Top = 1
-              Width = 691
+              Width = 612
               Height = 254
               Title.Color = clBlack
               Title.Font.Color = clBlack
@@ -776,6 +788,7 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
+              ExplicitWidth = 691
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
@@ -804,14 +817,14 @@ object frmPrincipal: TfrmPrincipal
         object pnl10: TPanel
           Left = 1
           Top = 1
-          Width = 561
+          Width = 640
           Height = 480
           Align = alLeft
           TabOrder = 1
           object spl6: TSplitter
             Left = 1
             Top = 255
-            Width = 559
+            Width = 638
             Height = 3
             Cursor = crVSplit
             Align = alTop
@@ -821,14 +834,15 @@ object frmPrincipal: TfrmPrincipal
           object pnl11: TPanel
             Left = 1
             Top = 1
-            Width = 559
+            Width = 638
             Height = 254
             Align = alTop
             TabOrder = 0
+            ExplicitWidth = 559
             object dbcht6: TDBChart
               Left = 1
               Top = 1
-              Width = 557
+              Width = 636
               Height = 252
               Title.Color = clBlack
               Title.Font.Color = clBlack
@@ -842,15 +856,17 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
+              ExplicitWidth = 557
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
-                26
+                27
                 15
-                26)
+                27)
               ColorPaletteIndex = 13
               object brsrsSeries2: TBarSeries
                 ColorEachPoint = True
+                Marks.Style = smsPercent
                 DataSource = dtmGrafico.fdqryEntrasAnual
                 XLabelsSource = 'sigla'
                 XValues.Name = 'X'
@@ -865,14 +881,15 @@ object frmPrincipal: TfrmPrincipal
           object pnl12: TPanel
             Left = 1
             Top = 258
-            Width = 559
+            Width = 638
             Height = 221
             Align = alClient
             TabOrder = 1
+            ExplicitWidth = 559
             object dbcht7: TDBChart
               Left = 1
               Top = 1
-              Width = 557
+              Width = 636
               Height = 219
               Title.Color = clBlack
               Title.Font.Color = clBlack
@@ -886,6 +903,7 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
+              ExplicitWidth = 557
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
@@ -895,6 +913,7 @@ object frmPrincipal: TfrmPrincipal
               ColorPaletteIndex = 13
               object brsrs3: TBarSeries
                 ColorEachPoint = True
+                Marks.Style = smsPercent
                 DataSource = dtmGrafico.fdqrySaidasAnual
                 XLabelsSource = 'sigla'
                 XValues.Name = 'X'
@@ -912,10 +931,6 @@ object frmPrincipal: TfrmPrincipal
     object EBD: TTabSheet
       Caption = 'EBD'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnl13: TPanel
         Left = 0
         Top = 0
@@ -926,22 +941,22 @@ object frmPrincipal: TfrmPrincipal
         object spl7: TSplitter
           Left = 562
           Top = 1
+          Width = 1
           Height = 480
-          ExplicitLeft = 608
-          ExplicitTop = 224
-          ExplicitHeight = 100
         end
         object pnl14: TPanel
-          Left = 565
+          Left = 563
           Top = 1
-          Width = 695
+          Width = 697
           Height = 480
           Align = alClient
           TabOrder = 0
+          ExplicitLeft = 565
+          ExplicitWidth = 695
           object spl8: TSplitter
             Left = 1
             Top = 257
-            Width = 693
+            Width = 695
             Height = 3
             Cursor = crVSplit
             Align = alTop
@@ -950,18 +965,116 @@ object frmPrincipal: TfrmPrincipal
           object pnl15: TPanel
             Left = 1
             Top = 260
-            Width = 693
+            Width = 695
             Height = 219
             Align = alClient
             TabOrder = 0
+            ExplicitWidth = 693
           end
           object pnl16: TPanel
             Left = 1
             Top = 1
-            Width = 693
+            Width = 695
             Height = 256
             Align = alTop
             TabOrder = 1
+            ExplicitWidth = 693
+            object pnlKpiProfessores: TPanel
+              Left = 90
+              Top = 93
+              Width = 152
+              Height = 75
+              Caption = '15'
+              Color = 13078576
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -37
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentBackground = False
+              ParentFont = False
+              TabOrder = 0
+              object lbl3: TLabel
+                Left = 1
+                Top = 1
+                Width = 150
+                Height = 19
+                Align = alTop
+                Alignment = taCenter
+                Caption = 'Professores'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -16
+                Font.Name = 'Calibri'
+                Font.Style = [fsBold]
+                ParentFont = False
+                ExplicitWidth = 78
+              end
+            end
+            object pnlAlunos: TPanel
+              Left = 248
+              Top = 93
+              Width = 153
+              Height = 76
+              Caption = '50'
+              Color = clRed
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -37
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentBackground = False
+              ParentFont = False
+              TabOrder = 1
+              object Label1: TLabel
+                Left = 1
+                Top = 1
+                Width = 151
+                Height = 19
+                Align = alTop
+                Alignment = taCenter
+                Caption = 'Alunos'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -16
+                Font.Name = 'Calibri'
+                Font.Style = [fsBold]
+                ParentFont = False
+                ExplicitWidth = 47
+              end
+            end
+            object pnlClasses: TPanel
+              Left = 407
+              Top = 93
+              Width = 153
+              Height = 76
+              Caption = '10'
+              Color = 1536760
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -37
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentBackground = False
+              ParentFont = False
+              TabOrder = 2
+              object Label2: TLabel
+                Left = 1
+                Top = 1
+                Width = 151
+                Height = 19
+                Align = alTop
+                Alignment = taCenter
+                Caption = 'Classes'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -16
+                Font.Name = 'Calibri'
+                Font.Style = [fsBold]
+                ParentFont = False
+                ExplicitWidth = 46
+              end
+            end
           end
         end
         object pnl17: TPanel
@@ -1058,59 +1171,68 @@ object frmPrincipal: TfrmPrincipal
             Height = 221
             Align = alClient
             TabOrder = 1
-            object dbcht11: TDBChart
+            object Label3: TLabel
               Left = 1
               Top = 1
               Width = 557
-              Height = 219
-              Title.Color = clBlack
-              Title.Font.Color = clBlack
-              Title.Text.Strings = (
-                'Alunos por Classe')
-              ClipPoints = False
-              View3DOptions.Elevation = 315
-              View3DOptions.Orthogonal = False
-              View3DOptions.Perspective = 0
-              View3DOptions.Rotation = 360
+              Height = 19
+              Align = alTop
+              Caption = 'Alunos aniversariantes do M'#234's '
+              Color = clBtnFace
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clHighlight
+              Font.Height = -16
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+              ExplicitWidth = 253
+            end
+            object DBGrid1: TDBGrid
+              Left = 1
+              Top = 20
+              Width = 557
+              Height = 200
               Align = alClient
-              Color = clWhite
+              DataSource = dtmGrafico.dsAniver
+              Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
               TabOrder = 0
-              DefaultCanvas = 'TGDIPlusCanvas'
-              PrintMargins = (
-                15
-                26
-                15
-                26)
-              ColorPaletteIndex = 13
-              object psrs6: TPieSeries
-                Marks.Angle = 34
-                Marks.Callout.Length = 20
-                DataSource = dtmGrafico.fdqryClassesAlunos
-                XLabelsSource = 'classe'
-                XValues.Order = loAscending
-                XValues.ValueSource = 'qtd'
-                YValues.Name = 'Pie'
-                YValues.Order = loNone
-                YValues.ValueSource = 'qtd'
-                Frame.InnerBrush.BackColor = clRed
-                Frame.InnerBrush.Gradient.EndColor = clGray
-                Frame.InnerBrush.Gradient.MidColor = clWhite
-                Frame.InnerBrush.Gradient.StartColor = 4210752
-                Frame.InnerBrush.Gradient.Visible = True
-                Frame.MiddleBrush.BackColor = clYellow
-                Frame.MiddleBrush.Gradient.EndColor = 8553090
-                Frame.MiddleBrush.Gradient.MidColor = clWhite
-                Frame.MiddleBrush.Gradient.StartColor = clGray
-                Frame.MiddleBrush.Gradient.Visible = True
-                Frame.OuterBrush.BackColor = clGreen
-                Frame.OuterBrush.Gradient.EndColor = 4210752
-                Frame.OuterBrush.Gradient.MidColor = clWhite
-                Frame.OuterBrush.Gradient.StartColor = clSilver
-                Frame.OuterBrush.Gradient.Visible = True
-                Frame.Width = 4
-                Emboss.Transparency = 36
-                OtherSlice.Legend.Visible = False
-              end
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clDefault
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              TitleFont.Style = []
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'nome_pessoa'
+                  Width = 243
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'sexo'
+                  Width = 29
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'membro_congregado'
+                  Width = 68
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'dta_nascimento'
+                  Width = 100
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'idade'
+                  Width = 44
+                  Visible = True
+                end>
             end
           end
         end
@@ -1304,7 +1426,7 @@ object frmPrincipal: TfrmPrincipal
   object tmrDashboard: TTimer
     Interval = 60000
     OnTimer = tmrDashboardTimer
-    Left = 696
-    Top = 96
+    Left = 368
+    Top = 144
   end
 end

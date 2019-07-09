@@ -1,7 +1,6 @@
 inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
   ClientWidth = 727
-  ExplicitLeft = -39
   ExplicitWidth = 733
   PixelsPerInch = 96
   TextHeight = 13

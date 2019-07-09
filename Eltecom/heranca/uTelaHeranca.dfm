@@ -34,6 +34,8 @@ object frmTelaheranca: TfrmTelaheranca
         Width = 792
         Height = 65
         Align = alTop
+        Color = 15508822
+        ParentBackground = False
         TabOrder = 0
         object lblIndice: TLabel
           Left = 10
@@ -83,7 +85,13 @@ object frmTelaheranca: TfrmTelaheranca
     end
     object tabManutencao: TTabSheet
       Caption = 'Manuten'#231#227'o'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       ImageIndex = 1
+      ParentFont = False
     end
   end
   object pnlRodape: TPanel
@@ -92,6 +100,8 @@ object frmTelaheranca: TfrmTelaheranca
     Width = 800
     Height = 38
     Align = alBottom
+    Color = 15508822
+    ParentBackground = False
     TabOrder = 1
     DesignSize = (
       800

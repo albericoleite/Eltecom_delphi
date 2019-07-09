@@ -2,7 +2,7 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 486
   ClientWidth = 956
-  ExplicitLeft = -162
+  ExplicitTop = -133
   ExplicitWidth = 962
   ExplicitHeight = 515
   PixelsPerInch = 96
@@ -880,6 +880,31 @@ inherited frmCadPessoa: TfrmCadPessoa
           Height = 13
           Caption = 'Situa'#231#227'o do Im'#243'vel'
         end
+        object btnConsultaCEP: TSpeedButton
+          Left = 553
+          Top = 18
+          Width = 20
+          Height = 20
+          Hint = 'Consultar CEP'
+          Flat = True
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            04000000000000010000130B0000130B00001000000000000000000000000000
+            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+            33033333333333333F7F3333333333333000333333333333F777333333333333
+            000333333333333F777333333333333000333333333333F77733333333333300
+            033333333FFF3F777333333700073B703333333F7773F77733333307777700B3
+            33333377333777733333307F8F8F7033333337F333F337F3333377F8F9F8F773
+            3333373337F3373F3333078F898F870333337F33F7FFF37F333307F99999F703
+            33337F377777337F3333078F898F8703333373F337F33373333377F8F9F8F773
+            333337F3373337F33333307F8F8F70333333373FF333F7333333330777770333
+            333333773FF77333333333370007333333333333777333333333}
+          NumGlyphs = 2
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnConsultaCEPClick
+        end
         object lbledtEmail: TLabeledEdit
           Left = 274
           Top = 59
@@ -931,12 +956,12 @@ inherited frmCadPessoa: TfrmCadPessoa
         object medtCEP: TMaskEdit
           Left = 479
           Top = 19
-          Width = 68
+          Width = 64
           Height = 21
-          EditMask = '99.999-999;1;_'
+          EditMask = '##.###-###;0;_'
           MaxLength = 10
           TabOrder = 2
-          Text = '  .   -   '
+          Text = ''
         end
         object medtTelefoneCel: TMaskEdit
           Left = 581
@@ -949,9 +974,9 @@ inherited frmCadPessoa: TfrmCadPessoa
           Text = '(  )     -    '
         end
         object lbledtComplemento: TLabeledEdit
-          Left = 553
+          Left = 580
           Top = 19
-          Width = 249
+          Width = 222
           Height = 21
           CharCase = ecUpperCase
           EditLabel.Width = 65
@@ -1693,5 +1718,203 @@ inherited frmCadPessoa: TfrmCadPessoa
     Title = 'Escolha a Imagem da Pessoa'
     Left = 856
     Top = 216
+  end
+  object dwGetCEP: TRESTDWClientSQL
+    Active = False
+    Filtered = False
+    FieldDefs = <
+      item
+        Name = 'cep'
+        DataType = ftString
+        Precision = -1
+        Size = 9
+      end
+      item
+        Name = 'logradouro'
+        DataType = ftString
+        Precision = -1
+        Size = 200
+      end
+      item
+        Name = 'complemento'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end
+      item
+        Name = 'bairro'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end
+      item
+        Name = 'localidade'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end
+      item
+        Name = 'uf'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end
+      item
+        Name = 'unidade'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end
+      item
+        Name = 'ibge'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end
+      item
+        Name = 'gia'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    MasterCascadeDelete = True
+    BinaryRequest = False
+    Datapacks = -1
+    DataCache = False
+    Params = <>
+    CacheUpdateRecords = True
+    AutoCommitData = False
+    AutoRefreshAfterCommit = False
+    RaiseErrors = True
+    DWResponseTranslator = DWResponseTranslatorCEP
+    ActionCursor = crSQLWait
+    ReflectChanges = False
+    Left = 352
+    Top = 88
+  end
+  object DWResponseTranslatorCEP: TDWResponseTranslator
+    ElementAutoReadRootIndex = True
+    ElementRootBaseIndex = -1
+    RequestOpen = rtGet
+    RequestInsert = rtPost
+    RequestEdit = rtPost
+    RequestDelete = rtDelete
+    RequestOpenUrl = 'https://viacep.com.br/ws/01001000/json/'
+    FieldDefs = <
+      item
+        FieldName = 'cep'
+        ElementName = 'cep'
+        ElementIndex = 0
+        FieldSize = 9
+        Precision = 0
+        DataType = ovString
+        Required = False
+      end
+      item
+        FieldName = 'logradouro'
+        ElementName = 'logradouro'
+        ElementIndex = 1
+        FieldSize = 200
+        Precision = 0
+        DataType = ovString
+        Required = False
+      end
+      item
+        FieldName = 'complemento'
+        ElementName = 'complemento'
+        ElementIndex = 2
+        FieldSize = 100
+        Precision = 0
+        DataType = ovString
+        Required = False
+      end
+      item
+        FieldName = 'bairro'
+        ElementName = 'bairro'
+        ElementIndex = 3
+        FieldSize = 100
+        Precision = 0
+        DataType = ovString
+        Required = False
+      end
+      item
+        FieldName = 'localidade'
+        ElementName = 'localidade'
+        ElementIndex = 4
+        FieldSize = 100
+        Precision = 0
+        DataType = ovString
+        Required = False
+      end
+      item
+        FieldName = 'uf'
+        ElementName = 'uf'
+        ElementIndex = 5
+        FieldSize = 2
+        Precision = 0
+        DataType = ovString
+        Required = False
+      end
+      item
+        FieldName = 'unidade'
+        ElementName = 'unidade'
+        ElementIndex = 6
+        FieldSize = 100
+        Precision = 0
+        DataType = ovString
+        Required = False
+      end
+      item
+        FieldName = 'ibge'
+        ElementName = 'ibge'
+        ElementIndex = 7
+        FieldSize = 10
+        Precision = 0
+        DataType = ovString
+        Required = False
+      end
+      item
+        FieldName = 'gia'
+        ElementName = 'gia'
+        ElementIndex = 8
+        FieldSize = 10
+        Precision = 0
+        DataType = ovString
+        Required = False
+      end>
+    ClientREST = DWClientRESTCEP
+    Left = 216
+    Top = 96
+  end
+  object DWClientRESTCEP: TDWClientREST
+    UseSSL = False
+    SSLVersions = []
+    UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
+    Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    ContentEncoding = 'multipart/form-data'
+    MaxAuthRetries = 0
+    ContentType = 'application/json'
+    RequestCharset = esUtf8
+    ProxyOptions.BasicAuthentication = False
+    ProxyOptions.ProxyPort = 0
+    RequestTimeOut = 10000
+    AllowCookies = False
+    HandleRedirects = False
+    RedirectMaximum = 1
+    VerifyCert = False
+    AuthOptions.HasAuthentication = False
+    AccessControlAllowOrigin = '*'
+    OnBeforeGet = DWClientRESTCEPBeforeGet
+    Left = 456
+    Top = 16
   end
 end

@@ -13,6 +13,7 @@ type
     ConexaoDB: TFDConnection;
     F_cod_departamento: Integer;
     F_nome_departamento: string;
+    F_sigla: string;
 
   public
     constructor Create(aConexao: TFDConnection); // CONSTRUTOR DA CLASSE
@@ -29,6 +30,8 @@ type
       write F_cod_departamento;
     property nome_departamento: string read F_nome_departamento
       write F_nome_departamento;
+      property sigla: string read F_sigla
+      write F_sigla;
   end;
 
 implementation
@@ -94,9 +97,10 @@ begin
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
     Qry.SQL.Add('UPDATE tb_departamento '+
-    ' SET nome_departamento=:nome_departamento WHERE cod_departamento=cod_departamento');
+    ' SET nome_departamento=:nome_departamento , sigla =:sigla WHERE cod_departamento=:cod_departamento');
     Qry.ParamByName('cod_departamento').AsInteger := F_cod_departamento;
     Qry.ParamByName('nome_departamento').AsString := F_nome_departamento;
+    Qry.ParamByName('sigla').AsString := F_sigla;
     try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -121,8 +125,9 @@ begin
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
     Qry.SQL.Add('INSERT INTO tb_departamento '+
-    '(nome_departamento) VALUES(:nome_departamento) ');
+    '(nome_departamento,sigla) VALUES(:nome_departamento,:sigla) ');
     Qry.ParamByName('nome_departamento').AsString := Self.F_nome_departamento;
+    Qry.ParamByName('sigla').AsString := Self.F_sigla;
 
     try
         ConexaoDB.StartTransaction;
@@ -147,7 +152,7 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('SELECT cod_departamento, nome_departamento  '+
+    Qry.SQL.Add('SELECT cod_departamento, nome_departamento,sigla '+
     'FROM tb_departamento WHERE cod_departamento=:cod_departamento ');
     Qry.ParamByName('cod_departamento').AsInteger := id;
 
@@ -155,6 +160,7 @@ begin
       Qry.Open;
       Self.F_cod_departamento := Qry.FieldByName('cod_departamento').AsInteger;
       Self.F_nome_departamento := Qry.FieldByName('nome_departamento').AsString;
+      Self.F_sigla := Qry.FieldByName('sigla').AsString;
     Except
       Result := false;
     end;

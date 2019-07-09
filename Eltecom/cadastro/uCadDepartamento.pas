@@ -17,6 +17,8 @@ type
     strngfldQryListagemnome_departamento: TStringField;
     lbledtDepartamento: TLabeledEdit;
     lbledtCodigo: TLabeledEdit;
+    lbledtSigla: TLabeledEdit;
+    QryListagemsigla: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -55,6 +57,7 @@ begin
        else
        oDepartamento.cod_departamento :=0;
        oDepartamento.nome_departamento:=lbledtDepartamento.Text;
+       oDepartamento.sigla:=lbledtSigla.Text;
 
     if (EstadodoCadastro=ecInserir) then
     Result:=oDepartamento.Inserir
@@ -77,6 +80,7 @@ if oDepartamento.Selecionar(QryListagem.FieldByName('cod_departamento').AsIntege
   begin
     lbledtCodigo.Text    := IntToStr(oDepartamento.cod_departamento);
     lbledtDepartamento.Text       := oDepartamento.nome_departamento;
+    lbledtSigla.Text:= oDepartamento.sigla;
     end
   else
   begin

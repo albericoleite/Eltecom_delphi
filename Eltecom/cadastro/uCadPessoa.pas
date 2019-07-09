@@ -11,7 +11,8 @@ uses
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,
   cCadPessoa, RxToolEdit, uDTMConexao, uEnum, Vcl.Menus,cFuncao,
-  Vcl.Imaging.jpeg, Vcl.ExtDlgs;
+  Vcl.Imaging.jpeg, Vcl.ExtDlgs, uDWResponseTranslator, uDWAbout, uDWConstsData,
+  uRESTDWPoolerDB;
 
 type
   TfrmCadPessoa = class(TfrmTelaheranca)
@@ -149,6 +150,10 @@ type
     lblnome: TLabel;
     lblEstadoCivil: TLabel;
     lbl16: TLabel;
+    btnConsultaCEP: TSpeedButton;
+    dwGetCEP: TRESTDWClientSQL;
+    DWResponseTranslatorCEP: TDWResponseTranslator;
+    DWClientRESTCEP: TDWClientREST;
     procedure FormCreate(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -163,6 +168,10 @@ type
     procedure dtsListagemDataChange(Sender: TObject; Field: TField);
     procedure grdListagemCellClick(Column: TColumn);
     procedure grdListagemTitleClick(Column: TColumn);
+    procedure btnGravarClick(Sender: TObject);
+    procedure btnConsultaCEPClick(Sender: TObject);
+    procedure DWClientRESTCEPBeforeGet(var AUrl: string;
+      var AHeaders: TStringList);
   private
     { Private declarations }
     oPessoa: TPessoa;
@@ -460,12 +469,60 @@ begin
 
 end;
 
+procedure TfrmCadPessoa.btnConsultaCEPClick(Sender: TObject);
+
+begin
+  inherited;
+   if Length(medtCEP.Text) = 8 then
+  begin
+    Screen.Cursor := crSQLWait;
+
+    dwGetCEP.Close;
+    dwGetCEP.Open;
+
+    if (dwGetCEP.FieldCount > 1)  then
+    begin
+      {
+        https://viacep.com.br/ws/%s/json/
+
+        "cep": "88801-530",
+        "logradouro": "Rua João Pessoa",
+        "complemento": "até 743/744",
+        "bairro": "Centro",
+        "localidade": "Criciúma",
+        "uf": "SC",
+        "unidade": "",
+        "ibge": "4204608",
+        "gia": ""
+      }
+      lbledtEndereco.Text := dwGetCEP.FieldByName('logradouro').AsString;
+      lbledtComplemento.Text := dwGetCEP.FieldByName('complemento').AsString;
+      lbledtBairro.Text := dwGetCEP.FieldByName('bairro').AsString;
+      lbledtCidade.Text := dwGetCEP.FieldByName('localidade').AsString;
+      cbbUfImovel.ItemIndex := cbbUfImovel.Items.IndexOf(dwGetCEP.FieldByName('uf').AsString);
+    end
+    else
+      ShowMessage('CEP não encontrado!');
+
+    Screen.Cursor := crDefault;
+  end
+  else
+    ShowMessage('CEP inválido, verifique!'+medtCEP.Text);
+end;
+
+procedure TfrmCadPessoa.btnGravarClick(Sender: TObject);
+begin
+  inherited;
+imgFoto.Enabled:=true;
+end;
+
 procedure TfrmCadPessoa.btnNovoClick(Sender: TObject);
 begin
   inherited;
   dtdtNascimento.Date := Date;
   lbledtNome.SetFocus;
   cbbMembCong.ItemIndex:=0;
+  imgFoto.Enabled:=false;
 end;
 
 procedure TfrmCadPessoa.cbbMembCongChange(Sender: TObject);
@@ -517,6 +574,13 @@ begin
    //imgFoto.Picture.LoadFromFile('C:\Program Files (x86)\Eltecom\semfoto.jpg');
      //imgFoto.Picture.Assign(nil);
    end;
+end;
+
+procedure TfrmCadPessoa.DWClientRESTCEPBeforeGet(var AUrl: string;
+  var AHeaders: TStringList);
+begin
+  inherited;
+   AUrl := format('https://viacep.com.br/ws/%s/json/', [medtCEP.Text]);
 end;
 
 procedure TfrmCadPessoa.FormClose(Sender: TObject; var Action: TCloseAction);

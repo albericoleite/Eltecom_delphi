@@ -23,6 +23,8 @@ object frmLogin: TfrmLogin
     Width = 618
     Height = 214
     Align = alClient
+    Color = 16757596
+    ParentBackground = False
     TabOrder = 0
     object lbl1: TLabel
       Left = 32
