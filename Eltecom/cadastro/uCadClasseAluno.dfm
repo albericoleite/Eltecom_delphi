@@ -1,7 +1,6 @@
 inherited frmCadClasseAluno: TfrmCadClasseAluno
   Caption = 'Cadastrar Alunos nas Classes'
-  ExplicitWidth = 806
-  ExplicitHeight = 485
+  ExplicitTop = -66
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -80,6 +79,7 @@ inherited frmCadClasseAluno: TfrmCadClasseAluno
         Top = 20
         Width = 322
         Height = 21
+        DropDownRows = 15
         KeyField = 'cod_pessoa'
         ListField = 'nome_pessoa'
         ListSource = dsPessoas
@@ -163,7 +163,8 @@ inherited frmCadClasseAluno: TfrmCadClasseAluno
     SQL.Strings = (
       'SELECT cod_pessoa, nome_pessoa'
       'FROM tb_pessoa a inner join tb_parametro_sistema b '
-      'on a.cod_congregacao = b.cod_congregacao')
+      'on a.cod_congregacao = b.cod_congregacao'
+      'order by 2 ')
     Left = 344
     Top = 144
     object fdtncfldPessoascod_pessoa: TFDAutoIncField

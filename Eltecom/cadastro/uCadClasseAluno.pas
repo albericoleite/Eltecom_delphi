@@ -31,6 +31,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnAlterarClick(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
   private
     { Private declarations }
     oClasseAluno: TClasseAluno;
@@ -63,6 +64,7 @@ if oClasseAluno.Selecionar(QryListagem.FieldByName('codigo').AsInteger) then
     lbledtCodigo.Text    := IntToStr(oClasseAluno.codigo);
     dblkcbbPessoa.KeyValue:= oClasseAluno.cod_aluno;
     dblkcbbClasse.KeyValue:= oClasseAluno.cod_classe;
+    dblkcbbPessoa.Enabled:=false;
     end
   else
   begin
@@ -70,6 +72,12 @@ if oClasseAluno.Selecionar(QryListagem.FieldByName('codigo').AsInteger) then
     Abort;
   end;
   inherited;
+end;
+
+procedure TfrmCadClasseAluno.btnNovoClick(Sender: TObject);
+begin
+  inherited;
+dblkcbbPessoa.Enabled:=True;
 end;
 
 procedure TfrmCadClasseAluno.FormClose(Sender: TObject;
@@ -102,10 +110,12 @@ if lbledtCodigo.Text<>EmptyStr then
        oClasseAluno.classe:=dblkcbbClasse.Text;
        oClasseAluno.cod_aluno:= dblkcbbPessoa.KeyValue;
        oClasseAluno.Aluno:=dblkcbbPessoa.Text;
+       oClasseAluno.cod_congregacao   := dtmPrincipal.congAtiva;
            if (EstadodoCadastro=ecInserir) then
     Result:=oClasseAluno.Inserir
     else if (EstadodoCadastro=ecAlterar) then
      Result:=oClasseAluno.Atualizar;
+     dblkcbbPessoa.Enabled:=True;
 end;
 
 end.

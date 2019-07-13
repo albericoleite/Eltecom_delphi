@@ -56,7 +56,7 @@ inherited frmCadLancamento: TfrmCadLancamento
           Caption = 'Data Final'
         end
         object lbl6: TLabel [3]
-          Left = 16
+          Left = 10
           Top = 51
           Width = 67
           Height = 24
@@ -69,11 +69,11 @@ inherited frmCadLancamento: TfrmCadLancamento
           ParentFont = False
         end
         object Label1: TLabel [4]
-          Left = 242
+          Left = 184
           Top = 53
-          Width = 130
+          Width = 78
           Height = 24
-          Caption = 'Total Entradas'
+          Caption = 'Entradas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -20
@@ -82,11 +82,24 @@ inherited frmCadLancamento: TfrmCadLancamento
           ParentFont = False
         end
         object lbl7: TLabel [5]
-          Left = 487
+          Left = 369
           Top = 53
-          Width = 110
+          Width = 58
           Height = 24
-          Caption = 'Total Sa'#237'das'
+          Caption = 'Sa'#237'das'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label3: TLabel [6]
+          Left = 533
+          Top = 53
+          Width = 74
+          Height = 24
+          Caption = 'Subtotal'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -20
@@ -144,15 +157,15 @@ inherited frmCadLancamento: TfrmCadLancamento
           OnClick = btnBuscarClick
         end
         object mmoSemana: TMemo
-          Left = 115
+          Left = 81
           Top = 51
-          Width = 121
+          Width = 98
           Height = 24
           Alignment = taRightJustify
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Tahoma'
           Font.Style = []
           Lines.Strings = (
@@ -269,7 +282,7 @@ inherited frmCadLancamento: TfrmCadLancamento
           OnClick = btnImprimir1Click
         end
         object crncydtEntrada: TCurrencyEdit
-          Left = 378
+          Left = 268
           Top = 53
           Width = 90
           Height = 24
@@ -284,7 +297,7 @@ inherited frmCadLancamento: TfrmCadLancamento
           TabOrder = 7
         end
         object crncydtSaida: TCurrencyEdit
-          Left = 610
+          Left = 433
           Top = 53
           Width = 90
           Height = 24
@@ -297,6 +310,21 @@ inherited frmCadLancamento: TfrmCadLancamento
           Font.Style = []
           ParentFont = False
           TabOrder = 8
+        end
+        object crncydtSubtotal: TCurrencyEdit
+          Left = 610
+          Top = 53
+          Width = 90
+          Height = 24
+          DisplayFormat = 'R$ 0.00;-0.00'
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 9
         end
       end
       inherited grdListagem: TDBGrid

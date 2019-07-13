@@ -72,7 +72,10 @@ uses
   uImportarExportarDados in 'login\uImportarExportarDados.pas' {frmImportarExportarDados},
   uRelatoriosFinanceiro in 'Relatorios\uRelatoriosFinanceiro.pas' {frmRelatoriosFinanceiro},
   uDTMRelatorioFinanceiro in 'datamodule\uDTMRelatorioFinanceiro.pas' {dtmRelatorioFinanceiro: TDataModule},
-  uQuadroAnual in 'Relatorios\uQuadroAnual.pas' {frmQuadroAnual};
+  uQuadroAnual in 'Relatorios\uQuadroAnual.pas' {frmQuadroAnual},
+  uChamadaEbd in 'ebd\uChamadaEbd.pas' {frmChamadaEbd},
+  uDTMEbd in 'datamodule\uDTMEbd.pas' {dtmEbd: TDataModule},
+  cCadEbdAula in 'ebd\cCadEbdAula.pas';
 
 {$R *.res}
 

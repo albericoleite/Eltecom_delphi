@@ -81,6 +81,9 @@ type
     fdqryDepartamentos: TFDQuery;
     fdtncfldDepartamentoscod_departamento: TFDAutoIncField;
     strngfldDepartamentosnome_departamento: TStringField;
+    fdqryMeses: TFDQuery;
+    fdqryMesesvalor: TLargeintField;
+    fdqryMesesmes: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

@@ -4,7 +4,11 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
   //TODO: CRIAR OBREIROS ANIVERSARIANTES
 type
   TfrmAniversariantes = class(TForm)
@@ -15,8 +19,25 @@ type
     btnVisualizar: TBitBtn;
     dtpData: TDateTimePicker;
     dtpDataFinal: TDateTimePicker;
+    fdqryAniverariantes: TFDQuery;
+    fdqryAniverariantescod_pessoa: TFDAutoIncField;
+    fdqryAniverariantesnome_pessoa: TStringField;
+    fdqryAniverariantessexo: TStringField;
+    fdqryAniverariantesmembro_congregado: TStringField;
+    fdqryAniverariantesdta_nascimento: TDateField;
+    fdqryAniverariantesidade: TLargeintField;
+    fdqryAniverariantesfiltro: TStringField;
+    fdqryAniverariantestelefone: TStringField;
+    dblkcbbMes: TDBLookupComboBox;
+    dsMes: TDataSource;
+    dbgrdAniversariantes: TDBGrid;
+    dsAniversariantes: TDataSource;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
+    procedure fdqryAniverariantesFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure dblkcbbMesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,10 +98,33 @@ end
  end;
 end;
 
+procedure TfrmAniversariantes.dblkcbbMesClick(Sender: TObject);
+begin
+ fdqryAniverariantes.Close;
+ fdqryAniverariantes.Filtered:=False;
+ fdqryAniverariantes.Open;
+ fdqryAniverariantes.Filtered:=True;
+end;
+
+procedure TfrmAniversariantes.fdqryAniverariantesFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+  var dia, mes, ano : Word;
+  begin
+         if fdqryAniverariantes.RecordCount = 0 then
+         Abort else
+         Accept:=False;
+         DecodeDate(fdqryAniverariantes.FieldByName('dta_nascimento').AsDateTime,ano,mes,dia);
+         if mes = StrToInt(dblkcbbMes.KeyValue) then
+         Accept:=True;
+
+
+end;
+
 procedure TfrmAniversariantes.FormCreate(Sender: TObject);
 begin
 dtpData.Date:= StrToDate ( '01/' + FormatDateTime ( 'mm/yyyy', date ) );
 dtpDataFinal.Date := Date;
+//dtmRelatorio.fdqryMeses.Open;
 end;
 
 end.

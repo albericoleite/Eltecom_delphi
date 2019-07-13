@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Splendor Gest'#227'o de Igrejas - 2019.7.1'
+  Caption = 'Splendor Gest'#227'o de Igrejas - 2019.7.2'
   ClientHeight = 560
   ClientWidth = 1269
   Color = clBtnFace
@@ -692,8 +692,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 480
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 565
-          ExplicitWidth = 695
           object spl5: TSplitter
             Left = 1
             Top = 257
@@ -710,7 +708,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 219
             Align = alClient
             TabOrder = 0
-            ExplicitWidth = 693
             object dbcht4: TDBChart
               Left = 1
               Top = 1
@@ -729,7 +726,6 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
-              ExplicitWidth = 691
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
@@ -771,7 +767,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 256
             Align = alTop
             TabOrder = 1
-            ExplicitWidth = 693
             object dbcht5: TDBChart
               Left = 1
               Top = 1
@@ -788,7 +783,6 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
-              ExplicitWidth = 691
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
@@ -838,7 +832,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 254
             Align = alTop
             TabOrder = 0
-            ExplicitWidth = 559
             object dbcht6: TDBChart
               Left = 1
               Top = 1
@@ -856,7 +849,6 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
-              ExplicitWidth = 557
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
@@ -885,7 +877,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 221
             Align = alClient
             TabOrder = 1
-            ExplicitWidth = 559
             object dbcht7: TDBChart
               Left = 1
               Top = 1
@@ -903,7 +894,6 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
-              ExplicitWidth = 557
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
@@ -951,8 +941,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 480
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 565
-          ExplicitWidth = 695
           object spl8: TSplitter
             Left = 1
             Top = 257
@@ -969,7 +957,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 219
             Align = alClient
             TabOrder = 0
-            ExplicitWidth = 693
           end
           object pnl16: TPanel
             Left = 1
@@ -978,10 +965,9 @@ object frmPrincipal: TfrmPrincipal
             Height = 256
             Align = alTop
             TabOrder = 1
-            ExplicitWidth = 693
             object pnlKpiProfessores: TPanel
-              Left = 90
-              Top = 93
+              Left = 491
+              Top = 9
               Width = 152
               Height = 75
               Caption = '15'
@@ -1012,8 +998,8 @@ object frmPrincipal: TfrmPrincipal
               end
             end
             object pnlAlunos: TPanel
-              Left = 248
-              Top = 93
+              Left = 173
+              Top = 9
               Width = 153
               Height = 76
               Caption = '50'
@@ -1044,8 +1030,8 @@ object frmPrincipal: TfrmPrincipal
               end
             end
             object pnlClasses: TPanel
-              Left = 407
-              Top = 93
+              Left = 332
+              Top = 9
               Width = 153
               Height = 76
               Caption = '10'
@@ -1073,6 +1059,38 @@ object frmPrincipal: TfrmPrincipal
                 Font.Style = [fsBold]
                 ParentFont = False
                 ExplicitWidth = 46
+              end
+            end
+            object pnlPessoas: TPanel
+              Left = 14
+              Top = 9
+              Width = 153
+              Height = 76
+              Caption = '10'
+              Color = 1536760
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -37
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentBackground = False
+              ParentFont = False
+              TabOrder = 3
+              object Label4: TLabel
+                Left = 1
+                Top = 1
+                Width = 151
+                Height = 19
+                Align = alTop
+                Alignment = taCenter
+                Caption = 'Membros /Cong.'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -16
+                Font.Name = 'Calibri'
+                Font.Style = [fsBold]
+                ParentFont = False
+                ExplicitWidth = 114
               end
             end
           end
@@ -1396,6 +1414,10 @@ object frmPrincipal: TfrmPrincipal
       object mniRelatrios2: TMenuItem
         Caption = 'Relat'#243'rios'
         OnClick = mniRelatrios2Click
+      end
+      object mniPresenadeAlunos1: TMenuItem
+        Caption = 'Presen'#231'a de Alunos'
+        OnClick = mniPresenadeAlunos1Click
       end
     end
     object Configurao1: TMenuItem

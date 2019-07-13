@@ -1,5 +1,6 @@
 inherited frmCadDepartPessoa: TfrmCadDepartPessoa
   Caption = 'Cadastrar pessoas nos Departamentos'
+  ExplicitLeft = -43
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel [0]

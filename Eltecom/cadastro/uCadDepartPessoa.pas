@@ -111,6 +111,7 @@ begin
   inherited;
 fdqryPessoas.close;
 fdqryDepartamentos.close;
+fdqrySituacao.close;
 if Assigned(oDepartPessoa) then
     FreeAndNil(oDepartPessoa);
 end;
@@ -120,6 +121,7 @@ begin
   inherited;
 fdqryPessoas.Open;
 fdqryDepartamentos.Open;
+fdqrySituacao.Open;
   oDepartPessoa:= TDepartPessoa.Create(dtmPrincipal.ConexaoDB);
    IndiceAtual:='cod_dept_pessoa';
 end;

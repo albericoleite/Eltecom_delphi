@@ -1,17 +1,10 @@
 inherited frmCadClasse: TfrmCadClasse
   Caption = 'Cadastro de Classes'
-  ExplicitTop = -48
-  ExplicitWidth = 806
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       inherited grdListagem: TDBGrid
         DataSource = dtsListagem
         Columns = <
@@ -36,10 +29,6 @@ inherited frmCadClasse: TfrmCadClasse
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       object lbledtCodClasse: TLabeledEdit
         Tag = 1
         Left = 8

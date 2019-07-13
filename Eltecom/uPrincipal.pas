@@ -129,6 +129,9 @@ type
     lbl3: TLabel;
     Series1: TFastLineSeries;
     Series2: TFastLineSeries;
+    pnlPessoas: TPanel;
+    Label4: TLabel;
+    mniPresenadeAlunos1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -170,6 +173,7 @@ type
     procedure act1Execute(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure mniControledeDzimo1Click(Sender: TObject);
+    procedure mniPresenadeAlunos1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -198,7 +202,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
   uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor, uImportarExportarDados, uRelatoriosFinanceiro,
-  uDTMRelatorioFinanceiro, uQuadroAnual;
+  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -331,6 +335,7 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmImportarExportarDados, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmRelatoriosFinanceiro, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmQuadroAnual, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmChamadaEbd, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -493,6 +498,11 @@ begin
 TFuncao.CriarForm(TfrmImportarExportarDados, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
+procedure TfrmPrincipal.mniPresenadeAlunos1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmChamadaEbd, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
 procedure TfrmPrincipal.mniProfessor2Click(Sender: TObject);
 begin
 TFuncao.CriarForm(TfrmCadProfessor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
@@ -621,6 +631,8 @@ try
      pnlKpiProfessores.Caption:=  TFuncao.SqlValor('select count(*) as VALOR from tb_professor;',dtmPrincipal.ConexaoDB);
      pnlAlunos.Caption:=  TFuncao.SqlValor('select count(*)as VALOR from tb_classe_aluno;',dtmPrincipal.ConexaoDB);
      pnlClasses.Caption:=  TFuncao.SqlValor('select count(*)as VALOR from tb_classe;',dtmPrincipal.ConexaoDB);
+     pnlPessoas.Caption:=   TFuncao.SqlValor('select count(1)as VALOR from tb_pessoa a inner join tb_parametro_sistema '+
+     ' b on a.cod_congregacao = b.cod_congregacao',dtmPrincipal.ConexaoDB);
 finally
      Screen.Cursor := crDefault;
 end;

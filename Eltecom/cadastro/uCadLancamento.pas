@@ -52,6 +52,8 @@ type
     lbl7: TLabel;
     crncydtEntrada: TCurrencyEdit;
     crncydtSaida: TCurrencyEdit;
+    Label3: TLabel;
+    crncydtSubtotal: TCurrencyEdit;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -85,7 +87,7 @@ var
 implementation
 
 uses
-  uDTMTesouraria;
+  uDTMTesouraria, cFuncao;
 
 {$R *.dfm}
 {$REGION 'Override'}
@@ -273,11 +275,14 @@ Result :=0;
 end;
 
 procedure TfrmCadLancamento.ListaLancamentosPeriodo;
+var a,b,c: Double;
 begin
   QryListagem.close;
   QryListagem.ParamByName('dtini').AsDateTime := dtdtIni.Date;
   QryListagem.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
   QryListagem.Open;
+
+
 
     try
     dtmTesouraria.fdqryTes_valores.close;
@@ -331,8 +336,12 @@ mmoSemana.Text:= semana;
     Application.MessageBox('Falha na fdqryTes_Saida_Total', 'Atenção!');
   end;
 
+  a:=  StrToFloat(dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text);
+  b:=   StrToFloat(dtmTesouraria.fltfldTes_Saida_Totaltotal.Text);
+  c:= a - b;
   crncydtEntrada.Text:=dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text;
   crncydtSaida.Text:= dtmTesouraria.fltfldTes_Saida_Totaltotal.Text;
+  crncydtSubtotal.Text:= floattostr(c);
 
 end;
 

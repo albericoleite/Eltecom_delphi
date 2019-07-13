@@ -5480,13 +5480,12 @@
     end
   end
   object fdqryTes_Entrada_Total: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
-        'SELECT sum(t.valor)as total FROM tb_tesouraria t join tb_paramet' +
-        'ro_sistema a on a.cod_congregacao = t.cod_congregacao where t.ti' +
-        'po= '#39'ENTRADA'#39' and t.dta_movimento between '
+        'SELECT coalesce(sum(t.valor),0)as total FROM tb_tesouraria t joi' +
+        'n tb_parametro_sistema a on a.cod_congregacao = t.cod_congregaca' +
+        'o where t.tipo= '#39'ENTRADA'#39' and t.dta_movimento between '
       ':dtini'
       'and '
       ':dtfim'
@@ -5516,13 +5515,12 @@
     end
   end
   object fdqryTes_Saida_Total: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
-        'SELECT sum(t.valor)as total FROM tb_tesouraria t join tb_paramet' +
-        'ro_sistema a on a.cod_congregacao = t.cod_congregacao where t.ti' +
-        'po= '#39'SAIDA'#39' and t.dta_movimento between '
+        'SELECT coalesce(sum(t.valor),0)as total FROM tb_tesouraria t joi' +
+        'n tb_parametro_sistema a on a.cod_congregacao = t.cod_congregaca' +
+        'o where t.tipo= '#39'SAIDA'#39' and t.dta_movimento between '
       ':dtini'
       'and '
       ':dtfim')

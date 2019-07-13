@@ -432,4 +432,49 @@ object dtmPrincipal: TdtmPrincipal
       Size = 50
     end
   end
+  object fdqryMeses: TFDQuery
+    Active = True
+    Connection = ConexaoDB
+    SQL.Strings = (
+      'select 1 as valor,'#39'Janeiro'#39' mes from dual'
+      'union'
+      'select 2,'#39'Fevereiro'#39' from dual'
+      'union'
+      'select 3,'#39'Mar'#231'o'#39' from dual'
+      'union'
+      'select 4,'#39'Abril'#39' from dual'
+      'union'
+      'select 5,'#39'Maio'#39' from dual'
+      'union'
+      'select 6,'#39'Junho'#39' from dual'
+      'union'
+      'select 7,'#39'Julho'#39' from dual'
+      'union'
+      'select 8,'#39'Agosto'#39' from dual'
+      'union'
+      'select 9,'#39'Setembro'#39' from dual'
+      'union'
+      'select 10,'#39'Outubro'#39' from dual'
+      'union'
+      'select 11,'#39'Novembro'#39' from dual'
+      'union'
+      'select 12,'#39'Dezembro'#39' from dual')
+    Left = 320
+    Top = 16
+    object fdqryMesesvalor: TLargeintField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor'
+      Origin = 'valor'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqryMesesmes: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'mes'
+      Origin = 'mes'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 9
+    end
+  end
 end

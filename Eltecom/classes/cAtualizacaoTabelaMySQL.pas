@@ -33,6 +33,9 @@ type
     procedure ObreiroCargo;
     procedure ParametroServidor;
     procedure Tesouraria;
+    procedure EbdAula;
+    procedure EbdChamada;
+    procedure EbdCalendario;
 
  protected
 
@@ -73,6 +76,9 @@ begin
   ObreiroCargo;
   ParametroServidor;
   Tesouraria;
+  EbdAula;
+  EbdChamada;
+  EbdCalendario;
 
 end;
 
@@ -641,4 +647,63 @@ begin
 ')');
    end;;
 end;
+
+procedure TAtualizacaoTabelaMySQL.EbdAula;
+begin
+   if not TabelaExiste('tb_ebd_aula') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `tb_ebd_aula` (    '+
+  ' `codigo` int(11) NOT NULL AUTO_INCREMENT, '+
+  ' `dta_aula` datetime NOT NULL, '+
+  ' `cod_classe` int(11) NOT NULL,   '+
+  ' `qtd_biblias` int(11) DEFAULT NULL,   '+
+  ' `qtd_revistas` int(11) DEFAULT NULL,  '+
+  ' `trimestre` int(11) DEFAULT NULL,   '+
+  ' `cod_congregacao` int(11) NOT NULL,   '+
+  ' `nro_licao` int(11) NOT NULL,  '+
+  ' `titulo_licao` varchar(100) DEFAULT NULL, '+
+  ' `titulo_revista` varchar(100) DEFAULT NULL, '+
+  ' `qtd_visitante_amigo` int(11) DEFAULT '+QuotedStr('0')+', '+
+  ' `qtd_visitante_evang` int(11) DEFAULT '+QuotedStr('0')+',  '+
+  ' PRIMARY KEY (`codigo`)   '+
+  ' )');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.EbdChamada;
+begin
+   if not TabelaExiste('tb_ebd_chamada') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `tb_ebd_chamada` (   '+
+  ' `codigo` int(11) NOT NULL AUTO_INCREMENT, '+
+  ' `cod_aluno` int(11) NOT NULL,  '+
+  ' `cod_classe` int(11) NOT NULL, '+
+  ' `dta_aula` datetime NOT NULL,    '+
+  ' `cod_congregacao` int(11) NOT NULL,  '+
+  ' `presente` tinyint(4) NOT NULL DEFAULT '+QuotedStr('1')+',  '+
+  ' PRIMARY KEY (`codigo`) '+
+  ' )');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.EbdCalendario;
+begin
+   if not TabelaExiste('tb_ebd_calendario') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `tb_ebd_calendario` (    '+
+  ' `codigo` int(11) NOT NULL AUTO_INCREMENT,  '+
+  ' `ano` int(11) DEFAULT NULL,      '+
+  ' `trimestre` varchar(50) DEFAULT NULL,   '+
+  ' `dta_inicio` datetime DEFAULT NULL,  '+
+  ' `dta_fim` datetime DEFAULT NULL,   '+
+  ' PRIMARY KEY (`codigo`)  '+
+  ') ');
+   end;
+end;
+
+
+
 end.
