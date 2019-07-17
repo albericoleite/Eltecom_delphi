@@ -470,7 +470,7 @@
       object Footer1: TfrxFooter
         FillType = ftBrush
         Frame.Typ = []
-        Height = 177.637910000000000000
+        Height = 154.960730000000000000
         Top = 260.787570000000000000
         Width = 718.110700000000000000
         object Memo11: TfrxMemoView
@@ -708,13 +708,13 @@
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
         Frame.Typ = []
-        Height = 449.764070000000000000
-        Top = 498.897960000000000000
+        Height = 347.716760000000000000
+        Top = 476.220780000000000000
         Width = 718.110700000000000000
         object Memo70: TfrxMemoView
           AllowVectorExport = True
           Left = 3.779530000000000000
-          Top = 263.504020000000000000
+          Top = 180.504020000000000000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -731,7 +731,7 @@
         object Memo71: TfrxMemoView
           AllowVectorExport = True
           Left = 253.228510000000000000
-          Top = 263.504020000000000000
+          Top = 180.504020000000000000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -748,7 +748,7 @@
         object Memo72: TfrxMemoView
           AllowVectorExport = True
           Left = 502.677490000000000000
-          Top = 263.504020000000000000
+          Top = 180.504020000000000000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -764,7 +764,7 @@
         end
         object Memo73: TfrxMemoView
           AllowVectorExport = True
-          Top = 331.535560000000000000
+          Top = 248.535560000000000000
           Width = 506.457020000000000000
           Height = 30.236240000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1022,7 +1022,7 @@
         end
         object Memo46: TfrxMemoView
           AllowVectorExport = True
-          Top = 143.622140000000000000
+          Top = 117.622140000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1079,7 +1079,7 @@
         object Memo39: TfrxMemoView
           AllowVectorExport = True
           Left = 551.811380000000000000
-          Top = 313.700990000000000000
+          Top = 230.700990000000000000
           Width = 136.063080000000000000
           Height = 113.385900000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1492,13 +1492,13 @@
         Name = 'DTINI'
         DataType = ftDateTime
         ParamType = ptInput
-        Value = 43647d
+        Value = 43617d
       end
       item
         Name = 'DTFIM'
         DataType = ftDateTime
         ParamType = ptInput
-        Value = 43800d
+        Value = 43631d
       end>
     object intgrfldTes_valoresnro_documento: TIntegerField
       AutoGenerateValue = arDefault
@@ -5480,6 +5480,7 @@
     end
   end
   object fdqryTes_Entrada_Total: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
@@ -5515,6 +5516,7 @@
     end
   end
   object fdqryTes_Saida_Total: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       

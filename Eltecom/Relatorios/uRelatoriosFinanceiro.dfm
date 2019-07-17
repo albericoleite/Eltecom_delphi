@@ -3,8 +3,8 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Relat'#243'rios da Tesouraria'
-  ClientHeight = 59
-  ClientWidth = 366
+  ClientHeight = 196
+  ClientWidth = 374
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,11 +19,11 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
   object pnl1: TPanel
     Left = 0
     Top = 0
-    Width = 209
-    Height = 59
+    Width = 217
+    Height = 196
     Align = alLeft
     TabOrder = 0
-    ExplicitHeight = 69
+    ExplicitHeight = 470
     object lbl5: TLabel
       Left = 95
       Top = 6
@@ -37,6 +37,19 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
       Width = 53
       Height = 13
       Caption = 'Data Inicial'
+    end
+    object Label1: TLabel
+      Left = 11
+      Top = 113
+      Width = 104
+      Height = 19
+      Caption = 'Selecionar M'#234's'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object dtdtFim: TDateEdit
       Left = 95
@@ -64,19 +77,53 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
       TabOrder = 1
       Text = '01/04/2019'
     end
+    object dblkcbbMes: TDBLookupComboBox
+      Left = 11
+      Top = 133
+      Width = 200
+      Height = 27
+      DropDownRows = 12
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      KeyField = 'valor'
+      ListField = 'mes'
+      ListSource = dsMes
+      ParentFont = False
+      TabOrder = 2
+      OnClick = dblkcbbMesClick
+    end
+    object chkobreiro: TCheckBox
+      Left = 6
+      Top = 60
+      Width = 106
+      Height = 17
+      Caption = 'Somente Obreiros'
+      TabOrder = 3
+    end
+    object chkMembros: TCheckBox
+      Left = 9
+      Top = 83
+      Width = 106
+      Height = 17
+      Caption = 'Somente Membros'
+      TabOrder = 4
+    end
   end
   object pnl2: TPanel
-    Left = 209
+    Left = 217
     Top = 0
     Width = 157
-    Height = 59
+    Height = 196
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 161
-    ExplicitHeight = 69
+    ExplicitLeft = 209
+    ExplicitHeight = 59
     object btnSemana: TBitBtn
-      Left = 120
-      Top = 134
+      Left = 264
+      Top = 53
       Width = 75
       Height = 25
       Caption = 'Semanal'
@@ -85,8 +132,8 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
       OnClick = btnSemanaClick
     end
     object btngGravicoMensal: TBitBtn
-      Left = 6
-      Top = 79
+      Left = 302
+      Top = 135
       Width = 131
       Height = 25
       Caption = 'Gr'#225'fico Mensal'
@@ -103,5 +150,19 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
       TabOrder = 2
       OnClick = btnMovMensalClick
     end
+    object btnImprimir: TBitBtn
+      Left = 14
+      Top = 54
+      Width = 131
+      Height = 25
+      Caption = 'Dizimistas'
+      TabOrder = 3
+      OnClick = btnImprimirClick
+    end
+  end
+  object dsMes: TDataSource
+    DataSet = dtmRelatorio.fdqryMeses
+    Left = 138
+    Top = 144
   end
 end

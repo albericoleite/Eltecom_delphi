@@ -54,6 +54,9 @@ type
     crncydtSaida: TCurrencyEdit;
     Label3: TLabel;
     crncydtSubtotal: TCurrencyEdit;
+    dblkcbbMes: TDBLookupComboBox;
+    Label4: TLabel;
+    dsMes: TDataSource;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -68,6 +71,7 @@ type
     procedure mmoSaidaChange(Sender: TObject);
     procedure dtdtIniChange(Sender: TObject);
     procedure dtdtFimChange(Sender: TObject);
+    procedure dblkcbbMesClick(Sender: TObject);
   private
     { Private declarations }
     oLancamento: TLancamento;
@@ -202,6 +206,17 @@ begin
       cbbTipo.SetFocus;
     end;
   end;
+end;
+
+procedure TfrmCadLancamento.dblkcbbMesClick(Sender: TObject);
+var i :Integer;
+Ano, Mes, Dia : word;
+begin
+i := dblkcbbMes.KeyValue;
+DecodeDate (now, Ano, Mes, Dia);
+  dtdtIni.Date:= StartOfaMonth(Ano,i);
+  dtdtFim.Date:= EndOfAMonth(Ano,i);
+  btnBuscar.Click;
 end;
 
 procedure TfrmCadLancamento.dtdtFimChange(Sender: TObject);

@@ -1,7 +1,7 @@
 inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
-  ClientWidth = 727
-  ExplicitWidth = 733
+  ClientWidth = 742
+  ExplicitWidth = 748
   PixelsPerInch = 96
   TextHeight = 13
   object lbl4: TLabel [0]
@@ -25,7 +25,7 @@ inherited frmCadLancamento: TfrmCadLancamento
     ParentFont = False
   end
   inherited pgcPrincipal: TPageControl
-    Width = 727
+    Width = 742
     ExplicitWidth = 727
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
@@ -33,10 +33,11 @@ inherited frmCadLancamento: TfrmCadLancamento
       ExplicitWidth = 719
       ExplicitHeight = 390
       inherited pnlListagem: TPanel
-        Width = 719
-        Height = 89
-        ExplicitWidth = 719
-        ExplicitHeight = 89
+        Width = 734
+        Height = 121
+        ExplicitTop = -6
+        ExplicitWidth = 734
+        ExplicitHeight = 121
         inherited lblIndice: TLabel
           Top = 8
           ExplicitTop = 8
@@ -56,67 +57,80 @@ inherited frmCadLancamento: TfrmCadLancamento
           Caption = 'Data Final'
         end
         object lbl6: TLabel [3]
-          Left = 10
-          Top = 51
-          Width = 67
-          Height = 24
+          Left = 198
+          Top = 61
+          Width = 54
+          Height = 19
           Caption = 'Per'#237'odo'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -20
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
         end
         object Label1: TLabel [4]
-          Left = 184
-          Top = 53
-          Width = 78
-          Height = 24
+          Left = 379
+          Top = 61
+          Width = 61
+          Height = 19
           Caption = 'Entradas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -20
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
         end
         object lbl7: TLabel [5]
-          Left = 369
-          Top = 53
-          Width = 58
-          Height = 24
+          Left = 397
+          Top = 91
+          Width = 45
+          Height = 19
           Caption = 'Sa'#237'das'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -20
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
         end
         object Label3: TLabel [6]
-          Left = 533
-          Top = 53
-          Width = 74
-          Height = 24
+          Left = 565
+          Top = 91
+          Width = 58
+          Height = 19
           Caption = 'Subtotal'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -20
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label4: TLabel [7]
+          Left = 10
+          Top = 46
+          Width = 69
+          Height = 13
+          Caption = 'Filtrar por M'#234's'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
         end
         inherited mskPesquisar: TMaskEdit
           Top = 24
-          Width = 226
+          Width = 184
           ExplicitTop = 24
-          ExplicitWidth = 226
+          ExplicitWidth = 184
         end
         inherited btnPesquisar: TBitBtn
-          Left = 248
+          Left = 200
           Top = 22
-          ExplicitLeft = 248
+          ExplicitLeft = 200
           ExplicitTop = 22
         end
         object dtdtIni: TDateEdit
@@ -157,15 +171,15 @@ inherited frmCadLancamento: TfrmCadLancamento
           OnClick = btnBuscarClick
         end
         object mmoSemana: TMemo
-          Left = 81
-          Top = 51
-          Width = 98
+          Left = 254
+          Top = 61
+          Width = 120
           Height = 24
           Alignment = taRightJustify
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = []
           Lines.Strings = (
@@ -174,8 +188,8 @@ inherited frmCadLancamento: TfrmCadLancamento
           TabOrder = 5
         end
         object btnImprimir: TBitBtn
-          Left = 603
-          Top = 9
+          Left = 622
+          Top = 16
           Width = 97
           Height = 38
           Caption = 'Imprimir'
@@ -282,55 +296,73 @@ inherited frmCadLancamento: TfrmCadLancamento
           OnClick = btnImprimir1Click
         end
         object crncydtEntrada: TCurrencyEdit
-          Left = 268
-          Top = 53
-          Width = 90
-          Height = 24
+          Left = 447
+          Top = 58
+          Width = 95
+          Height = 27
           DisplayFormat = 'R$ 0.00;-0.00'
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
           TabOrder = 7
         end
         object crncydtSaida: TCurrencyEdit
-          Left = 433
-          Top = 53
-          Width = 90
-          Height = 24
+          Left = 448
+          Top = 88
+          Width = 94
+          Height = 27
           DisplayFormat = 'R$ 0.00;-0.00'
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
           TabOrder = 8
         end
         object crncydtSubtotal: TCurrencyEdit
-          Left = 610
-          Top = 53
+          Left = 629
+          Top = 88
           Width = 90
-          Height = 24
+          Height = 27
           DisplayFormat = 'R$ 0.00;-0.00'
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
           TabOrder = 9
         end
+        object dblkcbbMes: TDBLookupComboBox
+          Left = 10
+          Top = 61
+          Width = 184
+          Height = 24
+          DropDownRows = 12
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          KeyField = 'valor'
+          ListField = 'mes'
+          ListSource = dsMes
+          ParentFont = False
+          TabOrder = 10
+          OnClick = dblkcbbMesClick
+        end
       end
       inherited grdListagem: TDBGrid
-        Top = 89
-        Width = 719
-        Height = 301
+        Top = 121
+        Width = 734
+        Height = 269
         DataSource = dtsListagem
         Columns = <
           item
@@ -474,7 +506,7 @@ inherited frmCadLancamento: TfrmCadLancamento
     end
   end
   inherited pnlRodape: TPanel
-    Width = 727
+    Width = 742
     ExplicitWidth = 727
     inherited btnNavigator: TDBNavigator
       Left = 413
@@ -482,7 +514,7 @@ inherited frmCadLancamento: TfrmCadLancamento
       ExplicitLeft = 413
     end
     inherited btnFechar: TBitBtn
-      Left = 635
+      Left = 650
       ExplicitLeft = 635
     end
   end
@@ -582,5 +614,10 @@ inherited frmCadLancamento: TfrmCadLancamento
   inherited dtsListagem: TDataSource
     Left = 584
     Top = 280
+  end
+  object dsMes: TDataSource
+    DataSet = dtmRelatorio.fdqryMeses
+    Left = 250
+    Top = 200
   end
 end

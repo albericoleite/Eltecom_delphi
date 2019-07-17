@@ -1,7 +1,6 @@
 inherited frmCadDizimos: TfrmCadDizimos
   Caption = 'Cadastro de Dizimos'
   ClientWidth = 829
-  ExplicitTop = -114
   ExplicitWidth = 835
   PixelsPerInch = 96
   TextHeight = 13
@@ -15,35 +14,62 @@ inherited frmCadDizimos: TfrmCadDizimos
       ExplicitHeight = 390
       inherited pnlListagem: TPanel
         Width = 821
+        Height = 97
         ExplicitWidth = 821
+        ExplicitHeight = 97
         object lblDataNascimento: TLabel [1]
-          Left = 370
-          Top = -1
+          Left = 350
+          Top = 5
           Width = 53
           Height = 13
           Caption = 'Data Inicial'
         end
         object lbl5: TLabel [2]
-          Left = 470
-          Top = 1
+          Left = 450
+          Top = 7
           Width = 48
           Height = 13
           Caption = 'Data Final'
         end
         object lblTotal: TLabel [3]
-          Left = 16
-          Top = 46
-          Width = 64
-          Height = 13
+          Left = 265
+          Top = 61
+          Width = 79
+          Height = 16
           Caption = 'Valor Total: 0'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label1: TLabel [4]
+          Left = 10
+          Top = 44
+          Width = 69
+          Height = 13
+          Caption = 'Filtrar por M'#234's'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
         end
         inherited mskPesquisar: TMaskEdit
           Top = 19
+          Width = 184
           ExplicitTop = 19
+          ExplicitWidth = 184
+        end
+        inherited btnPesquisar: TBitBtn
+          Left = 265
+          ExplicitLeft = 265
         end
         object dtdtIni: TDateEdit
-          Left = 370
-          Top = 18
+          Left = 350
+          Top = 21
           Width = 83
           Height = 21
           Hint = 'Data Inicial'
@@ -55,8 +81,8 @@ inherited frmCadDizimos: TfrmCadDizimos
           Text = '01/04/2019'
         end
         object dtdtFim: TDateEdit
-          Left = 470
-          Top = 20
+          Left = 450
+          Top = 23
           Width = 84
           Height = 21
           Hint = 'Data Finaal'
@@ -68,8 +94,8 @@ inherited frmCadDizimos: TfrmCadDizimos
           Text = '10/04/2019'
         end
         object btnBuscar: TBitBtn
-          Left = 560
-          Top = 14
+          Left = 544
+          Top = 21
           Width = 49
           Height = 25
           Caption = 'Buscar'
@@ -77,8 +103,8 @@ inherited frmCadDizimos: TfrmCadDizimos
           OnClick = btnBuscarClick
         end
         object btnImprimir: TBitBtn
-          Left = 704
-          Top = 9
+          Left = 716
+          Top = 12
           Width = 97
           Height = 36
           Caption = 'Imprimir'
@@ -184,9 +210,37 @@ inherited frmCadDizimos: TfrmCadDizimos
           TabOrder = 5
           OnClick = btnImprimirClick
         end
+        object chkobreiro: TCheckBox
+          Left = 605
+          Top = 24
+          Width = 106
+          Height = 17
+          Caption = 'Somente Obreiros'
+          TabOrder = 6
+        end
+        object dblkcbbMes: TDBLookupComboBox
+          Left = 10
+          Top = 61
+          Width = 184
+          Height = 24
+          DropDownRows = 12
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          KeyField = 'valor'
+          ListField = 'mes'
+          ListSource = dsMes
+          ParentFont = False
+          TabOrder = 7
+          OnClick = dblkcbbMesClick
+        end
       end
       inherited grdListagem: TDBGrid
+        Top = 97
         Width = 821
+        Height = 293
         DataSource = dtsListagem
         Columns = <
           item
@@ -468,7 +522,6 @@ inherited frmCadDizimos: TfrmCadDizimos
     Top = 200
   end
   object fdqryDizimistas: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       '##DIZIMISTA GERAL'
@@ -524,8 +577,8 @@ inherited frmCadDizimos: TfrmCadDizimos
         'ongregacao'
       'left join tb_pessoa c on c.cod_pessoa = a.cod_dirigente)'
       'order by nivel desc')
-    Left = 752
-    Top = 160
+    Left = 720
+    Top = 152
     ParamData = <
       item
         Name = 'DTINI'
@@ -632,5 +685,125 @@ inherited frmCadDizimos: TfrmCadDizimos
       ProviderFlags = []
       ReadOnly = True
     end
+  end
+  object fdqryizimitobreiro: TFDQuery
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      '##DIRIGENTE'
+      
+        'select e.cod_dizimo,e.cod_talao,e.cod_cheque, c.nome_pessoa as n' +
+        'ome,e.valor,e.`data`,"DIRIGENTE" as cargo,c.cod_congregacao,100 ' +
+        ' nivel,c.nro_rol as rol'
+      'from tb_congregacao a '
+      
+        'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
+        'ongregacao'
+      'left join tb_pessoa c on c.cod_pessoa = a.cod_dirigente'
+      'inner join tb_obreiro_cargo d on d.COD_MEMBRO = c.cod_pessoa'
+      
+        'left join tb_dizimista e on e.NOME = c.nome_pessoa and e.CARGO =' +
+        ' d.CARGO '
+      'and e.`data` between :dtini and :dtfim'
+      'union all '
+      '##OBREIROS'
+      
+        'select c.cod_dizimo,c.cod_talao,c.cod_cheque,a.NOME,c.valor,c.`d' +
+        'ata`,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol'
+      ' from tb_obreiro_cargo a '
+      'inner join tb_cargo x on x.cod_cargo = a.COD_CARGO'
+      'inner join tb_pessoa y on y.cod_pessoa = a.cod_membro'
+      
+        'inner join tb_parametro_sistema b on a.COD_CONGREGACAO = b.cod_c' +
+        'ongregacao'
+      
+        'left join tb_dizimista c on c.cod_congregacao = a.COD_CONGREGACA' +
+        'O and c.cargo = a.CARGO and c.nome = a.NOME'
+      'and c.`data` between :dtini and :dtfim'
+      
+        'where a.cod_membro <> (select  c.cod_pessoa  from tb_congregacao' +
+        ' a '
+      
+        'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
+        'ongregacao'
+      'left join tb_pessoa c on c.cod_pessoa = a.cod_dirigente)'
+      'order by nivel desc')
+    Left = 616
+    Top = 144
+    ParamData = <
+      item
+        Name = 'DTINI'
+        DataType = ftDateTime
+        ParamType = ptInput
+        Value = 43586d
+      end
+      item
+        Name = 'DTFIM'
+        DataType = ftDateTime
+        ParamType = ptInput
+        Value = 43615d
+      end>
+    object intgrfld1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'cod_dizimo'
+      Origin = 'cod_dizimo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object intgrfld2: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'cod_talao'
+      Origin = 'cod_talao'
+    end
+    object intgrfld3: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'cod_cheque'
+      Origin = 'cod_cheque'
+    end
+    object strngfld1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 50
+    end
+    object fltfld1: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor'
+      Origin = 'valor'
+    end
+    object dtfld1: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'data'
+      Origin = '`data`'
+    end
+    object strngfld2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cargo'
+      Origin = 'cargo'
+      Size = 50
+    end
+    object intgrfld4: TIntegerField
+      FieldName = 'cod_congregacao'
+      Origin = 'cod_congregacao'
+      Required = True
+    end
+    object lrgntfld1: TLargeintField
+      AutoGenerateValue = arDefault
+      FieldName = 'nivel'
+      Origin = 'nivel'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object strngfld3: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'rol'
+      Origin = 'rol'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 15
+    end
+  end
+  object dsMes: TDataSource
+    DataSet = dtmRelatorio.fdqryMeses
+    Left = 234
+    Top = 72
   end
 end

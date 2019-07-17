@@ -201,7 +201,7 @@ begin
   if lbledt_codigo.Text <> EmptyStr then
     oPessoa.cod_pessoa := StrToInt(lbledt_codigo.Text)
   else
-    oPessoa.cod_pessoa := 0;
+  oPessoa.cod_pessoa := 0;
   oPessoa.nome              := lbledtNome.Text;
   oPessoa.nome_pai          := lbledtNomePai.Text;
   oPessoa.nome_mae          := lbledtNomeMae.Text;
@@ -408,7 +408,6 @@ begin
   begin
     lbledt_codigo.Text    := IntToStr(oPessoa.cod_pessoa);
     lbledtNome.Text       := oPessoa.nome;
-    dtdtNascimento.Text   := DateToStr(oPessoa.dta_nascimento);
     lbledtCidade.Text     := oPessoa.cidade;
     lbledtEmail.Text      := oPessoa.email;
     lbledtBairro.Text     := oPessoa.bairro;
@@ -425,13 +424,22 @@ begin
     lbledtNacionalidade.Text:=oPessoa.nacionalidade;
     lbledtRol.Text        :=IntToStr(oPessoa.nro_rol);
     medtCEP.Text          := oPessoa.cep;
-    dtdtBtaguas.Text      := DateToStr(oPessoa.dta_batismo_aguas);
-    dtdtbtespirito.Text   :=DateToStr(oPessoa.dta_batismo_esprito);
-    dtdtConversao.Text    :=DateToStr(oPessoa.dta_conversao);
+        if DateToStr(oPessoa.dta_nascimento)='30/12/1899' then
+    dtdtNascimento.Clear  else dtdtNascimento.Text      :=DateToStr(oPessoa.dta_nascimento) ;
+    if DateToStr(oPessoa.dta_batismo_aguas)='30/12/1899' then
+    dtdtBtaguas.Clear  else dtdtBtaguas.Text      :=DateToStr(oPessoa.dta_batismo_aguas) ;
+    if DateToStr(oPessoa.dta_batismo_esprito)='30/12/1899' then
+    dtdtbtespirito.Clear  else dtdtbtespirito.Text      :=DateToStr(oPessoa.dta_batismo_esprito) ;
+    if DateToStr(oPessoa.dta_conversao)='30/12/1899' then
+    dtdtConversao.Clear  else dtdtConversao.Text      :=DateToStr(oPessoa.dta_conversao) ;
+    if DateToStr(oPessoa.dta_casamento)='30/12/1899' then
+    dtdtCasamento.Clear  else dtdtCasamento.Text      :=DateToStr(oPessoa.dta_casamento) ;
+
+
+
     dtdtMembro.Text  :=DateToStr(oPessoa.dta_membro);
     //dtdtMembro.Text  :=DateToStr(oPessoa.dta_congregado);
     medtCPF.Text          := oPessoa.cpf;
-    dtdtCasamento.Text    := DateToStr(oPessoa.dta_casamento);
     lbledtNomeConjugue.Text:= oPessoa.nome_conjugue;
     lbledtFuncao.Text := oPessoa.funcao;
     cbbSitAcad.Text       := oPessoa.grau_inst_situacao;

@@ -251,7 +251,7 @@ begin
       ', setor=:setor ' +
       ', nro_cad_congregado=:nro_cad_congregado , SITUACAO=:SITUACAO ' +
       ', cod_congregacao=:cod_congregacao ' + ', cod_situacao=:cod_situacao,congregacao=:congregacao ' +
-      ' WHERE cod_pessoa=:cod_pessoa; ');
+      ', dta_batismo_esprito=:dta_batismo_esprito,dta_batismo_aguas=:dta_batismo_aguas WHERE cod_pessoa=:cod_pessoa; ');
     Qry.ParamByName('cod_situacao').AsInteger := F_cod_situacao;
     Qry.ParamByName('cod_congregacao').AsInteger := F_cod_congregacao;
     Qry.ParamByName('SITUACAO').AsString := F_SITUACAO;
@@ -288,8 +288,7 @@ begin
     Qry.ParamByName('cpf').AsString := F_cpf;
     Qry.ParamByName('origem_eclesiastica').AsString := F_origem_eclesiastica;
     Qry.ParamByName('proced_eclesiastica').AsString := F_proced_eclesiastica;
-    Qry.ParamByName('habilitacao_profissional').AsString :=
-      F_habilitacao_profissional;
+    Qry.ParamByName('habilitacao_profissional').AsString := F_habilitacao_profissional;
     Qry.ParamByName('emprego_atual').AsString := F_emprego_atual;
     Qry.ParamByName('funcao').AsString := F_funcao;
     Qry.ParamByName('local_descisao_congregado').AsString :=
@@ -347,12 +346,12 @@ begin
       + ' membro_congregado,nro_rol,naturalidade,dta_conversao,uf_nascimento, '
       + ' nacionalidade,nrorg,cpf, orgaorg,estado_civil_atual,estado_civil_anterior,complemento, '
       + ' fone_residencial,estado_casa ,funcao,uf_endereco,profissao,fone_trabalho,igreja,setor, '+
-        ' nro_cad_congregado,SITUACAO,cod_situacao,dta_membro,congregacao, foto, nome_conjugue )  '
+        ' nro_cad_congregado,SITUACAO,cod_situacao,dta_membro,congregacao, foto, nome_conjugue,dta_batismo_aguas,dta_batismo_esprito )  '
       + ' VALUES(:nome_pessoa, :sexo, :nome_pai,:nome_mae,:dta_nascimento,' +
       ' :cod_congregacao,:membro_congregado,:nro_rol,:naturalidade,:dta_conversao, '
       + ' :uf_nascimento,:nacionalidade,:nrorg,:cpf, :orgaorg,:estado_civil_atual,:estado_civil_anterior, '
       + ':complemento,:fone_residencial,:estado_casa,:funcao,:uf_endereco,:profissao,:fone_trabalho,:igreja,:setor,:nro_cad_congregado,:SITUACAO, '
-      + ' :cod_situacao,:dta_membro,:congregacao , :foto ,:nome_conjugue ) ');
+      + ' :cod_situacao,:dta_membro,:congregacao , :foto ,:nome_conjugue,:dta_batismo_aguas,:dta_batismo_esprito ) ');
     Qry.ParamByName('nome_pessoa').AsString := Self.F_nome_pessoa;
     Qry.ParamByName('sexo').AsString := Self.F_sexo;
     Qry.ParamByName('nome_pai').AsString := Self.F_nome_pai;
@@ -362,6 +361,8 @@ begin
     Qry.ParamByName('nro_rol').AsInteger := Self.F_nro_rol;
     Qry.ParamByName('naturalidade').AsString := Self.F_naturalidade;
     Qry.ParamByName('dta_conversao').AsDateTime := Self.F_dta_conversao;
+    Qry.ParamByName('dta_batismo_aguas').AsDateTime := Self.F_dta_batismo_aguas;
+    Qry.ParamByName('dta_batismo_esprito').AsDateTime := Self.F_dta_batismo_esprito;
     Qry.ParamByName('uf_nascimento').AsString := Self.F_uf_nascimento;
     Qry.ParamByName('funcao').AsString := Self.F_funcao;
     Qry.ParamByName('cod_situacao').AsInteger := Self.F_cod_situacao;
@@ -449,7 +450,7 @@ begin
       + ' proced_eclesiastica, profissao, habilitacao_profissional,         ' +
       ' emprego_atual, funcao, fone_trabalho, igreja, setor, congregacao,   ' +
       ' nro_rol, nro_cad_congregado, membro_congregado, dta_inclusao,   ' +
-      ' USUARIO_CADASTRO, SITUACAO, cod_congregacao, cod_situacao    ' +
+      ' USUARIO_CADASTRO, SITUACAO, cod_congregacao, cod_situacao,dta_batismo_esprito ,dta_batismo_aguas    ' +
       'FROM igreja.tb_pessoa WHERE cod_pessoa=:cod_pessoa; ');
     Qry.ParamByName('cod_pessoa').AsInteger := id;
 
@@ -467,6 +468,8 @@ begin
       Self.F_dta_conversao := Qry.FieldByName('dta_conversao').AsDateTime;
       Self.F_dta_congregado := Qry.FieldByName('dta_membro').AsDateTime;
       Self.F_dta_membro := Qry.FieldByName('dta_congregado').AsDateTime;
+      Self.F_dta_batismo_esprito := Qry.FieldByName('dta_batismo_esprito').AsDateTime;
+      Self.F_dta_batismo_aguas := Qry.FieldByName('dta_batismo_aguas').AsDateTime;
       Self.F_nro_rol := Qry.FieldByName('nro_rol').AsInteger;
       Self.F_nrorg := Qry.FieldByName('nrorg').AsString;
       Self.F_cidade := Qry.FieldByName('cidade').AsString;

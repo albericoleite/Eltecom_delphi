@@ -244,10 +244,10 @@ object frmPrincipal: TfrmPrincipal
             ParentBackground = False
             TabOrder = 0
             object img1: TImage
-              Left = 64
-              Top = 25
-              Width = 433
-              Height = 192
+              Left = -2
+              Top = -1
+              Width = 384
+              Height = 169
               Align = alCustom
               ParentShowHint = False
               Picture.Data = {
@@ -585,6 +585,54 @@ object frmPrincipal: TfrmPrincipal
                 0044440111100444401111004444011110044440111100444401111004444011
                 110044440111100444401111004444011110044440111101FFD9}
               ShowHint = False
+            end
+            object pnlDiasBatismo: TPanel
+              Left = 401
+              Top = 1
+              Width = 153
+              Height = 76
+              Caption = '10'
+              Color = 1536760
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -37
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentBackground = False
+              ParentFont = False
+              TabOrder = 0
+              object Label5: TLabel
+                Left = 1
+                Top = 56
+                Width = 151
+                Height = 19
+                Align = alBottom
+                Alignment = taCenter
+                Caption = 'Dias'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -16
+                Font.Name = 'Calibri'
+                Font.Style = [fsBold]
+                ParentFont = False
+                ExplicitWidth = 28
+              end
+              object Label6: TLabel
+                Left = 1
+                Top = 1
+                Width = 151
+                Height = 19
+                Align = alTop
+                Alignment = taCenter
+                Caption = #218'ltimo Batismo'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -16
+                Font.Name = 'Calibri'
+                Font.Style = [fsBold]
+                ParentFont = False
+                ExplicitWidth = 103
+              end
             end
           end
           object pnl4: TPanel

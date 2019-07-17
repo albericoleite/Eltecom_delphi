@@ -55,6 +55,21 @@ type
     fdqryDizimosTotal: TFDQuery;
     fltfldDizimosTotaltotal: TFloatField;
     lblTotal: TLabel;
+    fdqryizimitobreiro: TFDQuery;
+    intgrfld1: TIntegerField;
+    intgrfld2: TIntegerField;
+    intgrfld3: TIntegerField;
+    strngfld1: TStringField;
+    fltfld1: TFloatField;
+    dtfld1: TDateField;
+    strngfld2: TStringField;
+    intgrfld4: TIntegerField;
+    lrgntfld1: TLargeintField;
+    strngfld3: TStringField;
+    chkobreiro: TCheckBox;
+    dsMes: TDataSource;
+    dblkcbbMes: TDBLookupComboBox;
+    Label1: TLabel;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -65,6 +80,7 @@ type
     procedure btnImprimirClick(Sender: TObject);
     procedure lbledtNomeChange(Sender: TObject);
     procedure btnApagarClick(Sender: TObject);
+    procedure dblkcbbMesClick(Sender: TObject);
   private
     { Private declarations }
     oDizimo: TDizimo;
@@ -137,7 +153,12 @@ var mes: string;
 begin
   inherited;
 ListaLancamentosPeriodo;
-  dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
+dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
+
+if chkobreiro.Checked = true then
+   dtmRelatorio.frxdbDizimista.DataSet:=fdqryizimitobreiro;
+
+  //dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
   dtmRelatorio.frxdbDizimosTotal.DataSet:=fdqryDizimosTotal;
        mes:= TFuncao.ExtensoMes(MonthOf(dtdtini.Date));
    dtmRelatorio.fdqryCongregacao.Open;
@@ -176,13 +197,26 @@ if chkCheque.Checked=false then   begin
 end;
 end;
 
+procedure TfrmCadDizimos.dblkcbbMesClick(Sender: TObject);
+var i :Integer;
+Ano, Mes, Dia : word;
+begin
+i := dblkcbbMes.KeyValue;
+DecodeDate (now, Ano, Mes, Dia);
+  dtdtIni.Date:= StartOfaMonth(Ano,i);
+  dtdtFim.Date:= EndOfAMonth(Ano,i);
+  btnBuscar.Click;
+end;
+
 procedure TfrmCadDizimos.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
 if Assigned(oDizimo) then
      FreeAndNil(oDizimo);
+
  dtmRelatorio.fdqryCongregacao.Close;
+ dtmRelatorio.fdqryMeses.Close;
  fdqryDizimosTotal.Close;
 end;
 
@@ -194,6 +228,8 @@ begin
    dtdtIni.Date:=StartOfTheMonth(now);
    dtdtFim.Date:=Now;
    btnBuscarClick(sender);
+   //dtmRelatorio := TdtmRelatorio(dtmPrincipal.ConexaoDB);
+   //dtmRelatorio.fdqryMeses.Open;
 end;
 
 procedure TfrmCadDizimos.FormShow(Sender: TObject);
@@ -261,6 +297,11 @@ begin
   fdqryDizimistas.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
   fdqryDizimistas.Open;
 
+
+  fdqryizimitobreiro.Close;
+  fdqryizimitobreiro.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+  fdqryizimitobreiro.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
+  fdqryizimitobreiro.Open;
 
   fdqryDizimosTotal.Close;
   fdqryDizimosTotal.ParamByName('dtini').AsDateTime := dtdtIni.Date;

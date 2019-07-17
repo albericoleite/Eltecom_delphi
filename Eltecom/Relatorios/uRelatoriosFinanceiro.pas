@@ -4,8 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
-  Vcl.Mask, RxToolEdit,DateUtils;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, cFuncao,
+  Vcl.Mask, RxToolEdit,DateUtils, Vcl.DBCtrls, Data.DB;
 
 type
   TfrmRelatoriosFinanceiro = class(TForm)
@@ -18,11 +18,20 @@ type
     lblDataNascimento: TLabel;
     btngGravicoMensal: TBitBtn;
     btnMovMensal: TBitBtn;
+    dsMes: TDataSource;
+    dblkcbbMes: TDBLookupComboBox;
+    Label1: TLabel;
+    btnImprimir: TBitBtn;
+    chkobreiro: TCheckBox;
+    chkMembros: TCheckBox;
     procedure btnSemanaClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnMovMensalClick(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
+    procedure dblkcbbMesClick(Sender: TObject);
   private
     procedure AtualizaConsultas;
+    procedure ListaLancamentosPeriodo;
     { Private declarations }
   public
     { Public declarations }
@@ -37,6 +46,55 @@ uses
   uDTMConexao, uDTMRelatorio, uDTMTesouraria, uDTMRelatorioFinanceiro;
 
 {$R *.dfm}
+
+procedure TfrmRelatoriosFinanceiro.btnImprimirClick(Sender: TObject);
+var mes: string;
+begin
+ListaLancamentosPeriodo;
+dtmRelatorio.frxdbDizimista.DataSet:=dtmRelatorio.fdqryDizimistas;
+if chkobreiro.Checked = true then
+   dtmRelatorio.frxdbDizimista.DataSet:=dtmRelatorio.fdqryizimitobreiro;
+
+if chkMembros.Checked = true then
+   dtmRelatorio.frxdbDizimista.DataSet:=dtmRelatorio.fdqryDizimosMembros;
+
+  //dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
+  dtmRelatorio.frxdbDizimosTotal.DataSet:=dtmRelatorio.fdqryDizimosTotal;
+       mes:= TFuncao.ExtensoMes(MonthOf(dtdtini.Date));
+   dtmRelatorio.fdqryCongregacao.Open;
+   dtmRelatorio.frxrprtDizimista.Variables['Data'] := QuotedStr(mes);
+  dtmRelatorio.frxrprtDizimista.ReportOptions.Name :=
+    'Visualização de Impressão: Dizimistas do mês: '+mes;
+    dtmRelatorio.frxrprtDizimista.PrepareReport(True);
+    dtmRelatorio.frxrprtDizimista.ShowReport();
+end;
+
+procedure TfrmRelatoriosFinanceiro.ListaLancamentosPeriodo;
+begin
+
+  dtmRelatorio.fdqryDizimistas.Close;
+  dtmRelatorio.fdqryDizimistas.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+  dtmRelatorio.fdqryDizimistas.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
+  dtmRelatorio.fdqryDizimistas.Open;
+
+  dtmRelatorio.fdqryDizimosMembros.Close;
+  dtmRelatorio.fdqryDizimosMembros.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+  dtmRelatorio.fdqryDizimosMembros.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
+  dtmRelatorio.fdqryDizimosMembros.Open;
+
+
+  dtmRelatorio.fdqryizimitobreiro.Close;
+  dtmRelatorio.fdqryizimitobreiro.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+  dtmRelatorio.fdqryizimitobreiro.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
+  dtmRelatorio.fdqryizimitobreiro.Open;
+
+  dtmRelatorio.fdqryDizimosTotal.Close;
+  dtmRelatorio.fdqryDizimosTotal.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+  dtmRelatorio.fdqryDizimosTotal.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
+  dtmRelatorio.fdqryDizimosTotal.Open;
+
+  //lblTotal.Caption:= 'Valor Total:' +fdqryDizimosTotal.FieldByName('total').AsString;
+end;
 
 procedure TfrmRelatoriosFinanceiro.btnMovMensalClick(Sender: TObject);
 begin
@@ -60,6 +118,16 @@ begin
    // (dtpData.Date));
     dtmRelatorioFinanceiro.frxrprtDizimista.PrepareReport(True);
     dtmRelatorioFinanceiro.frxrprtDizimista.ShowReport();
+end;
+
+procedure TfrmRelatoriosFinanceiro.dblkcbbMesClick(Sender: TObject);
+var i :Integer;
+Ano, Mes, Dia : word;
+begin
+i := dblkcbbMes.KeyValue;
+DecodeDate (now, Ano, Mes, Dia);
+  dtdtIni.Date:= StartOfaMonth(Ano,i);
+  dtdtFim.Date:= EndOfAMonth(Ano,i);
 end;
 
 procedure TfrmRelatoriosFinanceiro.FormCreate(Sender: TObject);
