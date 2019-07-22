@@ -36,6 +36,8 @@ type
     procedure EbdAula;
     procedure EbdChamada;
     procedure EbdCalendario;
+    procedure TipoCulto;
+    procedure TipoSaida;
 
  protected
 
@@ -79,7 +81,8 @@ begin
   EbdAula;
   EbdChamada;
   EbdCalendario;
-
+  TipoCulto;
+  TipoSaida;
 end;
 
 destructor TAtualizacaoTabelaMySQL.Destroy;
@@ -705,6 +708,33 @@ begin
   ' (ano, trimestre, dta_inicio, dta_fim)   '+
   ' VALUES(2019, 3,'+QuotedStr('2019-07-07')+' , '+QuotedStr('2019-09-22')+');  ');
    end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.TipoCulto;
+begin
+   if not TabelaExiste('tipo_culto') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `tipo_culto` (    '+
+  ' `codigo` int(11) NOT NULL AUTO_INCREMENT,   '+
+  ' `descricao` varchar(100) NOT NULL, '+
+  ' `objetivo` varchar(100) NOT NULL , '+
+  '  PRIMARY KEY (`codigo`))');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.TipoSaida;
+begin
+   if not TabelaExiste('tipo_saida') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `tipo_saida` (   '+
+  ' `codigo` INT NOT NULL AUTO_INCREMENT, '+
+  ' `tipo` VARCHAR(50) NOT NULL,   '+
+  ' `descricao` VARCHAR(100) NOT NULL,  '+
+  ' PRIMARY KEY (`codigo`)); ');
+   end;
+
 end;
 
 

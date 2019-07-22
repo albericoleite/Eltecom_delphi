@@ -14925,7 +14925,7 @@ object dtmRelatorio: TdtmRelatorio
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Referente ao M'#234's de [Data]/ 2019')
+            'Referente ao M'#234's de [frxdbDizimista."data_mes"]/ 2019')
           ParentFont = False
         end
         object Memo50: TfrxMemoView
@@ -15537,8 +15537,8 @@ object dtmRelatorio: TdtmRelatorio
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
-        'select a.* from tb_dizimista a join tb_parametro_sistema b on a.' +
-        'cod_congregacao = b.cod_congregacao'
+        'select a.*,date(:data)data_mes from tb_dizimista a join tb_param' +
+        'etro_sistema b on a.cod_congregacao = b.cod_congregacao'
       
         'where  Month(a.data)  = MONTH(:data) and YEAR(a.data)=YEAR(:data' +
         ') '
@@ -15597,6 +15597,18 @@ object dtmRelatorio: TdtmRelatorio
       FieldName = 'cod_congregacao'
       Origin = 'cod_congregacao'
     end
+    object fdqryDizimistacod_pessoa: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'cod_pessoa'
+      Origin = 'cod_pessoa'
+    end
+    object fdqryDizimistadata_mes: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'data_mes'
+      Origin = 'data_mes'
+      ProviderFlags = []
+      ReadOnly = True
+    end
   end
   object frxdbDizimista: TfrxDBDataset
     UserName = 'frxdbDizimista'
@@ -15611,7 +15623,8 @@ object dtmRelatorio: TdtmRelatorio
       'cargo=cargo'
       'cod_congregacao=cod_congregacao'
       'nivel=nivel'
-      'rol=rol')
+      'rol=rol'
+      'data_mes=data_mes')
     DataSet = frmCadDizimos.fdqryDizimistas
     BCDToCurrency = False
     Left = 160
@@ -23910,14 +23923,13 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object fdqryizimitobreiro: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       '##DIRIGENTE'
       
         'select e.cod_dizimo,e.cod_talao,e.cod_cheque, c.nome_pessoa as n' +
         'ome,e.valor,e.`data`,"DIRIGENTE" as cargo,c.cod_congregacao,100 ' +
-        ' nivel,c.nro_rol as rol'
+        ' nivel,c.nro_rol as rol,date(:dtini)data_mes'
       'from tb_congregacao a '
       
         'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
@@ -23932,7 +23944,8 @@ object dtmRelatorio: TdtmRelatorio
       '##OBREIROS'
       
         'select c.cod_dizimo,c.cod_talao,c.cod_cheque,a.NOME,c.valor,c.`d' +
-        'ata`,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol'
+        'ata`,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol,date(:dtini)dat' +
+        'a_mes'
       ' from tb_obreiro_cargo a '
       'inner join tb_cargo x on x.cod_cargo = a.COD_CARGO'
       'inner join tb_pessoa y on y.cod_pessoa = a.cod_membro'
@@ -24024,6 +24037,13 @@ object dtmRelatorio: TdtmRelatorio
       ReadOnly = True
       Size = 15
     end
+    object fdqryizimitobreirodata_mes: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'data_mes'
+      Origin = 'data_mes'
+      ProviderFlags = []
+      ReadOnly = True
+    end
   end
   object fdqryDizimosTotal: TFDQuery
     Active = True
@@ -24067,7 +24087,7 @@ object dtmRelatorio: TdtmRelatorio
       
         'SELECT t.cod_dizimo, t.cod_talao, t.cod_cheque, t.nome, t.valor,' +
         ' t.`data`, t.cargo, t.cod_congregacao,0 as nivel,coalesce(y.nro_' +
-        'rol,0) as rol'
+        'rol,0) as rol,date(:dtini)data_mes'
       
         'FROM tb_dizimista t inner join tb_parametro_sistema a on a.cod_c' +
         'ongregacao = t.cod_congregacao '
@@ -24082,7 +24102,7 @@ object dtmRelatorio: TdtmRelatorio
       
         'select e.cod_dizimo,e.cod_talao,e.cod_cheque, c.nome_pessoa as n' +
         'ome,e.valor,e.`data`,"DIRIGENTE",c.cod_congregacao,100,c.nro_rol' +
-        ' '
+        ' ,date(:dtini)data_mes'
       'from tb_congregacao a '
       
         'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
@@ -24097,7 +24117,8 @@ object dtmRelatorio: TdtmRelatorio
       '##OBREIROS'
       
         'select c.cod_dizimo,c.cod_talao,c.cod_cheque,a.NOME,c.valor,c.`d' +
-        'ata`,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol'
+        'ata`,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol,date(:dtini)dat' +
+        'a_mes'
       ' from tb_obreiro_cargo a '
       'inner join tb_cargo x on x.cod_cargo = a.COD_CARGO'
       'inner join tb_pessoa y on y.cod_pessoa = a.cod_membro'
@@ -24189,6 +24210,13 @@ object dtmRelatorio: TdtmRelatorio
       ReadOnly = True
       Size = 15
     end
+    object fdqryDizimistasdata_mes: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'data_mes'
+      Origin = 'data_mes'
+      ProviderFlags = []
+      ReadOnly = True
+    end
   end
   object fdqryDizimosMembros: TFDQuery
     Connection = dtmPrincipal.ConexaoDB
@@ -24196,7 +24224,7 @@ object dtmRelatorio: TdtmRelatorio
       
         'SELECT t.cod_dizimo, t.cod_talao, t.cod_cheque, t.nome, t.valor,' +
         ' t.`data`, t.cargo, t.cod_congregacao,0 as nivel,coalesce(y.nro_' +
-        'rol,0) as rol'
+        'rol,0) as rol,date(:dtini)data_mes'
       
         'FROM tb_dizimista t inner join tb_parametro_sistema a on a.cod_c' +
         'ongregacao = t.cod_congregacao '
@@ -24278,6 +24306,13 @@ object dtmRelatorio: TdtmRelatorio
       ProviderFlags = []
       ReadOnly = True
       Size = 15
+    end
+    object fdqryDizimosMembrosdata_mes: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'data_mes'
+      Origin = 'data_mes'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
 end

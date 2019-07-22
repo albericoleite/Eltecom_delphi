@@ -238,6 +238,11 @@ type
     IntegerField4: TIntegerField;
     LargeintField1: TLargeintField;
     StringField3: TStringField;
+    fdqryDizimistacod_pessoa: TIntegerField;
+    fdqryDizimistadata_mes: TDateField;
+    fdqryDizimistasdata_mes: TDateField;
+    fdqryizimitobreirodata_mes: TDateField;
+    fdqryDizimosMembrosdata_mes: TDateField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

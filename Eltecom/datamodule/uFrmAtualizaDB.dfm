@@ -27,8 +27,6 @@ object frmAtualizaDB: TfrmAtualizaDB
     Color = clBlack
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 419
-    ExplicitHeight = 54
     object pnl2: TPanel
       Left = 6
       Top = 6
@@ -42,8 +40,6 @@ object frmAtualizaDB: TfrmAtualizaDB
       Enabled = False
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 407
-      ExplicitHeight = 42
       object imgBD: TImage
         Left = 0
         Top = 48
@@ -1117,9 +1113,9 @@ object frmAtualizaDB: TfrmAtualizaDB
       object lblAt: TLabel
         Left = 11
         Top = 8
-        Width = 383
+        Width = 381
         Height = 24
-        Caption = 'Atualiza'#231#227'o Bando de Dados... AGUARDE...'
+        Caption = 'Atualiza'#231#227'o Banco de Dados... AGUARDE...'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -20

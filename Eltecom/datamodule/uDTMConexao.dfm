@@ -477,4 +477,23 @@ object dtmPrincipal: TdtmPrincipal
       Size = 9
     end
   end
+  object fdqryTipoSaida: TFDQuery
+    Connection = ConexaoDB
+    SQL.Strings = (
+      'SELECT codigo, tipo'
+      'FROM tipo_saida')
+    Left = 312
+    Top = 200
+    object fdqryTipoSaidacodigo: TFDAutoIncField
+      FieldName = 'codigo'
+      Origin = 'codigo'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object fdqryTipoSaidatipo: TStringField
+      FieldName = 'tipo'
+      Origin = 'tipo'
+      Required = True
+      Size = 50
+    end
+  end
 end

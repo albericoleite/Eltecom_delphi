@@ -3,8 +3,8 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Relat'#243'rios da Tesouraria'
-  ClientHeight = 196
-  ClientWidth = 374
+  ClientHeight = 178
+  ClientWidth = 375
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,10 +20,10 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
     Left = 0
     Top = 0
     Width = 217
-    Height = 196
+    Height = 178
     Align = alLeft
     TabOrder = 0
-    ExplicitHeight = 470
+    ExplicitHeight = 196
     object lbl5: TLabel
       Left = 95
       Top = 6
@@ -104,7 +104,7 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
       TabOrder = 3
     end
     object chkMembros: TCheckBox
-      Left = 9
+      Left = 6
       Top = 83
       Width = 106
       Height = 17
@@ -115,12 +115,12 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
   object pnl2: TPanel
     Left = 217
     Top = 0
-    Width = 157
-    Height = 196
+    Width = 158
+    Height = 178
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 209
-    ExplicitHeight = 59
+    ExplicitWidth = 157
+    ExplicitHeight = 196
     object btnSemana: TBitBtn
       Left = 264
       Top = 53

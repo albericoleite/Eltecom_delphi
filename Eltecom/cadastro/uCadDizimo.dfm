@@ -528,7 +528,7 @@ inherited frmCadDizimos: TfrmCadDizimos
       
         'SELECT t.cod_dizimo, t.cod_talao, t.cod_cheque, t.nome, t.valor,' +
         ' t.`data`, t.cargo, t.cod_congregacao,0 as nivel,coalesce(y.nro_' +
-        'rol,0) as rol'
+        'rol,0) as rol,date(:dtini)data_mes'
       
         'FROM tb_dizimista t inner join tb_parametro_sistema a on a.cod_c' +
         'ongregacao = t.cod_congregacao '
@@ -543,7 +543,7 @@ inherited frmCadDizimos: TfrmCadDizimos
       
         'select e.cod_dizimo,e.cod_talao,e.cod_cheque, c.nome_pessoa as n' +
         'ome,e.valor,e.`data`,"DIRIGENTE",c.cod_congregacao,100,c.nro_rol' +
-        ' '
+        ' ,date(:dtini)data_mes'
       'from tb_congregacao a '
       
         'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
@@ -558,7 +558,8 @@ inherited frmCadDizimos: TfrmCadDizimos
       '##OBREIROS'
       
         'select c.cod_dizimo,c.cod_talao,c.cod_cheque,a.NOME,c.valor,c.`d' +
-        'ata`,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol'
+        'ata`,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol,date(:dtini)dat' +
+        'a_mes'
       ' from tb_obreiro_cargo a '
       'inner join tb_cargo x on x.cod_cargo = a.COD_CARGO'
       'inner join tb_pessoa y on y.cod_pessoa = a.cod_membro'
@@ -584,13 +585,13 @@ inherited frmCadDizimos: TfrmCadDizimos
         Name = 'DTINI'
         DataType = ftDateTime
         ParamType = ptInput
-        Value = 43586d
+        Value = 43466d
       end
       item
         Name = 'DTFIM'
         DataType = ftDateTime
         ParamType = ptInput
-        Value = 43615d
+        Value = 43495d
       end>
     object intgrfldDizimistascod_dizimo: TIntegerField
       AutoGenerateValue = arDefault
@@ -650,6 +651,13 @@ inherited frmCadDizimos: TfrmCadDizimos
       ReadOnly = True
       Size = 15
     end
+    object fdqryDizimistasdata_mes: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'data_mes'
+      Origin = 'data_mes'
+      ProviderFlags = []
+      ReadOnly = True
+    end
   end
   object fdqryDizimosTotal: TFDQuery
     Active = True
@@ -693,7 +701,7 @@ inherited frmCadDizimos: TfrmCadDizimos
       
         'select e.cod_dizimo,e.cod_talao,e.cod_cheque, c.nome_pessoa as n' +
         'ome,e.valor,e.`data`,"DIRIGENTE" as cargo,c.cod_congregacao,100 ' +
-        ' nivel,c.nro_rol as rol'
+        ' nivel,c.nro_rol as rol,date(:dtini)data_mes'
       'from tb_congregacao a '
       
         'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
@@ -708,7 +716,8 @@ inherited frmCadDizimos: TfrmCadDizimos
       '##OBREIROS'
       
         'select c.cod_dizimo,c.cod_talao,c.cod_cheque,a.NOME,c.valor,c.`d' +
-        'ata`,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol'
+        'ata`,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol,date(:dtini)dat' +
+        'a_mes'
       ' from tb_obreiro_cargo a '
       'inner join tb_cargo x on x.cod_cargo = a.COD_CARGO'
       'inner join tb_pessoa y on y.cod_pessoa = a.cod_membro'
@@ -799,6 +808,13 @@ inherited frmCadDizimos: TfrmCadDizimos
       ProviderFlags = []
       ReadOnly = True
       Size = 15
+    end
+    object fdqryizimitobreirodata_mes: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'data_mes'
+      Origin = 'data_mes'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
   object dsMes: TDataSource

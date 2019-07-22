@@ -70,6 +70,8 @@ type
     dsMes: TDataSource;
     dblkcbbMes: TDBLookupComboBox;
     Label1: TLabel;
+    fdqryDizimistasdata_mes: TDateField;
+    fdqryizimitobreirodata_mes: TDateField;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

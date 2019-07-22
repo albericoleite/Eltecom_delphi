@@ -129,7 +129,7 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('INSERT INTO igreja.tb_funcao  '+
+    Qry.SQL.Add('INSERT INTO tb_funcao  '+
     ' (funcao, cod_departamento, nome_departamento) '+
     ' VALUES(:funcao, :cod_departamento, :nome_departamento)');
     Qry.ParamByName('funcao').AsString := F_funcao;

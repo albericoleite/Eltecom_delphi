@@ -57,6 +57,9 @@ type
     dblkcbbMes: TDBLookupComboBox;
     Label4: TLabel;
     dsMes: TDataSource;
+    dblkcbbTipoSaida: TDBLookupComboBox;
+    Label5: TLabel;
+    dsTipoSaida: TDataSource;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -72,6 +75,7 @@ type
     procedure dtdtIniChange(Sender: TObject);
     procedure dtdtFimChange(Sender: TObject);
     procedure dblkcbbMesClick(Sender: TObject);
+    procedure cbbTipoChange(Sender: TObject);
   private
     { Private declarations }
     oLancamento: TLancamento;
@@ -79,6 +83,7 @@ type
     function Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean; override;
     procedure ListaLancamentosPeriodo;
     function TotalizarEntrada: Double;
+    procedure ListaTipoSaida;
   public
     { Public declarations }
   end;
@@ -113,8 +118,8 @@ begin
     lbledtDescricao.Text := oLancamento.descricao;
     crncydtValor.Text := FloatToStr(oLancamento.valor);
     dtdtData.Date := oLancamento.dta_movimento;
-    // cbbTipo.text:= oLancamento.tipo;
-
+    dblkcbbTipoSaida.KeyValue := oLancamento.cod_saida;
+    cbbTipo.text:= oLancamento.tipo;
   end
   else
   begin
@@ -122,6 +127,7 @@ begin
     Abort;
   end;
   inherited;
+  ListaTipoSaida;
 
 end;
 
@@ -190,6 +196,12 @@ begin
   lbledtCodTalao.SetFocus;
 end;
 
+procedure TfrmCadLancamento.cbbTipoChange(Sender: TObject);
+begin
+  inherited;
+  ListaTipoSaida;
+end;
+
 procedure TfrmCadLancamento.cbbTipoKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
@@ -235,6 +247,7 @@ procedure TfrmCadLancamento.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
+  dtmPrincipal.fdqryTipoSaida.Close;
   if Assigned(oLancamento) then
     FreeAndNil(oLancamento);
 end;
@@ -249,6 +262,7 @@ begin
   dtdtFim.Date := now;
   dtmTesouraria := TdtmTesouraria.Create(self);
   ListaLancamentosPeriodo;
+  dtmPrincipal.fdqryTipoSaida.Open;
 end;
 
 procedure TfrmCadLancamento.FormShow(Sender: TObject);
@@ -272,6 +286,12 @@ begin
   oLancamento.dta_movimento := dtdtData.Date;
   oLancamento.tipo := cbbTipo.Text;
   oLancamento.usuario_inclusao := oUsuarioLogado.nome;
+  oLancamento.cod_saida:=0;
+  if cbbTipo.Text ='SAIDA' then        begin
+    oLancamento.cod_saida:= dblkcbbTipoSaida.KeyValue;
+  end;
+
+
   if (EstadodoCadastro = ecInserir) then
     Result := oLancamento.Inserir
   else if (EstadodoCadastro = ecAlterar) then
@@ -287,6 +307,19 @@ Result :=0;
        Result:= Result + QryListagem.FieldByName('').AsFloat;
        QryListagem.Next;
       end;
+end;
+
+procedure TfrmCadLancamento.ListaTipoSaida;
+begin
+  if cbbTipo.Text = 'SAIDA' then
+  begin
+    dblkcbbTipoSaida.Enabled := true;
+    dblkcbbTipoSaida.SetFocus;
+  end;
+  if cbbTipo.Text = 'ENTRADA' then
+  begin
+    dblkcbbTipoSaida.Enabled := false;
+  end;
 end;
 
 procedure TfrmCadLancamento.ListaLancamentosPeriodo;

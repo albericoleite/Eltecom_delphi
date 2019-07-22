@@ -84,6 +84,9 @@ type
     fdqryMeses: TFDQuery;
     fdqryMesesvalor: TLargeintField;
     fdqryMesesmes: TStringField;
+    fdqryTipoSaida: TFDQuery;
+    fdqryTipoSaidacodigo: TFDAutoIncField;
+    fdqryTipoSaidatipo: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

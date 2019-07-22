@@ -1419,6 +1419,14 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Controle de D'#237'zimo'
         OnClick = mniControledeDzimo1Click
       end
+      object iposdeCulto1: TMenuItem
+        Caption = 'Tipos de Culto'
+        OnClick = iposdeCulto1Click
+      end
+      object iposdeSadas1: TMenuItem
+        Caption = 'Tipos de Sa'#237'das'
+        OnClick = iposdeSadas1Click
+      end
     end
     object Relatrios1: TMenuItem
       Caption = 'Relat'#243'rios'

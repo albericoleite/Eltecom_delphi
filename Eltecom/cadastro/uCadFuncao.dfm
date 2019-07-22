@@ -1,8 +1,5 @@
 inherited frmCadFuncao: TfrmCadFuncao
   Caption = 'Cadastro de Fun'#231#227'o'
-  ExplicitTop = -16
-  ExplicitWidth = 806
-  ExplicitHeight = 485
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -40,6 +37,10 @@ inherited frmCadFuncao: TfrmCadFuncao
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 792
+      ExplicitHeight = 390
       object lbl2: TLabel
         Left = 350
         Top = 3
@@ -88,6 +89,10 @@ inherited frmCadFuncao: TfrmCadFuncao
   inherited pnlRodape: TPanel
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
+    end
+    inherited btnNovo: TBitBtn
+      Left = -1
+      ExplicitLeft = -1
     end
   end
   inherited QryListagem: TFDQuery

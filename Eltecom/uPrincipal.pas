@@ -135,6 +135,8 @@ type
     pnlDiasBatismo: TPanel;
     Label5: TLabel;
     Label6: TLabel;
+    iposdeCulto1: TMenuItem;
+    iposdeSadas1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -177,6 +179,8 @@ type
     procedure btn1Click(Sender: TObject);
     procedure mniControledeDzimo1Click(Sender: TObject);
     procedure mniPresenadeAlunos1Click(Sender: TObject);
+    procedure iposdeCulto1Click(Sender: TObject);
+    procedure iposdeSadas1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -205,7 +209,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
   uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor, uImportarExportarDados, uRelatoriosFinanceiro,
-  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd;
+  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -339,6 +343,8 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmRelatoriosFinanceiro, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmQuadroAnual, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmChamadaEbd, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmTipoCulto, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmTipoSaida, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -405,6 +411,16 @@ end;
 procedure TfrmPrincipal.Igreja1Click(Sender: TObject);
 begin
     TFuncao.CriarForm(TfrmCadIgreja, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.iposdeCulto1Click(Sender: TObject);
+begin
+ TFuncao.CriarForm(TfrmTipoCulto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.iposdeSadas1Click(Sender: TObject);
+begin
+   TFuncao.CriarForm(TfrmTipoSaida, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniAlterarSenha1Click(Sender: TObject);

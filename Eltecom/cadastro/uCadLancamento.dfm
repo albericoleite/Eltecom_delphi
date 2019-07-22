@@ -26,16 +26,16 @@ inherited frmCadLancamento: TfrmCadLancamento
   end
   inherited pgcPrincipal: TPageControl
     Width = 742
-    ExplicitWidth = 727
+    ActivePage = tabManutencao
+    ExplicitWidth = 742
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 719
+      ExplicitWidth = 734
       ExplicitHeight = 390
       inherited pnlListagem: TPanel
         Width = 734
         Height = 121
-        ExplicitTop = -6
         ExplicitWidth = 734
         ExplicitHeight = 121
         inherited lblIndice: TLabel
@@ -402,13 +402,13 @@ inherited frmCadLancamento: TfrmCadLancamento
     inherited tabManutencao: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 719
+      ExplicitWidth = 734
       ExplicitHeight = 390
       object pnl1: TPanel
         Left = 3
         Top = 3
         Width = 781
-        Height = 65
+        Height = 118
         TabOrder = 0
         object lbl1: TLabel
           Left = 471
@@ -431,6 +431,13 @@ inherited frmCadLancamento: TfrmCadLancamento
           Height = 13
           Caption = 'Valor'
         end
+        object Label5: TLabel
+          Left = 562
+          Top = 56
+          Width = 64
+          Height = 13
+          Caption = 'Tipo de Sa'#237'da'
+        end
         object cbbTipo: TComboBox
           Tag = 2
           Left = 637
@@ -441,6 +448,7 @@ inherited frmCadLancamento: TfrmCadLancamento
           ItemIndex = 0
           TabOrder = 4
           Text = 'ENTRADA'
+          OnChange = cbbTipoChange
           OnKeyPress = cbbTipoKeyPress
           Items.Strings = (
             'ENTRADA'
@@ -502,12 +510,23 @@ inherited frmCadLancamento: TfrmCadLancamento
           NumbersOnly = True
           TabOrder = 5
         end
+        object dblkcbbTipoSaida: TDBLookupComboBox
+          Left = 562
+          Top = 75
+          Width = 145
+          Height = 21
+          Enabled = False
+          KeyField = 'codigo'
+          ListField = 'tipo'
+          ListSource = dsTipoSaida
+          TabOrder = 6
+        end
       end
     end
   end
   inherited pnlRodape: TPanel
     Width = 742
-    ExplicitWidth = 727
+    ExplicitWidth = 742
     inherited btnNavigator: TDBNavigator
       Left = 413
       Hints.Strings = ()
@@ -515,7 +534,7 @@ inherited frmCadLancamento: TfrmCadLancamento
     end
     inherited btnFechar: TBitBtn
       Left = 650
-      ExplicitLeft = 635
+      ExplicitLeft = 650
     end
   end
   inherited QryListagem: TFDQuery
@@ -619,5 +638,10 @@ inherited frmCadLancamento: TfrmCadLancamento
     DataSet = dtmRelatorio.fdqryMeses
     Left = 250
     Top = 200
+  end
+  object dsTipoSaida: TDataSource
+    DataSet = dtmPrincipal.fdqryTipoSaida
+    Left = 360
+    Top = 232
   end
 end

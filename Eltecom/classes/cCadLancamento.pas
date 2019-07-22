@@ -21,6 +21,7 @@ type
     F_status: string;
     F_cod_congregacao: Integer;
     F_situacao: Integer;
+    F_cod_saida: Integer;
   public
     constructor Create(aConexao: TFDConnection); // CONSTRUTOR DA CLASSE
     destructor Destroy; override; // DESTROI A CLASSE USAR OVERRIDE POR CAUSA
@@ -43,6 +44,7 @@ type
     property tipo: string read F_tipo write F_tipo;
     property status: string read F_status write F_status;
     property situacao: Integer read F_situacao write F_situacao;
+    property cod_saida: Integer read F_cod_saida write F_cod_saida;
   end;
 
 implementation
@@ -110,7 +112,7 @@ begin
     Qry.SQL.Add('UPDATE tb_tesouraria '+
     ' SET nro_documento=:nro_documento, dta_movimento=:dta_movimento '+
     ' , descricao=:descricao, valor=:valor, tipo=:tipo, status=:status, '+
-    'cod_congregacao=:cod_congregacao, situacao=:situacao WHERE cod_entrada=:cod_entrada');
+    'cod_congregacao=:cod_congregacao, situacao=:situacao,cod_tipo_saida=:cod_tipo_saida WHERE cod_entrada=:cod_entrada');
     Qry.ParamByName('cod_congregacao').AsInteger := F_cod_congregacao;
     Qry.ParamByName('cod_entrada').AsInteger := F_cod_entrada;
     Qry.ParamByName('descricao').AsString := F_descricao;
@@ -120,6 +122,7 @@ begin
     Qry.ParamByName('valor').AsFloat := F_valor;
     Qry.ParamByName('dta_movimento').AsDate := F_dta_movimento;
     Qry.ParamByName('status').AsString := F_status;
+    Qry.ParamByName('cod_tipo_saida').AsInteger := F_cod_saida;
     try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -145,9 +148,9 @@ begin
     Qry.SQL.Clear;
     Qry.SQL.Add('INSERT INTO tb_tesouraria  '+
     ' (nro_documento, dta_movimento, usuario_inclusao, descricao, '+
-    ' valor, tipo, status, cod_congregacao, situacao) '+
+    ' valor, tipo, status, cod_congregacao, situacao,cod_tipo_saida) '+
     ' VALUES(:nro_documento,:dta_movimento,:usuario_inclusao,:descricao '+
-    ' ,:valor,:tipo,:status,:cod_congregacao,:situacao)');
+    ' ,:valor,:tipo,:status,:cod_congregacao,:situacao,:cod_tipo_saida)');
     Qry.ParamByName('cod_congregacao').AsInteger := Self.F_cod_congregacao;
     Qry.ParamByName('nro_documento').AsInteger := Self.F_nro_documento;
     Qry.ParamByName('tipo').Asstring := Self.F_tipo;
@@ -157,6 +160,7 @@ begin
     Qry.ParamByName('dta_movimento').AsDate := Self.F_dta_movimento;
     Qry.ParamByName('situacao').AsInteger := Self.F_situacao;
     Qry.ParamByName('status').Asstring := Self.F_status;
+    Qry.ParamByName('cod_tipo_saida').AsInteger := Self.F_cod_saida;
     try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -172,8 +176,8 @@ begin
     Qry.Connection := ConexaoDB; Qry.SQL.Clear;
     Qry.SQL.Add
       ('SELECT cod_entrada, nro_documento, dta_movimento, usuario_inclusao, '+
-      ' descricao, valor, tipo, status, cod_congregacao, situacao '+
-      ' FROM igreja.tb_tesouraria WHERE cod_entrada=:cod_entrada ');
+      ' descricao, valor, tipo, status, cod_congregacao, situacao,cod_tipo_saida '+
+      ' FROM tb_tesouraria WHERE cod_entrada=:cod_entrada ');
     Qry.ParamByName('cod_entrada').AsInteger := id;
 
     try Qry.Open; Self.F_cod_congregacao := Qry.FieldByName('cod_congregacao')
@@ -185,6 +189,7 @@ begin
     Self.F_valor := Qry.FieldByName('valor').AsFloat;
     Self.F_dta_movimento := Qry.FieldByName('dta_movimento').AsDateTime;
     Self.F_usuario_inclusao := Qry.FieldByName('usuario_inclusao').AsString;
+    Self.F_cod_saida := Qry.FieldByName('cod_tipo_saida').AsInteger;
     Except Result := false; end;
 
     finally if Assigned(Qry) then FreeAndNil(Qry) end; end;
