@@ -193,6 +193,37 @@ begin
   ' group by year(t.dta_movimento),month(t.dta_movimento),t.tipo,t.dta_movimento)x');
  end;
 
+  if not ViewExiste('v_dizimistas') then
+ begin
+   ExecutaDiretoBancoDeDados('create or replace view v_dizimistas as    '+
+    ' SELECT t.cod_dizimo, t.cod_talao, t.cod_cheque, t.nome, t.valor, t.`data`, t.cargo, t.cod_congregacao,    '+
+    ' 0 as nivel,coalesce(y.nro_rol,0) as rol                      '+
+    ' FROM tb_dizimista t inner join tb_parametro_sistema a on a.cod_congregacao = t.cod_congregacao  '+
+    ' left join tb_pessoa y on y.nome_pessoa = t.nome         '+
+    ' and t.cargo = '+QuotedStr('MEMBRO' )+'               '+
+    ' union all             '+
+    ' select e.cod_dizimo,e.cod_talao,e.cod_cheque, c.nome_pessoa as nome,e.valor,e.`data`      '+
+    ' ,"DIRIGENTE",c.cod_congregacao,100,c.nro_rol       '+
+    ' from tb_congregacao a                                                         '+
+    ' inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_congregacao   '+
+    ' left join tb_pessoa c on c.cod_pessoa = a.cod_dirigente                    '+
+    ' inner join tb_obreiro_cargo d on d.COD_MEMBRO = c.cod_pessoa                '+
+    ' left join tb_dizimista e on e.NOME = c.nome_pessoa and e.CARGO = d.CARGO    '+
+    ' union all                                                             '+
+
+    ' select c.cod_dizimo,c.cod_talao,c.cod_cheque,a.NOME,c.valor,c.`data`       '+
+    ' ,a.CARGO,a.COD_CONGREGACAO,x.nivel,y.nro_rol    '+
+    '  from tb_obreiro_cargo a                                    '+
+    ' inner join tb_cargo x on x.cod_cargo = a.COD_CARGO         '+
+    ' inner join tb_pessoa y on y.cod_pessoa = a.cod_membro            '+
+    ' inner join tb_parametro_sistema b on a.COD_CONGREGACAO = b.cod_congregacao    '+
+    ' left join tb_dizimista c on c.cod_congregacao = a.COD_CONGREGACAO and c.cargo = a.CARGO and c.nome = a.NOME  '+
+    ' where a.cod_membro <> (select  c.cod_pessoa  from tb_congregacao a  '+
+    ' inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_congregacao    '+
+    ' left join tb_pessoa c on c.cod_pessoa = a.cod_dirigente)    '+
+    ' order by nivel desc     ');
+ end;
+
 
      //Adicionar SIGLA DO DEPARTAMENTO
   if not CampoExisteNaTabela('tb_classe_professor','cod_congregacao') then
@@ -266,6 +297,14 @@ begin
 ' VALUES( dta_aul, cod_class, 0, 0, tri, cod_cong, nro_lic, tlic, trev); '+
 ' END IF;       '+
 'END;');
+ end;
+
+
+   //Adicionar código da congregação no recibo
+  if not CampoExisteNaTabela('tb_tesouraria','cod_tipo_saida') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE `igreja`.`tb_tesouraria` '+
+   ' ADD COLUMN `cod_tipo_saida` INT(11) NULL AFTER `situacao`;');
  end;
 
   {  //Adicionar código da congregação no recibo

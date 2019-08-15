@@ -1,7 +1,8 @@
 inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
-  ClientWidth = 742
-  ExplicitWidth = 748
+  ClientWidth = 736
+  ExplicitTop = -116
+  ExplicitWidth = 742
   PixelsPerInch = 96
   TextHeight = 13
   object lbl4: TLabel [0]
@@ -25,18 +26,14 @@ inherited frmCadLancamento: TfrmCadLancamento
     ParentFont = False
   end
   inherited pgcPrincipal: TPageControl
-    Width = 742
-    ActivePage = tabManutencao
-    ExplicitWidth = 742
+    Width = 736
+    ExplicitWidth = 736
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 734
-      ExplicitHeight = 390
+      ExplicitWidth = 728
       inherited pnlListagem: TPanel
-        Width = 734
+        Width = 728
         Height = 121
-        ExplicitWidth = 734
+        ExplicitWidth = 728
         ExplicitHeight = 121
         inherited lblIndice: TLabel
           Top = 8
@@ -96,7 +93,7 @@ inherited frmCadLancamento: TfrmCadLancamento
           ParentFont = False
         end
         object Label3: TLabel [6]
-          Left = 565
+          Left = 548
           Top = 91
           Width = 58
           Height = 19
@@ -326,9 +323,9 @@ inherited frmCadLancamento: TfrmCadLancamento
           TabOrder = 8
         end
         object crncydtSubtotal: TCurrencyEdit
-          Left = 629
+          Left = 619
           Top = 88
-          Width = 90
+          Width = 100
           Height = 27
           DisplayFormat = 'R$ 0.00;-0.00'
           Enabled = False
@@ -361,13 +358,14 @@ inherited frmCadLancamento: TfrmCadLancamento
       end
       inherited grdListagem: TDBGrid
         Top = 121
-        Width = 734
+        Width = 728
         Height = 269
         DataSource = dtsListagem
         Columns = <
           item
             Expanded = False
             FieldName = 'cod_entrada'
+            Width = 44
             Visible = True
           end
           item
@@ -378,32 +376,38 @@ inherited frmCadLancamento: TfrmCadLancamento
           item
             Expanded = False
             FieldName = 'dta_movimento'
-            Width = 70
+            Width = 69
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'descricao'
+            Width = 207
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'valor'
+            Width = 84
             Visible = True
           end
           item
+            Alignment = taCenter
             Expanded = False
             FieldName = 'tipo'
-            Width = 69
+            Width = 60
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'TipoSaida'
             Visible = True
           end>
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 734
-      ExplicitHeight = 390
+      ExplicitWidth = 728
       object pnl1: TPanel
         Left = 3
         Top = 3
@@ -525,24 +529,25 @@ inherited frmCadLancamento: TfrmCadLancamento
     end
   end
   inherited pnlRodape: TPanel
-    Width = 742
-    ExplicitWidth = 742
+    Width = 736
+    ExplicitWidth = 736
     inherited btnNavigator: TDBNavigator
       Left = 413
       Hints.Strings = ()
       ExplicitLeft = 413
     end
     inherited btnFechar: TBitBtn
-      Left = 650
-      ExplicitLeft = 650
+      Left = 644
+      ExplicitLeft = 644
     end
   end
   inherited QryListagem: TFDQuery
+    Active = True
     SQL.Strings = (
       'SELECT t.cod_entrada, t.nro_documento, t.dta_movimento'
       ', t.dta_inclusao, t.usuario_inclusao'
       ', t.descricao, t.valor, t.tipo, t.status'
-      ', t.cod_congregacao, t.situacao'
+      ', t.cod_congregacao, t.situacao,cod_tipo_saida'
       
         'FROM tb_tesouraria t join tb_parametro_sistema a on a.cod_congre' +
         'gacao = t.cod_congregacao where t.dta_movimento between '
@@ -554,13 +559,13 @@ inherited frmCadLancamento: TfrmCadLancamento
     ParamData = <
       item
         Name = 'DTINI'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43466d
       end
       item
         Name = 'DTFIM'
-        DataType = ftDate
+        DataType = ftDateTime
         ParamType = ptInput
         Value = 43586d
       end>
@@ -628,6 +633,21 @@ inherited frmCadLancamento: TfrmCadLancamento
       AutoGenerateValue = arDefault
       FieldName = 'situacao'
       Origin = 'situacao'
+    end
+    object QryListagemcod_tipo_saida: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'cod_tipo_saida'
+      Origin = 'cod_tipo_saida'
+    end
+    object QryListagemTipoSaida: TStringField
+      DisplayLabel = 'T. Sa'#237'da'
+      FieldKind = fkLookup
+      FieldName = 'TipoSaida'
+      LookupDataSet = dtmPrincipal.fdqryTipoSaida
+      LookupKeyFields = 'codigo'
+      LookupResultField = 'tipo'
+      KeyFields = 'cod_tipo_saida'
+      Lookup = True
     end
   end
   inherited dtsListagem: TDataSource

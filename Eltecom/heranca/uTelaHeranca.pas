@@ -394,8 +394,8 @@ begin
             else if (Components[i] is TCurrencyEdit) then
             TCurrencyEdit(Components[i]).Value:=0
 
-            else if (Components[i] is TDateEdit) then
-            TDateEdit(Components[i]).Date:=0 ;
+            //else if (Components[i] is TDateEdit) then
+            //TDateEdit(Components[i]).Date:=0 ;
      end;
 end;
 

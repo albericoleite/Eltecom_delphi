@@ -197,7 +197,7 @@ object frmAniversariantes: TfrmAniversariantes
       
         'inner join tb_parametro_sistema c on c.cod_congregacao =a.cod_co' +
         'ngregacao'
-      ''
+      'order by day(a.dta_nascimento)'
       ''
       ''
       '')
@@ -232,13 +232,6 @@ object frmAniversariantes: TfrmAniversariantes
       FieldName = 'dta_nascimento'
       Origin = 'dta_nascimento'
     end
-    object fdqryAniverariantesidade: TLargeintField
-      AutoGenerateValue = arDefault
-      FieldName = 'idade'
-      Origin = 'idade'
-      ProviderFlags = []
-      ReadOnly = True
-    end
     object fdqryAniverariantesfiltro: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'filtro'
@@ -251,6 +244,13 @@ object frmAniversariantes: TfrmAniversariantes
       FieldName = 'telefone'
       Origin = 'fone_celular'
       Size = 30
+    end
+    object fdqryAniverariantesidade: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'idade'
+      Origin = 'idade'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
   object dsMes: TDataSource

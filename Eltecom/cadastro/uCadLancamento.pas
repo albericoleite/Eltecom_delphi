@@ -60,6 +60,8 @@ type
     dblkcbbTipoSaida: TDBLookupComboBox;
     Label5: TLabel;
     dsTipoSaida: TDataSource;
+    QryListagemcod_tipo_saida: TIntegerField;
+    QryListagemTipoSaida: TStringField;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -153,6 +155,8 @@ begin
   inherited;
   dtdtIni.Date := dti;
   dtdtFim.Date := dtf;
+btnBuscarClick(sender);
+
 end;
 
 procedure TfrmCadLancamento.btnGravarClick(Sender: TObject);
@@ -164,12 +168,19 @@ begin
   dtdtIni.Date := dti;
   dtdtFim.Date := dtf;
   dtmTesouraria.fdqryTes_valores.Refresh;
+  btnBuscarClick(sender);
 end;
 
 procedure TfrmCadLancamento.btnImprimir1Click(Sender: TObject);
 begin
   inherited;
-  //TODO: Adicionar fundo reserva no fechamento "PARNAMIRIM" (Tes. Francisco Moura);
+  if mmoSemana.Text ='' then
+  begin
+    Application.MessageBox('Período não selecionado, escolha o período e clique em buscar ' , 'Atenção');
+  Abort;
+  end;
+
+
   if not strngfldQryListagemstatus.IsNull then
   begin
     // Atualizar consulta da Congregação

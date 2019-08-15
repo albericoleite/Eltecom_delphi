@@ -25,7 +25,6 @@ type
     fdqryAniverariantessexo: TStringField;
     fdqryAniverariantesmembro_congregado: TStringField;
     fdqryAniverariantesdta_nascimento: TDateField;
-    fdqryAniverariantesidade: TLargeintField;
     fdqryAniverariantesfiltro: TStringField;
     fdqryAniverariantestelefone: TStringField;
     dblkcbbMes: TDBLookupComboBox;
@@ -33,6 +32,7 @@ type
     dbgrdAniversariantes: TDBGrid;
     dsAniversariantes: TDataSource;
     Label1: TLabel;
+    fdqryAniverariantesidade: TIntegerField;
     procedure FormCreate(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure fdqryAniverariantesFilterRecord(DataSet: TDataSet;
