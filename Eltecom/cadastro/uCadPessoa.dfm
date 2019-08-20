@@ -23,6 +23,7 @@ inherited frmCadPessoa: TfrmCadPessoa
   inherited pgcPrincipal: TPageControl
     Width = 956
     Height = 448
+    ActivePage = tabManutencao
     OnChange = pgcPrincipalChange
     ExplicitWidth = 956
     ExplicitHeight = 448

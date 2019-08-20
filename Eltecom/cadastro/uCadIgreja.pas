@@ -45,6 +45,11 @@ type
     pnlImage: TPanel;
     imgFoto: TImage;
     dlgOpenPicBuscarFoto: TOpenPictureDialog;
+    lbledtemail_secretaria: TLabeledEdit;
+    medtCEP: TMaskEdit;
+    lblCEP: TLabel;
+    medtFone: TMaskEdit;
+    lbl14: TLabel;
     procedure btnAlterarClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -52,6 +57,7 @@ type
     procedure CarregarImagem1Click(Sender: TObject);
     procedure imgFotoDblClick(Sender: TObject);
     procedure dtsListagemDataChange(Sender: TObject; Field: TField);
+    procedure medtFoneChange(Sender: TObject);
   private
     { Private declarations }
     oIgreja: TIgreja;
@@ -95,6 +101,9 @@ begin
        oIgreja.cidade := lbledtCidade.Text;
        oIgreja.email := lbledtEmail.Text;
        oIgreja.cnpj:= lbledtCNPJ.Text;
+       oIgreja.email_secretaria:=lbledtemail_secretaria.Text;
+       oIgreja.cep:=medtCEP.Text;
+       oIgreja.fone:= medtFone.Text;
 
 
     if (EstadodoCadastro=ecInserir) then
@@ -128,6 +137,12 @@ end;
 end;
 end;
 
+procedure TfrmCadIgreja.medtFoneChange(Sender: TObject);
+begin
+  inherited;
+
+end;
+
 {$endregion}
 
 procedure TfrmCadIgreja.btnAlterarClick(Sender: TObject);
@@ -145,6 +160,9 @@ begin
     lbledtSigla.Text      := oIgreja.sigla_igreja;
     lbledtPercAjuste.Text :=oIgreja.percentual_ajuste.ToString();
     lbledtCNPJ.Text       := oIgreja.cnpj;
+    lbledtemail_secretaria.Text:=oIgreja.email_secretaria;
+    medtCEP.Text:=oIgreja.cep;
+    medtFone.Text:=oIgreja.fone;
     end
   else
   begin

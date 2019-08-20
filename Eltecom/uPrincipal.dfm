@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Splendor Gest'#227'o de Igrejas - 2019.8.1'
+  Caption = 'Splendor Gest'#227'o de Igrejas - 2019.8.2'
   ClientHeight = 560
   ClientWidth = 1269
   Color = clBtnFace
@@ -70,11 +70,8 @@ object frmPrincipal: TfrmPrincipal
     MultiLine = True
     ParentFont = False
     TabOrder = 2
-    ExplicitTop = 33
-    ExplicitHeight = 510
     object Principal: TTabSheet
       Caption = 'Principal'
-      ExplicitHeight = 482
       object pnlGeral: TPanel
         Left = 0
         Top = 0
@@ -82,7 +79,6 @@ object frmPrincipal: TfrmPrincipal
         Height = 506
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 482
         object spl3: TSplitter
           Left = 562
           Top = 1
@@ -98,7 +94,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 504
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 480
           object spl2: TSplitter
             Left = 1
             Top = 257
@@ -115,7 +110,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 243
             Align = alClient
             TabOrder = 0
-            ExplicitHeight = 219
             object dbcht2: TDBChart
               Left = 1
               Top = 1
@@ -134,7 +128,6 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
-              ExplicitHeight = 217
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
@@ -230,7 +223,6 @@ object frmPrincipal: TfrmPrincipal
           Color = clWhite
           ParentBackground = False
           TabOrder = 1
-          ExplicitHeight = 480
           object spl1: TSplitter
             Left = 1
             Top = 255
@@ -16002,7 +15994,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 245
             Align = alClient
             TabOrder = 1
-            ExplicitHeight = 221
             object lbl2: TLabel
               Left = 1
               Top = 1
@@ -16079,7 +16070,10 @@ object frmPrincipal: TfrmPrincipal
     object Financeiro: TTabSheet
       Caption = 'Financeiro'
       ImageIndex = 1
-      ExplicitHeight = 482
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnl6: TPanel
         Left = 0
         Top = 0
@@ -16087,7 +16081,6 @@ object frmPrincipal: TfrmPrincipal
         Height = 506
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 482
         object spl4: TSplitter
           Left = 641
           Top = 1
@@ -16103,7 +16096,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 504
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 480
           object spl5: TSplitter
             Left = 1
             Top = 257
@@ -16120,7 +16112,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 243
             Align = alClient
             TabOrder = 0
-            ExplicitHeight = 219
             object dbcht4: TDBChart
               Left = 1
               Top = 1
@@ -16139,7 +16130,6 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
-              ExplicitHeight = 217
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
@@ -16229,7 +16219,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 504
           Align = alLeft
           TabOrder = 1
-          ExplicitHeight = 480
           object spl6: TSplitter
             Left = 1
             Top = 255
@@ -16292,7 +16281,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 245
             Align = alClient
             TabOrder = 1
-            ExplicitHeight = 221
             object dbcht7: TDBChart
               Left = 1
               Top = 1
@@ -16310,7 +16298,6 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
-              ExplicitHeight = 219
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
@@ -16338,7 +16325,10 @@ object frmPrincipal: TfrmPrincipal
     object EBD: TTabSheet
       Caption = 'EBD'
       ImageIndex = 2
-      ExplicitHeight = 482
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnl13: TPanel
         Left = 0
         Top = 0
@@ -16346,7 +16336,6 @@ object frmPrincipal: TfrmPrincipal
         Height = 506
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 482
         object spl7: TSplitter
           Left = 562
           Top = 1
@@ -16361,7 +16350,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 504
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 480
           object spl8: TSplitter
             Left = 1
             Top = 257
@@ -16378,7 +16366,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 243
             Align = alClient
             TabOrder = 0
-            ExplicitHeight = 219
           end
           object pnl16: TPanel
             Left = 1
@@ -16405,7 +16392,7 @@ object frmPrincipal: TfrmPrincipal
               object lbl3: TLabel
                 Left = 1
                 Top = 1
-                Width = 150
+                Width = 78
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -16416,7 +16403,6 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 78
               end
             end
             object pnlAlunos: TPanel
@@ -16437,7 +16423,7 @@ object frmPrincipal: TfrmPrincipal
               object Label1: TLabel
                 Left = 1
                 Top = 1
-                Width = 151
+                Width = 47
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -16448,7 +16434,6 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 47
               end
             end
             object pnlClasses: TPanel
@@ -16469,7 +16454,7 @@ object frmPrincipal: TfrmPrincipal
               object Label2: TLabel
                 Left = 1
                 Top = 1
-                Width = 151
+                Width = 46
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -16480,7 +16465,6 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 46
               end
             end
             object pnlPessoas: TPanel
@@ -16501,7 +16485,7 @@ object frmPrincipal: TfrmPrincipal
               object Label4: TLabel
                 Left = 1
                 Top = 1
-                Width = 151
+                Width = 114
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -16512,7 +16496,6 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 114
               end
             end
           end
@@ -16524,7 +16507,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 504
           Align = alLeft
           TabOrder = 1
-          ExplicitHeight = 480
           object spl9: TSplitter
             Left = 1
             Top = 255
@@ -16612,11 +16594,10 @@ object frmPrincipal: TfrmPrincipal
             Height = 245
             Align = alClient
             TabOrder = 1
-            ExplicitHeight = 221
             object Label3: TLabel
               Left = 1
               Top = 1
-              Width = 557
+              Width = 253
               Height = 19
               Align = alTop
               Caption = 'Alunos aniversariantes do M'#234's '
@@ -16628,7 +16609,6 @@ object frmPrincipal: TfrmPrincipal
               Font.Style = [fsBold]
               ParentColor = False
               ParentFont = False
-              ExplicitWidth = 253
             end
             object DBGrid1: TDBGrid
               Left = 1

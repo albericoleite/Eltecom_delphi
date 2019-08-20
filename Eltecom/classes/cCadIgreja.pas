@@ -18,6 +18,8 @@ F_dta_inclusao:TDateTime;
 F_sigla_igreja:string;
 F_site:string;
 F_email:string;
+F_email_secretaria:string;
+F_cep:string;
 F_cnpj:string;
 F_logradouro:string;
 F_bairro:string;
@@ -51,6 +53,8 @@ property dta_inclusao:TDateTime         read F_dta_inclusao      write F_dta_inc
 property sigla_igreja:string            read F_sigla_igreja      write F_sigla_igreja;
 property site:string                    read F_site               write F_site;
 property email:string                   read F_email              write F_email;
+property email_secretaria:string                   read F_email_secretaria              write F_email_secretaria;
+property cep:string                   read F_cep              write F_cep;
 property cnpj:string                    read F_cnpj               write F_cnpj;
 property logradouro:string              read F_logradouro         write F_logradouro;
 property bairro:string                  read F_bairro             write F_bairro;
@@ -136,7 +140,7 @@ begin
         ', fone=:fone '+
         ',percentual_ajuste=:percentual_ajuste '+
         ', sistema=:sistema '+
-        ', situacao=:situacao '+
+        ', situacao=:situacao, email_secretaria=:email_secretaria, cep=:cep '+
         ' WHERE cod_igreja=:cod_igreja');
        Qry.ParamByName('nome_igreja').AsString:=F_nome_igreja;
        Qry.ParamByName('cod_igreja').AsInteger:=F_cod_igreja;
@@ -146,6 +150,8 @@ begin
        Qry.ParamByName('sigla_igreja').AsString:=F_sigla_igreja;
        Qry.ParamByName('site').AsString:=F_site;
        Qry.ParamByName('email').AsString:=F_email;
+       Qry.ParamByName('email_secretaria').AsString:=F_email_secretaria;
+       Qry.ParamByName('cep').AsString:=F_cep;
        Qry.ParamByName('cnpj').AsString:=F_cnpj;
        Qry.ParamByName('logradouro').AsString:=F_logradouro;
        Qry.ParamByName('bairro').AsString:=F_bairro;
@@ -179,16 +185,18 @@ begin
        Qry.SQL.Clear;
        Qry.SQL.Add('INSERT INTO tb_igreja '+
         '(nome_igreja, cidade, dta_fundacao, nome_presidente, dta_inclusao, sigla_igreja, '+
-        'site, email, cnpj, logradouro, bairro, uf, fone, percentual_ajuste, sistema, situacao) '+
+        'site, email, cnpj, logradouro, bairro, uf, fone, percentual_ajuste, sistema, situacao,email_secretaria,cep) '+
         'VALUES(:nome_igreja, :cidade, :dta_fundacao, :nome_presidente, :dta_inclusao, :sigla_igreja '+
-        ', :site, :email, :cnpj, :logradouro, :bairro, :uf, :fone, :percentual_ajuste, :sistema, :situacao)');
+        ', :site, :email, :cnpj, :logradouro, :bairro, :uf, :fone, :percentual_ajuste, :sistema, :situacao,:email_secretaria,:cep)');
        Qry.ParamByName('nome_igreja').AsString:=F_nome_igreja;
        Qry.ParamByName('dta_fundacao').AsDateTime:=F_dta_fundacao;
        Qry.ParamByName('nome_presidente').AsString:=F_nome_presidente;
        Qry.ParamByName('dta_inclusao').AsDateTime :=F_dta_inclusao;
        Qry.ParamByName('sigla_igreja').AsString:=F_sigla_igreja;
        Qry.ParamByName('site').AsString:=F_sigla_igreja;
-       Qry.ParamByName('email').AsString:=F_sigla_igreja;
+       Qry.ParamByName('email').AsString:=F_email;
+       Qry.ParamByName('email_secretaria').AsString:=F_email_secretaria;
+       Qry.ParamByName('cep').AsString:=F_cep;
        Qry.ParamByName('cnpj').AsString:=F_sigla_igreja;
        Qry.ParamByName('logradouro').AsString:=F_sigla_igreja;
        Qry.ParamByName('bairro').AsString:=F_sigla_igreja;
@@ -224,7 +232,7 @@ try
        ' nome_presidente, '+
        ' dta_inclusao, sigla_igreja, site, email, cnpj  '+
        ' , logradouro, bairro, uf, fone, '+
-       ' percentual_ajuste, sistema, situacao FROM igreja.tb_igreja where  cod_igreja = :cod_igreja ');
+       ' percentual_ajuste, sistema, situacao,email_secretaria,cep FROM tb_igreja where  cod_igreja = :cod_igreja ');
       Qry.ParamByName('cod_igreja').AsInteger:=id;
 
 
@@ -239,6 +247,8 @@ try
       Self.F_sigla_igreja:= Qry.FieldByName('sigla_igreja').AsString;
       Self.F_site:= Qry.FieldByName('site').AsString;
       Self.F_email:= Qry.FieldByName('email').AsString;
+      Self.F_email_secretaria:= Qry.FieldByName('email_secretaria').AsString;
+      Self.F_cep:= Qry.FieldByName('cep').AsString;
       Self.F_cnpj:= Qry.FieldByName('cnpj').AsString;
       Self.F_logradouro:= Qry.FieldByName('logradouro').AsString;
       Self.F_bairro:= Qry.FieldByName('bairro').AsString;

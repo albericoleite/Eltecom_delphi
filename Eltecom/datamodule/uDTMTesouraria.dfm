@@ -2054,6 +2054,7 @@
           Left = 563.149970000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
+          DataField = 'MAIO'
           DataSet = frxdbQuadroDizimistas
           DataSetName = 'frxdbQuadroDizimistas'
           DisplayFormat.FormatStr = '%2.2m'
@@ -2074,7 +2075,7 @@
           Highlight.FillType = ftBrush
           Highlight.Frame.Typ = []
           Memo.UTF8W = (
-            '[SUM(<frxdbQuadroDizimistas."MAIO">,MasterData1)]')
+            '[frxdbQuadroDizimistas."MAIO"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2240,7 +2241,6 @@
         object frxdbBuscaIgrejalogradouro: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
-          Left = 0.000000000000044298
           Top = 22.677180000000000000
           Width = 1046.929810000000000000
           Height = 41.574830000000000000
@@ -2799,7 +2799,7 @@
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxdbQuadroDizimistas."MAIO"]')
+            '[SUM(<frxdbQuadroDizimistas."MAIO">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -4111,8 +4111,9 @@
           Left = 563.149970000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
-          DataSet = frxdbQuadroDizimistas
-          DataSetName = 'frxdbQuadroDizimistas'
+          DataField = 'MAIO'
+          DataSet = frxdbQuadroDizimistaspG
+          DataSetName = 'frxdbQuadroDizimistasPg'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -4121,7 +4122,7 @@
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            '[SUM(<frxdbQuadroDizimistasPg."MAIO">,MasterData1)]')
+            '[frxdbQuadroDizimistasPg."MAIO"]')
           ParentFont = False
           VAlign = vaCenter
         end

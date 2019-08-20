@@ -75,7 +75,11 @@ uses
   uQuadroAnual in 'Relatorios\uQuadroAnual.pas' {frmQuadroAnual},
   uChamadaEbd in 'ebd\uChamadaEbd.pas' {frmChamadaEbd},
   uDTMEbd in 'datamodule\uDTMEbd.pas' {dtmEbd: TDataModule},
-  cCadEbdAula in 'ebd\cCadEbdAula.pas';
+  cCadEbdAula in 'ebd\cCadEbdAula.pas',
+  uCadTipoCulto in 'cadastro\uCadTipoCulto.pas' {frmTipoCulto},
+  cCadTipoCulto in 'classes\cCadTipoCulto.pas',
+  cCadTipoSaida in 'classes\cCadTipoSaida.pas',
+  uCadTipoSaida in 'cadastro\uCadTipoSaida.pas' {frmTipoSaida};
 
 {$R *.res}
 

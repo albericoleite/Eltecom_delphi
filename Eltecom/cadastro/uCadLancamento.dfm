@@ -1,7 +1,6 @@
 inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
   ClientWidth = 736
-  ExplicitTop = -116
   ExplicitWidth = 742
   PixelsPerInch = 96
   TextHeight = 13
@@ -27,6 +26,7 @@ inherited frmCadLancamento: TfrmCadLancamento
   end
   inherited pgcPrincipal: TPageControl
     Width = 736
+    ActivePage = tabManutencao
     ExplicitWidth = 736
     inherited tabListagem: TTabSheet
       ExplicitWidth = 728

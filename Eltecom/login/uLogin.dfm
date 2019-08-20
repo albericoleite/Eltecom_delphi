@@ -4792,7 +4792,7 @@ object frmLogin: TfrmLogin
     Top = 167
     Width = 29
     Height = 13
-    Caption = 'V. 2.0'
+    Caption = 'V. 2.1'
   end
   object pnl1: TPanel
     Left = 0
@@ -4831,8 +4831,8 @@ object frmLogin: TfrmLogin
     object lbl3: TLabel
       Left = 32
       Top = 10
-      Width = 209
-      Height = 31
+      Width = 159
+      Height = 24
       Alignment = taCenter
       Caption = 'Seja Bem Vindo'
       Font.Charset = ANSI_CHARSET

@@ -205,6 +205,7 @@ procedure TfrmCadLancamento.btnNovoClick(Sender: TObject);
 begin
   inherited;
   lbledtCodTalao.SetFocus;
+  dtdtData.Date:=Now;
 end;
 
 procedure TfrmCadLancamento.cbbTipoChange(Sender: TObject);

@@ -307,6 +307,14 @@ begin
    ' ADD COLUMN `cod_tipo_saida` INT(11) NULL AFTER `situacao`;');
  end;
 
+    //Adicionar código da congregação no recibo
+  if not CampoExisteNaTabela('tb_igreja','email_secretaria') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_igreja ADD email_secretaria varchar(50) NULL;');
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_igreja ADD cep varchar(20) NULL;');
+ end;
+
+
   {  //Adicionar código da congregação no recibo
   if not CampoExisteNaTabela('tb_classe_aluno','tb_classe_aluno_tb_classe_fk') then
  begin

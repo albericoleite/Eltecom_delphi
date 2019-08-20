@@ -155,14 +155,28 @@ object dtmRelatorio: TdtmRelatorio
         HAlign = haCenter
         Memo.UTF8W = (
           
-            'e-mail da [frxdbBuscaIgreja."sigla_igreja"] [frxdbBuscaIgreja."e' +
-            'mail"]/ Secretaria: adparsec2012@gmail.com CNPJ 08.332.785/0018-' +
-            '50'
+            'e-mail da [frxdbBuscaIgreja."sigla_igreja"] [Lowercase(<frxdbBus' +
+            'caIgreja."email">)] / Secretaria: adparsec2012@gmail.com CNPJ [f' +
+            'rxdbBuscaIgreja."cnpj"]'
           
-            'Rua Comandante Petit, 905 '#8211' [frxdbBuscaIgreja."cidade"]-[frxdbBu' +
-            'scaIgreja."uf"]/CEP  59140-140/ fone/fax: (84) 3645-2380')
+            '[Lowercase(<frxdbBuscaIgreja."logradouro">)] '#8211' [frxdbBuscaIgreja' +
+            '."cidade"]-[frxdbBuscaIgreja."uf"]/CEP  59140-140/ fone/fax: (84' +
+            ') 3645-2380')
         ParentFont = False
         VAlign = vaBottom
+        Formats = <
+          item
+          end
+          item
+          end
+          item
+          end
+          item
+          end
+          item
+          end
+          item
+          end>
       end
       object Memo5: TfrxMemoView
         AllowVectorExport = True
@@ -416,7 +430,11 @@ object dtmRelatorio: TdtmRelatorio
       'uf=uf'
       'fone=fone'
       'foto=foto'
-      'percentual_ajuste=percentual_ajuste')
+      'percentual_ajuste=percentual_ajuste'
+      'sistema=sistema'
+      'situacao=situacao'
+      'email_secretaria=email_secretaria'
+      'cep=cep')
     DataSet = fdqryBucarIgreja
     BCDToCurrency = False
     Left = 152
@@ -489,13 +507,14 @@ object dtmRelatorio: TdtmRelatorio
     Top = 72
   end
   object fdqryBucarIgreja: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
         'SELECT cod_igreja, nome_igreja, cidade, dta_fundacao, nome_presi' +
-        'dente, dta_inclusao, sigla_igreja, site, email, cnpj, logradouro' +
-        ', bairro, uf, fone, foto, percentual_ajuste, sistema, situacao'
+        'dente, dta_inclusao, sigla_igreja'
+      
+        ', site, email, cnpj, logradouro, bairro, uf, fone, foto, percent' +
+        'ual_ajuste, sistema, situacao,email_secretaria,cep'
       'FROM igreja.tb_igreja where cod_igreja='
       '1')
     Left = 40
@@ -590,6 +609,27 @@ object dtmRelatorio: TdtmRelatorio
       AutoGenerateValue = arDefault
       FieldName = 'percentual_ajuste'
       Origin = 'percentual_ajuste'
+    end
+    object fdqryBucarIgrejasistema: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'sistema'
+      Origin = 'sistema'
+    end
+    object fdqryBucarIgrejasituacao: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'situacao'
+      Origin = 'situacao'
+    end
+    object fdqryBucarIgrejaemail_secretaria: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'email_secretaria'
+      Origin = 'email_secretaria'
+      Size = 50
+    end
+    object fdqryBucarIgrejacep: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cep'
+      Origin = 'cep'
     end
   end
   object fdqryBuscaPessoaRelatorio: TFDQuery
@@ -3949,7 +3989,6 @@ object dtmRelatorio: TdtmRelatorio
       object Memo4: TfrxMemoView
         Align = baCenter
         AllowVectorExport = True
-        Left = -0.000000000000024203
         Top = 1009.134510000000000000
         Width = 718.110700000000000000
         Height = 37.795300000000000000
@@ -3964,11 +4003,13 @@ object dtmRelatorio: TdtmRelatorio
         HAlign = haCenter
         Memo.UTF8W = (
           
-            'e-mail da ADPAR adparnamirim@uol.com.br/ Secretaria: adparsec201' +
-            '2@gmail.com CNPJ 08.332.785/0018-50'
+            'e-mail da [frxdbBuscaIgreja."sigla_igreja"] [Lowercase(<frxdbBus' +
+            'caIgreja."email">)]/ Secretaria: [Lowercase(<frxdbBuscaIgreja."e' +
+            'mail_secretaria">)] CNPJ [frxdbBuscaIgreja."cnpj"]'
           
-            'Rua Comandante Petit, 905 '#8211' Parnamirim-RN/CEP  59140-140/ fone/f' +
-            'ax: (84) 3645-2380')
+            '[Lowercase(<frxdbBuscaIgreja."logradouro">)] '#8211' [frxdbBuscaIgreja' +
+            '."cidade"] - [frxdbBuscaIgreja."uf"]/CEP  [frxdbBuscaIgreja."cep' +
+            '"]/ fone/fax: [frxdbBuscaIgreja."fone"]')
         ParentFont = False
         VAlign = vaBottom
         Formats = <
@@ -5415,7 +5456,7 @@ object dtmRelatorio: TdtmRelatorio
       object Memo78: TfrxMemoView
         Align = baCenter
         AllowVectorExport = True
-        Left = 75.590599999999970000
+        Left = 75.590600000000000000
         Top = 978.898270000000000000
         Width = 566.929500000000000000
         Height = 18.897650000000000000
@@ -7784,30 +7825,15 @@ object dtmRelatorio: TdtmRelatorio
         HAlign = haCenter
         Memo.UTF8W = (
           
-            'e-mail da ADPAR adparnamirim@uol.com.br/ Secretaria: adparsec201' +
-            '2@gmail.com CNPJ 08.332.785/0018-50'
+            'e-mail da [frxdbBuscaIgreja."sigla_igreja"] adparnamirim@uol.com' +
+            '.br/ Secretaria: adparsec2012@gmail.com CNPJ [frxdbBuscaIgreja."' +
+            'cnpj"]'
           
-            'Rua Comandante Petit, 905 '#8211' Parnamirim-RN/CEP  59140-140/ fone/f' +
-            'ax: (84) 3645-2380')
+            '[Lowercase(<frxdbBuscaIgreja."logradouro">)] '#8211' [frxdbBuscaIgreja' +
+            '."cidade"] - [frxdbBuscaIgreja."uf"]/CEP  59140-140/ fone/fax: (' +
+            '84) 3645-2380')
         ParentFont = False
         VAlign = vaBottom
-        Formats = <
-          item
-          end
-          item
-          end
-          item
-          end
-          item
-          end
-          item
-          end
-          item
-          end
-          item
-          end
-          item
-          end>
       end
       object Memo6: TfrxMemoView
         AllowVectorExport = True
@@ -13941,8 +13967,8 @@ object dtmRelatorio: TdtmRelatorio
             '[frxdbBuscaIgreja."nome_igreja"]'
             '[frxdbBuscaIgreja."logradouro"]-[frxdbBuscaIgreja."bairro"]'
             
-              'CEP 59.140.140 '#8211' [frxdbBuscaIgreja."cidade"] ([frxdbBuscaIgreja.' +
-              '"uf"])/BRASIL'
+              'CEP [frxdbBuscaIgreja."cep"] '#8211' [frxdbBuscaIgreja."cidade"] ([frx' +
+              'dbBuscaIgreja."uf"])/BRASIL'
             
               'CNPJ [frxdbBuscaIgreja."cnpj"] - Fone/Fax [frxdbBuscaIgreja."fon' +
               'e"]'
@@ -14962,9 +14988,9 @@ object dtmRelatorio: TdtmRelatorio
           HAlign = haCenter
           Memo.UTF8W = (
             
-              'Rua Ot'#225'vio Gomes de Castro, 27 '#8211' Centro Parnamirim/RN- CEP 59150' +
-              '-000'
-            'Fone 645-2380 '#8211' e-mail:                   ')
+              'Rua Ot'#225'vio Gomes de Castro, 27 '#8211' Centro [frxdbBuscaIgreja."cidad' +
+              'e"]/[frxdbBuscaIgreja."uf"]- CEP [frxdbBuscaIgreja."cep"]'
+            'Fone [frxdbBuscaIgreja."fone"] '#8211' e-mail:                   ')
           ParentFont = False
         end
         object Memo73: TfrxMemoView
@@ -14983,7 +15009,7 @@ object dtmRelatorio: TdtmRelatorio
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'adparnamirim@uol.com.br')
+            '[Lowercase(<frxdbBuscaIgreja."email">)]')
           ParentFont = False
         end
       end
@@ -15727,7 +15753,7 @@ object dtmRelatorio: TdtmRelatorio
       object Memo2: TfrxMemoView
         Align = baCenter
         AllowVectorExport = True
-        Left = 59.811224999999970000
+        Left = 59.811225000000000000
         Top = 98.267780000000000000
         Width = 598.488250000000000000
         Height = 95.425170000000000000
@@ -15804,7 +15830,7 @@ object dtmRelatorio: TdtmRelatorio
       object Memo5: TfrxMemoView
         Align = baCenter
         AllowVectorExport = True
-        Left = 64.252009999999970000
+        Left = 64.252010000000000000
         Top = 434.645950000000000000
         Width = 589.606680000000000000
         Height = 56.692950000000000000
@@ -15831,7 +15857,7 @@ object dtmRelatorio: TdtmRelatorio
       object Memo6: TfrxMemoView
         Align = baCenter
         AllowVectorExport = True
-        Left = 64.252009999999970000
+        Left = 64.252010000000000000
         Top = 525.354670000000000000
         Width = 589.606680000000000000
         Height = 200.315090000000000000
@@ -15861,7 +15887,7 @@ object dtmRelatorio: TdtmRelatorio
       object Memo7: TfrxMemoView
         Align = baCenter
         AllowVectorExport = True
-        Left = 64.252009999999970000
+        Left = 64.252010000000000000
         Top = 650.079160000000000000
         Width = 589.606680000000000000
         Height = 18.897650000000000000
@@ -21551,134 +21577,6 @@ object dtmRelatorio: TdtmRelatorio
             'Assinatura do dirigente')
           ParentFont = False
         end
-      end
-    end
-  end
-  object frxrprtDizimistaDetalhe: TfrxReport
-    Version = '6.2.1'
-    DotMatrixReport = False
-    IniFile = '\Software\Fast Reports'
-    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
-    PreviewOptions.Zoom = 1.000000000000000000
-    PrintOptions.Printer = 'Default'
-    PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 43623.342875104200000000
-    ReportOptions.LastChange = 43623.342875104200000000
-    ScriptLanguage = 'PascalScript'
-    ScriptText.Strings = (
-      'begin'
-      ''
-      'end.')
-    Left = 424
-    Top = 224
-    Datasets = <
-      item
-        DataSet = frxdbDizimista
-        DataSetName = 'frxdbDizimista'
-      end>
-    Variables = <>
-    Style = <>
-    object Data: TfrxDataPage
-      Height = 1000.000000000000000000
-      Width = 1000.000000000000000000
-    end
-    object Page1: TfrxReportPage
-      PaperWidth = 210.000000000000000000
-      PaperHeight = 297.000000000000000000
-      PaperSize = 9
-      LeftMargin = 10.000000000000000000
-      RightMargin = 10.000000000000000000
-      TopMargin = 10.000000000000000000
-      BottomMargin = 10.000000000000000000
-      Frame.Typ = []
-      object Chart2: TfrxChartView
-        AllowVectorExport = True
-        Top = 559.370440000000000000
-        Width = 718.110700000000000000
-        Height = 211.653680000000000000
-        HighlightColor = clBlack
-        Frame.Typ = []
-        Chart = {
-          5450463006544368617274054368617274044C656674020003546F7002000557
-          696474680390010648656967687403FA00144261636B57616C6C2E50656E2E56
-          697369626C65080B4178697356697369626C65080D4672616D652E5669736962
-          6C6508175669657733444F7074696F6E732E456C65766174696F6E033B011856
-          69657733444F7074696F6E732E4F7274686F676F6E616C08195669657733444F
-          7074696F6E732E50657273706563746976650200165669657733444F7074696F
-          6E732E526F746174696F6E0368010B56696577334457616C6C73080A42657665
-          6C4F75746572070662764E6F6E6505436F6C6F720707636C57686974650D4465
-          6661756C7443616E766173060E54474449506C757343616E76617311436F6C6F
-          7250616C65747465496E646578020D000A545069655365726965730753657269
-          6573320D5856616C7565732E4F72646572070B6C6F417363656E64696E670C59
-          56616C7565732E4E616D6506035069650D5956616C7565732E4F726465720706
-          6C6F4E6F6E651A4672616D652E496E6E657242727573682E4261636B436F6C6F
-          720705636C526564224672616D652E496E6E657242727573682E477261646965
-          6E742E456E64436F6C6F720706636C47726179224672616D652E496E6E657242
-          727573682E4772616469656E742E4D6964436F6C6F720707636C576869746524
-          4672616D652E496E6E657242727573682E4772616469656E742E537461727443
-          6F6C6F720440404000214672616D652E496E6E657242727573682E4772616469
-          656E742E56697369626C65091B4672616D652E4D6964646C6542727573682E42
-          61636B436F6C6F720708636C59656C6C6F77234672616D652E4D6964646C6542
-          727573682E4772616469656E742E456E64436F6C6F720482828200234672616D
-          652E4D6964646C6542727573682E4772616469656E742E4D6964436F6C6F7207
-          07636C5768697465254672616D652E4D6964646C6542727573682E4772616469
-          656E742E5374617274436F6C6F720706636C47726179224672616D652E4D6964
-          646C6542727573682E4772616469656E742E56697369626C65091A4672616D65
-          2E4F7574657242727573682E4261636B436F6C6F720707636C477265656E2246
-          72616D652E4F7574657242727573682E4772616469656E742E456E64436F6C6F
-          720440404000224672616D652E4F7574657242727573682E4772616469656E74
-          2E4D6964436F6C6F720707636C5768697465244672616D652E4F757465724272
-          7573682E4772616469656E742E5374617274436F6C6F720708636C53696C7665
-          72214672616D652E4F7574657242727573682E4772616469656E742E56697369
-          626C65090B4672616D652E57696474680204194F74686572536C6963652E4C65
-          67656E642E56697369626C6508000000}
-        ChartElevation = 315
-        SeriesData = <
-          item
-            DataType = dtDBData
-            DataSet = frxdbDizimista
-            DataSetName = 'frxdbDizimista'
-            SortOrder = soNone
-            TopN = 0
-            XType = xtText
-            Source1 = 'frxdbDizimista."cargo"'
-            Source2 = 'frxdbDizimista."valor"'
-            XSource = 'frxdbDizimista."cargo"'
-            YSource = 'frxdbDizimista."valor"'
-          end>
-      end
-      object Chart1: TfrxChartView
-        AllowVectorExport = True
-        Top = 94.488250000000000000
-        Width = 718.110700000000000000
-        Height = 211.653680000000000000
-        HighlightColor = clBlack
-        Frame.Typ = []
-        Chart = {
-          5450463006544368617274054368617274044C656674020003546F7002000557
-          696474680390010648656967687403FA00144261636B57616C6C2E50656E2E56
-          697369626C65080D4672616D652E56697369626C6508165669657733444F7074
-          696F6E732E526F746174696F6E02000A426576656C4F75746572070662764E6F
-          6E6505436F6C6F720707636C57686974650D44656661756C7443616E76617306
-          0E54474449506C757343616E76617311436F6C6F7250616C65747465496E6465
-          78020D000A5442617253657269657307536572696573310E436F6C6F72456163
-          68506F696E74090C5856616C7565732E4E616D650601580D5856616C7565732E
-          4F72646572070B6C6F417363656E64696E670C5956616C7565732E4E616D6506
-          034261720D5956616C7565732E4F7264657207066C6F4E6F6E65000000}
-        ChartElevation = 345
-        SeriesData = <
-          item
-            DataType = dtDBData
-            DataSet = frxdbDizimista
-            DataSetName = 'frxdbDizimista'
-            SortOrder = soNone
-            TopN = 0
-            XType = xtText
-            Source1 = 'frxdbDizimista."cargo"'
-            Source2 = 'frxdbDizimista."valor"'
-            XSource = 'frxdbDizimista."cargo"'
-            YSource = 'frxdbDizimista."valor"'
-          end>
       end
     end
   end

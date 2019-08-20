@@ -1,29 +1,29 @@
 inherited frmCadIgreja: TfrmCadIgreja
   Caption = 'Cadastro de Igreja'
-  ClientHeight = 266
+  ClientHeight = 286
   ClientWidth = 779
   ExplicitWidth = 785
-  ExplicitHeight = 295
+  ExplicitHeight = 315
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 779
-    Height = 228
+    Height = 248
     ActivePage = tabManutencao
     ExplicitWidth = 779
-    ExplicitHeight = 228
+    ExplicitHeight = 248
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
       ExplicitWidth = 771
-      ExplicitHeight = 200
+      ExplicitHeight = 220
       inherited pnlListagem: TPanel
         Width = 771
         ExplicitWidth = 771
       end
       inherited grdListagem: TDBGrid
         Width = 771
-        Height = 135
+        Height = 155
         DataSource = dtsListagem
         Columns = <
           item
@@ -61,7 +61,21 @@ inherited frmCadIgreja: TfrmCadIgreja
       ExplicitLeft = 4
       ExplicitTop = 24
       ExplicitWidth = 771
-      ExplicitHeight = 200
+      ExplicitHeight = 220
+      object lblCEP: TLabel
+        Left = 5
+        Top = 174
+        Width = 19
+        Height = 13
+        Caption = 'CEP'
+      end
+      object lbl14: TLabel
+        Left = 483
+        Top = 44
+        Width = 42
+        Height = 13
+        Caption = 'Telefone'
+      end
       object lbledtNome: TLabeledEdit
         Tag = 2
         Left = 55
@@ -431,12 +445,46 @@ inherited frmCadIgreja: TfrmCadIgreja
           ExplicitTop = 0
         end
       end
+      object lbledtemail_secretaria: TLabeledEdit
+        Tag = 2
+        Left = 119
+        Top = 188
+        Width = 218
+        Height = 21
+        CharCase = ecLowerCase
+        EditLabel.Width = 76
+        EditLabel.Height = 13
+        EditLabel.Caption = 'Email Secretaria'
+        MaxLength = 45
+        TabOrder = 12
+      end
+      object medtCEP: TMaskEdit
+        Left = 3
+        Top = 188
+        Width = 64
+        Height = 21
+        EditMask = '##.###-###;0;_'
+        MaxLength = 10
+        TabOrder = 13
+        Text = ''
+      end
+      object medtFone: TMaskEdit
+        Left = 483
+        Top = 59
+        Width = 91
+        Height = 21
+        EditMask = '(99)99999-9999;1;_'
+        MaxLength = 14
+        TabOrder = 14
+        Text = '(  )     -    '
+        OnChange = medtFoneChange
+      end
     end
   end
   inherited pnlRodape: TPanel
-    Top = 228
+    Top = 248
     Width = 779
-    ExplicitTop = 228
+    ExplicitTop = 248
     ExplicitWidth = 779
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()

@@ -172,7 +172,6 @@ type
     lrgntfldAlunosidade: TLargeintField;
     strngfldAlunossexo: TStringField;
     frxrprt_old: TfrxReport;
-    frxrprtDizimistaDetalhe: TfrxReport;
     frxdbDizimosTotal: TfrxDBDataset;
     frxrprt1: TfrxReport;
     strngfldAniverariantestelefone: TStringField;
@@ -243,6 +242,10 @@ type
     fdqryDizimistasdata_mes: TDateField;
     fdqryizimitobreirodata_mes: TDateField;
     fdqryDizimosMembrosdata_mes: TDateField;
+    fdqryBucarIgrejasistema: TIntegerField;
+    fdqryBucarIgrejasituacao: TIntegerField;
+    fdqryBucarIgrejaemail_secretaria: TStringField;
+    fdqryBucarIgrejacep: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
