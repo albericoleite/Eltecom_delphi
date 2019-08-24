@@ -3,8 +3,8 @@ object frmAtualizaDB: TfrmAtualizaDB
   Top = 0
   BorderStyle = bsNone
   Caption = 'frmAtualizaDB'
-  ClientHeight = 48
-  ClientWidth = 426
+  ClientHeight = 103
+  ClientWidth = 429
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,8 +18,8 @@ object frmAtualizaDB: TfrmAtualizaDB
   object pnl1: TPanel
     Left = 0
     Top = 0
-    Width = 426
-    Height = 48
+    Width = 429
+    Height = 103
     Align = alClient
     BevelOuter = bvLowered
     BevelWidth = 3
@@ -27,11 +27,13 @@ object frmAtualizaDB: TfrmAtualizaDB
     Color = clBlack
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 426
+    ExplicitHeight = 48
     object pnl2: TPanel
       Left = 6
       Top = 6
-      Width = 414
-      Height = 36
+      Width = 417
+      Height = 91
       Align = alClient
       BevelOuter = bvNone
       BevelWidth = 3
@@ -40,9 +42,13 @@ object frmAtualizaDB: TfrmAtualizaDB
       Enabled = False
       ParentBackground = False
       TabOrder = 0
+      ExplicitLeft = -50
+      ExplicitTop = 12
+      ExplicitWidth = 565
+      ExplicitHeight = 254
       object imgBD: TImage
         Left = 0
-        Top = 48
+        Top = 110
         Width = 153
         Height = 209
         Center = True
@@ -1123,9 +1129,16 @@ object frmAtualizaDB: TfrmAtualizaDB
         Font.Style = []
         ParentFont = False
       end
+      object lblmsg: TLabel
+        Left = 11
+        Top = 38
+        Width = 164
+        Height = 13
+        Caption = 'Realizando Backup autom'#225'tico ....'
+      end
       object chkConexBD: TCheckBox
-        Left = 184
-        Top = 48
+        Left = 168
+        Top = 139
         Width = 169
         Height = 17
         Caption = 'Conex'#227'o com Banco de Dados'
@@ -1133,7 +1146,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkIgreja: TCheckBox
         Left = 184
-        Top = 71
+        Top = 133
         Width = 57
         Height = 17
         Caption = 'Igreja'
@@ -1141,7 +1154,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkSetor: TCheckBox
         Left = 184
-        Top = 94
+        Top = 156
         Width = 57
         Height = 17
         Caption = 'Setor'
@@ -1149,7 +1162,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkCongregacao: TCheckBox
         Left = 184
-        Top = 117
+        Top = 179
         Width = 105
         Height = 17
         Caption = 'Congrega'#231#227'o'
@@ -1197,7 +1210,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkFuncao: TCheckBox
         Left = 368
-        Top = 48
+        Top = 110
         Width = 65
         Height = 17
         Caption = 'Fun'#231#227'o'
@@ -1205,7 +1218,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkSeguranca: TCheckBox
         Left = 368
-        Top = 71
+        Top = 133
         Width = 73
         Height = 17
         Caption = 'Seguran'#231'a'
@@ -1213,7 +1226,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkUsuario: TCheckBox
         Left = 368
-        Top = 94
+        Top = 156
         Width = 73
         Height = 17
         Caption = 'Usu'#225'rio'
@@ -1221,7 +1234,7 @@ object frmAtualizaDB: TfrmAtualizaDB
       end
       object chkDizimo: TCheckBox
         Left = 368
-        Top = 117
+        Top = 179
         Width = 73
         Height = 17
         Caption = 'Dizimo'
@@ -1242,6 +1255,14 @@ object frmAtualizaDB: TfrmAtualizaDB
         Height = 17
         Caption = 'Fun'#231#245'es e Pessoas'
         TabOrder = 14
+      end
+      object pbBackup: TProgressBar
+        Left = 11
+        Top = 54
+        Width = 381
+        Height = 17
+        BarColor = clLime
+        TabOrder = 15
       end
     end
   end

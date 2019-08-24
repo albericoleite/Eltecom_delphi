@@ -383,6 +383,9 @@ begin
   // status; // + IdIPWatch1.LocalIP;
   // statMenu.Panels[3].Text :='Whatsapp:https://api.whatsapp.com/send?1=pt_BR&phone=5584981416012';
   // statMenu.Panels[3].Text := dtmConexao.strngfldCongregacaoAtivaSistemacongregacao.Text;
+
+  //GERAR BACKUP AUTOMÁTICO
+  TFuncao.VerificarBackup();
 end;
 
 procedure TfrmPrincipal.FormPaint(Sender: TObject);
@@ -585,12 +588,13 @@ end;
 
 procedure TfrmPrincipal.AtualizaBandoDados(aForm: TfrmAtualizaDB);
 var
- // sl: Integer;
+  x: Integer;
   oAtualizarMySQL: TAtualizaBancoDadosMysql;
 begin
   //sl := 50;
   aForm.chkConexBD.Checked := True;
   aForm.Refresh;
+
 
   try
     oAtualizarMySQL := TAtualizaBancoDadosMysql.Create(dtmPrincipal.ConexaoDB);
@@ -599,6 +603,13 @@ begin
     if Assigned(oAtualizarMySQL) then
       FreeAndNil(oAtualizarMySQL);
   end;
+
+    for x:=0 to 100 do
+  begin
+    aForm.pbBackup.Position:=aForm.pbBackup.Position+1;
+    Sleep(10);
+  end;
+  //aForm.pbBackup.Position:=0;
 
 end;
 

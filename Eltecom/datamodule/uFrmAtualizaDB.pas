@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, Vcl.ComCtrls;
 
 type
   TfrmAtualizaDB = class(TForm)
@@ -28,6 +28,8 @@ type
     chkDizimo: TCheckBox;
     chkCargo: TCheckBox;
     chkfuncoesPessoas: TCheckBox;
+    pbBackup: TProgressBar;
+    lblmsg: TLabel;
   private
     { Private declarations }
   public
