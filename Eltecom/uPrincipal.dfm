@@ -16684,17 +16684,6 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Setores'
         OnClick = Setores1Click
       end
-      object Departamentos1: TMenuItem
-        Caption = 'Departamentos'
-        object mniDepartamentos2: TMenuItem
-          Caption = 'Departamentos'
-          OnClick = mniDepartamentos2Click
-        end
-        object mniDepartamentoPessoas1: TMenuItem
-          Caption = 'Departamento | Pessoas'
-          OnClick = mniDepartamentoPessoas1Click
-        end
-      end
       object N2: TMenuItem
         Caption = '-'
       end
@@ -16707,6 +16696,17 @@ object frmPrincipal: TfrmPrincipal
         object mniCargosPessoas1: TMenuItem
           Caption = 'Cargos | Pessoas'
           OnClick = mniCargosPessoas1Click
+        end
+      end
+      object Departamentos1: TMenuItem
+        Caption = 'Departamentos'
+        object mniDepartamentos2: TMenuItem
+          Caption = 'Departamentos'
+          OnClick = mniDepartamentos2Click
+        end
+        object mniDepartamentoPessoas1: TMenuItem
+          Caption = 'Departamento | Pessoas'
+          OnClick = mniDepartamentoPessoas1Click
         end
       end
       object mniFunes1: TMenuItem

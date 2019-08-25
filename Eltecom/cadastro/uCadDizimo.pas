@@ -54,7 +54,6 @@ type
     strngfldDizimistasrol: TStringField;
     fdqryDizimosTotal: TFDQuery;
     fltfldDizimosTotaltotal: TFloatField;
-    lblTotal: TLabel;
     fdqryizimitobreiro: TFDQuery;
     intgrfld1: TIntegerField;
     intgrfld2: TIntegerField;
@@ -72,6 +71,8 @@ type
     Label1: TLabel;
     fdqryDizimistasdata_mes: TDateField;
     fdqryizimitobreirodata_mes: TDateField;
+    Label3: TLabel;
+    crncydtTotal: TCurrencyEdit;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -158,9 +159,18 @@ ListaLancamentosPeriodo;
 dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
 
 if chkobreiro.Checked = true then
+begin
    dtmRelatorio.frxdbDizimista.DataSet:=fdqryizimitobreiro;
-
-  //dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
+       mes:= TFuncao.ExtensoMes(MonthOf(dtdtini.Date));
+   dtmRelatorio.fdqryCongregacao.Open;
+   dtmRelatorio.frxrprtDizimistaObreiros.Variables['Data'] := QuotedStr(mes);
+  dtmRelatorio.frxrprtDizimistaObreiros.ReportOptions.Name :=
+    'Visualização de Impressão: Dizimistas Obreiros do mês: '+mes;
+    dtmRelatorio.frxrprtDizimistaObreiros.PrepareReport(True);
+    dtmRelatorio.frxrprtDizimistaObreiros.ShowReport();
+end else
+begin
+     //dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
   dtmRelatorio.frxdbDizimosTotal.DataSet:=fdqryDizimosTotal;
        mes:= TFuncao.ExtensoMes(MonthOf(dtdtini.Date));
    dtmRelatorio.fdqryCongregacao.Open;
@@ -169,6 +179,9 @@ if chkobreiro.Checked = true then
     'Visualização de Impressão: Dizimistas do mês: '+mes;
     dtmRelatorio.frxrprtDizimista.PrepareReport(True);
     dtmRelatorio.frxrprtDizimista.ShowReport();
+end;
+
+
 end;
 
 
@@ -288,6 +301,8 @@ end;
 {$endregion}
 
 procedure TfrmCadDizimos.ListaLancamentosPeriodo;
+var
+  Qry: TFDQuery;
 begin
   QryListagem.Close;
   QryListagem.ParamByName('dtini').AsDateTime := dtdtIni.Date;
@@ -309,7 +324,30 @@ begin
   fdqryDizimosTotal.ParamByName('dtini').AsDateTime := dtdtIni.Date;
   fdqryDizimosTotal.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
   fdqryDizimosTotal.Open;
-  lblTotal.Caption:=  'Valor Total:' +TotalizarEntrada.ToString();
+  crncydtTotal.Text:=  TotalizarEntrada.ToString();
+
+
+  try
+    Qry := TFDQuery.Create(nil);
+    Qry.Connection := dtmPrincipal.ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('SELECT  sum(t.valor) as VALOR        '+
+  ' FROM tb_dizimista t inner join tb_parametro_sistema a on a.cod_congregacao = t.cod_congregacao '+
+  ' where t.`data` between :dataini   and    :datafim ');
+    Qry.ParamByName('dataini').AsDateTime := dtdtIni.Date;
+    Qry.ParamByName('datafim').AsDateTime := dtdtFim.Date;
+    try
+      Qry.Open;
+      dtmRelatorio.frxrprtDizimista.Variables['ValorTotal'] := Qry.FieldByName('VALOR').AsFloat;
+
+    Except
+
+    end;
+
+  finally
+    if Assigned(Qry) then
+      FreeAndNil(Qry)
+  end;
   //lblTotal.Caption:= 'Valor Total:' +fdqryDizimosTotal.FieldByName('total').AsString;
 end;
 

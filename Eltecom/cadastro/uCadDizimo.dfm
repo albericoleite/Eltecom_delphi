@@ -1,11 +1,11 @@
 inherited frmCadDizimos: TfrmCadDizimos
   Caption = 'Cadastro de Dizimos'
-  ClientWidth = 829
-  ExplicitWidth = 835
+  ClientWidth = 841
+  ExplicitWidth = 847
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    Width = 829
+    Width = 841
     ExplicitWidth = 829
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
@@ -13,7 +13,7 @@ inherited frmCadDizimos: TfrmCadDizimos
       ExplicitWidth = 821
       ExplicitHeight = 390
       inherited pnlListagem: TPanel
-        Width = 821
+        Width = 833
         Height = 97
         ExplicitWidth = 821
         ExplicitHeight = 97
@@ -31,20 +31,7 @@ inherited frmCadDizimos: TfrmCadDizimos
           Height = 13
           Caption = 'Data Final'
         end
-        object lblTotal: TLabel [3]
-          Left = 265
-          Top = 61
-          Width = 79
-          Height = 16
-          Caption = 'Valor Total: 0'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-        end
-        object Label1: TLabel [4]
+        object Label1: TLabel [3]
           Left = 10
           Top = 44
           Width = 69
@@ -53,6 +40,19 @@ inherited frmCadDizimos: TfrmCadDizimos
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label3: TLabel [4]
+          Left = 666
+          Top = 67
+          Width = 36
+          Height = 19
+          Caption = 'Total'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -236,10 +236,25 @@ inherited frmCadDizimos: TfrmCadDizimos
           TabOrder = 7
           OnClick = dblkcbbMesClick
         end
+        object crncydtTotal: TCurrencyEdit
+          Left = 713
+          Top = 64
+          Width = 100
+          Height = 27
+          DisplayFormat = 'R$ 0.00;-0.00'
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 8
+        end
       end
       inherited grdListagem: TDBGrid
         Top = 97
-        Width = 821
+        Width = 833
         Height = 293
         DataSource = dtsListagem
         Columns = <
@@ -275,7 +290,7 @@ inherited frmCadDizimos: TfrmCadDizimos
           item
             Expanded = False
             FieldName = 'cargo'
-            Width = 157
+            Width = 196
             Visible = True
           end>
       end
@@ -403,13 +418,13 @@ inherited frmCadDizimos: TfrmCadDizimos
     end
   end
   inherited pnlRodape: TPanel
-    Width = 829
+    Width = 841
     ExplicitWidth = 829
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
     end
     inherited btnFechar: TBitBtn
-      Left = 737
+      Left = 749
       ExplicitLeft = 737
     end
   end
@@ -522,6 +537,7 @@ inherited frmCadDizimos: TfrmCadDizimos
     Top = 200
   end
   object fdqryDizimistas: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       '##DIZIMISTA GERAL'

@@ -1,7 +1,9 @@
 inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
-  ClientWidth = 736
-  ExplicitWidth = 742
+  ClientHeight = 457
+  ClientWidth = 744
+  ExplicitWidth = 750
+  ExplicitHeight = 486
   PixelsPerInch = 96
   TextHeight = 13
   object lbl4: TLabel [0]
@@ -25,13 +27,16 @@ inherited frmCadLancamento: TfrmCadLancamento
     ParentFont = False
   end
   inherited pgcPrincipal: TPageControl
-    Width = 736
-    ActivePage = tabManutencao
+    Width = 744
+    Height = 419
     ExplicitWidth = 736
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 728
+      ExplicitHeight = 390
       inherited pnlListagem: TPanel
-        Width = 728
+        Width = 736
         Height = 121
         ExplicitWidth = 728
         ExplicitHeight = 121
@@ -185,9 +190,9 @@ inherited frmCadLancamento: TfrmCadLancamento
           TabOrder = 5
         end
         object btnImprimir: TBitBtn
-          Left = 622
+          Left = 619
           Top = 16
-          Width = 97
+          Width = 100
           Height = 38
           Caption = 'Imprimir'
           Glyph.Data = {
@@ -358,8 +363,8 @@ inherited frmCadLancamento: TfrmCadLancamento
       end
       inherited grdListagem: TDBGrid
         Top = 121
-        Width = 728
-        Height = 269
+        Width = 736
+        Height = 270
         DataSource = dtsListagem
         Columns = <
           item
@@ -407,7 +412,10 @@ inherited frmCadLancamento: TfrmCadLancamento
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 728
+      ExplicitHeight = 390
       object pnl1: TPanel
         Left = 3
         Top = 3
@@ -529,7 +537,8 @@ inherited frmCadLancamento: TfrmCadLancamento
     end
   end
   inherited pnlRodape: TPanel
-    Width = 736
+    Top = 419
+    Width = 744
     ExplicitWidth = 736
     inherited btnNavigator: TDBNavigator
       Left = 413
@@ -537,7 +546,7 @@ inherited frmCadLancamento: TfrmCadLancamento
       ExplicitLeft = 413
     end
     inherited btnFechar: TBitBtn
-      Left = 644
+      Left = 652
       ExplicitLeft = 644
     end
   end

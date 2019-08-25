@@ -246,6 +246,7 @@ type
     fdqryBucarIgrejasituacao: TIntegerField;
     fdqryBucarIgrejaemail_secretaria: TStringField;
     fdqryBucarIgrejacep: TStringField;
+    frxrprtDizimistaObreiros: TfrxReport;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
