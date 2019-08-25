@@ -1,5 +1,6 @@
 inherited frmCadFuncao: TfrmCadFuncao
   Caption = 'Cadastro de Fun'#231#227'o'
+  ExplicitTop = -116
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl

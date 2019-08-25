@@ -134,6 +134,8 @@ type
     mniPresenadeAlunos1: TMenuItem;
     iposdeCulto1: TMenuItem;
     iposdeSadas1: TMenuItem;
+    CentrodeCusto1: TMenuItem;
+    ipo1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -178,6 +180,7 @@ type
     procedure mniPresenadeAlunos1Click(Sender: TObject);
     procedure iposdeCulto1Click(Sender: TObject);
     procedure iposdeSadas1Click(Sender: TObject);
+    procedure ipo1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -206,7 +209,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
   uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor, uImportarExportarDados, uRelatoriosFinanceiro,
-  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida;
+  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida, uCadTipoCentroCusto;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -342,6 +345,7 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmChamadaEbd, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmTipoCulto, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmTipoSaida, dtmPrincipal.ConexaoDB);
+     TAcaoAcesso.CriarAcoes(TfrmTipoCentroCusto, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -411,6 +415,11 @@ end;
 procedure TfrmPrincipal.Igreja1Click(Sender: TObject);
 begin
     TFuncao.CriarForm(TfrmCadIgreja, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.ipo1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmTipoCentroCusto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.iposdeCulto1Click(Sender: TObject);

@@ -4974,4 +4974,13 @@ object frmLogin: TfrmLogin
       OnClick = btnEntrarClick
     end
   end
+  object lnklblI9: TLinkLabel
+    Left = 441
+    Top = 167
+    Width = 89
+    Height = 17
+    Caption = 'i9techsoft.com.br'
+    TabOrder = 1
+    OnLinkClick = lnklblI9LinkClick
+  end
 end

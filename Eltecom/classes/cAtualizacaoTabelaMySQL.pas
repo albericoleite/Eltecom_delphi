@@ -38,6 +38,7 @@ type
     procedure EbdCalendario;
     procedure TipoCulto;
     procedure TipoSaida;
+    procedure Tipo_centro_custo;
 
  protected
 
@@ -83,6 +84,7 @@ begin
   EbdCalendario;
   TipoCulto;
   TipoSaida;
+  Tipo_centro_custo;
 end;
 
 destructor TAtualizacaoTabelaMySQL.Destroy;
@@ -733,6 +735,20 @@ begin
   ' `tipo` VARCHAR(50) NOT NULL,   '+
   ' `descricao` VARCHAR(100) NOT NULL,  '+
   ' PRIMARY KEY (`codigo`)); ');
+   end;
+
+end;
+
+procedure TAtualizacaoTabelaMySQL.Tipo_centro_custo;
+begin
+   if not TabelaExiste('tipo_centro_custo') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `tipo_centro_custo` (   '+
+    ' `id` int(11) NOT NULL AUTO_INCREMENT,    '+
+    ' `descricao` varchar(50) NOT NULL,     '+
+    ' PRIMARY KEY (`id`)   '+
+    ' )');
    end;
 
 end;

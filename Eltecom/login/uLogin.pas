@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, ShellAPI,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.Imaging.jpeg, acPNG;
 
 type
@@ -20,6 +20,7 @@ type
     lbl4: TLabel;
     Image1: TImage;
     lbl5: TLabel;
+    lnklblI9: TLinkLabel;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
@@ -27,6 +28,8 @@ type
     procedure sbtbtn2Click(Sender: TObject);
     procedure sbtbtn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure lnklblI9LinkClick(Sender: TObject; const Link: string;
+      LinkType: TSysLinkType);
   private
     { Private declarations }
     bFerchar:Boolean;
@@ -99,11 +102,18 @@ var
 begin
   region:= CreateRoundRectRgn(0, 0, width, height, 60, 60);
   setwindowrgn(handle, region, true);
+  lnklblI9.Caption:= '<a href="http://i9techsoft.com.br/">I9TechSoft</a>';
 end;
 
 procedure TfrmLogin.FormShow(Sender: TObject);
 begin
 bFerchar:=False;
+end;
+
+procedure TfrmLogin.lnklblI9LinkClick(Sender: TObject; const Link: string;
+  LinkType: TSysLinkType);
+begin
+ShellExecute(0, nil, PChar(Link), nil, nil, 1);
 end;
 
 procedure TfrmLogin.sbtbtn1Click(Sender: TObject);
