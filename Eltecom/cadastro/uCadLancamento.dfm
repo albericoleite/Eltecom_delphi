@@ -29,16 +29,17 @@ inherited frmCadLancamento: TfrmCadLancamento
   inherited pgcPrincipal: TPageControl
     Width = 744
     Height = 419
-    ExplicitWidth = 736
+    ExplicitWidth = 744
+    ExplicitHeight = 419
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 728
-      ExplicitHeight = 390
+      ExplicitWidth = 736
+      ExplicitHeight = 391
       inherited pnlListagem: TPanel
         Width = 736
         Height = 121
-        ExplicitWidth = 728
+        ExplicitWidth = 736
         ExplicitHeight = 121
         inherited lblIndice: TLabel
           Top = 8
@@ -414,8 +415,8 @@ inherited frmCadLancamento: TfrmCadLancamento
     inherited tabManutencao: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 728
-      ExplicitHeight = 390
+      ExplicitWidth = 736
+      ExplicitHeight = 391
       object pnl1: TPanel
         Left = 3
         Top = 3
@@ -423,22 +424,22 @@ inherited frmCadLancamento: TfrmCadLancamento
         Height = 118
         TabOrder = 0
         object lbl1: TLabel
-          Left = 471
-          Top = 5
+          Left = 555
+          Top = 4
           Width = 23
           Height = 13
           Caption = 'Data'
         end
         object lbl2: TLabel
-          Left = 637
-          Top = 5
+          Left = 64
+          Top = 6
           Width = 20
           Height = 13
           Caption = 'Tipo'
         end
         object lbl3: TLabel
-          Left = 562
-          Top = 7
+          Left = 646
+          Top = 6
           Width = 24
           Height = 13
           Caption = 'Valor'
@@ -450,15 +451,22 @@ inherited frmCadLancamento: TfrmCadLancamento
           Height = 13
           Caption = 'Tipo de Sa'#237'da'
         end
+        object Label6: TLabel
+          Left = 176
+          Top = 56
+          Width = 46
+          Height = 13
+          Caption = 'Descri'#231#227'o'
+        end
         object cbbTipo: TComboBox
           Tag = 2
-          Left = 637
-          Top = 24
+          Left = 64
+          Top = 22
           Width = 69
           Height = 21
           CharCase = ecUpperCase
           ItemIndex = 0
-          TabOrder = 4
+          TabOrder = 0
           Text = 'ENTRADA'
           OnChange = cbbTipoChange
           OnKeyPress = cbbTipoKeyPress
@@ -467,16 +475,16 @@ inherited frmCadLancamento: TfrmCadLancamento
             'SAIDA')
         end
         object crncydtValor: TCurrencyEdit
-          Left = 562
-          Top = 24
+          Left = 646
+          Top = 23
           Width = 65
           Height = 21
           DisplayFormat = '0.00;-0.00'
-          TabOrder = 3
+          TabOrder = 4
         end
         object dtdtData: TDateEdit
-          Left = 471
-          Top = 24
+          Left = 555
+          Top = 22
           Width = 84
           Height = 21
           Hint = 'Data de abertura como Sub Congrega'#231#227'o.'
@@ -484,36 +492,36 @@ inherited frmCadLancamento: TfrmCadLancamento
           DialogTitle = 'Selecione a Data'
           NumGlyphs = 2
           CalendarStyle = csDialog
-          TabOrder = 2
+          TabOrder = 3
         end
         object lbledtCodTalao: TLabeledEdit
           Tag = 2
-          Left = 64
-          Top = 24
+          Left = 148
+          Top = 23
           Width = 129
           Height = 21
           EditLabel.Width = 128
           EditLabel.Height = 13
           EditLabel.Caption = 'N'#186' do Tal'#227'o ou Documento'
           NumbersOnly = True
-          TabOrder = 0
+          TabOrder = 1
         end
         object lbledtDescricao: TLabeledEdit
           Tag = 2
-          Left = 201
-          Top = 24
+          Left = 285
+          Top = 23
           Width = 264
           Height = 21
           CharCase = ecUpperCase
           EditLabel.Width = 46
           EditLabel.Height = 13
           EditLabel.Caption = 'Descri'#231#227'o'
-          TabOrder = 1
+          TabOrder = 2
         end
         object lbledtCodigo: TLabeledEdit
           Tag = 1
-          Left = 5
-          Top = 23
+          Left = 6
+          Top = 22
           Width = 52
           Height = 21
           EditLabel.Width = 33
@@ -533,13 +541,26 @@ inherited frmCadLancamento: TfrmCadLancamento
           ListSource = dsTipoSaida
           TabOrder = 6
         end
+        object dblkcbbTipoEntrada: TDBLookupComboBox
+          Left = 176
+          Top = 75
+          Width = 372
+          Height = 21
+          DropDownRows = 15
+          Enabled = False
+          KeyField = 'codigo'
+          ListField = 'descricao'
+          ListSource = dsTipoEntrada
+          TabOrder = 7
+        end
       end
     end
   end
   inherited pnlRodape: TPanel
     Top = 419
     Width = 744
-    ExplicitWidth = 736
+    ExplicitTop = 419
+    ExplicitWidth = 744
     inherited btnNavigator: TDBNavigator
       Left = 413
       Hints.Strings = ()
@@ -547,7 +568,7 @@ inherited frmCadLancamento: TfrmCadLancamento
     end
     inherited btnFechar: TBitBtn
       Left = 652
-      ExplicitLeft = 644
+      ExplicitLeft = 652
     end
   end
   inherited QryListagem: TFDQuery
@@ -665,12 +686,17 @@ inherited frmCadLancamento: TfrmCadLancamento
   end
   object dsMes: TDataSource
     DataSet = dtmRelatorio.fdqryMeses
-    Left = 250
-    Top = 200
+    Left = 114
+    Top = 120
   end
   object dsTipoSaida: TDataSource
     DataSet = dtmPrincipal.fdqryTipoSaida
     Left = 360
     Top = 232
+  end
+  object dsTipoEntrada: TDataSource
+    DataSet = dtmPrincipal.fdqryTipoEntrada
+    Left = 368
+    Top = 240
   end
 end

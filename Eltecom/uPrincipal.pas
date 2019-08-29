@@ -136,6 +136,7 @@ type
     iposdeSadas1: TMenuItem;
     CentrodeCusto1: TMenuItem;
     ipo1: TMenuItem;
+    mniCadastro2: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -181,6 +182,7 @@ type
     procedure iposdeCulto1Click(Sender: TObject);
     procedure iposdeSadas1Click(Sender: TObject);
     procedure ipo1Click(Sender: TObject);
+    procedure mniCadastro2Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -209,7 +211,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
   uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor, uImportarExportarDados, uRelatoriosFinanceiro,
-  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida, uCadTipoCentroCusto;
+  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida, uCadTipoCentroCusto, uCadCentroCusto;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -345,7 +347,8 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmChamadaEbd, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmTipoCulto, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmTipoSaida, dtmPrincipal.ConexaoDB);
-     TAcaoAcesso.CriarAcoes(TfrmTipoCentroCusto, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmTipoCentroCusto, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadCentroCusto, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -450,6 +453,11 @@ end;
 procedure TfrmPrincipal.mniAoAcesso1Click(Sender: TObject);
 begin
   TFuncao.CriarForm(TfrmCadAcaoAcesso, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.mniCadastro2Click(Sender: TObject);
+begin
+   TFuncao.CriarForm(TfrmCadCentroCusto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniCargos2Click(Sender: TObject);
@@ -663,7 +671,9 @@ try
    DTMGrafico.fdqryAniverariantesMes.Open;
     DTMGrafico.fdqryEntrasAnual.Open;
      DTMGrafico.fdqrySaidasAnual.Open;
-
+      //TODO: CRIAR TABELA E CADASTRO DE TIPO DE RECEITA E TIPO DE DESPESA
+      // EX. 1. RECEITA 1.1.1 DIZIMOS ,1.1.2 OFERTAS E CONTRIBUIÇÕES
+      // 2. DESPESA 2.1.1 ADMINISTRAÇÃO
      pnlKpiProfessores.Caption:=  TFuncao.SqlValor('select count(*) as VALOR from tb_professor;',dtmPrincipal.ConexaoDB);
      pnlAlunos.Caption:=  TFuncao.SqlValor('select count(*)as VALOR from tb_classe_aluno;',dtmPrincipal.ConexaoDB);
      pnlClasses.Caption:=  TFuncao.SqlValor('select count(*)as VALOR from tb_classe;',dtmPrincipal.ConexaoDB);

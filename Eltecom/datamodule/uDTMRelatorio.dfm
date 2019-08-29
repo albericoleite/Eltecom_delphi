@@ -23780,7 +23780,6 @@ object dtmRelatorio: TdtmRelatorio
     Top = 13
   end
   object fdqryMeses: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select 1 as valor,'#39'Janeiro'#39' mes from dual'

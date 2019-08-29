@@ -62,6 +62,9 @@ type
     dsTipoSaida: TDataSource;
     QryListagemcod_tipo_saida: TIntegerField;
     QryListagemTipoSaida: TStringField;
+    Label6: TLabel;
+    dblkcbbTipoEntrada: TDBLookupComboBox;
+    dsTipoEntrada: TDataSource;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -98,7 +101,7 @@ var
 implementation
 
 uses
-  uDTMTesouraria, cFuncao;
+  uDTMTesouraria, cFuncao, uDTMRelatorio;
 
 {$R *.dfm}
 {$REGION 'Override'}
@@ -206,6 +209,7 @@ begin
   inherited;
   lbledtCodTalao.SetFocus;
   dtdtData.Date:=Now;
+  ListaTipoSaida;
 end;
 
 procedure TfrmCadLancamento.cbbTipoChange(Sender: TObject);
@@ -273,8 +277,10 @@ begin
   dtdtIni.Date := StartOfTheMonth(now);
   dtdtFim.Date := now;
   dtmTesouraria := TdtmTesouraria.Create(self);
+  dtmRelatorio := TdtmRelatorio.Create(self);
   ListaLancamentosPeriodo;
   dtmPrincipal.fdqryTipoSaida.Open;
+  dtmPrincipal.fdqryTipoEntrada.Open;
 end;
 
 procedure TfrmCadLancamento.FormShow(Sender: TObject);
@@ -326,11 +332,13 @@ begin
   if cbbTipo.Text = 'SAIDA' then
   begin
     dblkcbbTipoSaida.Enabled := true;
+    dblkcbbTipoEntrada.Enabled:=false;
     dblkcbbTipoSaida.SetFocus;
   end;
   if cbbTipo.Text = 'ENTRADA' then
   begin
     dblkcbbTipoSaida.Enabled := false;
+    dblkcbbTipoEntrada.Enabled:=True;
   end;
 end;
 
@@ -402,6 +410,8 @@ mmoSemana.Text:= semana;
   crncydtEntrada.Text:=dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text;
   crncydtSaida.Text:= dtmTesouraria.fltfldTes_Saida_Totaltotal.Text;
   crncydtSubtotal.Text:= floattostr(c);
+
+  dtmRelatorio.fdqryMeses.Open;
 
 end;
 

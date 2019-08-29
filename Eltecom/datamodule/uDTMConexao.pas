@@ -87,6 +87,9 @@ type
     fdqryTipoSaida: TFDQuery;
     fdqryTipoSaidacodigo: TFDAutoIncField;
     fdqryTipoSaidatipo: TStringField;
+    fdqryTipoEntrada: TFDQuery;
+    fdtncfldTipoEntradacodigo: TFDAutoIncField;
+    strngfldTipoEntradadescricao: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

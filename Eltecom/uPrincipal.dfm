@@ -16782,6 +16782,10 @@ object frmPrincipal: TfrmPrincipal
       end
       object CentrodeCusto1: TMenuItem
         Caption = 'Centro de Custo'
+        object mniCadastro2: TMenuItem
+          Caption = 'Cadastro'
+          OnClick = mniCadastro2Click
+        end
         object ipo1: TMenuItem
           Caption = 'Tipo'
           OnClick = ipo1Click

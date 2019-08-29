@@ -79,7 +79,11 @@ uses
   uCadTipoCulto in 'cadastro\uCadTipoCulto.pas' {frmTipoCulto},
   cCadTipoCulto in 'classes\cCadTipoCulto.pas',
   cCadTipoSaida in 'classes\cCadTipoSaida.pas',
-  uCadTipoSaida in 'cadastro\uCadTipoSaida.pas' {frmTipoSaida};
+  uCadTipoSaida in 'cadastro\uCadTipoSaida.pas' {frmTipoSaida},
+  uCadTipoCentroCusto in 'cadastro\uCadTipoCentroCusto.pas' {frmTipoCentroCusto},
+  Entidade.TipoCentroCusto in 'entidade\Entidade.TipoCentroCusto.pas',
+  uCadCentroCusto in 'cadastro\uCadCentroCusto.pas' {frmCadCentroCusto},
+  Entidade.CentroCusto in 'entidade\Entidade.CentroCusto.pas';
 
 {$R *.res}
 
