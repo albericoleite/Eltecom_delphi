@@ -1,21 +1,24 @@
 inherited frmCadDizimos: TfrmCadDizimos
   Caption = 'Cadastro de Dizimos'
   ClientWidth = 841
+  ExplicitLeft = -107
+  ExplicitTop = -10
   ExplicitWidth = 847
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 841
-    ExplicitWidth = 829
+    ActivePage = tabManutencao
+    ExplicitWidth = 841
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 821
+      ExplicitWidth = 833
       ExplicitHeight = 390
       inherited pnlListagem: TPanel
         Width = 833
         Height = 97
-        ExplicitWidth = 821
+        ExplicitWidth = 833
         ExplicitHeight = 97
         object lblDataNascimento: TLabel [1]
           Left = 350
@@ -298,7 +301,7 @@ inherited frmCadDizimos: TfrmCadDizimos
     inherited tabManutencao: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 821
+      ExplicitWidth = 833
       ExplicitHeight = 390
       object lbl1: TLabel
         Left = 546
@@ -419,13 +422,13 @@ inherited frmCadDizimos: TfrmCadDizimos
   end
   inherited pnlRodape: TPanel
     Width = 841
-    ExplicitWidth = 829
+    ExplicitWidth = 841
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
     end
     inherited btnFechar: TBitBtn
       Left = 749
-      ExplicitLeft = 737
+      ExplicitLeft = 749
     end
   end
   inherited QryListagem: TFDQuery

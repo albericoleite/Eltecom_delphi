@@ -1,30 +1,33 @@
 inherited frmTipoCulto: TfrmTipoCulto
   Caption = 'Cadastrar tipo de Culto'
-  ExplicitTop = -133
+  ExplicitLeft = -66
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 792
+      ExplicitHeight = 390
       inherited grdListagem: TDBGrid
         DataSource = dtsListagem
         Columns = <
           item
             Expanded = False
-            FieldName = 'codigo'
-            Width = 48
+            FieldName = 'id'
+            Width = 33
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'descricao'
-            Width = 327
+            Width = 307
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'objetivo'
-            Width = 343
+            Width = 300
             Visible = True
           end>
       end
@@ -82,14 +85,8 @@ inherited frmTipoCulto: TfrmTipoCulto
   end
   inherited QryListagem: TFDQuery
     SQL.Strings = (
-      'SELECT codigo, descricao, objetivo'
+      'SELECT id, descricao, objetivo'
       'FROM tipo_culto;')
-    object QryListagemcodigo: TFDAutoIncField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'codigo'
-      Origin = 'codigo'
-      ProviderFlags = [pfInWhere, pfInKey]
-    end
     object QryListagemdescricao: TStringField
       DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'descricao'
@@ -103,6 +100,10 @@ inherited frmTipoCulto: TfrmTipoCulto
       Origin = 'objetivo'
       Required = True
       Size = 100
+    end
+    object fdtncfldQryListagemid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
     end
   end
 end

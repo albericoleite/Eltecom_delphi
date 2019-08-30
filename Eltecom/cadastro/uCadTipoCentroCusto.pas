@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Buttons,Entidade.TipoCentroCusto,  SimpleDAO,SimpleInterface,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Buttons,Entidade.TipoCentroCusto,
+    SimpleDAO,SimpleInterface,
   Vcl.Grids, Vcl.DBGrids,SimpleQueryFiredac,System.Generics.Collections,
   Vcl.DBCtrls, Vcl.ExtCtrls;
 

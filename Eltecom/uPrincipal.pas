@@ -137,6 +137,10 @@ type
     CentrodeCusto1: TMenuItem;
     ipo1: TMenuItem;
     mniCadastro2: TMenuItem;
+    mniFornecedores1: TMenuItem;
+    mniLanamentoUnificado1: TMenuItem;
+    mniFormasdePagamento1: TMenuItem;
+    mniLancamentos1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -183,6 +187,10 @@ type
     procedure iposdeSadas1Click(Sender: TObject);
     procedure ipo1Click(Sender: TObject);
     procedure mniCadastro2Click(Sender: TObject);
+    procedure mniFornecedores1Click(Sender: TObject);
+    procedure mniLanamentoUnificado1Click(Sender: TObject);
+    procedure mniFormasdePagamento1Click(Sender: TObject);
+    procedure mniLancamentos1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -211,7 +219,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
   uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor, uImportarExportarDados, uRelatoriosFinanceiro,
-  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida, uCadTipoCentroCusto, uCadCentroCusto;
+  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida, uCadTipoCentroCusto, uCadCentroCusto, uCadFornecedor, uCadLancUnificado, uCadFormpgto, uCadTipoLancamento;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -349,6 +357,10 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmTipoSaida, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmTipoCentroCusto, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmCadCentroCusto, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadFornecedor, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadLancUnificado, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadFormpgto, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadTipoLancamento, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -519,6 +531,16 @@ begin
   TFuncao.CriarForm(TfrmCadAjudaDeCusto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
+procedure TfrmPrincipal.mniFormasdePagamento1Click(Sender: TObject);
+begin
+   TFuncao.CriarForm(TfrmCadFormpgto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.mniFornecedores1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmCadFornecedor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
 procedure TfrmPrincipal.mniFunes2Click(Sender: TObject);
 begin
   TFuncao.CriarForm(TfrmCadFuncao, oUsuarioLogado, dtmPrincipal.ConexaoDB);
@@ -532,6 +554,16 @@ end;
 procedure TfrmPrincipal.mniImportarCadastros1Click(Sender: TObject);
 begin
 TFuncao.CriarForm(TfrmImportarExportarDados, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.mniLanamentoUnificado1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmCadLancUnificado, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.mniLancamentos1Click(Sender: TObject);
+begin
+   TFuncao.CriarForm(TfrmCadTipoLancamento, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniPresenadeAlunos1Click(Sender: TObject);

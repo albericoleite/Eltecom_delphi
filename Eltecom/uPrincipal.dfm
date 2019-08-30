@@ -16684,6 +16684,10 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Setores'
         OnClick = Setores1Click
       end
+      object mniFornecedores1: TMenuItem
+        Caption = 'Fornecedores'
+        OnClick = mniFornecedores1Click
+      end
       object N2: TMenuItem
         Caption = '-'
       end
@@ -16790,6 +16794,18 @@ object frmPrincipal: TfrmPrincipal
           Caption = 'Tipo'
           OnClick = ipo1Click
         end
+      end
+      object mniLanamentoUnificado1: TMenuItem
+        Caption = 'Lan'#231'amento Unificado'
+        OnClick = mniLanamentoUnificado1Click
+      end
+      object mniFormasdePagamento1: TMenuItem
+        Caption = 'Formas de Pagamento'
+        OnClick = mniFormasdePagamento1Click
+      end
+      object mniLancamentos1: TMenuItem
+        Caption = 'Tipos de Lancamentos'
+        OnClick = mniLancamentos1Click
       end
     end
     object Relatrios1: TMenuItem

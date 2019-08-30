@@ -83,7 +83,17 @@ uses
   uCadTipoCentroCusto in 'cadastro\uCadTipoCentroCusto.pas' {frmTipoCentroCusto},
   Entidade.TipoCentroCusto in 'entidade\Entidade.TipoCentroCusto.pas',
   uCadCentroCusto in 'cadastro\uCadCentroCusto.pas' {frmCadCentroCusto},
-  Entidade.CentroCusto in 'entidade\Entidade.CentroCusto.pas';
+  Entidade.CentroCusto in 'entidade\Entidade.CentroCusto.pas',
+  Entidade.Fornecedor in 'entidade\Entidade.Fornecedor.pas',
+  uTelaHerancaEntidade in 'heranca\uTelaHerancaEntidade.pas' {frmTelaHerancaEntidade},
+  uCadFornecedor in 'cadastro\uCadFornecedor.pas' {frmCadFornecedor},
+  uCadLancUnificado in 'cadastro\uCadLancUnificado.pas' {frmCadLancUnificado},
+  Entidade.TipoCulto in 'entidade\Entidade.TipoCulto.pas',
+  Entidade.FormaPagamento in 'entidade\Entidade.FormaPagamento.pas',
+  uCadFormpgto in 'cadastro\uCadFormpgto.pas' {frmCadFormpgto},
+  Entidade.TipoLancamento in 'entidade\Entidade.TipoLancamento.pas',
+  uCadTipoLancamento in 'cadastro\uCadTipoLancamento.pas' {frmCadTipoLancamento},
+  Entidade.Tesouraria in 'entidade\Entidade.Tesouraria.pas';
 
 {$R *.res}
 

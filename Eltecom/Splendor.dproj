@@ -312,6 +312,31 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="entidade\Entidade.CentroCusto.pas"/>
+        <DCCReference Include="entidade\Entidade.Fornecedor.pas"/>
+        <DCCReference Include="heranca\uTelaHerancaEntidade.pas">
+            <Form>frmTelaHerancaEntidade</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="cadastro\uCadFornecedor.pas">
+            <Form>frmCadFornecedor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="cadastro\uCadLancUnificado.pas">
+            <Form>frmCadLancUnificado</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="entidade\Entidade.TipoCulto.pas"/>
+        <DCCReference Include="entidade\Entidade.FormaPagamento.pas"/>
+        <DCCReference Include="cadastro\uCadFormpgto.pas">
+            <Form>frmCadFormpgto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="entidade\Entidade.TipoLancamento.pas"/>
+        <DCCReference Include="cadastro\uCadTipoLancamento.pas">
+            <Form>frmCadTipoLancamento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="entidade\Entidade.Tesouraria.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

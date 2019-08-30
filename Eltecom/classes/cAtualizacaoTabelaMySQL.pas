@@ -39,6 +39,7 @@ type
     procedure TipoCulto;
     procedure TipoSaida;
     procedure Tipo_centro_custo;
+    procedure FormaPagamento;
 
  protected
 
@@ -85,6 +86,7 @@ begin
   TipoCulto;
   TipoSaida;
   Tipo_centro_custo;
+  FormaPagamento;
 end;
 
 destructor TAtualizacaoTabelaMySQL.Destroy;
@@ -706,7 +708,7 @@ begin
   ' `dta_fim` datetime DEFAULT NULL,   '+
   ' PRIMARY KEY (`codigo`)  '+
   ') ');
-  ExecutaDiretoBancoDeDados('INSERT INTO igreja.tb_ebd_calendario  '+
+  ExecutaDiretoBancoDeDados('INSERT INTO tb_ebd_calendario  '+
   ' (ano, trimestre, dta_inicio, dta_fim)   '+
   ' VALUES(2019, 3,'+QuotedStr('2019-07-07')+' , '+QuotedStr('2019-09-22')+');  ');
    end;
@@ -718,10 +720,22 @@ begin
    begin
      ExecutaDiretoBancoDeDados(
      'CREATE TABLE `tipo_culto` (    '+
-  ' `codigo` int(11) NOT NULL AUTO_INCREMENT,   '+
+  ' `id` int(11) NOT NULL AUTO_INCREMENT,   '+
   ' `descricao` varchar(100) NOT NULL, '+
   ' `objetivo` varchar(100) NOT NULL , '+
-  '  PRIMARY KEY (`codigo`))');
+  '  PRIMARY KEY (`id`))');
+   end;
+end;
+
+procedure TAtualizacaoTabelaMySQL.FormaPagamento;
+begin
+   if not TabelaExiste('forma_pagamento') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `forma_pagamento` (  '+
+    ' `id` INT NOT NULL AUTO_INCREMENT,  '+
+    ' `descricao` VARCHAR(45) NULL, '+
+    ' PRIMARY KEY (`id`));');
    end;
 end;
 

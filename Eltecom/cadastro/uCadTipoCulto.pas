@@ -16,9 +16,9 @@ type
     lbledtDescricao: TLabeledEdit;
     lbledtCodigo: TLabeledEdit;
     lbledtObjetivo: TLabeledEdit;
-    QryListagemcodigo: TFDAutoIncField;
     QryListagemdescricao: TStringField;
     QryListagemobjetivo: TStringField;
+    fdtncfldQryListagemid: TFDAutoIncField;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -40,9 +40,9 @@ implementation
 
 procedure TfrmTipoCulto.btnAlterarClick(Sender: TObject);
 begin
-if oTipoCulto.Selecionar(QryListagem.FieldByName('codigo').AsInteger) then
+if oTipoCulto.Selecionar(QryListagem.FieldByName('id').AsInteger) then
   begin
-    lbledtCodigo.Text    := IntToStr(oTipoCulto.codigo);
+    lbledtCodigo.Text    := IntToStr(oTipoCulto.id);
     lbledtDescricao.Text       := oTipoCulto.descricao;
     lbledtObjetivo.Text  :=oTipoCulto.objetivo;
     end
@@ -65,13 +65,13 @@ begin
 
   inherited;
     oTipoCulto:= TTipoCulto.Create(dtmPrincipal.ConexaoDB);
-   IndiceAtual:='codigo';
+   IndiceAtual:='id';
 end;
 
 {$REGION 'Override'}
 function TfrmTipoCulto.Apagar: Boolean;
 begin
-if oTipoCulto.Selecionar(QryListagem.FieldByName('codigo').AsInteger) then
+if oTipoCulto.Selecionar(QryListagem.FieldByName('id').AsInteger) then
       Result:=oTipoCulto.Apagar;
 end;
 
@@ -79,9 +79,9 @@ end;
 function TfrmTipoCulto.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
 begin
     if lbledtCodigo.Text<>EmptyStr then
-       oTipoCulto.codigo:=StrToInt(lbledtCodigo.Text)
+       oTipoCulto.id:=StrToInt(lbledtCodigo.Text)
        else
-       oTipoCulto.codigo :=0;
+       oTipoCulto.id :=0;
        oTipoCulto.descricao:=lbledtDescricao.Text;
        oTipoCulto.objetivo:=   lbledtObjetivo.Text;
 

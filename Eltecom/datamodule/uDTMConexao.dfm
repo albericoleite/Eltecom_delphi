@@ -478,7 +478,6 @@ object dtmPrincipal: TdtmPrincipal
     end
   end
   object fdqryTipoSaida: TFDQuery
-    Active = True
     Connection = ConexaoDB
     SQL.Strings = (
       'SELECT codigo, tipo'
@@ -496,26 +495,6 @@ object dtmPrincipal: TdtmPrincipal
       Origin = 'tipo'
       Required = True
       Size = 50
-    end
-  end
-  object fdqryTipoEntrada: TFDQuery
-    Active = True
-    Connection = ConexaoDB
-    SQL.Strings = (
-      'SELECT codigo,descricao'
-      'FROM tipo_culto')
-    Left = 168
-    Top = 216
-    object fdtncfldTipoEntradacodigo: TFDAutoIncField
-      FieldName = 'codigo'
-      Origin = 'codigo'
-      ProviderFlags = [pfInWhere, pfInKey]
-    end
-    object strngfldTipoEntradadescricao: TStringField
-      FieldName = 'descricao'
-      Origin = 'descricao'
-      Required = True
-      Size = 100
     end
   end
 end

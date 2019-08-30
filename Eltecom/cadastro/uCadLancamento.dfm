@@ -451,13 +451,6 @@ inherited frmCadLancamento: TfrmCadLancamento
           Height = 13
           Caption = 'Tipo de Sa'#237'da'
         end
-        object Label6: TLabel
-          Left = 176
-          Top = 56
-          Width = 46
-          Height = 13
-          Caption = 'Descri'#231#227'o'
-        end
         object cbbTipo: TComboBox
           Tag = 2
           Left = 64
@@ -541,18 +534,6 @@ inherited frmCadLancamento: TfrmCadLancamento
           ListSource = dsTipoSaida
           TabOrder = 6
         end
-        object dblkcbbTipoEntrada: TDBLookupComboBox
-          Left = 176
-          Top = 75
-          Width = 372
-          Height = 21
-          DropDownRows = 15
-          Enabled = False
-          KeyField = 'codigo'
-          ListField = 'descricao'
-          ListSource = dsTipoEntrada
-          TabOrder = 7
-        end
       end
     end
   end
@@ -561,6 +542,9 @@ inherited frmCadLancamento: TfrmCadLancamento
     Width = 744
     ExplicitTop = 419
     ExplicitWidth = 744
+    DesignSize = (
+      744
+      38)
     inherited btnNavigator: TDBNavigator
       Left = 413
       Hints.Strings = ()
@@ -685,7 +669,7 @@ inherited frmCadLancamento: TfrmCadLancamento
     Top = 280
   end
   object dsMes: TDataSource
-    DataSet = dtmRelatorio.fdqryMeses
+    DataSet = dtmRelatorio.fdqryPessoas_dept
     Left = 114
     Top = 120
   end
@@ -693,10 +677,5 @@ inherited frmCadLancamento: TfrmCadLancamento
     DataSet = dtmPrincipal.fdqryTipoSaida
     Left = 360
     Top = 232
-  end
-  object dsTipoEntrada: TDataSource
-    DataSet = dtmPrincipal.fdqryTipoEntrada
-    Left = 368
-    Top = 240
   end
 end

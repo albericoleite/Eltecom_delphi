@@ -314,6 +314,57 @@ begin
    ExecutaDiretoBancoDeDados('ALTER TABLE tb_igreja ADD cep varchar(20) NULL;');
  end;
 
+   if not CampoExisteNaTabela('tipo_culto','id') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE `igreja`.`tipo_culto` '+
+  ' CHANGE COLUMN `codigo` `id` INT(11) NOT NULL AUTO_INCREMENT ;');
+ end;
+
+    if not CampoExisteNaTabela('tb_tesouraria','id_fornecedor') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE `tb_tesouraria`  '+
+' ADD COLUMN `id_centro_custo` INT NULL AFTER `cod_tipo_saida`,     '+
+' ADD COLUMN `id_tipo_lancamento` INT NULL AFTER `id_centro_custo`,   '+
+' ADD COLUMN `id_forma_pagamento` INT NULL AFTER `id_tipo_lancamento`,   '+
+' ADD COLUMN `id_fornecedor` INT NULL AFTER `id_forma_pagamento`,    '+
+' ADD COLUMN `id_tipo_culto` INT NULL AFTER `id_fornecedor`,      '+
+' ADD INDEX `tb_tesouraria_centro_custo_fk_idx` (`id_centro_custo` ASC),   '+
+' ADD INDEX `tb_tesouraria_tb_tipo_lancamento_fk_idx` (`id_tipo_lancamento` ASC),  '+
+' ADD INDEX `tb_tesouratia_forma_pgto_fk_idx` (`id_forma_pagamento` ASC), '+
+' ADD INDEX `tb_tesouraria_fornecedor_fk_idx` (`id_fornecedor` ASC),   '+
+' ADD INDEX `tb_tesouraria_tipo_culto_fk_idx` (`id_tipo_culto` ASC);  '+
+' ;                                                '+
+' ALTER TABLE `tb_tesouraria`         '+
+' ADD CONSTRAINT `tb_tesouraria_centro_custo_fk`    '+
+'  FOREIGN KEY (`id_centro_custo`)              '+
+'  REFERENCES `centro_custo` (`id`)     '+
+'  ON DELETE NO ACTION                   '+
+'  ON UPDATE NO ACTION,      '+
+' ADD CONSTRAINT `tb_tesouraria_tb_tipo_lancamento_fk`  '+
+'  FOREIGN KEY (`id_tipo_lancamento`)         '+
+ ' REFERENCES `tipo_lancamento` (`id`)  '+
+ ' ON DELETE NO ACTION  '+
+ ' ON UPDATE NO ACTION,   '+
+' ADD CONSTRAINT `tb_tesouraria_forma_pgto_fk`   '+
+'  FOREIGN KEY (`id_forma_pagamento`)   '+
+'  REFERENCES `forma_pagamento` (`id`) '+
+'  ON DELETE NO ACTION      '+
+'  ON UPDATE NO ACTION,   '+
+'  ADD CONSTRAINT `tb_tesouraria_fornecedor_fk`  '+
+ ' FOREIGN KEY (`id_fornecedor`)      '+
+ ' REFERENCES `fornecedor` (`id`)   '+
+ ' ON DELETE NO ACTION    '+
+ ' ON UPDATE NO ACTION,   '+
+' ADD CONSTRAINT `tb_tesouraria_tipo_culto_fk`  '+
+'  FOREIGN KEY (`id_tipo_culto`)    '+
+'  REFERENCES `tipo_culto` (`id`)  '+
+'  ON DELETE NO ACTION   '+
+'  ON UPDATE NO ACTION; ');
+ end;
+
+
+
+
 
   {  //Adicionar código da congregação no recibo
   if not CampoExisteNaTabela('tb_classe_aluno','tb_classe_aluno_tb_classe_fk') then

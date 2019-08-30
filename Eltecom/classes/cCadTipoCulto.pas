@@ -11,7 +11,7 @@ type
   private
     // VARIAVEIS PRIVADA SOMENTE DENTRO DA CLASSE
     ConexaoDB: TFDConnection;
-    F_codigo: Integer;
+    F_id: Integer;
     F_descricao: string;
     F_objetivo: string;
 
@@ -26,8 +26,8 @@ type
   published
     // VARIAVEIS PUBLICAS UTILAIZADAS PARA PROPRIEDADES DA CLASSE
     // PARA FORNECER INFORMAÇÕESD EM RUMTIME
-    property codigo: Integer read F_codigo
-      write F_codigo;
+    property id: Integer read F_id
+      write F_id;
     property descricao: string read F_descricao
       write F_descricao;
     property objetivo: string read F_objetivo
@@ -57,7 +57,7 @@ var
   Qry: TFDQuery;
 begin
   if MessageDlg('Apagar o Registro: ' + #13 + #13 + 'Código: ' +
-    IntToStr(F_codigo) + #13 + 'Descrição: ' + F_descricao,
+    IntToStr(F_id) + #13 + 'Descrição: ' + F_descricao,
     mtConfirmation, [mbYes, mbNo], 0) = mrNO then
   begin
     Result := false;
@@ -69,8 +69,8 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('DELETE FROM tipo_culto WHERE codigo=:codigo ');
-    Qry.ParamByName('codigo').AsInteger := F_codigo;
+    Qry.SQL.Add('DELETE FROM tipo_culto WHERE id=:id ');
+    Qry.ParamByName('id').AsInteger := F_id;
     try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -97,8 +97,8 @@ begin
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
     Qry.SQL.Add('UPDATE tipo_culto  SET descricao=:descricao, objetivo=:objetivo '+
-    ' WHERE codigo=:codigo;');
-    Qry.ParamByName('codigo').AsInteger := F_codigo ;
+    ' WHERE id=:id;');
+    Qry.ParamByName('id').AsInteger := F_id ;
     Qry.ParamByName('descricao').AsString := F_descricao;
     Qry.ParamByName('objetivo').AsString := F_objetivo;
      try
@@ -153,13 +153,13 @@ begin
     Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('SELECT codigo, descricao, objetivo FROM tipo_culto '+
-    ' where codigo=:codigo ');
-    Qry.ParamByName('codigo').AsInteger := id;
+    Qry.SQL.Add('SELECT id, descricao, objetivo FROM tipo_culto '+
+    ' where id=:id ');
+    Qry.ParamByName('id').AsInteger := id;
 
     try
       Qry.Open;
-      Self.F_codigo := Qry.FieldByName('codigo').AsInteger;
+      Self.F_id := Qry.FieldByName('id').AsInteger;
       Self.F_descricao := Qry.FieldByName('descricao').AsString;
       Self.F_objetivo := Qry.FieldByName('objetivo').AsString;
     Except

@@ -2,6 +2,7 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 486
   ClientWidth = 956
+  ExplicitTop = 2
   ExplicitWidth = 962
   ExplicitHeight = 515
   PixelsPerInch = 96
@@ -28,8 +29,6 @@ inherited frmCadPessoa: TfrmCadPessoa
     ExplicitWidth = 956
     ExplicitHeight = 448
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 948
       ExplicitHeight = 420
       inherited pnlListagem: TPanel
@@ -334,8 +333,6 @@ inherited frmCadPessoa: TfrmCadPessoa
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 948
       ExplicitHeight = 420
       object lblTipo: TLabel
@@ -1913,7 +1910,7 @@ inherited frmCadPessoa: TfrmCadPessoa
     AuthOptions.HasAuthentication = False
     AccessControlAllowOrigin = '*'
     OnBeforeGet = DWClientRESTCEPBeforeGet
-    Left = 456
-    Top = 16
+    Left = 448
+    Top = 72
   end
 end

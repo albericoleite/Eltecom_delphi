@@ -62,9 +62,6 @@ type
     dsTipoSaida: TDataSource;
     QryListagemcod_tipo_saida: TIntegerField;
     QryListagemTipoSaida: TStringField;
-    Label6: TLabel;
-    dblkcbbTipoEntrada: TDBLookupComboBox;
-    dsTipoEntrada: TDataSource;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -280,7 +277,6 @@ begin
   dtmRelatorio := TdtmRelatorio.Create(self);
   ListaLancamentosPeriodo;
   dtmPrincipal.fdqryTipoSaida.Open;
-  dtmPrincipal.fdqryTipoEntrada.Open;
 end;
 
 procedure TfrmCadLancamento.FormShow(Sender: TObject);
@@ -332,13 +328,11 @@ begin
   if cbbTipo.Text = 'SAIDA' then
   begin
     dblkcbbTipoSaida.Enabled := true;
-    dblkcbbTipoEntrada.Enabled:=false;
     dblkcbbTipoSaida.SetFocus;
   end;
   if cbbTipo.Text = 'ENTRADA' then
   begin
     dblkcbbTipoSaida.Enabled := false;
-    dblkcbbTipoEntrada.Enabled:=True;
   end;
 end;
 

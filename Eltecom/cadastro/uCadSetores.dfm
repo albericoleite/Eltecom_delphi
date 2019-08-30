@@ -2,6 +2,7 @@ inherited frmCadSetores: TfrmCadSetores
   Caption = 'Cadastro de Setores'
   ClientHeight = 312
   ClientWidth = 734
+  ExplicitTop = 2
   ExplicitWidth = 740
   ExplicitHeight = 341
   PixelsPerInch = 96

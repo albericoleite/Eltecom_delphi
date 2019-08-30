@@ -47,7 +47,6 @@ object frmTipoCentroCusto: TfrmTipoCentroCusto
     Color = 15508822
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 737
     DesignSize = (
       740
       38)
@@ -243,7 +242,6 @@ object frmTipoCentroCusto: TfrmTipoCentroCusto
         B3B3B4B3B3BDBCBCC2C1C1FF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 6
       OnClick = btnFecharClick
-      ExplicitLeft = 645
     end
     object btnGravar: TBitBtn
       Tag = 99
