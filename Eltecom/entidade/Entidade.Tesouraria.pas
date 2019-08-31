@@ -14,7 +14,7 @@ TTB_TESOURARIA = class
     FID_TIPO_LANCAMENTO: Integer;
     FSTATUS: string;
     FCOD_ENTRADA: integer;
-    FSITUACAO: string;
+    FSITUACAO: Integer;
     FID_FORNECEDOR: Integer;
     FCOD_TIPO_SAIDA: Integer;
     FCOD_CONGREGACAO: Integer;
@@ -33,11 +33,12 @@ TTB_TESOURARIA = class
     procedure SetID_TIPO_CULTO(const Value: Integer);
     procedure SetID_TIPO_LANCAMENTO(const Value: Integer);
     procedure SetNRO_DOCUMENTO(const Value: integer);
-    procedure SetSITUACAO(const Value: string);
+    procedure SetSITUACAO(const Value: Integer);
     procedure SetSTATUS(const Value: string);
     procedure SetUSUARIO_INCLUSAO(const Value: string);
     procedure SetVALOR(const Value: Double);
   published
+  [PK,AutoInc]
   property COD_ENTRADA:integer read FCOD_ENTRADA write SetCOD_ENTRADA;
   property NRO_DOCUMENTO:integer read FNRO_DOCUMENTO write SetNRO_DOCUMENTO;
   property DTA_MOVIMENTO:TDateTime read FDTA_MOVIMENTO write SetDTA_MOVIMENTO;
@@ -47,7 +48,7 @@ TTB_TESOURARIA = class
   property VALOR:Double read FVALOR write SetVALOR;
   property STATUS:string read FSTATUS write SetSTATUS;
   property COD_CONGREGACAO:Integer read FCOD_CONGREGACAO write SetCOD_CONGREGACAO;
-  property SITUACAO:string read FSITUACAO write SetSITUACAO;
+  property SITUACAO:Integer read FSITUACAO write SetSITUACAO;
   property COD_TIPO_SAIDA:Integer read FCOD_TIPO_SAIDA write SetCOD_TIPO_SAIDA;
   property ID_CENTRO_CUSTO:Integer read FID_CENTRO_CUSTO write SetID_CENTRO_CUSTO;
   property ID_TIPO_LANCAMENTO:Integer read FID_TIPO_LANCAMENTO write SetID_TIPO_LANCAMENTO;
@@ -120,7 +121,7 @@ begin
   FNRO_DOCUMENTO := Value;
 end;
 
-procedure TTB_TESOURARIA.SetSITUACAO(const Value: string);
+procedure TTB_TESOURARIA.SetSITUACAO(const Value: Integer);
 begin
   FSITUACAO := Value;
 end;

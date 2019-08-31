@@ -2,6 +2,7 @@ inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
   ClientHeight = 457
   ClientWidth = 744
+  ExplicitTop = -141
   ExplicitWidth = 750
   ExplicitHeight = 486
   PixelsPerInch = 96
@@ -32,8 +33,6 @@ inherited frmCadLancamento: TfrmCadLancamento
     ExplicitWidth = 744
     ExplicitHeight = 419
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 736
       ExplicitHeight = 391
       inherited pnlListagem: TPanel
@@ -413,8 +412,6 @@ inherited frmCadLancamento: TfrmCadLancamento
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 736
       ExplicitHeight = 391
       object pnl1: TPanel

@@ -4,10 +4,10 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.DBCtrls, Vcl.ExtCtrls,uDTMConexao, System.DateUtils,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,cUsuarioLogado, Data.DB, Vcl.DBCtrls, Vcl.ExtCtrls,uDTMConexao, System.DateUtils,
   Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, RxCurrEdit, RxToolEdit, Vcl.Buttons,SimpleDAO,SimpleInterface,
   Vcl.Mask, Vcl.ComCtrls,SimpleQueryFiredac,System.Generics.Collections  ,Entidade.TipoLancamento
-  ,Entidade.CentroCusto,Entidade.Fornecedor,Entidade.TipoCulto,Entidade.FormaPagamento, Entidade.Tesouraria;
+  ,Entidade.CentroCusto,Entidade.Fornecedor,uEnum,Entidade.TipoCulto,Entidade.FormaPagamento, Entidade.Tesouraria;
 
 type
   TfrmCadLancUnificado = class(TForm)
@@ -50,7 +50,7 @@ type
     dblkcbbTipoSaida: TDBLookupComboBox;
     dblkcbbCultoFornec: TDBLookupComboBox;
     pnlRodape: TPanel;
-    btnNavigator: TDBNavigator;
+    dbnvgrNavigator: TDBNavigator;
     btnNovo: TBitBtn;
     btnAlterar: TBitBtn;
     btnCancelar: TBitBtn;
@@ -82,6 +82,8 @@ type
     procedure btnApagarClick(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
     procedure dblkcbbMesClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
   private
 
     { Private declarations }
@@ -93,9 +95,16 @@ type
     DAOTesouraria:iSimpleDAO<TTB_TESOURARIA>;
     procedure FiltrosCombobox(Tipo: string);
     function Listar: string;
+    procedure ControlarBotoes(btnNovo, btnAlterar, btnCancelar, BtnGravar,
+      btnApagar: TBitBtn; btnNavigator: TDBNavigator;
+      pgcPrincipal: TPageControl; Flag: Boolean);
+    procedure LimparEdit;
+    procedure ControlarIndiceTab(pgcPrincipal: TPageControl; Indice: Integer);
   public
     { Public declarations }
+     EstadoDoCadastro:TEstadoDoCadastro;
     procedure ListaTipoSaida;
+
   end;
 
 var
@@ -105,10 +114,18 @@ implementation
 
 {$R *.dfm}
 
-uses uDTMRelatorio;
+uses uDTMRelatorio, uPrincipal;
 
 procedure TfrmCadLancUnificado.btnAlterarClick(Sender: TObject);
 begin
+if not TUsuarioLogado.TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
+begin
+  MessageDlg('Usuário: '+oUsuarioLogado.nome+', não tem permissão de acesso',mtWarning,[mbOK],0);
+  Abort;
+end;
+ ControlarBotoes(btnNovo, btnAlterar, btnCancelar,btnGravar
+,btnApagar,dbnvgrNavigator , pgcPrincipal,False);
+EstadoDoCadastro:= ecAlterar;
 lbledtDescricao.Enabled:=true;
 lbledtDescricao.SetFocus;
 end;
@@ -147,18 +164,139 @@ sql :=  'dta_movimento between '+QuotedStr(FormatDateTime( 'yyyy-mm-dd', dtdtIni
    lancamentos := DAOTesouraria.SQL.WHERE(sql).&End.Find;
 end;
 
+procedure TfrmCadLancUnificado.btnCancelarClick(Sender: TObject);
+begin
+ControlarBotoes(btnNovo, btnAlterar, btnCancelar,btnGravar
+,btnApagar,dbnvgrNavigator , pgcPrincipal,True);
+ControlarIndiceTab(pgcPrincipal,0);
+LimparEdit;
+end;
+procedure TfrmCadLancUnificado.ControlarIndiceTab(pgcPrincipal:TPageControl;Indice: Integer) ;
+begin
+      if (pgcPrincipal.Pages[Indice].TabVisible) then
+      pgcPrincipal.TabIndex:=Indice;
+end;
+
 procedure TfrmCadLancUnificado.btnFecharClick(Sender: TObject);
 begin
 close;
 end;
 
+procedure TfrmCadLancUnificado.btnGravarClick(Sender: TObject);
+var
+  tipo : TTB_TESOURARIA;
+begin
+  tipo := TTB_TESOURARIA.Create;
+
+  if lbledtCodigo.Text <>'' then  begin
+
+    try
+    tipo.COD_ENTRADA := StrToInt(lbledtCodigo.Text);
+    tipo.DESCRICAO := lbledtDescricao.Text;
+    tipo.COD_CONGREGACAO:= dtmPrincipal.congAtiva;
+    tipo.NRO_DOCUMENTO:= StrToInt(lbledtCodTalao.Text);
+    tipo.DTA_MOVIMENTO:= dtdtData.Date;
+    tipo.VALOR:= StrToFloat(crncydtValor.Text);
+    tipo.ID_CENTRO_CUSTO:= dblkcbbCC.keyvalue;
+    tipo.ID_TIPO_LANCAMENTO:= dblkcbbTipoGenerico.keyvalue;
+    tipo.ID_FORMA_PAGAMENTO:= dblkcbbFormPag.keyvalue;
+       if cbbTipo.text = 'ENTRADA' then  BEGIN
+     tipo.ID_TIPO_CULTO:= dblkcbbCultoFornec.KeyValue
+    END     ELSE begin
+    tipo.ID_FORNECEDOR:= dblkcbbCultoFornec.KeyValue;
+    tipo.COD_TIPO_SAIDA:=dblkcbbTipoSaida.keyvalue;
+    end;
+
+    DAOTesouraria.Update(tipo);
+    finally
+    tipo.Free;
+    btnBuscarClick(nil);
+  end;
+  end else begin
+
+   try
+    tipo.DESCRICAO := lbledtDescricao.Text;
+    tipo.COD_CONGREGACAO:= dtmPrincipal.congAtiva;
+    tipo.NRO_DOCUMENTO:= StrToInt(lbledtCodTalao.Text);
+    tipo.DTA_MOVIMENTO:= dtdtData.Date;
+    tipo.VALOR:= StrToFloat(crncydtValor.Text);
+    tipo.ID_CENTRO_CUSTO:= dblkcbbCC.keyvalue;
+    tipo.ID_TIPO_LANCAMENTO:= dblkcbbTipoGenerico.keyvalue;
+    tipo.ID_FORMA_PAGAMENTO:= dblkcbbFormPag.keyvalue;
+    tipo.DTA_INCLUSAO:=now;
+    tipo.USUARIO_INCLUSAO:= oUsuarioLogado.nome;
+       if cbbTipo.text = 'ENTRADA' then  BEGIN
+     tipo.ID_TIPO_CULTO:= dblkcbbCultoFornec.KeyValue
+    END     ELSE begin
+    tipo.ID_FORNECEDOR:= dblkcbbCultoFornec.KeyValue;
+    tipo.COD_TIPO_SAIDA:=dblkcbbTipoSaida.keyvalue;
+    end;
+    DAOTesouraria.Insert(tipo);
+    finally
+    tipo.Free;
+    btnBuscarClick(nil);
+  end;
+  end;
+   lbledtDescricao.Enabled:=false;
+
+end;
+
 procedure TfrmCadLancUnificado.btnNovoClick(Sender: TObject);
 begin
+if not TUsuarioLogado.TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
+begin
+  MessageDlg('Usuário: '+oUsuarioLogado.nome+', não tem permissão de acesso',mtWarning,[mbOK],0);
+  Abort;
+end;
+
+
+ControlarBotoes(btnNovo, btnAlterar, btnCancelar,btnGravar
+,btnApagar,dbnvgrNavigator , pgcPrincipal,False);
+EstadoDoCadastro:= ecInserir;
+LimparEdit;
 dtdtData.Date:= Now;
 lbledtCodigo.Clear;
 lbledtDescricao.Clear;
 lbledtDescricao.Enabled:=true;
 lbledtDescricao.SetFocus;
+end;
+procedure TfrmCadLancUnificado.ControlarBotoes(btnNovo,btnAlterar,  btnCancelar,
+ BtnGravar, btnApagar:TBitBtn;
+ btnNavigator:TDBNavigator ;pgcPrincipal:TPageControl; Flag:Boolean );
+Begin
+    btnNovo.Enabled :=Flag;
+    btnApagar.Enabled := Flag;
+    btnAlterar.Enabled :=Flag;
+    btnNavigator.Enabled := Flag;
+    pgcPrincipal.Pages[0].TabVisible:=Flag;
+    btnCancelar.Enabled:=not(Flag);
+    BtnGravar.Enabled:=not(Flag);
+End;
+
+Procedure    TfrmCadLancUnificado.LimparEdit;
+var i : Integer;
+begin
+       for i := 0 to ComponentCount-1 do  begin
+    if (Components[i] is TLabeledEdit) then
+           TLabeledEdit(Components[i]).Text:=EmptyStr
+           else if (Components[i] is Tedit) then
+            Tedit(Components[i]).Text:=EmptyStr
+
+            else if (Components[i] is TMemo) then
+            TMemo(Components[i]).Text:=EmptyStr
+
+            else if (Components[i] is TMaskEdit) then
+            TMaskEdit(Components[i]).Text:=''
+
+            else if (Components[i] is TDBLookupComboBox) then
+            TDBLookupComboBox(Components[i]).keyValue:= null
+
+            else if (Components[i] is TCurrencyEdit) then
+            TCurrencyEdit(Components[i]).Value:=0
+
+            //else if (Components[i] is TDateEdit) then
+            //TDateEdit(Components[i]).Date:=0 ;
+     end;
 end;
 
 procedure TfrmCadLancUnificado.cbbTipoChange(Sender: TObject);
@@ -186,13 +324,14 @@ lbledtCodigo.Text := dsListagem.DataSet.FieldByName('COD_ENTRADA').AsString;
   lbledtCodTalao.Text:= dsListagem.DataSet.FieldByName('NRO_DOCUMENTO').AsString;
   crncydtValor.Text:= dsListagem.DataSet.FieldByName('VALOR').AsString;
   dtdtData.Text:=dsListagem.DataSet.FieldByName('DTA_MOVIMENTO').AsString;
-  {lbledtBairro.Text:=dsListagem.DataSet.FieldByName('BAIRRO').AsString;
-  lbledtNumero.Text:= dsListagem.DataSet.FieldByName('NUMERO').AsString;
-  cbbUf.Text:=dsListagem.DataSet.FieldByName('UF').AsString;
-  medtTelFixo.Text := dsListagem.DataSet.FieldByName('TELEFONE').AsString;
-  medtTelefoneCel.Text:= dsListagem.DataSet.FieldByName('CELULAR').AsString;
-  medtCEP.Text:=dsListagem.DataSet.FieldByName('CEP').AsString;
-  medtCpfcnpj.Text:=dsListagem.DataSet.FieldByName('CPFCNPJ').AsString; }
+  dblkcbbCC.keyvalue :=dsListagem.DataSet.FieldByName('ID_CENTRO_CUSTO').AsInteger;
+
+  dblkcbbFormPag.keyvalue:=dsListagem.DataSet.FieldByName('ID_FORMA_PAGAMENTO').AsInteger;
+    if cbbTipo.text = 'ENTRADA' then
+     dblkcbbTipoGenerico.keyvalue:= dsListagem.DataSet.FieldByName('ID_TIPO_CULTO').AsString
+      ELSE
+    dblkcbbTipoGenerico.keyvalue:= dsListagem.DataSet.FieldByName('ID_FORNECEDOR').AsString;
+
 end;
 
 procedure TfrmCadLancUnificado.FormCreate(Sender: TObject);

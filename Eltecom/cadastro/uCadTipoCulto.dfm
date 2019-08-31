@@ -1,14 +1,9 @@
 inherited frmTipoCulto: TfrmTipoCulto
   Caption = 'Cadastrar tipo de Culto'
-  ExplicitLeft = -66
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       inherited grdListagem: TDBGrid
         DataSource = dtsListagem
         Columns = <
@@ -33,10 +28,6 @@ inherited frmTipoCulto: TfrmTipoCulto
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 792
-      ExplicitHeight = 390
       object lbledtDescricao: TLabeledEdit
         Tag = 2
         Left = 79
@@ -104,6 +95,7 @@ inherited frmTipoCulto: TfrmTipoCulto
     object fdtncfldQryListagemid: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
+      ReadOnly = True
     end
   end
 end

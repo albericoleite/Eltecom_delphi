@@ -531,6 +531,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
           EditLabel.Width = 33
           EditLabel.Height = 13
           EditLabel.Caption = 'C'#243'digo'
+          Enabled = False
           NumbersOnly = True
           TabOrder = 5
         end
@@ -614,7 +615,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
     DesignSize = (
       738
       38)
-    object btnNavigator: TDBNavigator
+    object dbnvgrNavigator: TDBNavigator
       Left = 413
       Top = 6
       Width = 224
@@ -730,10 +731,11 @@ object frmCadLancUnificado: TfrmCadLancUnificado
         9BD6AC97D4A993C68C70FF00FFD4AA94D4AB95D5AB95D4AA95D4A993D4A892D3
         A791D2A68FD2A48DD2A38CD1A28BD0A189CFA088CF9E86FF00FF}
       TabOrder = 4
+      OnClick = btnCancelarClick
     end
     object btnApagar: TBitBtn
       Tag = 99
-      Left = 329
+      Left = 327
       Top = 6
       Width = 80
       Height = 25
@@ -840,6 +842,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
         92422992BC7B498F450CFF00FFB1805D975C454D1C744D1C744D1C744D1C744D
         1C744D1C744D1C744D1C744D1C744D1C744D1C74853D2687410A}
       TabOrder = 3
+      OnClick = btnGravarClick
     end
   end
   object dsCC: TDataSource

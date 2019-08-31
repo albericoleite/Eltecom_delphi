@@ -51,7 +51,7 @@ var
   tipo : TTIPO_LANCAMENTO;
 begin
 if MessageDlg('Apagar o Registro: ' + #13 + #13 + 'Código: ' +
-    lbledtCodigo.Text + #13 + 'Descrição: ' + lbledtDescricao.Text,
+    lbledtID.Text + #13 + 'Descrição: ' + lbledtDescricao.Text,
     mtConfirmation, [mbYes, mbNo], 0) = mrNO then
   begin
     Result:=False;
@@ -59,11 +59,12 @@ if MessageDlg('Apagar o Registro: ' + #13 + #13 + 'Código: ' +
   end;
   tipo := TTIPO_LANCAMENTO.Create;
   TRY
-    tipo.ID := StrToInt(lbledtCodigo.Text);
+    tipo.ID := StrToInt(lbledtID.Text);
     DAOTipolanc.Delete(tipo);
   finally
   Result:=true;
     tipo.Free;
+    Listar;
   end;
 
 end;
@@ -74,6 +75,8 @@ begin
   lbledtID.Text := dsListagem.DataSet.FieldByName('ID').AsString;
   lbledtCodigo.Text := dsListagem.DataSet.FieldByName('CODIGO').AsString;
   lbledtDescricao.Text := dsListagem.DataSet.FieldByName('DESCRICAO').AsString;
+  dblkcbbTipoCC.KeyValue :=  dsListagem.DataSet.FieldByName('ID_TIPO_CENTRO_CUSTO').AsInteger;
+  dblkcbbPai.KeyValue:=  dsListagem.DataSet.FieldByName('ID_PAI').AsInteger;
 end;
 
 procedure TfrmCadTipoLancamento.dsListagemDataChange(Sender: TObject;
@@ -119,10 +122,11 @@ var
 begin
   tipo := TTIPO_LANCAMENTO.Create;
 
-  if lbledtCodigo.Text <>EmptyStr then  begin
+  if lbledtID.Text <>EmptyStr then  begin
 
     try
-    tipo.ID := StrToInt(lbledtCodigo.Text);
+    tipo.ID := StrToInt(lbledtID.Text);
+    TIPO.CODIGO:= lbledtCodigo.Text;
     tipo.DESCRICAO := lbledtDescricao.Text;
     tipo.ID_TIPO_CENTRO_CUSTO :=dblkcbbTipoCC.KeyValue;
     tipo.ID_PAI:= dblkcbbPai.KeyValue;
@@ -136,6 +140,7 @@ begin
 
    try
     tipo.DESCRICAO := lbledtDescricao.Text;
+    TIPO.CODIGO:= lbledtCodigo.Text;
     tipo.ID_TIPO_CENTRO_CUSTO :=dblkcbbTipoCC.KeyValue;
     tipo.ID_PAI:= dblkcbbPai.KeyValue;
     DAOTipolanc.Insert(tipo);
@@ -151,15 +156,13 @@ end;
 function TfrmCadTipoLancamento.Listar: string;
 var
   tipos : TList<TTIPO_LANCAMENTO>;
-  tiposc : TList<TTIPO_LANCAMENTO>;
   tipo : TTIPO_LANCAMENTO;
 begin
   tipos := DAOTipolanc.SQL.OrderBy('ID').&End.Find;
-  tiposc := DAOTipolancp.SQL.OrderBy('ID').&End.Find;
-   dbgrdListagem.Columns[0].Title.Caption:='Id';
+  { dbgrdListagem.Columns[0].Title.Caption:='Id';
    dbgrdListagem.Columns[1].Title.Caption:='Código';
    dbgrdListagem.Columns[2].Title.Caption:='Nome';
-   dbgrdListagem.Columns[2].Width:=200;
+   dbgrdListagem.Columns[2].Width:=200; }
 
 
 end;

@@ -2,6 +2,7 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
   Caption = 'Cadastro de tipo de Receitas / Despesas'
   ClientWidth = 736
   Position = poScreenCenter
+  ExplicitTop = -37
   ExplicitWidth = 752
   PixelsPerInch = 96
   TextHeight = 13
@@ -20,8 +21,10 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
   end
   inherited pgcPrincipal: TPageControl
     Width = 736
+    ActivePage = tabManutencao
     ExplicitWidth = 736
     inherited tabListagem: TTabSheet
+      ExplicitWidth = 728
       inherited pnlListagem: TPanel
         Width = 728
         ExplicitWidth = 728
@@ -32,10 +35,7 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 728
-      ExplicitHeight = 293
       object Label7: TLabel
         Left = 398
         Top = 1
@@ -61,7 +61,8 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
         EditLabel.Height = 13
         EditLabel.Caption = 'Descri'#231#227'o'
         MaxLength = 45
-        TabOrder = 0
+        TabOrder = 1
+        Text = '2'
       end
       object lbledtCodigo: TLabeledEdit
         Left = 56
@@ -72,10 +73,10 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
         EditLabel.Height = 13
         EditLabel.Caption = 'C'#243'digo'
         MaxLength = 10
-        TabOrder = 1
+        TabOrder = 0
+        Text = '2'
       end
       object lbledtID: TLabeledEdit
-        Tag = 2
         Left = 3
         Top = 20
         Width = 47
@@ -86,7 +87,7 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
         EditLabel.Caption = 'ID'
         Enabled = False
         MaxLength = 45
-        TabOrder = 2
+        TabOrder = 4
       end
       object dblkcbbTipoCC: TDBLookupComboBox
         Left = 398
@@ -94,7 +95,7 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
         Width = 91
         Height = 21
         ListSource = dsTipoCC
-        TabOrder = 3
+        TabOrder = 2
       end
       object dblkcbbPai: TDBLookupComboBox
         Left = 495
@@ -102,7 +103,7 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
         Width = 225
         Height = 21
         ListSource = dsPai
-        TabOrder = 4
+        TabOrder = 3
       end
     end
   end
