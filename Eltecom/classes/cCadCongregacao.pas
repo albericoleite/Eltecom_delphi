@@ -45,6 +45,10 @@ type
     F_cod_cc: Integer;
     F_sigla: string;
     F_cod_dirigente: Integer;
+    F_percentual_central:string;
+    F_percentual_valor:Double;
+    F_meta_central:string;
+    F_meta_valor:Double;
 
   public
     constructor Create(aConexao: TFDConnection); // CONSTRUTOR DA CLASSE
@@ -98,6 +102,10 @@ type
     property sigla: string read F_sigla write F_sigla;
     property cod_dirigente: Integer read F_cod_dirigente
       write F_cod_dirigente;
+      property percentual_central: string read F_percentual_central write F_percentual_central;
+      property meta_central: string read F_meta_central write F_meta_central;
+      property percentual_valor: double read F_percentual_valor write F_percentual_valor;
+      property meta_valor: double read F_meta_valor write F_meta_valor;
   end;
 
 implementation
@@ -135,7 +143,7 @@ begin
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
     Qry.SQL.Add
-      ('DELETE FROM igreja.tb_congregacao WHERE cod_congregacao=:cod_congregacao ');
+      ('DELETE FROM tb_congregacao WHERE cod_congregacao=:cod_congregacao ');
     Qry.ParamByName('cod_congregacao').AsInteger := F_cod_congregacao;
      try
         ConexaoDB.StartTransaction;
@@ -169,8 +177,11 @@ begin
       + 'diacoa=:diacoa, diacom=:diacom, diacoi=:diacoi, diacv=:diacv, data_aber_sub=:data_aber_sub, '
       + 'data_aber_cong=:data_aber_cong, data_fun_coa=:data_fun_coa, data_fun_com=:data_fun_com, data_fun_coi=:data_fun_coi, '
       + 'data_fun_cv=:data_fun_cv, cong_principal=:cong_principal, ' +
-      'dirigente=:dirigente, cod_setor=:cod_setor, cod_igreja=:cod_igreja, cod_cc=:cod_cc, sigla=:sigla,cod_dirigente=:cod_dirigente '
-      + ' WHERE cod_congregacao=:cod_congregacao');
+      'dirigente=:dirigente, cod_setor=:cod_setor, cod_igreja=:cod_igreja, '+
+      ' cod_cc=:cod_cc, sigla=:sigla,cod_dirigente=:cod_dirigente, ' +
+      ' percentual_central=:percentual_central, percentual_valor=:percentual_valor, '+
+       ' meta_central=:meta_central, meta_valor=:meta_valor '+
+      ' WHERE cod_congregacao=:cod_congregacao');
     Qry.ParamByName('cod_congregacao').AsInteger := F_cod_congregacao;
     Qry.ParamByName('cod_central').AsInteger := F_cod_central;
     Qry.ParamByName('congregacao').AsString := F_congregacao;
@@ -203,6 +214,10 @@ begin
     Qry.ParamByName('cod_cc').AsInteger := F_cod_cc;
     Qry.ParamByName('sigla').AsString := F_sigla;
     Qry.ParamByName('cod_dirigente').AsInteger := F_cod_dirigente;
+    Qry.ParamByName('percentual_central').AsString := F_percentual_central;
+    Qry.ParamByName('meta_central').AsString := F_meta_central;
+    Qry.ParamByName('meta_valor').AsFloat := F_meta_valor;
+    Qry.ParamByName('percentual_valor').AsFloat := F_percentual_valor;
      try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -231,13 +246,14 @@ begin
       ' bairro, cep, cidade, diasculto, diacoa, diacom, diacoi, diacv, '+
       ' data_aber_sub, data_aber_cong, data_fun_coa, data_fun_com, data_fun_coi, '+
       ' data_fun_cv, data_cadastro, usuario_cadastro, cong_principal, dirigente,  '+
-      ' cod_setor, cod_igreja, cod_cc, sigla,cod_dirigente )VALUES(:cod_central, :congregacao, '+
+      ' cod_setor, cod_igreja, cod_cc, sigla,cod_dirigente '+
+      ' ,percentual_central,percentual_valor, meta_central,meta_valor )VALUES(:cod_central, :congregacao, '+
       ' :setor, :polo, :situacao, :telefone, :cnpj, :siteblog, :endereco,  '+
       ' :complemento, :bairro, :cep, :cidade, :diasculto, :diacoa, :diacom, '+
       ' :diacoi, :diacv, :data_aber_sub, :data_aber_cong, :data_fun_coa,    '+
       ' :data_fun_com, :data_fun_coi, :data_fun_cv, :data_cadastro,   '+
       ' :usuario_cadastro, :cong_principal, :dirigente, :cod_setor,   '+
-      ' :cod_igreja, :cod_cc, :sigla,:cod_dirigente)');
+      ' :cod_igreja, :cod_cc, :sigla,:cod_dirigente,:percentual_central,:percentual_valor, :meta_central,:meta_valor)');
 //Qry.ParamByName('cod_congregacao').AsInteger := Self.F_cod_congregacao;
 Qry.ParamByName('cod_central').AsInteger := Self.F_cod_central;
 Qry.ParamByName('congregacao').Asstring := Self.F_congregacao;
@@ -272,6 +288,11 @@ Qry.ParamByName('cod_igreja').Asstring := Self.F_cod_igreja;
 Qry.ParamByName('cod_cc').AsInteger := Self.F_cod_cc;
 Qry.ParamByName('sigla').Asstring := Self.F_sigla;
 Qry.ParamByName('cod_dirigente').AsInteger := Self.F_cod_dirigente;
+Qry.ParamByName('percentual_central').AsString := Self.F_percentual_central;
+Qry.ParamByName('percentual_valor').AsFloat := Self.F_percentual_valor;
+Qry.ParamByName('meta_central').AsString := Self.F_meta_central;
+Qry.ParamByName('meta_valor').AsFloat := Self.F_meta_valor;
+
 
 
      try
@@ -293,7 +314,7 @@ Qry.ParamByName('cod_dirigente').AsInteger := Self.F_cod_dirigente;
       + ' diacoa, diacom, diacoi, diacv, data_aber_sub, data_aber_cong, data_fun_coa, '
       + ' data_fun_com, data_fun_coi, data_fun_cv, data_cadastro, usuario_cadastro, '
       + ' cong_principal, dirigente, cod_setor, cod_igreja, cod_cc, sigla,cod_dirigente ' +
-      'FROM tb_congregacao WHERE cod_congregacao=:cod_congregacao ');
+      ',percentual_central,percentual_valor,meta_central,meta_valor FROM tb_congregacao WHERE cod_congregacao=:cod_congregacao ');
     Qry.ParamByName('cod_congregacao').AsInteger := id;
 
     try Qry.Open; Self.F_cod_congregacao := Qry.FieldByName('cod_congregacao')
@@ -330,6 +351,10 @@ Qry.ParamByName('cod_dirigente').AsInteger := Self.F_cod_dirigente;
     Self.F_cod_cc := Qry.FieldByName('cod_cc').AsInteger;
     Self.F_sigla := Qry.FieldByName('sigla').AsString;
     Self.F_cod_dirigente := Qry.FieldByName('cod_dirigente').AsInteger;
+    Self.F_percentual_central := Qry.FieldByName('percentual_central').AsString;
+    Self.F_percentual_valor := Qry.FieldByName('percentual_valor').AsFloat;
+    Self.F_meta_central := Qry.FieldByName('meta_central').AsString;
+    Self.F_meta_valor := Qry.FieldByName('meta_valor').AsFloat;
 
     Except Result := false; end;
 

@@ -1546,6 +1546,7 @@
     Top = 168
   end
   object fdqryTotalLancamentos: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
@@ -5554,6 +5555,8 @@
   object frxdbTes_Saida_Total: TfrxDBDataset
     UserName = 'frxdbTes_Saida_Total'
     CloseDataSource = False
+    FieldAliases.Strings = (
+      'total=total')
     DataSet = fdqryTes_Saida_Total
     BCDToCurrency = False
     Left = 592
@@ -5562,6 +5565,8 @@
   object frxdbTes_Entrada_Total: TfrxDBDataset
     UserName = 'frxdbTes_Entrada_Total'
     CloseDataSource = False
+    FieldAliases.Strings = (
+      'total=total')
     DataSet = fdqryTes_Entrada_Total
     BCDToCurrency = False
     Left = 568

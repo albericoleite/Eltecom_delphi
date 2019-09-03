@@ -1,8 +1,7 @@
 inherited frmCadDizimos: TfrmCadDizimos
   Caption = 'Cadastro de Dizimos'
   ClientWidth = 841
-  ExplicitLeft = -107
-  ExplicitTop = -10
+  ExplicitTop = -116
   ExplicitWidth = 847
   PixelsPerInch = 96
   TextHeight = 13
@@ -837,7 +836,6 @@ inherited frmCadDizimos: TfrmCadDizimos
     end
   end
   object dsMes: TDataSource
-    DataSet = dtmRelatorio.fdqryMeses
     Left = 234
     Top = 72
   end

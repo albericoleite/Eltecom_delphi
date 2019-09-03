@@ -480,17 +480,15 @@ object dtmPrincipal: TdtmPrincipal
   object fdqryTipoSaida: TFDQuery
     Connection = ConexaoDB
     SQL.Strings = (
-      'SELECT codigo, tipo'
+      'SELECT id, tipo'
       'FROM tipo_saida')
     Left = 312
     Top = 200
-    object fdqryTipoSaidacodigo: TFDAutoIncField
-      FieldName = 'codigo'
-      Origin = 'codigo'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
+    object fdtncfldTipoSaidaid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
     end
-    object fdqryTipoSaidatipo: TStringField
+    object strngfldTipoSaidatipo: TStringField
       FieldName = 'tipo'
       Origin = 'tipo'
       Required = True

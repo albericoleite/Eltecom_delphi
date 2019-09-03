@@ -16,10 +16,10 @@ type
     lbledtTipo: TLabeledEdit;
     lbledtDescricao: TLabeledEdit;
     lbledtCodigo: TLabeledEdit;
-    QryListagemcodigo: TFDAutoIncField;
     QryListagemtipo: TStringField;
     QryListagemdescricao: TStringField;
     mmo1: TMemo;
+    fdtncfldQryListagemid: TFDAutoIncField;
     procedure btnNovoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -42,9 +42,9 @@ implementation
 
 procedure TfrmTipoSaida.btnAlterarClick(Sender: TObject);
 begin
-if oTipoSaida.Selecionar(QryListagem.FieldByName('codigo').AsInteger) then
+if oTipoSaida.Selecionar(QryListagem.FieldByName('id').AsInteger) then
   begin
-    lbledtCodigo.Text    := IntToStr(oTipoSaida.codigo);
+    lbledtCodigo.Text    := IntToStr(oTipoSaida.id);
     lbledtDescricao.Text       := oTipoSaida.descricao;
     lbledtTipo.Text  :=oTipoSaida.tipo;
     end
@@ -67,13 +67,13 @@ procedure TfrmTipoSaida.FormCreate(Sender: TObject);
 begin
   inherited;
     oTipoSaida:= TTipoSaida.Create(dtmPrincipal.ConexaoDB);
-   IndiceAtual:='codigo';
+   IndiceAtual:='id';
 end;
 
 {$REGION 'Override'}
 function TfrmTipoSaida.Apagar: Boolean;
 begin
-if oTipoSaida.Selecionar(QryListagem.FieldByName('codigo').AsInteger) then
+if oTipoSaida.Selecionar(QryListagem.FieldByName('id').AsInteger) then
       Result:=oTipoSaida.Apagar;
 end;
 
@@ -81,9 +81,9 @@ end;
 function TfrmTipoSaida.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
 begin
     if lbledtCodigo.Text<>EmptyStr then
-       oTipoSaida.codigo:=StrToInt(lbledtCodigo.Text)
+       oTipoSaida.id:=StrToInt(lbledtCodigo.Text)
        else
-       oTipoSaida.codigo :=0;
+       oTipoSaida.id :=0;
        oTipoSaida.descricao:=lbledtDescricao.Text;
        oTipoSaida.tipo:=   lbledtTipo.Text;
 

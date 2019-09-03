@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask,uDTMConexao,cCadCongregacao, Vcl.ExtCtrls, Vcl.ComCtrls,uEnum,
-  RxToolEdit;
+  RxToolEdit, RxCurrEdit;
 
 type
   TfrmCadCongregacao = class(TfrmTelaheranca)
@@ -85,17 +85,32 @@ type
     fdqryDirigentenome: TStringField;
     fdqryDirigentecod_membro: TIntegerField;
     lbledtCodCc: TLabeledEdit;
+    dblkcbbMetafixa: TDBLookupComboBox;
+    lbl4: TLabel;
+    crncydtValor: TCurrencyEdit;
+    Label2: TLabel;
+    dblkcbbMetapercentual: TDBLookupComboBox;
+    Label5: TLabel;
+    lbledtPercAjuste: TLabeledEdit;
+    dsSituacao: TDataSource;
+    fdqrySituacao: TFDQuery;
+    fdqryPercentual: TFDQuery;
+    dsPercentual: TDataSource;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure lbledtCodCentralExit(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure lbledtCodCcExit(Sender: TObject);
+    procedure dblkcbbMetafixaExit(Sender: TObject);
+    procedure dblkcbbMetafixaClick(Sender: TObject);
+    procedure dblkcbbMetapercentualClick(Sender: TObject);
   private
     { Private declarations }
     oCongregacao: TCongregacao;
     function Apagar:Boolean; override;
     function Gravar(EstadodoCadastro:TEstadoDoCadastro):Boolean; override;
+    procedure FiltroMetas;
   public
     { Public declarations }
   end;
@@ -133,6 +148,10 @@ if oCongregacao.Selecionar(QryListagem.FieldByName('cod_congregacao').AsInteger)
     medtCEP.Text := oCongregacao.cep;
     dblkcbbSetor.KeyValue:= oCongregacao.cod_setor;
     dblkcbbDirigente.KeyValue:=oCongregacao.cod_dirigente;
+    dblkcbbMetafixa.KeyValue:=oCongregacao.meta_central;
+    crncydtValor.Text:=FloatToStr(oCongregacao.meta_valor);
+    dblkcbbMetapercentual.KeyValue:=oCongregacao.percentual_central;
+    lbledtPercAjuste.Text:=FloatToStr(oCongregacao.percentual_valor);
 
     end
   else
@@ -150,6 +169,25 @@ begin
 lbledtCongregacao.SetFocus;
 dblkcbbDirigente.KeyValue :=  fdqryDirigente.FieldByName('cod_membro').AsInteger;
 dblkcbbSetor.KeyValue     :=  dtmPrincipal.fdqrySetores.FieldByName('cod_setor').AsInteger;
+FiltroMetas;
+end;
+
+procedure TfrmCadCongregacao.dblkcbbMetafixaClick(Sender: TObject);
+begin
+  inherited;
+FiltroMetas;
+end;
+
+procedure TfrmCadCongregacao.dblkcbbMetafixaExit(Sender: TObject);
+begin
+  inherited;
+FiltroMetas;
+end;
+
+procedure TfrmCadCongregacao.dblkcbbMetapercentualClick(Sender: TObject);
+begin
+  inherited;
+FiltroMetas;
 end;
 
 procedure TfrmCadCongregacao.FormClose(Sender: TObject;
@@ -158,6 +196,8 @@ begin
   inherited;
   //dtmPrincipal.fdqryCong_sistema.Refresh;
     fdqryDirigente.close;
+    fdqrySituacao.close;
+    fdqryPercentual.Close;
    dtmPrincipal.fdqrySetores.close;
 if Assigned(oCongregacao) then
      FreeAndNil(oCongregacao);
@@ -170,6 +210,9 @@ begin
    IndiceAtual:='cod_congregacao';
    fdqryDirigente.Open;
    dtmPrincipal.fdqrySetores.Open;
+   fdqrySituacao.Open;
+   fdqryPercentual.Open;
+   FiltroMetas;
 end;
 
 function TfrmCadCongregacao.Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean;
@@ -201,6 +244,10 @@ begin
        oCongregacao.cod_igreja:='1';
        oCongregacao.cod_dirigente:= dblkcbbDirigente.KeyValue;
        oCongregacao.cod_cc := StrToInt(lbledtCodCc.Text);
+       oCongregacao.percentual_central:=dblkcbbMetapercentual.KeyValue;
+       oCongregacao.percentual_valor:=StrToFloat(lbledtPercAjuste.Text);
+       oCongregacao.meta_central:=dblkcbbMetafixa.KeyValue;
+       oCongregacao.meta_valor:=StrToFloat(crncydtValor.Text);
 
 
     if (EstadodoCadastro=ecInserir) then
@@ -208,6 +255,29 @@ begin
     else if (EstadodoCadastro=ecAlterar) then
      Result:=oCongregacao.Atualizar;
 
+end;
+
+procedure TfrmCadCongregacao.FiltroMetas;
+begin
+  if dblkcbbMetafixa.KeyValue = 1 then
+  begin
+    crncydtValor.Enabled := True;
+    crncydtValor.SetFocus;
+  end  ;
+  if dblkcbbMetafixa.KeyValue = 0 then
+  begin
+    crncydtValor.Enabled := false;
+  end;
+
+  if dblkcbbMetapercentual.KeyValue = 1 then
+  begin
+    lbledtPercAjuste.Enabled := True;
+    lbledtPercAjuste.SetFocus;
+  end ;
+  if dblkcbbMetapercentual.KeyValue = 0 then
+  begin
+    lbledtPercAjuste.Enabled := false;
+  end;
 end;
 
 procedure TfrmCadCongregacao.lbledtCodCcExit(Sender: TObject);

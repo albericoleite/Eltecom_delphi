@@ -1,15 +1,20 @@
 inherited frmTipoSaida: TfrmTipoSaida
   Caption = 'Cadastro de Tipos de Sa'#237'das'
   ClientWidth = 735
-  ExplicitTop = -90
   ExplicitWidth = 741
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 735
+    ExplicitWidth = 735
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 727
+      ExplicitHeight = 390
       inherited pnlListagem: TPanel
         Width = 727
+        ExplicitWidth = 727
       end
       inherited grdListagem: TDBGrid
         Width = 727
@@ -36,6 +41,10 @@ inherited frmTipoSaida: TfrmTipoSaida
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 727
+      ExplicitHeight = 390
       object lbledtTipo: TLabeledEdit
         Tag = 2
         Left = 79
@@ -104,6 +113,7 @@ inherited frmTipoSaida: TfrmTipoSaida
   end
   inherited pnlRodape: TPanel
     Width = 735
+    ExplicitWidth = 735
     inherited btnNavigator: TDBNavigator
       Left = 415
       Hints.Strings = ()
@@ -111,19 +121,14 @@ inherited frmTipoSaida: TfrmTipoSaida
     end
     inherited btnFechar: TBitBtn
       Left = 643
+      ExplicitLeft = 643
     end
   end
   inherited QryListagem: TFDQuery
+    Active = True
     SQL.Strings = (
-      'SELECT codigo, tipo, descricao'
+      'SELECT id, tipo, descricao'
       'FROM tipo_saida')
-    object QryListagemcodigo: TFDAutoIncField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'codigo'
-      Origin = 'codigo'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
     object QryListagemtipo: TStringField
       DisplayLabel = 'Tipo'
       FieldName = 'tipo'
@@ -137,6 +142,10 @@ inherited frmTipoSaida: TfrmTipoSaida
       Origin = 'descricao'
       Required = True
       Size = 100
+    end
+    object fdtncfldQryListagemid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
     end
   end
 end

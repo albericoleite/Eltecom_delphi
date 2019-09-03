@@ -141,6 +141,10 @@ type
     mniLanamentoUnificado1: TMenuItem;
     mniFormasdePagamento1: TMenuItem;
     mniLancamentos1: TMenuItem;
+    Panel1: TPanel;
+    Label5: TLabel;
+    pnlMediaIdade: TPanel;
+    Label6: TLabel;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -557,7 +561,14 @@ TFuncao.CriarForm(TfrmImportarExportarDados, oUsuarioLogado, dtmPrincipal.Conexa
 end;
 
 procedure TfrmPrincipal.mniLanamentoUnificado1Click(Sender: TObject);
+var
+vl:string;
 begin
+  vl:=TFuncao.SqlValor('select count(1) as VALOR from centro_custo;',dtmPrincipal.ConexaoDB);
+if vl = '0' then   begin
+  MessageDlg('Não existe Centro de Custo cadastrado',mtWarning,[mbOK],0);
+  TFuncao.CriarForm(TfrmCadCentroCusto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
   TFuncao.CriarForm(TfrmCadLancUnificado, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
@@ -710,6 +721,9 @@ try
      pnlAlunos.Caption:=  TFuncao.SqlValor('select count(*)as VALOR from tb_classe_aluno;',dtmPrincipal.ConexaoDB);
      pnlClasses.Caption:=  TFuncao.SqlValor('select count(*)as VALOR from tb_classe;',dtmPrincipal.ConexaoDB);
      pnlPessoas.Caption:=   TFuncao.SqlValor('select count(1)as VALOR from tb_pessoa a inner join tb_parametro_sistema '+
+     ' b on a.cod_congregacao = b.cod_congregacao',dtmPrincipal.ConexaoDB);
+     pnlMediaIdade.Caption:= TFuncao.SqlValor('select CEIL(avg(YEAR(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(a.dta_nascimento))))) as VALOR '+
+     ' from tb_pessoa a inner join tb_parametro_sistema  '+
      ' b on a.cod_congregacao = b.cod_congregacao',dtmPrincipal.ConexaoDB);
      //pnlDiasBatismo.Caption:=  TFuncao.SqlValor('select DATEDIFF(CURDATE(), a.dt) as VALOR from (select max(b.dta_batismo_aguas) '+
     // ' as dt from tb_pessoa b inner join tb_parametro_sistema c on b.cod_congregacao = c.cod_congregacao )a; ',dtmPrincipal.ConexaoDB);

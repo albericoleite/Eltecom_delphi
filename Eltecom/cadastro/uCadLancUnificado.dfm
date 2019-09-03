@@ -387,6 +387,10 @@ object frmCadLancUnificado: TfrmCadLancUnificado
       Font.Style = []
       ImageIndex = 1
       ParentFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnl1: TPanel
         Left = 0
         Top = 3
@@ -870,5 +874,9 @@ object frmCadLancUnificado: TfrmCadLancUnificado
     DataSet = dtmRelatorio.fdqryMeses
     Left = 114
     Top = 120
+  end
+  object dsTipoSaida: TDataSource
+    Left = 400
+    Top = 232
   end
 end

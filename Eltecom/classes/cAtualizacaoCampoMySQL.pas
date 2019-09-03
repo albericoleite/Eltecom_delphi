@@ -150,6 +150,11 @@ begin
    ExecutaDiretoBancoDeDados('ALTER TABLE tb_departamento ADD sigla varchar(10) NULL;');
  end;
 
+      if not CampoExisteNaTabela('tipo_saida','id') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE tipo_saida CHANGE codigo id int(11) auto_increment NOT NULL ;');
+ end;
+
 
 
    if not ViewExiste('v_dizimista_total_mes_ano') then
@@ -299,6 +304,10 @@ begin
 'END;');
  end;
 
+     if not CampoExisteNaTabela('tipo_saida','id') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE tipo_saida CHANGE codigo id int(11) auto_increment NOT NULL ;');
+ end;
 
    //Adicionar código da congregação no recibo
   if not CampoExisteNaTabela('tb_tesouraria','cod_tipo_saida') then
@@ -362,6 +371,18 @@ begin
 '  ON UPDATE NO ACTION; ');
  end;
 
+
+     //Adicionar valores de meta percental e fixa
+  if not CampoExisteNaTabela('tb_congregacao','percentual_central') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE `tb_congregacao`   '+
+  ' ADD COLUMN `percentual_central` VARCHAR(1) NULL AFTER `cod_dirigente`, '+
+  ' ADD COLUMN `percentual_valor` DOUBLE NULL AFTER `percentual_central`,  '+
+  ' ADD COLUMN `meta_central` VARCHAR(1) NULL AFTER `percentual_valor`,   '+
+  ' ADD COLUMN `meta_valor` DOUBLE NULL AFTER `meta_central`;');
+
+  ExecutaDiretoBancoDeDados('update  tb_congregacao set percentual_central = 0,percentual_valor=0,meta_central=0,meta_valor=0;');
+ end;
 
 
 

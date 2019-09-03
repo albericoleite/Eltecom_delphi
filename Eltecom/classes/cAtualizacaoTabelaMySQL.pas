@@ -40,6 +40,9 @@ type
     procedure TipoSaida;
     procedure Tipo_centro_custo;
     procedure FormaPagamento;
+    procedure Tipo_lancamento;
+    procedure Centro_custo;
+    procedure Fornecedor;
 
  protected
 
@@ -87,6 +90,9 @@ begin
   TipoSaida;
   Tipo_centro_custo;
   FormaPagamento;
+  Tipo_lancamento;
+  Centro_custo;
+  Fornecedor;
 end;
 
 destructor TAtualizacaoTabelaMySQL.Destroy;
@@ -767,6 +773,70 @@ begin
 
 end;
 
+procedure TAtualizacaoTabelaMySQL.Tipo_lancamento;
+begin
+   if not TabelaExiste('tipo_lancamento') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `tipo_lancamento` (     '+
+  ' `id` int(11) NOT NULL AUTO_INCREMENT,  '+
+  ' `codigo` varchar(10) DEFAULT NULL,     '+
+  ' `descricao` varchar(45) DEFAULT NULL,   '+
+  ' `id_tipo_centro_custo` int(11) DEFAULT NULL, '+
+  ' `id_pai` int(11) DEFAULT NULL,     '+
+  ' PRIMARY KEY (`id`),      '+
+  ' KEY `kf_tipo_cc_idx` (`id_tipo_centro_custo`),      '+
+  ' CONSTRAINT `kf_tipo_cc` FOREIGN KEY (`id_tipo_centro_custo`)            '+
+  ' REFERENCES `tipo_centro_custo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION   '+
+  ')');
+   end;
+
+end;
+
+procedure TAtualizacaoTabelaMySQL.Centro_custo;
+begin
+   if not TabelaExiste('centro_custo') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `centro_custo` (    '+
+  ' `id` int(11) NOT NULL AUTO_INCREMENT,  '+
+  ' `descricao` varchar(50) NOT NULL, '+
+  ' `id_tipo_cc` int(11) NOT NULL, '+
+  ' PRIMARY KEY (`id`),         '+
+  ' KEY `centro_custo_tipo_centro_custo_fk` (`id_tipo_cc`),  '+
+  ' CONSTRAINT `centro_custo_tipo_centro_custo_fk` '+
+  ' FOREIGN KEY (`id_tipo_cc`) REFERENCES `tipo_centro_custo` (`id`)   '+
+  ' )');
+   end;
+
+end;
+
+   procedure TAtualizacaoTabelaMySQL.Fornecedor;
+begin
+   if not TabelaExiste('fornecedor') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `fornecedor` (     '+
+  ' `id` int(11) NOT NULL AUTO_INCREMENT,  '+
+  ' `nomerazao` varchar(150) NOT NULL,     '+
+  ' `tipo` varchar(1) NOT NULL ,  '+
+  ' `cpfcnpj` varchar(20) NOT NULL,     '+
+  ' `email` varchar(45) DEFAULT NULL,    '+
+  ' `telefone` varchar(15) DEFAULT NULL,  '+
+  ' `celular` varchar(15) DEFAULT NULL, '+
+  ' `rua` varchar(150) DEFAULT NULL,    '+
+  ' `numero` varchar(10) DEFAULT NULL,  '+
+  ' `bairro` varchar(45) DEFAULT NULL,  '+
+  ' `uf` varchar(2) NOT NULL,     '+
+  ' `cidade` varchar(45) NOT NULL,     '+
+  ' `cep` varchar(15) DEFAULT NULL,      '+
+  ' `data_cadastro` datetime DEFAULT NULL,  '+
+  ' `usuario_cadastro` varchar(45) DEFAULT NULL,  '+
+  ' PRIMARY KEY (`id`)     '+
+  ' )');
+   end;
+
+end;
 
 
 end.

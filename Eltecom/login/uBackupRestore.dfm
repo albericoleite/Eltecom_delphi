@@ -4,7 +4,7 @@ object frmBackupRestore: TfrmBackupRestore
   BorderStyle = bsSingle
   Caption = 'Backup e Restaura'#231#227'o'
   ClientHeight = 360
-  ClientWidth = 409
+  ClientWidth = 414
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

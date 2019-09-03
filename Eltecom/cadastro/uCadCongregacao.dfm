@@ -1,16 +1,14 @@
 inherited frmCadCongregacao: TfrmCadCongregacao
   Caption = 'Cadastro de Congrega'#231#227'o'
   ClientHeight = 375
-  ClientWidth = 750
-  ExplicitTop = -35
-  ExplicitWidth = 756
+  ClientWidth = 752
+  ExplicitWidth = 758
   ExplicitHeight = 404
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    Width = 750
+    Width = 752
     Height = 337
-    ActivePage = tabManutencao
     ExplicitWidth = 750
     ExplicitHeight = 337
     inherited tabListagem: TTabSheet
@@ -19,11 +17,11 @@ inherited frmCadCongregacao: TfrmCadCongregacao
       ExplicitWidth = 742
       ExplicitHeight = 309
       inherited pnlListagem: TPanel
-        Width = 742
+        Width = 744
         ExplicitWidth = 742
       end
       inherited grdListagem: TDBGrid
-        Width = 742
+        Width = 744
         Height = 244
         DataSource = dtsListagem
         Columns = <
@@ -69,6 +67,27 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         Width = 43
         Height = 13
         Caption = 'Dirigente'
+      end
+      object lbl4: TLabel
+        Left = 400
+        Top = 145
+        Width = 47
+        Height = 13
+        Caption = 'Meta Fixa'
+      end
+      object Label2: TLabel
+        Left = 505
+        Top = 147
+        Width = 24
+        Height = 13
+        Caption = 'Valor'
+      end
+      object Label5: TLabel
+        Left = 400
+        Top = 191
+        Width = 92
+        Height = 13
+        Caption = 'Meta Percentual %'
       end
       object lbledtCodigo: TLabeledEdit
         Tag = 1
@@ -427,11 +446,55 @@ inherited frmCadCongregacao: TfrmCadCongregacao
         Text = '00000'
         OnExit = lbledtCodCcExit
       end
+      object dblkcbbMetafixa: TDBLookupComboBox
+        Left = 400
+        Top = 164
+        Width = 92
+        Height = 21
+        KeyField = 'TIPO'
+        ListField = 'SITUACAO'
+        ListSource = dsSituacao
+        TabOrder = 10
+        OnClick = dblkcbbMetafixaClick
+      end
+      object crncydtValor: TCurrencyEdit
+        Left = 505
+        Top = 164
+        Width = 65
+        Height = 21
+        DisplayFormat = '0.00;-0.00'
+        TabOrder = 11
+      end
+      object dblkcbbMetapercentual: TDBLookupComboBox
+        Left = 400
+        Top = 207
+        Width = 92
+        Height = 21
+        KeyField = 'TIPO'
+        ListField = 'SITUACAO'
+        ListSource = dsPercentual
+        TabOrder = 12
+        OnClick = dblkcbbMetapercentualClick
+      end
+      object lbledtPercAjuste: TLabeledEdit
+        Tag = 2
+        Left = 505
+        Top = 207
+        Width = 65
+        Height = 21
+        CharCase = ecUpperCase
+        EditLabel.Width = 60
+        EditLabel.Height = 13
+        EditLabel.Caption = '% de Ajuste'
+        MaxLength = 45
+        NumbersOnly = True
+        TabOrder = 13
+      end
     end
   end
   inherited pnlRodape: TPanel
     Top = 337
-    Width = 750
+    Width = 752
     ExplicitTop = 337
     ExplicitWidth = 750
     inherited btnNavigator: TDBNavigator
@@ -444,7 +507,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
       ExplicitLeft = 80
     end
     inherited btnFechar: TBitBtn
-      Left = 658
+      Left = 660
       ExplicitLeft = 658
     end
   end
@@ -655,19 +718,19 @@ inherited frmCadCongregacao: TfrmCadCongregacao
   end
   object dsSetores: TDataSource
     DataSet = dtmPrincipal.fdqrySetores
-    Left = 592
+    Left = 672
     Top = 152
   end
   object dsDirigente: TDataSource
     DataSet = fdqryDirigente
-    Left = 504
-    Top = 184
+    Left = 664
+    Top = 104
   end
   object fdqryDirigente: TFDQuery
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select nome as nome, cod_membro  from tb_obreiro_cargo')
-    Left = 384
+    Left = 696
     Top = 184
     object fdqryDirigentenome: TStringField
       AutoGenerateValue = arDefault
@@ -680,5 +743,33 @@ inherited frmCadCongregacao: TfrmCadCongregacao
       Origin = 'COD_MEMBRO'
       Required = True
     end
+  end
+  object dsSituacao: TDataSource
+    DataSet = fdqrySituacao
+    Left = 588
+    Top = 137
+  end
+  object fdqrySituacao: TFDQuery
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'select 1 AS TIPO, '#39'ATIVO'#39' SITUACAO from dual'
+      'union all'
+      'select 0, '#39'INATIVO'#39' from dual')
+    Left = 696
+    Top = 240
+  end
+  object fdqryPercentual: TFDQuery
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'select 1 AS TIPO, '#39'ATIVO'#39' SITUACAO from dual'
+      'union all'
+      'select 0, '#39'INATIVO'#39' from dual')
+    Left = 712
+    Top = 296
+  end
+  object dsPercentual: TDataSource
+    DataSet = fdqryPercentual
+    Left = 604
+    Top = 193
   end
 end

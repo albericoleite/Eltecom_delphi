@@ -2,7 +2,6 @@ inherited frmCadLancamento: TfrmCadLancamento
   Caption = 'Lan'#231'amento de Entradas / Sa'#237'das'
   ClientHeight = 457
   ClientWidth = 744
-  ExplicitTop = -141
   ExplicitWidth = 750
   ExplicitHeight = 486
   PixelsPerInch = 96
@@ -526,7 +525,7 @@ inherited frmCadLancamento: TfrmCadLancamento
           Width = 145
           Height = 21
           Enabled = False
-          KeyField = 'codigo'
+          KeyField = 'id'
           ListField = 'tipo'
           ListSource = dsTipoSaida
           TabOrder = 6
@@ -553,7 +552,6 @@ inherited frmCadLancamento: TfrmCadLancamento
     end
   end
   inherited QryListagem: TFDQuery
-    Active = True
     SQL.Strings = (
       'SELECT t.cod_entrada, t.nro_documento, t.dta_movimento'
       ', t.dta_inclusao, t.usuario_inclusao'
@@ -655,7 +653,7 @@ inherited frmCadLancamento: TfrmCadLancamento
       FieldKind = fkLookup
       FieldName = 'TipoSaida'
       LookupDataSet = dtmPrincipal.fdqryTipoSaida
-      LookupKeyFields = 'codigo'
+      LookupKeyFields = 'id'
       LookupResultField = 'tipo'
       KeyFields = 'cod_tipo_saida'
       Lookup = True

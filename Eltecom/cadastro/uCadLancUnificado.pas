@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,cUsuarioLogado, Data.DB, Vcl.DBCtrls, Vcl.ExtCtrls,uDTMConexao, System.DateUtils,
   Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, RxCurrEdit, RxToolEdit, Vcl.Buttons,SimpleDAO,SimpleInterface,
   Vcl.Mask, Vcl.ComCtrls,SimpleQueryFiredac,System.Generics.Collections  ,Entidade.TipoLancamento
-  ,Entidade.CentroCusto,Entidade.Fornecedor,uEnum,Entidade.TipoCulto,Entidade.FormaPagamento, Entidade.Tesouraria;
+  ,Entidade.CentroCusto,Entidade.Fornecedor,uEnum,Entidade.TipoCulto,cFuncao
+  ,Entidade.FormaPagamento, Entidade.Tesouraria,Entidade.TipoSaida;
 
 type
   TfrmCadLancUnificado = class(TForm)
@@ -73,6 +74,7 @@ type
     dsTipolanc: TDataSource;
     dsListagem: TDataSource;
     dsMes: TDataSource;
+    dsTipoSaida: TDataSource;
     procedure cbbTipoChange(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -93,6 +95,7 @@ type
     DAOFormapagamento :iSimpleDAO<TFORMA_PAGAMENTO>;
     DAOTipolancamento:iSimpleDAO<TTIPO_LANCAMENTO>;
     DAOTesouraria:iSimpleDAO<TTB_TESOURARIA>;
+    DAOTiposaida:iSimpleDAO<TTIPO_SAIDA>;
     procedure FiltrosCombobox(Tipo: string);
     function Listar: string;
     procedure ControlarBotoes(btnNovo, btnAlterar, btnCancelar, BtnGravar,
@@ -242,7 +245,15 @@ begin
 end;
 
 procedure TfrmCadLancUnificado.btnNovoClick(Sender: TObject);
+var
+vl:string;
 begin
+  vl:=TFuncao.SqlValor('select count(1) as VALOR from centro_custo;',dtmPrincipal.ConexaoDB);
+if vl = '0' then   begin
+  MessageDlg('Não existe Centro de Custo cadastrado',mtWarning,[mbOK],0);
+  Abort;
+end;
+
 if not TUsuarioLogado.TenhoAcesso(oUsuarioLogado.codigo,Self.Name+'_'+TBitBtn(Sender).Name,dtmPrincipal.ConexaoDB) then
 begin
   MessageDlg('Usuário: '+oUsuarioLogado.nome+', não tem permissão de acesso',mtWarning,[mbOK],0);
@@ -338,8 +349,14 @@ procedure TfrmCadLancUnificado.FormCreate(Sender: TObject);
  var
   lancamentos : TList<TTB_TESOURARIA>;
   teste:string;
+  vl:string;
+
 begin
-//ShowMessage(FormatDateTime( 'yyyy-mm-dd', dtdtIni.date));
+
+
+
+dtdtIni.Date := StartOfTheMonth(now);
+dtdtFim.Date := now;
 teste :=  'dta_movimento between '+QuotedStr(FormatDateTime( 'yyyy-mm-dd', dtdtIni.date))+ ' and '
 +QuotedStr(FormatDateTime( 'yyyy-mm-dd', dtdtFim.date));
 //ShowMessage(teste);
@@ -379,6 +396,7 @@ var
   cultos: TList<TTIPO_CULTO>;
   formpgtos:TList<TFORMA_PAGAMENTO>;
   tiposlanc:TList<TTIPO_LANCAMENTO>;
+  tiposaida:Tlist<TTIPO_SAIDA>;
 begin
   DAOCentrocusto := TSimpleDAO<TCENTRO_CUSTO>
   .New(TSimpleQueryFiredac.Create(dtmPrincipal.ConexaoDB)).DataSource(dsCC);
@@ -393,6 +411,13 @@ begin
   dblkcbbFormPag.ListSource := dsFormpgto;
   dblkcbbFormPag.ListField := 'DESCRICAO';
   dblkcbbFormPag.KeyField := 'ID';
+
+    DAOTiposaida := TSimpleDAO<TTIPO_SAIDA>
+  .New(TSimpleQueryFiredac.Create(dtmPrincipal.ConexaoDB)).DataSource(dsTipoSaida);
+  tiposaida := DAOTiposaida.SQL.OrderBy('ID').&End.Find;
+  dblkcbbTipoSaida.ListSource := dsTipoSaida;
+  dblkcbbTipoSaida.ListField := 'TIPO';
+  dblkcbbTipoSaida.KeyField := 'ID';
 
   dblkcbbCultoFornec.CleanupInstance;
   dblkcbbTipoGenerico.CleanupInstance;

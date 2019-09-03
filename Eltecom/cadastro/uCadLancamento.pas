@@ -4,16 +4,13 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHeranca, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  uPrincipal,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, uEnum,
-  cCadLancamento,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  uTelaHeranca, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, uPrincipal, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, uEnum, cCadLancamento,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
-  uDTMConexao,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,
-  RxToolEdit, RxCurrEdit, System.DateUtils;
+  uDTMConexao, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls,
+  Vcl.ComCtrls, RxToolEdit, RxCurrEdit, System.DateUtils;
 
 type
   TfrmCadLancamento = class(TfrmTelaheranca)
@@ -92,7 +89,7 @@ type
 
 var
   frmCadLancamento: TfrmCadLancamento;
-  SelectOriginal, CondicaoSQL,semana: string;
+  SelectOriginal, CondicaoSQL, semana: string;
   dti, dtf: TDateTime;
 
 implementation
@@ -105,15 +102,13 @@ uses
 
 function TfrmCadLancamento.Apagar: Boolean;
 begin
-  if oLancamento.Selecionar(QryListagem.FieldByName('cod_entrada').AsInteger)
-  then
+  if oLancamento.Selecionar(QryListagem.FieldByName('cod_entrada').AsInteger) then
     Result := oLancamento.Apagar;
 end;
 
 procedure TfrmCadLancamento.btnAlterarClick(Sender: TObject);
 begin
-  if oLancamento.Selecionar(QryListagem.FieldByName('cod_entrada').AsInteger)
-  then
+  if oLancamento.Selecionar(QryListagem.FieldByName('cod_entrada').AsInteger) then
   begin
     lbledtCodigo.Text := IntToStr(oLancamento.cod_entrada);
     lbledtCodTalao.Text := IntToStr(oLancamento.nro_documento);
@@ -121,7 +116,7 @@ begin
     crncydtValor.Text := FloatToStr(oLancamento.valor);
     dtdtData.Date := oLancamento.dta_movimento;
     dblkcbbTipoSaida.KeyValue := oLancamento.cod_saida;
-    cbbTipo.text:= oLancamento.tipo;
+    cbbTipo.text := oLancamento.tipo;
   end
   else
   begin
@@ -155,7 +150,7 @@ begin
   inherited;
   dtdtIni.Date := dti;
   dtdtFim.Date := dtf;
-btnBuscarClick(sender);
+  btnBuscarClick(Sender);
 
 end;
 
@@ -168,18 +163,17 @@ begin
   dtdtIni.Date := dti;
   dtdtFim.Date := dtf;
   dtmTesouraria.fdqryTes_valores.Refresh;
-  btnBuscarClick(sender);
+  btnBuscarClick(Sender);
 end;
 
 procedure TfrmCadLancamento.btnImprimir1Click(Sender: TObject);
 begin
   inherited;
-  if mmoSemana.Text ='' then
+  if mmoSemana.Text = '' then
   begin
-    Application.MessageBox('Período não selecionado, escolha o período e clique em buscar ' , 'Atenção');
-  Abort;
+    Application.MessageBox('Período não selecionado, escolha o período e clique em buscar ', 'Atenção');
+    Abort;
   end;
-
 
   if not strngfldQryListagemstatus.IsNull then
   begin
@@ -187,16 +181,13 @@ begin
     dtmTesouraria.fdqryBuscaCongregacao.Refresh;
     dtmTesouraria.fdqryTes_valores.Open;
     // Imprimir relatório
-    dtmTesouraria.frxrprtFechamento.ReportOptions.Name :=
-      PChar('Prestação de Contas ' + DateToStr(dtdtIni.Date) + ' a ' +
-      DateToStr(dtdtFim.Date));
+    dtmTesouraria.frxrprtFechamento.ReportOptions.Name := PChar('Prestação de Contas ' + DateToStr(dtdtIni.Date) + ' a ' + DateToStr(dtdtFim.Date));
     dtmTesouraria.frxrprtFechamento.Variables['Semana'] := QuotedStr(mmoSemana.Text);
     dtmTesouraria.frxrprtFechamento.ShowReport();
   end
   else
   begin
-    Application.MessageBox(PChar('Não existe documento localizado nos dias ' +
-      DateToStr(dtdtIni.Date) + ' a ' + DateToStr(dtdtFim.Date)), 'Atenção');
+    Application.MessageBox(PChar('Não existe documento localizado nos dias ' + DateToStr(dtdtIni.Date) + ' a ' + DateToStr(dtdtFim.Date)), 'Atenção');
   end;
   //TODO: 4 - Adicionar relatório Fechamento "NATAL" (Sec. Alisson Dantas);
 end;
@@ -205,7 +196,7 @@ procedure TfrmCadLancamento.btnNovoClick(Sender: TObject);
 begin
   inherited;
   lbledtCodTalao.SetFocus;
-  dtdtData.Date:=Now;
+  dtdtData.Date := Now;
   ListaTipoSaida;
 end;
 
@@ -234,33 +225,33 @@ begin
 end;
 
 procedure TfrmCadLancamento.dblkcbbMesClick(Sender: TObject);
-var i :Integer;
-Ano, Mes, Dia : word;
+var
+  i: Integer;
+  Ano, Mes, Dia: word;
 begin
-i := dblkcbbMes.KeyValue;
-DecodeDate (now, Ano, Mes, Dia);
-  dtdtIni.Date:= StartOfaMonth(Ano,i);
-  dtdtFim.Date:= EndOfAMonth(Ano,i);
+  i := dblkcbbMes.KeyValue;
+  DecodeDate(now, Ano, Mes, Dia);
+  dtdtIni.Date := StartOfaMonth(Ano, i);
+  dtdtFim.Date := EndOfAMonth(Ano, i);
   btnBuscar.Click;
 end;
 
 procedure TfrmCadLancamento.dtdtFimChange(Sender: TObject);
 begin
   inherited;
-dtf:=dtdtFim.Date;
+  dtf := dtdtFim.Date;
 end;
 
 procedure TfrmCadLancamento.dtdtIniChange(Sender: TObject);
 begin
   inherited;
-dti:=dtdtIni.Date;
+  dti := dtdtIni.Date;
 end;
 
-procedure TfrmCadLancamento.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TfrmCadLancamento.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
-  dtmPrincipal.fdqryTipoSaida.Close;
+  //dtmPrincipal.fdqryTipoSaida.Close;
   if Assigned(oLancamento) then
     FreeAndNil(oLancamento);
 end;
@@ -276,7 +267,7 @@ begin
   dtmTesouraria := TdtmTesouraria.Create(self);
   dtmRelatorio := TdtmRelatorio.Create(self);
   ListaLancamentosPeriodo;
-  dtmPrincipal.fdqryTipoSaida.Open;
+  //dtmPrincipal.fdqryTipoSaida.Open;
 end;
 
 procedure TfrmCadLancamento.FormShow(Sender: TObject);
@@ -300,11 +291,11 @@ begin
   oLancamento.dta_movimento := dtdtData.Date;
   oLancamento.tipo := cbbTipo.Text;
   oLancamento.usuario_inclusao := oUsuarioLogado.nome;
-  oLancamento.cod_saida:=0;
-  if cbbTipo.Text ='SAIDA' then        begin
-    oLancamento.cod_saida:= dblkcbbTipoSaida.KeyValue;
+  oLancamento.cod_saida := 0;
+  if cbbTipo.Text = 'SAIDA' then
+  begin
+    oLancamento.cod_saida := dblkcbbTipoSaida.KeyValue;
   end;
-
 
   if (EstadodoCadastro = ecInserir) then
     Result := oLancamento.Inserir
@@ -313,14 +304,15 @@ begin
 
 end;
 
-function TfrmCadLancamento.TotalizarEntrada:Double;
+function TfrmCadLancamento.TotalizarEntrada: Double;
 begin
-Result :=0;
-      QryListagem.First;
-      while not QryListagem.Eof do   begin
-       Result:= Result + QryListagem.FieldByName('').AsFloat;
-       QryListagem.Next;
-      end;
+  Result := 0;
+  QryListagem.First;
+  while not QryListagem.Eof do
+  begin
+    Result := Result + QryListagem.FieldByName('').AsFloat;
+    QryListagem.Next;
+  end;
 end;
 
 procedure TfrmCadLancamento.ListaTipoSaida;
@@ -337,73 +329,62 @@ begin
 end;
 
 procedure TfrmCadLancamento.ListaLancamentosPeriodo;
-var a,b,c: Double;
+var
+  a, b, c: Double;
 begin
   QryListagem.close;
   QryListagem.ParamByName('dtini').AsDateTime := dtdtIni.Date;
   QryListagem.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
   QryListagem.Open;
 
-
-
-    try
+  try
     dtmTesouraria.fdqryTes_valores.close;
-    dtmTesouraria.fdqryTes_valores.ParamByName('dtini').AsDateTime :=
-      dtdtIni.Date;
-    dtmTesouraria.fdqryTes_valores.ParamByName('dtfim').AsDateTime :=
-      dtdtFim.Date;
+    dtmTesouraria.fdqryTes_valores.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+    dtmTesouraria.fdqryTes_valores.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
     dtmTesouraria.fdqryTes_valores.Open;
   except
     Application.MessageBox('Falha na fdqryTes_valores', 'Atenção!');
   end;
-   dtmTesouraria.fdqryBuscaCongregacao.Open;
+  dtmTesouraria.fdqryBuscaCongregacao.Open;
    //    dtainicio:=FormatDateTime('yyyy-mm-dd', dtpInicial.Date);
  //dtafim:=FormatDateTime('yyyy-mm-dd', dtpFinal.Date);
 
-   semana:= Copy(FormatDateTime('yyyy-mm-dd', dtdtini.Date),9,2)
-   +' a '+copy(FormatDateTime('yyyy-mm-dd', dtdtfim.Date),9,2)+' / '+copy(FormatDateTime('yyyy-mm-dd', dtdtfim.Date),1,4);
-mmoSemana.Text:= semana;
+  semana := Copy(FormatDateTime('yyyy-mm-dd', dtdtini.Date), 9, 2) + ' a ' + copy(FormatDateTime('yyyy-mm-dd', dtdtfim.Date), 9, 2) + ' / ' + copy(FormatDateTime('yyyy-mm-dd', dtdtfim.Date), 1, 4);
+  mmoSemana.Text := semana;
 
-
- try
+  try
     dtmTesouraria.fdqryTotalLancamentos.close;
-    dtmTesouraria.fdqryTotalLancamentos.ParamByName('dtini').AsDateTime :=
-      dtdtIni.Date;
-    dtmTesouraria.fdqryTotalLancamentos.ParamByName('dtfim').AsDateTime :=
-      dtdtFim.Date;
+    dtmTesouraria.fdqryTotalLancamentos.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+    dtmTesouraria.fdqryTotalLancamentos.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
     dtmTesouraria.fdqryTotalLancamentos.Open;
   except
     Application.MessageBox('Falha na fdqryTotalLancamentos', 'Atenção!');
   end;
 
-   try
+  try
     dtmTesouraria.fdqryTes_Entrada_Total.close;
-    dtmTesouraria.fdqryTes_Entrada_Total.ParamByName('dtini').AsDateTime :=
-      dtdtIni.Date;
-    dtmTesouraria.fdqryTes_Entrada_Total.ParamByName('dtfim').AsDateTime :=
-      dtdtFim.Date;
+    dtmTesouraria.fdqryTes_Entrada_Total.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+    dtmTesouraria.fdqryTes_Entrada_Total.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
     dtmTesouraria.fdqryTes_Entrada_Total.Open;
   except
     Application.MessageBox('Falha na fdqryTes_Entrada_Total', 'Atenção!');
   end;
 
-   try
+  try
     dtmTesouraria.fdqryTes_Saida_Total.close;
-    dtmTesouraria.fdqryTes_Saida_Total.ParamByName('dtini').AsDateTime :=
-      dtdtIni.Date;
-    dtmTesouraria.fdqryTes_Saida_Total.ParamByName('dtfim').AsDateTime :=
-      dtdtFim.Date;
+    dtmTesouraria.fdqryTes_Saida_Total.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+    dtmTesouraria.fdqryTes_Saida_Total.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
     dtmTesouraria.fdqryTes_Saida_Total.Open;
   except
     Application.MessageBox('Falha na fdqryTes_Saida_Total', 'Atenção!');
   end;
 
-  a:=  StrToFloat(dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text);
-  b:=   StrToFloat(dtmTesouraria.fltfldTes_Saida_Totaltotal.Text);
-  c:= a - b;
-  crncydtEntrada.Text:=dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text;
-  crncydtSaida.Text:= dtmTesouraria.fltfldTes_Saida_Totaltotal.Text;
-  crncydtSubtotal.Text:= floattostr(c);
+  a := StrToFloat(dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text);
+  b := StrToFloat(dtmTesouraria.fltfldTes_Saida_Totaltotal.Text);
+  c := a - b;
+  crncydtEntrada.Text := dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text;
+  crncydtSaida.Text := dtmTesouraria.fltfldTes_Saida_Totaltotal.Text;
+  crncydtSubtotal.Text := floattostr(c);
 
   dtmRelatorio.fdqryMeses.Open;
 
@@ -418,3 +399,4 @@ end;
 {$ENDREGION}
 
 end.
+

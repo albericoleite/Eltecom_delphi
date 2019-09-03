@@ -164,14 +164,9 @@ begin
    dblkcbbTipo.ListField:= 'DESCRICAO';
    dblkcbbTipo.KeyField := 'ID';
 
-
-
    DAOCentrocusto := TSimpleDAO<TCENTRO_CUSTO>
    .New(TSimpleQueryFiredac.Create(dtmPrincipal.ConexaoDB)).DataSource(ds1);
    btnBuscarClick(nil);
-
-
-
 
 end;
 
