@@ -21,8 +21,8 @@ type
   private
   DAOFormapgto: iSimpleDAO<TFORMA_PAGAMENTO>;
   function Apagar:Boolean; override;
-    function Gravar(EstadodoCadastro:TEstadoDoCadastro):Boolean; override;
-    function Listar: string;
+  function Gravar(EstadodoCadastro:TEstadoDoCadastro):Boolean; override;
+  function Listar: string;
     { Private declarations }
   public
     { Public declarations }

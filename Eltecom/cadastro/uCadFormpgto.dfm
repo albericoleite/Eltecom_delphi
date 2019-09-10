@@ -1,9 +1,7 @@
 inherited frmCadFormpgto: TfrmCadFormpgto
-  BorderStyle = bsSingle
   Caption = 'Cadastro de Formas de Pagamento'
   ClientHeight = 280
   ClientWidth = 740
-  Position = poScreenCenter
   ExplicitWidth = 746
   ExplicitHeight = 309
   PixelsPerInch = 96
@@ -30,8 +28,6 @@ inherited frmCadFormpgto: TfrmCadFormpgto
     ExplicitWidth = 740
     ExplicitHeight = 242
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 732
       ExplicitHeight = 214
       inherited pnlListagem: TPanel

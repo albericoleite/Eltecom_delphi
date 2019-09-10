@@ -197,10 +197,10 @@ object frmPrincipal: TfrmPrincipal
               ColorPaletteIndex = 10
               object brsrs1: TBarSeries
                 BarBrush.Gradient.EndColor = 11842740
-                ColorEachPoint = True
                 Marks.Style = smsPercent
                 Marks.Angle = 31
                 DataSource = dtmGrafico.fdqryDizimosAnual
+                SeriesColor = 10309376
                 XLabelsSource = 'sigla'
                 Emboss.Color = 33280
                 Gradient.EndColor = 11842740
@@ -16067,7 +16067,7 @@ object frmPrincipal: TfrmPrincipal
                   Visible = True
                 end>
             end
-            object Panel1: TPanel
+            object pnlQtdMembros: TPanel
               Left = 1
               Top = 159
               Width = 153
@@ -16140,10 +16140,6 @@ object frmPrincipal: TfrmPrincipal
     object Financeiro: TTabSheet
       Caption = 'Financeiro'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnl6: TPanel
         Left = 0
         Top = 0
@@ -16266,9 +16262,9 @@ object frmPrincipal: TfrmPrincipal
               ColorPaletteIndex = 10
               object brsrs2: TBarSeries
                 BarBrush.Gradient.EndColor = 11842740
-                ColorEachPoint = True
                 Marks.Angle = 31
                 DataSource = dtmGrafico.fdqryDizimosAnual
+                SeriesColor = 9915136
                 XLabelsSource = 'sigla'
                 Emboss.Color = 33280
                 Gradient.EndColor = 11842740
@@ -16331,7 +16327,6 @@ object frmPrincipal: TfrmPrincipal
                 27)
               ColorPaletteIndex = 13
               object brsrsSeries2: TBarSeries
-                ColorEachPoint = True
                 Marks.Style = smsPercent
                 DataSource = dtmGrafico.fdqryEntrasAnual
                 XLabelsSource = 'sigla'
@@ -16376,7 +16371,6 @@ object frmPrincipal: TfrmPrincipal
                 30)
               ColorPaletteIndex = 13
               object brsrs3: TBarSeries
-                ColorEachPoint = True
                 Marks.Style = smsPercent
                 DataSource = dtmGrafico.fdqrySaidasAnual
                 XLabelsSource = 'sigla'
@@ -16395,10 +16389,6 @@ object frmPrincipal: TfrmPrincipal
     object EBD: TTabSheet
       Caption = 'EBD'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnl13: TPanel
         Left = 0
         Top = 0
@@ -16462,7 +16452,7 @@ object frmPrincipal: TfrmPrincipal
               object lbl3: TLabel
                 Left = 1
                 Top = 1
-                Width = 78
+                Width = 150
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -16473,6 +16463,7 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 78
               end
             end
             object pnlAlunos: TPanel
@@ -16493,7 +16484,7 @@ object frmPrincipal: TfrmPrincipal
               object Label1: TLabel
                 Left = 1
                 Top = 1
-                Width = 47
+                Width = 151
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -16504,6 +16495,7 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 47
               end
             end
             object pnlClasses: TPanel
@@ -16524,7 +16516,7 @@ object frmPrincipal: TfrmPrincipal
               object Label2: TLabel
                 Left = 1
                 Top = 1
-                Width = 46
+                Width = 151
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -16535,6 +16527,7 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 46
               end
             end
             object pnlPessoas: TPanel
@@ -16555,7 +16548,7 @@ object frmPrincipal: TfrmPrincipal
               object Label4: TLabel
                 Left = 1
                 Top = 1
-                Width = 114
+                Width = 151
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -16566,6 +16559,7 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 114
               end
             end
           end
@@ -16667,7 +16661,7 @@ object frmPrincipal: TfrmPrincipal
             object Label3: TLabel
               Left = 1
               Top = 1
-              Width = 253
+              Width = 557
               Height = 19
               Align = alTop
               Caption = 'Alunos aniversariantes do M'#234's '
@@ -16679,6 +16673,7 @@ object frmPrincipal: TfrmPrincipal
               Font.Style = [fsBold]
               ParentColor = False
               ParentFont = False
+              ExplicitWidth = 253
             end
             object DBGrid1: TDBGrid
               Left = 1
@@ -16841,21 +16836,17 @@ object frmPrincipal: TfrmPrincipal
       object N3: TMenuItem
         Caption = '-'
       end
-      object mniRelatrios3: TMenuItem
-        Caption = 'Relat'#243'rios'
-        OnClick = mniRelatrios3Click
-      end
       object mniControledeDzimo1: TMenuItem
         Caption = 'Controle de D'#237'zimo'
         OnClick = mniControledeDzimo1Click
       end
-      object iposdeCulto1: TMenuItem
-        Caption = 'Tipos de Culto'
-        OnClick = iposdeCulto1Click
+      object mniFormasdePagamento1: TMenuItem
+        Caption = 'Formas de Pagamento'
+        OnClick = mniFormasdePagamento1Click
       end
-      object iposdeSadas1: TMenuItem
-        Caption = 'Tipos de Sa'#237'das'
-        OnClick = iposdeSadas1Click
+      object mniRelatrios3: TMenuItem
+        Caption = 'Relat'#243'rios'
+        OnClick = mniRelatrios3Click
       end
       object CentrodeCusto1: TMenuItem
         Caption = 'Centro de Custo'
@@ -16872,13 +16863,21 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Lan'#231'amento Unificado'
         OnClick = mniLanamentoUnificado1Click
       end
-      object mniFormasdePagamento1: TMenuItem
-        Caption = 'Formas de Pagamento'
-        OnClick = mniFormasdePagamento1Click
+      object iposdeCulto1: TMenuItem
+        Caption = 'Tipos de Culto'
+        OnClick = iposdeCulto1Click
+      end
+      object iposdeSadas1: TMenuItem
+        Caption = 'Tipos de Sa'#237'das'
+        OnClick = iposdeSadas1Click
       end
       object mniLancamentos1: TMenuItem
         Caption = 'Tipos de Lancamentos'
         OnClick = mniLancamentos1Click
+      end
+      object mniDespesaFixa1: TMenuItem
+        Caption = 'Despesa Fixa'
+        OnClick = mniDespesaFixa1Click
       end
     end
     object Relatrios1: TMenuItem

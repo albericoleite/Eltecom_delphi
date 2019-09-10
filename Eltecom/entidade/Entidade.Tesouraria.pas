@@ -11,6 +11,7 @@ TTB_TESOURARIA = class
     FID_CENTRO_CUSTO: Integer;
     FDTA_MOVIMENTO: TDateTime;
     FDESCRICAO: string;
+    FTIPO:string;
     FID_TIPO_LANCAMENTO: Integer;
     FSTATUS: string;
     FCOD_ENTRADA: integer;
@@ -37,6 +38,7 @@ TTB_TESOURARIA = class
     procedure SetSTATUS(const Value: string);
     procedure SetUSUARIO_INCLUSAO(const Value: string);
     procedure SetVALOR(const Value: Double);
+    procedure SetTIPO(const Value: string);
   published
   [PK,AutoInc]
   property COD_ENTRADA:integer read FCOD_ENTRADA write SetCOD_ENTRADA;
@@ -55,6 +57,7 @@ TTB_TESOURARIA = class
   property ID_FORMA_PAGAMENTO:Integer read FID_FORMA_PAGAMENTO write SetID_FORMA_PAGAMENTO;
   property ID_FORNECEDOR:Integer read FID_FORNECEDOR write SetID_FORNECEDOR;
   property ID_TIPO_CULTO:Integer read FID_TIPO_CULTO write SetID_TIPO_CULTO;
+  property TIPO:string read FTIPO write SetTIPO;
 end;
 
 implementation
@@ -129,6 +132,11 @@ end;
 procedure TTB_TESOURARIA.SetSTATUS(const Value: string);
 begin
   FSTATUS := Value;
+end;
+
+procedure TTB_TESOURARIA.SetTIPO(const Value: string);
+begin
+FTIPO:=Value;
 end;
 
 procedure TTB_TESOURARIA.SetUSUARIO_INCLUSAO(const Value: string);

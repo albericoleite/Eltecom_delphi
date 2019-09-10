@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,cUsuarioLogado, Data.DB, Vcl.DBCtrls, Vcl.ExtCtrls,uDTMConexao, System.DateUtils,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,cUsuarioLogado, Data.DB, Vcl.DBCtrls, Vcl.ExtCtrls,uDTMConexao
+  , System.DateUtils,
   Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, RxCurrEdit, RxToolEdit, Vcl.Buttons,SimpleDAO,SimpleInterface,
   Vcl.Mask, Vcl.ComCtrls,SimpleQueryFiredac,System.Generics.Collections  ,Entidade.TipoLancamento
   ,Entidade.CentroCusto,Entidade.Fornecedor,uEnum,Entidade.TipoCulto,cFuncao
@@ -131,6 +132,7 @@ end;
 EstadoDoCadastro:= ecAlterar;
 lbledtDescricao.Enabled:=true;
 lbledtDescricao.SetFocus;
+ListaTipoSaida;
 end;
 
 procedure TfrmCadLancUnificado.btnApagarClick(Sender: TObject);
@@ -203,6 +205,7 @@ begin
     tipo.ID_CENTRO_CUSTO:= dblkcbbCC.keyvalue;
     tipo.ID_TIPO_LANCAMENTO:= dblkcbbTipoGenerico.keyvalue;
     tipo.ID_FORMA_PAGAMENTO:= dblkcbbFormPag.keyvalue;
+    tipo.TIPO:= cbbTipo.text;
        if cbbTipo.text = 'ENTRADA' then  BEGIN
      tipo.ID_TIPO_CULTO:= dblkcbbCultoFornec.KeyValue
     END     ELSE begin
@@ -228,6 +231,7 @@ begin
     tipo.ID_FORMA_PAGAMENTO:= dblkcbbFormPag.keyvalue;
     tipo.DTA_INCLUSAO:=now;
     tipo.USUARIO_INCLUSAO:= oUsuarioLogado.nome;
+    tipo.TIPO:= cbbTipo.text;
        if cbbTipo.text = 'ENTRADA' then  BEGIN
      tipo.ID_TIPO_CULTO:= dblkcbbCultoFornec.KeyValue
     END     ELSE begin
@@ -336,19 +340,20 @@ lbledtCodigo.Text := dsListagem.DataSet.FieldByName('COD_ENTRADA').AsString;
   crncydtValor.Text:= dsListagem.DataSet.FieldByName('VALOR').AsString;
   dtdtData.Text:=dsListagem.DataSet.FieldByName('DTA_MOVIMENTO').AsString;
   dblkcbbCC.keyvalue :=dsListagem.DataSet.FieldByName('ID_CENTRO_CUSTO').AsInteger;
+  cbbTipo.Text:= dsListagem.DataSet.FieldByName('TIPO').AsString;
 
   dblkcbbFormPag.keyvalue:=dsListagem.DataSet.FieldByName('ID_FORMA_PAGAMENTO').AsInteger;
     if cbbTipo.text = 'ENTRADA' then
-     dblkcbbTipoGenerico.keyvalue:= dsListagem.DataSet.FieldByName('ID_TIPO_CULTO').AsString
+     dblkcbbCultoFornec.keyvalue:= dsListagem.DataSet.FieldByName('ID_TIPO_CULTO').AsString
       ELSE
-    dblkcbbTipoGenerico.keyvalue:= dsListagem.DataSet.FieldByName('ID_FORNECEDOR').AsString;
+    dblkcbbCultoFornec.keyvalue:= dsListagem.DataSet.FieldByName('ID_FORNECEDOR').AsString;
 
 end;
 
 procedure TfrmCadLancUnificado.FormCreate(Sender: TObject);
  var
   lancamentos : TList<TTB_TESOURARIA>;
-  teste:string;
+  sql:string;
   vl:string;
 
 begin
@@ -357,15 +362,17 @@ begin
 
 dtdtIni.Date := StartOfTheMonth(now);
 dtdtFim.Date := now;
-teste :=  'dta_movimento between '+QuotedStr(FormatDateTime( 'yyyy-mm-dd', dtdtIni.date))+ ' and '
+{sql :=  'dta_movimento between '+QuotedStr(FormatDateTime( 'yyyy-mm-dd', dtdtIni.date))+ ' and '
 +QuotedStr(FormatDateTime( 'yyyy-mm-dd', dtdtFim.date));
-//ShowMessage(teste);
    DAOTesouraria:= TSimpleDAO<TTB_TESOURARIA>
    .New(TSimpleQueryFiredac.Create(dtmPrincipal.ConexaoDB)).DataSource(dsListagem);
-   lancamentos := DAOTesouraria.SQL.WHERE(teste).&End.Find;
+   lancamentos := DAOTesouraria.SQL.WHERE(sql).&End.Find;}
    dtmRelatorio := TdtmRelatorio.Create(self);
    dtmRelatorio.fdqryMeses.open;
   FiltrosCombobox(cbbTipo.Text);
+  btnBuscarClick(nil);
+  Listar;
+
 
 end;
 
@@ -464,9 +471,26 @@ var
   tipo : TTB_TESOURARIA;
 begin
   tipos := DAOTesouraria.SQL.OrderBy('COD_ENTRADA').&End.Find;
-   dbgrdListagem.Columns[0].Title.Caption:='Código';
-   dbgrdListagem.Columns[1].Title.Caption:='Nome';
-   dbgrdListagem.Columns[1].Width:=100;
+
+dbgrdListagem.Columns.Clear;
+dbgrdListagem.Columns.Add;
+dbgrdListagem.Columns[0].FieldName := 'COD_ENTRADA';
+dbgrdListagem.Columns[0].Title.Caption := 'Código';
+dbgrdListagem.Columns.Add;
+dbgrdListagem.Columns[1].FieldName := 'NRO_DOCUMENTO';
+dbgrdListagem.Columns[1].Title.Caption := 'Documento';
+dbgrdListagem.Columns.Add;
+dbgrdListagem.Columns[2].FieldName := 'DESCRICAO';
+dbgrdListagem.Columns[2].Title.Caption := 'Descrição';
+dbgrdListagem.Columns.Add;
+dbgrdListagem.Columns[3].FieldName := 'DTA_MOVIMENTO';
+dbgrdListagem.Columns[3].Title.Caption := 'Data';
+dbgrdListagem.Columns.Add;
+dbgrdListagem.Columns[4].FieldName := 'VALOR';
+dbgrdListagem.Columns[4].Title.Caption := 'Valor';
+dbgrdListagem.Columns.Add;
+dbgrdListagem.Columns[5].FieldName := 'TIPO';
+dbgrdListagem.Columns[5].Title.Caption := 'Tipo';
 end;
 
 end.

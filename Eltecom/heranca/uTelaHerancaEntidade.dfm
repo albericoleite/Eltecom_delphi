@@ -1,9 +1,10 @@
 object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
   Left = 0
   Top = 0
+  BorderStyle = bsSingle
   Caption = 'INFORME O TITULO AQUI'
-  ClientHeight = 359
-  ClientWidth = 913
+  ClientHeight = 369
+  ClientWidth = 923
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,20 +12,23 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnlRodape: TPanel
     Left = 0
-    Top = 321
-    Width = 913
+    Top = 331
+    Width = 923
     Height = 38
     Align = alBottom
     Color = 15508822
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 321
+    ExplicitWidth = 913
     DesignSize = (
-      913
+      923
       38)
     object dbnvgrNavigator: TDBNavigator
       Left = 448
@@ -182,7 +186,7 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
       OnClick = btnApagarClick
     end
     object btnFechar: TBitBtn
-      Left = 821
+      Left = 831
       Top = 6
       Width = 80
       Height = 25
@@ -217,6 +221,7 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
         B3B3B4B3B3BDBCBCC2C1C1FF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 6
       OnClick = btnFecharClick
+      ExplicitLeft = 821
     end
     object btnGravar: TBitBtn
       Tag = 99
@@ -259,22 +264,27 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
   object pgcPrincipal: TPageControl
     Left = 0
     Top = 0
-    Width = 913
-    Height = 321
+    Width = 923
+    Height = 331
     ActivePage = tabListagem
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 913
+    ExplicitHeight = 321
     object tabListagem: TTabSheet
       Caption = 'Listagem'
+      ExplicitWidth = 905
+      ExplicitHeight = 293
       object pnlListagem: TPanel
         Left = 0
         Top = 0
-        Width = 905
+        Width = 915
         Height = 65
         Align = alTop
         Color = 15508822
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 905
         object lblIndice: TLabel
           Left = 10
           Top = 5
@@ -304,8 +314,8 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
       object dbgrdListagem: TDBGrid
         Left = 0
         Top = 65
-        Width = 905
-        Height = 228
+        Width = 915
+        Height = 238
         Align = alClient
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 1
@@ -328,6 +338,10 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
       Font.Style = []
       ImageIndex = 1
       ParentFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object dsListagem: TDataSource

@@ -141,10 +141,11 @@ type
     mniLanamentoUnificado1: TMenuItem;
     mniFormasdePagamento1: TMenuItem;
     mniLancamentos1: TMenuItem;
-    Panel1: TPanel;
+    pnlQtdMembros: TPanel;
     Label5: TLabel;
     pnlMediaIdade: TPanel;
     Label6: TLabel;
+    mniDespesaFixa1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -195,6 +196,7 @@ type
     procedure mniLanamentoUnificado1Click(Sender: TObject);
     procedure mniFormasdePagamento1Click(Sender: TObject);
     procedure mniLancamentos1Click(Sender: TObject);
+    procedure mniDespesaFixa1Click(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -223,7 +225,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
   uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor, uImportarExportarDados, uRelatoriosFinanceiro,
-  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida, uCadTipoCentroCusto, uCadCentroCusto, uCadFornecedor, uCadLancUnificado, uCadFormpgto, uCadTipoLancamento;
+  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida, uCadTipoCentroCusto, uCadCentroCusto, uCadFornecedor, uCadLancUnificado, uCadFormpgto, uCadTipoLancamento, uCadDespesaFixa;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
@@ -293,9 +295,11 @@ begin
     frmAtualizaDB.Refresh;
 
     dtmPrincipal := TdtmPrincipal.Create(self);
-    // Inciar Conexão
+   // dtmPrincipal.fdcmndBancoNovo.Active:=True;
+   { // Inciar Conexão
     with dtmPrincipal.ConexaoDB do
     begin
+
       Connected := False;
       if TArquivoIni.LerIni('SERVER', 'TipoDataBase') = 'MySQL' then
         DRIVE := 'MySQL';
@@ -311,10 +315,10 @@ begin
       dtmPrincipal.ConexaoDB.Params.Clear;
       dtmPrincipal.ConexaoDB.ConnectionString := 'DriverID=' + DRIVE +
         ';Server=' + SERVER + ';Database=' + BANCO + ';User_name=' + USER +
-        ';Password=' + SENHA + ';Port=' + IntToStr(port);
+        ';Password=' + SENHA + ';Port='+IntToStr(port)+';UseSSL=False';
       dtmPrincipal.ConexaoDB.TxOptions.AutoCommit := True;
       dtmPrincipal.ConexaoDB.TxOptions.Isolation := xiReadCommitted;
-    end;
+    end; }
 
     try
       dtmPrincipal.ConexaoDB.Connected := True;
@@ -365,6 +369,7 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmCadLancUnificado, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmCadFormpgto, dtmPrincipal.ConexaoDB);
     TAcaoAcesso.CriarAcoes(TfrmCadTipoLancamento, dtmPrincipal.ConexaoDB);
+    TAcaoAcesso.CriarAcoes(TfrmCadDespesaFixa, dtmPrincipal.ConexaoDB);
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -523,6 +528,11 @@ end;
 procedure TfrmPrincipal.mniDepartamentos3Click(Sender: TObject);
 begin
 TFuncao.CriarForm(TfrmRelDept, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.mniDespesaFixa1Click(Sender: TObject);
+begin
+   TFuncao.CriarForm(TfrmCadDespesaFixa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
@@ -725,6 +735,8 @@ try
      pnlMediaIdade.Caption:= TFuncao.SqlValor('select CEIL(avg(YEAR(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(a.dta_nascimento))))) as VALOR '+
      ' from tb_pessoa a inner join tb_parametro_sistema  '+
      ' b on a.cod_congregacao = b.cod_congregacao',dtmPrincipal.ConexaoDB);
+     pnlQtdMembros.Caption :=
+     TFuncao.SqlValor('select count(1)as VALOR from tb_pessoa a inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_congregacao;',dtmPrincipal.ConexaoDB);
      //pnlDiasBatismo.Caption:=  TFuncao.SqlValor('select DATEDIFF(CURDATE(), a.dt) as VALOR from (select max(b.dta_batismo_aguas) '+
     // ' as dt from tb_pessoa b inner join tb_parametro_sistema c on b.cod_congregacao = c.cod_congregacao )a; ',dtmPrincipal.ConexaoDB);
 finally

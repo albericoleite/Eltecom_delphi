@@ -87,6 +87,8 @@ type
     fdqryTipoSaida: TFDQuery;
     fdtncfldTipoSaidaid: TFDAutoIncField;
     strngfldTipoSaidatipo: TStringField;
+    fdcmndBancoNovo: TFDCommand;
+    intgrfldCong_sistemacod_igreja: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -94,6 +96,7 @@ type
   public
     { Public declarations }
     congAtiva :Integer;
+    igrejaAtiva :Integer;
     descCongAtiva:string;
     setor:string;
   end;
@@ -114,6 +117,8 @@ begin
     congAtiva:=  fdqryCong_sistema.FieldByName('cod_congregacao').AsInteger;
     descCongAtiva:= fdqryCong_sistema.FieldByName('congregacao').AsString;
      setor:= fdqryCong_sistema.FieldByName('setor').AsString;
+     igrejaAtiva:=  fdqryCong_sistema.FieldByName('cod_igreja').AsInteger;
+      //fdqryNovoBanco.close;
      //fdqryDepartamentos.Open;
  Except
   // ShowMessage('Erro na fdqryCong_sistema! ');

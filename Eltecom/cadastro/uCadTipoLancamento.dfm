@@ -2,7 +2,6 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
   Caption = 'Cadastro de tipo de Receitas / Despesas'
   ClientWidth = 736
   Position = poScreenCenter
-  ExplicitTop = -37
   ExplicitWidth = 752
   PixelsPerInch = 96
   TextHeight = 13
@@ -21,7 +20,6 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
   end
   inherited pgcPrincipal: TPageControl
     Width = 736
-    ActivePage = tabManutencao
     ExplicitWidth = 736
     inherited tabListagem: TTabSheet
       ExplicitWidth = 728

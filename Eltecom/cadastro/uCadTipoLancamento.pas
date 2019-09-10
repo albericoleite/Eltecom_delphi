@@ -23,6 +23,7 @@ type
     procedure dsListagemDataChange(Sender: TObject; Field: TField);
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
   private
     { Private declarations }
     DAOTipolanc: iSimpleDAO<TTIPO_LANCAMENTO>;
@@ -79,6 +80,12 @@ begin
   dblkcbbPai.KeyValue:=  dsListagem.DataSet.FieldByName('ID_PAI').AsInteger;
 end;
 
+procedure TfrmCadTipoLancamento.btnNovoClick(Sender: TObject);
+begin
+  inherited;
+  lbledtCodigo.SetFocus;
+end;
+
 procedure TfrmCadTipoLancamento.dsListagemDataChange(Sender: TObject;
   Field: TField);
 begin
@@ -129,6 +136,8 @@ begin
     TIPO.CODIGO:= lbledtCodigo.Text;
     tipo.DESCRICAO := lbledtDescricao.Text;
     tipo.ID_TIPO_CENTRO_CUSTO :=dblkcbbTipoCC.KeyValue;
+    tipo.ID_PAI:= 0;
+    if dblkcbbPai.KeyValue <> Null  then
     tipo.ID_PAI:= dblkcbbPai.KeyValue;
     DAOTipolanc.Update(tipo);
     finally
@@ -142,7 +151,10 @@ begin
     tipo.DESCRICAO := lbledtDescricao.Text;
     TIPO.CODIGO:= lbledtCodigo.Text;
     tipo.ID_TIPO_CENTRO_CUSTO :=dblkcbbTipoCC.KeyValue;
+    tipo.ID_PAI:= 0;
+    if dblkcbbPai.KeyValue <> Null  then
     tipo.ID_PAI:= dblkcbbPai.KeyValue;
+
     DAOTipolanc.Insert(tipo);
     finally
     Result :=true;
@@ -159,12 +171,18 @@ var
   tipo : TTIPO_LANCAMENTO;
 begin
   tipos := DAOTipolanc.SQL.OrderBy('ID').&End.Find;
+
+dbgrdListagem.Columns.Clear;
+dbgrdListagem.Columns.Add;
+dbgrdListagem.Columns[0].FieldName := 'CODIGO';
+dbgrdListagem.Columns[0].Title.Caption := 'Código';
+dbgrdListagem.Columns.Add;
+dbgrdListagem.Columns[1].FieldName := 'DESCRICAO';
+dbgrdListagem.Columns[1].Title.Caption := 'Descrição';
   { dbgrdListagem.Columns[0].Title.Caption:='Id';
    dbgrdListagem.Columns[1].Title.Caption:='Código';
    dbgrdListagem.Columns[2].Title.Caption:='Nome';
    dbgrdListagem.Columns[2].Width:=200; }
-
-
 end;
 
 end.

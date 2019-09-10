@@ -43,6 +43,7 @@ type
     procedure Tipo_lancamento;
     procedure Centro_custo;
     procedure Fornecedor;
+    procedure DespesaFixa;
 
  protected
 
@@ -93,6 +94,7 @@ begin
   Tipo_lancamento;
   Centro_custo;
   Fornecedor;
+  DespesaFixa;
 end;
 
 destructor TAtualizacaoTabelaMySQL.Destroy;
@@ -834,6 +836,43 @@ begin
   ' `usuario_cadastro` varchar(45) DEFAULT NULL,  '+
   ' PRIMARY KEY (`id`)     '+
   ' )');
+   end;
+
+end;
+
+ procedure TAtualizacaoTabelaMySQL.DespesaFixa;
+begin
+   if not TabelaExiste('despesa_fixa') then
+   begin
+     ExecutaDiretoBancoDeDados(
+     'CREATE TABLE `despesa_fixa` (  '+
+  ' `id` INT NOT NULL AUTO_INCREMENT,    '+
+  ' `descricao` VARCHAR(45) NOT NULL,   '+
+  ' `id_fornecedor` INT NULL,   '+
+  ' `vencimento` DATE NULL,  '+
+  ' `valor` FLOAT NULL,    '+
+  ' `id_igreja` INT NULL,    '+
+  ' `id_congregacao` INT NULL,   '+
+  ' `id_tipo_lancamento` INT NULL,   '+
+  ' PRIMARY KEY (`id`),     '+
+  ' INDEX `id_igreja_fk_idx` (`id_igreja` ASC) VISIBLE,  '+
+  ' INDEX `id_tipo_lancamento_idx` (`id_tipo_lancamento` ASC) VISIBLE,  '+
+  ' INDEX `id_fornecedor_idx` (`id_fornecedor` ASC) VISIBLE,   '+
+  ' CONSTRAINT `id_igreja_fk`   '+
+  '  FOREIGN KEY (`id_igreja`)    '+
+  '  REFERENCES `igreja`.`tb_igreja` (`cod_igreja`)    '+
+  '  ON DELETE NO ACTION     '+
+  '  ON UPDATE NO ACTION,    '+
+  ' CONSTRAINT `id_tipo_lancamento`     '+
+  '  FOREIGN KEY (`id_tipo_lancamento`)      '+
+  '  REFERENCES `igreja`.`tipo_lancamento` (`id`)  '+
+  '  ON DELETE NO ACTION     '+
+  '  ON UPDATE NO ACTION,    '+
+  ' CONSTRAINT `id_fornecedor`   '+
+  '  FOREIGN KEY (`id_fornecedor`)  '+
+  '  REFERENCES `igreja`.`fornecedor` (`id`)  '+
+  '  ON DELETE NO ACTION     '+
+  '  ON UPDATE NO ACTION); ');
    end;
 
 end;

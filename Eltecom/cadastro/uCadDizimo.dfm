@@ -1,7 +1,6 @@
 inherited frmCadDizimos: TfrmCadDizimos
   Caption = 'Cadastro de Dizimos'
   ClientWidth = 841
-  ExplicitTop = -116
   ExplicitWidth = 847
   PixelsPerInch = 96
   TextHeight = 13

@@ -326,8 +326,9 @@ begin
   fdqryDizimosTotal.Open;
   crncydtTotal.Text:=  TotalizarEntrada.ToString();
 
-
-  try
+   //dtmRelatorio.frxrprtDizimista.Variables['ValorTotal']:=
+   //TFuncao.SqlValor('select count(*)as VALOR from tb_classe;',dtmPrincipal.ConexaoDB);
+  {try
     Qry := TFDQuery.Create(nil);
     Qry.Connection := dtmPrincipal.ConexaoDB;
     Qry.SQL.Clear;
@@ -347,7 +348,7 @@ begin
   finally
     if Assigned(Qry) then
       FreeAndNil(Qry)
-  end;
+  end;  }
   //lblTotal.Caption:= 'Valor Total:' +fdqryDizimosTotal.FieldByName('total').AsString;
 end;
 
