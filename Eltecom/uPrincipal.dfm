@@ -15,7 +15,6 @@ object frmPrincipal: TfrmPrincipal
   WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
-  OnPaint = FormPaint
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13

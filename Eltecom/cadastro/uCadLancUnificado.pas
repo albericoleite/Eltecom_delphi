@@ -76,6 +76,8 @@ type
     dsListagem: TDataSource;
     dsMes: TDataSource;
     dsTipoSaida: TDataSource;
+    crncydtTotal: TCurrencyEdit;
+    Label6: TLabel;
     procedure cbbTipoChange(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -469,6 +471,7 @@ function TfrmCadLancUnificado.Listar: string;
 var
   tipos : TList<TTB_TESOURARIA>;
   tipo : TTB_TESOURARIA;
+  sql:string;
 begin
   tipos := DAOTesouraria.SQL.OrderBy('COD_ENTRADA').&End.Find;
 
@@ -491,6 +494,9 @@ dbgrdListagem.Columns[4].Title.Caption := 'Valor';
 dbgrdListagem.Columns.Add;
 dbgrdListagem.Columns[5].FieldName := 'TIPO';
 dbgrdListagem.Columns[5].Title.Caption := 'Tipo';
+
+sql:= 'select sum(valor) as VALOR from despesa_fixa where id_igreja = '+dtmPrincipal.igrejaAtiva.ToString()+' and id_congregacao='+dtmPrincipal.congAtiva.ToString()+'';
+crncydtTotal.Text := TFuncao.SqlValor(sql,dtmPrincipal.ConexaoDB);
 end;
 
 end.

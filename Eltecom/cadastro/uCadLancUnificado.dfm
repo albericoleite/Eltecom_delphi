@@ -4,7 +4,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
   BorderStyle = bsSingle
   Caption = 'Cadastro de Lan'#231'amentos'
   ClientHeight = 350
-  ClientWidth = 738
+  ClientWidth = 783
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,22 +19,25 @@ object frmCadLancUnificado: TfrmCadLancUnificado
   object pgcPrincipal: TPageControl
     Left = 0
     Top = 0
-    Width = 738
+    Width = 783
     Height = 312
     ActivePage = tabManutencao
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 738
     object tabListagem: TTabSheet
       Caption = 'Listagem'
+      ExplicitWidth = 730
       object pnlListagem: TPanel
         Left = 0
         Top = 0
-        Width = 730
+        Width = 775
         Height = 121
         Align = alTop
         Color = 15508822
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 730
         object lblIndice: TLabel
           Left = 10
           Top = 8
@@ -117,6 +120,19 @@ object frmCadLancUnificado: TfrmCadLancUnificado
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label6: TLabel
+          Left = 548
+          Top = 60
+          Width = 105
+          Height = 19
+          Caption = 'Despesas Fixas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -329,7 +345,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
           TabOrder = 8
         end
         object crncydtSubtotal: TCurrencyEdit
-          Left = 619
+          Left = 659
           Top = 88
           Width = 100
           Height = 27
@@ -361,11 +377,26 @@ object frmCadLancUnificado: TfrmCadLancUnificado
           TabOrder = 10
           OnClick = dblkcbbMesClick
         end
+        object crncydtTotal: TCurrencyEdit
+          Left = 659
+          Top = 57
+          Width = 100
+          Height = 27
+          DisplayFormat = 'R$ 0.00;-0.00'
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 11
+        end
       end
       object dbgrdListagem: TDBGrid
         Left = 0
         Top = 121
-        Width = 730
+        Width = 775
         Height = 163
         Align = alClient
         DataSource = dsListagem
@@ -387,6 +418,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
       Font.Style = []
       ImageIndex = 1
       ParentFont = False
+      ExplicitWidth = 730
       object pnl1: TPanel
         Left = 0
         Top = 3
@@ -606,14 +638,15 @@ object frmCadLancUnificado: TfrmCadLancUnificado
   object pnlRodape: TPanel
     Left = 0
     Top = 312
-    Width = 738
+    Width = 783
     Height = 38
     Align = alBottom
     Color = 15508822
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 738
     DesignSize = (
-      738
+      783
       38)
     object dbnvgrNavigator: TDBNavigator
       Left = 413
@@ -771,7 +804,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
       OnClick = btnApagarClick
     end
     object btnFechar: TBitBtn
-      Left = 646
+      Left = 691
       Top = 6
       Width = 80
       Height = 25
@@ -806,10 +839,11 @@ object frmCadLancUnificado: TfrmCadLancUnificado
         B3B3B4B3B3BDBCBCC2C1C1FF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 6
       OnClick = btnFecharClick
+      ExplicitLeft = 646
     end
     object btnGravar: TBitBtn
       Tag = 99
-      Left = 247
+      Left = 252
       Top = 6
       Width = 80
       Height = 25

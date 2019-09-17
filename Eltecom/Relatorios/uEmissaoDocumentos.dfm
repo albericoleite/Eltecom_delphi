@@ -19,7 +19,7 @@ object frmEmitirDoc: TfrmEmitirDoc
   TextHeight = 13
   object lbl1: TLabel
     Left = 8
-    Top = 8
+    Top = 3
     Width = 125
     Height = 13
     Caption = 'Digite o nome do Membro:'
@@ -33,10 +33,11 @@ object frmEmitirDoc: TfrmEmitirDoc
   end
   object lbl2: TLabel
     Left = 8
-    Top = 210
+    Top = 244
     Width = 31
     Height = 13
     Caption = 'Total: '
+    Visible = False
   end
   object lbl4: TLabel
     Left = 577
@@ -58,10 +59,10 @@ object frmEmitirDoc: TfrmEmitirDoc
   end
   object dbgrdMembro: TDBGrid
     Left = 8
-    Top = 49
+    Top = 45
     Width = 401
-    Height = 155
-    DataSource = dtmRelatorio.dsBuscaPessoaRelatorio
+    Height = 193
+    DataSource = dsBuscaPessoaRelatorio
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
@@ -75,7 +76,7 @@ object frmEmitirDoc: TfrmEmitirDoc
       item
         Expanded = False
         FieldName = 'cod_pessoa'
-        Width = 42
+        Width = 40
         Visible = True
       end
       item
@@ -89,7 +90,6 @@ object frmEmitirDoc: TfrmEmitirDoc
         Expanded = False
         FieldName = 'membro_congregado'
         Title.Caption = 'Tipo'
-        Width = 78
         Visible = True
       end>
   end
@@ -239,7 +239,7 @@ object frmEmitirDoc: TfrmEmitirDoc
   end
   object btnImprimir: TBitBtn
     Left = 313
-    Top = 210
+    Top = 244
     Width = 91
     Height = 25
     Caption = 'Imprimir'
@@ -248,12 +248,12 @@ object frmEmitirDoc: TfrmEmitirDoc
   end
   object btnEnviarEmail: TBitBtn
     Left = 216
-    Top = 210
+    Top = 244
     Width = 91
     Height = 25
     Caption = 'Enviar por email'
-    Enabled = False
     TabOrder = 10
+    OnClick = btnEnviarEmailClick
   end
   object rgCartas: TRadioGroup
     Left = 762
@@ -289,5 +289,10 @@ object frmEmitirDoc: TfrmEmitirDoc
     Hint = 'CARTA DE TRANSFER'#202'NCIA INTERNA'
     Caption = 'Transfer'#234'ncia'
     TabOrder = 14
+  end
+  object dsBuscaPessoaRelatorio: TDataSource
+    DataSet = dtmRelatorio.fdqryBuscaPessoaRelatorio
+    Left = 120
+    Top = 216
   end
 end

@@ -171,7 +171,6 @@ type
     procedure mniUsuriosVSAes1Click(Sender: TObject);
     procedure mniConfigurao2Click(Sender: TObject);
     procedure mniConsultarDados1Click(Sender: TObject);
-    procedure FormPaint(Sender: TObject);
     procedure mniClasse1Click(Sender: TObject);
     procedure mniAluno1Click(Sender: TObject);
     procedure mniAniversariantes1Click(Sender: TObject);
@@ -201,6 +200,7 @@ type
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
     procedure AtualizarGraficos;
+    procedure CriarAcoes;
 
     { Private declarations }
   public
@@ -229,9 +229,10 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
-  frmEmitirDoc := nil;
+  {frmEmitirDoc := nil;
   frmEmitirDoc := TfrmEmitirDoc.Create(self);
-  frmEmitirDoc.Show;
+  frmEmitirDoc.Show; }
+   TFuncao.CriarForm(TfrmEmitirDoc, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.Clientes1Click(Sender: TObject);
@@ -329,47 +330,7 @@ begin
       end;
     end;
     AtualizaBandoDados(frmAtualizaDB);
-
-    // INSERINDO INFORMAÇÕES DOS FORMULARIOS PARA CONTROLE DE ACESSO
-    TAcaoAcesso.CriarAcoes(TfrmCadDizimos, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadAcaoAcesso, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadCargoPessoa, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadLancamento, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadUsuario, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadFuncaoPessoa, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadDepartPessoa, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadCargo, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadFuncao, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadCongregacao, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadDepartamento, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadAjudaDeCusto, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmUsuarioVsAcoes, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadPessoa, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadIgreja, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmConsultaDados, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmAlterarSenha, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadSetores, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadProfessor, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadClasse, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadClasseAluno, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmAniversariantes, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmRelatoriosEBD, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmBackupRestore, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmRelDept, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadClasseProfessor, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmImportarExportarDados, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmRelatoriosFinanceiro, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmQuadroAnual, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmChamadaEbd, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmTipoCulto, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmTipoSaida, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmTipoCentroCusto, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadCentroCusto, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadFornecedor, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadLancUnificado, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadFormpgto, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadTipoLancamento, dtmPrincipal.ConexaoDB);
-    TAcaoAcesso.CriarAcoes(TfrmCadDespesaFixa, dtmPrincipal.ConexaoDB);
+    //CriarAcoes;
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -416,11 +377,6 @@ begin
   TFuncao.VerificarBackup();
 end;
 
-procedure TfrmPrincipal.FormPaint(Sender: TObject);
-begin
-  //TStyleManager.SetStyle(oUsuarioLogado.tema);
-end;
-
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
   try
@@ -432,6 +388,7 @@ begin
   finally
     frmLogin.Release;
     statMenu.Panels[3].Text := 'Logado com: ' + oUsuarioLogado.nome;
+    //CriarAcoes;
   end;
 
 end;
@@ -661,10 +618,6 @@ var
   x: Integer;
   oAtualizarMySQL: TAtualizaBancoDadosMysql;
 begin
-  //sl := 50;
-  aForm.chkConexBD.Checked := True;
-  aForm.Refresh;
-
 
   try
     oAtualizarMySQL := TAtualizaBancoDadosMysql.Create(dtmPrincipal.ConexaoDB);
@@ -672,14 +625,15 @@ begin
   finally
     if Assigned(oAtualizarMySQL) then
       FreeAndNil(oAtualizarMySQL);
+
+      for x:=0 to 100 do
+      begin
+      aForm.pbBackup.Position:=aForm.pbBackup.Position+1;
+      Sleep(2);
+      end;
   end;
 
-    for x:=0 to 100 do
-  begin
-    aForm.pbBackup.Position:=aForm.pbBackup.Position+1;
-    Sleep(10);
-  end;
-  //aForm.pbBackup.Position:=0;
+
 
 end;
 
@@ -742,6 +696,52 @@ try
 finally
      Screen.Cursor := crDefault;
 end;
+end;
+
+procedure TfrmPrincipal.CriarAcoes;
+begin
+//TODO: RESOLVER LENTIDÃO NESSA FUNÇÃO
+  // INSERINDO INFORMAÇÕES DOS FORMULARIOS PARA CONTROLE DE ACESSO
+  TAcaoAcesso.CriarAcoes(TfrmCadDizimos, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadAcaoAcesso, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadCargoPessoa, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadLancamento, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadUsuario, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadFuncaoPessoa, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadDepartPessoa, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadCargo, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadFuncao, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadCongregacao, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadDepartamento, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadAjudaDeCusto, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmUsuarioVsAcoes, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadPessoa, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadIgreja, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmConsultaDados, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmAlterarSenha, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadSetores, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadProfessor, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadClasse, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadClasseAluno, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmAniversariantes, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmRelatoriosEBD, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmBackupRestore, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmRelDept, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadClasseProfessor, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmImportarExportarDados, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmRelatoriosFinanceiro, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmQuadroAnual, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmChamadaEbd, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmTipoCulto, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmTipoSaida, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmTipoCentroCusto, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadCentroCusto, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadFornecedor, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadLancUnificado, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadFormpgto, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadTipoLancamento, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmCadDespesaFixa, dtmPrincipal.ConexaoDB);
+  TAcaoAcesso.CriarAcoes(TfrmEmitirDoc, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.BackupeRestore1Click(Sender: TObject);

@@ -7,7 +7,9 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls,uDTMRelatorio, uDTMConexao, uCadPessoa,
-  Data.DB;
+  Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TfrmEmitirDoc = class(TForm)
@@ -39,6 +41,7 @@ type
     rbRecomendacao: TRadioButton;
     rbVisita: TRadioButton;
     rbTransferencia: TRadioButton;
+    dsBuscaPessoaRelatorio: TDataSource;
     procedure btnImprimirClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -51,6 +54,7 @@ type
     procedure chkMembroClick(Sender: TObject);
     procedure chkRequerimentoClick(Sender: TObject);
     procedure chkObservacaoClick(Sender: TObject);
+    procedure btnEnviarEmailClick(Sender: TObject);
   private
     procedure ImprimirCarta(Sender: TObject);
     { Private declarations }
@@ -65,8 +69,18 @@ var
 
 implementation
 
+uses
+  cFuncao;
+
 
 {$R *.dfm}
+
+procedure TfrmEmitirDoc.btnEnviarEmailClick(Sender: TObject);
+begin
+ {if Tfuncao.EnviarEmail(chkRequerimento.Caption, 'albericoleite@gmail.com', '', 'Testando envio')
+then ShowMessage('Enviado com sucesso!')
+else ShowMessage('Não foi possível enviar o e-mail!');  }
+end;
 
 procedure TfrmEmitirDoc.btnImprimirClick(Sender: TObject);
 begin
@@ -264,7 +278,9 @@ begin
   // dtmConexao.fdqryBuscaPessoaRelatorio.Refresh;
   // dtmRelatorio.fdqryRelacaoCargos.Open;
   // chkMembroClick(Sender);
+
   dtmRelatorio.fdqryBuscaPessoaRelatorio.Open;
+  dsBuscaPessoaRelatorio.DataSet:= dtmRelatorio.fdqryBuscaPessoaRelatorio;
   dtpDocumento.Date := now;
   lbl2.Caption:= 'Total:' + dtmRelatorio.fdqryBuscaPessoaRelatorio.RecordCount.ToString;
   //frmEmitirDoc.Width := 573;

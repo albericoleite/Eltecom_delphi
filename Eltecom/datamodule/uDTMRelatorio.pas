@@ -88,7 +88,6 @@ type
     intgrfldTesourariaDescricaoBuscaPessoaRelatoriocod_situacao: TIntegerField;
     strngfldBuscaPessoaRelatoriocongregacao: TStringField;
     strngfldBuscaPessoaRelatoriosetor: TStringField;
-    dsBuscaPessoaRelatorio: TDataSource;
     frxrprtNotifOcorrencia: TfrxReport;
     strngfldBuscaPessoaRelatorioigreja: TStringField;
     strngfldBuscaPessoaRelatorioSITUACAO: TStringField;
@@ -269,6 +268,7 @@ uses
 
 procedure TdtmRelatorio.DataModuleCreate(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
 fdqryBuscaPessoaRelatorio.Open;
 fdqryBucarIgreja.Open;
 end;

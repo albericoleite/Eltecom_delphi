@@ -8,7 +8,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Mask, Vcl.ComCtrls, Vcl.Buttons,
   Vcl.DBCtrls, Vcl.ExtCtrls, SimpleDAO,SimpleInterface  ,uEnum
   ,SimpleQueryFiredac,System.Generics.Collections, Entidade.DespesaFixa,Entidade.Fornecedor,Entidade.TipoLancamento,
-  RxCurrEdit, RxToolEdit ;
+  RxCurrEdit, RxToolEdit ,Entidade.Tesouraria;
 
 type
   TfrmCadDespesaFixa = class(TfrmTelaHerancaEntidade)
@@ -24,16 +24,26 @@ type
     dsFornecedor: TDataSource;
     dsTipoDespesa: TDataSource;
     cbbVencimento: TComboBox;
+    btnFat: TBitBtn;
+    btnFatTotal: TBitBtn;
+    crncydtTotal: TCurrencyEdit;
+    lbl7: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure dsListagemDataChange(Sender: TObject; Field: TField);
+    procedure btnFatClick(Sender: TObject);
+    procedure btnFatTotalClick(Sender: TObject);
+    procedure btnApagarClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
   private
    DAODespesafixa: iSimpleDAO<TDESPESA_FIXA>;
    DAOFornecedor  :iSimpleDAO<TFORNECEDOR>;
    DAOTipolancamento:iSimpleDAO<TTIPO_LANCAMENTO>;
+   DAOTesouraria:iSimpleDAO<TTB_TESOURARIA>;
    function Apagar:Boolean; override;
    function Gravar(EstadodoCadastro:TEstadoDoCadastro):Boolean; override;
    function Listar: string;
+   function Faturar(data:TDateTime; descricao:string; valor:Double;id_fornecedor:integer;id_tipo_lancamento: integer):string;
     { Private declarations }
   public
     { Public declarations }
@@ -45,7 +55,7 @@ var
 implementation
 
 uses
-  uDTMConexao;
+  uDTMConexao, cFuncao,uPrincipal;
 
 {$R *.dfm}
 
@@ -74,6 +84,39 @@ if MessageDlg('Apagar o Registro: ' + #13 + #13 + 'Código: ' +
 
 end;
 
+procedure TfrmCadDespesaFixa.btnApagarClick(Sender: TObject);
+begin
+  inherited;
+Listar;
+end;
+
+procedure TfrmCadDespesaFixa.btnFatClick(Sender: TObject);
+begin
+  inherited;
+Faturar(Now,dsListagem.DataSet.FieldByName('DESCRICAO').AsString
+,dsListagem.DataSet.FieldByName('VALOR').AsFloat
+,dsListagem.DataSet.FieldByName('ID_FORNECEDOR').AsInteger
+,dsListagem.DataSet.FieldByName('ID_TIPO_LANCAMENTO').AsInteger);
+end;
+
+procedure TfrmCadDespesaFixa.btnFatTotalClick(Sender: TObject);
+begin
+  inherited;
+  while not dsListagem.DataSet.Eof do begin
+  Faturar(Now,dsListagem.DataSet.FieldByName('DESCRICAO').AsString
+,dsListagem.DataSet.FieldByName('VALOR').AsFloat
+,dsListagem.DataSet.FieldByName('ID_FORNECEDOR').AsInteger
+,dsListagem.DataSet.FieldByName('ID_TIPO_LANCAMENTO').AsInteger);
+dsListagem.DataSet.Next;
+end;
+end;
+
+procedure TfrmCadDespesaFixa.btnGravarClick(Sender: TObject);
+begin
+  inherited;
+Listar;
+end;
+
 procedure TfrmCadDespesaFixa.btnNovoClick(Sender: TObject);
 begin
   inherited;
@@ -93,10 +136,50 @@ begin
   dblkcbbTipoDespesa.keyvalue :=dsListagem.DataSet.FieldByName('ID_TIPO_LANCAMENTO').AsInteger;
 end;
 
+function TfrmCadDespesaFixa.Faturar(data: TDateTime; descricao: string;
+  valor: Double; id_fornecedor: integer;id_tipo_lancamento: integer): string;
+var
+  tipo : TTB_TESOURARIA;
+  sql:string;
+  begin
+
+  sql :='INSERT INTO tb_tesouraria  '+
+'(nro_documento, dta_movimento, dta_inclusao, usuario_inclusao, descricao, valor, tipo, status, cod_congregacao, situacao  '+
+' , cod_tipo_saida, id_centro_custo, id_tipo_lancamento, id_forma_pagamento, id_fornecedor) '+
+' VALUES('+lbledtCodigo.Text+', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '+QuotedStr(oUsuarioLogado.nome)+', '+QuotedStr(descricao)+', '+valor.ToString()+','+
+' '+QuotedStr('SAIDA')+', '+QuotedStr('ABERTO')+', '+dtmPrincipal.congAtiva.ToString()+', 1, 1, 1, '+id_tipo_lancamento.ToString()+', 1,'+id_fornecedor.ToString()+' )';
+   try
+      TFuncao.ExecuteSQL(sql,dtmPrincipal.ConexaoDB);
+   finally
+      MessageDlg('Faturado com sucesso!',MtInformation,[mbok],0);
+   end;
+
+  tipo := TTB_TESOURARIA.Create;
+    try
+    tipo.DESCRICAO := lbledtDescricao.Text;
+    tipo.COD_CONGREGACAO:= dtmPrincipal.congAtiva;
+    tipo.NRO_DOCUMENTO:= StrToInt(lbledtCodigo.Text);
+    tipo.DTA_MOVIMENTO:= data;
+    tipo.VALOR:= StrToFloat(crncydtValor.Text);
+    tipo.ID_CENTRO_CUSTO:= 1;
+    tipo.ID_TIPO_LANCAMENTO:= 2;
+    tipo.ID_FORMA_PAGAMENTO:= 1;
+    tipo.TIPO:= 'SAIDA';
+    tipo.ID_FORNECEDOR:= id_fornecedor;
+    tipo.COD_TIPO_SAIDA:=1;
+    tipo.DTA_INCLUSAO:=now;
+    tipo.USUARIO_INCLUSAO:= 'ADMIN';
+    //DAOTesouraria.Insert(tipo);
+    finally
+    tipo.Free;
+  end;
+end;
+
 procedure TfrmCadDespesaFixa.FormCreate(Sender: TObject);
 var
 fornecedores: TList<TFORNECEDOR>;
 tipos: TList<TTIPO_LANCAMENTO>;
+ lancamentos : TList<TTB_TESOURARIA>;
 begin
   inherited;
    DAODespesafixa:= TSimpleDAO<TDESPESA_FIXA>
@@ -166,7 +249,7 @@ end;
 function TfrmCadDespesaFixa.Listar: string;
 var
   tipos : TList<TDESPESA_FIXA>;
-  tipo : TDESPESA_FIXA;
+  sql :string;
 begin
   tipos := DAODespesafixa.SQL.OrderBy('ID').&End.Find;
    {dbgrdListagem.Columns[0].Title.Caption:='Código';
@@ -187,6 +270,9 @@ dbgrdListagem.Columns[2].Title.Caption := 'Vencimento';
 dbgrdListagem.Columns.Add;
 dbgrdListagem.Columns[3].FieldName := 'VALOR';
 dbgrdListagem.Columns[3].Title.Caption := 'Valor';
+
+sql:= 'select sum(valor) as VALOR from despesa_fixa where id_igreja = '+dtmPrincipal.igrejaAtiva.ToString()+' and id_congregacao='+dtmPrincipal.congAtiva.ToString()+'';
+crncydtTotal.Text := TFuncao.SqlValor(sql,dtmPrincipal.ConexaoDB);
 
 end;
 

@@ -634,7 +634,6 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object fdqryBuscaPessoaRelatorio: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
@@ -647,7 +646,7 @@ object dtmRelatorio: TdtmRelatorio
       #39'%%'#39
       'and t.membro_congregado = :situacao'
       '')
-    Left = 40
+    Left = 48
     Top = 72
     ParamData = <
       item
@@ -989,11 +988,6 @@ object dtmRelatorio: TdtmRelatorio
       ReadOnly = True
       Size = 45
     end
-  end
-  object dsBuscaPessoaRelatorio: TDataSource
-    DataSet = fdqryBuscaPessoaRelatorio
-    Left = 56
-    Top = 136
   end
   object frxrprtNotifOcorrencia: TfrxReport
     Version = '6.2.1'

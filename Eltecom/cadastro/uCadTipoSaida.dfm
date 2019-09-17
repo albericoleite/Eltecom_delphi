@@ -6,6 +6,7 @@ inherited frmTipoSaida: TfrmTipoSaida
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 735
+    ActivePage = tabManutencao
     ExplicitWidth = 735
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
@@ -22,20 +23,19 @@ inherited frmTipoSaida: TfrmTipoSaida
         Columns = <
           item
             Expanded = False
-            FieldName = 'codigo'
-            Width = 53
+            FieldName = 'id'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'tipo'
-            Width = 224
+            Width = 182
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'descricao'
-            Width = 348
+            Width = 383
             Visible = True
           end>
       end
@@ -146,6 +146,7 @@ inherited frmTipoSaida: TfrmTipoSaida
     object fdtncfldQryListagemid: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
+      ReadOnly = True
     end
   end
 end

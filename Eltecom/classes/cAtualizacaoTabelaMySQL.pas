@@ -849,7 +849,7 @@ begin
   ' `id` INT NOT NULL AUTO_INCREMENT,    '+
   ' `descricao` VARCHAR(45) NOT NULL,   '+
   ' `id_fornecedor` INT NULL,   '+
-  ' `vencimento` DATE NULL,  '+
+  ' `vencimento` INT NULL,  '+
   ' `valor` FLOAT NULL,    '+
   ' `id_igreja` INT NULL,    '+
   ' `id_congregacao` INT NULL,   '+
@@ -860,17 +860,17 @@ begin
   ' INDEX `id_fornecedor_idx` (`id_fornecedor` ASC) VISIBLE,   '+
   ' CONSTRAINT `id_igreja_fk`   '+
   '  FOREIGN KEY (`id_igreja`)    '+
-  '  REFERENCES `igreja`.`tb_igreja` (`cod_igreja`)    '+
+  '  REFERENCES `tb_igreja` (`cod_igreja`)    '+
   '  ON DELETE NO ACTION     '+
   '  ON UPDATE NO ACTION,    '+
   ' CONSTRAINT `id_tipo_lancamento`     '+
   '  FOREIGN KEY (`id_tipo_lancamento`)      '+
-  '  REFERENCES `igreja`.`tipo_lancamento` (`id`)  '+
+  '  REFERENCES `tipo_lancamento` (`id`)  '+
   '  ON DELETE NO ACTION     '+
   '  ON UPDATE NO ACTION,    '+
   ' CONSTRAINT `id_fornecedor`   '+
   '  FOREIGN KEY (`id_fornecedor`)  '+
-  '  REFERENCES `igreja`.`fornecedor` (`id`)  '+
+  '  REFERENCES `fornecedor` (`id`)  '+
   '  ON DELETE NO ACTION     '+
   '  ON UPDATE NO ACTION); ');
    end;
