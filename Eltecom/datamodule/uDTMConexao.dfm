@@ -11,7 +11,6 @@ object dtmPrincipal: TdtmPrincipal
       'Server=127.0.0.1'
       'Database=igreja'
       'DriverID=MySQL')
-    Connected = True
     LoginPrompt = False
     Left = 56
     Top = 16
@@ -424,8 +423,8 @@ object dtmPrincipal: TdtmPrincipal
     Connection = ConexaoDB
     SQL.Strings = (
       'select * from tb_departamento')
-    Left = 432
-    Top = 112
+    Left = 408
+    Top = 24
     object fdtncfldDepartamentoscod_departamento: TFDAutoIncField
       FieldName = 'cod_departamento'
       Origin = 'cod_departamento'

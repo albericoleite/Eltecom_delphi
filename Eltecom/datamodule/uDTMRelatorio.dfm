@@ -258,7 +258,7 @@ object dtmRelatorio: TdtmRelatorio
       object Memo8: TfrxMemoView
         AllowVectorExport = True
         Top = 268.346630000000000000
-        Width = 313.700990000000000000
+        Width = 604.724800000000000000
         Height = 22.677180000000000000
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -507,7 +507,6 @@ object dtmRelatorio: TdtmRelatorio
     Top = 72
   end
   object fdqryBucarIgreja: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
@@ -14269,7 +14268,6 @@ object dtmRelatorio: TdtmRelatorio
     Top = 208
   end
   object fdqryCongregacao: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
@@ -18250,7 +18248,6 @@ object dtmRelatorio: TdtmRelatorio
     Top = 405
   end
   object fdqryAlunos: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
@@ -23119,7 +23116,6 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object fdqryCargosPessoas: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
@@ -23737,7 +23733,6 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object fdqryTesoureiro: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select c.email,c.nome_pessoa from tb_funcao a '
@@ -23774,7 +23769,6 @@ object dtmRelatorio: TdtmRelatorio
     Top = 13
   end
   object fdqryMeses: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select 1 as valor,'#39'Janeiro'#39' mes from dual'

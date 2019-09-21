@@ -1,10 +1,9 @@
 inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
-  ClientHeight = 486
+  ClientHeight = 465
   ClientWidth = 956
-  ExplicitTop = 2
   ExplicitWidth = 962
-  ExplicitHeight = 515
+  ExplicitHeight = 494
   PixelsPerInch = 96
   TextHeight = 13
   object lbl5: TLabel [0]
@@ -23,12 +22,14 @@ inherited frmCadPessoa: TfrmCadPessoa
   end
   inherited pgcPrincipal: TPageControl
     Width = 956
-    Height = 448
+    Height = 427
     ActivePage = tabManutencao
     OnChange = pgcPrincipalChange
     ExplicitWidth = 956
     ExplicitHeight = 448
     inherited tabListagem: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 948
       ExplicitHeight = 420
       inherited pnlListagem: TPanel
@@ -291,7 +292,7 @@ inherited frmCadPessoa: TfrmCadPessoa
       inherited grdListagem: TDBGrid
         Top = 169
         Width = 948
-        Height = 251
+        Height = 230
         DataSource = dtsListagem
         OnCellClick = grdListagemCellClick
         Columns = <
@@ -333,228 +334,17 @@ inherited frmCadPessoa: TfrmCadPessoa
       end
     end
     inherited tabManutencao: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 948
-      ExplicitHeight = 420
-      object lblTipo: TLabel
-        Left = 334
-        Top = 3
-        Width = 20
-        Height = 13
-        Caption = 'Tipo'
-      end
-      object lblSexo: TLabel
-        Left = 439
-        Top = 4
-        Width = 24
-        Height = 13
-        Caption = 'Sexo'
-      end
-      object lblDataNascimento: TLabel
-        Left = 546
-        Top = 3
-        Width = 81
-        Height = 13
-        Caption = 'Data Nascimento'
-      end
-      object lblufnascimento: TLabel
-        Left = 739
-        Top = 3
-        Width = 47
-        Height = 13
-        Caption = 'UF. Nasc.'
-      end
-      object lblcpf: TLabel
-        Left = 698
-        Top = 45
-        Width = 19
-        Height = 13
-        Caption = 'CPF'
-      end
-      object lbledt_codigo: TLabeledEdit
-        Tag = 1
-        Left = 3
-        Top = 20
-        Width = 44
-        Height = 21
-        EditLabel.Width = 33
-        EditLabel.Height = 13
-        EditLabel.Caption = 'C'#243'digo'
-        MaxLength = 10
-        NumbersOnly = True
-        TabOrder = 0
-      end
-      object lbledtNome: TLabeledEdit
-        Tag = 2
-        Left = 53
-        Top = 19
-        Width = 277
-        Height = 21
-        CharCase = ecUpperCase
-        EditLabel.Width = 27
-        EditLabel.Height = 13
-        EditLabel.Caption = 'Nome'
-        MaxLength = 45
-        TabOrder = 1
-      end
-      object cbbMembCong: TComboBox
-        Tag = 2
-        Left = 334
-        Top = 20
-        Width = 100
-        Height = 21
-        CharCase = ecUpperCase
-        TabOrder = 2
-        OnChange = cbbMembCongChange
-        Items.Strings = (
-          'MEMBRO'
-          'CONGREGADO')
-      end
-      object cbbSexo: TComboBox
-        Tag = 2
-        Left = 439
-        Top = 20
-        Width = 34
-        Height = 21
-        CharCase = ecUpperCase
-        ItemIndex = 0
-        TabOrder = 3
-        Text = 'M'
-        Items.Strings = (
-          'M'
-          'F')
-      end
-      object lbledtRol: TLabeledEdit
-        Tag = 2
-        Left = 478
-        Top = 20
-        Width = 62
-        Height = 21
-        EditLabel.Width = 20
-        EditLabel.Height = 13
-        EditLabel.Caption = 'ROL'
-        MaxLength = 45
-        NumbersOnly = True
-        TabOrder = 4
-      end
-      object lbledtNomePai: TLabeledEdit
-        Left = 3
-        Top = 60
-        Width = 265
-        Height = 21
-        CharCase = ecUpperCase
-        EditLabel.Width = 14
-        EditLabel.Height = 13
-        EditLabel.Caption = 'Pai'
-        MaxLength = 45
-        TabOrder = 8
-      end
-      object lbledtNomeMae: TLabeledEdit
-        Left = 274
-        Top = 60
-        Width = 265
-        Height = 21
-        CharCase = ecUpperCase
-        EditLabel.Width = 20
-        EditLabel.Height = 13
-        EditLabel.Caption = 'M'#227'e'
-        MaxLength = 45
-        TabOrder = 9
-      end
-      object dtdtNascimento: TDateEdit
-        Tag = 2
-        Left = 546
-        Top = 20
-        Width = 85
-        Height = 21
-        Hint = 'Data Nascimento'
-        ClickKey = 114
-        DialogTitle = 'Selecione a Data'
-        NumGlyphs = 2
-        CalendarStyle = csDialog
-        TabOrder = 5
-      end
-      object lbledtNacionalidade: TLabeledEdit
-        Left = 545
-        Top = 60
-        Width = 72
-        Height = 21
-        CharCase = ecUpperCase
-        EditLabel.Width = 66
-        EditLabel.Height = 13
-        EditLabel.Caption = 'Nacionalidade'
-        MaxLength = 45
-        TabOrder = 10
-        Text = 'BRASILEIRA'
-      end
-      object lbledtRG: TLabeledEdit
-        Left = 623
-        Top = 60
-        Width = 69
-        Height = 21
-        EditLabel.Width = 14
-        EditLabel.Height = 13
-        EditLabel.Caption = 'RG'
-        MaxLength = 45
-        NumbersOnly = True
-        TabOrder = 11
-      end
-      object cbbUFnascimento: TComboBox
-        Tag = 2
-        Left = 739
-        Top = 20
-        Width = 44
-        Height = 21
-        ItemIndex = 19
-        TabOrder = 7
-        Text = 'RN'
-        Items.Strings = (
-          'AC'
-          'AL'
-          'AP'
-          'AM'
-          'BA'
-          'CE'
-          'DF'
-          'ES'
-          'GO'
-          'MA'
-          'MT'
-          'MS'
-          'MG'
-          'PA'
-          'PB'
-          'PR'
-          'PE'
-          'PI'
-          'RJ'
-          'RN'
-          'RS'
-          'RO'
-          'RR'
-          'SC'
-          'SP'
-          'SE'
-          'TO')
-      end
-      object lbledtNatural: TLabeledEdit
-        Left = 639
-        Top = 20
-        Width = 92
-        Height = 21
-        CharCase = ecUpperCase
-        EditLabel.Width = 61
-        EditLabel.Height = 13
-        EditLabel.Caption = 'Naturalidade'
-        MaxLength = 45
-        TabOrder = 6
-      end
+      ExplicitHeight = 401
       object grpDatas: TGroupBox
         Left = 3
-        Top = 181
+        Top = 202
         Width = 110
-        Height = 190
+        Height = 194
         Caption = 'Datas'
-        TabOrder = 14
+        TabOrder = 1
         object lbl1: TLabel
           Left = 14
           Top = 16
@@ -569,7 +359,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           Height = 13
           Caption = 'Espirito Santo'
         end
-        object lbl2: TLabel
+        object lblMembroCongregado: TLabel
           Left = 14
           Top = 143
           Width = 71
@@ -619,7 +409,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           CalendarStyle = csDialog
           TabOrder = 0
         end
-        object dtdtMembro: TDateEdit
+        object dtdtMembroCongregado: TDateEdit
           Left = 14
           Top = 159
           Width = 85
@@ -632,23 +422,13 @@ inherited frmCadPessoa: TfrmCadPessoa
           TabOrder = 3
         end
       end
-      object medtCPF: TMaskEdit
-        Left = 698
-        Top = 60
-        Width = 92
-        Height = 21
-        EditMask = '999.999.999-99;1;_'
-        MaxLength = 14
-        TabOrder = 12
-        Text = '   .   .   -  '
-      end
       object grpEscolaridade: TGroupBox
-        Left = 114
-        Top = 178
+        Left = 121
+        Top = 203
         Width = 268
         Height = 193
         Caption = 'Forma'#231#227'o'
-        TabOrder = 15
+        TabOrder = 2
         object lbl3: TLabel
           Left = 10
           Top = 16
@@ -751,11 +531,11 @@ inherited frmCadPessoa: TfrmCadPessoa
         end
       end
       object grpCivil: TGroupBox
-        Left = 388
-        Top = 183
+        Left = 397
+        Top = 209
         Width = 245
         Height = 150
-        TabOrder = 16
+        TabOrder = 3
         object lbl9: TLabel
           Left = 11
           Top = 16
@@ -830,10 +610,10 @@ inherited frmCadPessoa: TfrmCadPessoa
       end
       object grpResidencia: TGroupBox
         Left = 3
-        Top = 87
-        Width = 814
+        Top = 115
+        Width = 810
         Height = 90
-        TabOrder = 13
+        TabOrder = 0
         object lblCEP: TLabel
           Left = 479
           Top = 2
@@ -1044,15 +824,15 @@ inherited frmCadPessoa: TfrmCadPessoa
         end
       end
       object grpProfissional: TGroupBox
-        Left = 655
-        Top = 181
-        Width = 162
-        Height = 234
+        Left = 651
+        Top = 205
+        Width = 289
+        Height = 191
         Caption = 'Profissional'
-        TabOrder = 17
+        TabOrder = 4
         object lbl15: TLabel
-          Left = 8
-          Top = 183
+          Left = 170
+          Top = 19
           Width = 102
           Height = 13
           Caption = 'Telefone do Trabalho'
@@ -1106,8 +886,8 @@ inherited frmCadPessoa: TfrmCadPessoa
           TabOrder = 3
         end
         object medtTeltrabalho: TMaskEdit
-          Left = 8
-          Top = 200
+          Left = 170
+          Top = 36
           Width = 91
           Height = 21
           EditMask = '(99)99999-9999;1;_'
@@ -1122,7 +902,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Width = 122
         Height = 172
         BorderStyle = bsSingle
-        TabOrder = 18
+        TabOrder = 5
         object imgFoto: TImage
           Left = 1
           Top = 1
@@ -1343,10 +1123,240 @@ inherited frmCadPessoa: TfrmCadPessoa
           ExplicitHeight = 105
         end
       end
+      object pnlBasicas: TPanel
+        Left = 3
+        Top = 10
+        Width = 810
+        Height = 102
+        TabOrder = 6
+        object lblSexo: TLabel
+          Left = 450
+          Top = 4
+          Width = 24
+          Height = 13
+          Caption = 'Sexo'
+        end
+        object lblTipo: TLabel
+          Left = 345
+          Top = 3
+          Width = 20
+          Height = 13
+          Caption = 'Tipo'
+        end
+        object lblufnascimento: TLabel
+          Left = 754
+          Top = 3
+          Width = 13
+          Height = 13
+          Caption = 'UF'
+        end
+        object lblDataNascimento: TLabel
+          Left = 557
+          Top = 3
+          Width = 81
+          Height = 13
+          Caption = 'Data Nascimento'
+        end
+        object lblcpf: TLabel
+          Left = 698
+          Top = 45
+          Width = 19
+          Height = 13
+          Caption = 'CPF'
+        end
+        object lbledt_codigo: TLabeledEdit
+          Tag = 1
+          Left = 14
+          Top = 20
+          Width = 43
+          Height = 21
+          EditLabel.Width = 33
+          EditLabel.Height = 13
+          EditLabel.Caption = 'C'#243'digo'
+          MaxLength = 10
+          NumbersOnly = True
+          TabOrder = 0
+        end
+        object lbledtNome: TLabeledEdit
+          Tag = 2
+          Left = 64
+          Top = 19
+          Width = 276
+          Height = 21
+          CharCase = ecUpperCase
+          EditLabel.Width = 27
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Nome'
+          MaxLength = 45
+          TabOrder = 1
+        end
+        object cbbMembCong: TComboBox
+          Tag = 2
+          Left = 345
+          Top = 20
+          Width = 99
+          Height = 21
+          CharCase = ecUpperCase
+          TabOrder = 2
+          OnChange = cbbMembCongChange
+          Items.Strings = (
+            'MEMBRO'
+            'CONGREGADO')
+        end
+        object cbbSexo: TComboBox
+          Tag = 2
+          Left = 450
+          Top = 20
+          Width = 33
+          Height = 21
+          CharCase = ecUpperCase
+          ItemIndex = 0
+          TabOrder = 3
+          Text = 'M'
+          Items.Strings = (
+            'M'
+            'F')
+        end
+        object lbledtRol: TLabeledEdit
+          Tag = 2
+          Left = 489
+          Top = 20
+          Width = 61
+          Height = 21
+          EditLabel.Width = 20
+          EditLabel.Height = 13
+          EditLabel.Caption = 'ROL'
+          MaxLength = 45
+          NumbersOnly = True
+          TabOrder = 4
+        end
+        object lbledtNatural: TLabeledEdit
+          Left = 650
+          Top = 20
+          Width = 91
+          Height = 21
+          CharCase = ecUpperCase
+          EditLabel.Width = 61
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Naturalidade'
+          MaxLength = 45
+          TabOrder = 5
+        end
+        object cbbUFnascimento: TComboBox
+          Tag = 2
+          Left = 754
+          Top = 20
+          Width = 43
+          Height = 21
+          ItemIndex = 19
+          TabOrder = 6
+          Text = 'RN'
+          Items.Strings = (
+            'AC'
+            'AL'
+            'AP'
+            'AM'
+            'BA'
+            'CE'
+            'DF'
+            'ES'
+            'GO'
+            'MA'
+            'MT'
+            'MS'
+            'MG'
+            'PA'
+            'PB'
+            'PR'
+            'PE'
+            'PI'
+            'RJ'
+            'RN'
+            'RS'
+            'RO'
+            'RR'
+            'SC'
+            'SP'
+            'SE'
+            'TO')
+        end
+        object medtCPF: TMaskEdit
+          Left = 709
+          Top = 60
+          Width = 88
+          Height = 21
+          EditMask = '999.999.999-99;1;_'
+          MaxLength = 14
+          TabOrder = 7
+          Text = '   .   .   -  '
+        end
+        object lbledtRG: TLabeledEdit
+          Left = 634
+          Top = 60
+          Width = 69
+          Height = 21
+          EditLabel.Width = 14
+          EditLabel.Height = 13
+          EditLabel.Caption = 'RG'
+          MaxLength = 45
+          NumbersOnly = True
+          TabOrder = 8
+        end
+        object lbledtNacionalidade: TLabeledEdit
+          Left = 556
+          Top = 60
+          Width = 72
+          Height = 21
+          CharCase = ecUpperCase
+          EditLabel.Width = 66
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Nacionalidade'
+          MaxLength = 45
+          TabOrder = 9
+          Text = 'BRASILEIRA'
+        end
+        object lbledtNomeMae: TLabeledEdit
+          Left = 285
+          Top = 60
+          Width = 265
+          Height = 21
+          CharCase = ecUpperCase
+          EditLabel.Width = 20
+          EditLabel.Height = 13
+          EditLabel.Caption = 'M'#227'e'
+          MaxLength = 45
+          TabOrder = 10
+        end
+        object lbledtNomePai: TLabeledEdit
+          Left = 14
+          Top = 60
+          Width = 265
+          Height = 21
+          CharCase = ecUpperCase
+          EditLabel.Width = 14
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Pai'
+          MaxLength = 45
+          TabOrder = 11
+        end
+        object dtdtNascimento: TDateEdit
+          Tag = 2
+          Left = 557
+          Top = 20
+          Width = 85
+          Height = 21
+          Hint = 'Data Nascimento'
+          ClickKey = 114
+          DialogTitle = 'Selecione a Data'
+          NumGlyphs = 2
+          CalendarStyle = csDialog
+          TabOrder = 12
+        end
+      end
     end
   end
   inherited pnlRodape: TPanel
-    Top = 448
+    Top = 427
     Width = 956
     ExplicitTop = 448
     ExplicitWidth = 956
@@ -1385,8 +1395,8 @@ inherited frmCadPessoa: TfrmCadPessoa
         'INNER JOIN TB_PARAMETRO_SISTEMA B ON B.COD_CONGREGACAO = A.COD_C' +
         'ONGREGACAO'
       '')
-    Left = 216
-    Top = 8
+    Left = 40
+    Top = 112
     object QryListagemcod_pessoa: TFDAutoIncField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'cod_pessoa'
@@ -1705,15 +1715,16 @@ inherited frmCadPessoa: TfrmCadPessoa
   end
   inherited dtsListagem: TDataSource
     OnDataChange = dtsListagemDataChange
-    Left = 376
+    Left = 200
+    Top = 136
   end
   object dlgOpenPicBuscarFoto: TOpenPictureDialog
     Filter = 
       'Arquivo de Imagem JPG (*.jpeg)|*.jpeg|Arquivo de Imagem JPG (*.j' +
       'pg)|*.jpg'
     Title = 'Escolha a Imagem da Pessoa'
-    Left = 856
-    Top = 216
+    Left = 280
+    Top = 48
   end
   object dwGetCEP: TRESTDWClientSQL
     Active = False
@@ -1794,8 +1805,8 @@ inherited frmCadPessoa: TfrmCadPessoa
     DWResponseTranslator = DWResponseTranslatorCEP
     ActionCursor = crSQLWait
     ReflectChanges = False
-    Left = 352
-    Top = 88
+    Left = 176
+    Top = 192
   end
   object DWResponseTranslatorCEP: TDWResponseTranslator
     ElementAutoReadRootIndex = True
@@ -1888,8 +1899,8 @@ inherited frmCadPessoa: TfrmCadPessoa
         Required = False
       end>
     ClientREST = DWClientRESTCEP
-    Left = 216
-    Top = 96
+    Left = 40
+    Top = 200
   end
   object DWClientRESTCEP: TDWClientREST
     UseSSL = False
@@ -1910,7 +1921,7 @@ inherited frmCadPessoa: TfrmCadPessoa
     AuthOptions.HasAuthentication = False
     AccessControlAllowOrigin = '*'
     OnBeforeGet = DWClientRESTCEPBeforeGet
-    Left = 448
-    Top = 72
+    Left = 272
+    Top = 176
   end
 end

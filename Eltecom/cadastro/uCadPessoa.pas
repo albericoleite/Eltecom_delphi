@@ -16,33 +16,15 @@ uses
 
 type
   TfrmCadPessoa = class(TfrmTelaheranca)
-    lbledt_codigo: TLabeledEdit;
-    lbledtNome: TLabeledEdit;
-    cbbMembCong: TComboBox;
-    lblTipo: TLabel;
-    cbbSexo: TComboBox;
-    lblSexo: TLabel;
-    lbledtRol: TLabeledEdit;
-    lbledtNomePai: TLabeledEdit;
-    lbledtNomeMae: TLabeledEdit;
-    dtdtNascimento: TDateEdit;
-    lblDataNascimento: TLabel;
-    lbledtNacionalidade: TLabeledEdit;
-    lbledtRG: TLabeledEdit;
-    cbbUFnascimento: TComboBox;
-    lblufnascimento: TLabel;
-    lbledtNatural: TLabeledEdit;
     grpDatas: TGroupBox;
     lbl1: TLabel;
     lbl1btespirito: TLabel;
-    lbl2: TLabel;
+    lblMembroCongregado: TLabel;
     lblbtaguas: TLabel;
     dtdtBtaguas: TDateEdit;
     dtdtbtespirito: TDateEdit;
     dtdtConversao: TDateEdit;
-    dtdtMembro: TDateEdit;
-    medtCPF: TMaskEdit;
-    lblcpf: TLabel;
+    dtdtMembroCongregado: TDateEdit;
     grpEscolaridade: TGroupBox;
     cbbAcademica: TComboBox;
     lbl3: TLabel;
@@ -154,6 +136,25 @@ type
     dwGetCEP: TRESTDWClientSQL;
     DWResponseTranslatorCEP: TDWResponseTranslator;
     DWClientRESTCEP: TDWClientREST;
+    pnlBasicas: TPanel;
+    lbledt_codigo: TLabeledEdit;
+    lbledtNome: TLabeledEdit;
+    cbbMembCong: TComboBox;
+    cbbSexo: TComboBox;
+    lbledtRol: TLabeledEdit;
+    lblSexo: TLabel;
+    lblTipo: TLabel;
+    lbledtNatural: TLabeledEdit;
+    cbbUFnascimento: TComboBox;
+    lblufnascimento: TLabel;
+    medtCPF: TMaskEdit;
+    lbledtRG: TLabeledEdit;
+    lbledtNacionalidade: TLabeledEdit;
+    lbledtNomeMae: TLabeledEdit;
+    lbledtNomePai: TLabeledEdit;
+    lblDataNascimento: TLabel;
+    dtdtNascimento: TDateEdit;
+    lblcpf: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -177,6 +178,7 @@ type
     oPessoa: TPessoa;
     function Apagar: Boolean; override;
     function Gravar(EstadodoCadastro: TEstadoDoCadastro): Boolean; override;
+    procedure Tipo;
   public
     { Public declarations }
   end;
@@ -216,7 +218,7 @@ begin
   oPessoa.dta_conversao     :=dtdtConversao.Date;
   oPessoa.dta_batismo_esprito :=dtdtbtespirito.Date;
   oPessoa.dta_batismo_aguas   :=dtdtBtaguas.Date;
-  oPessoa.dta_membro        :=dtdtMembro.Date;
+
   oPessoa.cep               := medtCEP.Text;
   oPessoa.logradouro        := lbledtEndereco.Text;
   oPessoa.bairro            := lbledtBairro.Text;
@@ -233,6 +235,10 @@ begin
   oPessoa.estado_civil_anterior:=cbbEstcivianterior.Text;
   oPessoa.nome_conjugue     :=lbledtNomeConjugue.Text;
   oPessoa.email             := lbledtEmail.Text;
+
+     if cbbMembCong.Text ='CONGREGADO' then
+    oPessoa.dta_congregado        :=dtdtMembroCongregado.Date else
+    oPessoa.dta_membro        :=dtdtMembroCongregado.Date;
 
  //jpg.LoadFromFile(imgFoto.Picture.Bitmap);
 
@@ -434,10 +440,20 @@ begin
     dtdtConversao.Clear  else dtdtConversao.Text      :=DateToStr(oPessoa.dta_conversao) ;
     if DateToStr(oPessoa.dta_casamento)='30/12/1899' then
     dtdtCasamento.Clear  else dtdtCasamento.Text      :=DateToStr(oPessoa.dta_casamento) ;
+    if DateToStr(oPessoa.dta_membro)='30/12/1899' then
+    dtdtMembroCongregado.Clear  else dtdtMembroCongregado.Text      :=DateToStr(oPessoa.dta_membro) ;
+
+    dtdtMembroCongregado.Text  :=DateToStr(oPessoa.dta_membro);
+
+    if cbbMembCong.Text ='CONGREGADO' then
+  begin
+    if DateToStr(oPessoa.dta_membro)='30/12/1899' then
+    dtdtMembroCongregado.Clear  else dtdtMembroCongregado.Text      :=DateToStr(oPessoa.dta_congregado) ;
+    dtdtMembroCongregado.Text  :=DateToStr(oPessoa.dta_congregado);
+  end;
 
 
-
-    dtdtMembro.Text  :=DateToStr(oPessoa.dta_membro);
+    dtdtMembroCongregado.Text  :=DateToStr(oPessoa.dta_membro);
     //dtdtMembro.Text  :=DateToStr(oPessoa.dta_congregado);
     medtCPF.Text          := oPessoa.cpf;
     lbledtNomeConjugue.Text:= oPessoa.nome_conjugue;
@@ -536,9 +552,7 @@ end;
 procedure TfrmCadPessoa.cbbMembCongChange(Sender: TObject);
 begin
   inherited;
-if cbbMembCong.Text='CONGREGADO' then
-dtdtMembro.Enabled:=false
-else dtdtMembro.Enabled:=true
+  Tipo;
 
 end;
 
@@ -604,6 +618,18 @@ begin
   inherited;
   oPessoa := TPessoa.Create(dtmPrincipal.ConexaoDB);
   IndiceAtual := 'cod_pessoa';
+end;
+
+procedure TfrmCadPessoa.Tipo;
+begin
+  if cbbMembCong.Text = 'MEMBRO' then
+  begin
+  lblMembroCongregado.Caption:= 'Membro desde';
+  end;
+  if cbbMembCong.Text ='CONGREGADO' then
+  begin
+    lblMembroCongregado.Caption:= 'Congregado desde';
+  end;
 end;
 
 end.

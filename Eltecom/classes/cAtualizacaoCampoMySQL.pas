@@ -3,7 +3,7 @@ unit cAtualizacaoCampoMySQL;
 interface
 
 uses System.Classes, Vcl.Controls,
-  Vcl.ExtCtrls, Vcl.Dialogs, FireDAC.Comp.Client, System.SysUtils,
+  Vcl.ExtCtrls, Vcl.Dialogs, FireDAC.Comp.Client, System.SysUtils, cFuncao,
   cAtualizacaoBancoDeDados;
 
   type
@@ -11,6 +11,8 @@ uses System.Classes, Vcl.Controls,
  private
   function  CampoExisteNaTabela(aNomeTabela, aCampo:string):Boolean;
   procedure versao1;
+  procedure versao2;
+  procedure versao3;
     function ViewExiste(aNomeView: string): Boolean;
     function SPExiste(aNomeSP: string): Boolean;
   protected
@@ -24,6 +26,8 @@ uses System.Classes, Vcl.Controls,
 implementation
 
 { TAtualizacaoCampoMySQL }
+var
+ver: Integer;
 
 function TAtualizacaoCampoMySQL.CampoExisteNaTabela(aNomeTabela,
   aCampo: string): Boolean;
@@ -105,9 +109,25 @@ begin
 end;
 
 constructor TAtualizacaoCampoMySQL.Create(aConexao: TFDConnection);
+var
+i:integer;
 begin
+ver:=2;
     ConexaoDB := aConexao;
-    versao1;
+    //Adicionar Nivel de cargo para utilizar como ordenação
+ if not CampoExisteNaTabela('tb_parametro_sistema','versao_ajuste_bd') then
+ begin
+   ExecutaDiretoBancoDeDados('ALTER TABLE tb_parametro_sistema ADD versao_ajuste_bd INT DEFAULT 1 NOT NULL;');
+    ExecutaDiretoBancoDeDados('update tb_parametro_sistema set versao_ajuste_bd = 1;');
+ end;
+     i := StrToInt(TFuncao.SqlValor('select versao_ajuste_bd as VALOR from tb_parametro_sistema ',ConexaoDB));
+
+   case i of
+    1: versao1;
+    2: versao2;
+    3: versao3;
+   end;
+
 end;
 
 destructor TAtualizacaoCampoMySQL.Destroy;
@@ -401,6 +421,24 @@ begin
 
  //ALTER TABLE igreja.tb_classe_professor MODIFY COLUMN professor varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
 //ALTER TABLE igreja.tb_classe_professor MODIFY COLUMN classe varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+    if ver > 1 then   begin
+    ExecutaDiretoBancoDeDados('update tb_parametro_sistema set versao_ajuste_bd = 2;');
+    versao2;
+    end;
+end;
+
+procedure TAtualizacaoCampoMySQL.versao2;
+begin
+   //ADICIONAR BLOCOS DE SQL SOMENTE NA 2 AGORA
+
+   if ver > 2 then  begin
+    ExecutaDiretoBancoDeDados('update tb_parametro_sistema set versao_ajuste_bd = 3;');
+    versao3;
+   end;
+end;
+
+procedure TAtualizacaoCampoMySQL.versao3;
+begin
 
 end;
 

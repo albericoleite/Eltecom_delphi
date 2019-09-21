@@ -105,6 +105,7 @@ type
     procedure dblkcbbMetafixaExit(Sender: TObject);
     procedure dblkcbbMetafixaClick(Sender: TObject);
     procedure dblkcbbMetapercentualClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
   private
     { Private declarations }
     oCongregacao: TCongregacao;
@@ -161,6 +162,12 @@ if oCongregacao.Selecionar(QryListagem.FieldByName('cod_congregacao').AsInteger)
   end;
   inherited;
 
+end;
+
+procedure TfrmCadCongregacao.btnGravarClick(Sender: TObject);
+begin
+  inherited;
+//TODO: CORRIGIR BUG ALVO SALVAR EDIÇÃO
 end;
 
 procedure TfrmCadCongregacao.btnNovoClick(Sender: TObject);

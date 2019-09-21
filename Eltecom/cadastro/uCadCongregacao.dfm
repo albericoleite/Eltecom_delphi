@@ -9,16 +9,16 @@ inherited frmCadCongregacao: TfrmCadCongregacao
   inherited pgcPrincipal: TPageControl
     Width = 752
     Height = 337
-    ExplicitWidth = 750
+    ExplicitWidth = 752
     ExplicitHeight = 337
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 742
+      ExplicitWidth = 744
       ExplicitHeight = 309
       inherited pnlListagem: TPanel
         Width = 744
-        ExplicitWidth = 742
+        ExplicitWidth = 744
       end
       inherited grdListagem: TDBGrid
         Width = 744
@@ -52,7 +52,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
     inherited tabManutencao: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 742
+      ExplicitWidth = 744
       ExplicitHeight = 309
       object lbl2: TLabel
         Left = 670
@@ -496,7 +496,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
     Top = 337
     Width = 752
     ExplicitTop = 337
-    ExplicitWidth = 750
+    ExplicitWidth = 752
     inherited btnNavigator: TDBNavigator
       Left = 413
       Hints.Strings = ()
@@ -508,7 +508,7 @@ inherited frmCadCongregacao: TfrmCadCongregacao
     end
     inherited btnFechar: TBitBtn
       Left = 660
-      ExplicitLeft = 658
+      ExplicitLeft = 660
     end
   end
   inherited QryListagem: TFDQuery

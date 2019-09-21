@@ -146,6 +146,7 @@ type
     pnlMediaIdade: TPanel;
     Label6: TLabel;
     mniDespesaFixa1: TMenuItem;
+    Lanamentos1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -200,11 +201,11 @@ type
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
     procedure AtualizarGraficos;
-    procedure CriarAcoes;
 
     { Private declarations }
   public
     { Public declarations }
+    procedure CriarAcoes;
 
   end;
 
@@ -225,14 +226,14 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
   uCadClasse, uCadClasseAluno, uAniversariantes, UEBD, uBackupRestore, uCadClasseProfessor, uImportarExportarDados, uRelatoriosFinanceiro,
-  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida, uCadTipoCentroCusto, uCadCentroCusto, uCadFornecedor, uCadLancUnificado, uCadFormpgto, uCadTipoLancamento, uCadDespesaFixa;
+  uDTMRelatorioFinanceiro, uQuadroAnual, uChamadaEbd, uCadTipoCulto, uCadTipoSaida, uCadTipoCentroCusto, uCadCentroCusto, uCadFornecedor, uCadLancUnificado, uCadFormpgto, uCadTipoLancamento, uCadDespesaFixa, uTUsuarioAcoesInThread;
 
 procedure TfrmPrincipal.CartaseDocumentos1Click(Sender: TObject);
 begin
-  {frmEmitirDoc := nil;
+  frmEmitirDoc := nil;
   frmEmitirDoc := TfrmEmitirDoc.Create(self);
-  frmEmitirDoc.Show; }
-   TFuncao.CriarForm(TfrmEmitirDoc, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+  frmEmitirDoc.Show;
+   //TFuncao.CriarForm(TfrmEmitirDoc, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.Clientes1Click(Sender: TObject);
@@ -331,6 +332,8 @@ begin
     end;
     AtualizaBandoDados(frmAtualizaDB);
     //CriarAcoes;
+
+    //TUsuarioAcoesInThread.Create;
 
     TAcaoAcesso.PreencherUsuariosVsAcoes(dtmPrincipal.ConexaoDB);
 
@@ -488,7 +491,14 @@ TFuncao.CriarForm(TfrmRelDept, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniDespesaFixa1Click(Sender: TObject);
+var
+vl:string;
 begin
+  vl:=TFuncao.SqlValor('select count(1) as VALOR from fornecedor;',dtmPrincipal.ConexaoDB);
+if vl = '0' then   begin
+  MessageDlg('Não existe Fornecedor cadastrado',mtWarning,[mbOK],0);
+  TFuncao.CriarForm(TfrmCadFornecedor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
    TFuncao.CriarForm(TfrmCadDespesaFixa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
@@ -504,6 +514,7 @@ end;
 
 procedure TfrmPrincipal.mniFormasdePagamento1Click(Sender: TObject);
 begin
+//TODO: VALIDAR ESSE CLICK
    TFuncao.CriarForm(TfrmCadFormpgto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 

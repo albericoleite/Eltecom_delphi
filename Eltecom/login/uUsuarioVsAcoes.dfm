@@ -30,9 +30,6 @@ object frmUsuarioVsAcoes: TfrmUsuarioVsAcoes
     Height = 414
     Align = alLeft
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitHeight = 41
     object dbgrdUsuarios: TDBGrid
       Left = 1
       Top = 1
@@ -69,10 +66,6 @@ object frmUsuarioVsAcoes: TfrmUsuarioVsAcoes
     Height = 414
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 328
-    ExplicitTop = 80
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object dbgrdAcoes: TDBGrid
       Left = 1
       Top = 1
@@ -120,9 +113,6 @@ object frmUsuarioVsAcoes: TfrmUsuarioVsAcoes
     Height = 41
     Align = alBottom
     TabOrder = 2
-    ExplicitLeft = 288
-    ExplicitTop = 192
-    ExplicitWidth = 185
     DesignSize = (
       534
       41)
@@ -163,6 +153,15 @@ object frmUsuarioVsAcoes: TfrmUsuarioVsAcoes
       TabOrder = 0
       OnClick = btnFecharClick
     end
+    object btnAtualizar: TBitBtn
+      Left = 8
+      Top = 6
+      Width = 171
+      Height = 25
+      Caption = 'Atualizar Lista de Permiss'#245'es'
+      TabOrder = 1
+      OnClick = btnAtualizarClick
+    end
   end
   object fdqryUsuarios: TFDQuery
     AfterScroll = fdqryUsuariosAfterScroll
@@ -177,6 +176,7 @@ object frmUsuarioVsAcoes: TfrmUsuarioVsAcoes
       FieldName = 'codigo'
       Origin = 'codigo'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object strngfldUsuariosusuario: TStringField
       AutoGenerateValue = arDefault

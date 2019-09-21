@@ -16820,9 +16820,21 @@ object frmPrincipal: TfrmPrincipal
     end
     object Movimentao1: TMenuItem
       Caption = 'Tesouraria'
-      object EntradasSadas1: TMenuItem
-        Caption = 'Entradas  |  Sa'#237'das'
-        OnClick = EntradasSadas1Click
+      object Lanamentos1: TMenuItem
+        Caption = 'Lan'#231'amentos'
+        object EntradasSadas1: TMenuItem
+          Caption = 'Entradas  |  Sa'#237'das'
+          OnClick = EntradasSadas1Click
+        end
+        object mniLanamentoUnificado1: TMenuItem
+          Caption = 'Lan'#231'amento Unificado'
+          Enabled = False
+          OnClick = mniLanamentoUnificado1Click
+        end
+        object mniLancamentos1: TMenuItem
+          Caption = 'Tipos de Lancamentos'
+          OnClick = mniLancamentos1Click
+        end
       end
       object mniDizimo: TMenuItem
         Caption = 'Dizimos'
@@ -16858,10 +16870,6 @@ object frmPrincipal: TfrmPrincipal
           OnClick = ipo1Click
         end
       end
-      object mniLanamentoUnificado1: TMenuItem
-        Caption = 'Lan'#231'amento Unificado'
-        OnClick = mniLanamentoUnificado1Click
-      end
       object iposdeCulto1: TMenuItem
         Caption = 'Tipos de Culto'
         OnClick = iposdeCulto1Click
@@ -16869,10 +16877,6 @@ object frmPrincipal: TfrmPrincipal
       object iposdeSadas1: TMenuItem
         Caption = 'Tipos de Sa'#237'das'
         OnClick = iposdeSadas1Click
-      end
-      object mniLancamentos1: TMenuItem
-        Caption = 'Tipos de Lancamentos'
-        OnClick = mniLancamentos1Click
       end
       object mniDespesaFixa1: TMenuItem
         Caption = 'Despesa Fixa'
@@ -16898,6 +16902,10 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'EBD'
       object mniCadastros1: TMenuItem
         Caption = 'Cadastros'
+        object mniAluno1: TMenuItem
+          Caption = 'Aluno'
+          OnClick = mniAluno1Click
+        end
         object mniClasse1: TMenuItem
           Caption = 'Classe'
           OnClick = mniClasse1Click
@@ -16913,10 +16921,6 @@ object frmPrincipal: TfrmPrincipal
             OnClick = mniProfessorClasse1Click
           end
         end
-        object mniAluno1: TMenuItem
-          Caption = 'Aluno'
-          OnClick = mniAluno1Click
-        end
       end
       object mniRelatrios2: TMenuItem
         Caption = 'Relat'#243'rios'
@@ -16929,14 +16933,6 @@ object frmPrincipal: TfrmPrincipal
     end
     object Configurao1: TMenuItem
       Caption = 'Ferramentas'
-      object mniConfigurao2: TMenuItem
-        Caption = 'Configura'#231#227'o'
-        OnClick = mniConfigurao2Click
-      end
-      object mniConsultarDados1: TMenuItem
-        Caption = 'Consultar Dados'
-        OnClick = mniConsultarDados1Click
-      end
       object BackupeRestore1: TMenuItem
         Caption = 'Backup e Restore'
         OnClick = BackupeRestore1Click
@@ -16944,6 +16940,14 @@ object frmPrincipal: TfrmPrincipal
       object mniImportarCadastros1: TMenuItem
         Caption = 'Importar Cadastros'
         OnClick = mniImportarCadastros1Click
+      end
+      object mniConfigurao2: TMenuItem
+        Caption = 'Configura'#231#227'o'
+        OnClick = mniConfigurao2Click
+      end
+      object mniConsultarDados1: TMenuItem
+        Caption = 'Consultar Dados'
+        OnClick = mniConsultarDados1Click
       end
     end
     object mniSobre: TMenuItem

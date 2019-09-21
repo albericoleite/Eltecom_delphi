@@ -451,7 +451,7 @@ begin
       ' emprego_atual, funcao, fone_trabalho, igreja, setor, congregacao,   ' +
       ' nro_rol, nro_cad_congregado, membro_congregado, dta_inclusao,   ' +
       ' USUARIO_CADASTRO, SITUACAO, cod_congregacao, cod_situacao,dta_batismo_esprito ,dta_batismo_aguas    ' +
-      'FROM igreja.tb_pessoa WHERE cod_pessoa=:cod_pessoa; ');
+      'FROM tb_pessoa WHERE cod_pessoa=:cod_pessoa; ');
     Qry.ParamByName('cod_pessoa').AsInteger := id;
 
     try
@@ -466,8 +466,8 @@ begin
       Self.F_dta_nascimento := Qry.FieldByName('dta_nascimento').AsDateTime;
       Self.F_dta_casamento := Qry.FieldByName('dta_casamento').AsDateTime;
       Self.F_dta_conversao := Qry.FieldByName('dta_conversao').AsDateTime;
-      Self.F_dta_congregado := Qry.FieldByName('dta_membro').AsDateTime;
-      Self.F_dta_membro := Qry.FieldByName('dta_congregado').AsDateTime;
+      Self.F_dta_congregado := Qry.FieldByName('dta_congregado').AsDateTime;
+      Self.F_dta_membro := Qry.FieldByName('dta_membro').AsDateTime;
       Self.F_dta_batismo_esprito := Qry.FieldByName('dta_batismo_esprito').AsDateTime;
       Self.F_dta_batismo_aguas := Qry.FieldByName('dta_batismo_aguas').AsDateTime;
       Self.F_nro_rol := Qry.FieldByName('nro_rol').AsInteger;

@@ -28,13 +28,20 @@ inherited frmCadDespesaFixa: TfrmCadDespesaFixa
       ExplicitHeight = 303
       inherited pnlListagem: TPanel
         Width = 727
-        Height = 97
+        Height = 57
         ExplicitWidth = 727
-        ExplicitHeight = 97
+        ExplicitHeight = 57
+        inherited lblIndice: TLabel
+          Left = 274
+          Top = 54
+          Visible = False
+          ExplicitLeft = 274
+          ExplicitTop = 54
+        end
         object lbl7: TLabel [1]
           Left = 10
-          Top = 51
-          Width = 87
+          Top = 19
+          Width = 78
           Height = 19
           Caption = 'Valor Total'
           Font.Charset = DEFAULT_CHARSET
@@ -43,6 +50,13 @@ inherited frmCadDespesaFixa: TfrmCadDespesaFixa
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
+        end
+        inherited medtPesquisar: TMaskEdit
+          Left = 274
+          Top = 70
+          Visible = False
+          ExplicitLeft = 274
+          ExplicitTop = 70
         end
         object btnFat: TBitBtn
           Left = 429
@@ -64,7 +78,7 @@ inherited frmCadDespesaFixa: TfrmCadDespesaFixa
         end
         object crncydtTotal: TCurrencyEdit
           Left = 103
-          Top = 48
+          Top = 16
           Width = 148
           Height = 27
           DisplayFormat = 'R$ 0.00;-0.00'
@@ -79,9 +93,9 @@ inherited frmCadDespesaFixa: TfrmCadDespesaFixa
         end
       end
       inherited dbgrdListagem: TDBGrid
-        Top = 97
+        Top = 57
         Width = 727
-        Height = 206
+        Height = 246
         DataSource = dsListagem
       end
     end

@@ -29,12 +29,14 @@ type
     strngfldAcoesdescricao: TStringField;
     blnfldAcoesativo: TBooleanField;
     btnFechar: TBitBtn;
+    btnAtualizar: TBitBtn;
     procedure btnFecharClick(Sender: TObject);
     procedure fdqryUsuariosAfterScroll(DataSet: TDataSet);
     procedure FormShow(Sender: TObject);
     procedure dbgrdAcoesDblClick(Sender: TObject);
     procedure dbgrdAcoesDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnAtualizarClick(Sender: TObject);
   private
     { Private declarations }
     procedure SelecionarAcoesAcessoPorUsuario;
@@ -48,9 +50,14 @@ var
 implementation
 
 uses
-  uDTMConexao;
+  uDTMConexao, uPrincipal;
 
 {$R *.dfm}
+
+procedure TfrmUsuarioVsAcoes.btnAtualizarClick(Sender: TObject);
+begin
+frmprincipal.CriarAcoes;
+end;
 
 procedure TfrmUsuarioVsAcoes.btnFecharClick(Sender: TObject);
 begin
