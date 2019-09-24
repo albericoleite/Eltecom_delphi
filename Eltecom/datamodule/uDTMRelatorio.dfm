@@ -16100,6 +16100,21 @@ object dtmRelatorio: TdtmRelatorio
       
         'inner join tb_obreiro_cargo b on b.cod_membro = a.cod_pessoa whe' +
         're Month(a.dta_nascimento) BETWEEN month(:dta1) and month(:dta2)'
+      'union all'
+      
+        'select a.cod_pessoa,a.nome_pessoa,a.sexo,a.membro_congregado,a.d' +
+        'ta_nascimento, '
+      
+        'YEAR(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(a.dta_nascimento)))as idad' +
+        'e , '#39'OBREIROS'#39', a.fone_celular'
+      ' from tb_pessoa a'
+      
+        'inner join tb_parametro_sistema c on c.cod_congregacao =a.cod_co' +
+        'ngregacao'
+      
+        'inner join tb_obreiro_cargo b on b.cod_membro = a.cod_pessoa whe' +
+        're Month(a.dta_nascimento) BETWEEN month(:dta1) and month(:dta2)'
+      ''
       '  )x'
       'where x.filtro like :filtro'
       ''
@@ -23769,6 +23784,7 @@ object dtmRelatorio: TdtmRelatorio
     Top = 13
   end
   object fdqryMeses: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select 1 as valor,'#39'Janeiro'#39' mes from dual'

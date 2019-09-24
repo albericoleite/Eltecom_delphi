@@ -97,6 +97,8 @@ type
     property cidade: string read F_cidade write F_cidade;
     property email: string read F_email write F_email;
     property fone_celular: string read F_fone_celular write F_fone_celular;
+    property fone_residecial: string read F_fone_residencial write F_fone_residencial;
+    property fone_trabalho: string read F_fone_trabalho write F_fone_trabalho;
     property dta_conversao: TDateTime read F_dta_conversao
       write F_dta_conversao;
     property dta_batismo_esprito: TDateTime read F_dta_batismo_esprito
@@ -139,7 +141,6 @@ type
       write F_formacao_teologica;
     property orgaorg: string read F_orgaorg write F_orgaorg;
     property profissao: string read F_profissao write F_profissao;
-    property fone_trabalho: string read F_fone_trabalho write F_fone_trabalho;
     property igreja: string read F_igreja write F_igreja;
     property setor: string read F_setor write F_setor;
     property nro_cad_congregado: string read F_nro_cad_congregado
@@ -489,6 +490,14 @@ begin
       Self.F_membro_congregado := Qry.FieldByName('membro_congregado').AsString;
       Self.F_estado_civil_atual := Qry.FieldByName('estado_civil_atual').AsString;
       Self.F_estado_civil_anterior := Qry.FieldByName('estado_civil_anterior').AsString;
+      Self.F_naturalidade := Qry.FieldByName('naturalidade').AsString;
+      Self.F_nacionalidade := Qry.FieldByName('nacionalidade').AsString;
+      Self.F_proced_eclesiastica := Qry.FieldByName('proced_eclesiastica').AsString;
+      Self.F_origem_eclesiastica := Qry.FieldByName('origem_eclesiastica').AsString;
+      Self.F_grau_instrucao := Qry.FieldByName('grau_instrucao').AsString;
+      Self.F_grau_instr_situacao := Qry.FieldByName('grau_instr_situacao').AsString;
+      Self.F_formacao_teologica := Qry.FieldByName('formacao_teologica').AsString;
+      Self.F_form_teo_situacao := Qry.FieldByName('form_teo_situacao').AsString;
 
    //   Self.F_foto.Assign(Qry.FieldByName('foto'));
       //if Qry.FieldByName('foto').Assign(nil) then

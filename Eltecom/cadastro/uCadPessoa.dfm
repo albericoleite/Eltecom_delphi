@@ -1,8 +1,8 @@
 inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 465
-  ClientWidth = 956
-  ExplicitWidth = 962
+  ClientWidth = 964
+  ExplicitWidth = 970
   ExplicitHeight = 494
   PixelsPerInch = 96
   TextHeight = 13
@@ -21,17 +21,17 @@ inherited frmCadPessoa: TfrmCadPessoa
     Caption = 'Situa'#231#227'o Acad'#234'mica'
   end
   inherited pgcPrincipal: TPageControl
-    Width = 956
+    Width = 964
     Height = 427
     ActivePage = tabManutencao
     OnChange = pgcPrincipalChange
     ExplicitWidth = 956
-    ExplicitHeight = 448
+    ExplicitHeight = 427
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
       ExplicitWidth = 948
-      ExplicitHeight = 420
+      ExplicitHeight = 399
       inherited pnlListagem: TPanel
         Width = 948
         Height = 169
@@ -337,7 +337,7 @@ inherited frmCadPessoa: TfrmCadPessoa
       ExplicitLeft = 4
       ExplicitTop = 24
       ExplicitWidth = 948
-      ExplicitHeight = 401
+      ExplicitHeight = 399
       object grpDatas: TGroupBox
         Left = 3
         Top = 202
@@ -1357,14 +1357,14 @@ inherited frmCadPessoa: TfrmCadPessoa
   end
   inherited pnlRodape: TPanel
     Top = 427
-    Width = 956
-    ExplicitTop = 448
+    Width = 964
+    ExplicitTop = 427
     ExplicitWidth = 956
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
     end
     inherited btnFechar: TBitBtn
-      Left = 864
+      Left = 872
       ExplicitLeft = 864
     end
   end

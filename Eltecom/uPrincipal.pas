@@ -147,6 +147,7 @@ type
     Label6: TLabel;
     mniDespesaFixa1: TMenuItem;
     Lanamentos1: TMenuItem;
+    N4: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -262,7 +263,9 @@ end;
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   FreeAndNil(TeclaEnter);
-  FreeAndNil(dtmPrincipal);
+    //if Assigned(dtmPrincipal) then
+    //FreeAndNil(dtmPrincipal);
+      if Assigned(DTMGrafico) then
   FreeAndNil(DTMGrafico);
   if Assigned(oUsuarioLogado) then
     FreeAndNil(oUsuarioLogado);
@@ -278,8 +281,8 @@ begin
     TArquivoIni.AtualizarIni('SERVER', 'TipoDataBase', 'MySQL');
     TArquivoIni.AtualizarIni('SERVER', 'HostName', '127.0.0.1');
     TArquivoIni.AtualizarIni('SERVER', 'Port', '3306');
-    TArquivoIni.AtualizarIni('SERVER', 'User', 'igreja');
-    TArquivoIni.AtualizarIni('SERVER', 'Password', 'igreja');
+    TArquivoIni.AtualizarIni('SERVER', 'User', 'root');
+    TArquivoIni.AtualizarIni('SERVER', 'Password', 'julia');
     TArquivoIni.AtualizarIni('SERVER', 'Database', 'igreja');
 
     MessageDlg('Arquivo ' + TArquivoIni.ArquivoIni + ' Criado com Sucesso' +
@@ -298,8 +301,8 @@ begin
 
     dtmPrincipal := TdtmPrincipal.Create(self);
    // dtmPrincipal.fdcmndBancoNovo.Active:=True;
-   { // Inciar Conexão
-    with dtmPrincipal.ConexaoDB do
+    // Inciar Conexão
+   { with dtmPrincipal.ConexaoDB do
     begin
 
       Connected := False;
@@ -320,7 +323,7 @@ begin
         ';Password=' + SENHA + ';Port='+IntToStr(port)+';UseSSL=False';
       dtmPrincipal.ConexaoDB.TxOptions.AutoCommit := True;
       dtmPrincipal.ConexaoDB.TxOptions.Isolation := xiReadCommitted;
-    end; }
+    end;
 
     try
       dtmPrincipal.ConexaoDB.Connected := True;
@@ -329,7 +332,7 @@ begin
         ShowMessage('Problema de Conexão com o Banco');
         Application.Terminate;
       end;
-    end;
+    end; }
     AtualizaBandoDados(frmAtualizaDB);
     //CriarAcoes;
 
@@ -398,61 +401,73 @@ end;
 
 procedure TfrmPrincipal.Igreja1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
     TFuncao.CriarForm(TfrmCadIgreja, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.ipo1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmTipoCentroCusto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.iposdeCulto1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
  TFuncao.CriarForm(TfrmTipoCulto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.iposdeSadas1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
    TFuncao.CriarForm(TfrmTipoSaida, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniAlterarSenha1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmAlterarSenha, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniAluno1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadClasseAluno, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniAniversariantes1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmAniversariantes, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniAoAcesso1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadAcaoAcesso, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniCadastro2Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
    TFuncao.CriarForm(TfrmCadCentroCusto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniCargos2Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadCargo, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniCargosPessoas1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadCargoPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniClasse1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadClasse, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
@@ -472,21 +487,25 @@ end;
 
 procedure TfrmPrincipal.mniControledeDzimo1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmQuadroAnual, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniDepartamentoPessoas1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadDepartPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniDepartamentos2Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadDepartamento, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniDepartamentos3Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
 TFuncao.CriarForm(TfrmRelDept, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
@@ -494,6 +513,7 @@ procedure TfrmPrincipal.mniDespesaFixa1Click(Sender: TObject);
 var
 vl:string;
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   vl:=TFuncao.SqlValor('select count(1) as VALOR from fornecedor;',dtmPrincipal.ConexaoDB);
 if vl = '0' then   begin
   MessageDlg('Não existe Fornecedor cadastrado',mtWarning,[mbOK],0);
@@ -504,37 +524,43 @@ end;
 
 procedure TfrmPrincipal.mniDizimoClick(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadDizimos, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniDoaoAjudadeCusto1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadAjudaDeCusto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniFormasdePagamento1Click(Sender: TObject);
 begin
-//TODO: VALIDAR ESSE CLICK
+dtmPrincipal := TdtmPrincipal.Create(self);
    TFuncao.CriarForm(TfrmCadFormpgto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniFornecedores1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadFornecedor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniFunes2Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadFuncao, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniFunesPessoas1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadFuncaoPessoa, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniImportarCadastros1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
 TFuncao.CriarForm(TfrmImportarExportarDados, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
@@ -542,6 +568,7 @@ procedure TfrmPrincipal.mniLanamentoUnificado1Click(Sender: TObject);
 var
 vl:string;
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   vl:=TFuncao.SqlValor('select count(1) as VALOR from centro_custo;',dtmPrincipal.ConexaoDB);
 if vl = '0' then   begin
   MessageDlg('Não existe Centro de Custo cadastrado',mtWarning,[mbOK],0);
@@ -552,31 +579,37 @@ end;
 
 procedure TfrmPrincipal.mniLancamentos1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
    TFuncao.CriarForm(TfrmCadTipoLancamento, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniPresenadeAlunos1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmChamadaEbd, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniProfessor2Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
 TFuncao.CriarForm(TfrmCadProfessor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniProfessorClasse1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
 TFuncao.CriarForm(TfrmCadClasseProfessor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniRelatrios2Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmRelatoriosEBD, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniRelatrios3Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmRelatoriosFinanceiro, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
@@ -590,16 +623,19 @@ end;
 
 procedure TfrmPrincipal.mniUsurios1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadUsuario, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.mniUsuriosVSAes1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmUsuarioVsAcoes, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.pnl5Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
 AtualizarGraficos;
 end;
 
@@ -611,11 +647,13 @@ end;
 
 procedure TfrmPrincipal.Setores1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmCadSetores, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 procedure TfrmPrincipal.tmrDashboardTimer(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
 AtualizarGraficos;
 end;
 
@@ -689,9 +727,6 @@ try
    DTMGrafico.fdqryAniverariantesMes.Open;
     DTMGrafico.fdqryEntrasAnual.Open;
      DTMGrafico.fdqrySaidasAnual.Open;
-      //TODO: CRIAR TABELA E CADASTRO DE TIPO DE RECEITA E TIPO DE DESPESA
-      // EX. 1. RECEITA 1.1.1 DIZIMOS ,1.1.2 OFERTAS E CONTRIBUIÇÕES
-      // 2. DESPESA 2.1.1 ADMINISTRAÇÃO
      pnlKpiProfessores.Caption:=  TFuncao.SqlValor('select count(*) as VALOR from tb_professor;',dtmPrincipal.ConexaoDB);
      pnlAlunos.Caption:=  TFuncao.SqlValor('select count(*)as VALOR from tb_classe_aluno;',dtmPrincipal.ConexaoDB);
      pnlClasses.Caption:=  TFuncao.SqlValor('select count(*)as VALOR from tb_classe;',dtmPrincipal.ConexaoDB);
@@ -711,7 +746,6 @@ end;
 
 procedure TfrmPrincipal.CriarAcoes;
 begin
-//TODO: RESOLVER LENTIDÃO NESSA FUNÇÃO
   // INSERINDO INFORMAÇÕES DOS FORMULARIOS PARA CONTROLE DE ACESSO
   TAcaoAcesso.CriarAcoes(TfrmCadDizimos, dtmPrincipal.ConexaoDB);
   TAcaoAcesso.CriarAcoes(TfrmCadAcaoAcesso, dtmPrincipal.ConexaoDB);
@@ -757,6 +791,7 @@ end;
 
 procedure TfrmPrincipal.BackupeRestore1Click(Sender: TObject);
 begin
+dtmPrincipal := TdtmPrincipal.Create(self);
   TFuncao.CriarForm(TfrmBackupRestore, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
@@ -767,7 +802,8 @@ end;
 
 procedure TfrmPrincipal.EntradasSadas1Click(Sender: TObject);
 begin
-  TFuncao.CriarForm(TfrmCadLancamento, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+dtmPrincipal := TdtmPrincipal.Create(self);
+TFuncao.CriarForm(TfrmCadLancamento, oUsuarioLogado, dtmPrincipal.ConexaoDB);
 end;
 
 end.

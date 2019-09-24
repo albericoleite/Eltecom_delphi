@@ -43,6 +43,7 @@ type
     procedure dbgrdListagemKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure dbgrdListagemTitleClick(Column: TColumn);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
 
 
@@ -287,6 +288,13 @@ begin
 
   end;
 
+end;
+
+procedure TfrmTelaHerancaEntidade.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+Action := cafree;
+  frmTelaHerancaEntidade := nil;
 end;
 
 procedure TfrmTelaHerancaEntidade.FormCreate(Sender: TObject);

@@ -255,7 +255,6 @@ end;
 procedure TfrmTelaheranca.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 QryListagem.Close;
-//FreeAndNil(dtmPrincipal);
 end;
 
 procedure TfrmTelaheranca.FormCreate(Sender: TObject);

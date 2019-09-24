@@ -74,7 +74,6 @@ object frmAniversariantes: TfrmAniversariantes
     Top = 27
     Width = 200
     Height = 21
-    ItemIndex = 0
     TabOrder = 0
     Text = 'CONGREGADO'
     Items.Strings = (
@@ -86,14 +85,15 @@ object frmAniversariantes: TfrmAniversariantes
       'DI'#193'CONO'
       'PRESBITERO'
       'EVANGELISTA'
-      'PASTOR')
+      'PASTOR'
+      'OBREIROS')
   end
   object btnVisualizar: TBitBtn
     Left = 438
     Top = 23
     Width = 83
     Height = 25
-    Caption = 'Imprimir'
+    Caption = 'Visualizar'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16

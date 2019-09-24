@@ -13,6 +13,7 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -25,8 +26,6 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
     Color = 15508822
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 321
-    ExplicitWidth = 913
     DesignSize = (
       923
       38)
@@ -221,7 +220,6 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
         B3B3B4B3B3BDBCBCC2C1C1FF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 6
       OnClick = btnFecharClick
-      ExplicitLeft = 821
     end
     object btnGravar: TBitBtn
       Tag = 99
@@ -269,12 +267,8 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
     ActivePage = tabListagem
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 913
-    ExplicitHeight = 321
     object tabListagem: TTabSheet
       Caption = 'Listagem'
-      ExplicitWidth = 905
-      ExplicitHeight = 293
       object pnlListagem: TPanel
         Left = 0
         Top = 0
@@ -284,7 +278,6 @@ object frmTelaHerancaEntidade: TfrmTelaHerancaEntidade
         Color = 15508822
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 905
         object lblIndice: TLabel
           Left = 10
           Top = 5

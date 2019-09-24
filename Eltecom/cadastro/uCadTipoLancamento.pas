@@ -7,7 +7,10 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHerancaEntidade, Data.DB, Entidade.TipoLancamento,
   Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Mask, Vcl.ComCtrls, Vcl.Buttons,
   Vcl.DBCtrls, Vcl.ExtCtrls,SimpleDAO,SimpleInterface  ,uEnum ,Entidade.TipoCentroCusto
-  ,SimpleQueryFiredac,System.Generics.Collections;
+  ,SimpleQueryFiredac,System.Generics.Collections, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TfrmCadTipoLancamento = class(TfrmTelaHerancaEntidade)
@@ -20,6 +23,7 @@ type
     dblkcbbPai: TDBLookupComboBox;
     dsTipoCC: TDataSource;
     dsPai: TDataSource;
+    fdqryPai: TFDQuery;
     procedure dsListagemDataChange(Sender: TObject; Field: TField);
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -113,12 +117,14 @@ begin
    DAOTipolanc:= TSimpleDAO<TTIPO_LANCAMENTO>
    .New(TSimpleQueryFiredac.Create(dtmPrincipal.ConexaoDB)).DataSource(dsListagem);
 
-      DAOTipolancp:= TSimpleDAO<TTIPO_LANCAMENTO>
+   {   DAOTipolancp:= TSimpleDAO<TTIPO_LANCAMENTO>
    .New(TSimpleQueryFiredac.Create(dtmPrincipal.ConexaoDB)).DataSource(dspai);
     tiposc := DAOTipolancp.SQL.OrderBy('ID').&End.Find;
       dblkcbbPai.ListSource := dspai;
   dblkcbbPai.ListField := 'DESCRICAO';
-  dblkcbbPai.KeyField := 'ID';
+  dblkcbbPai.KeyField := 'ID';  }
+
+  fdqryPai.Open;
    Listar;
 end;
 

@@ -1,6 +1,7 @@
 object frmTelaheranca: TfrmTelaheranca
   Left = 0
   Top = 0
+  BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'INFORME AQUI O T'#205'TULO'
   ClientHeight = 456
@@ -92,6 +93,10 @@ object frmTelaheranca: TfrmTelaheranca
       Font.Style = []
       ImageIndex = 1
       ParentFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object pnlRodape: TPanel

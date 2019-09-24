@@ -216,7 +216,7 @@ end;
 procedure TfrmEmitirDoc.chkRecomendacaoClick(Sender: TObject);
 begin
   if chkRecomendacao.Checked = true then
-    frmEmitirDoc.Width := 915
+    frmEmitirDoc.Width := 927
   else
     frmEmitirDoc.Width := 573
 end;
@@ -229,7 +229,7 @@ end;
 procedure TfrmEmitirDoc.chkTransferenciaClick(Sender: TObject);
 begin
   if chkTransferencia.Checked = true then
-    frmEmitirDoc.Width := 915
+    frmEmitirDoc.Width := 927
   else
     frmEmitirDoc.Width := 573
 end;

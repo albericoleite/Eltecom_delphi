@@ -9,7 +9,6 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
-  //TODO: CRIAR OBREIROS ANIVERSARIANTES
 type
   TfrmAniversariantes = class(TForm)
     lbl1: TLabel;

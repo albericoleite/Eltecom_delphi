@@ -10,7 +10,7 @@ uses
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, uEnum, cCadLancamento,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
   uDTMConexao, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls,
-  Vcl.ComCtrls, RxToolEdit, RxCurrEdit, System.DateUtils;
+  Vcl.ComCtrls, RxToolEdit, RxCurrEdit, System.DateUtils, RxCtrls;
 
 type
   TfrmCadLancamento = class(TfrmTelaheranca)
@@ -43,7 +43,6 @@ type
     btnBuscar: TBitBtn;
     mmoSemana: TMemo;
     lbl6: TLabel;
-    btnImprimir: TBitBtn;
     Label1: TLabel;
     Label2: TLabel;
     lbl7: TLabel;
@@ -59,6 +58,12 @@ type
     dsTipoSaida: TDataSource;
     QryListagemcod_tipo_saida: TIntegerField;
     QryListagemTipoSaida: TStringField;
+    Label6: TLabel;
+    crncydtTotal: TCurrencyEdit;
+    pnl2: TPanel;
+    btnImprimir: TBitBtn;
+    chkResumido: TRxCheckBox;
+    chkCompleto: TRxCheckBox;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -75,6 +80,8 @@ type
     procedure dtdtFimChange(Sender: TObject);
     procedure dblkcbbMesClick(Sender: TObject);
     procedure cbbTipoChange(Sender: TObject);
+    procedure chkCompletoClick(Sender: TObject);
+    procedure chkResumidoClick(Sender: TObject);
   private
     { Private declarations }
     oLancamento: TLancamento;
@@ -95,7 +102,7 @@ var
 implementation
 
 uses
-  uDTMTesouraria, cFuncao, uDTMRelatorio;
+  uDTMTesouraria, cFuncao, uDTMRelatorio, uDTMRelatorioFinanceiro;
 
 {$R *.dfm}
 {$REGION 'Override'}
@@ -178,18 +185,34 @@ begin
   if not strngfldQryListagemstatus.IsNull then
   begin
     // Atualizar consulta da Congregação
+
+    if chkCompleto.Checked = true then        begin
     dtmTesouraria.fdqryBuscaCongregacao.Refresh;
     dtmTesouraria.fdqryTes_valores.Open;
-    // Imprimir relatório
     dtmTesouraria.frxrprtFechamento.ReportOptions.Name := PChar('Prestação de Contas ' + DateToStr(dtdtIni.Date) + ' a ' + DateToStr(dtdtFim.Date));
     dtmTesouraria.frxrprtFechamento.Variables['Semana'] := QuotedStr(mmoSemana.Text);
     dtmTesouraria.frxrprtFechamento.ShowReport();
+    end;
+
+    if chkResumido.Checked = true then       begin
+    if dtmRelatorioFinanceiro.fdqryLancamentosTotal.Active then
+  dtmRelatorioFinanceiro.fdqryLancamentosTotal.Close;
+
+    dtmRelatorioFinanceiro.fdqryLancamentosTotal.ParamByName('data').AsDateTime := dtdtIni.Date;
+   dtmRelatorioFinanceiro.fdqryLancamentosTotal.Open;
+          dtmRelatorioFinanceiro.frxrprtMovFinMensal.ReportOptions.Name :=
+    'Visualização de Impressão: Movimentação Financeira Mensal';
+    dtmRelatorioFinanceiro.frxrprtMovFinMensal.PrepareReport(True);
+    dtmRelatorioFinanceiro.frxrprtMovFinMensal.ShowReport();
+    end;
+
+
+
   end
   else
   begin
     Application.MessageBox(PChar('Não existe documento localizado nos dias ' + DateToStr(dtdtIni.Date) + ' a ' + DateToStr(dtdtFim.Date)), 'Atenção');
   end;
-  //TODO: 4 - Adicionar relatório Fechamento "NATAL" (Sec. Alisson Dantas);
 end;
 
 procedure TfrmCadLancamento.btnNovoClick(Sender: TObject);
@@ -224,6 +247,20 @@ begin
   end;
 end;
 
+procedure TfrmCadLancamento.chkCompletoClick(Sender: TObject);
+begin
+  inherited;
+if chkCompleto.Checked = true then
+chkResumido.Checked := False;
+end;
+
+procedure TfrmCadLancamento.chkResumidoClick(Sender: TObject);
+begin
+  inherited;
+if chkResumido.Checked = true then
+chkCompleto.Checked := False;
+end;
+
 procedure TfrmCadLancamento.dblkcbbMesClick(Sender: TObject);
 var
   i: Integer;
@@ -251,7 +288,6 @@ end;
 procedure TfrmCadLancamento.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
-  //dtmPrincipal.fdqryTipoSaida.Close;
   if Assigned(oLancamento) then
     FreeAndNil(oLancamento);
 end;
@@ -266,6 +302,8 @@ begin
   dtdtFim.Date := now;
   dtmTesouraria := TdtmTesouraria.Create(self);
   dtmRelatorio := TdtmRelatorio.Create(self);
+  dtmRelatorioFinanceiro:= TdtmRelatorioFinanceiro.Create(self);
+  dsMes.DataSet:= dtmRelatorio.fdqryMeses;
   ListaLancamentosPeriodo;
   //dtmPrincipal.fdqryTipoSaida.Open;
 end;

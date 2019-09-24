@@ -2,7 +2,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
   Left = 0
   Top = 0
   BorderStyle = bsSingle
-  Caption = 'Cadastro de Lan'#231'amentos'
+  Caption = 'Lan'#231'amento Detalhado'
   ClientHeight = 350
   ClientWidth = 783
   Color = clBtnFace
@@ -13,6 +13,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -21,13 +22,11 @@ object frmCadLancUnificado: TfrmCadLancUnificado
     Top = 0
     Width = 783
     Height = 312
-    ActivePage = tabManutencao
+    ActivePage = tabListagem
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 738
     object tabListagem: TTabSheet
       Caption = 'Listagem'
-      ExplicitWidth = 730
       object pnlListagem: TPanel
         Left = 0
         Top = 0
@@ -37,7 +36,6 @@ object frmCadLancUnificado: TfrmCadLancUnificado
         Color = 15508822
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 730
         object lblIndice: TLabel
           Left = 10
           Top = 8
@@ -212,7 +210,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
           Top = 16
           Width = 100
           Height = 38
-          Caption = 'Imprimir'
+          Caption = 'Visualizar'
           Glyph.Data = {
             360C0000424D360C000000000000360000002800000020000000200000000100
             180000000000000C0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -418,7 +416,6 @@ object frmCadLancUnificado: TfrmCadLancUnificado
       Font.Style = []
       ImageIndex = 1
       ParentFont = False
-      ExplicitWidth = 730
       object pnl1: TPanel
         Left = 0
         Top = 3
@@ -644,7 +641,6 @@ object frmCadLancUnificado: TfrmCadLancUnificado
     Color = 15508822
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 738
     DesignSize = (
       783
       38)
@@ -839,7 +835,6 @@ object frmCadLancUnificado: TfrmCadLancUnificado
         B3B3B4B3B3BDBCBCC2C1C1FF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 6
       OnClick = btnFecharClick
-      ExplicitLeft = 646
     end
     object btnGravar: TBitBtn
       Tag = 99

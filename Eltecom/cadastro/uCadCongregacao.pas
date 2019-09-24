@@ -105,7 +105,6 @@ type
     procedure dblkcbbMetafixaExit(Sender: TObject);
     procedure dblkcbbMetafixaClick(Sender: TObject);
     procedure dblkcbbMetapercentualClick(Sender: TObject);
-    procedure btnGravarClick(Sender: TObject);
   private
     { Private declarations }
     oCongregacao: TCongregacao;
@@ -162,12 +161,6 @@ if oCongregacao.Selecionar(QryListagem.FieldByName('cod_congregacao').AsInteger)
   end;
   inherited;
 
-end;
-
-procedure TfrmCadCongregacao.btnGravarClick(Sender: TObject);
-begin
-  inherited;
-//TODO: CORRIGIR BUG ALVO SALVAR EDIÇÃO
 end;
 
 procedure TfrmCadCongregacao.btnNovoClick(Sender: TObject);
@@ -248,12 +241,14 @@ begin
        oCongregacao.setor:= dblkcbbSetor.Text;
        oCongregacao.situacao:='0';
        oCongregacao.dirigente:=dblkcbbDirigente.Text;
-       oCongregacao.cod_igreja:='1';
+       oCongregacao.cod_igreja:=dtmPrincipal.igrejaAtiva.ToString();
        oCongregacao.cod_dirigente:= dblkcbbDirigente.KeyValue;
        oCongregacao.cod_cc := StrToInt(lbledtCodCc.Text);
        oCongregacao.percentual_central:=dblkcbbMetapercentual.KeyValue;
        oCongregacao.percentual_valor:=StrToFloat(lbledtPercAjuste.Text);
        oCongregacao.meta_central:=dblkcbbMetafixa.KeyValue;
+       if crncydtValor.Text ='' then
+       oCongregacao.meta_valor:=0 else
        oCongregacao.meta_valor:=StrToFloat(crncydtValor.Text);
 
 

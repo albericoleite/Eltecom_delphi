@@ -89,6 +89,7 @@ type
     procedure dblkcbbMesClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
 
     { Private declarations }
@@ -350,6 +351,14 @@ lbledtCodigo.Text := dsListagem.DataSet.FieldByName('COD_ENTRADA').AsString;
       ELSE
     dblkcbbCultoFornec.keyvalue:= dsListagem.DataSet.FieldByName('ID_FORNECEDOR').AsString;
 
+end;
+
+procedure TfrmCadLancUnificado.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+dtmRelatorio.fdqryMeses.close;
+//Action := cafree;
+//  frmCadLancUnificado := nil;
 end;
 
 procedure TfrmCadLancUnificado.FormCreate(Sender: TObject);

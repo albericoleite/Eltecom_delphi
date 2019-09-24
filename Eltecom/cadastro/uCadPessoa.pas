@@ -224,6 +224,8 @@ begin
   oPessoa.bairro            := lbledtBairro.Text;
   oPessoa.cidade            := lbledtCidade.Text;
   oPessoa.fone_celular      := medtTelefoneCel.Text;
+  oPessoa.fone_residecial   := medtTelFixo.Text;
+  oPessoa.fone_trabalho := medtTeltrabalho.Text;
   oPessoa.membro_congregado := cbbMembCong.Text;
   oPessoa.cpf               :=  medtCPF.Text;
   oPessoa.funcao            := lbledtFuncao.Text;
@@ -235,6 +237,16 @@ begin
   oPessoa.estado_civil_anterior:=cbbEstcivianterior.Text;
   oPessoa.nome_conjugue     :=lbledtNomeConjugue.Text;
   oPessoa.email             := lbledtEmail.Text;
+  oPessoa.profissao:= lbledtProfissao.Text;
+  oPessoa.habilitacao_profissional := lbledtHabprof.Text;
+  oPessoa.emprego_atual := lbledtEmpregoAtual.Text;
+  oPessoa.funcao := lbledtFuncao.Text;
+  oPessoa.grau_instrucao     :=cbbAcademica.Text;
+  oPessoa.grau_inst_situacao := cbbSitAcad.Text;
+  oPessoa.formacao_teologica := cbbFormTeo.Text;
+  oPessoa.form_teo_situacao  := cbbSitformteo.Text;
+  oPessoa.origem_eclesiastica :=lbledtOrigecles.Text;
+  oPessoa.proced_eclesiastica :=lbledtProcedeclesi.Text;
 
      if cbbMembCong.Text ='CONGREGADO' then
     oPessoa.dta_congregado        :=dtdtMembroCongregado.Date else
@@ -420,7 +432,9 @@ begin
     lbledtEndereco.Text   := oPessoa.logradouro;
     lbledtNomePai.Text    := oPessoa.nome_pai;
     lbledtNomeMae.Text    := oPessoa.nome_mae;
+    medtTelFixo.Text      := oPessoa.fone_residecial;
     medtTelefoneCel.Text     := oPessoa.fone_celular;
+    medtTeltrabalho.Text  := oPessoa.fone_trabalho;
     cbbSexo.Text          := oPessoa.sexo;
     cbbUFnascimento.Text  := oPessoa.uf_nascimento;
     cbbUfImovel.Text      := oPessoa.uf_endereco;
@@ -430,6 +444,16 @@ begin
     lbledtNacionalidade.Text:=oPessoa.nacionalidade;
     lbledtRol.Text        :=IntToStr(oPessoa.nro_rol);
     medtCEP.Text          := oPessoa.cep;
+    lbledtProfissao.Text :=oPessoa.profissao;
+    lbledtHabprof.Text :=oPessoa.habilitacao_profissional;
+    lbledtEmpregoAtual.Text :=oPessoa.emprego_atual;
+    lbledtFuncao.Text:=oPessoa.funcao;
+    cbbAcademica.Text:= oPessoa.grau_instrucao;
+    cbbSitAcad.Text:=oPessoa.SITUACAO;
+    cbbFormTeo.Text:=oPessoa.formacao_teologica;
+    cbbSitformteo.Text:=oPessoa.form_teo_situacao;
+    lbledtOrigecles.Text:=oPessoa.origem_eclesiastica;
+    lbledtProcedeclesi.Text:=oPessoa.proced_eclesiastica;
         if DateToStr(oPessoa.dta_nascimento)='30/12/1899' then
     dtdtNascimento.Clear  else dtdtNascimento.Text      :=DateToStr(oPessoa.dta_nascimento) ;
     if DateToStr(oPessoa.dta_batismo_aguas)='30/12/1899' then
