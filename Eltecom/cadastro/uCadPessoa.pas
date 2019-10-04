@@ -214,7 +214,7 @@ begin
   oPessoa.nrorg             := lbledtRG.Text;
   oPessoa.nacionalidade     := lbledtNacionalidade.Text;
   oPessoa.naturalidade      := lbledtNatural.Text;
-  oPessoa.dta_casamento     := dtdtNascimento.Date;
+  oPessoa.dta_casamento     := dtdtCasamento.Date;
   oPessoa.dta_conversao     :=dtdtConversao.Date;
   oPessoa.dta_batismo_esprito :=dtdtbtespirito.Date;
   oPessoa.dta_batismo_aguas   :=dtdtBtaguas.Date;
@@ -376,10 +376,32 @@ end;
 
 procedure TfrmCadPessoa.imgFotoDblClick(Sender: TObject);
 var jpg : TJPEGImage;
+   foto_stream : TMemoryStream;
 begin
   inherited;
 if dlgOpenPicBuscarFoto.Execute then
 begin
+
+   foto_stream := TMemoryStream.Create;
+   foto_stream.Clear;
+
+      foto_stream.LoadFromFile( dlgOpenPicBuscarFoto.FileName );
+      if ( foto_stream.Size < 200000 ) then begin
+         imgFoto.Picture.LoadFromFile( dlgOpenPicBuscarFoto.FileName );
+      end else begin
+         showMessage( 'Tamanho da imagem excedeu 200Kb' );
+         Abort;
+      end;
+
+
+{imgFoto.Picture.LoadFromFile(dlgOpenPicBuscarFoto.FileName);
+     //Label1.Caption := Format('%dx%d', [imgFoto.Picture.Height, imgFoto.Picture.Width]);
+     if (imgFoto.Picture.Height > 200) and (imgFoto.Picture.Width > 200) then
+     begin
+          imgFoto.Picture := nil;
+          ShowMessage('Imagem maior do que o esperado');
+     end;  }
+
 try
   dtsListagem.Edit;
   jpg:= TJPEGImage.Create;

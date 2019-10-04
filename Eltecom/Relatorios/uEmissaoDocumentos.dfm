@@ -4,7 +4,7 @@ object frmEmitirDoc: TfrmEmitirDoc
   BorderStyle = bsSingle
   Caption = 'Cartas e Relat'#243'rios'
   ClientHeight = 277
-  ClientWidth = 573
+  ClientWidth = 568
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -185,56 +185,47 @@ object frmEmitirDoc: TfrmEmitirDoc
     Height = 159
     Caption = 'Documentos'
     TabOrder = 8
-    object chkRequerimento: TCheckBox
-      Left = 3
-      Top = 14
-      Width = 97
-      Height = 17
-      Caption = 'Requerimento'
-      Enabled = False
-      TabOrder = 0
-      OnClick = chkRequerimentoClick
-    end
-    object chkOcorrencia: TCheckBox
+    object chkRecNotif: TCheckBox
       Left = 8
-      Top = 37
+      Top = 16
       Width = 113
       Height = 17
-      Caption = 'Not. de Ocorr'#234'ncia'
-      TabOrder = 1
+      Hint = 'Requerimento ou Notifica'#231#227'o de Ocor'#234'ncia'
+      Caption = 'Req. | Notifica'#231#227'o'
+      TabOrder = 0
     end
     object chkFxMembro: TCheckBox
       Left = 8
-      Top = 60
+      Top = 39
       Width = 121
       Height = 17
       Caption = 'Ficha de Membro'
-      TabOrder = 2
+      TabOrder = 1
     end
     object chkFxCongregado: TCheckBox
       Left = 8
-      Top = 83
+      Top = 62
       Width = 124
       Height = 17
       Caption = 'Ficha de Congregado'
-      TabOrder = 3
+      TabOrder = 2
     end
     object chkFxBatismo: TCheckBox
       Left = 8
-      Top = 106
+      Top = 85
       Width = 110
       Height = 17
       Caption = 'Ficha de Batismo'
-      TabOrder = 4
+      TabOrder = 3
     end
     object chkTodas: TCheckBox
       Left = 8
-      Top = 129
+      Top = 108
       Width = 110
       Height = 17
       Caption = 'Todas as Fichas'
       Enabled = False
-      TabOrder = 5
+      TabOrder = 4
     end
   end
   object btnImprimir: TBitBtn

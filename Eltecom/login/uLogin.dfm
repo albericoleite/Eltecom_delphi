@@ -4857,22 +4857,6 @@ object frmLogin: TfrmLogin
       Font.Style = []
       ParentFont = False
     end
-    object edtUsuario: TEdit
-      Left = 97
-      Top = 72
-      Width = 121
-      Height = 26
-      Alignment = taCenter
-      CharCase = ecUpperCase
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Verdana'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 0
-      Text = 'ADMIN'
-    end
     object edtSenha: TEdit
       Left = 97
       Top = 112
@@ -4886,7 +4870,7 @@ object frmLogin: TfrmLogin
       Font.Style = [fsBold]
       ParentFont = False
       PasswordChar = '*'
-      TabOrder = 1
+      TabOrder = 0
       Text = 'admin'
     end
     object btnSair: TBitBtn
@@ -4928,7 +4912,7 @@ object frmLogin: TfrmLogin
         D363C4D7244E6EFF00FFFF00FF244E6E244E6E244E6E244E6E244E6E244E6E24
         4E6E244E6E244E6E244E6E244E6E244E6E244E6E244E6EFF00FF}
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
       OnClick = btnSairClick
     end
     object btnEntrar: TBitBtn
@@ -4970,8 +4954,24 @@ object frmLogin: TfrmLogin
         75C3C7C4FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBACEC089DBA268DB8959
         D97851D46F55CE7371C986AFC6B3FF00FFFF00FFFF00FFFF00FF}
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
       OnClick = btnEntrarClick
+    end
+    object dblkcbbLogins: TDBLookupComboBox
+      Left = 81
+      Top = 72
+      Width = 137
+      Height = 27
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      KeyField = 'usuario'
+      ListField = 'usuario'
+      ListSource = dsLogins
+      ParentFont = False
+      TabOrder = 3
     end
   end
   object lnklblI9: TLinkLabel
@@ -4982,5 +4982,23 @@ object frmLogin: TfrmLogin
     Caption = 'i9techsoft.com.br'
     TabOrder = 1
     OnLinkClick = lnklblI9LinkClick
+  end
+  object dsLogins: TDataSource
+    DataSet = fdqryLogins
+    Left = 480
+    Top = 16
+  end
+  object fdqryLogins: TFDQuery
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'select usuario from tb_usuario')
+    Left = 280
+    Top = 88
+    object strngfldLoginsusuario: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'usuario'
+      Origin = 'usuario'
+      Size = 12
+    end
   end
 end

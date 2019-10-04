@@ -483,6 +483,9 @@ begin
       Self.F_uf_nascimento := Qry.FieldByName('uf_nascimento').AsString;
       Self.F_cpf := Qry.FieldByName('cpf').AsString;
       Self.F_emprego_atual := Qry.FieldByName('emprego_atual').AsString;
+      Self.F_profissao := Qry.FieldByName('profissao').AsString;
+      Self.F_funcao := Qry.FieldByName('funcao').AsString;
+      Self.F_habilitacao_profissional := Qry.FieldByName('habilitacao_profissional').AsString;
       Self.F_igreja := Qry.FieldByName('igreja').AsString;
       Self.F_fone_trabalho := Qry.FieldByName('fone_trabalho').AsString;
       Self.F_nro_cad_congregado := Qry.FieldByName('nro_cad_congregado').AsString;

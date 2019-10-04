@@ -22,7 +22,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
     Top = 0
     Width = 783
     Height = 312
-    ActivePage = tabListagem
+    ActivePage = tabManutencao
     Align = alClient
     TabOrder = 0
     object tabListagem: TTabSheet
@@ -901,7 +901,7 @@ object frmCadLancUnificado: TfrmCadLancUnificado
     Top = 120
   end
   object dsTipoSaida: TDataSource
-    Left = 400
-    Top = 232
+    Left = 440
+    Top = 200
   end
 end

@@ -29,8 +29,7 @@ type
     chkVisita: TCheckBox;
     chkTransferencia: TCheckBox;
     grpDocumento: TGroupBox;
-    chkRequerimento: TCheckBox;
-    chkOcorrencia: TCheckBox;
+    chkRecNotif: TCheckBox;
     chkFxMembro: TCheckBox;
     chkFxCongregado: TCheckBox;
     chkFxBatismo: TCheckBox;
@@ -116,14 +115,14 @@ begin
     ImprimirCarta(Sender);
   end;
 
-    if chkOcorrencia.Checked = true then
+    if chkRecNotif.Checked = true then
   begin
-    dtmRelatorio.frxrprtNotifOcorrencia.ReportOptions.Name :=
-      'Visualização de Impressão: ' + chkOcorrencia.Caption;
-    dtmRelatorio.frxrprtNotifOcorrencia.PrepareReport(true);
+    dtmRelatorio.frxrprtRecNotif.ReportOptions.Name :=
+      'Visualização de Impressão: ' + chkRecNotif.Hint;
+    dtmRelatorio.frxrprtRecNotif.PrepareReport(true);
     // dtmConexao.frxrprtNotifOcorrencia.FileName := 'C:\Eltecom\anexo.pdf';
     // dtmConexao.frxrprtNotifOcorrencia.Export(dtmConexao.frxPDFExport1);
-    dtmRelatorio.frxrprtNotifOcorrencia.ShowReport();
+    dtmRelatorio.frxrprtRecNotif.ShowReport();
   end;
 
 

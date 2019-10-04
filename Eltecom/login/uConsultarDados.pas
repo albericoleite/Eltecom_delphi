@@ -36,6 +36,7 @@ type
     FDStanStorageJSONLink1: TFDStanStorageJSONLink;
     btnCopiar: TBitBtn;
     btn1: TBitBtn;
+    btnLimpaBD: TBitBtn;
     procedure dbgrdTabelasDblClick(Sender: TObject);
     procedure btnConsultarClick(Sender: TObject);
     procedure btnAlterarSeqClick(Sender: TObject);
@@ -45,6 +46,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure mmoQueryKeyPress(Sender: TObject; var Key: Char);
     procedure btn1Click(Sender: TObject);
+    procedure btnLimpaBDClick(Sender: TObject);
   private
     { Private declarations }
     oPessoa : TPessoa;
@@ -79,9 +81,15 @@ end;
 
 procedure TfrmConsultaDados.btnAlterarSeqClick(Sender: TObject);
 begin
- mmoQuery.Text:='ALTER TABLE '+fdqryTabelas.FieldByName
-    ('Tables_in_igreja').AsString+' AUTO_INCREMENT = 1;';
-    btnConsultar.Click;
+  if MessageDlg('Deseja Alterar a seguencia da tabela?:'+fdqryTabelas.FieldByName
+    ('Tables_in_igreja').AsString,
+    mtConfirmation, [mbYes, mbNo], 0) = mrNO then
+  begin
+    Abort;
+  end;
+ dtmPrincipal.ConexaoDB.ExecSQL('ALTER TABLE '+fdqryTabelas.FieldByName
+    ('Tables_in_igreja').AsString+' AUTO_INCREMENT = 1;');
+
 end;
 
 procedure TfrmConsultaDados.btnConsultarClick(Sender: TObject);
@@ -94,9 +102,15 @@ end;
 
 procedure TfrmConsultaDados.btnDeletarClick(Sender: TObject);
 begin
- mmoQuery.Text:='DELETE FROM '+fdqryTabelas.FieldByName
-    ('Tables_in_igreja').AsString;
-    btnConsultar.Click;
+ if MessageDlg('Deseja limpar os registros tabela?'+fdqryTabelas.FieldByName
+    ('Tables_in_igreja').AsString,
+    mtConfirmation, [mbYes, mbNo], 0) = mrNO then
+  begin
+    Abort;
+  end;
+  dtmPrincipal.ConexaoDB.ExecSQL('DELETE FROM '+fdqryTabelas.FieldByName
+    ('Tables_in_igreja').AsString);
+
 end;
 
 procedure TfrmConsultaDados.btnGerarJsonClick(Sender: TObject);
@@ -108,6 +122,26 @@ mmoQuery.Clear;
  mmoQuery.Lines.SaveToFile('C:\'+fdqryTabelas.FieldByName
     ('Tables_in_igreja').AsString+'.json');
 
+end;
+
+procedure TfrmConsultaDados.btnLimpaBDClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja Apagar Todos os registros de todas as tabelas??',
+    mtConfirmation, [mbYes, mbNo], 0) = mrNO then
+  begin
+    Abort;
+  end;
+  //APAGAR REGISTROS DE TODAS AS TABELAS
+  ShowMessage('APAGAR REGISTROS DE TODAS AS TABELAS');
+   while not dsTabelas.DataSet.Eof do begin
+   ShowMessage('APAGAR REGISTROS DA TABELA : '+fdqryTabelas.FieldByName
+    ('Tables_in_igreja').AsString);
+dtmPrincipal.ConexaoDB.ExecSQL('TRUNCATE TABLE '+dsTabelas.DataSet.FieldByName('Tables_in_igreja').AsString);
+
+dtmPrincipal.ConexaoDB.ExecSQL('ALTER TABLE '+fdqryTabelas.FieldByName
+    ('Tables_in_igreja').AsString+' AUTO_INCREMENT = 1;');
+dsTabelas.DataSet.Next;
+end;
 end;
 
 procedure TfrmConsultaDados.dbgrdTabelasDblClick(Sender: TObject);
@@ -141,5 +175,6 @@ begin
     Key := #0;
   end;
 end;
+
 
 end.

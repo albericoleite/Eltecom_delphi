@@ -12,6 +12,7 @@ object frmConsultaDados: TfrmConsultaDados
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -153,9 +154,8 @@ object frmConsultaDados: TfrmConsultaDados
         Height = 25
         Align = alTop
         Caption = 'Copiar'
+        Enabled = False
         TabOrder = 4
-        ExplicitLeft = 6
-        ExplicitTop = 116
       end
       object btn1: TBitBtn
         Left = 32
@@ -167,6 +167,18 @@ object frmConsultaDados: TfrmConsultaDados
         TabOrder = 5
         Visible = False
         OnClick = btn1Click
+      end
+      object btnLimpaBD: TBitBtn
+        Left = 1
+        Top = 126
+        Width = 127
+        Height = 25
+        Align = alTop
+        Caption = 'Limpar BD'
+        TabOrder = 6
+        OnClick = btnLimpaBDClick
+        ExplicitLeft = 6
+        ExplicitTop = 141
       end
     end
   end
@@ -202,8 +214,8 @@ object frmConsultaDados: TfrmConsultaDados
   object DataSource1: TDataSource
     AutoEdit = False
     DataSet = fdqryConsulta
-    Left = 739
-    Top = 131
+    Left = 635
+    Top = 163
   end
   object FDStanStorageJSONLink1: TFDStanStorageJSONLink
     Left = 117

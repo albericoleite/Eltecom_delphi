@@ -344,12 +344,18 @@ lbledtCodigo.Text := dsListagem.DataSet.FieldByName('COD_ENTRADA').AsString;
   dtdtData.Text:=dsListagem.DataSet.FieldByName('DTA_MOVIMENTO').AsString;
   dblkcbbCC.keyvalue :=dsListagem.DataSet.FieldByName('ID_CENTRO_CUSTO').AsInteger;
   cbbTipo.Text:= dsListagem.DataSet.FieldByName('TIPO').AsString;
-
   dblkcbbFormPag.keyvalue:=dsListagem.DataSet.FieldByName('ID_FORMA_PAGAMENTO').AsInteger;
-    if cbbTipo.text = 'ENTRADA' then
-     dblkcbbCultoFornec.keyvalue:= dsListagem.DataSet.FieldByName('ID_TIPO_CULTO').AsString
+
+  dblkcbbTipoGenerico.keyvalue:= dsListagem.DataSet.FieldByName('ID_TIPO_LANCAMENTO').AsString;
+
+    if cbbTipo.text = 'ENTRADA' then   begin
+      dblkcbbCultoFornec.keyvalue:= dsListagem.DataSet.FieldByName('ID_TIPO_CULTO').AsString;
+    end
       ELSE
-    dblkcbbCultoFornec.keyvalue:= dsListagem.DataSet.FieldByName('ID_FORNECEDOR').AsString;
+      begin
+      dblkcbbCultoFornec.keyvalue:= dsListagem.DataSet.FieldByName('ID_FORNECEDOR').AsString;
+      end;
+
 
 end;
 
@@ -368,9 +374,6 @@ procedure TfrmCadLancUnificado.FormCreate(Sender: TObject);
   vl:string;
 
 begin
-
-
-
 dtdtIni.Date := StartOfTheMonth(now);
 dtdtFim.Date := now;
 {sql :=  'dta_movimento between '+QuotedStr(FormatDateTime( 'yyyy-mm-dd', dtdtIni.date))+ ' and '

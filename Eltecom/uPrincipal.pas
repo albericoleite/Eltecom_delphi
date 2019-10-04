@@ -479,10 +479,16 @@ begin
 end;
 
 procedure TfrmPrincipal.mniConsultarDados1Click(Sender: TObject);
+var
+  Pass: String;
+ begin
+Pass := InputBox('Informe a senha Master', 'Entre com a senha:','');
+if Pass = 'Splendor2019' then
 begin
-  frmConsultaDados := nil;
+ frmConsultaDados := nil;
   frmConsultaDados := TfrmConsultaDados.Create(self);
   frmConsultaDados.Show;
+end;
 end;
 
 procedure TfrmPrincipal.mniControledeDzimo1Click(Sender: TObject);

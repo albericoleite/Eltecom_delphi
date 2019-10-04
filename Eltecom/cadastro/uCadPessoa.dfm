@@ -2,6 +2,7 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 465
   ClientWidth = 964
+  ExplicitLeft = -50
   ExplicitWidth = 970
   ExplicitHeight = 494
   PixelsPerInch = 96
@@ -23,20 +24,19 @@ inherited frmCadPessoa: TfrmCadPessoa
   inherited pgcPrincipal: TPageControl
     Width = 964
     Height = 427
-    ActivePage = tabManutencao
     OnChange = pgcPrincipalChange
-    ExplicitWidth = 956
+    ExplicitWidth = 964
     ExplicitHeight = 427
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 948
+      ExplicitWidth = 956
       ExplicitHeight = 399
       inherited pnlListagem: TPanel
-        Width = 948
-        Height = 169
-        ExplicitWidth = 948
-        ExplicitHeight = 169
+        Width = 956
+        Height = 201
+        ExplicitWidth = 956
+        ExplicitHeight = 201
         object lblnome: TLabel [1]
           Left = 456
           Top = 19
@@ -66,15 +66,15 @@ inherited frmCadPessoa: TfrmCadPessoa
         object pnl1: TPanel
           Left = 824
           Top = 12
-          Width = 100
-          Height = 146
+          Width = 120
+          Height = 180
           BorderStyle = bsSingle
           TabOrder = 2
           object imgFotoP: TImage
             Left = 1
             Top = 1
-            Width = 94
-            Height = 140
+            Width = 114
+            Height = 174
             Align = alClient
             Picture.Data = {
               0A544A504547496D61676586190000FFD8FFE000104A46494600010200006400
@@ -286,13 +286,15 @@ inherited frmCadPessoa: TfrmCadPessoa
             OnDblClick = imgFotoDblClick
             ExplicitLeft = -15
             ExplicitTop = 9
+            ExplicitWidth = 94
+            ExplicitHeight = 140
           end
         end
       end
       inherited grdListagem: TDBGrid
-        Top = 169
-        Width = 948
-        Height = 230
+        Top = 201
+        Width = 956
+        Height = 198
         DataSource = dtsListagem
         OnCellClick = grdListagemCellClick
         Columns = <
@@ -336,7 +338,7 @@ inherited frmCadPessoa: TfrmCadPessoa
     inherited tabManutencao: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
-      ExplicitWidth = 948
+      ExplicitWidth = 956
       ExplicitHeight = 399
       object grpDatas: TGroupBox
         Left = 3
@@ -899,16 +901,19 @@ inherited frmCadPessoa: TfrmCadPessoa
       object pnlImagem: TPanel
         Left = 823
         Top = 3
-        Width = 122
-        Height = 172
+        Width = 120
+        Height = 180
         BorderStyle = bsSingle
         TabOrder = 5
         object imgFoto: TImage
           Left = 1
           Top = 1
-          Width = 116
-          Height = 166
+          Width = 114
+          Height = 174
+          Hint = 'Duplo clique para adicionar a imagem'
           Align = alClient
+          Center = True
+          ParentShowHint = False
           Picture.Data = {
             0A544A504547496D61676586190000FFD8FFE000104A46494600010200006400
             640000FFEC00114475636B79000100040000003C0000FFEE000E41646F626500
@@ -1116,17 +1121,17 @@ inherited frmCadPessoa: TfrmCadPessoa
             0000000000000000000000000000000000000000000000000000000000000000
             00000000000000000000000000000000000007FFD9}
           Proportional = True
+          ShowHint = True
+          Stretch = True
           OnDblClick = imgFotoDblClick
-          ExplicitLeft = 8
-          ExplicitTop = 0
-          ExplicitWidth = 105
-          ExplicitHeight = 105
+          ExplicitWidth = 120
+          ExplicitHeight = 166
         end
       end
       object pnlBasicas: TPanel
-        Left = 3
+        Left = 7
         Top = 10
-        Width = 810
+        Width = 806
         Height = 102
         TabOrder = 6
         object lblSexo: TLabel
@@ -1359,13 +1364,13 @@ inherited frmCadPessoa: TfrmCadPessoa
     Top = 427
     Width = 964
     ExplicitTop = 427
-    ExplicitWidth = 956
+    ExplicitWidth = 964
     inherited btnNavigator: TDBNavigator
       Hints.Strings = ()
     end
     inherited btnFechar: TBitBtn
       Left = 872
-      ExplicitLeft = 864
+      ExplicitLeft = 872
     end
   end
   inherited QryListagem: TFDQuery
@@ -1719,9 +1724,7 @@ inherited frmCadPessoa: TfrmCadPessoa
     Top = 136
   end
   object dlgOpenPicBuscarFoto: TOpenPictureDialog
-    Filter = 
-      'Arquivo de Imagem JPG (*.jpeg)|*.jpeg|Arquivo de Imagem JPG (*.j' +
-      'pg)|*.jpg'
+    Filter = 'Arquivo de Imagem JPG (*.jpg)|*.jpg'
     Title = 'Escolha a Imagem da Pessoa'
     Left = 280
     Top = 48

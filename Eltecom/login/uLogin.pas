@@ -5,14 +5,17 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, ShellAPI,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.Imaging.jpeg, acPNG;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.Imaging.jpeg, acPNG,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, JvExStdCtrls, JvCombobox, JvDBCombobox, Vcl.DBCtrls;
 
 type
   TfrmLogin = class(TForm)
     pnl1: TPanel;
     lbl1: TLabel;
     lbl2: TLabel;
-    edtUsuario: TEdit;
     edtSenha: TEdit;
     btnSair: TBitBtn;
     btnEntrar: TBitBtn;
@@ -21,6 +24,10 @@ type
     Image1: TImage;
     lbl5: TLabel;
     lnklblI9: TLinkLabel;
+    dsLogins: TDataSource;
+    fdqryLogins: TFDQuery;
+    strngfldLoginsusuario: TStringField;
+    dblkcbbLogins: TDBLookupComboBox;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
@@ -54,7 +61,7 @@ var oUsuario:TUsuario;
 begin
 try
   oUsuario:=TUsuario.Create(dtmPrincipal.ConexaoDB);
-  if oUsuario.Logar(edtUsuario.Text,edtSenha.Text) then begin
+  if oUsuario.Logar(dblkcbbLogins.Text,edtSenha.Text) then begin
   oUsuarioLogado.codigo:=oUsuario.codigo;
   oUsuarioLogado.nome:=oUsuario.usuario;
   oUsuarioLogado.senha:=oUsuario.senha;
@@ -62,7 +69,7 @@ try
     FecharFormulario
   end else begin
     MessageDlg('Usuário Inválido',mtInformation,[mbOK],0);
-    edtUsuario.SetFocus;
+    dblkcbbLogins.SetFocus;
   end;
 finally
     if Assigned(oUsuario) then
@@ -103,6 +110,7 @@ begin
   region:= CreateRoundRectRgn(0, 0, width, height, 60, 60);
   setwindowrgn(handle, region, true);
   lnklblI9.Caption:= '<a href="http://i9techsoft.com.br/">I9TechSoft</a>';
+  fdqryLogins.Open;
 end;
 
 procedure TfrmLogin.FormShow(Sender: TObject);

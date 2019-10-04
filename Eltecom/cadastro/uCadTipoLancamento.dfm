@@ -1,11 +1,11 @@
 inherited frmCadTipoLancamento: TfrmCadTipoLancamento
   Caption = 'Cadastro de tipo de Receitas / Despesas'
-  ClientWidth = 736
-  ExplicitWidth = 742
+  ClientWidth = 748
+  ExplicitWidth = 754
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlRodape: TPanel
-    Width = 736
+    Width = 748
     ExplicitWidth = 736
     inherited dbnvgrNavigator: TDBNavigator
       Left = 415
@@ -13,12 +13,12 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
       ExplicitLeft = 415
     end
     inherited btnFechar: TBitBtn
-      Left = 644
+      Left = 656
       ExplicitLeft = 644
     end
   end
   inherited pgcPrincipal: TPageControl
-    Width = 736
+    Width = 748
     ExplicitWidth = 736
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
@@ -26,11 +26,11 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
       ExplicitWidth = 728
       ExplicitHeight = 303
       inherited pnlListagem: TPanel
-        Width = 728
+        Width = 740
         ExplicitWidth = 728
       end
       inherited dbgrdListagem: TDBGrid
-        Width = 728
+        Width = 740
         DataSource = dsListagem
       end
     end
@@ -125,6 +125,7 @@ inherited frmCadTipoLancamento: TfrmCadTipoLancamento
     Top = 120
   end
   object fdqryPai: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       

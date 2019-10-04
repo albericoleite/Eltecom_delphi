@@ -11,6 +11,7 @@ object dtmPrincipal: TdtmPrincipal
       'Server=127.0.0.1'
       'Database=igreja'
       'DriverID=MySQL')
+    Connected = True
     LoginPrompt = False
     Left = 56
     Top = 16

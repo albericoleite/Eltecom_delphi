@@ -10,7 +10,8 @@ uses
   FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.Comp.DataSet, frxClass, frxDBSet, frxChBox,
   frxExportText, frxExportPDF, frxExportCSV, System.IniFiles,Vcl.Dialogs, TlHelp32,Windows , WinSvc,
-  VCLTee.TeeData, frxChart, frxExportHTML, frxExportBaseDialog;
+  VCLTee.TeeData, frxChart, frxExportHTML, frxExportBaseDialog, frxRich,
+  frxExportRTF;
 
 type
   TdtmRelatorio = class(TDataModule)
@@ -246,6 +247,9 @@ type
     fdqryBucarIgrejaemail_secretaria: TStringField;
     fdqryBucarIgrejacep: TStringField;
     frxrprtDizimistaObreiros: TfrxReport;
+    frxrprtRecNotif: TfrxReport;
+    frxrchbjct1: TfrxRichObject;
+    frxrtfxprt1: TfrxRTFExport;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
