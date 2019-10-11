@@ -269,7 +269,7 @@ inherited frmCadLancamento: TfrmCadLancamento
           TabOrder = 9
           OnClick = dblkcbbMesClick
         end
-        object crncydtTotal: TCurrencyEdit
+        object crncydtDespesaFixa: TCurrencyEdit
           Left = 472
           Top = 58
           Width = 100

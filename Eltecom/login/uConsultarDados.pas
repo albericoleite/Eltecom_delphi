@@ -136,10 +136,10 @@ begin
    while not dsTabelas.DataSet.Eof do begin
    ShowMessage('APAGAR REGISTROS DA TABELA : '+fdqryTabelas.FieldByName
     ('Tables_in_igreja').AsString);
-dtmPrincipal.ConexaoDB.ExecSQL('TRUNCATE TABLE '+dsTabelas.DataSet.FieldByName('Tables_in_igreja').AsString);
+dtmPrincipal.ConexaoDB.ExecSQL('TRUNCATE TABLE '+dsTabelas.DataSet.FieldByName('Tables_in_igreja').AsString,true);
 
 dtmPrincipal.ConexaoDB.ExecSQL('ALTER TABLE '+fdqryTabelas.FieldByName
-    ('Tables_in_igreja').AsString+' AUTO_INCREMENT = 1;');
+    ('Tables_in_igreja').AsString+' AUTO_INCREMENT = 1;',true);
 dsTabelas.DataSet.Next;
 end;
 end;

@@ -9,7 +9,7 @@ uses
   Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, RxCurrEdit, RxToolEdit, Vcl.Buttons,SimpleDAO,SimpleInterface,
   Vcl.Mask, Vcl.ComCtrls,SimpleQueryFiredac,System.Generics.Collections  ,Entidade.TipoLancamento
   ,Entidade.CentroCusto,Entidade.Fornecedor,uEnum,Entidade.TipoCulto,cFuncao
-  ,Entidade.FormaPagamento, Entidade.Tesouraria,Entidade.TipoSaida;
+  ,Entidade.FormaPagamento, Entidade.Tesouraria,Entidade.TipoSaida, RxCtrls;
 
 type
   TfrmCadLancUnificado = class(TForm)
@@ -30,7 +30,6 @@ type
     dtdtFim: TDateEdit;
     btnBuscar: TBitBtn;
     mmoSemana: TMemo;
-    btnImprimir: TBitBtn;
     crncydtEntrada: TCurrencyEdit;
     crncydtSaida: TCurrencyEdit;
     crncydtSubtotal: TCurrencyEdit;
@@ -76,8 +75,12 @@ type
     dsListagem: TDataSource;
     dsMes: TDataSource;
     dsTipoSaida: TDataSource;
-    crncydtTotal: TCurrencyEdit;
+    crncydtDespesaFixa: TCurrencyEdit;
     Label6: TLabel;
+    pnl2: TPanel;
+    btnImprimir: TBitBtn;
+    chkResumido: TRxCheckBox;
+    chkCompleto: TRxCheckBox;
     procedure cbbTipoChange(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -90,6 +93,7 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnImprimirClick(Sender: TObject);
   private
 
     { Private declarations }
@@ -121,7 +125,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDTMRelatorio, uPrincipal;
+uses uDTMRelatorio, uPrincipal, uDTMTesouraria, uDTMRelatorioFinanceiro;
 
 procedure TfrmCadLancUnificado.btnAlterarClick(Sender: TObject);
 begin
@@ -248,6 +252,50 @@ begin
   end;
   end;
    lbledtDescricao.Enabled:=false;
+
+end;
+
+procedure TfrmCadLancUnificado.btnImprimirClick(Sender: TObject);
+  begin
+  if mmoSemana.Text = '' then
+  begin
+    Application.MessageBox('Período não selecionado, escolha o período e clique em buscar ', 'Atenção');
+    Abort;
+  end;
+
+  if  crncydtEntrada.text <> '0'  then
+  begin
+    // Atualizar consulta da Congregação
+
+    if chkCompleto.Checked = true then        begin
+    dtmTesouraria.fdqryBuscaCongregacao.Refresh;
+    dtmTesouraria.fdqryTes_valores.Open;
+    dtmTesouraria.frxrprtFechamento.ReportOptions.Name := PChar('Prestação de Contas ' + DateToStr(dtdtIni.Date) + ' a ' + DateToStr(dtdtFim.Date));
+    dtmTesouraria.frxrprtFechamento.Variables['Semana'] := QuotedStr(mmoSemana.Text);
+    dtmTesouraria.frxrprtFechamento.Variables['EntradaTotal'] := QuotedStr(crncydtEntrada.Text);
+    dtmTesouraria.frxrprtFechamento.Variables['SaidaTotal'] := QuotedStr(crncydtSaida.Text);
+    dtmTesouraria.frxrprtFechamento.ShowReport();
+    end;
+
+    if chkResumido.Checked = true then       begin
+    if dtmRelatorioFinanceiro.fdqryLancamentosTotal.Active then
+  dtmRelatorioFinanceiro.fdqryLancamentosTotal.Close;
+
+    dtmRelatorioFinanceiro.fdqryLancamentosTotal.ParamByName('data').AsDateTime := dtdtIni.Date;
+   dtmRelatorioFinanceiro.fdqryLancamentosTotal.Open;
+          dtmRelatorioFinanceiro.frxrprtMovFinMensal.ReportOptions.Name :=
+    'Visualização de Impressão: Movimentação Financeira Mensal';
+    dtmRelatorioFinanceiro.frxrprtMovFinMensal.PrepareReport(True);
+    dtmRelatorioFinanceiro.frxrprtMovFinMensal.ShowReport();
+    end;
+
+
+
+  end
+  else
+  begin
+    Application.MessageBox(PChar('Não existe documento localizado nos dias ' + DateToStr(dtdtIni.Date) + ' a ' + DateToStr(dtdtFim.Date)), 'Atenção');
+  end;
 
 end;
 
@@ -383,6 +431,13 @@ begin
    lancamentos := DAOTesouraria.SQL.WHERE(sql).&End.Find;}
    dtmRelatorio := TdtmRelatorio.Create(self);
    dtmRelatorio.fdqryMeses.open;
+
+   crncydtDespesaFixa.Text := dtmPrincipal.ConexaoDB.ExecSQLScalar('select coalesce(sum(valor),0) '+
+   'from despesa_fixa a '+
+   ' where a.id_igreja =:id_igreja and a.id_congregacao =:id_congregacao',
+  [dtmPrincipal.igrejaAtiva,dtmPrincipal.congAtiva],[ftInteger,ftInteger]);
+
+
   FiltrosCombobox(cbbTipo.Text);
   btnBuscarClick(nil);
   Listar;
@@ -483,7 +538,7 @@ function TfrmCadLancUnificado.Listar: string;
 var
   tipos : TList<TTB_TESOURARIA>;
   tipo : TTB_TESOURARIA;
-  sql:string;
+  a, b, c: Double;
 begin
   tipos := DAOTesouraria.SQL.OrderBy('COD_ENTRADA').&End.Find;
 
@@ -507,8 +562,23 @@ dbgrdListagem.Columns.Add;
 dbgrdListagem.Columns[5].FieldName := 'TIPO';
 dbgrdListagem.Columns[5].Title.Caption := 'Tipo';
 
-sql:= 'select sum(valor) as VALOR from despesa_fixa where id_igreja = '+dtmPrincipal.igrejaAtiva.ToString()+' and id_congregacao='+dtmPrincipal.congAtiva.ToString()+'';
-crncydtTotal.Text := TFuncao.SqlValor(sql,dtmPrincipal.ConexaoDB);
+
+
+ crncydtEntrada.Text := dtmPrincipal.ConexaoDB.ExecSQLScalar('SELECT coalesce(sum(t.valor),0) '+
+  ' FROM tb_tesouraria t join tb_parametro_sistema a on a.cod_congregacao = t.cod_congregacao '+
+  ' where t.tipo= ''ENTRADA'' and t.dta_movimento between :dtini and  :dtfim'
+  ,[dtdtIni.Date,dtdtFim.Date],[ftDateTime,ftDateTime]);
+  crncydtSaida.Text := dtmPrincipal.ConexaoDB.ExecSQLScalar('SELECT coalesce(sum(t.valor),0) '+
+  ' FROM tb_tesouraria t join tb_parametro_sistema a on a.cod_congregacao = t.cod_congregacao '+
+  ' where t.tipo= ''SAIDA'' and t.dta_movimento between   :dtini  and :dtfim'
+  ,[dtdtIni.Date,dtdtFim.Date],[ftDateTime,ftDateTime]);
+
+   a := StrToFloat(crncydtEntrada.Text);
+  b := StrToFloat(crncydtSaida.Text);
+  c := a - b;
+
+  crncydtSubtotal.Text := floattostr(c);
+
 end;
 
 end.

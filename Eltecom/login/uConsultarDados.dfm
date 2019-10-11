@@ -177,8 +177,6 @@ object frmConsultaDados: TfrmConsultaDados
         Caption = 'Limpar BD'
         TabOrder = 6
         OnClick = btnLimpaBDClick
-        ExplicitLeft = 6
-        ExplicitTop = 141
       end
     end
   end

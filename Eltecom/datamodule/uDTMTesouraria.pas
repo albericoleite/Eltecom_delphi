@@ -111,6 +111,7 @@ type
     fltfldTes_Saida_Totaltotal: TFloatField;
     frxdbTes_Saida_Total: TfrxDBDataset;
     frxdbTes_Entrada_Total: TfrxDBDataset;
+    frxReport1: TfrxReport;
   private
     { Private declarations }
   public

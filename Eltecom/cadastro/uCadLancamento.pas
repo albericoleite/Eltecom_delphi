@@ -59,7 +59,7 @@ type
     QryListagemcod_tipo_saida: TIntegerField;
     QryListagemTipoSaida: TStringField;
     Label6: TLabel;
-    crncydtTotal: TCurrencyEdit;
+    crncydtDespesaFixa: TCurrencyEdit;
     pnl2: TPanel;
     btnImprimir: TBitBtn;
     chkResumido: TRxCheckBox;
@@ -191,6 +191,8 @@ begin
     dtmTesouraria.fdqryTes_valores.Open;
     dtmTesouraria.frxrprtFechamento.ReportOptions.Name := PChar('Prestação de Contas ' + DateToStr(dtdtIni.Date) + ' a ' + DateToStr(dtdtFim.Date));
     dtmTesouraria.frxrprtFechamento.Variables['Semana'] := QuotedStr(mmoSemana.Text);
+    dtmTesouraria.frxrprtFechamento.Variables['EntradaTotal'] := QuotedStr(crncydtEntrada.Text);
+    dtmTesouraria.frxrprtFechamento.Variables['SaidaTotal'] := QuotedStr(crncydtSaida.Text);
     dtmTesouraria.frxrprtFechamento.ShowReport();
     end;
 
@@ -417,12 +419,27 @@ begin
     Application.MessageBox('Falha na fdqryTes_Saida_Total', 'Atenção!');
   end;
 
-  a := StrToFloat(dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text);
-  b := StrToFloat(dtmTesouraria.fltfldTes_Saida_Totaltotal.Text);
+
+  //  crncydtEntrada.Text := dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text;
+  crncydtEntrada.Text := dtmPrincipal.ConexaoDB.ExecSQLScalar('SELECT coalesce(sum(t.valor),0) '+
+  ' FROM tb_tesouraria t join tb_parametro_sistema a on a.cod_congregacao = t.cod_congregacao '+
+  ' where t.tipo= ''ENTRADA'' and t.dta_movimento between :dtini and  :dtfim'
+  ,[dtdtIni.Date,dtdtFim.Date],[ftDateTime,ftDateTime]);
+  crncydtSaida.Text := dtmPrincipal.ConexaoDB.ExecSQLScalar('SELECT coalesce(sum(t.valor),0) '+
+  ' FROM tb_tesouraria t join tb_parametro_sistema a on a.cod_congregacao = t.cod_congregacao '+
+  ' where t.tipo= ''SAIDA'' and t.dta_movimento between   :dtini  and :dtfim'
+  ,[dtdtIni.Date,dtdtFim.Date],[ftDateTime,ftDateTime]);
+
+   a := StrToFloat(crncydtEntrada.Text);
+  b := StrToFloat(crncydtSaida.Text);
   c := a - b;
-  crncydtEntrada.Text := dtmTesouraria.fltfldTes_Entrada_Totaltotal1.Text;
-  crncydtSaida.Text := dtmTesouraria.fltfldTes_Saida_Totaltotal.Text;
+
   crncydtSubtotal.Text := floattostr(c);
+
+  crncydtDespesaFixa.Text := dtmPrincipal.ConexaoDB.ExecSQLScalar('select coalesce(sum(valor),0) '+
+   'from despesa_fixa a '+
+   ' where a.id_igreja =:id_igreja and a.id_congregacao =:id_congregacao',
+  [dtmPrincipal.igrejaAtiva,dtmPrincipal.congAtiva],[ftInteger,ftInteger]);
 
   dtmRelatorio.fdqryMeses.Open;
 
