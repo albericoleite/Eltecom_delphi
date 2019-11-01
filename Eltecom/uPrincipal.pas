@@ -222,7 +222,7 @@ uses uCadSetores, uCadPessoa, untCongSistema, uCadIgreja, uEmissaoDocumentos,
   uCadDepartamento, uCadCongregacao, uCadDizimo, uCadFuncao, cArquivoIni,
   cAtualizacaoBancoDeDados,
   cCadCargo, uCadCargo, uCadDepartPessoa, uCadFuncaoPessoa, uLogin, uCadUsuario,
-  Vcl.Themes,
+  Vcl.Themes,    System.Threading,
   uAlterarSenha, uCadLancamento, uDepartamentos, uCadCargoPessoa,
   uCadAcaoAcesso, cAcaoAcesso, uCadAjudaDeCusto, uUsuarioVsAcoes,
   uConsultarDados, uTelaHeranca, uDTMGraficos, cCadProfessor, uCadProfessor,
@@ -575,6 +575,36 @@ var
 vl:string;
 begin
 dtmPrincipal := TdtmPrincipal.Create(self);
+
+vl := dtmPrincipal.ConexaoDB.ExecSQLScalar('select count(*) from fornecedor');
+if vl= '0' then begin
+MessageDlg('Favor cadastrar Fornecedor',mtWarning,[mbOK],0);
+  TFuncao.CriarForm(TfrmCadFornecedor, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+  Abort;
+end;
+
+vl := dtmPrincipal.ConexaoDB.ExecSQLScalar('select count(*) from forma_pagamento');
+if vl= '0' then begin
+MessageDlg('Favor cadastrar Forma de Pagamento',mtWarning,[mbOK],0);
+  TFuncao.CriarForm(TfrmCadFormpgto, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+  Abort;
+end;
+
+vl := dtmPrincipal.ConexaoDB.ExecSQLScalar('select count(*) from tipo_lancamento');
+if vl= '0' then begin
+MessageDlg('Favor cadastrar Tipo de Lancamento',mtWarning,[mbOK],0);
+  TFuncao.CriarForm(TfrmCadTipoLancamento, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+  Abort;
+end;
+
+vl := dtmPrincipal.ConexaoDB.ExecSQLScalar('select count(*) from tipo_saida');
+if vl= '0' then begin
+MessageDlg('Favor cadastrar Tipo de Saida',mtWarning,[mbOK],0);
+  TFuncao.CriarForm(TfrmTipoSaida, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+  Abort;
+end;
+
+
   vl:=TFuncao.SqlValor('select count(1) as VALOR from centro_custo;',dtmPrincipal.ConexaoDB);
 if vl = '0' then   begin
   MessageDlg('Não existe Centro de Custo cadastrado',mtWarning,[mbOK],0);
@@ -752,7 +782,7 @@ end;
 
 procedure TfrmPrincipal.CriarAcoes;
 begin
-  // INSERINDO INFORMAÇÕES DOS FORMULARIOS PARA CONTROLE DE ACESSO
+      // INSERINDO INFORMAÇÕES DOS FORMULARIOS PARA CONTROLE DE ACESSO
   TAcaoAcesso.CriarAcoes(TfrmCadDizimos, dtmPrincipal.ConexaoDB);
   TAcaoAcesso.CriarAcoes(TfrmCadAcaoAcesso, dtmPrincipal.ConexaoDB);
   TAcaoAcesso.CriarAcoes(TfrmCadCargoPessoa, dtmPrincipal.ConexaoDB);
@@ -793,6 +823,7 @@ begin
   TAcaoAcesso.CriarAcoes(TfrmCadTipoLancamento, dtmPrincipal.ConexaoDB);
   TAcaoAcesso.CriarAcoes(TfrmCadDespesaFixa, dtmPrincipal.ConexaoDB);
   TAcaoAcesso.CriarAcoes(TfrmEmitirDoc, dtmPrincipal.ConexaoDB);
+
 end;
 
 procedure TfrmPrincipal.BackupeRestore1Click(Sender: TObject);

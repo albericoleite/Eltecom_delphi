@@ -20,7 +20,6 @@ inherited frmCadDespesaFixa: TfrmCadDespesaFixa
   inherited pgcPrincipal: TPageControl
     Width = 735
     ExplicitWidth = 735
-    ExplicitHeight = 331
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24

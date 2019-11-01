@@ -149,7 +149,8 @@ var
 ' VALUES('+lbledtCodigo.Text+', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '+QuotedStr(oUsuarioLogado.nome)+', '+QuotedStr(descricao)+', '+valor.ToString()+','+
 ' '+QuotedStr('SAIDA')+', '+QuotedStr('ABERTO')+', '+dtmPrincipal.congAtiva.ToString()+', 1, 1, 1, '+id_tipo_lancamento.ToString()+', 1,'+id_fornecedor.ToString()+' )';
    try
-      TFuncao.ExecuteSQL(sql,dtmPrincipal.ConexaoDB);
+     // TFuncao.ExecuteSQL(sql,dtmPrincipal.ConexaoDB);
+      dtmPrincipal.ConexaoDB.ExecSQL(sql,true)
    finally
       MessageDlg('Faturado com sucesso!',MtInformation,[mbok],0);
    end;

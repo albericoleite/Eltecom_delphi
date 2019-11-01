@@ -10,7 +10,7 @@ uses
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,  System.JSON,  REST.Json,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids,     cCadPessoa,
   Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Buttons,uDWJSONObject, uDWConsts,
-  FireDAC.Stan.StorageJSON;
+  FireDAC.Stan.StorageJSON,StrUtils;
 
 type
   TfrmConsultaDados = class(TForm)
@@ -37,6 +37,7 @@ type
     btnCopiar: TBitBtn;
     btn1: TBitBtn;
     btnLimpaBD: TBitBtn;
+    btnExecutar: TBitBtn;
     procedure dbgrdTabelasDblClick(Sender: TObject);
     procedure btnConsultarClick(Sender: TObject);
     procedure btnAlterarSeqClick(Sender: TObject);
@@ -47,6 +48,7 @@ type
     procedure mmoQueryKeyPress(Sender: TObject; var Key: Char);
     procedure btn1Click(Sender: TObject);
     procedure btnLimpaBDClick(Sender: TObject);
+    procedure btnExecutarClick(Sender: TObject);
   private
     { Private declarations }
     oPessoa : TPessoa;
@@ -94,10 +96,15 @@ end;
 
 procedure TfrmConsultaDados.btnConsultarClick(Sender: TObject);
 begin
- fdqryConsulta.SQL.Clear;
+  if ContainsText(mmoQuery.Text, 'select') then
+   begin
+  fdqryConsulta.SQL.Clear;
   fdqryConsulta.Close;
   fdqryConsulta.SQL.Add(mmoQuery.Text);
   fdqryConsulta.Open;
+    end else
+   ShowMessage('Não é uma instrução SELECT');
+
 end;
 
 procedure TfrmConsultaDados.btnDeletarClick(Sender: TObject);
@@ -111,6 +118,15 @@ begin
   dtmPrincipal.ConexaoDB.ExecSQL('DELETE FROM '+fdqryTabelas.FieldByName
     ('Tables_in_igreja').AsString);
 
+end;
+
+procedure TfrmConsultaDados.btnExecutarClick(Sender: TObject);
+begin
+if not ContainsText(mmoQuery.Text, 'select') then
+   begin
+   dtmPrincipal.ConexaoDB.ExecSQL(mmoQuery.Text,true);
+   end else
+   ShowMessage('Não é uma instrução DDL');
 end;
 
 procedure TfrmConsultaDados.btnGerarJsonClick(Sender: TObject);

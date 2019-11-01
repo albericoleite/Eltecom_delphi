@@ -56,6 +56,7 @@ type
     procedure btnEnviarEmailClick(Sender: TObject);
   private
     procedure ImprimirCarta(Sender: TObject);
+    procedure ImprimirTudo;
     { Private declarations }
   public
     { Public declarations }
@@ -170,6 +171,26 @@ dtmRelatorio.frxrprtBatismoAguas.PrepareReport(True);
         Application.MessageBox('Não esta cadastrado como Congregado!', 'Atenção!');
       end;
     end;
+
+    if chkTodas.Checked=True then
+        begin
+        if MessageDlg('Deseja imprimir todos os registros? Qtd:'+dsBuscaPessoaRelatorio.DataSet.RecordCount.ToString(),
+    mtConfirmation, [mbYes, mbNo], 0) = mrNO then
+  begin
+    Abort;
+  end;
+          ImprimirTudo;
+        end;
+end;
+
+procedure   TfrmEmitirDoc.ImprimirTudo();
+begin
+   while not dsBuscaPessoaRelatorio.DataSet.Eof do begin
+              dtmRelatorio.frxrprtFichaMembro.ReportOptions.Name := 'Visualização de Impressão: '+chkFxMembro.Caption;
+dtmRelatorio.frxrprtFichaMembro.PrepareReport(True);
+        dtmRelatorio.frxrprtFichaMembro.ShowReport();
+        dsBuscaPessoaRelatorio.DataSet.Next;
+end;
 end;
 
 procedure TfrmEmitirDoc.ImprimirCarta(Sender: TObject);

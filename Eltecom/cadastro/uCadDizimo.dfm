@@ -6,7 +6,6 @@ inherited frmCadDizimos: TfrmCadDizimos
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 841
-    ActivePage = tabManutencao
     ExplicitWidth = 841
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
@@ -835,6 +834,7 @@ inherited frmCadDizimos: TfrmCadDizimos
     end
   end
   object dsMes: TDataSource
+    DataSet = dtmPrincipal.fdqryMeses
     Left = 234
     Top = 72
   end

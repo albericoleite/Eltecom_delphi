@@ -133,29 +133,31 @@ object frmConsultaDados: TfrmConsultaDados
         Width = 127
         Height = 25
         Align = alTop
-        Caption = 'Consultar / Execu'#231#227'o'
+        Caption = 'Consultar'
         TabOrder = 2
         OnClick = btnConsultarClick
       end
       object btnGerarJson: TBitBtn
         Left = 1
-        Top = 76
+        Top = 101
         Width = 127
         Height = 25
         Align = alTop
         Caption = 'Gerar Json'
         TabOrder = 3
         OnClick = btnGerarJsonClick
+        ExplicitTop = 76
       end
       object btnCopiar: TBitBtn
         Left = 1
-        Top = 101
+        Top = 126
         Width = 127
         Height = 25
         Align = alTop
         Caption = 'Copiar'
         Enabled = False
         TabOrder = 4
+        ExplicitTop = 101
       end
       object btn1: TBitBtn
         Left = 32
@@ -170,13 +172,25 @@ object frmConsultaDados: TfrmConsultaDados
       end
       object btnLimpaBD: TBitBtn
         Left = 1
-        Top = 126
+        Top = 151
         Width = 127
         Height = 25
         Align = alTop
         Caption = 'Limpar BD'
         TabOrder = 6
         OnClick = btnLimpaBDClick
+        ExplicitTop = 126
+      end
+      object btnExecutar: TBitBtn
+        Left = 1
+        Top = 76
+        Width = 127
+        Height = 25
+        Align = alTop
+        Caption = 'Executar'
+        TabOrder = 7
+        OnClick = btnExecutarClick
+        ExplicitTop = 95
       end
     end
   end

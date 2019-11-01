@@ -244,7 +244,7 @@ begin
    dtdtFim.Date:=Now;
    btnBuscarClick(sender);
    //dtmRelatorio := TdtmRelatorio(dtmPrincipal.ConexaoDB);
-   //dtmRelatorio.fdqryMeses.Open;
+   dtmRelatorio.fdqryMeses.Open;
 end;
 
 procedure TfrmCadDizimos.FormShow(Sender: TObject);

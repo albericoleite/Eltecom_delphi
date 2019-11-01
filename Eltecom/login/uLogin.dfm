@@ -4858,9 +4858,9 @@ object frmLogin: TfrmLogin
       ParentFont = False
     end
     object edtSenha: TEdit
-      Left = 97
+      Left = 81
       Top = 112
-      Width = 121
+      Width = 137
       Height = 26
       Alignment = taCenter
       Font.Charset = ANSI_CHARSET

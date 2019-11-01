@@ -4,7 +4,7 @@ object frmEmitirDoc: TfrmEmitirDoc
   BorderStyle = bsSingle
   Caption = 'Cartas e Relat'#243'rios'
   ClientHeight = 277
-  ClientWidth = 568
+  ClientWidth = 573
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -224,12 +224,11 @@ object frmEmitirDoc: TfrmEmitirDoc
       Width = 110
       Height = 17
       Caption = 'Todas as Fichas'
-      Enabled = False
       TabOrder = 4
     end
   end
   object btnImprimir: TBitBtn
-    Left = 313
+    Left = 318
     Top = 244
     Width = 91
     Height = 25
@@ -238,7 +237,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     OnClick = btnImprimirClick
   end
   object btnEnviarEmail: TBitBtn
-    Left = 216
+    Left = 221
     Top = 244
     Width = 91
     Height = 25
@@ -283,7 +282,7 @@ object frmEmitirDoc: TfrmEmitirDoc
   end
   object dsBuscaPessoaRelatorio: TDataSource
     DataSet = dtmRelatorio.fdqryBuscaPessoaRelatorio
-    Left = 120
-    Top = 216
+    Left = 152
+    Top = 152
   end
 end
