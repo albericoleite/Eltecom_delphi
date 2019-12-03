@@ -93,7 +93,11 @@ uses
   uCadFormpgto in 'cadastro\uCadFormpgto.pas' {frmCadFormpgto},
   Entidade.TipoLancamento in 'entidade\Entidade.TipoLancamento.pas',
   uCadTipoLancamento in 'cadastro\uCadTipoLancamento.pas' {frmCadTipoLancamento},
-  Entidade.Tesouraria in 'entidade\Entidade.Tesouraria.pas';
+  Entidade.Tesouraria in 'entidade\Entidade.Tesouraria.pas',
+  Entidade.TipoSaida in 'entidade\Entidade.TipoSaida.pas',
+  Entidade.DespesaFixa in 'entidade\Entidade.DespesaFixa.pas',
+  uCadDespesaFixa in 'cadastro\uCadDespesaFixa.pas' {frmCadDespesaFixa},
+  uTUsuarioAcoesInThread in 'Thread\uTUsuarioAcoesInThread.pas';
 
 {$R *.res}
 

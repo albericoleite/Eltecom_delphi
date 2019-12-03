@@ -14742,6 +14742,7 @@ object dtmRelatorio: TdtmRelatorio
         object Memo2: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
+          Left = -0.000000000000024203
           Top = 94.488250000000000000
           Width = 718.110700000000000000
           Height = 41.574830000000000000
@@ -14770,6 +14771,7 @@ object dtmRelatorio: TdtmRelatorio
         object Memo3: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
+          Left = -0.000000000000024203
           Top = 136.063080000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -14787,6 +14789,7 @@ object dtmRelatorio: TdtmRelatorio
         object Memo4: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
+          Left = -0.000000000000024203
           Top = 151.181200000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -14937,6 +14940,7 @@ object dtmRelatorio: TdtmRelatorio
         object Memo49: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
+          Left = -0.000000000000024203
           Top = 167.858380000000000000
           Width = 718.110700000000000000
           Height = 34.015770000000000000
@@ -15251,6 +15255,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haRight
+          Highlight.Font.Charset = DEFAULT_CHARSET
+          Highlight.Font.Color = clWhite
+          Highlight.Font.Height = -13
+          Highlight.Font.Name = 'Arial'
+          Highlight.Font.Style = []
+          Highlight.Condition = '<frxdbDizimista."valor"> = 0'
+          Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."valor"]')
           ParentFont = False
@@ -15267,6 +15279,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haRight
+          Highlight.Font.Charset = DEFAULT_CHARSET
+          Highlight.Font.Color = clWhite
+          Highlight.Font.Height = -13
+          Highlight.Font.Name = 'Arial'
+          Highlight.Font.Style = []
+          Highlight.Condition = '<frxdbDizimista."valor"> = 0'
+          Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."cod_talao"]')
           ParentFont = False
@@ -15276,7 +15296,6 @@ object dtmRelatorio: TdtmRelatorio
           Left = 487.559370000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          DataField = 'cod_cheque'
           DataSet = frxdbDizimista
           DataSetName = 'frxdbDizimista'
           Font.Charset = DEFAULT_CHARSET
@@ -15356,6 +15375,14 @@ object dtmRelatorio: TdtmRelatorio
           Font.Name = 'Times New Roman'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Highlight.Font.Charset = DEFAULT_CHARSET
+          Highlight.Font.Color = clWhite
+          Highlight.Font.Height = -13
+          Highlight.Font.Name = 'Arial'
+          Highlight.Font.Style = []
+          Highlight.Condition = '<frxdbDizimista."data"> = 0'
+          Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbDizimista."data"]')
           ParentFont = False
@@ -23786,7 +23813,6 @@ object dtmRelatorio: TdtmRelatorio
     Top = 13
   end
   object fdqryMeses: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select 1 as valor,'#39'Janeiro'#39' mes from dual'
@@ -23961,8 +23987,8 @@ object dtmRelatorio: TdtmRelatorio
         'FROM tb_dizimista t inner join tb_parametro_sistema a on a.cod_c' +
         'ongregacao = t.cod_congregacao '
       'where t.`data` between :dtini and :dtfim')
-    Left = 624
-    Top = 256
+    Left = 544
+    Top = 280
     ParamData = <
       item
         Name = 'DTINI'
@@ -28217,5 +28243,118 @@ object dtmRelatorio: TdtmRelatorio
     AutoSize = False
     Left = 880
     Top = 352
+  end
+  object fdqryDizimistaGeral: TFDQuery
+    Active = True
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'SELECT null as cod_dizimo, '
+      'null as cod_talao, '
+      'null as cod_cheque, '
+      't.nome_pessoa as nome, '
+      '0 as valor,'
+      'null as `data`, '
+      
+        'case when b.cargo is null then '#39'MEMBRO'#39' else b.`CARGO` end as ca' +
+        'rgo, '
+      't.cod_congregacao,'
+      'c.nivel as nivel,'
+      'coalesce(t.nro_rol,0) as rol,'
+      'null data_mes'
+      
+        'FROM tb_pessoa  t inner join tb_parametro_sistema a on a.cod_con' +
+        'gregacao = t.cod_congregacao '
+      'left join tb_obreiro_cargo b on b.`COD_MEMBRO` = t.cod_pessoa'
+      'left join tb_cargo c on c.cod_cargo = b.`COD_CARGO`')
+    Left = 544
+    Top = 344
+    object fdqryDizimistaGeralcod_dizimo: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'cod_dizimo'
+      Origin = 'cod_dizimo'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqryDizimistaGeralcod_talao: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'cod_talao'
+      Origin = 'cod_talao'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqryDizimistaGeralcod_cheque: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'cod_cheque'
+      Origin = 'cod_cheque'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqryDizimistaGeralnome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome'
+      Origin = 'nome_pessoa'
+      Size = 50
+    end
+    object fdqryDizimistaGeralvalor: TLargeintField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor'
+      Origin = 'valor'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqryDizimistaGeraldata: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'data'
+      Origin = '`data`'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqryDizimistaGeralcargo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cargo'
+      Origin = 'cargo'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object fdqryDizimistaGeralcod_congregacao: TIntegerField
+      FieldName = 'cod_congregacao'
+      Origin = 'cod_congregacao'
+      Required = True
+    end
+    object fdqryDizimistaGeralnivel: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'nivel'
+      Origin = 'nivel'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqryDizimistaGeralrol: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'rol'
+      Origin = 'rol'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 15
+    end
+    object fdqryDizimistaGeraldata_mes: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'data_mes'
+      Origin = 'data_mes'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object fdqryDizimoTotalLimpo: TFDQuery
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'SELECT  0 as total'
+      'FROM dual')
+    Left = 632
+    Top = 360
+    object fdqryDizimoTotalLimpototal: TLargeintField
+      FieldName = 'total'
+      ReadOnly = True
+    end
   end
 end

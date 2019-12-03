@@ -23,7 +23,6 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
     Height = 178
     Align = alLeft
     TabOrder = 0
-    ExplicitHeight = 196
     object lbl5: TLabel
       Left = 95
       Top = 6
@@ -119,8 +118,6 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
     Height = 178
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 157
-    ExplicitHeight = 196
     object btnSemana: TBitBtn
       Left = 264
       Top = 53
@@ -158,6 +155,15 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
       Caption = 'Dizimistas'
       TabOrder = 3
       OnClick = btnImprimirClick
+    end
+    object btnListaLimpaGeral: TBitBtn
+      Left = 14
+      Top = 135
+      Width = 131
+      Height = 25
+      Caption = 'Lista de Dizimistas'
+      TabOrder = 4
+      OnClick = btnListaLimpaGeralClick
     end
   end
   object dsMes: TDataSource

@@ -3,7 +3,6 @@ object dtmGrafico: TdtmGrafico
   Height = 337
   Width = 650
   object fdqryPessoas: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select count(*) as qtd,membro_congregado as tipo from tb_pessoa '
@@ -21,7 +20,6 @@ object dtmGrafico: TdtmGrafico
       end>
   end
   object fdqryDizimosAnual: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select x.ano,x.mes,sum(x.valor)as valor,'
@@ -110,7 +108,6 @@ object dtmGrafico: TdtmGrafico
     end
   end
   object fdqryClassesAlunos: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select count(a.cod_aluno) as qtd,a.classe from tb_classe_aluno a'
@@ -141,7 +138,6 @@ object dtmGrafico: TdtmGrafico
     end
   end
   object fdqryPessoasCargos: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
@@ -169,7 +165,6 @@ object dtmGrafico: TdtmGrafico
       end>
   end
   object fdqryEntrasAnual: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select x.ano,x.mes,sum(x.valor)as valor,'
@@ -254,7 +249,6 @@ object dtmGrafico: TdtmGrafico
     end
   end
   object fdqrySaidasAnual: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select x.ano,x.mes,sum(x.valor)as valor,'
@@ -339,7 +333,6 @@ object dtmGrafico: TdtmGrafico
     end
   end
   object fdqryAniverariantesMes: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       

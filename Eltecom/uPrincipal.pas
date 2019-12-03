@@ -12,7 +12,10 @@ uses
   Vcl.ToolWin, Vcl.ActnMan,
   Vcl.ActnCtrls, System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
   Vcl.ImgList, Vcl.ActnMenus, Vcl.Buttons,
-  Vcl.Imaging.jpeg,  Data.DB, sSkinManager, acPNG;
+  Vcl.Imaging.jpeg,  Data.DB, sSkinManager, acPNG, Vcl.DBCtrls,
+  FireDAC.Stan.Intf, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Imaging.pngimage;
 
 type
   TfrmPrincipal = class(TForm)
@@ -110,7 +113,6 @@ type
     brsrsSeries2: TBarSeries;
     dbcht7: TDBChart;
     brsrs3: TBarSeries;
-    lbl2: TLabel;
     dbgrd1: TDBGrid;
     mniImportarCadastros1: TMenuItem;
     mniRelatrios3: TMenuItem;
@@ -148,6 +150,22 @@ type
     mniDespesaFixa1: TMenuItem;
     Lanamentos1: TMenuItem;
     N4: TMenuItem;
+    dsMes: TDataSource;
+    pnlTopo: TPanel;
+    lbl2: TLabel;
+    dblkcbbMes: TDBLookupComboBox;
+    fdqryAniverariantesMes: TFDQuery;
+    fdtncfldAniverariantescod_pessoa: TFDAutoIncField;
+    strngfldAniverariantesnome_pessoa: TStringField;
+    strngfldAniverariantessexo: TStringField;
+    strngfldAniverariantesmembro_congregado: TStringField;
+    dtfldAniverariantesdta_nascimento: TDateField;
+    lrgntfldAniverariantesidade: TLargeintField;
+    strngfldAniverariantesfiltro: TStringField;
+    lrgntfldAniverariantesMesdia: TLargeintField;
+    dsAniver: TDataSource;
+    fdqryAniverariantesMesmes: TLargeintField;
+    cbbMeses: TComboBox;
     procedure Sair1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Setores1Click(Sender: TObject);
@@ -198,6 +216,10 @@ type
     procedure mniFormasdePagamento1Click(Sender: TObject);
     procedure mniLancamentos1Click(Sender: TObject);
     procedure mniDespesaFixa1Click(Sender: TObject);
+    procedure dblkcbbMesClick(Sender: TObject);
+    procedure fdqryAniverariantesMesFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure cbbMesesClick(Sender: TObject);
   private
     TeclaEnter: TMREnter;
     procedure AtualizaBandoDados(aForm: TfrmAtualizaDB);
@@ -213,6 +235,7 @@ type
 var
   frmPrincipal: TfrmPrincipal;
   oUsuarioLogado: TUsuarioLogado;
+  mesfiltro:string;
 
 implementation
 
@@ -235,6 +258,29 @@ begin
   frmEmitirDoc := TfrmEmitirDoc.Create(self);
   frmEmitirDoc.Show;
    //TFuncao.CriarForm(TfrmEmitirDoc, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.cbbMesesClick(Sender: TObject);
+begin
+case cbbMeses.ItemIndex of
+0: mesfiltro:= '01';
+1: mesfiltro:= '02';
+2: mesfiltro:= '03';
+3: mesfiltro:= '04';
+4: mesfiltro:= '05';
+5: mesfiltro:= '06';
+6: mesfiltro:= '07';
+7: mesfiltro:= '08';
+8: mesfiltro:= '09';
+9: mesfiltro:= '10';
+10: mesfiltro:= '11';
+11: mesfiltro:= '12';
+end;
+
+fdqryAniverariantesMes.close;
+fdqryAniverariantesMes.Filtered := False;
+fdqryAniverariantesMes.open;
+fdqryAniverariantesMes.Filtered :=True;
 end;
 
 procedure TfrmPrincipal.Clientes1Click(Sender: TObject);
@@ -379,6 +425,8 @@ begin
   // statMenu.Panels[3].Text :='Whatsapp:https://api.whatsapp.com/send?1=pt_BR&phone=5584981416012';
   // statMenu.Panels[3].Text := dtmConexao.strngfldCongregacaoAtivaSistemacongregacao.Text;
 
+  fdqryAniverariantesMes.Open;
+  dtmRelatorio.fdqryMeses.open;
   //GERAR BACKUP AUTOMÁTICO
   TFuncao.VerificarBackup();
 end;
@@ -741,8 +789,8 @@ try
   if DTMGrafico.fdqryClassesAlunos.Active then
     DTMGrafico.fdqryClassesAlunos.Close;
 
-      if DTMGrafico.fdqryAniverariantesMes.Active then
-    DTMGrafico.fdqryAniverariantesMes.Close;
+  //    if DTMGrafico.fdqryAniverariantesMes.Active then
+ //   DTMGrafico.fdqryAniverariantesMes.Close;
 
        if DTMGrafico.fdqrySaidasAnual.Active then
     DTMGrafico.fdqrySaidasAnual.Close;
@@ -760,7 +808,7 @@ try
   DTMGrafico.fdqryClassesAlunos.Open;
   DTMGrafico.fdqryDizimosAnual.Open;
   DTMGrafico.fdqryPessoasCargos.Open;
-   DTMGrafico.fdqryAniverariantesMes.Open;
+  // DTMGrafico.fdqryAniverariantesMes.Open;
     DTMGrafico.fdqryEntrasAnual.Open;
      DTMGrafico.fdqrySaidasAnual.Open;
      pnlKpiProfessores.Caption:=  TFuncao.SqlValor('select count(*) as VALOR from tb_professor;',dtmPrincipal.ConexaoDB);
@@ -826,6 +874,20 @@ begin
 
 end;
 
+procedure TfrmPrincipal.dblkcbbMesClick(Sender: TObject);
+begin
+//mesfiltro:=   dblkcbbMes.keyvalue;
+//fdqryAniverariantesMes.close;
+//fdqryAniverariantesMes.filtered := False;
+//fdqryAniverariantesMes.open;
+//fdqryAniverariantesMes.filtered :=True;
+
+ fdqryAniverariantesMes.Close;
+ fdqryAniverariantesMes.Filtered:=False;
+ fdqryAniverariantesMes.Open;
+ fdqryAniverariantesMes.Filtered:=True;
+end;
+
 procedure TfrmPrincipal.BackupeRestore1Click(Sender: TObject);
 begin
 dtmPrincipal := TdtmPrincipal.Create(self);
@@ -841,6 +903,24 @@ procedure TfrmPrincipal.EntradasSadas1Click(Sender: TObject);
 begin
 dtmPrincipal := TdtmPrincipal.Create(self);
 TFuncao.CriarForm(TfrmCadLancamento, oUsuarioLogado, dtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.fdqryAniverariantesMesFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+var i :Integer;
+Ano, Mes, Dia : word;
+begin
+//i := dblkcbbMes.KeyValue;
+
+
+         if fdqryAniverariantesMes.RecordCount = 0 then
+         Abort else
+         Accept:=False;
+         DecodeDate(fdqryAniverariantesMes.FieldByName('dta_nascimento').AsDateTime,ano,mes,dia);
+         if mes = StrToInt(dblkcbbMes.KeyValue) then
+         Accept:=True;
+
+
 end;
 
 end.

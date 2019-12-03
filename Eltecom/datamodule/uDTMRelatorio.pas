@@ -250,6 +250,20 @@ type
     frxrprtRecNotif: TfrxReport;
     frxrchbjct1: TfrxRichObject;
     frxrtfxprt1: TfrxRTFExport;
+    fdqryDizimistaGeral: TFDQuery;
+    fdqryDizimistaGeralcod_dizimo: TIntegerField;
+    fdqryDizimistaGeralcod_talao: TIntegerField;
+    fdqryDizimistaGeralcod_cheque: TIntegerField;
+    fdqryDizimistaGeralnome: TStringField;
+    fdqryDizimistaGeralvalor: TLargeintField;
+    fdqryDizimistaGeraldata: TIntegerField;
+    fdqryDizimistaGeralcargo: TStringField;
+    fdqryDizimistaGeralcod_congregacao: TIntegerField;
+    fdqryDizimistaGeralnivel: TIntegerField;
+    fdqryDizimistaGeralrol: TStringField;
+    fdqryDizimistaGeraldata_mes: TIntegerField;
+    fdqryDizimoTotalLimpo: TFDQuery;
+    fdqryDizimoTotalLimpototal: TLargeintField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

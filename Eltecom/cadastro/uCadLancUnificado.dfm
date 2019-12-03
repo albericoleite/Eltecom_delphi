@@ -25,10 +25,8 @@ object frmCadLancUnificado: TfrmCadLancUnificado
     ActivePage = tabListagem
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 783
     object tabListagem: TTabSheet
       Caption = 'Listagem'
-      ExplicitWidth = 775
       object pnlListagem: TPanel
         Left = 0
         Top = 0
@@ -38,7 +36,6 @@ object frmCadLancUnificado: TfrmCadLancUnificado
         Color = 15508822
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 775
         object lblIndice: TLabel
           Left = 10
           Top = 8
@@ -254,8 +251,8 @@ object frmCadLancUnificado: TfrmCadLancUnificado
           TabOrder = 8
         end
         object dblkcbbMes: TDBLookupComboBox
-          Left = 10
-          Top = 61
+          Left = 8
+          Top = 65
           Width = 184
           Height = 24
           DropDownRows = 12
@@ -453,7 +450,6 @@ object frmCadLancUnificado: TfrmCadLancUnificado
       Font.Style = []
       ImageIndex = 1
       ParentFont = False
-      ExplicitWidth = 775
       object pnl1: TPanel
         Left = 0
         Top = 3
@@ -679,7 +675,6 @@ object frmCadLancUnificado: TfrmCadLancUnificado
     Color = 15508822
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 783
     DesignSize = (
       973
       38)
@@ -874,7 +869,6 @@ object frmCadLancUnificado: TfrmCadLancUnificado
         B3B3B4B3B3BDBCBCC2C1C1FF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 6
       OnClick = btnFecharClick
-      ExplicitLeft = 691
     end
     object btnGravar: TBitBtn
       Tag = 99

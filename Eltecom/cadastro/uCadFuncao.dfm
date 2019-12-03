@@ -1,10 +1,8 @@
 inherited frmCadFuncao: TfrmCadFuncao
   Caption = 'Cadastro de Fun'#231#227'o'
-  ExplicitTop = -90
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
-    ActivePage = tabManutencao
     inherited tabListagem: TTabSheet
       inherited grdListagem: TDBGrid
         DataSource = dtsListagem
