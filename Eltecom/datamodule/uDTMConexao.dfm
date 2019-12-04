@@ -84,7 +84,8 @@ object dtmPrincipal: TdtmPrincipal
       'a.cod_congregacao, cod_situacao'
       
         'FROM igreja.tb_pessoa a join tb_parametro_sistema b on a.cod_con' +
-        'gregacao = b.cod_congregacao')
+        'gregacao = b.cod_congregacao'
+      'order by nome_pessoa')
     Left = 177
     Top = 96
     object fdtncfldPessoacod_pessoa: TFDAutoIncField

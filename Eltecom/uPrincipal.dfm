@@ -517,9 +517,6 @@ object frmPrincipal: TfrmPrincipal
             Height = 245
             Align = alClient
             TabOrder = 1
-            DesignSize = (
-              559
-              245)
             object dbgrd1: TDBGrid
               Left = 1
               Top = 42
@@ -575,10 +572,10 @@ object frmPrincipal: TfrmPrincipal
             end
             object pnlQtdMembros: TPanel
               Left = 1
-              Top = 159
-              Width = 153
-              Height = 76
-              Anchors = [akLeft, akRight, akBottom]
+              Top = 176
+              Width = 136
+              Height = 68
+              Align = alLeft
               Caption = '10'
               Color = 1536760
               Font.Charset = DEFAULT_CHARSET
@@ -589,11 +586,12 @@ object frmPrincipal: TfrmPrincipal
               ParentBackground = False
               ParentFont = False
               TabOrder = 1
+              ExplicitHeight = 59
               object Label5: TLabel
                 Left = 1
                 Top = 1
-                Width = 151
-                Height = 19
+                Width = 134
+                Height = 20
                 Align = alTop
                 Alignment = taCenter
                 Caption = 'Membros /Cong.'
@@ -603,15 +601,15 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 114
+                ExplicitTop = 0
               end
             end
             object pnlMediaIdade: TPanel
-              Left = 159
-              Top = 160
-              Width = 153
-              Height = 76
-              Anchors = [akLeft, akRight, akBottom]
+              Left = 137
+              Top = 176
+              Width = 120
+              Height = 68
+              Align = alLeft
               Caption = '10'
               Color = 1536760
               Font.Charset = DEFAULT_CHARSET
@@ -622,10 +620,12 @@ object frmPrincipal: TfrmPrincipal
               ParentBackground = False
               ParentFont = False
               TabOrder = 2
+              ExplicitLeft = 192
+              ExplicitHeight = 60
               object Label6: TLabel
                 Left = 1
                 Top = 1
-                Width = 151
+                Width = 118
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -636,7 +636,8 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 85
+                ExplicitLeft = -7
+                ExplicitTop = 0
               end
             end
             object pnlTopo: TPanel

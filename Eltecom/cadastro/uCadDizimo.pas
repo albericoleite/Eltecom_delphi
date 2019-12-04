@@ -9,7 +9,8 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,system.DateUtils,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,  cCadDizimo, uEnum,uDTMConexao,
-  RxToolEdit, RxCurrEdit;
+  RxToolEdit, RxCurrEdit, JvExStdCtrls, JvCombobox, JvDBSearchComboBox,
+  JvExControls, JvDBLookup;
 
 type
   TfrmCadDizimos = class(TfrmTelaheranca)
@@ -73,6 +74,65 @@ type
     fdqryizimitobreirodata_mes: TDateField;
     Label3: TLabel;
     crncydtTotal: TCurrencyEdit;
+    jvdblkpcmbNome: TJvDBLookupCombo;
+    dsPessoa: TDataSource;
+    lbl4: TLabel;
+    fdqryPessoa: TFDQuery;
+    fdtncfldPessoacod_pessoa: TFDAutoIncField;
+    strngfldPessoanome_pessoa: TStringField;
+    blbfldPessoafoto: TBlobField;
+    strngfldPessoasexo: TStringField;
+    strngfldPessoanome_pai: TStringField;
+    strngfldPessoanome_mae: TStringField;
+    dtfldPessoadta_nascimento: TDateField;
+    strngfldPessoanaturalidade: TStringField;
+    strngfldPessoauf_nascimento: TStringField;
+    strngfldPessoanacionalidade: TStringField;
+    strngfldPessoanrorg: TStringField;
+    strngfldPessoaorgaorg: TStringField;
+    strngfldPessoacpf: TStringField;
+    strngfldPessoaemail: TStringField;
+    strngfldPessoagrau_instr_situacao: TStringField;
+    strngfldPessoagrau_instrucao: TStringField;
+    strngfldPessoaform_teo_situacao: TStringField;
+    strngfldPessoaformacao_teologica: TStringField;
+    strngfldPessoaestado_civil_atual: TStringField;
+    strngfldPessoaestado_civil_anterior: TStringField;
+    strngfldPessoanome_conjugue: TStringField;
+    dtfldPessoadta_casamento: TDateField;
+    strngfldPessoalogradouro: TStringField;
+    strngfldPessoauf_endereco: TStringField;
+    strngfldPessoaestado_casa: TStringField;
+    strngfldPessoacomplemento: TStringField;
+    strngfldPessoafone_residencial: TStringField;
+    strngfldPessoabairro: TStringField;
+    strngfldPessoacep: TStringField;
+    strngfldPessoacidade: TStringField;
+    strngfldPessoafone_celular: TStringField;
+    dtfldPessoadta_conversao: TDateField;
+    dtfldPessoadta_batismo_esprito: TDateField;
+    dtfldPessoadta_batismo_aguas: TDateField;
+    dtfldPessoadta_congregado: TDateField;
+    strngfldPessoalocal_descisao_congregado: TStringField;
+    dtfldPessoadta_membro: TDateField;
+    strngfldPessoaorigem_eclesiastica: TStringField;
+    strngfldPessoaproced_eclesiastica: TStringField;
+    strngfldPessoaprofissao: TStringField;
+    strngfldPessoahabilitacao_profissional: TStringField;
+    strngfldPessoaemprego_atual: TStringField;
+    strngfldPessoafuncao: TStringField;
+    strngfldPessoafone_trabalho: TStringField;
+    intgrfldTesourariaDescricaoPessoacod_congregacao: TIntegerField;
+    strngfldPessoanro_rol: TStringField;
+    strngfldPessoanro_cad_congregado: TStringField;
+    strngfldPessoamembro_congregado: TStringField;
+    dtfldPessoadta_inclusao: TDateField;
+    strngfldPessoaUSUARIO_CADASTRO: TStringField;
+    intgrfldTesourariaDescricaoPessoacod_situacao: TIntegerField;
+    strngfldPessoaigreja: TStringField;
+    strngfldPessoasetor: TStringField;
+    strngfldPessoacongregacao: TStringField;
+    strngfldPessoaSITUACAO: TStringField;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -122,7 +182,8 @@ if oDizimo.Selecionar(QryListagem.FieldByName('cod_dizimo').AsInteger) then
     lbledtCodDizimo.Text    := IntToStr(oDizimo.cod_dizimo);
     lbledtCodtalao.Text       := IntToStr(oDizimo.cod_talao);
     lbledtCodCheque.Text        := IntToStr(oDizimo.cod_cheque);
-    lbledtNome.Text := oDizimo.nome;
+    //lbledtNome.Text := oDizimo.nome;
+    jvdblkpcmbNome.KeyValue    := oDizimo.cod_pessoa;
     crncydtValor.Text := FloatToStr(oDizimo.valor);
     dtdtData.Date := oDizimo.data;
     dblkcbbCargo.KeyValue:= oDizimo.cargo;
@@ -245,6 +306,9 @@ begin
    btnBuscarClick(sender);
    //dtmRelatorio := TdtmRelatorio(dtmPrincipal.ConexaoDB);
    dtmRelatorio.fdqryMeses.Open;
+   dtmPrincipal.fdqryPessoa.Open;
+   fdqryPessoa.Open;
+
 end;
 
 procedure TfrmCadDizimos.FormShow(Sender: TObject);
@@ -264,7 +328,8 @@ dtaf := dtdtFim.Date;
        oDizimo.cod_congregacao:=dtmPrincipal.congAtiva;
        oDizimo.cod_talao := StrToInt(lbledtCodtalao.Text);
        oDizimo.cod_cheque:= StrToInt(lbledtCodCheque.Text);
-       oDizimo.nome:=lbledtNome.Text;
+       oDizimo.nome:= jvdblkpcmbNome.Text;   //lbledtNome.Text;
+       oDizimo.cod_pessoa:=   jvdblkpcmbNome.KeyValue;
        oDizimo.valor := StrToFloat(crncydtValor.Text);
        oDizimo.data:=dtdtData.Date;
        oDizimo.cargo:=dblkcbbCargo.Text;
@@ -279,7 +344,53 @@ end;
 
 procedure TfrmCadDizimos.lbledtNomeChange(Sender: TObject);
    Var Aux : Integer;
+    Query1 :TFDQuery;
+
+Posicao : Integer;
   begin
+  // Try
+
+   {Query1 := TFDQuery.Create(nil);
+    Query1.Connection := dtmPrincipal.ConexaoDB;
+        Query1.Active := False;
+
+        Query1.SQL.Clear;
+
+        If lbledtNome.Text <> '' then
+
+        begin
+Query1.SQL.Add('SELECT * FROM TB_PESSOA WHERE NOME_PESSOA LIKE ' + #39 + lbledtNome.Text + #37 + #39 + ' ORDER BY NOME_PESSOA');
+Query1.Active := True;
+
+                If Query1.FieldByName('NOME_PESSOA').AsString <> '' then
+
+                begin
+
+                        Posicao := length(lbledtNome.Text);
+
+                        For Aux := length(lbledtNome.Text)+1 to Length(Query1.FieldByName('NOME_PESSOA').AsString) do
+
+                        begin
+
+                                lbledtNome.Text := lbledtNome.Text + Query1.FieldByName('NOME_PESSOA').AsString[Aux];
+
+                        end;
+
+                        lbledtNome.SelStart := Posicao;
+
+                        lbledtNome.SelLength := length(lbledtNome.Text);
+
+                end;
+
+        end;
+
+        Except
+
+end;     }
+
+
+
+
 If lbledtNome.Focused Then
   begin
     dtmPrincipal.fdqryPessoa.Close;

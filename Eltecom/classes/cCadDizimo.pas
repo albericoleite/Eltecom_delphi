@@ -19,6 +19,7 @@ type
     F_data: TDateTime;
     F_cargo: string;
     F_cod_congregacao: Integer;
+    F_cod_pessoa :Integer;
 
   public
     constructor Create(aConexao: TFDConnection); // CONSTRUTOR DA CLASSE
@@ -40,6 +41,8 @@ type
     property valor: Double read F_valor write F_valor;
     property cargo: string read F_cargo write F_cargo;
     property data: TDateTime read F_data write F_data;
+        property cod_pessoa: Integer read F_cod_pessoa
+      write F_cod_pessoa;
   end;
 
 implementation
@@ -106,7 +109,7 @@ begin
     Qry.SQL.Clear;
     Qry.SQL.Add('UPDATE igreja.tb_dizimista  '+
     ' SET cod_talao=:cod_talao, cod_cheque=:cod_cheque, '+
-    ' nome=:nome, valor=:valor, `data`=:data, cargo=:cargo, cod_congregacao=:cod_congregacao '+
+    ' nome=:nome, valor=:valor, `data`=:data, cargo=:cargo, cod_congregacao=:cod_congregacao, cod_pessoa=:cod_pessoa '+
     ' WHERE cod_dizimo=:cod_dizimo ');
     Qry.ParamByName('cod_congregacao').AsInteger := F_cod_congregacao;
     Qry.ParamByName('cod_dizimo').AsInteger := F_cod_dizimo;
@@ -116,6 +119,7 @@ begin
     Qry.ParamByName('valor').AsFloat := F_valor;
     Qry.ParamByName('data').AsDate := F_data;
     Qry.ParamByName('cargo').AsString := F_cargo;
+    Qry.ParamByName('cod_pessoa').AsInteger := F_cod_pessoa;
     try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -140,8 +144,8 @@ begin
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
     Qry.SQL.Add('INSERT INTO igreja.tb_dizimista '+
-    '(cod_talao, cod_cheque, nome, valor, `data`, cargo, cod_congregacao) '+
-    ' VALUES(:cod_talao,:cod_cheque,:nome,:valor,:data,:cargo,:cod_congregacao)');
+    '(cod_talao, cod_cheque, nome, valor, `data`, cargo, cod_congregacao,cod_pessoa) '+
+    ' VALUES(:cod_talao,:cod_cheque,:nome,:valor,:data,:cargo,:cod_congregacao,:cod_pessoa)');
 Qry.ParamByName('cod_congregacao').AsInteger := Self.F_cod_congregacao;
 Qry.ParamByName('cod_talao').AsInteger := Self.F_cod_talao;
 Qry.ParamByName('cod_cheque').AsInteger := Self.F_cod_cheque;
@@ -149,6 +153,7 @@ Qry.ParamByName('nome').Asstring := Self.F_nome;
 Qry.ParamByName('valor').AsFloat := Self.F_valor;
 Qry.ParamByName('data').AsDate := Self.F_data;
 Qry.ParamByName('cargo').Asstring := Self.F_cargo;
+Qry.ParamByName('cod_pessoa').AsInteger := Self.F_cod_pessoa;
       try
         ConexaoDB.StartTransaction;
          Qry.ExecSQL;
@@ -163,7 +168,7 @@ Qry.ParamByName('cargo').Asstring := Self.F_cargo;
     begin try Result := True; Qry := TFDQuery.Create(nil);
     Qry.Connection := ConexaoDB; Qry.SQL.Clear;
     Qry.SQL.Add
-      ('SELECT cod_dizimo, cod_talao, cod_cheque, nome, valor, `data`, cargo, cod_congregacao '+
+      ('SELECT cod_dizimo, cod_talao, cod_cheque, nome, valor, `data`, cargo, cod_congregacao,cod_pessoa '+
       ' FROM igreja.tb_dizimista WHERE cod_dizimo=:cod_dizimo ');
     Qry.ParamByName('cod_dizimo').AsInteger := id;
 
@@ -175,6 +180,7 @@ Qry.ParamByName('cargo').Asstring := Self.F_cargo;
     Self.F_valor := Qry.FieldByName('valor').AsFloat;
     Self.F_data := Qry.FieldByName('data').AsDateTime;
     Self.F_cargo := Qry.FieldByName('cargo').AsString;
+    Qry.Open; Self.F_cod_pessoa := Qry.FieldByName('cod_pessoa').AsInteger ;
     Except Result := false; end;
 
     finally if Assigned(Qry) then FreeAndNil(Qry) end; end;

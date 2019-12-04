@@ -35,7 +35,7 @@ type
     DataSource1: TDataSource;
     FDStanStorageJSONLink1: TFDStanStorageJSONLink;
     btnCopiar: TBitBtn;
-    btn1: TBitBtn;
+    btnGerarCSV: TBitBtn;
     btnLimpaBD: TBitBtn;
     btnExecutar: TBitBtn;
     procedure dbgrdTabelasDblClick(Sender: TObject);
@@ -46,7 +46,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure mmoQueryKeyPress(Sender: TObject; var Key: Char);
-    procedure btn1Click(Sender: TObject);
+    procedure btnGerarCSVClick(Sender: TObject);
     procedure btnLimpaBDClick(Sender: TObject);
     procedure btnExecutarClick(Sender: TObject);
   private
@@ -67,18 +67,39 @@ uses
 
 {$R *.dfm}
 
-procedure TfrmConsultaDados.btn1Click(Sender: TObject);
-var oPessoa,rest:TPessoa;
+procedure TfrmConsultaDados.btnGerarCSVClick(Sender: TObject);
+var
+  Stream: TFileStream;
+  i: Integer;
+  OutLine: string;
+  sTemp: string;
+  Pass: String;
 begin
-try
-oPessoa:= TPessoa.Create(dtmPrincipal.ConexaoDB);
-oPessoa.nome:='teste';
-oPessoa.dta_nascimento:= Now;
+Pass := InputBox('Informe o nome do arquivo', 'Entre com o nome:','');
 
-   mmoQuery.Text := TJson.ObjectToJsonString(oPessoa);
-finally
-  oPessoa.Free;
-end;
+  Stream := TFileStream.Create('C:\'+Pass+'.csv', fmCreate);
+  try
+    while not fdqryConsulta.Eof do
+    begin
+      // You'll need to add your special handling here where OutLine is built
+      OutLine := '';
+      for i := 0 to fdqryConsulta.FieldCount - 1 do
+      begin
+        sTemp := fdqryConsulta.Fields[i].AsString;
+        // Special handling to sTemp here
+        OutLine := OutLine + sTemp + ',';
+      end;
+      // Remove final unnecessary ','
+      SetLength(OutLine, Length(OutLine) - 1);
+      // Write line to file
+      Stream.Write(OutLine[1], Length(OutLine) * SizeOf(Char));
+      // Write line ending
+      Stream.Write(sLineBreak, Length(sLineBreak));
+      fdqryConsulta.Next;
+    end;
+  finally
+    Stream.Free;  // Saves the file
+  end;
 end;
 
 procedure TfrmConsultaDados.btnAlterarSeqClick(Sender: TObject);
