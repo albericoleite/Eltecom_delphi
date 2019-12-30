@@ -165,6 +165,15 @@ object frmRelatoriosFinanceiro: TfrmRelatoriosFinanceiro
       TabOrder = 4
       OnClick = btnListaLimpaGeralClick
     end
+    object btnUnicoDizimo: TBitBtn
+      Left = 16
+      Top = 85
+      Width = 129
+      Height = 25
+      Caption = 'Somente 1 x Membro'
+      TabOrder = 5
+      OnClick = btnUnicoDizimoClick
+    end
   end
   object dsMes: TDataSource
     DataSet = dtmRelatorio.fdqryMeses

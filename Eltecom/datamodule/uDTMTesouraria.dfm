@@ -1641,7 +1641,7 @@
       
         '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
         'a.nome_pessoa and x.nro_mes = 12 and x.ano = :ano)as DEZEMBRO'
-      'from tb_pessoa a')
+      'from tb_pessoa a order by a.nome_pessoa')
     Left = 408
     Top = 168
     ParamData = <
@@ -1864,7 +1864,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -1893,7 +1893,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -1922,7 +1922,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -1951,7 +1951,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -1980,7 +1980,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2009,7 +2009,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2038,7 +2038,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2068,7 +2068,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2097,7 +2097,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2126,7 +2126,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2155,7 +2155,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2183,7 +2183,7 @@
           DataSetName = 'frxdbQuadroDizimistas'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2653,13 +2653,13 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxdbQuadroDizimistas."DEZEMBRO"]')
+            '[SUM(<frxdbQuadroDizimistas."DEZEMBRO">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2674,13 +2674,13 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxdbQuadroDizimistas."NOVEMBRO"]')
+            '[SUM(<frxdbQuadroDizimistas."NOVEMBRO">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2695,13 +2695,13 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxdbQuadroDizimistas."OUTUBRO"]')
+            '[SUM(<frxdbQuadroDizimistas."OUTUBRO">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2716,13 +2716,13 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxdbQuadroDizimistas."SETEMBRO"]')
+            '[SUM(<frxdbQuadroDizimistas."SETEMBRO">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2737,13 +2737,13 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxdbQuadroDizimistas."AGOSTO"]')
+            '[SUM(<frxdbQuadroDizimistas."AGOSTO">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2758,13 +2758,13 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxdbQuadroDizimistas."JULHO"]')
+            '[SUM(<frxdbQuadroDizimistas."JULHO">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -2779,7 +2779,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2800,7 +2800,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2821,7 +2821,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2842,7 +2842,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2863,7 +2863,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -2884,7 +2884,7 @@
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
@@ -4731,7 +4731,7 @@
         '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
         'ano x where x.nome = a.nome_pessoa and x.nro_mes = 12 and x.ano ' +
         '= :ano)as DEZEMBRO'
-      'from tb_pessoa a')
+      'from tb_pessoa a order by nome_pessoa')
     Left = 400
     Top = 336
     ParamData = <
@@ -6684,6 +6684,328 @@
           ParentFont = False
         end
       end
+    end
+  end
+  object fdqryObreirosPg: TFDQuery
+    Active = True
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'select a.nome_pessoa,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 1 and x.ano =' +
+        ' :ano)as JANEIRO,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 2 and x.ano =' +
+        ' :ano)as FEVEREIRO,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 3 and x.ano =' +
+        ' :ano)as MAR'#199'O,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 4 and x.ano =' +
+        ' :ano)as ABRIL,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 5 and x.ano =' +
+        ' :ano)as MAIO,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 6 and x.ano =' +
+        ' :ano)as JUNHO,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 7 and x.ano =' +
+        ' :ano)as JULHO,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 8 and x.ano =' +
+        ' :ano)as AGOSTO,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 9 and x.ano =' +
+        ' :ano)as SETEMBRO,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 10 and x.ano ' +
+        '= :ano)as OUTUBRO,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 11 and x.ano ' +
+        '= :ano)as NOVEMBRO,'
+      
+        '(select IF(x.valor>0,'#39'PAGO'#39','#39'false'#39') from v_dizimista_total_mes_' +
+        'ano x where x.nome = a.nome_pessoa and x.nro_mes = 12 and x.ano ' +
+        '= :ano)as DEZEMBRO'
+      
+        'from tb_pessoa a inner join tb_obreiro_cargo b on a.cod_pessoa =' +
+        ' b.`COD_MEMBRO`'
+      'inner join tb_cargo e on e.cod_cargo = b.`COD_CARGO`'
+      
+        'inner join tb_parametro_sistema c on c.cod_congregacao = a.cod_c' +
+        'ongregacao and b.`COD_CONGREGACAO` = c.cod_congregacao'
+      'order by e.nivel desc, a.nome_pessoa')
+    Left = 544
+    Top = 384
+    ParamData = <
+      item
+        Name = 'ANO'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 2019
+      end>
+    object strngfld1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_pessoa'
+      Origin = 'nome_pessoa'
+      Size = 50
+    end
+    object strngfld2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'JANEIRO'
+      Origin = 'JANEIRO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld3: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'FEVEREIRO'
+      Origin = 'FEVEREIRO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld4: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAR'#199'O'
+      Origin = '`MAR'#199'O`'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld5: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ABRIL'
+      Origin = 'ABRIL'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld6: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAIO'
+      Origin = 'MAIO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld7: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'JUNHO'
+      Origin = 'JUNHO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld8: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'JULHO'
+      Origin = 'JULHO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld9: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'AGOSTO'
+      Origin = 'AGOSTO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld10: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'SETEMBRO'
+      Origin = 'SETEMBRO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld11: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'OUTUBRO'
+      Origin = 'OUTUBRO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld12: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOVEMBRO'
+      Origin = 'NOVEMBRO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object strngfld13: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DEZEMBRO'
+      Origin = 'DEZEMBRO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+  end
+  object fdqryQuadroObreirosValores: TFDQuery
+    Active = True
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'select a.nome_pessoa,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 1 and x.ano = :ano)as JANEIRO,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 2 and x.ano = :ano)as FEVEREIRO,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 3 and x.ano = :ano)as MAR'#199'O,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 4 and x.ano = :ano)as ABRIL,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 5 and x.ano = :ano)as MAIO,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 6 and x.ano = :ano)as JUNHO,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 7 and x.ano = :ano)as JULHO,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 8 and x.ano = :ano)as AGOSTO,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 9 and x.ano = :ano)as SETEMBRO,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 10 and x.ano = :ano)as OUTUBRO,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 11 and x.ano = :ano)as NOVEMBRO,'
+      
+        '(select x.valor from v_dizimista_total_mes_ano x where x.nome = ' +
+        'a.nome_pessoa and x.nro_mes = 12 and x.ano = :ano)as DEZEMBRO'
+      
+        'from tb_pessoa a inner join tb_obreiro_cargo b on a.cod_pessoa =' +
+        ' b.`COD_MEMBRO`'
+      'inner join tb_cargo e on e.cod_cargo = b.`COD_CARGO`'
+      
+        'inner join tb_parametro_sistema c on c.cod_congregacao = a.cod_c' +
+        'ongregacao and b.`COD_CONGREGACAO` = c.cod_congregacao'
+      'order by e.nivel desc, a.nome_pessoa')
+    Left = 680
+    Top = 304
+    ParamData = <
+      item
+        Name = 'ANO'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 2019
+      end>
+    object StringField1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_pessoa'
+      Origin = 'nome_pessoa'
+      Size = 50
+    end
+    object FloatField1: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'JANEIRO'
+      Origin = 'JANEIRO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField2: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'FEVEREIRO'
+      Origin = 'FEVEREIRO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField3: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAR'#199'O'
+      Origin = '`MAR'#199'O`'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField4: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'ABRIL'
+      Origin = 'ABRIL'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField5: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAIO'
+      Origin = 'MAIO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField6: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'JUNHO'
+      Origin = 'JUNHO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField7: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'JULHO'
+      Origin = 'JULHO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField8: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'AGOSTO'
+      Origin = 'AGOSTO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField9: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'SETEMBRO'
+      Origin = 'SETEMBRO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField10: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'OUTUBRO'
+      Origin = 'OUTUBRO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField11: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOVEMBRO'
+      Origin = 'NOVEMBRO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FloatField12: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'DEZEMBRO'
+      Origin = 'DEZEMBRO'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
 end

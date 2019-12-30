@@ -306,6 +306,7 @@ begin
    btnBuscarClick(sender);
    //dtmRelatorio := TdtmRelatorio(dtmPrincipal.ConexaoDB);
    dtmRelatorio.fdqryMeses.Open;
+   dsMes.DataSet:= dtmRelatorio.fdqryMeses;
    dtmPrincipal.fdqryPessoa.Open;
    fdqryPessoa.Open;
 

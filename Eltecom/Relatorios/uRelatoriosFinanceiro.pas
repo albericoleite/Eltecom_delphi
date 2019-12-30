@@ -25,12 +25,14 @@ type
     chkobreiro: TCheckBox;
     chkMembros: TCheckBox;
     btnListaLimpaGeral: TBitBtn;
+    btnUnicoDizimo: TBitBtn;
     procedure btnSemanaClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnMovMensalClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure dblkcbbMesClick(Sender: TObject);
     procedure btnListaLimpaGeralClick(Sender: TObject);
+    procedure btnUnicoDizimoClick(Sender: TObject);
   private
     procedure AtualizaConsultas;
     procedure ListaLancamentosPeriodo;
@@ -136,6 +138,29 @@ begin
    // (dtpData.Date));
     dtmRelatorioFinanceiro.frxrprtDizimista.PrepareReport(True);
     dtmRelatorioFinanceiro.frxrprtDizimista.ShowReport();
+end;
+
+procedure TfrmRelatoriosFinanceiro.btnUnicoDizimoClick(Sender: TObject);
+var mes: string;
+begin
+ListaLancamentosPeriodo;
+dtmRelatorio.frxdbDizimista.DataSet:=dtmRelatorio.fdqryDizimistas;
+if chkobreiro.Checked = true then
+   dtmRelatorio.frxdbDizimista.DataSet:=dtmRelatorio.fdqryizimitobreiro;
+
+if chkMembros.Checked = true then
+   dtmRelatorio.frxdbDizimista.DataSet:=dtmRelatorio.fdqryDizimosMembros;
+
+  //dtmRelatorio.frxdbDizimista.DataSet:=fdqryDizimistas;
+  dtmRelatorio.frxdbDizimosTotal.DataSet:=dtmRelatorio.fdqryDizimosTotal;
+       mes:= TFuncao.ExtensoMes(MonthOf(dtdtini.Date));
+   dtmRelatorio.fdqryCongregacao.Open;
+   dtmRelatorio.frxrprtDizimista.Variables['Data'] := QuotedStr(mes);
+  dtmRelatorio.frxrprtDizimista.ReportOptions.Name :=
+    'Visualização de Impressão: Dizimistas do mês: '+mes;
+    dtmRelatorio.frxrprtDizimista.PrepareReport(True);
+    dtmRelatorio.frxrprtDizimista.ShowReport();
+
 end;
 
 procedure TfrmRelatoriosFinanceiro.dblkcbbMesClick(Sender: TObject);

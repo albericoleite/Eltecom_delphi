@@ -6,7 +6,6 @@ inherited frmCadDizimos: TfrmCadDizimos
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 841
-    ActivePage = tabManutencao
     ExplicitWidth = 841
     inherited tabListagem: TTabSheet
       ExplicitLeft = 4
@@ -555,7 +554,6 @@ inherited frmCadDizimos: TfrmCadDizimos
     Top = 136
   end
   object fdqryDizimistas: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       '##DIZIMISTA GERAL'
@@ -611,7 +609,7 @@ inherited frmCadDizimos: TfrmCadDizimos
         'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
         'ongregacao'
       'left join tb_pessoa c on c.cod_pessoa = a.cod_dirigente)'
-      'order by nivel desc')
+      'order by nivel desc,4,6')
     Left = 720
     Top = 152
     ParamData = <
@@ -769,7 +767,7 @@ inherited frmCadDizimos: TfrmCadDizimos
         'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
         'ongregacao'
       'left join tb_pessoa c on c.cod_pessoa = a.cod_dirigente)'
-      'order by nivel desc')
+      'order by nivel desc,4,6')
     Left = 616
     Top = 144
     ParamData = <

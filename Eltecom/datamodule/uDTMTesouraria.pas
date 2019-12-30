@@ -112,6 +112,34 @@ type
     frxdbTes_Saida_Total: TfrxDBDataset;
     frxdbTes_Entrada_Total: TfrxDBDataset;
     frxReport1: TfrxReport;
+    fdqryObreirosPg: TFDQuery;
+    strngfld1: TStringField;
+    strngfld2: TStringField;
+    strngfld3: TStringField;
+    strngfld4: TStringField;
+    strngfld5: TStringField;
+    strngfld6: TStringField;
+    strngfld7: TStringField;
+    strngfld8: TStringField;
+    strngfld9: TStringField;
+    strngfld10: TStringField;
+    strngfld11: TStringField;
+    strngfld12: TStringField;
+    strngfld13: TStringField;
+    fdqryQuadroObreirosValores: TFDQuery;
+    StringField1: TStringField;
+    FloatField1: TFloatField;
+    FloatField2: TFloatField;
+    FloatField3: TFloatField;
+    FloatField4: TFloatField;
+    FloatField5: TFloatField;
+    FloatField6: TFloatField;
+    FloatField7: TFloatField;
+    FloatField8: TFloatField;
+    FloatField9: TFloatField;
+    FloatField10: TFloatField;
+    FloatField11: TFloatField;
+    FloatField12: TFloatField;
   private
     { Private declarations }
   public

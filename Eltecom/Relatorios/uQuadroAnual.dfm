@@ -4,8 +4,8 @@ object frmQuadroAnual: TfrmQuadroAnual
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Sele'#231#227'o do Ano'
-  ClientHeight = 223
-  ClientWidth = 262
+  ClientHeight = 240
+  ClientWidth = 255
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object frmQuadroAnual: TfrmQuadroAnual
   object lbl1: TLabel
     Left = 0
     Top = 0
-    Width = 262
+    Width = 255
     Height = 19
     Align = alTop
     Alignment = taCenter
@@ -65,7 +65,7 @@ object frmQuadroAnual: TfrmQuadroAnual
   end
   object btnImprimir: TBitBtn
     Left = 24
-    Top = 175
+    Top = 189
     Width = 97
     Height = 36
     Caption = 'Imprimir'
@@ -173,7 +173,7 @@ object frmQuadroAnual: TfrmQuadroAnual
   end
   object btnSair: TBitBtn
     Left = 145
-    Top = 175
+    Top = 189
     Width = 90
     Height = 36
     Caption = 'Sair'
@@ -231,33 +231,38 @@ object frmQuadroAnual: TfrmQuadroAnual
     Caption = 'Valores'
     TabOrder = 5
   end
-  object rg2: TRadioGroup
+  object pnl1: TPanel
     Left = 24
     Top = 119
-    Width = 211
-    Height = 50
-    Caption = 'Filtro'
+    Width = 209
+    Height = 64
     TabOrder = 6
-  end
-  object rbTodos: TRadioButton
-    Left = 56
-    Top = 136
-    Width = 56
-    Height = 17
-    Caption = 'Todos'
-    Checked = True
-    Enabled = False
-    TabOrder = 7
-    TabStop = True
-  end
-  object rb2: TRadioButton
-    Left = 118
-    Top = 136
-    Width = 107
-    Height = 17
-    Caption = 'Somente Obreiros'
-    Enabled = False
-    TabOrder = 8
+    object rg2: TRadioGroup
+      Left = 5
+      Top = 0
+      Width = 196
+      Height = 57
+      Caption = 'Filtro'
+      TabOrder = 0
+    end
+    object rbSomenteObreiros: TRadioButton
+      Left = 82
+      Top = 20
+      Width = 107
+      Height = 17
+      Caption = 'Somente Obreiros'
+      TabOrder = 1
+    end
+    object rbTodos: TRadioButton
+      Left = 20
+      Top = 20
+      Width = 56
+      Height = 17
+      Caption = 'Todos'
+      Checked = True
+      TabOrder = 2
+      TabStop = True
+    end
   end
   object fdqryAnos: TFDQuery
     Connection = dtmPrincipal.ConexaoDB

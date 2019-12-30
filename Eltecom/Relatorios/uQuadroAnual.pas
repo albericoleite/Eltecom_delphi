@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Vcl.DBCtrls, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Buttons,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, JvExExtCtrls, JvRadioGroup;
 
 type
   TfrmQuadroAnual = class(TForm)
@@ -24,9 +24,10 @@ type
     rg1: TRadioGroup;
     rbNormal: TRadioButton;
     rbValor: TRadioButton;
+    pnl1: TPanel;
     rg2: TRadioGroup;
+    rbSomenteObreiros: TRadioButton;
     rbTodos: TRadioButton;
-    rb2: TRadioButton;
     procedure btnSairClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -50,12 +51,13 @@ uses
 procedure TfrmQuadroAnual.btnImprimirClick(Sender: TObject);
 begin
 
-if rbValor.Checked = true then   begin
+if rbValor.Checked = true   then   begin
+if rbTodos.Checked =true then   begin
 dtmTesouraria.fdqryQuadroDizimistas.Close;
   dtmTesouraria.fdqryQuadroDizimistas.ParamByName('ano').AsInteger := dblkcbbAnos.KeyValue;
   dtmTesouraria.fdqryQuadroDizimistas.Open;
 
-
+    dtmTesouraria.frxdbQuadroDizimistas.DataSet:=dtmTesouraria.fdqryQuadroDizimistas;
    dtmTesouraria.frxrprtDizimistasAnual.Variables['Ano'] := QuotedStr(dblkcbbAnos.Text);
   dtmTesouraria.frxrprtDizimistasAnual.ReportOptions.Name :=
     'Visualização de Impressão: Dizimistas do mês: '+dblkcbbAnos.Text;
@@ -63,17 +65,53 @@ dtmTesouraria.fdqryQuadroDizimistas.Close;
     dtmTesouraria.frxrprtDizimistasAnual.ShowReport();
 end;
 
-if rbNormal.Checked = true then   begin
-dtmTesouraria.fdqryQuadroDizimistasPg.Close;
+
+end;
+
+if rbNormal.Checked = true   then   begin
+  if rbTodos.Checked =true then  begin
+        dtmTesouraria.fdqryQuadroDizimistasPg.Close;
   dtmTesouraria.fdqryQuadroDizimistasPg.ParamByName('ano').AsInteger := dblkcbbAnos.KeyValue;
   dtmTesouraria.fdqryQuadroDizimistasPg.Open;
 
-
+   dtmTesouraria.frxdbQuadroDizimistaspG.DataSet := dtmTesouraria.fdqryQuadroDizimistasPg;
    dtmTesouraria.frxrprtDizimistasAnualPg.Variables['Ano'] := QuotedStr(dblkcbbAnos.Text);
   dtmTesouraria.frxrprtDizimistasAnualPg.ReportOptions.Name :=
     'Visualização de Impressão: Dizimistas do mês: '+dblkcbbAnos.Text;
     dtmTesouraria.frxrprtDizimistasAnualPg.PrepareReport(True);
     dtmTesouraria.frxrprtDizimistasAnualPg.ShowReport();
+  end;
+
+
+end;
+
+if rbSomenteObreiros.Checked = true then begin
+ if rbNormal.Checked = true then   begin
+
+ dtmTesouraria.fdqryObreirosPg.Close;
+  dtmTesouraria.fdqryObreirosPg.ParamByName('ano').AsInteger := dblkcbbAnos.KeyValue;
+  dtmTesouraria.fdqryObreirosPg.Open;
+  dtmTesouraria.frxdbQuadroDizimistaspG.DataSet :=   dtmTesouraria.fdqryObreirosPg;
+   dtmTesouraria.frxrprtDizimistasAnualPg.Variables['Ano'] := QuotedStr(dblkcbbAnos.Text);
+  dtmTesouraria.frxrprtDizimistasAnualPg.ReportOptions.Name :=
+    'Visualização de Impressão: Dizimistas do mês: '+dblkcbbAnos.Text;
+    dtmTesouraria.frxrprtDizimistasAnualPg.PrepareReport(True);
+    dtmTesouraria.frxrprtDizimistasAnualPg.ShowReport();
+ end;
+ if rbValor.Checked = true then   begin
+
+   dtmTesouraria.fdqryQuadroObreirosValores.Close;
+  dtmTesouraria.fdqryQuadroObreirosValores.ParamByName('ano').AsInteger := dblkcbbAnos.KeyValue;
+  dtmTesouraria.fdqryQuadroObreirosValores.Open;
+
+    dtmTesouraria.frxdbQuadroDizimistas.DataSet:= dtmTesouraria.fdqryQuadroObreirosValores;
+   dtmTesouraria.frxrprtDizimistasAnual.Variables['Ano'] := QuotedStr(dblkcbbAnos.Text);
+  dtmTesouraria.frxrprtDizimistasAnual.ReportOptions.Name :=
+    'Visualização de Impressão: Dizimistas do mês: '+dblkcbbAnos.Text;
+    dtmTesouraria.frxrprtDizimistasAnual.PrepareReport(True);
+    dtmTesouraria.frxrprtDizimistasAnual.ShowReport();
+ end;
+
 end;
 
 

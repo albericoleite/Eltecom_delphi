@@ -1,8 +1,7 @@
 inherited frmCadFornecedor: TfrmCadFornecedor
   Caption = 'Cadastro de Fornecedores'
   ClientWidth = 736
-  Position = poScreenCenter
-  ExplicitWidth = 752
+  ExplicitWidth = 742
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlRodape: TPanel
@@ -25,7 +24,7 @@ inherited frmCadFornecedor: TfrmCadFornecedor
       ExplicitLeft = 4
       ExplicitTop = 24
       ExplicitWidth = 728
-      ExplicitHeight = 293
+      ExplicitHeight = 303
       inherited pnlListagem: TPanel
         Width = 728
         ExplicitWidth = 728
@@ -39,7 +38,7 @@ inherited frmCadFornecedor: TfrmCadFornecedor
       ExplicitLeft = 4
       ExplicitTop = 24
       ExplicitWidth = 728
-      ExplicitHeight = 293
+      ExplicitHeight = 303
       object lbl12: TLabel
         Left = 350
         Top = 3
@@ -63,6 +62,7 @@ inherited frmCadFornecedor: TfrmCadFornecedor
         EditLabel.Width = 33
         EditLabel.Height = 13
         EditLabel.Caption = 'C'#243'digo'
+        Enabled = False
         MaxLength = 10
         NumbersOnly = True
         TabOrder = 0
