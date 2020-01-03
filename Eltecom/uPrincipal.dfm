@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Splendor Gest'#227'o de Igrejas - 2019.9'
+  Caption = 'Splendor Gest'#227'o de Igrejas - 2020.01'
   ClientHeight = 560
   ClientWidth = 1269
   Color = clBtnFace
@@ -586,12 +586,11 @@ object frmPrincipal: TfrmPrincipal
               ParentBackground = False
               ParentFont = False
               TabOrder = 1
-              ExplicitHeight = 59
               object Label5: TLabel
                 Left = 1
                 Top = 1
                 Width = 134
-                Height = 20
+                Height = 19
                 Align = alTop
                 Alignment = taCenter
                 Caption = 'Membros /Cong.'
@@ -601,7 +600,7 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitTop = 0
+                ExplicitWidth = 114
               end
             end
             object pnlMediaIdade: TPanel
@@ -620,8 +619,6 @@ object frmPrincipal: TfrmPrincipal
               ParentBackground = False
               ParentFont = False
               TabOrder = 2
-              ExplicitLeft = 192
-              ExplicitHeight = 60
               object Label6: TLabel
                 Left = 1
                 Top = 1
@@ -636,8 +633,7 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitLeft = -7
-                ExplicitTop = 0
+                ExplicitWidth = 85
               end
             end
             object pnlTopo: TPanel
@@ -718,6 +714,10 @@ object frmPrincipal: TfrmPrincipal
     object Financeiro: TTabSheet
       Caption = 'Financeiro'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnl6: TPanel
         Left = 0
         Top = 0
@@ -967,6 +967,10 @@ object frmPrincipal: TfrmPrincipal
     object EBD: TTabSheet
       Caption = 'EBD'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnl13: TPanel
         Left = 0
         Top = 0
@@ -1030,7 +1034,7 @@ object frmPrincipal: TfrmPrincipal
               object lbl3: TLabel
                 Left = 1
                 Top = 1
-                Width = 150
+                Width = 78
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -1041,7 +1045,6 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 78
               end
             end
             object pnlAlunos: TPanel
@@ -1062,7 +1065,7 @@ object frmPrincipal: TfrmPrincipal
               object Label1: TLabel
                 Left = 1
                 Top = 1
-                Width = 151
+                Width = 47
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -1073,7 +1076,6 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 47
               end
             end
             object pnlClasses: TPanel
@@ -1094,7 +1096,7 @@ object frmPrincipal: TfrmPrincipal
               object Label2: TLabel
                 Left = 1
                 Top = 1
-                Width = 151
+                Width = 46
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -1105,7 +1107,6 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 46
               end
             end
             object pnlPessoas: TPanel
@@ -1126,7 +1127,7 @@ object frmPrincipal: TfrmPrincipal
               object Label4: TLabel
                 Left = 1
                 Top = 1
-                Width = 151
+                Width = 114
                 Height = 19
                 Align = alTop
                 Alignment = taCenter
@@ -1137,7 +1138,6 @@ object frmPrincipal: TfrmPrincipal
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 114
               end
             end
           end
@@ -1239,7 +1239,7 @@ object frmPrincipal: TfrmPrincipal
             object Label3: TLabel
               Left = 1
               Top = 1
-              Width = 557
+              Width = 253
               Height = 19
               Align = alTop
               Caption = 'Alunos aniversariantes do M'#234's '
@@ -1251,7 +1251,6 @@ object frmPrincipal: TfrmPrincipal
               Font.Style = [fsBold]
               ParentColor = False
               ParentFont = False
-              ExplicitWidth = 253
             end
             object DBGrid1: TDBGrid
               Left = 1

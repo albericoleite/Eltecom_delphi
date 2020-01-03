@@ -14742,7 +14742,6 @@ object dtmRelatorio: TdtmRelatorio
         object Memo2: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
-          Left = -0.000000000000024203
           Top = 94.488250000000000000
           Width = 718.110700000000000000
           Height = 41.574830000000000000
@@ -14771,7 +14770,6 @@ object dtmRelatorio: TdtmRelatorio
         object Memo3: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
-          Left = -0.000000000000024203
           Top = 136.063080000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -14789,7 +14787,6 @@ object dtmRelatorio: TdtmRelatorio
         object Memo4: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
-          Left = -0.000000000000024203
           Top = 151.181200000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -14940,12 +14937,9 @@ object dtmRelatorio: TdtmRelatorio
         object Memo49: TfrxMemoView
           Align = baCenter
           AllowVectorExport = True
-          Left = -0.000000000000024203
           Top = 167.858380000000000000
           Width = 718.110700000000000000
           Height = 34.015770000000000000
-          DisplayFormat.FormatStr = 'mmmm'
-          DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -27
@@ -14954,8 +14948,19 @@ object dtmRelatorio: TdtmRelatorio
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Referente ao M'#234's de [frxdbDizimista."data_mes"]/ 2019')
+            
+              'Referente ao M'#234's de [frxdbDizimista."data_mes"]/ [frxdbDizimista' +
+              '."data_mes"]')
           ParentFont = False
+          Formats = <
+            item
+              FormatStr = 'mmmm'
+              Kind = fkDateTime
+            end
+            item
+              FormatStr = 'yyyy'
+              Kind = fkDateTime
+            end>
         end
         object Memo50: TfrxMemoView
           Align = baCenter
@@ -24724,8 +24729,6 @@ object dtmRelatorio: TdtmRelatorio
           Top = 189.858380000000000000
           Width = 718.110700000000000000
           Height = 34.015770000000000000
-          DisplayFormat.FormatStr = 'mmmm'
-          DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -27
@@ -24734,8 +24737,19 @@ object dtmRelatorio: TdtmRelatorio
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Referente ao M'#234's de [frxdbDizimista."data_mes"]/ 2019')
+            
+              'Referente ao M'#234's de [frxdbDizimista."data_mes"]/ [frxdbDizimista' +
+              '."data_mes"]')
           ParentFont = False
+          Formats = <
+            item
+              FormatStr = 'mmmm'
+              Kind = fkDateTime
+            end
+            item
+              FormatStr = 'yyyy'
+              Kind = fkDateTime
+            end>
         end
         object Memo50: TfrxMemoView
           Align = baCenter

@@ -78,61 +78,15 @@ type
     dsPessoa: TDataSource;
     lbl4: TLabel;
     fdqryPessoa: TFDQuery;
-    fdtncfldPessoacod_pessoa: TFDAutoIncField;
+    intgrfldPessoacod_pessoa: TIntegerField;
     strngfldPessoanome_pessoa: TStringField;
-    blbfldPessoafoto: TBlobField;
-    strngfldPessoasexo: TStringField;
-    strngfldPessoanome_pai: TStringField;
-    strngfldPessoanome_mae: TStringField;
-    dtfldPessoadta_nascimento: TDateField;
-    strngfldPessoanaturalidade: TStringField;
-    strngfldPessoauf_nascimento: TStringField;
-    strngfldPessoanacionalidade: TStringField;
-    strngfldPessoanrorg: TStringField;
-    strngfldPessoaorgaorg: TStringField;
-    strngfldPessoacpf: TStringField;
-    strngfldPessoaemail: TStringField;
-    strngfldPessoagrau_instr_situacao: TStringField;
-    strngfldPessoagrau_instrucao: TStringField;
-    strngfldPessoaform_teo_situacao: TStringField;
-    strngfldPessoaformacao_teologica: TStringField;
-    strngfldPessoaestado_civil_atual: TStringField;
-    strngfldPessoaestado_civil_anterior: TStringField;
-    strngfldPessoanome_conjugue: TStringField;
-    dtfldPessoadta_casamento: TDateField;
-    strngfldPessoalogradouro: TStringField;
-    strngfldPessoauf_endereco: TStringField;
-    strngfldPessoaestado_casa: TStringField;
-    strngfldPessoacomplemento: TStringField;
-    strngfldPessoafone_residencial: TStringField;
-    strngfldPessoabairro: TStringField;
-    strngfldPessoacep: TStringField;
-    strngfldPessoacidade: TStringField;
-    strngfldPessoafone_celular: TStringField;
-    dtfldPessoadta_conversao: TDateField;
-    dtfldPessoadta_batismo_esprito: TDateField;
-    dtfldPessoadta_batismo_aguas: TDateField;
-    dtfldPessoadta_congregado: TDateField;
-    strngfldPessoalocal_descisao_congregado: TStringField;
-    dtfldPessoadta_membro: TDateField;
-    strngfldPessoaorigem_eclesiastica: TStringField;
-    strngfldPessoaproced_eclesiastica: TStringField;
-    strngfldPessoaprofissao: TStringField;
-    strngfldPessoahabilitacao_profissional: TStringField;
-    strngfldPessoaemprego_atual: TStringField;
-    strngfldPessoafuncao: TStringField;
-    strngfldPessoafone_trabalho: TStringField;
-    intgrfldTesourariaDescricaoPessoacod_congregacao: TIntegerField;
-    strngfldPessoanro_rol: TStringField;
-    strngfldPessoanro_cad_congregado: TStringField;
-    strngfldPessoamembro_congregado: TStringField;
-    dtfldPessoadta_inclusao: TDateField;
-    strngfldPessoaUSUARIO_CADASTRO: TStringField;
-    intgrfldTesourariaDescricaoPessoacod_situacao: TIntegerField;
-    strngfldPessoaigreja: TStringField;
-    strngfldPessoasetor: TStringField;
-    strngfldPessoacongregacao: TStringField;
-    strngfldPessoaSITUACAO: TStringField;
+    intgrfldPessoacod_congregacao: TIntegerField;
+    intgrfldPessoacod_situacao: TIntegerField;
+    strngfldPessoacargo: TStringField;
+    strngfldCargoslist: TStringField;
+    strngfldCargoscargo: TStringField;
+    strngfldCargoscargo_pessoa: TStringField;
+    lbledtCargo: TLabeledEdit;
     procedure btnAlterarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -144,6 +98,7 @@ type
     procedure lbledtNomeChange(Sender: TObject);
     procedure btnApagarClick(Sender: TObject);
     procedure dblkcbbMesClick(Sender: TObject);
+    procedure jvdblkpcmbNomeClick(Sender: TObject);
   private
     { Private declarations }
     oDizimo: TDizimo;
@@ -186,7 +141,8 @@ if oDizimo.Selecionar(QryListagem.FieldByName('cod_dizimo').AsInteger) then
     jvdblkpcmbNome.KeyValue    := oDizimo.cod_pessoa;
     crncydtValor.Text := FloatToStr(oDizimo.valor);
     dtdtData.Date := oDizimo.data;
-    dblkcbbCargo.KeyValue:= oDizimo.cargo;
+    //dblkcbbCargo.KeyValue:= oDizimo.cargo;
+    lbledtCargo.Text:=oDizimo.cargo;
 
     end
   else
@@ -333,7 +289,7 @@ dtaf := dtdtFim.Date;
        oDizimo.cod_pessoa:=   jvdblkpcmbNome.KeyValue;
        oDizimo.valor := StrToFloat(crncydtValor.Text);
        oDizimo.data:=dtdtData.Date;
-       oDizimo.cargo:=dblkcbbCargo.Text;
+       oDizimo.cargo:=lbledtCargo.text;//dblkcbbCargo.Text;
     if (EstadodoCadastro=ecInserir) then
     Result:=oDizimo.Inserir
     else if (EstadodoCadastro=ecAlterar) then
@@ -341,6 +297,12 @@ dtaf := dtdtFim.Date;
 
      dtdtIni.Date :=dtai ;
      dtdtFim.Date :=dtaf;
+end;
+
+procedure TfrmCadDizimos.jvdblkpcmbNomeClick(Sender: TObject);
+begin
+  inherited;
+lbledtCargo.Text := strngfldPessoacargo.Text;
 end;
 
 procedure TfrmCadDizimos.lbledtNomeChange(Sender: TObject);
