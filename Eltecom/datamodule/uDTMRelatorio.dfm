@@ -23818,6 +23818,7 @@ object dtmRelatorio: TdtmRelatorio
     Top = 13
   end
   object fdqryMeses: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'select 1 as valor,'#39'Janeiro'#39' mes from dual'
@@ -23902,7 +23903,7 @@ object dtmRelatorio: TdtmRelatorio
         'inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_c' +
         'ongregacao'
       'left join tb_pessoa c on c.cod_pessoa = a.cod_dirigente)'
-      'order by nivel desc')
+      'order by nivel desc,4')
     Left = 616
     Top = 144
     ParamData = <
@@ -24168,7 +24169,8 @@ object dtmRelatorio: TdtmRelatorio
       ':dtini'
       'and '
       ':dtfim'
-      'and t.cargo = '#39'MEMBRO'#39)
+      'and t.cargo = '#39'MEMBRO'#39
+      'order by 4')
     Left = 608
     Top = 200
     ParamData = <
@@ -28259,7 +28261,6 @@ object dtmRelatorio: TdtmRelatorio
     Top = 352
   end
   object fdqryDizimistaGeral: TFDQuery
-    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       'SELECT null as cod_dizimo, '
@@ -28279,7 +28280,8 @@ object dtmRelatorio: TdtmRelatorio
         'FROM tb_pessoa  t inner join tb_parametro_sistema a on a.cod_con' +
         'gregacao = t.cod_congregacao '
       'left join tb_obreiro_cargo b on b.`COD_MEMBRO` = t.cod_pessoa'
-      'left join tb_cargo c on c.cod_cargo = b.`COD_CARGO`')
+      'left join tb_cargo c on c.cod_cargo = b.`COD_CARGO`'
+      'order by 9 desc,4')
     Left = 544
     Top = 344
     object fdqryDizimistaGeralcod_dizimo: TIntegerField

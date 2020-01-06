@@ -307,6 +307,7 @@ begin
   dtmRelatorioFinanceiro:= TdtmRelatorioFinanceiro.Create(self);
   dsMes.DataSet:= dtmRelatorio.fdqryMeses;
   ListaLancamentosPeriodo;
+  dtmRelatorio.fdqryMeses.Open;
   //dtmPrincipal.fdqryTipoSaida.Open;
 end;
 
@@ -430,8 +431,8 @@ begin
   ' where t.tipo= ''SAIDA'' and t.dta_movimento between   :dtini  and :dtfim'
   ,[dtdtIni.Date,dtdtFim.Date],[ftDateTime,ftDateTime]);
 
-   a := StrToFloat(crncydtEntrada.Text);
-  b := StrToFloat(crncydtSaida.Text);
+   a := StrToFloatDef(crncydtEntrada.Text,0);
+  b := StrToFloatDef(crncydtSaida.Text,0);
   c := a - b;
 
   crncydtSubtotal.Text := floattostr(c);
