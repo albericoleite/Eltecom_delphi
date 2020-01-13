@@ -193,15 +193,6 @@ type
     fdqryMeses: TFDQuery;
     fdqryMesesvalor: TLargeintField;
     fdqryMesesmes: TStringField;
-    fdqryPessoas_deptcod_departamento: TIntegerField;
-    fdqryPessoas_deptcod_dept_pessoa: TIntegerField;
-    fdqryPessoas_deptcod_pessoa: TIntegerField;
-    fdqryPessoas_deptnome_departamento: TStringField;
-    fdqryPessoas_deptnome_pessoa: TStringField;
-    fdqryPessoas_deptidade: TIntegerField;
-    fdqryPessoas_deptdta_nascimento: TDateField;
-    fdqryPessoas_deptdia: TIntegerField;
-    fdqryPessoas_deptfone_celular: TStringField;
     fdqryizimitobreiro: TFDQuery;
     intgrfld1: TIntegerField;
     intgrfld2: TIntegerField;
@@ -264,6 +255,15 @@ type
     fdqryDizimistaGeraldata_mes: TIntegerField;
     fdqryDizimoTotalLimpo: TFDQuery;
     fdqryDizimoTotalLimpototal: TLargeintField;
+    lrgntfldPessoas_deptcod_departamento: TLargeintField;
+    lrgntfldPessoas_deptcod_dept_pessoa: TLargeintField;
+    intgrfldPessoas_deptcod_pessoa: TIntegerField;
+    strngfldPessoas_deptnome_departamento: TStringField;
+    strngfldPessoas_deptnome_pessoa: TStringField;
+    lrgntfldPessoas_deptidade: TLargeintField;
+    dtfldPessoas_deptdta_nascimento: TDateField;
+    lrgntfldPessoas_deptdia: TLargeintField;
+    strngfldPessoas_deptfone_celular: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

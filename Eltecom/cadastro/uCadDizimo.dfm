@@ -8,10 +8,7 @@ inherited frmCadDizimos: TfrmCadDizimos
     Width = 841
     ExplicitWidth = 841
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 833
-      ExplicitHeight = 390
       inherited pnlListagem: TPanel
         Width = 833
         Height = 97
@@ -296,10 +293,7 @@ inherited frmCadDizimos: TfrmCadDizimos
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 833
-      ExplicitHeight = 390
       object lbl1: TLabel
         Left = 546
         Top = 3
@@ -474,8 +468,7 @@ inherited frmCadDizimos: TfrmCadDizimos
       'where t.`data` between '
       ':dtini'
       'and '
-      ':dtfim'
-      'order by b.nivel desc')
+      ':dtfim')
     Left = 264
     Top = 0
     ParamData = <

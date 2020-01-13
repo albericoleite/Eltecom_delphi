@@ -13700,9 +13700,10 @@ object dtmRelatorio: TdtmRelatorio
     end
   end
   object fdqryPessoas_dept: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
-      'select t.cod_departamento'
+      'select * from (select t.cod_departamento'
       ',t.cod_dept_pessoa'
       ',t.cod_pessoa'
       ',t.nome_departamento'
@@ -13717,67 +13718,95 @@ object dtmRelatorio: TdtmRelatorio
       
         'JOIN tb_parametro_sistema F ON F.COD_CONGREGACAO = a.cod_congreg' +
         'acao'
-      'where  t.cod_departamento = :cod_dpt'
-      'order by  t.nome_pessoa')
+      'union all'
+      'select 100'
+      ',0'
+      ',x.cod_pessoa'
+      ','#39'SEM DEPARTAMENTO'#39
+      ',x.nome_pessoa'
+      
+        ',YEAR(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(x.dta_nascimento)))as ida' +
+        'de'
+      ',x.dta_nascimento,DAYOFMONTH(x.dta_nascimento)dia'
+      ',x.fone_celular'
+      
+        'from tb_pessoa x where x.cod_pessoa not in (select t.cod_pessoa ' +
+        'from tb_dept_pessoa t  join tb_pessoa a on a.cod_pessoa = t.cod_' +
+        'pessoa'
+      
+        'JOIN tb_parametro_sistema F ON F.COD_CONGREGACAO = a.cod_congreg' +
+        'acao)) z'
+      'where  z.cod_departamento = :cod_dpt'
+      'order by z.nome_pessoa'
+      '')
     Left = 40
     Top = 288
     ParamData = <
       item
         Name = 'COD_DPT'
-        DataType = ftInteger
+        DataType = ftLargeint
         ParamType = ptInput
-        Value = 1
+        Value = 100
       end>
-    object fdqryPessoas_deptcod_departamento: TIntegerField
+    object lrgntfldPessoas_deptcod_departamento: TLargeintField
+      AutoGenerateValue = arDefault
       FieldName = 'cod_departamento'
       Origin = 'cod_departamento'
-      Required = True
+      ProviderFlags = []
+      ReadOnly = True
     end
-    object fdqryPessoas_deptcod_dept_pessoa: TIntegerField
+    object lrgntfldPessoas_deptcod_dept_pessoa: TLargeintField
       AutoGenerateValue = arDefault
       FieldName = 'cod_dept_pessoa'
       Origin = 'cod_dept_pessoa'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ProviderFlags = [pfInKey]
+      ReadOnly = True
     end
-    object fdqryPessoas_deptcod_pessoa: TIntegerField
+    object intgrfldPessoas_deptcod_pessoa: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'cod_pessoa'
       Origin = 'cod_pessoa'
+      ProviderFlags = []
+      ReadOnly = True
     end
-    object fdqryPessoas_deptnome_departamento: TStringField
+    object strngfldPessoas_deptnome_departamento: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'nome_departamento'
       Origin = 'nome_departamento'
+      ProviderFlags = []
+      ReadOnly = True
       Size = 50
     end
-    object fdqryPessoas_deptnome_pessoa: TStringField
+    object strngfldPessoas_deptnome_pessoa: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'nome_pessoa'
       Origin = 'nome_pessoa'
+      ProviderFlags = []
+      ReadOnly = True
       Size = 50
     end
-    object fdqryPessoas_deptidade: TIntegerField
+    object lrgntfldPessoas_deptidade: TLargeintField
       AutoGenerateValue = arDefault
       FieldName = 'idade'
       Origin = 'idade'
       ProviderFlags = []
       ReadOnly = True
     end
-    object fdqryPessoas_deptdta_nascimento: TDateField
+    object dtfldPessoas_deptdta_nascimento: TDateField
       AutoGenerateValue = arDefault
       FieldName = 'dta_nascimento'
       Origin = 'dta_nascimento'
       ProviderFlags = []
       ReadOnly = True
     end
-    object fdqryPessoas_deptdia: TIntegerField
+    object lrgntfldPessoas_deptdia: TLargeintField
       AutoGenerateValue = arDefault
       FieldName = 'dia'
       Origin = 'dia'
       ProviderFlags = []
       ReadOnly = True
     end
-    object fdqryPessoas_deptfone_celular: TStringField
+    object strngfldPessoas_deptfone_celular: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'fone_celular'
       Origin = 'fone_celular'
@@ -14142,19 +14171,30 @@ object dtmRelatorio: TdtmRelatorio
       object Footer1: TfrxFooter
         FillType = ftBrush
         Frame.Typ = []
-        Height = 22.677180000000000000
+        Height = 162.519790000000000000
         Top = 332.598640000000000000
         Width = 718.110700000000000000
-      end
-      object PageFooter1: TfrxPageFooter
-        FillType = ftBrush
-        Frame.Typ = []
-        Height = 151.181200000000000000
-        Top = 415.748300000000000000
-        Width = 718.110700000000000000
+        object Memo47: TfrxMemoView
+          Align = baCenter
+          AllowVectorExport = True
+          Left = 200.315090000000000000
+          Top = 128.504020000000000000
+          Width = 317.480520000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Verdana'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftTop]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Assinatura do dirigente')
+          ParentFont = False
+        end
         object Memo46: TfrxMemoView
           AllowVectorExport = True
-          Top = 3.779530000000020000
+          Top = 49.133890000000000000
           Width = 718.110700000000000000
           Height = 49.133890000000000000
           DisplayFormat.FormatStr = 'dd '#39'de'#39' mmmm '#39'de'#39' yyyy'
@@ -14172,28 +14212,16 @@ object dtmRelatorio: TdtmRelatorio
             'Nome do Dirigente: [frxdbCongregacao."dirigente"]')
           ParentFont = False
         end
-        object Memo47: TfrxMemoView
-          Align = baCenter
-          AllowVectorExport = True
-          Left = 200.315090000000000000
-          Top = 94.488250000000000000
-          Width = 317.480520000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Verdana'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftTop]
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Assinatura do dirigente')
-          ParentFont = False
-        end
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 22.677180000000000000
+        Top = 555.590910000000000000
+        Width = 718.110700000000000000
         object Memo17: TfrxMemoView
           AllowVectorExport = True
           Left = 574.488560000000000000
-          Top = 132.283550000000000000
           Width = 143.622140000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -14270,6 +14298,7 @@ object dtmRelatorio: TdtmRelatorio
     Top = 208
   end
   object fdqryCongregacao: TFDQuery
+    Active = True
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       

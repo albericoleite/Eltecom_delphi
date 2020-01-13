@@ -310,7 +310,6 @@ inherited frmCadCargoPessoa: TfrmCadCargoPessoa
       'FROM tb_pessoa a inner join tb_parametro_sistema b '
       'on a.cod_congregacao = b.cod_congregacao'
       'where sexo ='#39'M'#39
-      'and cod_pessoa not in (select cod_membro from tb_obreiro_cargo)'
       'order by 2')
     Left = 448
     Top = 168

@@ -4,8 +4,8 @@ object frmRelDept: TfrmRelDept
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Relat'#243'rios'
-  ClientHeight = 50
-  ClientWidth = 344
+  ClientHeight = 52
+  ClientWidth = 316
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object frmRelDept: TfrmRelDept
   object lbl1: TLabel
     Left = 0
     Top = 0
-    Width = 344
+    Width = 316
     Height = 19
     Align = alTop
     Alignment = taCenter
@@ -32,31 +32,31 @@ object frmRelDept: TfrmRelDept
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    ExplicitLeft = 28
-    ExplicitTop = 8
-    ExplicitWidth = 269
+    ExplicitWidth = 185
   end
   object dblkcbbDepartamentos: TDBLookupComboBox
     Left = 0
     Top = 19
-    Width = 344
+    Width = 316
     Height = 21
     Align = alTop
+    DropDownRows = 15
     KeyField = 'codigo'
     ListField = 'departamento'
     ListSource = dsDepartamentos
     TabOrder = 0
     OnClick = dblkcbbDepartamentosClick
-    ExplicitLeft = 28
-    ExplicitTop = 33
-    ExplicitWidth = 269
+    ExplicitWidth = 344
   end
   object fdqryDepartamentos: TFDQuery
     Connection = dtmPrincipal.ConexaoDB
     SQL.Strings = (
       
         'select cod_departamento as codigo, nome_departamento as departam' +
-        'ento from tb_departamento')
+        'ento from tb_departamento'
+      'union all'
+      'select 100, '#39'SEM DEPARTAMENTO'#39' FROM DUAL'
+      'ORDER BY 2')
     Left = 368
     Top = 96
   end

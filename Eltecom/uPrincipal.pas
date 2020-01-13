@@ -823,6 +823,8 @@ try
      TFuncao.SqlValor('select count(1)as VALOR from tb_pessoa a inner join tb_parametro_sistema b on a.cod_congregacao = b.cod_congregacao;',dtmPrincipal.ConexaoDB);
      //pnlDiasBatismo.Caption:=  TFuncao.SqlValor('select DATEDIFF(CURDATE(), a.dt) as VALOR from (select max(b.dta_batismo_aguas) '+
     // ' as dt from tb_pessoa b inner join tb_parametro_sistema c on b.cod_congregacao = c.cod_congregacao )a; ',dtmPrincipal.ConexaoDB);
+   fdqryAniverariantesMes.close;
+   fdqryAniverariantesMes.open;
 finally
      Screen.Cursor := crDefault;
 end;

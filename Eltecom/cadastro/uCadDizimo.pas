@@ -99,6 +99,7 @@ type
     procedure btnApagarClick(Sender: TObject);
     procedure dblkcbbMesClick(Sender: TObject);
     procedure jvdblkpcmbNomeClick(Sender: TObject);
+    procedure btnPesquisarClick(Sender: TObject);
   private
     { Private declarations }
     oDizimo: TDizimo;
@@ -208,6 +209,16 @@ begin
 lbledtCodtalao.SetFocus;
   lbledtCodCheque.Text:='0';
   dtdtData.Date:=Date;
+end;
+
+procedure TfrmCadDizimos.btnPesquisarClick(Sender: TObject);
+begin
+  QryListagem.Close;
+  QryListagem.ParamByName('dtini').AsDateTime := dtdtIni.Date;
+  QryListagem.ParamByName('dtfim').AsDateTime := dtdtFim.Date;
+  QryListagem.Open;
+  inherited;
+
 end;
 
 procedure TfrmCadDizimos.chkChequeClick(Sender: TObject);

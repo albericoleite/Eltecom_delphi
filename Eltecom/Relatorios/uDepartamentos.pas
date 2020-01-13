@@ -39,7 +39,7 @@ begin
 
 dtmRelatorio := TdtmRelatorio.Create(self);
 dtmRelatorio.fdqryPessoas_dept.Close;
-dtmRelatorio.fdqryPessoas_dept.ParamByName('cod_dpt').AsInteger:=dblkcbbDepartamentos.KeyValue;
+dtmRelatorio.fdqryPessoas_dept.ParamByName('cod_dpt').AsLargeInt:=dblkcbbDepartamentos.KeyValue;
 dtmRelatorio.fdqryPessoas_dept.Open;
 
 if dtmRelatorio.fdqryPessoas_dept.FieldByName('cod_departamento').AsInteger > 0 then
