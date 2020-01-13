@@ -25154,8 +25154,20 @@ object dtmRelatorio: TdtmRelatorio
       item
         DataSet = frxdbBuscaPessoa
         DataSetName = 'frxdbBuscaPessoa'
+      end
+      item
+        DataSet = frxdbdtstNotifc
+        DataSetName = 'frxDBCheck'
       end>
-    Variables = <>
+    Variables = <
+      item
+        Name = ' New Category1'
+        Value = Null
+      end
+      item
+        Name = 'reqp10'
+        Value = ''
+      end>
     Style = <>
     object Data: TfrxDataPage
       Height = 1000.000000000000000000
@@ -25725,6 +25737,9 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         Checked = False
         CheckStyle = csCross
+        DataField = 'req01'
+        DataSet = frxdbdtstNotifc
+        DataSetName = 'frxDBCheck'
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox12: TfrxCheckBoxView
@@ -25736,6 +25751,9 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         Checked = False
         CheckStyle = csCross
+        DataField = 'req02'
+        DataSet = frxdbdtstNotifc
+        DataSetName = 'frxDBCheck'
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox13: TfrxCheckBoxView
@@ -25747,6 +25765,9 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         Checked = False
         CheckStyle = csCross
+        DataField = 'req03'
+        DataSet = frxdbdtstNotifc
+        DataSetName = 'frxDBCheck'
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox14: TfrxCheckBoxView
@@ -25758,6 +25779,9 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         Checked = False
         CheckStyle = csCross
+        DataField = 'req04'
+        DataSet = frxdbdtstNotifc
+        DataSetName = 'frxDBCheck'
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox15: TfrxCheckBoxView
@@ -25769,6 +25793,9 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         Checked = False
         CheckStyle = csCross
+        DataField = 'req05'
+        DataSet = frxdbdtstNotifc
+        DataSetName = 'frxDBCheck'
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox16: TfrxCheckBoxView
@@ -25780,6 +25807,9 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         Checked = False
         CheckStyle = csCross
+        DataField = 'req06'
+        DataSet = frxdbdtstNotifc
+        DataSetName = 'frxDBCheck'
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox17: TfrxCheckBoxView
@@ -25791,6 +25821,9 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         Checked = False
         CheckStyle = csCross
+        DataField = 'req08'
+        DataSet = frxdbdtstNotifc
+        DataSetName = 'frxDBCheck'
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object CheckBox18: TfrxCheckBoxView
@@ -25802,6 +25835,9 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         Checked = False
         CheckStyle = csCross
+        DataField = 'req09'
+        DataSet = frxdbdtstNotifc
+        DataSetName = 'frxDBCheck'
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object Rich1: TfrxRichView
@@ -27762,15 +27798,15 @@ object dtmRelatorio: TdtmRelatorio
           7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
           305C66726F6D616E5C66707271325C6663686172736574302043616C69627269
           3B7D7B5C66315C66726F6D616E5C66707271325C666368617273657430204172
-          69616C3B7D7B5C66325C666E696C5C666368617273657430205461686F6D613B
-          7D7D0D0A7B5C636F6C6F7274626C203B5C72656432335C677265656E35345C62
-          6C756539333B7D0D0A7B5C2A5C67656E657261746F7220526963686564323020
-          31302E302E31383336327D5C766965776B696E64345C756331200D0A5C706172
-          645C625C66305C6673323020454D4953535C2763334F205C6230206465204361
-          727461206465205265636F6D656E64615C2765375C2765336F20706172612043
-          49444144452C2045535441444F206F752050415C276364533A205C6366315C66
-          31205F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F
-          5F5F5F5F5F5F5F5F5F5C6366305C66325C667331365C7061720D0A7D0D0A00}
+          69616C3B7D7D0D0A7B5C636F6C6F7274626C203B5C72656432335C677265656E
+          35345C626C756539333B7D0D0A7B5C2A5C67656E657261746F72205269636865
+          6432302031302E302E31383336327D5C766965776B696E64345C756331200D0A
+          5C706172645C625C66305C6673323020454D4953535C2763334F205C62302064
+          65204361727461206465205265636F6D656E64615C2765375C2765336F207061
+          7261204349444144452C2045535441444F206F752050415C276364533A205C63
+          66315C6631205B49494628436865636B426F7831372E636865636B65643D7472
+          75652C3C6672784442436865636B2E227265713864657374696E6F223E2C2727
+          295D5C7061720D0A7D0D0A00}
       end
       object Memo25: TfrxMemoView
         AllowVectorExport = True
@@ -27801,19 +27837,24 @@ object dtmRelatorio: TdtmRelatorio
           7B5C727466315C616E73695C616E7369637067313235325C64656666305C6E6F
           7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
           305C66726F6D616E5C66707271325C6663686172736574302043616C69627269
-          3B7D7B5C66315C666E696C5C666368617273657430205461686F6D613B7D7D0D
-          0A7B5C2A5C67656E657261746F722052696368656432302031302E302E313833
-          36327D5C766965776B696E64345C756331200D0A5C706172645C625C66305C66
-          73323020454D4953535C2763334F205C62302064652043617274612064652052
-          65636F6D656E64615C2765375C2765336F20656D2074725C2765326E7369746F
-          5C66315C667331365C7061720D0A7D0D0A00}
+          3B7D7B5C66315C66726F6D616E5C66707271325C666368617273657430204172
+          69616C3B7D7B5C66325C666E696C5C666368617273657430205461686F6D613B
+          7D7D0D0A7B5C636F6C6F7274626C203B5C72656432335C677265656E35345C62
+          6C756539333B7D0D0A7B5C2A5C67656E657261746F7220526963686564323020
+          31302E302E31383336327D5C766965776B696E64345C756331200D0A5C706172
+          645C625C66305C6673323020454D4953535C2763334F205C6230206465204372
+          742E206465205265636F6D656E64615C2765375C2765336F20656D2074725C27
+          65326E7369746F202865737065636966696361722064657374696E6F293A205C
+          6366315C6631205B49494628436865636B426F7831382E636865636B65643D74
+          7275652C3C6672784442436865636B2E227265713964657374696E6F223E2C27
+          27295D5C6366305C66325C667331365C7061720D0A7D0D0A00}
       end
       object Rich13: TfrxRichView
         AllowVectorExport = True
         Left = 56.692950000000000000
         Top = 476.220780000000000000
         Width = 661.417750000000000000
-        Height = 18.897650000000000000
+        Height = 26.456710000000000000
         Frame.Typ = []
         GapX = 2.000000000000000000
         GapY = 1.000000000000000000
@@ -27822,16 +27863,15 @@ object dtmRelatorio: TdtmRelatorio
           7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
           305C66726F6D616E5C66707271325C6663686172736574302043616C69627269
           3B7D7B5C66315C66726F6D616E5C66707271325C666368617273657430204172
-          69616C3B7D7B5C66325C666E696C5C666368617273657430205461686F6D613B
-          7D7D0D0A7B5C636F6C6F7274626C203B5C72656432335C677265656E35345C62
-          6C756539333B7D0D0A7B5C2A5C67656E657261746F7220526963686564323020
-          31302E302E31383336327D5C766965776B696E64345C756331200D0A5C706172
-          645C625C66305C66733230205452414E534645525C2763614E434941205C6230
-          2070617261206F7574726120636F6E67726567615C2765375C2765336F206461
-          20414450415220284E6174616C206F7520696E746572696F7220646F20457374
-          61646F293A205C6366315C6631205F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F
-          5F5F5F5F5F5F5F5F5F5F5F5C6366305C66325C667331365C7061720D0A7D0D0A
-          00}
+          69616C3B7D7D0D0A7B5C636F6C6F7274626C203B5C72656432335C677265656E
+          35345C626C756539333B7D0D0A7B5C2A5C67656E657261746F72205269636865
+          6432302031302E302E31383336327D5C766965776B696E64345C756331200D0A
+          5C706172645C625C66305C66733230205452414E534645525C2763614E434941
+          205C62302070617261206F7574726120636F6E67726567615C2765375C276533
+          6F20646120414450415220284E6174616C206F7520696E746572696F7220646F
+          2045737461646F293A5C6366315C6631205B494946283C667278444243686563
+          6B2E227265713130223E3D747275652C3C6672784442436865636B2E22726571
+          313064657374696E6F223E2C2727295D5C7061720D0A5C7061720D0A7D0D0A00}
       end
       object CheckBox1: TfrxCheckBoxView
         AllowVectorExport = True
@@ -27842,6 +27882,9 @@ object dtmRelatorio: TdtmRelatorio
         CheckColor = clBlack
         Checked = False
         CheckStyle = csCross
+        DataField = 'req10'
+        DataSet = frxdbdtstNotifc
+        DataSetName = 'frxDBCheck'
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
       end
       object Memo26: TfrxMemoView
@@ -28401,5 +28444,203 @@ object dtmRelatorio: TdtmRelatorio
       FieldName = 'total'
       ReadOnly = True
     end
+  end
+  object frxdbdtstNotifc: TfrxDBDataset
+    UserName = 'frxDBCheck'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'req01=req01'
+      'req02=req02'
+      'req03=req03'
+      'req04=req04'
+      'req05=req05'
+      'req06=req06'
+      'req07=req07'
+      'req08=req08'
+      'req8destino=req8destino'
+      'req09=req09'
+      'req9destino=req9destino'
+      'req10=req10'
+      'req10destino=req10destino'
+      'req11=req11'
+      'req12=req12'
+      'req13=req13'
+      'req14=req14'
+      'req15=req15'
+      'req15_1=req15_1'
+      'req16=req16'
+      'req16_1=req16_1'
+      'req17=req17'
+      'req18=req18'
+      'req19=req19')
+    DataSet = fdqryCheckbox
+    BCDToCurrency = False
+    Left = 496
+    Top = 224
+  end
+  object fdqryCheckbox: TFDQuery
+    Active = True
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'select :req1 as req01'
+      ',:req2  as req02'
+      ',:req3  as req03'
+      ',:req4  as req04'
+      ',:req5  as req05'
+      ',:req6  as req06'
+      ',:req7  as req07'
+      ',:req8  as req08'
+      ',:req8destino as req8destino'
+      ',:req9  as req09'
+      ',:req9destino as req9destino'
+      ',:req10  as req10 '
+      ',:req10destino as req10destino'
+      ',:req11  as req11 '
+      ',:req12  as req12 '
+      ',:req13  as req13'
+      ',:req14  as req14'
+      ',:req15  as req15'
+      ',:req15  as req15'
+      ',:req16  as req16'
+      ',:req16  as req16'
+      ',:req17  as req17'
+      ',:req18  as req18'
+      ',:req19  as req19'
+      'from dual')
+    Left = 392
+    Top = 248
+    ParamData = <
+      item
+        Name = 'REQ1'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = True
+      end
+      item
+        Name = 'REQ2'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ3'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ4'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ5'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ6'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ7'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ8'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ8DESTINO'
+        DataType = ftString
+        ParamType = ptInput
+        Value = 'este'
+      end
+      item
+        Name = 'REQ9'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ9DESTINO'
+        DataType = ftString
+        ParamType = ptInput
+        Value = 'este'
+      end
+      item
+        Name = 'REQ10'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ10DESTINO'
+        DataType = ftString
+        ParamType = ptInput
+        Value = 'teste'
+      end
+      item
+        Name = 'REQ11'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ12'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ13'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ14'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ15'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ16'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ17'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ18'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end
+      item
+        Name = 'REQ19'
+        DataType = ftBoolean
+        ParamType = ptInput
+        Value = False
+      end>
   end
 end

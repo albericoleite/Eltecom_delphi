@@ -3,8 +3,8 @@ object frmEmitirDoc: TfrmEmitirDoc
   Top = 0
   BorderStyle = bsSingle
   Caption = 'Cartas e Relat'#243'rios'
-  ClientHeight = 277
-  ClientWidth = 573
+  ClientHeight = 490
+  ClientWidth = 928
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -32,8 +32,8 @@ object frmEmitirDoc: TfrmEmitirDoc
     Caption = 'Selecione a Data:'
   end
   object lbl2: TLabel
-    Left = 8
-    Top = 244
+    Left = 440
+    Top = 360
     Width = 31
     Height = 13
     Caption = 'Total: '
@@ -193,6 +193,7 @@ object frmEmitirDoc: TfrmEmitirDoc
       Hint = 'Requerimento ou Notifica'#231#227'o de Ocor'#234'ncia'
       Caption = 'Req. | Notifica'#231#227'o'
       TabOrder = 0
+      OnClick = chkRecNotifClick
     end
     object chkFxMembro: TCheckBox
       Left = 8
@@ -228,8 +229,8 @@ object frmEmitirDoc: TfrmEmitirDoc
     end
   end
   object btnImprimir: TBitBtn
-    Left = 318
-    Top = 244
+    Left = 470
+    Top = 275
     Width = 91
     Height = 25
     Caption = 'Imprimir'
@@ -237,8 +238,8 @@ object frmEmitirDoc: TfrmEmitirDoc
     OnClick = btnImprimirClick
   end
   object btnEnviarEmail: TBitBtn
-    Left = 221
-    Top = 244
+    Left = 470
+    Top = 306
     Width = 91
     Height = 25
     Caption = 'Enviar por email'
@@ -280,9 +281,94 @@ object frmEmitirDoc: TfrmEmitirDoc
     Caption = 'Transfer'#234'ncia'
     TabOrder = 14
   end
+  object pnlRequerimento: TPanel
+    Left = 8
+    Top = 244
+    Width = 401
+    Height = 229
+    Enabled = False
+    TabOrder = 15
+    object chkREADMISSAO: TCheckBox
+      Left = 12
+      Top = 5
+      Width = 110
+      Height = 17
+      Caption = 'READMISS'#195'O'
+      TabOrder = 0
+    end
+    object chkMUDANCA: TCheckBox
+      Left = 12
+      Top = 23
+      Width = 110
+      Height = 17
+      Caption = 'MUDAN'#199'A'
+      TabOrder = 1
+    end
+    object chkTRANSF: TCheckBox
+      Left = 12
+      Top = 166
+      Width = 110
+      Height = 17
+      Caption = 'TRANSFER'#202'NCIA'
+      TabOrder = 2
+    end
+    object chkDESLIGAMENTO: TCheckBox
+      Left = 12
+      Top = 42
+      Width = 110
+      Height = 17
+      Caption = 'DESLIGAMENTO'
+      TabOrder = 3
+    end
+    object chkEmCartMemb: TCheckBox
+      Left = 12
+      Top = 61
+      Width = 229
+      Height = 17
+      Caption = 'EMISS'#195'O de 2'#170' via do Cart'#227'o de Membros'
+      TabOrder = 4
+    end
+    object chkEmCartDiac: TCheckBox
+      Left = 12
+      Top = 82
+      Width = 221
+      Height = 17
+      Caption = 'EMISS'#195'O de 2'#170' via de Credencial Di'#225'cono'
+      TabOrder = 5
+    end
+    object chkEmCartpb: TCheckBox
+      Left = 12
+      Top = 103
+      Width = 237
+      Height = 17
+      Caption = 'EMISS'#195'O de 2'#170' via de Credencial Presb'#237'tero'
+      TabOrder = 6
+    end
+    object chkCartcidade: TCheckBox
+      Left = 12
+      Top = 124
+      Width = 357
+      Height = 17
+      Caption = 'EMISS'#195'O de Carta de Recomenda'#231#227'o para CIDADE, ESTADO ou PA'#205'S'
+      TabOrder = 7
+    end
+    object chkEmitCartTransito: TCheckBox
+      Left = 12
+      Top = 145
+      Width = 357
+      Height = 17
+      Caption = 'EMISS'#195'O de Crt. de Recomenda'#231#227'o em tr'#226'nsito'
+      TabOrder = 8
+    end
+  end
   object dsBuscaPessoaRelatorio: TDataSource
     DataSet = dtmRelatorio.fdqryBuscaPessoaRelatorio
-    Left = 152
-    Top = 152
+    Left = 584
+    Top = 160
+  end
+  object ds1: TDataSource
+    DataSet = dtmRelatorio.fdqryCheckbox
+    Left = 456
+    Top = 176
   end
 end

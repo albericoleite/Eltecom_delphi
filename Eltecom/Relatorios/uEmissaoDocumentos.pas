@@ -9,7 +9,9 @@ uses
   Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls,uDTMRelatorio, uDTMConexao, uCadPessoa,
   Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.DBCtrls, JvDBCheckBox, Vcl.Mask, Datasnap.DBClient, JvExControls,
+  JvXPCore, JvXPCheckCtrls;
 
 type
   TfrmEmitirDoc = class(TForm)
@@ -41,6 +43,17 @@ type
     rbVisita: TRadioButton;
     rbTransferencia: TRadioButton;
     dsBuscaPessoaRelatorio: TDataSource;
+    ds1: TDataSource;
+    pnlRequerimento: TPanel;
+    chkREADMISSAO: TCheckBox;
+    chkMUDANCA: TCheckBox;
+    chkTRANSF: TCheckBox;
+    chkDESLIGAMENTO: TCheckBox;
+    chkEmCartMemb: TCheckBox;
+    chkEmCartDiac: TCheckBox;
+    chkEmCartpb: TCheckBox;
+    chkCartcidade: TCheckBox;
+    chkEmitCartTransito: TCheckBox;
     procedure btnImprimirClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -54,6 +67,7 @@ type
     procedure chkRequerimentoClick(Sender: TObject);
     procedure chkObservacaoClick(Sender: TObject);
     procedure btnEnviarEmailClick(Sender: TObject);
+    procedure chkRecNotifClick(Sender: TObject);
   private
     procedure ImprimirCarta(Sender: TObject);
     procedure ImprimirTudo;
@@ -118,6 +132,24 @@ begin
 
     if chkRecNotif.Checked = true then
   begin
+  dtmRelatorio.fdqryCheckbox.Close;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req1').AsBoolean:=chkREADMISSAO.Checked;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req2').AsBoolean:=chkMUDANCA.Checked;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req3').AsBoolean:=chkDESLIGAMENTO.Checked;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req4').AsBoolean:=chkEmCartMemb.Checked;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req5').AsBoolean:=chkEmCartDiac.Checked;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req6').AsBoolean:=chkEmCartpb.Checked;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req7').AsBoolean:=chkTRANSF.Checked;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req8').AsBoolean:=chkCartcidade.Checked;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req8destino').AsString:=edtDestino.Text;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req9').AsBoolean:=chkEmitCartTransito.Checked;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req9destino').AsString:=edtDestino.Text;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req10').AsBoolean:=chkTRANSF.Checked;
+  dtmRelatorio.fdqryCheckbox.ParamByName('req10destino').AsString:=edtDestino.Text;
+
+  //dtmRelatorio.frxdbdtstNotifc.DataSet:= dsChecks;
+
+  dtmRelatorio.fdqryCheckbox.Open;
     dtmRelatorio.frxrprtRecNotif.ReportOptions.Name :=
       'Visualização de Impressão: ' + chkRecNotif.Hint;
     dtmRelatorio.frxrprtRecNotif.PrepareReport(true);
@@ -231,6 +263,15 @@ begin
  mmoObservacao.Clear;
    mmoObservacao.Enabled:=False;
  end;
+end;
+
+procedure TfrmEmitirDoc.chkRecNotifClick(Sender: TObject);
+begin
+if chkRecNotif.Checked =true then
+begin
+  pnlRequerimento.Enabled:=True;
+end else
+   pnlRequerimento.Enabled:=False;
 end;
 
 procedure TfrmEmitirDoc.chkRecomendacaoClick(Sender: TObject);

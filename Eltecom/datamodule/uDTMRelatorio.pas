@@ -11,7 +11,7 @@ uses
   FireDAC.DApt, FireDAC.Comp.DataSet, frxClass, frxDBSet, frxChBox,
   frxExportText, frxExportPDF, frxExportCSV, System.IniFiles,Vcl.Dialogs, TlHelp32,Windows , WinSvc,
   VCLTee.TeeData, frxChart, frxExportHTML, frxExportBaseDialog, frxRich,
-  frxExportRTF;
+  frxExportRTF, Datasnap.DBClient;
 
 type
   TdtmRelatorio = class(TDataModule)
@@ -264,6 +264,8 @@ type
     dtfldPessoas_deptdta_nascimento: TDateField;
     lrgntfldPessoas_deptdia: TLargeintField;
     strngfldPessoas_deptfone_celular: TStringField;
+    frxdbdtstNotifc: TfrxDBDataset;
+    fdqryCheckbox: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
