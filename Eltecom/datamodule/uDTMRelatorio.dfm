@@ -27853,7 +27853,7 @@ object dtmRelatorio: TdtmRelatorio
         AllowVectorExport = True
         Left = 56.692950000000000000
         Top = 476.220780000000000000
-        Width = 661.417750000000000000
+        Width = 449.764070000000000000
         Height = 26.456710000000000000
         Frame.Typ = []
         GapX = 2.000000000000000000
@@ -27869,9 +27869,8 @@ object dtmRelatorio: TdtmRelatorio
           5C706172645C625C66305C66733230205452414E534645525C2763614E434941
           205C62302070617261206F7574726120636F6E67726567615C2765375C276533
           6F20646120414450415220284E6174616C206F7520696E746572696F7220646F
-          2045737461646F293A5C6366315C6631205B494946283C667278444243686563
-          6B2E227265713130223E3D747275652C3C6672784442436865636B2E22726571
-          313064657374696E6F223E2C2727295D5C7061720D0A5C7061720D0A7D0D0A00}
+          2045737461646F293A205C6366315C66315C7061720D0A5C7061720D0A5C7061
+          720D0A7D0D0A00}
       end
       object CheckBox1: TfrxCheckBoxView
         AllowVectorExport = True
@@ -28310,6 +28309,16 @@ object dtmRelatorio: TdtmRelatorio
         Memo.UTF8W = (
           'Em Natal-RN:          ___/____/_____')
         ParentFont = False
+      end
+      object Memo36: TfrxMemoView
+        AllowVectorExport = True
+        Left = 510.236550000000000000
+        Top = 476.220780000000000000
+        Width = 200.315090000000000000
+        Height = 18.897650000000000000
+        Frame.Typ = []
+        Memo.UTF8W = (
+          '[IIF(CheckBox1.checked=true,<frxDBCheck."req10destino">,'#39#39')]')
       end
     end
   end

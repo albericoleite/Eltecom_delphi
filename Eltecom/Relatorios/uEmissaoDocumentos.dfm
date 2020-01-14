@@ -3,8 +3,8 @@ object frmEmitirDoc: TfrmEmitirDoc
   Top = 0
   BorderStyle = bsSingle
   Caption = 'Cartas e Relat'#243'rios'
-  ClientHeight = 490
-  ClientWidth = 928
+  ClientHeight = 279
+  ClientWidth = 586
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,16 +17,9 @@ object frmEmitirDoc: TfrmEmitirDoc
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lbl1: TLabel
-    Left = 8
-    Top = 3
-    Width = 125
-    Height = 13
-    Caption = 'Digite o nome do Membro:'
-  end
   object lbl3: TLabel
-    Left = 807
-    Top = 8
+    Left = 819
+    Top = 4
     Width = 84
     Height = 13
     Caption = 'Selecione a Data:'
@@ -40,113 +33,55 @@ object frmEmitirDoc: TfrmEmitirDoc
     Visible = False
   end
   object lbl4: TLabel
-    Left = 577
-    Top = 8
+    Left = 589
+    Top = 4
     Width = 134
     Height = 13
     Caption = 'Informe a igreja de destino:'
   end
-  object edtBuscar: TEdit
-    Left = 8
-    Top = 22
-    Width = 401
-    Height = 21
-    TabStop = False
-    CharCase = ecUpperCase
-    TabOrder = 0
-    TextHint = 'Digite o nome ou c'#243'digo do Membro'
-    OnChange = edtBuscarChange
-  end
-  object dbgrdMembro: TDBGrid
-    Left = 8
-    Top = 45
-    Width = 401
-    Height = 193
-    DataSource = dsBuscaPessoaRelatorio
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-    TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    OnDblClick = dbgrdMembroDblClick
-    OnTitleClick = dbgrdMembroTitleClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'cod_pessoa'
-        Width = 40
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'nome_pessoa'
-        Title.Caption = 'Nome'
-        Width = 221
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'membro_congregado'
-        Title.Caption = 'Tipo'
-        Visible = True
-      end>
-  end
-  object chkMembro: TCheckBox
-    Left = 266
-    Top = 0
-    Width = 143
-    Height = 17
-    Caption = 'Listar somente Membros:'
-    Checked = True
-    State = cbChecked
-    TabOrder = 2
-    OnClick = chkMembroClick
-  end
   object mmoObservacao: TMemo
-    Left = 575
-    Top = 71
+    Left = 587
+    Top = 67
     Width = 332
-    Height = 198
+    Height = 160
     Enabled = False
     ParentShowHint = False
     ShowHint = False
-    TabOrder = 3
+    TabOrder = 0
   end
   object chkObservacao: TCheckBox
-    Left = 575
-    Top = 48
+    Left = 587
+    Top = 44
     Width = 201
     Height = 17
     Caption = 'Inserir Observa'#231#227'o, Digite Abaixo:'
-    TabOrder = 4
+    TabOrder = 1
     OnClick = chkObservacaoClick
   end
   object dtpDocumento: TDateTimePicker
-    Left = 807
-    Top = 21
+    Left = 819
+    Top = 17
     Width = 100
     Height = 21
     Date = 42223.000000000000000000
     Time = 0.443553078701370400
-    TabOrder = 5
+    TabOrder = 2
   end
   object edtDestino: TEdit
-    Left = 575
-    Top = 21
+    Left = 587
+    Top = 17
     Width = 218
     Height = 21
     CharCase = ecUpperCase
-    TabOrder = 6
+    TabOrder = 3
   end
   object grpCartas: TGroupBox
-    Left = 415
-    Top = 171
+    Left = 425
+    Top = 167
     Width = 146
     Height = 98
     Caption = 'Cartas'
-    TabOrder = 7
+    TabOrder = 4
     object chkRecomendacao: TCheckBox
       Left = 7
       Top = 24
@@ -179,12 +114,12 @@ object frmEmitirDoc: TfrmEmitirDoc
     end
   end
   object grpDocumento: TGroupBox
-    Left = 415
+    Left = 425
     Top = 8
     Width = 146
     Height = 159
     Caption = 'Documentos'
-    TabOrder = 8
+    TabOrder = 5
     object chkRecNotif: TCheckBox
       Left = 8
       Top = 16
@@ -229,21 +164,22 @@ object frmEmitirDoc: TfrmEmitirDoc
     end
   end
   object btnImprimir: TBitBtn
-    Left = 470
-    Top = 275
+    Left = 828
+    Top = 240
     Width = 91
     Height = 25
     Caption = 'Imprimir'
-    TabOrder = 9
+    TabOrder = 6
     OnClick = btnImprimirClick
   end
   object btnEnviarEmail: TBitBtn
-    Left = 470
-    Top = 306
+    Left = 731
+    Top = 240
     Width = 91
     Height = 25
     Caption = 'Enviar por email'
-    TabOrder = 10
+    Enabled = False
+    TabOrder = 7
     OnClick = btnEnviarEmailClick
   end
   object rgCartas: TRadioGroup
@@ -252,7 +188,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     Width = 121
     Height = 105
     Caption = 'Cartas'
-    TabOrder = 11
+    TabOrder = 8
   end
   object rbRecomendacao: TRadioButton
     Left = 608
@@ -261,7 +197,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     Height = 17
     Hint = 'CARTA DE RECOMENDA'#199#195'O'
     Caption = 'Recomenda'#231#227'o'
-    TabOrder = 12
+    TabOrder = 9
   end
   object rbVisita: TRadioButton
     Left = 608
@@ -270,7 +206,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     Height = 17
     Hint = 'CARTA DE VISITA'
     Caption = 'Visita'
-    TabOrder = 13
+    TabOrder = 10
   end
   object rbTransferencia: TRadioButton
     Left = 608
@@ -279,15 +215,16 @@ object frmEmitirDoc: TfrmEmitirDoc
     Height = 17
     Hint = 'CARTA DE TRANSFER'#202'NCIA INTERNA'
     Caption = 'Transfer'#234'ncia'
-    TabOrder = 14
+    TabOrder = 11
   end
   object pnlRequerimento: TPanel
-    Left = 8
-    Top = 244
+    Left = 2
+    Top = 8
     Width = 401
-    Height = 229
+    Height = 238
     Enabled = False
-    TabOrder = 15
+    TabOrder = 12
+    Visible = False
     object chkREADMISSAO: TCheckBox
       Left = 12
       Top = 5
@@ -298,7 +235,7 @@ object frmEmitirDoc: TfrmEmitirDoc
     end
     object chkMUDANCA: TCheckBox
       Left = 12
-      Top = 23
+      Top = 24
       Width = 110
       Height = 17
       Caption = 'MUDAN'#199'A'
@@ -361,10 +298,83 @@ object frmEmitirDoc: TfrmEmitirDoc
       TabOrder = 8
     end
   end
+  object pnlLista: TPanel
+    Left = 2
+    Top = 8
+    Width = 417
+    Height = 263
+    Caption = 'pnlLista'
+    TabOrder = 13
+    object lbl1: TLabel
+      Left = 8
+      Top = 10
+      Width = 125
+      Height = 13
+      Caption = 'Digite o nome do Membro:'
+    end
+    object chkMembro: TCheckBox
+      Left = 266
+      Top = 7
+      Width = 143
+      Height = 17
+      Caption = 'Listar somente Membros:'
+      Checked = True
+      State = cbChecked
+      TabOrder = 0
+      OnClick = chkMembroClick
+    end
+    object edtBuscar: TEdit
+      Left = 8
+      Top = 29
+      Width = 401
+      Height = 21
+      TabStop = False
+      CharCase = ecUpperCase
+      TabOrder = 1
+      TextHint = 'Digite o nome ou c'#243'digo do Membro'
+      OnChange = edtBuscarChange
+    end
+    object dbgrdMembro: TDBGrid
+      Left = 8
+      Top = 52
+      Width = 401
+      Height = 205
+      DataSource = dsBuscaPessoaRelatorio
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      TabOrder = 2
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+      OnDblClick = dbgrdMembroDblClick
+      OnTitleClick = dbgrdMembroTitleClick
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'cod_pessoa'
+          Width = 40
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'nome_pessoa'
+          Title.Caption = 'Nome'
+          Width = 221
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'membro_congregado'
+          Title.Caption = 'Tipo'
+          Visible = True
+        end>
+    end
+  end
   object dsBuscaPessoaRelatorio: TDataSource
     DataSet = dtmRelatorio.fdqryBuscaPessoaRelatorio
-    Left = 584
-    Top = 160
+    Left = 475
+    Top = 304
   end
   object ds1: TDataSource
     DataSet = dtmRelatorio.fdqryCheckbox

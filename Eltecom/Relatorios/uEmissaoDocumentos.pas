@@ -15,13 +15,9 @@ uses
 
 type
   TfrmEmitirDoc = class(TForm)
-    lbl1: TLabel;
     lbl3: TLabel;
     lbl2: TLabel;
     lbl4: TLabel;
-    edtBuscar: TEdit;
-    dbgrdMembro: TDBGrid;
-    chkMembro: TCheckBox;
     mmoObservacao: TMemo;
     chkObservacao: TCheckBox;
     dtpDocumento: TDateTimePicker;
@@ -54,6 +50,11 @@ type
     chkEmCartpb: TCheckBox;
     chkCartcidade: TCheckBox;
     chkEmitCartTransito: TCheckBox;
+    pnlLista: TPanel;
+    chkMembro: TCheckBox;
+    lbl1: TLabel;
+    edtBuscar: TEdit;
+    dbgrdMembro: TDBGrid;
     procedure btnImprimirClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -270,16 +271,23 @@ begin
 if chkRecNotif.Checked =true then
 begin
   pnlRequerimento.Enabled:=True;
-end else
+   frmEmitirDoc.Width := 939;
+   pnlRequerimento.Visible:=True;
+   pnlLista.Visible:=False;
+end else  begin
    pnlRequerimento.Enabled:=False;
+    frmEmitirDoc.Width := 586  ;
+    pnlRequerimento.Visible:=false;
+    pnlLista.Visible:=true;
+end;
 end;
 
 procedure TfrmEmitirDoc.chkRecomendacaoClick(Sender: TObject);
 begin
   if chkRecomendacao.Checked = true then
-    frmEmitirDoc.Width := 927
+    frmEmitirDoc.Width := 939
   else
-    frmEmitirDoc.Width := 573
+    frmEmitirDoc.Width := 586
 end;
 
 procedure TfrmEmitirDoc.chkRequerimentoClick(Sender: TObject);
@@ -290,17 +298,17 @@ end;
 procedure TfrmEmitirDoc.chkTransferenciaClick(Sender: TObject);
 begin
   if chkTransferencia.Checked = true then
-    frmEmitirDoc.Width := 927
+    frmEmitirDoc.Width := 939
   else
-    frmEmitirDoc.Width := 573
+    frmEmitirDoc.Width := 586
 end;
 
 procedure TfrmEmitirDoc.chkVisitaClick(Sender: TObject);
 begin
   if chkVisita.Checked = true then
-    frmEmitirDoc.Width := 915
+    frmEmitirDoc.Width := 939
   else
-    frmEmitirDoc.Width := 573
+    frmEmitirDoc.Width := 586
 end;
 
 procedure TfrmEmitirDoc.dbgrdMembroDblClick(Sender: TObject);
