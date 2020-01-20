@@ -173,6 +173,7 @@ type
     procedure btnConsultaCEPClick(Sender: TObject);
     procedure DWClientRESTCEPBeforeGet(var AUrl: string;
       var AHeaders: TStringList);
+    procedure medtCPFExit(Sender: TObject);
   private
     { Private declarations }
     oPessoa: TPessoa;
@@ -419,6 +420,24 @@ except
  end;
 end;
 end;
+end;
+
+procedure TfrmCadPessoa.medtCPFExit(Sender: TObject);
+var qry:TFDQuery;
+qtd :Integer;
+begin
+  inherited;
+//TODO: CONSULTAR SE O CPF INFORMADO JÁ EXISTE NA BASE
+if medtCPF.Text <> '   .   .   -  ' then   begin
+
+   qtd  := StrToInt(dtmPrincipal.ConexaoDB.ExecSQLScalar('SELECT COUNT(*) AS QTD FROM TB_PESSOA WHERE CPF=:CPF',[medtCPF.Text]));
+   if qtd > 0 then   begin
+     ShowMessage('CPF informado já está cadastrado! Favor verificar: '+medtCPF.Text);
+     medtCPF.Clear;
+     medtCPF.SetFocus;
+   end;
+end;
+
 end;
 
 procedure TfrmCadPessoa.mniCarregarImagem1Click(Sender: TObject);

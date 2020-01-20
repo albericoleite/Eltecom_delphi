@@ -2,7 +2,6 @@ inherited frmCadPessoa: TfrmCadPessoa
   Caption = 'Cadastro de Membros / Congregados'
   ClientHeight = 465
   ClientWidth = 964
-  ExplicitLeft = -50
   ExplicitWidth = 970
   ExplicitHeight = 494
   PixelsPerInch = 96
@@ -24,6 +23,7 @@ inherited frmCadPessoa: TfrmCadPessoa
   inherited pgcPrincipal: TPageControl
     Width = 964
     Height = 427
+    ActivePage = tabManutencao
     OnChange = pgcPrincipalChange
     ExplicitWidth = 964
     ExplicitHeight = 427
@@ -346,7 +346,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Width = 110
         Height = 194
         Caption = 'Datas'
-        TabOrder = 1
+        TabOrder = 0
         object lbl1: TLabel
           Left = 14
           Top = 16
@@ -430,7 +430,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Width = 268
         Height = 193
         Caption = 'Forma'#231#227'o'
-        TabOrder = 2
+        TabOrder = 1
         object lbl3: TLabel
           Left = 10
           Top = 16
@@ -537,7 +537,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Top = 209
         Width = 245
         Height = 150
-        TabOrder = 3
+        TabOrder = 2
         object lbl9: TLabel
           Left = 11
           Top = 16
@@ -615,7 +615,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Top = 115
         Width = 810
         Height = 90
-        TabOrder = 0
+        TabOrder = 6
         object lblCEP: TLabel
           Left = 479
           Top = 2
@@ -831,7 +831,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Width = 289
         Height = 191
         Caption = 'Profissional'
-        TabOrder = 4
+        TabOrder = 3
         object lbl15: TLabel
           Left = 170
           Top = 19
@@ -904,7 +904,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Width = 120
         Height = 180
         BorderStyle = bsSingle
-        TabOrder = 5
+        TabOrder = 4
         object imgFoto: TImage
           Left = 1
           Top = 1
@@ -1133,7 +1133,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Top = 10
         Width = 806
         Height = 102
-        TabOrder = 6
+        TabOrder = 5
         object lblSexo: TLabel
           Left = 450
           Top = 4
@@ -1245,7 +1245,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           EditLabel.Height = 13
           EditLabel.Caption = 'Naturalidade'
           MaxLength = 45
-          TabOrder = 5
+          TabOrder = 6
         end
         object cbbUFnascimento: TComboBox
           Tag = 2
@@ -1254,7 +1254,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           Width = 43
           Height = 21
           ItemIndex = 19
-          TabOrder = 6
+          TabOrder = 7
           Text = 'RN'
           Items.Strings = (
             'AC'
@@ -1292,8 +1292,9 @@ inherited frmCadPessoa: TfrmCadPessoa
           Height = 21
           EditMask = '999.999.999-99;1;_'
           MaxLength = 14
-          TabOrder = 7
+          TabOrder = 12
           Text = '   .   .   -  '
+          OnExit = medtCPFExit
         end
         object lbledtRG: TLabeledEdit
           Left = 634
@@ -1305,7 +1306,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           EditLabel.Caption = 'RG'
           MaxLength = 45
           NumbersOnly = True
-          TabOrder = 8
+          TabOrder = 11
         end
         object lbledtNacionalidade: TLabeledEdit
           Left = 556
@@ -1317,7 +1318,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           EditLabel.Height = 13
           EditLabel.Caption = 'Nacionalidade'
           MaxLength = 45
-          TabOrder = 9
+          TabOrder = 10
           Text = 'BRASILEIRA'
         end
         object lbledtNomeMae: TLabeledEdit
@@ -1330,7 +1331,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           EditLabel.Height = 13
           EditLabel.Caption = 'M'#227'e'
           MaxLength = 45
-          TabOrder = 10
+          TabOrder = 9
         end
         object lbledtNomePai: TLabeledEdit
           Left = 14
@@ -1342,7 +1343,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           EditLabel.Height = 13
           EditLabel.Caption = 'Pai'
           MaxLength = 45
-          TabOrder = 11
+          TabOrder = 8
         end
         object dtdtNascimento: TDateEdit
           Tag = 2
@@ -1355,7 +1356,7 @@ inherited frmCadPessoa: TfrmCadPessoa
           DialogTitle = 'Selecione a Data'
           NumGlyphs = 2
           CalendarStyle = csDialog
-          TabOrder = 12
+          TabOrder = 5
         end
       end
     end
@@ -1726,8 +1727,8 @@ inherited frmCadPessoa: TfrmCadPessoa
   object dlgOpenPicBuscarFoto: TOpenPictureDialog
     Filter = 'Arquivo de Imagem JPG (*.jpg)|*.jpg'
     Title = 'Escolha a Imagem da Pessoa'
-    Left = 280
-    Top = 48
+    Left = 232
+    Top = 24
   end
   object dwGetCEP: TRESTDWClientSQL
     Active = False

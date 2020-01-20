@@ -66,7 +66,7 @@ object dtmGrafico: TdtmGrafico
       'union'
       'select year(sysdate()) ,11,0 from dual '
       'union'
-      'select year(sysdate()) ,12,0 from dual )x group by x.ano,x.mes'
+      'select year(sysdate())  ,12,0 from dual )x group by x.ano,x.mes'
       'order by x.mes')
     Left = 80
     Top = 40
@@ -188,7 +188,7 @@ object dtmGrafico: TdtmGrafico
       
         'INNER join tb_parametro_sistema b ON a.cod_congregacao = b.cod_c' +
         'ongregacao '
-      'where  (YEAR(a.dta_movimento) = year(SYSDATE())) '
+      'where  (YEAR(a.dta_movimento) =  year(sysdate())) '
       'AND a.tipo = '#39'ENTRADA'#39
       'group by year(a.dta_movimento),month(a.dta_movimento)'
       'union'
@@ -272,7 +272,7 @@ object dtmGrafico: TdtmGrafico
       
         'INNER join tb_parametro_sistema b ON a.cod_congregacao = b.cod_c' +
         'ongregacao '
-      'where (YEAR(a.dta_movimento) = year(SYSDATE())) '
+      'where (YEAR(a.dta_movimento) =  year(sysdate())) '
       'AND a.tipo = '#39'SAIDA'#39
       'group by year(a.dta_movimento),month(a.dta_movimento)'
       'union'

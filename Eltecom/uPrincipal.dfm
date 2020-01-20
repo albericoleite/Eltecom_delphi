@@ -187,6 +187,8 @@ object frmPrincipal: TfrmPrincipal
               Align = alClient
               Color = clWhite
               TabOrder = 0
+              ExplicitTop = 16
+              ExplicitHeight = 239
               DefaultCanvas = 'TGDIPlusCanvas'
               PrintMargins = (
                 15
